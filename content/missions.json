@@ -1,7 +1,10 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-06T11:49:04.008Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-09-07T13:46:52.310Z",
+    "autoUpdated": [
+      "starlink-group-17-21",
+      "starlink-group-17-21"
+    ]
   },
   "missions": [
     {
@@ -764,13 +767,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Onbemande vlucht van Starliner-1 naar het ISS voor cargoleveringen en systeemvalidatie.",
+      "objective": "Onbemande vlucht van Starliner-1 naar het ISS met cargo en systeemvalidatie.",
       "body": "Low Earth Orbit",
-      "highlight": "Missie omgeschaald naar onbemand na RCS-problemen tijdens testvlucht 2024.",
+      "highlight": "Omgebouwd naar onbemande cargomissie na RCS-problemen in 2024.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Starliner-1 markeert de eerste operationele vlucht van Boeing's Starliner-ruimtevaartuig naar het Internationaal Ruimtestation in het kader van NASA's Commercial Crew Program. Na problemen met het RCS-aandrijfsysteem tijdens de bemande testvlucht in 2024 heeft NASA besloten deze missie onbemand uit te voeren. Het ruimtevaartuig zal essentiële lading afleveren aan het orbitale laboratorium en tegelijkertijd de doorgevoerde systeemverbeteringen in de praktijk valideren. De missie is een cruciale stap richting het herstel van het vertrouwen in het Starliner-platform.",
+      "description": "Starliner-1 markeert de eerste operationele vlucht van Boeing's Starliner-ruimtevaartuig naar het Internationaal Ruimtestation in het kader van NASA's Commercial Crew Program. Na ernstige problemen met het RCS-aandrijfsysteem tijdens de Crew Flight Test-missie in 2024 heeft NASA besloten deze vlucht zonder bemanning uit te voeren. Het ruimtevaartuig zal in plaats daarvan essentiële cargo afleveren aan het orbitale laboratorium. Tegelijkertijd worden de doorgevoerde systeemverbeteringen in de praktijk gevalideerd, als cruciale stap richting toekomstige bemanningsvluchten.",
       "vehicle": "Atlas V N22",
       "launchSite": "Space Launch Complex 41",
       "duration": "Onbekend",
@@ -814,9 +817,12 @@
         "commercial crew",
         "onbemande vlucht",
         "internet vanuit de ruimte",
-        "megaconstallatie"
+        "megaconstallatie",
+        "nasa commercial crew",
+        "cargo",
+        "systeemvalidatie"
       ],
-      "_lastClaudeUpdate": "2026-08-26T08:30:21.426Z"
+      "_lastClaudeUpdate": "2026-09-07T13:46:29.904Z"
     },
     {
       "id": "starlink-group-10-24",
@@ -2141,13 +2147,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX lanceert 24 satellieten voor het breedband-internetnetwerk van Rivada Space Networks.",
+      "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation van Rivada in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Gepland voor 31 december 2026; 24 nieuwe satellieten versterken de Rivada-constellatie.",
+      "highlight": "Geplande lancering: 31 december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 7-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor Rivada Space Networks, het ambitieuze satellietinternetbedrijf met Europese roots. De Falcon 9-raket plaatst de satellieten in een poolbaan, waarmee Rivada zijn groeiende constellatie verder uitbreidt om wereldwijde, lage-latentie breedbanddiensten aan te bieden. Rivada richt zich met zijn netwerk nadrukkelijk op zakelijke en overheidsklanten die behoefte hebben aan veilige en betrouwbare connectiviteit. De lancering staat gepland voor het einde van 2026 en markeert een volgende stap in de opbouw van de volledige operationele constellatie.",
+      "description": "Met de Rivada 7-missie stuurt SpaceX opnieuw een batch van 24 satellieten de ruimte in voor het groeiende internetnetwerk van Rivada Space Networks. De Falcon 9-raket plaatst de satellieten in een polaire baan, waarmee wereldwijde dekking – inclusief de poolgebieden – een stap dichterbij komt. Rivada streeft naar een eigen low-earth orbit-constellatie die betrouwbare breedbanddiensten moet bieden aan gebruikers over de hele wereld. De lancering staat gepland voor eind december 2026 en markeert een volgende fase in de uitrol van het netwerk.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -2171,9 +2177,10 @@
         "leo-constellatie",
         "internetsatellieten",
         "constellatie",
-        "spacex"
+        "spacex",
+        "rivada"
       ],
-      "_lastClaudeUpdate": "2026-08-08T08:26:56.423Z"
+      "_lastClaudeUpdate": "2026-09-07T13:46:44.266Z"
     },
     {
       "id": "rivada-8",
@@ -2183,13 +2190,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX lanceert 24 satellieten voor het breedbandinternetnetwerk van Rivada Space Networks.",
+      "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation-netwerk van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Geplande lancering: 31 december 2026",
+      "highlight": "Gepland voor lancering op 31 december 2026.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 8-missie brengt SpaceX opnieuw een groep van 24 satellieten in een polaire baan voor het groeiende internetconstallatie van Rivada Space Networks. Het bedrijf wil met zijn Low Earth Orbit-netwerk betrouwbare en snelle breedbanddiensten aanbieden aan gebieden waar traditionele infrastructuur ontbreekt. Een Falcon 9-raket verzorgt de lancering, zoals inmiddels gebruikelijk is voor commerciële constellatiemissies. De vlucht markeert een nieuwe stap in de uitrol van Rivada's ambitieuze wereldwijde connectiviteitsplan.",
+      "description": "Met de Rivada 8-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het groeiende breedband-constellatienetwerk van Rivada Space Networks. Het Ierse bedrijf bouwt aan een laarde-omloopbaan-netwerk dat wereldwijde, lage-latentie internetverbindingen moet bieden, met name voor zakelijke en overheidsklanten. De Falcon 9-raket, het werkpaard van SpaceX, verzorgt de lancering vanuit een van de Amerikaanse lanceerbases. De missie is een verdere stap in de uitrol van Rivada's ambitieuze connectiviteitsinfrastructuur in de ruimte.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -2215,7 +2222,7 @@
         "polaire baan",
         "satellietinternet"
       ],
-      "_lastClaudeUpdate": "2026-08-08T08:27:03.978Z"
+      "_lastClaudeUpdate": "2026-09-07T13:46:52.303Z"
     },
     {
       "id": "rivada-9",
@@ -3962,7 +3969,7 @@
     },
     {
       "id": "haste-leidos-3",
-      "_ll2Id": "04522dea-1450-48f5-bc9d-2d7f1e637f9b",
+      "_ll2Id": "0196fba7-dd6c-4ba0-bf71-e1460930ffde",
       "name": "HASTE | Leidos-3",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
