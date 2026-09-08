@@ -1,10 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-07T13:46:52.310Z",
-    "autoUpdated": [
-      "starlink-group-17-21",
-      "starlink-group-17-21"
-    ]
+    "lastUpdated": "2026-09-08T12:22:07.975Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -2232,13 +2229,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX lanceert 24 satellieten voor de internettconstellatie van Rivada Space Networks.",
+      "objective": "SpaceX lanceert 24 satellieten voor het internettoegangsnetwerk van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Geplande lancering: 31 december 2026",
+      "highlight": "Gepland voor eind 2026; onderdeel van groeiende Rivada-constellatie.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 9-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het Amerikaanse bedrijf Rivada Space Networks. De constellatie is ontworpen om wereldwijde, veilige en lage-latentie internetverbindingen aan te bieden, met een focus op zakelijke en overheidsklanten. De Falcon 9-raket, inmiddels een betrouwbaar werkpaard in de commerciële ruimtevaart, verzorgt ook deze lancering. De missie staat gepland voor eind december 2026 en is onderdeel van een bredere uitrol van de Rivada-megaconstellatie.",
+      "description": "Met de Rivada 9-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het groeiende constellatienetwerk van Rivada Space Networks. Het bedrijf wil met zijn Low Earth Orbit-netwerk wereldwijde, veilige breedbanddiensten aanbieden, met een focus op overheden en defensieklanten. De Falcon 9-raket, het werkpaard van SpaceX, verzorgt de lancering vanuit een van de Amerikaanse lanceerbases. De missie vormt een verdere uitbreiding van een ambitieuze commerciële constellatie die strijdt om marktaandeel in de snel groeiende satellietinternetsector.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -2262,7 +2259,7 @@
         "spacex",
         "internetsatellieten"
       ],
-      "_lastClaudeUpdate": "2026-08-09T08:30:07.076Z"
+      "_lastClaudeUpdate": "2026-09-08T12:22:07.969Z"
     },
     {
       "id": "flight-13",
@@ -3969,7 +3966,7 @@
     },
     {
       "id": "haste-leidos-3",
-      "_ll2Id": "0196fba7-dd6c-4ba0-bf71-e1460930ffde",
+      "_ll2Id": "71489c66-8ecd-4610-9847-3620a543fd75",
       "name": "HASTE | Leidos-3",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
