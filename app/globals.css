@@ -98,7 +98,8 @@
     top: -100%;
     left: 16px;
     z-index: 9999;
-    background: var(--stellar);
+    /* --orbit, not --stellar: white on #378ADD is only 3.21:1 */
+    background: var(--orbit);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.7rem;

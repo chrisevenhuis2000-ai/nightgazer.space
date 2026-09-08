@@ -24,8 +24,15 @@ export function useSearchModal() {
       }
       if (e.key === 'Escape') setOpen(false)
     }
+    // Klikbare ingang: elk element kan de zoekfunctie openen met
+    // window.dispatchEvent(new Event('nightgazer:search-open'))
+    const onOpen = () => setOpen(true)
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    window.addEventListener('nightgazer:search-open', onOpen)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('nightgazer:search-open', onOpen)
+    }
   }, [])
 
   return { open, setOpen }

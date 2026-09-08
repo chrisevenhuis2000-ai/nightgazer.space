@@ -1,3 +1,6 @@
 node_modules
 .env.local
 lib/missions-generated.ts
+
+# lokale QA-tooling (niet voor productie)
+.qa/

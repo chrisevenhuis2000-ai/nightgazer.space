@@ -1,0 +1,1317 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   NightGazer — /staging homepage rework
+   World: the photographic glass-plate archive, rendered in the existing
+   NightGazer palette (#1A1A2E / #185FA5 / #378ADD).
+
+   Two laws this file enforces:
+   1. --pl-mark (#378ADD, "chinagraph blue") marks ONLY live, perishable
+      values. Nothing decorative, no links, no borders may use it.
+   2. Elevation is declared once, as a hairline rule. No card shadows.
+      Depth comes from the light-box loupe, which is a real light effect.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl {
+  /* ── Ground & emulsion ── */
+  --pl-ground:     #0E1022;
+  --pl-plate:      #15182F;
+  --pl-plate-2:    #1A1D38;
+  --pl-plate-lift: #1F2340;
+
+  /* ── Rules (the only elevation device) ── */
+  --pl-rule:      #272C50;
+  --pl-rule-soft: #1E2240;
+
+  /* ── Ink ── */
+  --pl-ink:   #EEF2FB;
+  --pl-ink-2: #9AA6C8;   /* 7.2:1 on plate  — AA */
+  --pl-ink-3: #868EB4;   /* 5.1:1 on the darkest hover ground — AA.
+                            Was #737FA8 at 4.17:1, which failed on labels,
+                            timestamps, categories and photo credits. */
+
+  /* ── Brand, kept ── */
+  --pl-mark:  #378ADD;   /* chinagraph — LIVE, PERISHABLE VALUES ONLY */
+  --pl-act:   #3DCFDF;   /* INTERACTIVE ONLY — "this responds to you".
+                            9.3:1 on plate. Already in tailwind.config.js. */
+  --pl-orbit: #185FA5;   /* structural brand blue — fills and rules, never text */
+  --pl-stamp: #B5D4F4;   /* plate stamps, provenance */
+
+  /* ── The only two semantic colours on the page ── */
+  --pl-good: #4FD39B;
+  --pl-warn: #E0685A;
+
+  /* ── Metrics ── */
+  --pl-max:  1320px;
+  --pl-gut:  clamp(20px, 4vw, 56px);
+  --pl-tap:  44px;
+
+  /* ── Motion ── */
+  --pl-ease:  cubic-bezier(0.16, 1, 0.3, 1);
+  --pl-ease-o: cubic-bezier(0.32, 0.72, 0, 1);
+
+  background: var(--pl-ground);
+  color: var(--pl-ink);
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+/* ── Browser surfaces: the parts we did not draw still carry the design ── */
+.pl ::selection        { background: var(--pl-orbit); color: #fff; }
+.pl input, .pl textarea { caret-color: var(--pl-mark); }
+.pl :focus-visible {
+  outline: 2px solid var(--pl-act);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+.pl *::-webkit-scrollbar            { width: 10px; height: 10px; }
+.pl *::-webkit-scrollbar-track      { background: var(--pl-ground); }
+.pl *::-webkit-scrollbar-thumb      { background: var(--pl-rule); border: 3px solid var(--pl-ground); }
+.pl *::-webkit-scrollbar-thumb:hover { background: var(--pl-orbit); }
+.pl { scrollbar-color: var(--pl-rule) var(--pl-ground); }
+
+/* Deliberately no `color: inherit` here: it out-specifies every
+   single-class rule (.pl-cta__primary, .pl-btn, .pl-tag) and silently
+   replaced the CTA's dark ink with white on cyan — 1.88:1. The global
+   `a { color: inherit }` in globals.css still covers plain inheritance. */
+.pl a { text-decoration: none; }
+
+/* Visible to screen readers only. */
+.pl .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* `color: inherit` here would out-specify every single-class button rule
+   (.pl-btn, .pl-tag, .pl-search), so components own their own colour. */
+.pl button { font: inherit; }
+.pl h1, .pl h2, .pl h3, .pl h4, .pl p, .pl figure { margin: 0; }
+.pl img { display: block; max-width: 100%; }
+
+/* ══ Typography ══════════════════════════════════════════════════════════ */
+
+/* Printed envelope-field label. Every region and control carries one. */
+.pl-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+  line-height: 1;
+}
+.pl-label--stamp { color: var(--pl-stamp); }
+
+/* Mono is for measurement only: coordinates, times, counts, magnitudes. */
+.pl-num {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+/* Live, perishable value. The chinagraph law lives here and nowhere else. */
+.pl-live { color: var(--pl-mark); }
+
+/* Motion follows the same law: if it breathes, it is live. A status dot gets
+   a slow glow rather than a hard blink — realtime, not an alarm. */
+.pl-dot {
+  position: relative;
+  width: 7px; height: 7px;
+  flex-shrink: 0;
+  background: currentColor;
+  display: inline-block;
+}
+.pl-dot::after {
+  content: '';
+  position: absolute; inset: -4px;
+  border: 1px solid currentColor;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-dot        { animation: pl-breathe 3.4s var(--pl-ease-o) infinite; }
+  .pl-dot::after { animation: pl-halo 3.4s var(--pl-ease-o) infinite; }
+}
+@keyframes pl-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 42%, transparent); }
+  50%      { box-shadow: 0 0 9px 2px color-mix(in srgb, currentColor 34%, transparent); }
+}
+@keyframes pl-halo {
+  0%   { opacity: 0.5; transform: scale(0.72); }
+  70%  { opacity: 0;   transform: scale(1.5); }
+  100% { opacity: 0;   transform: scale(1.5); }
+}
+
+.pl-h1 {
+  font-size: clamp(2.05rem, 5vw, 3.9rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
+}
+.pl-h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+.pl-h3 {
+  font-size: clamp(1.02rem, 1.35vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+.pl-body   { color: var(--pl-ink-2); max-width: 68ch; text-wrap: pretty; }
+.pl-body-s { color: var(--pl-ink-2); font-size: 0.8125rem; line-height: 1.65; text-wrap: pretty; }
+
+/* ══ Shell ═══════════════════════════════════════════════════════════════ */
+
+.pl-wrap {
+  /* width:100% is load-bearing: inside .pl-stack (a grid) the auto margins
+     switch off stretch, so without it every section shrinks to fit-content. */
+  width: 100%;
+  max-width: var(--pl-max);
+  margin-inline: auto;
+  padding-inline: var(--pl-gut);
+}
+
+/* Sections sit in deliberate voids of ground, not in nested cards.
+   The stack owns every gap, so no two paddings can add up. */
+.pl-stack {
+  display: grid;
+  /* An explicit minmax(0,1fr) track is load-bearing: with an implicit `auto`
+     track the items' min-content floor (width:100% + max-width) blew the
+     column out to 1320px on every viewport. */
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(40px, 5vw, 76px);
+  padding-block: clamp(32px, 4vw, 56px) clamp(56px, 7vw, 96px);
+}
+.pl-stack > .pl-gap-lg { margin-top: clamp(16px, 3vw, 40px); }
+
+/* ── Tactile lift ─────────────────────────────────────────────────────────
+   Card-like surfaces rise 2px on hover. The shadow carries the ground's own
+   hue plus a faint orbit-blue rim, never generic black. Ledger rows are
+   deliberately excluded: lifting a row would break the ruled grid, so rows
+   answer with the loupe and a cyan title instead. */
+.pl-lift {
+  transition:
+    transform 320ms var(--pl-ease-o),
+    box-shadow 320ms var(--pl-ease-o),
+    border-color 320ms var(--pl-ease),
+    background 260ms var(--pl-ease);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-lift:hover,
+  .pl-lift:focus-within {
+    transform: translateY(-2px);
+    box-shadow:
+      0 10px 26px -6px rgba(6, 8, 20, 0.66),
+      0 2px 0 -1px color-mix(in srgb, var(--pl-orbit) 34%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pl-lift:hover, .pl-lift:focus-within {
+    border-color: color-mix(in srgb, var(--pl-act) 50%, transparent);
+  }
+}
+
+/* ── The plate: a bordered emulsion field with corner registration marks ── */
+.pl-plate {
+  position: relative;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+}
+.pl-plate::before,
+.pl-plate::after {
+  content: '';
+  position: absolute;
+  width: 11px; height: 11px;
+  border: 1px solid var(--pl-stamp);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.pl-plate::before { top: 7px;    left: 7px;    border-right: 0; border-bottom: 0; }
+.pl-plate::after  { bottom: 7px; right: 7px;   border-left: 0;  border-top: 0; }
+
+/* Edge fiducial ruler — the measuring edge of a real plate. */
+.pl-edge {
+  height: 9px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--pl-rule) 0 1px,
+    transparent 1px 9px
+  );
+  opacity: 0.85;
+}
+.pl-edge--lit {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--pl-orbit) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+/* Field row: printed label above a value, as on a plate envelope. */
+.pl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+/* ── Emulsion art direction: every image on the page gets this ── */
+.pl-emulsion {
+  position: relative;
+  overflow: hidden;
+  background: var(--pl-plate-2);
+}
+.pl-emulsion > img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.52) contrast(1.06) brightness(0.82) saturate(0.9);
+  transform: scale(1.001);
+  transition: filter 600ms var(--pl-ease), transform 900ms var(--pl-ease);
+}
+/* Silver-gelatin cast, pulled toward the brand blue. */
+.pl-emulsion::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(200deg, rgba(24,95,165,0.30), rgba(14,16,34,0.62));
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+a:hover .pl-emulsion > img,
+.pl-row:hover .pl-emulsion > img {
+  filter: grayscale(0.18) contrast(1.02) brightness(0.98) saturate(1.05);
+  transform: scale(1.022);
+}
+
+/* ══ Staging banner ══════════════════════════════════════════════════════ */
+
+.pl-staging {
+  position: relative;
+  z-index: 40;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(224,104,90,0.16) 0 10px,
+      transparent 10px 20px),
+    var(--pl-plate-2);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-staging__in {
+  max-width: var(--pl-max);
+  margin: 0 auto;
+  padding: 9px var(--pl-gut);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pl-staging__stamp {
+  border: 1px solid var(--pl-warn);
+  color: var(--pl-warn);
+  padding: 3px 9px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+  flex-shrink: 0;
+}
+.pl-staging__note { color: var(--pl-ink-2); font-size: 0.8125rem; }
+.pl-staging__link {
+  margin-left: auto;
+  border-bottom: 1px solid var(--pl-rule);
+  color: var(--pl-stamp);
+  font-size: 0.8125rem;
+  padding-bottom: 1px;
+  transition: border-color 200ms var(--pl-ease);
+}
+.pl-staging__link:hover { border-color: var(--pl-act); color: var(--pl-act); }
+
+/* ══ Header ══════════════════════════════════════════════════════════════ */
+
+.pl-head {
+  position: sticky; top: 0; z-index: 30;
+  background: rgba(14,16,34,0.92);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-head__in {
+  max-width: var(--pl-max);
+  margin: 0 auto;
+  padding: 0 var(--pl-gut);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 44px);
+}
+.pl-head__logo img { height: 38px; width: auto; }
+.pl-nav { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.pl-nav a {
+  display: flex; align-items: center;
+  height: var(--pl-tap);
+  padding: 0 13px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+  border-bottom: 2px solid transparent;
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl-nav a:hover              { color: var(--pl-act); }
+.pl-nav a[aria-current="page"] { color: var(--pl-ink); border-bottom-color: var(--pl-act); }
+
+/* Provenance: what this edition of the archive is. */
+.pl-prov {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+  white-space: nowrap;
+}
+.pl-prov__tick { width: 1px; height: 12px; background: var(--pl-rule); }
+.pl-prov__n { min-width: 3.4ch; display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
+
+.pl-burger {
+  display: none;
+  width: var(--pl-tap); height: var(--pl-tap);
+  margin-left: auto;
+  background: none; border: 1px solid var(--pl-rule);
+  cursor: pointer;
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: 5px;
+}
+.pl-burger span {
+  display: block; width: 18px; height: 1.5px;
+  background: var(--pl-ink-2);
+  transition: transform 260ms var(--pl-ease-o), opacity 200ms linear;
+}
+.pl-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.pl-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.pl-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.pl-mobnav {
+  border-bottom: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  padding: 8px var(--pl-gut) 20px;
+}
+.pl-mobnav a {
+  display: flex; align-items: center;
+  min-height: var(--pl-tap);
+  border-bottom: 1px solid var(--pl-rule-soft);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--pl-ink-2);
+}
+
+/* ══ Instrument bar — the observer's answer, first viewport ══════════════ */
+
+.pl-instr {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-instr__cell {
+  padding: clamp(16px, 2vw, 24px);
+  border-right: 1px solid var(--pl-rule-soft);
+  display: flex; flex-direction: column; gap: 12px;
+  min-width: 0;
+  transition: background 300ms var(--pl-ease);
+}
+.pl-instr__cell:last-child { border-right: 0; }
+.pl-instr__cell:hover      { background: var(--pl-plate-2); }
+.pl-instr__val {
+  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.pl-instr__unit { font-size: 0.75rem; color: var(--pl-ink-3); font-weight: 500; letter-spacing: 0.06em; }
+.pl-instr__sub  { font-size: 0.75rem; color: var(--pl-ink-2); }
+.pl-instr__off {
+  font-size: 0.75rem;
+  color: var(--pl-ink-3);
+  border-left: 1px solid var(--pl-warn);
+  padding-left: 10px;
+  line-height: 1.5;
+}
+
+/* The bar can sit directly on the emulsion, readouts printed over the plate. */
+.pl-instr--onplate {
+  position: relative;
+  background: transparent;
+  border: 0;
+  isolation: isolate;
+}
+.pl-instr--onplate .pl-instr__cell { background: transparent; }
+.pl-instr--onplate .pl-instr__cell:hover { background: rgba(31,35,64,0.55); }
+
+.pl-firstview { position: relative; border: 1px solid var(--pl-rule); background: var(--pl-plate); }
+.pl-firstview__ground { position: absolute; inset: 0; z-index: 0; }
+.pl-firstview__ground .pl-emulsion { width: 100%; height: 100%; }
+.pl-firstview__ground .pl-emulsion > img { opacity: 0.32; }
+/* With no plate loaded the surface is still a plate: its own ruled emulsion. */
+.pl-firstview__ground .pl-emulsion {
+  background-color: var(--pl-plate);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(39,44,80,0.55) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(0deg,  rgba(39,44,80,0.35) 0 1px, transparent 1px 34px);
+}
+.pl-firstview__ground::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,16,34,0.52) 0%, rgba(14,16,34,0.88) 100%);
+}
+
+/* Depth behind the title: one deep-blue field so the display type lifts off
+   the plate. Anchored where the headline sits, not centred decoration. */
+.pl-firstview__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 74% at 22% 34%, color-mix(in srgb, var(--pl-orbit) 30%, transparent) 0%, transparent 68%),
+    radial-gradient(46% 58% at 78% 8%,  color-mix(in srgb, var(--pl-mark)  13%, transparent) 0%, transparent 72%);
+}
+
+/* Silver grains on the emulsion, which read as stars. Two layers at
+   different scales drift on transform only, confined to this one block —
+   never a page-wide canvas. */
+.pl-stars {
+  position: absolute;
+  inset: -12% -12% -12% -12%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.pl-stars i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-repeat: repeat;
+  will-change: transform;
+}
+.pl-stars i:nth-child(1) {
+  background-image:
+    radial-gradient(1.4px 1.4px at 18px 24px, rgba(238,242,251,0.85) 0, transparent 100%),
+    radial-gradient(1px 1px   at 96px 62px, rgba(181,212,244,0.7) 0, transparent 100%),
+    radial-gradient(1.2px 1.2px at 148px 18px, rgba(238,242,251,0.6) 0, transparent 100%),
+    radial-gradient(1px 1px   at 58px 132px, rgba(181,212,244,0.55) 0, transparent 100%);
+  background-size: 190px 170px;
+}
+.pl-stars i:nth-child(2) {
+  background-image:
+    radial-gradient(0.9px 0.9px at 40px 40px, rgba(238,242,251,0.55) 0, transparent 100%),
+    radial-gradient(0.8px 0.8px at 122px 96px, rgba(55,138,221,0.6) 0, transparent 100%),
+    radial-gradient(1px 1px   at 76px 148px, rgba(238,242,251,0.4) 0, transparent 100%);
+  background-size: 260px 240px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-stars i:nth-child(1) { animation: pl-drift-a 190s linear infinite; }
+  .pl-stars i:nth-child(2) { animation: pl-drift-b 280s linear infinite; }
+}
+@keyframes pl-drift-a { to { transform: translate3d(-190px, -85px, 0); } }
+@keyframes pl-drift-b { to { transform: translate3d(130px, -120px, 0); } }
+.pl-firstview > *:not(.pl-firstview__ground) { position: relative; z-index: 1; }
+.pl-firstview__title {
+  padding: clamp(26px, 3.4vw, 44px) clamp(18px, 2.4vw, 30px) clamp(20px, 2.4vw, 30px);
+  border-bottom: 1px solid var(--pl-rule);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(24px, 4vw, 64px);
+  align-items: end;
+}
+.pl-firstview__title h1 {
+  font-size: clamp(1.85rem, 3.3vw, 2.95rem);
+  max-width: 22ch;
+}
+/* Provenance block: the plate envelope's printed fields, right-hand column. */
+.pl-envelope {
+  display: grid;
+  gap: 16px;
+  text-align: right;
+  border-right: 1px solid var(--pl-rule);
+  padding-right: clamp(16px, 2vw, 26px);
+  min-width: 148px;
+}
+.pl-envelope dt { margin-bottom: 5px; }
+.pl-envelope dd { margin: 0; font-size: 0.8125rem; color: var(--pl-ink-2); }
+
+/* Continuous readout: a live feed shows movement, never a frozen number. */
+.pl-readout {
+  height: 3px;
+  background: var(--pl-rule-soft);
+  overflow: hidden;
+  position: relative;
+}
+.pl-readout::after {
+  content: '';
+  position: absolute; inset-block: 0;
+  width: 34%;
+  background: var(--pl-mark);
+  animation: pl-sweep 3.6s var(--pl-ease-o) infinite;
+}
+@keyframes pl-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(295%); }
+}
+
+/* A meter is a filled rule, not a progress ring. */
+.pl-meter { height: 3px; background: var(--pl-rule-soft); position: relative; }
+.pl-meter > i {
+  position: absolute; inset-block: 0; left: 0;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms var(--pl-ease);
+}
+
+/* ══ Lead plate ══════════════════════════════════════════════════════════ */
+
+.pl-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr);
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+}
+.pl-lead__main {
+  background: var(--pl-plate);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.pl-lead__fig { position: relative; aspect-ratio: 16 / 9; }
+.pl-lead__fig .pl-emulsion { position: absolute; inset: 0; }
+
+/* The chinagraph ring: the archivist's mark around the subject. */
+.pl-ring {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.pl-ring ellipse {
+  fill: none;
+  stroke: var(--pl-mark);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 6;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.92;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-ring--draw ellipse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pl-mark-in 760ms var(--pl-ease) 420ms both;
+  }
+}
+@keyframes pl-mark-in {
+  from { opacity: 0; transform: scale(1.09) rotate(-2.5deg); }
+  to   { opacity: 0.92; transform: none; }
+}
+
+/* Plate number, stamped into the corner of the emulsion. */
+.pl-stampno {
+  position: absolute; left: 14px; bottom: 14px;
+  border: 1px solid rgba(181,212,244,0.4);
+  background: rgba(14,16,34,0.72);
+  backdrop-filter: blur(6px);
+  color: var(--pl-stamp);
+  padding: 4px 8px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+}
+.pl-lead__body { padding: clamp(20px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 18px; }
+.pl-lead__close {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--pl-rule-soft);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.pl-lead__side { background: var(--pl-plate); display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.pl-lead__side > * + * { border-top: 1px solid var(--pl-rule); }
+
+.pl-sub {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 16px;
+  padding: clamp(14px, 1.6vw, 20px) clamp(16px, 1.8vw, 22px);
+  align-items: center;
+  align-content: center;
+  /* transition owned by .pl-lift */
+}
+.pl-sub:hover { background: var(--pl-plate-2); }
+.pl-sub .pl-h3 { transition: color 180ms var(--pl-ease); }
+.pl-sub:hover .pl-h3 { color: var(--pl-act); }
+.pl-lead__main .pl-h1 a { transition: color 180ms var(--pl-ease); }
+.pl-lead__main .pl-h1 a:hover { color: var(--pl-act); }
+.pl-sub__fig { aspect-ratio: 4 / 3; }
+.pl-sub__fig .pl-emulsion { width: 100%; height: 100%; }
+
+/* Envelope metadata: printed fields separated by hairline ticks. */
+.pl-meta {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+}
+.pl-meta__tick { width: 1px; height: 10px; background: var(--pl-rule); flex-shrink: 0; }
+
+/* Reading level is a mark, not a colour badge: a filled 3-step ladder. */
+.pl-ladder { display: inline-flex; align-items: flex-end; gap: 2px; height: 10px; }
+.pl-ladder i {
+  width: 3px; background: var(--pl-rule);
+  display: block;
+}
+.pl-ladder i:nth-child(1) { height: 4px; }
+.pl-ladder i:nth-child(2) { height: 7px; }
+.pl-ladder i:nth-child(3) { height: 10px; }
+.pl-ladder i[data-on="1"] { background: var(--pl-stamp); }
+
+/* ── Hero actions: one primary next step, one quiet alternative ────────── */
+.pl-cta {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-top: 4px;
+}
+.pl-cta__primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  min-height: var(--pl-tap);
+  padding: 0 22px;
+  background: var(--pl-act);
+  color: #06131A;                 /* 11.4:1 on the cyan — dark ink, not white */
+  border: 1px solid var(--pl-act);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  transition: background 240ms var(--pl-ease), transform 140ms var(--pl-ease-o), box-shadow 240ms var(--pl-ease);
+}
+.pl-cta__primary:hover {
+  background: color-mix(in srgb, var(--pl-act) 82%, #FFFFFF);
+  box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--pl-act) 46%, transparent);
+}
+.pl-cta__primary:active { transform: translateY(1px); }
+.pl-cta__primary svg { transition: transform 260ms var(--pl-ease-o); }
+.pl-cta__primary:hover svg { transform: translateX(3px); }
+
+.pl-cta__secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: var(--pl-tap);
+  padding: 0 4px;
+  color: var(--pl-ink-2);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  border-bottom: 1px solid var(--pl-rule);
+  transition: color 220ms var(--pl-ease), border-color 220ms var(--pl-ease);
+}
+.pl-cta__secondary:hover { color: var(--pl-act); border-color: var(--pl-act); }
+
+/* ══ Read link — a printed action, not a pill ═══════════════════════════ */
+
+.pl-read {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: var(--pl-tap);
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--pl-ink);
+  align-self: flex-start;
+}
+.pl-read { color: var(--pl-ink); transition: color 200ms var(--pl-ease); }
+.pl-read:hover { color: var(--pl-act); }
+.pl-read__rule {
+  width: 34px; height: 1px; background: var(--pl-act);
+  transform-origin: left center;
+  transition: transform 320ms var(--pl-ease-o);
+}
+.pl-read:hover .pl-read__rule { transform: scaleX(1.72); }
+
+.pl-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: var(--pl-tap);
+  padding: 0 22px;
+  background: transparent;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-act);
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background 220ms var(--pl-ease), border-color 220ms var(--pl-ease), transform 120ms linear;
+}
+.pl-btn { border-color: color-mix(in srgb, var(--pl-act) 42%, transparent); }
+.pl-btn:hover {
+  background: color-mix(in srgb, var(--pl-act) 12%, transparent);
+  border-color: var(--pl-act);
+}
+.pl-btn:active { transform: translateY(1px); }
+.pl-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ══ Mission rail — labelled panel zones, no gradient cards ══════════════ */
+
+.pl-rail {
+  display: flex;
+  overflow-x: auto;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  scroll-snap-type: x proximity;
+}
+.pl-rail__cell {
+  flex: 0 0 clamp(210px, 24vw, 258px);
+  padding: 20px;
+  border-right: 1px solid var(--pl-rule-soft);
+  display: flex; flex-direction: column; gap: 12px;
+  scroll-snap-align: start;
+  /* transition owned by .pl-lift */
+}
+.pl-rail__cell:hover { background: var(--pl-plate-2); }
+.pl-rail__cell .pl-h3 { transition: color 180ms var(--pl-ease); }
+.pl-rail__cell:hover .pl-h3 { color: var(--pl-act); }
+.pl-rail__cell:last-child { border-right: 0; }
+
+/* Status is a mark: a filled square for active, an open one for planned. */
+.pl-status { display: inline-flex; align-items: center; gap: 7px; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.pl-status i { width: 6px; height: 6px; display: block; border: 1px solid currentColor; }
+.pl-status[data-on="1"] i { background: currentColor; }
+
+/* ══ Archive index — the ruled ledger, built for 800+ plates ═════════════ */
+
+.pl-arch {
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  position: relative;
+  isolation: isolate;
+}
+
+/* The light-box loupe: the one authored moment on this page. */
+.pl-arch__loupe {
+  position: absolute;
+  width: 460px; height: 460px;
+  margin: -230px 0 0 -230px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(24,95,165,0.16) 0%, rgba(24,95,165,0.06) 42%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 420ms var(--pl-ease);
+  z-index: 0;
+}
+.pl-arch[data-lit="1"] .pl-arch__loupe { opacity: 1; }
+
+.pl-topics {
+  display: flex; overflow-x: auto;
+  border-bottom: 1px solid var(--pl-rule);
+  scrollbar-width: none;
+}
+.pl-topics::-webkit-scrollbar { display: none; }
+.pl-topics button {
+  flex-shrink: 0;
+  min-height: var(--pl-tap);
+  padding: 0 16px;
+  background: none; border: 0;
+  border-right: 1px solid var(--pl-rule-soft);
+  border-bottom: 2px solid transparent;
+  color: var(--pl-ink-3);
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+  transition: color 180ms var(--pl-ease), background 180ms var(--pl-ease);
+}
+.pl-topics button:hover { color: var(--pl-act); background: var(--pl-plate-2); }
+.pl-topics button[aria-selected="true"] {
+  color: var(--pl-act);
+  border-bottom-color: var(--pl-act);
+  background: var(--pl-plate-2);
+}
+.pl-topics button[aria-selected="true"] .pl-topics__n { color: var(--pl-act); }
+.pl-topics__n {
+  font-size: 0.6875rem; color: var(--pl-ink-3);
+  min-width: 2.4ch; text-align: right; font-variant-numeric: tabular-nums;
+}
+
+.pl-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 88px 74px minmax(0, 1fr) 128px 62px;
+  gap: 18px;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  transition: background 220ms var(--pl-ease);
+}
+.pl-row:last-child { border-bottom: 0; }
+.pl-row:hover      { background: rgba(31,35,64,0.72); }
+.pl-row__no  { font-size: 0.6875rem; letter-spacing: 0.14em; color: var(--pl-ink-3); }
+.pl-row__fig { width: 74px; aspect-ratio: 4 / 3; }
+.pl-row__fig .pl-emulsion { width: 100%; height: 100%; }
+.pl-row__t   {
+  font-size: 0.9375rem; font-weight: 600; line-height: 1.35; letter-spacing: -0.012em;
+  transition: color 180ms var(--pl-ease);
+}
+.pl-row:hover .pl-row__t,
+.pl-row:focus-visible .pl-row__t { color: var(--pl-act); }
+.pl-row__ex  { font-size: 0.8125rem; color: var(--pl-ink-3); line-height: 1.55; margin-top: 3px;
+               display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.pl-row__cat { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pl-ink-3); }
+.pl-row__r   { font-size: 0.75rem; color: var(--pl-ink-3); text-align: right; }
+
+/* ══ Instrument plates (the six widgets) ════════════════════════════════ */
+
+.pl-bank {
+  display: grid;
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+}
+.pl-bank--1 { grid-template-columns: minmax(0, 1fr); }
+.pl-bank--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pl-bank--2 { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+
+.pl-cell { background: var(--pl-plate); display: flex; flex-direction: column; min-width: 0; }
+.pl-cell__head {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--pl-rule);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.pl-cell__body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.pl-cell__foot {
+  padding: 11px 18px;
+  border-top: 1px solid var(--pl-rule);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+
+/* Advertisement is a labelled field of the archive, designed in. */
+.pl-ad {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-ad__head {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--pl-rule);
+  display: flex; align-items: center; gap: 12px;
+}
+.pl-ad__body { padding: 14px 16px; min-height: 96px; display: flex; align-items: center; justify-content: center; }
+
+/* ── Quiz options: marks, not coloured pills ── */
+.pl-opt {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 16px;
+  gap: 10px;
+  align-items: start;
+  width: 100%;
+  text-align: left;
+  min-height: var(--pl-tap);
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem; line-height: 1.5;
+  cursor: pointer;
+  transition: border-color 200ms var(--pl-ease), background 200ms var(--pl-ease), color 200ms var(--pl-ease);
+}
+.pl-opt:hover:not(:disabled) { border-color: var(--pl-act); color: var(--pl-ink); }
+.pl-opt:disabled             { cursor: default; }
+.pl-opt[data-state="right"]  { border-color: var(--pl-good); color: var(--pl-good); background: rgba(79,211,155,0.07); }
+.pl-opt[data-state="wrong"]  { border-color: var(--pl-warn); color: var(--pl-warn); background: rgba(224,104,90,0.07); }
+.pl-opt__k { font-size: 0.75rem; color: inherit; opacity: 0.8; }
+
+.pl-seg { display: inline-flex; border: 1px solid var(--pl-rule); }
+.pl-seg button {
+  min-height: 30px;
+  padding: 0 11px;
+  background: none; border: 0;
+  border-right: 1px solid var(--pl-rule);
+  color: var(--pl-ink-3);
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms var(--pl-ease), background 180ms var(--pl-ease);
+}
+.pl-seg button:last-child { border-right: 0; }
+.pl-seg button:hover      { color: var(--pl-act); }
+.pl-seg button[aria-pressed="true"] {
+  color: var(--pl-act);
+  background: color-mix(in srgb, var(--pl-act) 12%, transparent);
+  box-shadow: inset 0 -2px 0 var(--pl-act);
+}
+
+/* ── Skeletons match the shape of what is loading ── */
+.pl-skel {
+  background: linear-gradient(90deg, var(--pl-plate-2) 0%, var(--pl-plate-lift) 48%, var(--pl-plate-2) 100%);
+  background-size: 320px 100%;
+  animation: pl-shim 1.6s linear infinite;
+}
+@keyframes pl-shim { from { background-position: -320px 0; } to { background-position: 320px 0; } }
+
+/* ── Failure state: say so, never show a confident number ── */
+.pl-fail {
+  border: 1px solid var(--pl-rule);
+  border-left: 1px solid var(--pl-warn);
+  padding: 12px 14px;
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem;
+}
+
+/* ══ Motion budget ═══════════════════════════════════════════════════════
+   One authored moment: the light-box loupe over the archive.
+   Two supporting signatures: the chinagraph ring drawing itself once, and
+   the continuous readout under a live feed. Nothing else animates on entry —
+   every section is visible from the first paint.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .pl *, .pl *::before, .pl *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .pl-arch__loupe { display: none; }
+}
+
+
+/* ══ Quick bar — search plus the archive's live entry points ═════════════
+   Sits directly under the header so the feed can be personalised in one
+   click without scrolling to the ledger. */
+
+.pl-quick {
+  position: sticky;
+  top: 68px;
+  z-index: 25;
+  background: rgba(14,16,34,0.94);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-quick__in {
+  max-width: var(--pl-max);
+  margin-inline: auto;
+  padding-inline: var(--pl-gut);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pl-search {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 9px;
+  height: 34px; padding: 0 12px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-3);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: border-color 200ms var(--pl-ease), color 200ms var(--pl-ease);
+}
+.pl-search:hover { border-color: var(--pl-act); color: var(--pl-act); }
+.pl-search kbd {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.7rem;
+  border: 1px solid var(--pl-rule);
+  padding: 1px 5px;
+  color: var(--pl-ink-3);
+}
+.pl-quick__rule { width: 1px; height: 20px; background: var(--pl-rule); flex-shrink: 0; }
+.pl-tags {
+  display: flex; align-items: center; gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+}
+.pl-tags::-webkit-scrollbar { display: none; }
+.pl-tag {
+  flex-shrink: 0;
+  height: 30px; padding: 0 11px;
+  background: none;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-3);
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+  white-space: nowrap;
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease), background 180ms var(--pl-ease);
+}
+.pl-tag:hover { color: var(--pl-act); border-color: var(--pl-act); }
+.pl-tag[aria-pressed="true"] {
+  color: var(--pl-act);
+  border-color: var(--pl-act);
+  background: color-mix(in srgb, var(--pl-act) 12%, transparent);
+}
+.pl-tag__n {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  /* reserve the widest plausible count so the row does not reflow when the
+     real article index replaces the fallback */
+  min-width: 2.4ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ══ Ticker — fills the void under the lead plate with live headlines ════ */
+
+.pl-ticker {
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: stretch;
+  overflow: hidden;
+}
+.pl-ticker__label {
+  display: flex; align-items: center; gap: 9px;
+  padding: 0 16px;
+  border-right: 1px solid var(--pl-rule);
+  background: var(--pl-plate-2);
+  white-space: nowrap;
+}
+
+.pl-ticker__view {
+  position: relative;
+  overflow: hidden;
+  /* fixed height: the strip must not resize when headlines arrive */
+  height: 46px;
+  mask-image: linear-gradient(to right, transparent 0, black 28px, black calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 28px, black calc(100% - 28px), transparent 100%);
+}
+.pl-ticker__lane {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Duration is derived from the measured lane width so the scroll runs at a
+     constant px/second whatever the headline count. */
+  .pl-ticker__lane {
+    animation: pl-marquee var(--pl-ticker-dur, 80s) linear infinite;
+    will-change: transform;
+  }
+  .pl-ticker:hover .pl-ticker__lane,
+  .pl-ticker:focus-within .pl-ticker__lane { animation-play-state: paused; }
+}
+@keyframes pl-marquee { to { transform: translateX(-50%); } }
+
+/* No motion: the strip becomes an ordinary horizontal scroller. */
+@media (prefers-reduced-motion: reduce) {
+  .pl-ticker__view { overflow-x: auto; }
+}
+
+.pl-ticker__item {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 0 20px;
+  border-right: 1px solid var(--pl-rule-soft);
+  height: 100%;
+  white-space: nowrap;
+  transition: background 200ms var(--pl-ease);
+}
+.pl-ticker__item:hover { background: var(--pl-plate-2); }
+.pl-ticker__item:hover .pl-ticker__t { color: var(--pl-act); }
+.pl-ticker__t {
+  font-size: 0.8125rem; font-weight: 500;
+  color: var(--pl-ink);
+  transition: color 180ms var(--pl-ease);
+  max-width: 46ch;
+  overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ══ Band header — marks where live instruments end and the archive starts */
+
+.pl-band {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--pl-rule);
+  margin-bottom: 18px;
+}
+.pl-band__t { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+
+/* Instrument cells read as instruments: a cooler, slightly lifted ground. */
+.pl-bank--instr { background: var(--pl-rule); }
+.pl-bank--instr .pl-cell { background: #171A32; }
+/* Solid ground, not a translucent lift: the chinagraph blue needs 4.5:1
+   here, and a printed header strip separates the instruments anyway. */
+.pl-bank--instr .pl-cell__head { background: var(--pl-ground); }
+
+/* ══ Tooltip — supplementary meaning, on hover and on keyboard focus ════ */
+
+.pl-tip { position: relative; }
+.pl-tip__trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: 0; padding: 0;
+  cursor: help;
+  color: inherit; font: inherit;
+  text-align: left;
+}
+.pl-tip__mark {
+  width: 13px; height: 13px;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-3);
+  font-size: 0.62rem; line-height: 11px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl-tip:hover .pl-tip__mark,
+.pl-tip:focus-within .pl-tip__mark { color: var(--pl-act); border-color: var(--pl-act); }
+
+.pl-tip__body {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 0;
+  z-index: 28;
+  width: max-content;
+  max-width: 264px;
+  padding: 10px 12px;
+  /* --pl-ground, not plate-lift: the chinagraph blue needs 4.5:1 in here */
+  background: var(--pl-ground);
+  border: 1px solid var(--pl-rule);
+  box-shadow: 0 10px 28px rgba(6,8,20,0.62);
+  color: var(--pl-ink-2);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 200ms var(--pl-ease), transform 200ms var(--pl-ease);
+}
+.pl-tip:hover .pl-tip__body,
+.pl-tip:focus-within .pl-tip__body { opacity: 1; transform: none; }
+.pl-tip__body dl { display: grid; grid-template-columns: auto auto; gap: 4px 14px; margin: 6px 0 0; }
+.pl-tip__body dt { color: var(--pl-ink-3); font-size: 0.72rem; }
+.pl-tip__body dd { margin: 0; text-align: right; }
+.pl-tip--right .pl-tip__body { left: auto; right: 0; }
+
+/* Map hotspot: the marker itself carries the readout. */
+.pl-hotspot {
+  position: absolute;
+  width: 26px; height: 26px;
+  margin: -13px 0 0 -13px;
+  display: grid; place-items: center;
+  background: none; border: 0; padding: 0;
+  cursor: help;
+  transition: left 2s linear, top 2s linear;
+  z-index: 3;
+}
+.pl-hotspot__dot {
+  width: 9px; height: 9px;
+  background: var(--pl-mark);
+  border: 1px solid var(--pl-mark);
+  box-shadow: 0 0 0 4px rgba(55,138,221,0.22);
+}
+.pl-hotspot:hover .pl-hotspot__dot,
+.pl-hotspot:focus-visible .pl-hotspot__dot { box-shadow: 0 0 0 7px rgba(61,207,223,0.28); }
+.pl-hotspot__tip {
+  position: absolute;
+  bottom: calc(100% + 8px); left: 50%;
+  transform: translate(-50%, 4px);
+  width: max-content;
+  padding: 9px 11px;
+  background: var(--pl-ground);
+  border: 1px solid var(--pl-rule);
+  box-shadow: 0 10px 28px rgba(6,8,20,0.62);
+  opacity: 0; pointer-events: none;
+  transition: opacity 200ms var(--pl-ease), transform 200ms var(--pl-ease);
+}
+.pl-hotspot:hover .pl-hotspot__tip,
+.pl-hotspot:focus-visible .pl-hotspot__tip { opacity: 1; transform: translate(-50%, 0); }
+
+/* ══ Layout stability — reserve the space a live value will occupy ══════ */
+
+.pl-instr__cell { min-height: 128px; }
+.pl-instr__val  { min-height: 1em; }
+.pl-instr__slot { min-height: 40px; display: flex; align-items: center; }
+
+/* ══ Responsive ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1080px) {
+  .pl-instr      { grid-template-columns: repeat(3, 1fr); }
+  .pl-instr__cell:nth-child(3) { border-right: 0; }
+  .pl-bank--3    { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pl-bank--2    { grid-template-columns: minmax(0, 1fr); }
+  .pl-lead       { grid-template-columns: minmax(0, 1fr); }
+  .pl-lead__side { grid-template-rows: repeat(3, auto); }
+}
+
+@media (max-width: 860px) {
+  .pl-nav, .pl-prov { display: none; }
+  .pl-quick { top: 68px; }
+  .pl-quick__in { height: 48px; gap: 10px; }
+  .pl-search span:not(.pl-search__word) { display: none; }
+  .pl-ticker { grid-template-columns: minmax(0, 1fr); }
+  .pl-ticker__label { display: none; }
+
+  /* A tooltip anchored to its trigger runs off the right edge in the
+     right-hand instrument cells. On narrow screens it anchors to the whole
+     bar instead, so it spans the plate and can never be clipped. */
+  .pl-instr { position: relative; }
+  .pl-instr .pl-tip { position: static; }
+  .pl-instr .pl-tip__body {
+    left: var(--pl-gut);
+    right: var(--pl-gut);
+    width: auto;
+    max-width: none;
+  }
+  .pl-tip__body { max-width: min(264px, calc(100vw - 2 * var(--pl-gut))); }
+
+  /* The marker tooltip cannot be clamped sensibly — it follows a point that
+     moves across the map. On narrow screens it is also redundant: the same
+     four values sit in the list directly below. The aria-label stays, so
+     screen readers keep the readout. */
+  .pl-hotspot__tip { display: none; }
+  .pl-burger        { display: flex; }
+  .pl-row {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 14px;
+    row-gap: 8px;
+    padding: 14px 16px;
+  }
+  .pl-row__no { display: none; }
+  .pl-row__ex { display: none; }   /* a ledger row on a phone reads better without it */
+  .pl-row__r  { text-align: left; grid-column: 2; }
+  .pl-row__cat { grid-column: 2; }
+  .pl-ad__head > .pl-label:last-child { display: none; }
+}
+
+@media (max-width: 860px) {
+  .pl-firstview__title { grid-template-columns: minmax(0, 1fr); }
+  .pl-envelope {
+    grid-auto-flow: column;
+    text-align: left;
+    border-right: 0;
+    border-top: 1px solid var(--pl-rule);
+    padding: 16px 0 0;
+    gap: 26px;
+  }
+  .pl-staging__link { margin-left: 0; }
+}
+
+@media (max-width: 620px) {
+  .pl { font-size: 15px; }
+  .pl-instr__cell { min-height: 112px; }
+  .pl-search kbd { display: none; }
+  .pl-envelope { grid-auto-flow: row; gap: 14px; }
+  .pl-instr { grid-template-columns: repeat(2, 1fr); }
+  .pl-instr__cell { border-right: 1px solid var(--pl-rule-soft); border-bottom: 1px solid var(--pl-rule-soft); }
+  .pl-instr__cell:nth-child(2n) { border-right: 0; }
+  .pl-instr__cell:last-child    { grid-column: 1 / -1; border-bottom: 0; }
+  .pl-bank--3 { grid-template-columns: minmax(0, 1fr); }
+  .pl-sub     { grid-template-columns: 86px minmax(0, 1fr); }
+  .pl-arch__loupe { display: none; }
+}
