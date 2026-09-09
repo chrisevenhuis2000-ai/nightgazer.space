@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-08T12:22:07.975Z",
+    "lastUpdated": "2026-09-09T12:33:26.592Z",
     "autoUpdated": []
   },
   "missions": [
@@ -3679,21 +3679,21 @@
     },
     {
       "id": "nrol-95",
-      "_ll2Id": "24675e3d-2458-48a3-8c70-5196e44d4dc3",
+      "_ll2Id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
       "name": "NROL-95",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "30 jul 2026",
-      "objective": "SpaceX lanceert een geheime verkenningssatelliet voor het Amerikaanse National Reconnaissance Office.",
+      "launched": "31 okt 2026",
+      "objective": "Lancering van een geheime verkenningssatelliet voor het US National Reconnaissance Office.",
       "body": "Unknown",
-      "highlight": "Geplande lancering op 30 juli 2026 om 06:37 UTC",
+      "highlight": "Lanceerdatum gepland op 31 oktober 2026, details geheim.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Op 30 juli 2026 voert SpaceX de NROL-95-missie uit namens het National Reconnaissance Office (NRO), de Amerikaanse inlichtingendienst verantwoordelijk voor spionagesatellieten. De lading is volledig geclassificeerd en details over de bestemming of het doel van de satelliet worden niet vrijgegeven. Een Falcon 9-raket verzorgt de lancering vanaf een nog te bevestigen lanceerplaats. Het NRO beheert een van 's werelds meest geavanceerde ruimtegebaseerde inlichtingennetwerken.",
-      "vehicle": "Falcon 9",
-      "launchSite": "Space Launch Complex 40",
+      "description": "Op 31 oktober 2026 zal SpaceX een geheime payload van het US National Reconnaissance Office (NRO) in een onbekende baan brengen met behulp van de Falcon Heavy. De exacte aard en het doel van de satelliet blijven vertrouwelijk, zoals gebruikelijk is bij NRO-missies. De Falcon Heavy, een van de krachtigste operationele raketten ter wereld, is bij uitstek geschikt voor het transporteren van zware en gevoelige overheids­ladingen. Het is opnieuw een voorbeeld van de nauwe samenwerking tussen SpaceX en de Amerikaanse inlichtingengemeenschap.",
+      "vehicle": "Falcon Heavy",
+      "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
@@ -3714,9 +3714,11 @@
         "spacex",
         "falcon 9",
         "defensie",
-        "inlichtingen"
+        "inlichtingen",
+        "falcon heavy",
+        "verkenningssatelliet"
       ],
-      "_lastClaudeUpdate": "2026-07-22T10:14:00.086Z"
+      "_lastClaudeUpdate": "2026-09-09T12:33:26.583Z"
     },
     {
       "id": "the-lightning-god-defends-iqps-launch-8",
