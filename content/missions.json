@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-09T12:33:26.592Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-09-10T12:27:21.000Z",
+    "autoUpdated": [
+      "ussf-259"
+    ]
   },
   "missions": [
     {
@@ -3997,6 +3999,41 @@
         "haste-leidos-3",
         "rocket-lab",
         "aardeomloopbaan"
+      ]
+    },
+    {
+      "id": "ussf-259",
+      "_ll2Id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
+      "name": "USSF-259",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "launched": "16 sep 2026",
+      "objective": "Lancering van vermoedelijk geheime Starshield-satellieten voor de Amerikaanse Space Force in een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Geplande lancering op 16 september 2026 vanuit een polaire baan-lanceerlocatie.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-259 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. Op basis van de locaties van de neervalpunten van de eerste trap lijkt de missie sterk op eerdere lanceringen van het SDA Transport Layer-programma. Vermoedelijk gaat het om een batch satellieten op het Starshield-platform, SpaceX's militaire variant van de Starlink-bus. De exacte payload en operationele details blijven strikt geheim.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "16 sep 2026",
+          "event": "Geplande lancering van USSF-259"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "USSF",
+        "SpaceX",
+        "Falcon 9",
+        "Starshield",
+        "SDA Transport Layer"
       ]
     }
   ]
