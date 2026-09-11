@@ -235,7 +235,20 @@ ephemeris. A verdict panel for tonight sits beside it; the map and the
 season's targets follow. Location lives in its own sticky bar, in the slot
 the other two surfaces give the quick filters.
 
-One behaviour rule this surface adds to the system:
+**`/staging/missies` — the launch manifest.** Mode Read. The launch strip: a
+time axis across 2026 where every flight with a real date is a mark. Flown
+marks are shorter and quieter than planned ones; the today line divides them.
+Month segments double as the window selector.
+
+One behaviour rule this surface adds:
+
+> **Only a real date earns a position.** An axis places things, and a
+> placement is a claim. Launch Library hands back "no earlier than December"
+> as 31 December, so 37 of 51 upcoming flights share one day. Drawing them
+> would invent a rush that does not exist. They are counted in the strip's
+> foot and labelled in the list instead — the month is real, the day is not.
+
+One behaviour rule the stargazing surface adds:
 
 > **The best night wears the chinagraph ring.** The same hand-drawn ellipse
 > that circles today's plate on the front page circles the winning row here.
@@ -286,6 +299,20 @@ But it is held at `opacity: 0.42` under `.ng-lp-overlay`
 (`saturate(0.7) brightness(0.92)`), because at full strength it turned the
 map into a rainbow poster in a world that is otherwise dark and quiet. The
 data leads; it does not shout.
+
+## Launch-date precision
+
+`lib/mission-schedule.ts` splits every launch into `dag`, `maand` or `jaar`
+precision. Of the 51 upcoming flights, 4 have a real day, 10 only a month,
+37 only a year. Launch Library encodes an unscheduled flight as the last day
+of its NET window, and `scripts/update-missions.js` was dropping the
+`net_precision` field that says so. It now records it, so a later run can
+read the real value instead of `inferPrecision()`'s month-end heuristic.
+
+The axis reaches back to 1 January of the current year because the 32 flown
+missions all carry exact dates — that is where the actual cadence lives.
+Without them the strip showed four marks and implied nothing was happening,
+in a year with 27 launches already behind it.
 
 ## Content truth the design depends on
 

@@ -28,8 +28,8 @@ export const archivo = Archivo({
 export const STG_NAV: { href: string; label: string; key: string }[] = [
   { href: '/staging',        label: 'Archief',       key: 'home' },
   { href: '/staging/nieuws', label: 'Nieuws',        key: 'nieuws' },
-  { href: '/sterrenkijken',  label: 'Sterrenkijken', key: 'sterrenkijken' },
-  { href: '/missies',        label: 'Missies',       key: 'missies' },
+  { href: '/staging/sterrenkijken', label: 'Sterrenkijken', key: 'sterrenkijken' },
+  { href: '/staging/missies',       label: 'Missies',       key: 'missies' },
   { href: '/educatie',       label: 'Educatie',      key: 'educatie' },
 ]
 

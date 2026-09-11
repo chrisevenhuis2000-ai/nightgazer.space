@@ -223,6 +223,10 @@ async function main() {
       vehicle:     ll2Launch.rocket?.configuration?.name || null,
       launchSite:  ll2Launch.pad?.name || null,
       launchDate:  ll2Launch.window_start || null,
+      // LL2 zegt erbij hoe hard de datum is: 'Day', 'Month', 'Year', ...
+      // Zonder dit veld is 31 december niet te onderscheiden van een echte
+      // lanceerdag, en tekent de tijdas tientallen vluchten op één dag.
+      netPrecision: ll2Launch.net_precision?.name || ll2Launch.net_precision?.abbrev || null,
       description: ll2Launch.mission?.description || null,
       orbit:       mapOrbit(ll2Launch.mission?.orbit?.name),
       missionUrl:  ll2Launch.mission?.agencies?.[0]?.url || null,
@@ -330,6 +334,7 @@ async function main() {
       vehicle:     ll2Launch.rocket?.configuration?.name || '',
       launchSite:  ll2Launch.pad?.name || '',
       launchDate:  ll2Launch.window_start || '',
+      netPrecision: ll2Launch.net_precision?.name || ll2Launch.net_precision?.abbrev || null,
       description: ll2Launch.mission?.description || '',
       orbit,
     }
@@ -364,6 +369,7 @@ async function main() {
       agencyColor,
       status:      'gepland',
       launched:    formatDutch(ll2Data.launchDate),
+      launchPrecision: ll2Data.netPrecision,
       objective,
       body:        orbit,
       highlight,

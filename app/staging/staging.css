@@ -1774,3 +1774,255 @@ a:hover .pl-emulsion > img,
   .pl-eph th, .pl-eph td { padding: 0 9px; height: 42px; font-size: 0.78rem; }
   .pl-eph th:first-child, .pl-eph td:first-child { padding-left: 14px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   De startbaanstrook — /staging/missies
+   Cadans is het verhaal: waar de merktekens opeenhopen zie je het ritme
+   van een lanceerjaar dat een lijst nooit kan tonen.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-strip {
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  position: relative;
+}
+.pl-strip__scroll { overflow: hidden; }
+
+/* Maandvakken als knoppen: het venster kiezen is de navigatie. */
+.pl-strip__months {
+  display: flex;
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-strip__month {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--pl-rule-soft);
+  color: var(--pl-ink-3);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: color 180ms var(--pl-ease), background 180ms var(--pl-ease);
+}
+.pl-strip__month:last-child { border-right: 0; }
+.pl-strip__month:hover { color: var(--pl-act); background: var(--pl-plate-2); }
+.pl-strip__month[aria-pressed="true"] {
+  color: var(--pl-act);
+  background: var(--pl-plate-lift);
+  box-shadow: inset 0 -2px 0 var(--pl-act);
+}
+.pl-strip__month em {
+  font-style: normal;
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* De as zelf */
+.pl-axis {
+  position: relative;
+  height: 132px;
+  padding: 14px 0 26px;
+}
+.pl-axis__rule {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 26px;
+  height: 1px;
+  background: var(--pl-rule);
+}
+/* Maandscheidingen als hairlines door de hele as */
+.pl-axis__div {
+  position: absolute;
+  top: 0; bottom: 26px;
+  width: 1px;
+  background: var(--pl-rule-soft);
+}
+.pl-axis__cap {
+  position: absolute;
+  bottom: 6px;
+  transform: translateX(-50%);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.68rem;
+  color: var(--pl-ink-3);
+  white-space: nowrap;
+}
+
+/* Eén lancering = één merkteken op de strook */
+.pl-tick {
+  position: absolute;
+  width: 3px;
+  bottom: 26px;
+  background: var(--pl-stamp);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transform: translateX(-50%);
+  /* Alleen background: de hoogte staat per merkteken vast en verandert
+     nooit door interactie, dus die hoort niet in de transitie. */
+  transition: background 180ms var(--pl-ease);
+}
+.pl-tick:hover,
+.pl-tick:focus-visible { background: var(--pl-act); }
+.pl-tick[data-dim="1"] { background: var(--pl-rule); }
+/* Gevlogen: stiller en korter dan wat nog komt. Het verleden draagt de
+   cadans, de toekomst draagt de aandacht. */
+.pl-tick[data-flown="1"] { background: var(--pl-dust, #4a5278); width: 2px; }
+.pl-tick[data-flown="1"]:hover,
+.pl-tick[data-flown="1"]:focus-visible { background: var(--pl-act); }
+.pl-tick[data-sel="1"] { background: var(--pl-act); width: 4px; }
+
+/* De vandaag-lijn draagt een live, vergankelijke positie — chinagraph dus. */
+.pl-axis__today {
+  position: absolute;
+  top: 0; bottom: 26px;
+  width: 1px;
+  background: var(--pl-mark);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.pl-axis__today::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%;
+  width: 7px; height: 7px;
+  margin-left: -3.5px;
+  background: var(--pl-mark);
+}
+.pl-axis__todaycap {
+  position: absolute;
+  bottom: 6px;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pl-mark);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Zwevende uitlezing bij een merkteken */
+.pl-tick__tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  width: max-content;
+  max-width: 240px;
+  padding: 8px 11px;
+  background: var(--pl-ground);
+  border: 1px solid var(--pl-rule);
+  box-shadow: 0 10px 28px rgba(6, 8, 20, 0.62);
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  transition: opacity 180ms var(--pl-ease), transform 180ms var(--pl-ease);
+}
+.pl-tick:hover .pl-tick__tip,
+.pl-tick:focus-visible .pl-tick__tip { opacity: 1; transform: translate(-50%, 0); }
+
+/* Samenvatting onder de strook */
+.pl-strip__foot {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  border-top: 1px solid var(--pl-rule);
+}
+
+/* ── Het blad met de vluchten van het gekozen venster ── */
+.pl-flights { border: 1px solid var(--pl-rule); background: var(--pl-plate); }
+.pl-flight {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) 150px 118px;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  transition: background 200ms var(--pl-ease);
+}
+.pl-flight:last-child { border-bottom: 0; }
+.pl-flight:hover { background: var(--pl-plate-2); }
+.pl-flight[data-sel="1"] { background: var(--pl-plate-lift); }
+.pl-flight__d {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  color: var(--pl-ink);
+}
+.pl-flight__in {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--pl-ink-3);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+}
+.pl-flight__t {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  transition: color 180ms var(--pl-ease);
+}
+.pl-flight:hover .pl-flight__t { color: var(--pl-act); }
+.pl-flight__meta { font-size: 0.78rem; color: var(--pl-ink-2); }
+.pl-flight__dest { text-align: right; font-size: 0.78rem; color: var(--pl-ink-3); }
+
+/* Status als markering: gevuld vierkant loopt, open staat gepland. */
+.pl-mstat { display: inline-flex; align-items: center; gap: 7px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pl-ink-3); }
+.pl-mstat i { width: 6px; height: 6px; display: block; border: 1px solid currentColor; }
+.pl-mstat[data-on="1"] { color: var(--pl-good); }
+.pl-mstat[data-on="1"] i { background: currentColor; }
+
+/* ── Lopende missies ── */
+.pl-fleet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 1px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+}
+.pl-fleetcell {
+  background: var(--pl-plate);
+  box-shadow: 0 0 0 1px var(--pl-rule);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.pl-fleetcell__t { font-size: 1rem; font-weight: 700; letter-spacing: -0.018em; transition: color 180ms var(--pl-ease); }
+.pl-fleetcell:hover .pl-fleetcell__t { color: var(--pl-act); }
+
+/* ── Responsief ── */
+@media (max-width: 1080px) {
+  .pl-flight { grid-template-columns: 78px minmax(0, 1fr) 120px; gap: 14px; }
+  .pl-flight__dest { display: none; }
+}
+@media (max-width: 860px) {
+  /* De as en de maandbalk delen één schaal en moeten dus samen schuiven.
+     Negen maandvakken in 390px lopen anders over elkaar heen. */
+  .pl-strip__scroll { overflow-x: auto; overflow-y: hidden; }
+  .pl-strip__scroll > * { min-width: 660px; }
+  .pl-axis { position: relative; }
+}
+
+@media (max-width: 620px) {
+  .pl-axis { height: 112px; }
+  .pl-strip__month { letter-spacing: 0.1em; padding: 0 6px; gap: 5px; }
+  .pl-flight { grid-template-columns: 66px minmax(0, 1fr); gap: 12px; padding: 14px 16px; }
+  .pl-flight__meta { grid-column: 2; }
+  .pl-tick__tip { max-width: 190px; }
+}
