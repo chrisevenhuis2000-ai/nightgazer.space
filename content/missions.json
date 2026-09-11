@@ -1,8 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-10T12:27:21.000Z",
+    "lastUpdated": "2026-09-11T12:26:09.555Z",
     "autoUpdated": [
-      "ussf-259"
+      "ussf-153",
+      "blacksky-gen-3-5"
     ]
   },
   "missions": [
@@ -2574,14 +2575,14 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "30 sep 2026",
-      "objective": "Vijf Astranis MicroGEO-communicatiesatellieten lanceren naar een geostationaire baan voor vijf klanten wereldwijd.",
+      "launched": "31 dec 2026",
+      "objective": "Vijf Astranis MicroGEO-satellieten naar een geostationaire baan brengen voor klanten in vier landen.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland voor september 2026 met Falcon 9.",
+      "highlight": "Lancering gepland voor eind 2026; klanten in vier landen aan boord.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9 vijf MicroGEO-communicatiesatellieten van Astranis naar een aangepaste geostationaire baan. De satellieten voeren na de lancering zelfstandig baanmanoeuvres uit om hun individuele orbitale slots te bereiken. De vijf satellieten bedienen klanten in Mexico (Apco 1 & 2), Thailand (Thaicom-9), Taiwan (Chunghwa Telecom) en Oman (MB Group). De missie onderstreept de groeiende vraag naar compacte, betaalbare GEO-communicatiesatellieten voor regionale connectiviteit.",
+      "description": "SpaceX lanceert met een Falcon 9 maar liefst vijf MicroGEO-communicatiesatellieten van Astranis tegelijk naar een geostationaire transferbaan. Na uitstoot voeren de satellieten zelfstandig baanmanoeuvres uit om hun individuele geostationairen slots te bereiken. De vijf toestellen zijn bestemd voor Apco in Mexico (twee stuks), Thaicom-9 in Thailand, Chunghwa Telecom in Taiwan en MB Group in Oman. De missie illustreert de groeiende vraag naar compacte, betaalbare GEO-communicatiesatellieten voor regionale breedbanddiensten.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -2607,7 +2608,7 @@
         "geostationaire baan",
         "geo"
       ],
-      "_lastClaudeUpdate": "2026-06-29T12:25:41.395Z"
+      "_lastClaudeUpdate": "2026-09-11T12:26:09.550Z"
     },
     {
       "id": "sda-tranche-2-tracking-layer-a",
@@ -3477,17 +3478,17 @@
       "name": "BlackSky Gen-3 5",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
-      "launched": "30 sep 2026",
-      "objective": "Lancering van BlackSky Gen-3 aardobservatiescatering naar een lage aardbaan.",
+      "status": "actief",
+      "launched": "11 sep 2026",
+      "objective": "Lancering van de vijfde BlackSky Gen-3 aardobservatiesatelliet naar een lage baan.",
       "body": "Low Earth Orbit",
-      "highlight": "Geplande lancering op 30 september 2026 vanaf Rocket Labs lanceerbasis.",
+      "highlight": "5e Gen-3-satelliet versterkt BlackSky's aardobservatienetwerk",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab zet met de Electron-raket een nieuwe generatie aardobserverende satellieten van BlackSky in een lage aardbaan. De BlackSky Gen-3-satellieten bieden hoogwaardige beeldvorming van het aardoppervlak voor commerciële en overheidsklanten. Deze missie is onderdeel van BlackSky's strategie om zijn constellatie verder uit te breiden en de herziensfrequentie te verhogen. Rocket Lab bevestigt hiermee opnieuw zijn rol als betrouwbare lanceerpartner voor kleine commerciële satellieten.",
+      "description": "Rocket Lab lanceert met zijn Electron-raket de vijfde satellieten van de derde generatie BlackSky-aardobservatieconstellatie. De Gen-3-satelliet beschikt over een hogere beeldresolutie dan zijn voorgangers en vergroot zo de capaciteit van BlackSky's commerciële aardbeeldingsvloot. De lancering vindt plaats vanuit Nieuw-Zeeland en plaatst de satelliet in een lage aardbaan. Details over de exacte lading en specifieke klantinformatie zijn door Rocket Lab niet openbaar gemaakt.",
       "vehicle": "Electron",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1064/?format=json",
@@ -3512,7 +3513,7 @@
         "commerciële ruimtevaart",
         "leo"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:20:30.923Z"
+      "_lastClaudeUpdate": "2026-09-11T12:25:54.173Z"
     },
     {
       "id": "blacksky-gen-3-6",
@@ -3933,15 +3934,15 @@
       "name": "USSF-153",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "10 sep 2026",
-      "objective": "Gelanceerd van een geheime lading in een lage aardbaan voor de Amerikaanse Space Force.",
+      "objective": "Gelanceerde geheime missie voor de Amerikaanse Space Force in een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Geclassificeerde lading; mogelijke Starshield-satellieten voor een VS-overheidsdienst.",
+      "highlight": "Geclassificeerde lading; vermoedelijk militaire Starshield-satellieten aan boord.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "USSF-153 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. De exacte aard van de lading blijft geheim, maar aanwijzingen wijzen op een batch van geclassificeerde satellieten gebaseerd op het Starshield-platform van SpaceX. De locaties van de neervaldrop zones van de eerste trap komen nauwkeurig overeen met eerdere Starlink Group 15-lanceringen, wat de theorie over Starshield-satellieten ondersteunt. De Falcon 9-raket voerde de missie uit vanuit een onbekend lanceerkomplex.",
+      "description": "USSF-153 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. De lading bestaat mogelijk uit een batch geheime satellieten op basis van het Starshield-satellietplatform, een militaire variant van SpaceX's Starlink-technologie. Die aanname wordt ondersteund door het feit dat de geplande landingszones van de rakettrappen exact overeenkomen met eerdere Starlink Group 15-lanceringen. Details over de precieze functie en het aantal satellieten zijn door het Amerikaanse ministerie van Defensie niet vrijgegeven.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -3964,9 +3965,10 @@
         "spacex",
         "falcon 9",
         "starshield",
-        "geclassificeerd"
+        "geclassificeerd",
+        "ussf-153"
       ],
-      "_lastClaudeUpdate": "2026-09-04T12:21:50.360Z"
+      "_lastClaudeUpdate": "2026-09-11T12:25:46.730Z"
     },
     {
       "id": "haste-leidos-3",
@@ -4009,13 +4011,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "16 sep 2026",
-      "objective": "Lancering van vermoedelijk geheime Starshield-satellieten voor de Amerikaanse Space Force in een polaire baan.",
+      "objective": "Gelanceerde geheime militaire satellietmissie voor de Amerikaanse Space Force in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Geplande lancering op 16 september 2026 vanuit een polaire baan-lanceerlocatie.",
+      "highlight": "Geclassificeerde lading; vermoedelijk Starshield-batch voor SDA Transport Layer.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "USSF-259 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. Op basis van de locaties van de neervalpunten van de eerste trap lijkt de missie sterk op eerdere lanceringen van het SDA Transport Layer-programma. Vermoedelijk gaat het om een batch satellieten op het Starshield-platform, SpaceX's militaire variant van de Starlink-bus. De exacte payload en operationele details blijven strikt geheim.",
+      "description": "USSF-259 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. Op basis van de locaties van de afvalzones van de eerste trap van de Falcon 9-raket vermoeden waarnemers dat het gaat om een reeks geheime LEO-satellieten gebouwd op het Starshield-satellietplatform van SpaceX. Dit patroon sluit nauw aan bij eerdere lanceringen van de SDA Transport Layer, een netwerk van militaire communicatie- en verkenningssatellieten in lage baan. De exacte lading en het aantal satellietenheld vertrouwelijk door het Amerikaanse ministerie van Defensie.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4033,8 +4035,14 @@
         "SpaceX",
         "Falcon 9",
         "Starshield",
-        "SDA Transport Layer"
-      ]
+        "SDA Transport Layer",
+        "ussf",
+        "spacex",
+        "falcon 9",
+        "starshield",
+        "sda transport layer"
+      ],
+      "_lastClaudeUpdate": "2026-09-11T12:26:02.126Z"
     }
   ]
 }
