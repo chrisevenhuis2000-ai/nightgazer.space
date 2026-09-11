@@ -214,6 +214,47 @@ track and thumb (WebKit and `scrollbar-color`), focus ring
 - Illustrative content is labelled (the level-comparison plate says
   "voorbeeld"). No invented metrics, testimonials, or audience claims.
 
+## Surfaces
+
+Two surfaces exist in this world. They share `app/staging/shared.tsx`: the
+staging banner, the plate header, the quick bar, the advertising field, the
+`Ladder` mark, `plateNo`/`img`, and `useArticles`. Anything used by both goes
+there — a second copy is how the two drift apart.
+
+**`/staging` — the front page.** Mode Operate. The observer's live instruments
+answer first, the reading layer follows, the ledger holds the volume.
+
+**`/staging/nieuws` — the news archive.** Mode Read. The drawer bank: the
+archive is a cabinet and topics are drawers. A sticky rail on the left carries
+the topic drawers and the reading-level drawers with their counts; the open
+drawer fills the sheet beside it.
+
+One behaviour rule this surface adds to the system:
+
+> **An open drawer slides out of the cabinet.** `padding-left` moves from 18px
+> to 24px and a 2px `--pl-act` grip appears on the leading edge. It is a
+> position and a grip, never a coloured badge — the same reason reading level
+> is a ladder and mission status is a filled square.
+
+Filters compose in one direction: the quick tag narrows the pool, then the
+drawer and the level filter within it. Every count follows the narrowed pool,
+so no drawer ever promises rows an active filter has already excluded. The
+empty state names both active filters rather than shrugging.
+
+## Content truth the design depends on
+
+`scripts/generate-index.js` derives an excerpt from the article body when the
+frontmatter has none. Before this, 521 of 873 articles (60%) had an empty
+`excerpt`, so most cards and every ledger row rendered a headline with no
+context. The derivation is the first paragraph, markdown stripped, cut on a
+word boundary — it invents nothing. Any surface showing an excerpt should
+still guard on `excerpt?.trim()`, because an article with an empty body would
+produce an empty one.
+
+Known and unresolved: titles and excerpts arrive in English from the NASA and
+ESA feeds while the product promises Dutch. Surfacing excerpts made this more
+visible; it is a content-pipeline question, not a design one.
+
 ## Layout notes worth keeping
 
 `.pl-stack` must declare `grid-template-columns: minmax(0, 1fr)` and `.pl-wrap`

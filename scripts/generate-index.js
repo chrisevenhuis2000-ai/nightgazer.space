@@ -71,6 +71,36 @@ function parseFrontmatter(raw) {
   return fm
 }
 
+/**
+ * Leid een inleiding af uit de body wanneer de frontmatter er geen heeft.
+ * 60% van het archief komt binnen zonder excerpt, terwijl de tekst zelf er
+ * wel is — zonder dit blijft elke kaart en elke archiefregel een kop zonder
+ * context. Verzint niets: het is letterlijk de eerste alinea, ingekort.
+ */
+function deriveExcerpt(raw, max = 170) {
+  const normalised = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+  const body = normalised.replace(/^---\n[\s\S]*?\n---\n?/, '')
+
+  const plain = body
+    .replace(/^\s*!\[[^\]]*\]\([^)]*\)\s*$/gm, '')  // losse afbeeldingen
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')             // inline afbeeldingen
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')           // links -> linktekst
+    .replace(/^#{1,6}\s+.*$/gm, '')                     // koppen
+    .replace(/^\s*>\s?/gm, '')                          // citaten
+    .replace(/^\s*[-*+]\s+/gm, '')                      // lijstbullets
+    .replace(/`{1,3}[^`]*`{1,3}/g, '')                   // code
+    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')        // nadruk
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  if (!plain) return ''
+  if (plain.length <= max) return plain
+
+  const cut = plain.slice(0, max)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\s]+$/, '') + '…'
+}
+
 const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.md'))
 
 const articles = files.map(file => {
@@ -82,7 +112,7 @@ const articles = files.map(file => {
   return {
     slug,
     title:       fm.title    || slug.replace(/-/g, ' '),
-    excerpt:     fm.excerpt  || '',
+    excerpt:     (fm.excerpt && fm.excerpt.trim()) || deriveExcerpt(raw),
     category:    fm.category || 'Nieuws',
     catColor:    CAT_COLORS[cat]  || '#7aadff',
     emoji:       CAT_EMOJI[cat]   || '🌌',

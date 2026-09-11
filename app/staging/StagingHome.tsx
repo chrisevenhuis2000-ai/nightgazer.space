@@ -15,214 +15,23 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link'
-import { Archivo } from 'next/font/google'
 import { MISSIONS } from '@/lib/missions-data'
-import { AdUnit } from '../components/AdUnit'
-import { SiteFooter, type FooterCol } from '../components/SiteFooter'
-import { NAV_LINKS } from '../components/SiteNav'
+import { SiteFooter } from '../components/SiteFooter'
 import {
   PROXY, APOD_CACHE_KEY,
   type APODData, type ISSData, type Article,
-  FALLBACK_ARTICLES, getLevel,
-  topicMatches,
+  getLevel, topicMatches,
 } from '@/lib/home-content'
 import {
   Ico, Tip, useSky, skyTone, useUpcoming, type SkyState,
   SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate, NiveauPlate,
 } from './Instruments'
-import './staging.css'
+import {
+  archivo, ROWS_PER_PAGE, TOPICS, QUICK_TAGS, quickMatches,
+  FOOTER_COLS, LEVEL_WORD, LEVEL_STEP, plateNo, img, Ladder,
+  StagingBanner, PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
+} from './shared'
 
-const archivo = Archivo({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-archivo',
-  display: 'swap',
-})
-
-const ROWS_PER_PAGE = 20
-
-/* Ordered by how much the archive actually holds, so the strip is a real
-   index rather than a wish list. 'Zonnestelsel' is gone (no articles carry
-   it) and 'Educatie' and 'Kometen' are in, because they do. */
-const TOPICS = [
-  'Alles', 'Missies', 'Educatie', 'Maan', 'Mars',
-  'James Webb', 'Kosmologie', 'Kometen', 'Zwarte Gaten', 'Sterrenkijken',
-]
-
-/* Quick filters for the bar under the header. Each one matches on category
-   OR on words in the title, so a tag like SpaceX works even though no
-   article carries it as a category. Every tag here resolves to real
-   articles — none are decorative. */
-const QUICK_TAGS: { tag: string; cat?: string; words?: string[] }[] = [
-  { tag: 'Missies',   cat: 'missies' },
-  { tag: 'JWST',      cat: 'james-webb', words: ['webb', 'jwst'] },
-  { tag: 'SpaceX',    words: ['spacex', 'starship', 'falcon', 'starlink'] },
-  { tag: 'Mars',      cat: 'mars', words: ['mars', 'perseverance', 'curiosity'] },
-  { tag: 'Maan',      cat: 'maan', words: ['maan', 'lunar', 'moon', 'artemis'] },
-  { tag: 'NASA',      words: ['nasa'] },
-  { tag: 'ESA',       words: ['esa', 'ariane'] },
-  { tag: 'Educatie',  cat: 'educatie' },
-  { tag: 'Kosmologie', cat: 'kosmologie' },
-]
-
-function quickMatches(a: Article, spec: { cat?: string; words?: string[] }): boolean {
-  if (spec.cat && a.category.toLowerCase() === spec.cat) return true
-  if (!spec.words) return false
-  const t = a.title.toLowerCase()
-  return spec.words.some(w => t.includes(w))
-}
-
-const FOOTER_COLS: FooterCol[] = [
-  { title: 'Onderwerpen', links: [['James Webb', '/nieuws/onderwerp/james-webb'], ['Mars', '/nieuws/onderwerp/mars'], ['Maan', '/nieuws/onderwerp/maan'], ['Kosmologie', '/nieuws/onderwerp/kosmologie'], ['Sterrenkijken', '/sterrenkijken']] },
-  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies']] },
-  { title: 'Over ons', links: [['Redactie', '/over'], ['Contact', '/contact'], ['Privacy', '/privacy']] },
-]
-
-const LEVEL_WORD = { beg: 'Beginner', ama: 'Amateur', pro: 'Pro' } as const
-const LEVEL_STEP = { beg: 1, ama: 2, pro: 3 } as const
-
-function plateNo(total: number, i: number) {
-  return `NG-${String(Math.max(total - i, 1)).padStart(4, '0')}`
-}
-
-function img(url: string, w: number) {
-  return `${PROXY}/image-proxy?url=${encodeURIComponent(url)}&w=${w}`
-}
-
-/* ── Reading level as a mark, never a coloured badge ────────────────────── */
-function Ladder({ level }: { level: 'beg' | 'ama' | 'pro' }) {
-  const on = LEVEL_STEP[level]
-  return (
-    <span className="pl-ladder" aria-hidden="true">
-      {[1, 2, 3].map(i => <i key={i} data-on={i <= on ? '1' : '0'} />)}
-    </span>
-  )
-}
-
-/* ══ Staging banner ═══════════════════════════════════════════════════════ */
-function StagingBanner() {
-  return (
-    <div className="pl-staging" role="region" aria-label="Omgevingswaarschuwing">
-      <div className="pl-staging__in">
-        <span className="pl-staging__stamp">Staging</span>
-        <span className="pl-staging__note">
-          Voorstel voor de nieuwe homepage. Nog niet live en niet geïndexeerd door zoekmachines.
-        </span>
-        <Link href="/" className="pl-staging__link">Naar de huidige homepage</Link>
-      </div>
-    </div>
-  )
-}
-
-/* ══ Header ═══════════════════════════════════════════════════════════════ */
-function PlateHead({ total, edition }: { total: number; edition: string }) {
-  const [open, setOpen] = useState(false)
-  const close = useCallback(() => setOpen(false), [])
-
-  useEffect(() => {
-    if (!open) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [open, close])
-
-  return (
-    <>
-      <header className="pl-head">
-        <div className="pl-head__in">
-          <Link href="/" className="pl-head__logo" aria-label="NightGazer — naar de huidige homepage">
-            <img src="/logo-transparent.png" alt="NightGazer" />
-          </Link>
-
-          <nav aria-label="Hoofdnavigatie">
-            <ul className="pl-nav">
-              <li><Link href="/staging" aria-current="page">Archief</Link></li>
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={href}><Link href={href}>{label}</Link></li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="pl-prov">
-            <span>Editie {edition}</span>
-            <span className="pl-prov__tick" aria-hidden="true" />
-            <span className="pl-num"><span className="pl-prov__n">{total}</span> platen</span>
-          </div>
-
-          <button
-            className="pl-burger"
-            aria-expanded={open}
-            aria-controls="pl-mobnav"
-            aria-label={open ? 'Menu sluiten' : 'Menu openen'}
-            onClick={() => setOpen(o => !o)}
-          >
-            <span /><span /><span />
-          </button>
-        </div>
-      </header>
-
-      {open && (
-        <nav id="pl-mobnav" className="pl-mobnav" aria-label="Mobiele navigatie">
-          <Link href="/staging" aria-current="page" onClick={close}>Archief</Link>
-          {NAV_LINKS.map(({ href, label }) => (
-            <Link key={href} href={href} onClick={close}>{label}</Link>
-          ))}
-        </nav>
-      )}
-    </>
-  )
-}
-
-/* ══ Quick bar: search plus one-click personalisation of the feed ═════════ */
-function QuickBar({ articles, active, onPick }: {
-  articles: Article[]
-  active: string | null
-  onPick: (tag: string | null) => void
-}) {
-  const counts = useMemo(() => {
-    const out: Record<string, number> = {}
-    for (const q of QUICK_TAGS) out[q.tag] = articles.filter(a => quickMatches(a, q)).length
-    return out
-  }, [articles])
-
-  const openSearch = useCallback(() => {
-    window.dispatchEvent(new Event('nightgazer:search-open'))
-  }, [])
-
-  return (
-    <div className="pl-quick">
-      <div className="pl-quick__in">
-        <button type="button" className="pl-search" onClick={openSearch} aria-label="Zoek in het archief">
-          <Ico.search />
-          <span className="pl-search__word">Zoeken</span>
-          <kbd aria-hidden="true">⌘K</kbd>
-        </button>
-
-        <span className="pl-quick__rule" aria-hidden="true" />
-
-        <div className="pl-tags" role="group" aria-label="Snelfilters">
-          {QUICK_TAGS.map(({ tag }) => {
-            const n = counts[tag] ?? 0
-            if (n === 0) return null
-            const on = active === tag
-            return (
-              <button
-                key={tag}
-                type="button"
-                className="pl-tag"
-                aria-pressed={on}
-                onClick={() => onPick(on ? null : tag)}
-              >
-                #{tag}
-                <span className="pl-tag__n pl-num">{n}</span>
-              </button>
-            )
-          })}
-        </div>
-      </div>
-    </div>
-  )
-}
 
 /* ══ Ticker: the latest plates, filling the void under the lead ══════════ */
 function Ticker({ articles }: { articles: Article[] }) {
@@ -521,7 +330,7 @@ function LeadPlate({ lead, side, total }: { lead: Article; side: Article[]; tota
             <Link href={`/nieuws/${lead.slug}`}>{lead.title}</Link>
           </h2>
 
-          <p className="pl-body">{lead.excerpt}</p>
+          {lead.excerpt?.trim() && <p className="pl-body">{lead.excerpt}</p>}
 
           <div className="pl-lead__close">
             <div className="pl-meta">
@@ -569,9 +378,11 @@ function SubPlate({ a, no }: { a: Article; no: string }) {
           <span>{a.category}</span>
         </div>
         <h3 className="pl-h3"><Link href={`/nieuws/${a.slug}`}>{a.title}</Link></h3>
-        <p className="pl-body-s" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-          {a.excerpt}
-        </p>
+        {a.excerpt?.trim() && (
+          <p className="pl-body-s" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+            {a.excerpt}
+          </p>
+        )}
         <div className="pl-meta">
           <Ladder level={lvl} />
           <span>{LEVEL_WORD[lvl]}</span>
@@ -623,33 +434,6 @@ function MissionRail() {
         })}
       </div>
     </section>
-  )
-}
-
-/* ══ Labelled advertising field ═══════════════════════════════════════════ */
-function AdPlate() {
-  const [consented, setConsented] = useState<boolean | null>(null)
-  useEffect(() => {
-    try { setConsented(localStorage.getItem('nightgazer_consent') === 'all') } catch { setConsented(false) }
-  }, [])
-
-  return (
-    <aside className="pl-ad" aria-label="Advertentie">
-      <div className="pl-ad__head">
-        <span className="pl-label">Advertentie</span>
-        <span className="pl-label" style={{ marginLeft: 'auto', letterSpacing: '0.14em' }}>
-          Houdt het archief gratis
-        </span>
-      </div>
-      <div className="pl-ad__body">
-        <AdUnit slot="8887478647" style={{ width: '100%' }} />
-        {consented === false && (
-          <p className="pl-label" style={{ letterSpacing: '0.1em', textAlign: 'center', lineHeight: 1.7 }}>
-            Gereserveerde ruimte — de advertentie verschijnt hier<br />zodra cookies zijn geaccepteerd.
-          </p>
-        )}
-      </div>
-    </aside>
   )
 }
 
@@ -794,7 +578,7 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
                     </span>
                     <span style={{ minWidth: 0 }}>
                       <span className="pl-row__t" style={{ display: 'block' }}>{a.title}</span>
-                      <span className="pl-row__ex" style={{ display: 'block' }}>{a.excerpt}</span>
+                      {a.excerpt?.trim() && <span className="pl-row__ex" style={{ display: 'block' }}>{a.excerpt}</span>}
                     </span>
                     <span className="pl-row__cat" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                       <Ladder level={lvl} />
@@ -831,16 +615,7 @@ export default function StagingHome() {
   const [apod, setApod] = useState<APODData | null>(null)
   const [iss, setIss] = useState<ISSData | null>(null)
   const [issFailed, setIssFailed] = useState(false)
-  const [articles, setArticles] = useState<Article[]>(FALLBACK_ARTICLES)
-  const nasaFetched = useRef<Set<string>>(new Set())
-
-  /* Articles */
-  useEffect(() => {
-    fetch('/content/articles-index.json')
-      .then(r => r.json())
-      .then((data: Article[]) => { if (Array.isArray(data) && data.length) setArticles(data) })
-      .catch(() => { /* fallback list already rendered */ })
-  }, [])
+  const articles = useArticles(24)
 
   /* APOD, cached per day */
   useEffect(() => {
@@ -875,58 +650,6 @@ export default function StagingHome() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  /* Article images from the NASA library, for plates that have none */
-  useEffect(() => {
-    const CAT_Q: Record<string, string> = {
-      missies: 'rocket launch spacecraft', missions: 'rocket launch spacecraft',
-      'james-webb': 'james webb space telescope infrared',
-      kosmologie: 'galaxy nebula deep space cosmos', cosmology: 'galaxy nebula cosmos',
-      mars: 'mars red planet surface', sterrenkijken: 'night sky stars milky way',
-      observing: 'telescope observatory night sky',
-      educatie: 'astronaut earth orbit space station', education: 'astronaut earth orbit space station',
-      maan: 'moon lunar surface craters', kometen: 'comet astronomy solar system',
-      komeet: 'comet astronomy solar system', zon: 'sun solar flare corona',
-      planeten: 'planet solar system', 'zwarte-gaten': 'black hole accretion disk',
-    }
-    const NOUNS = ['starship', 'falcon', 'artemis', 'starlink', 'spacex', 'hubble', 'webb', 'jwst', 'perseverance', 'curiosity', 'voyager', 'cassini', 'dragon', 'orion', 'iss', 'saturn', 'jupiter', 'venus', 'neptune', 'uranus', 'mars', 'moon', 'lunar', 'comet', 'asteroid', 'nebula', 'galaxy', 'aurora', 'rocket', 'launch', 'orbit', 'astronaut', 'satellite', 'telescope', 'solar']
-    const NL_EN: Record<string, string> = {
-      lancering: 'launch', lanceert: 'launch', raket: 'rocket', satelliet: 'satellite',
-      ruimtestation: 'space station', maan: 'moon', zon: 'sun', sterrenstelsel: 'galaxy',
-      melkweg: 'milky way', komeet: 'comet', astronaut: 'astronaut', telescoop: 'telescope',
-      nevel: 'nebula', planeet: 'planet', missie: 'mission', heelal: 'cosmos',
-    }
-    const query = (title: string, cat: string) => {
-      const low = title.toLowerCase()
-      const hit = NOUNS.filter(n => low.includes(n))
-      if (hit.length) return hit.slice(0, 3).join(' ')
-      const words = low.replace(/[^a-z\s]/g, ' ').split(/\s+/)
-      const nl = [...new Set(words.map(w => NL_EN[w]).filter(Boolean))].slice(0, 3)
-      if (nl.length) return nl.join(' ')
-      return CAT_Q[(cat || '').toLowerCase()] || 'space astronomy cosmos'
-    }
-
-    const todo = articles.filter(a => !a.imageUrl && !nasaFetched.current.has(a.slug)).slice(0, 24)
-    if (!todo.length) return
-    todo.forEach(a => nasaFetched.current.add(a.slug))
-
-    todo.forEach(async (a, i) => {
-      await new Promise(r => setTimeout(r, i * 140))
-      const hash = a.slug.split('').reduce((acc, c) => (acc * 31 + c.charCodeAt(0)) & 0xffff, 0)
-      const page = (hash % 8) + 1
-      const q = query(a.title, a.category)
-      for (const pg of [page, (page % 8) + 1]) {
-        try {
-          const res = await fetch(`${PROXY}/image-search?q=${encodeURIComponent(q)}&page=${pg}&hash=${hash}`)
-          if (!res.ok) continue
-          const data = await res.json()
-          if (!data?.url) continue
-          setArticles(prev => prev.map(p => (p.slug === a.slug ? { ...p, imageUrl: data.url } : p)))
-          return
-        } catch { /* try the next page, then give up quietly */ }
-      }
-    })
-  }, [articles])
-
   const sky = useSky()
   const [quickTag, setQuickTag] = useState<string | null>(null)
 
@@ -940,13 +663,13 @@ export default function StagingHome() {
   const lead = articles.find(a => a.featured) ?? articles[0]
   const side = articles.filter(a => a.slug !== lead?.slug).slice(0, 3)
   const total = articles.length
-  const edition = new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })
+  const edition = editionLabel()
 
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
       <StagingBanner />
-      <PlateHead total={total} edition={edition} />
+      <PlateHead total={total} edition={edition} current="home" />
       <QuickBar articles={articles} active={quickTag} onPick={pickQuick} />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">

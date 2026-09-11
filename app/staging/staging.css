@@ -1315,3 +1315,197 @@ a:hover .pl-emulsion > img,
   .pl-sub     { grid-template-columns: 86px minmax(0, 1fr); }
   .pl-arch__loupe { display: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   De ladenbank — /staging/nieuws
+   Het archief is een kast: onderwerpen zijn laden in een plakkende rail,
+   en de gekozen lade vult het blad ernaast.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-cabinet {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+}
+
+/* ── De rail ── */
+.pl-rail-col {
+  background: var(--pl-plate);
+  align-self: start;
+  position: sticky;
+  top: 120px;              /* kop 68px + snelbalk 52px */
+}
+.pl-dgroup + .pl-dgroup { border-top: 1px solid var(--pl-rule); }
+.pl-dgroup__head {
+  padding: 13px 18px 11px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+
+.pl-drawer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--pl-tap);
+  padding: 0 18px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  transition: color 180ms var(--pl-ease), background 180ms var(--pl-ease);
+}
+.pl-drawer:last-child { border-bottom: 0; }
+.pl-drawer:hover { color: var(--pl-act); background: var(--pl-plate-2); }
+
+/* De open lade schuift half uit de kast: een 2px greep aan de linkerrand
+   en een gelichte ondergrond. Geen kleurbadge — een positie. */
+.pl-drawer[aria-current="true"] {
+  color: var(--pl-ink);
+  background: var(--pl-plate-lift);
+  padding-left: 24px;
+}
+.pl-drawer[aria-current="true"]::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--pl-act);
+}
+.pl-drawer__n {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  color: var(--pl-ink-3);
+  min-width: 3.2ch;
+  text-align: right;
+}
+.pl-drawer[aria-current="true"] .pl-drawer__n { color: var(--pl-act); }
+.pl-drawer:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Niveau-laden dragen hun ladder als markering */
+.pl-drawer__lvl { display: inline-flex; align-items: center; gap: 9px; }
+
+/* ── Het blad ── */
+.pl-sheet { background: var(--pl-plate); min-width: 0; }
+.pl-sheet__head {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--pl-rule);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.pl-sheet__desc { color: var(--pl-ink-2); font-size: 0.8125rem; max-width: 62ch; margin-top: 8px; }
+
+/* ── Een ingang op het blad ── */
+.pl-entry {
+  display: grid;
+  grid-template-columns: 84px 148px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  position: relative;
+  z-index: 1;
+  transition: background 220ms var(--pl-ease);
+}
+.pl-entry:last-child { border-bottom: 0; }
+.pl-entry:hover { background: rgba(31, 35, 64, 0.72); }
+.pl-entry__no {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--pl-ink-3);
+  padding-top: 2px;
+}
+.pl-entry__fig { aspect-ratio: 4 / 3; }
+.pl-entry__fig .pl-emulsion { width: 100%; height: 100%; }
+.pl-entry__t {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.018em;
+  text-wrap: pretty;
+  transition: color 180ms var(--pl-ease);
+}
+.pl-entry:hover .pl-entry__t { color: var(--pl-act); }
+.pl-entry__ex {
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  margin-top: 7px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* De open lade krijgt de loupe, net als het archiefblad op de homepage */
+.pl-sheet { position: relative; isolation: isolate; }
+.pl-sheet__loupe {
+  position: absolute;
+  width: 420px; height: 420px;
+  margin: -210px 0 0 -210px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(24,95,165,0.15) 0%, rgba(24,95,165,0.055) 42%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 420ms var(--pl-ease);
+  z-index: 0;
+}
+.pl-sheet[data-lit="1"] .pl-sheet__loupe { opacity: 1; }
+
+.pl-sheet__foot {
+  padding: 20px 22px;
+  border-top: 1px solid var(--pl-rule);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ── Responsief: de kast wordt een lade-strook boven het blad ── */
+@media (max-width: 1080px) {
+  .pl-cabinet { grid-template-columns: minmax(0, 1fr); }
+  .pl-rail-col { position: static; top: auto; }
+  .pl-dgroup { display: flex; align-items: stretch; overflow-x: auto; scrollbar-width: none; }
+  .pl-dgroup::-webkit-scrollbar { display: none; }
+  .pl-dgroup__head { display: none; }
+  .pl-drawer {
+    flex: 0 0 auto;
+    width: auto;
+    grid-template-columns: auto auto;
+    border-bottom: 0;
+    border-right: 1px solid var(--pl-rule-soft);
+    white-space: nowrap;
+  }
+  .pl-drawer[aria-current="true"] { padding-left: 18px; }
+  .pl-drawer[aria-current="true"]::before { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; }
+  .pl-entry { grid-template-columns: 116px minmax(0, 1fr); gap: 16px; }
+  .pl-entry__no { display: none; }
+
+  /* De 'Elders'-lade herhaalt op smalle schermen alleen de hoofdnavigatie
+     en kost daar drie regels hoogte voor de eerste ingang. */
+  .pl-dgroup--elders { display: none; }
+  .pl-sheet__head { padding: 14px 18px; }
+  .pl-sheet__desc { margin-top: 6px; }
+}
+
+@media (max-width: 620px) {
+  .pl-entry { grid-template-columns: 92px minmax(0, 1fr); gap: 14px; padding: 16px; }
+  .pl-entry__t { font-size: 0.95rem; }
+  .pl-entry__ex { display: none; }
+  .pl-sheet__loupe { display: none; }
+  .pl-rail-col { position: static; }
+}
