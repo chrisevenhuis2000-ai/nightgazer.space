@@ -37,6 +37,9 @@ export const Ico = {
   level: (p: { size?: number }) => (
     <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><path d="M2.6 12.8V9.6M8 12.8V5.4M13.4 12.8V2.9" /></svg>
   ),
+  crosshair: (p: { size?: number }) => (
+    <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><circle cx="8" cy="8" r="4.2" /><path d="M8 1.2v2.2M8 12.6v2.2M1.2 8h2.2M12.6 8h2.2" /></svg>
+  ),
   search: (p: { size?: number }) => (
     <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><circle cx="7" cy="7" r="4.4" /><path d="M10.3 10.3l3.4 3.4" /></svg>
   ),

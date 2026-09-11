@@ -76,11 +76,13 @@ export default function DarkSkyMap({
       })
       mapRef.current = map
 
-      // Dark base tiles — CartoDB Dark Matter
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains:  'abcd',
+      // Base tiles — OpenStreetMap, donker gemaakt met een CSS-filter.
+      // CARTO's Dark Matter is niet meer bruikbaar: dat endpoint stempelt
+      // sinds kort "API KEY REQUIRED" over elke tegel, ongeacht de referer.
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom:     19,
+        className:   'ng-tiles-dark',
       }).addTo(map)
 
       // Light pollution overlay — World Atlas of Artificial Night Sky Brightness 2022

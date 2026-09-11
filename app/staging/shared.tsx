@@ -110,10 +110,12 @@ export function StagingBanner() {
 
 
 /* ══ Header ═══════════════════════════════════════════════════════════════ */
-export function PlateHead({ total, edition, current }: {
+export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
   total: number
   edition: string
   current: string
+  /** Niet elke surface telt platen; sterrenkijken telt donkere plekken. */
+  totalLabel?: string
 }) {
   const [open, setOpen] = useState(false)
   const close = useCallback(() => setOpen(false), [])
@@ -146,7 +148,7 @@ export function PlateHead({ total, edition, current }: {
           <div className="pl-prov">
             <span>Editie {edition}</span>
             <span className="pl-prov__tick" aria-hidden="true" />
-            <span className="pl-num"><span className="pl-prov__n">{total}</span> platen</span>
+            <span className="pl-num"><span className="pl-prov__n">{total}</span> {totalLabel}</span>
           </div>
 
           <button

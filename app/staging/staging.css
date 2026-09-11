@@ -1509,3 +1509,268 @@ a:hover .pl-emulsion > img,
   .pl-sheet__loupe { display: none; }
   .pl-rail-col { position: static; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   De belichtingstabel — /staging/sterrenkijken
+   Lees de beste nacht van de tabel af, zoals uit een ephemeris.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Locatiebalk: dezelfde strook als de snelbalk, andere inhoud ── */
+.pl-locbar__in {
+  max-width: var(--pl-max);
+  margin-inline: auto;
+  padding-inline: var(--pl-gut);
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pl-loc {
+  display: inline-flex; align-items: center; gap: 9px;
+  height: 34px; padding: 0 12px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: border-color 200ms var(--pl-ease), color 200ms var(--pl-ease);
+}
+.pl-loc:hover { border-color: var(--pl-act); color: var(--pl-act); }
+.pl-loc__now { color: var(--pl-ink-3); }
+
+.pl-locpick {
+  border-top: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-locpick__in {
+  max-width: var(--pl-max);
+  margin-inline: auto;
+  padding: 18px var(--pl-gut) 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 48px);
+}
+.pl-locgrid { display: flex; flex-wrap: wrap; gap: 6px; }
+.pl-locgrid button {
+  min-height: 32px; padding: 0 11px;
+  background: none;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-2);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl-locgrid button:hover { color: var(--pl-act); border-color: var(--pl-act); }
+.pl-locgrid button[aria-pressed="true"] {
+  color: var(--pl-act);
+  border-color: var(--pl-act);
+  background: color-mix(in srgb, var(--pl-act) 12%, transparent);
+}
+.pl-field-in {
+  width: 100%;
+  min-height: var(--pl-tap);
+  padding: 0 12px;
+  background: var(--pl-ground);
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink);
+  font: inherit;
+  font-size: 0.875rem;
+}
+.pl-field-in::placeholder { color: var(--pl-ink-3); }
+.pl-field-in:focus-visible { border-color: var(--pl-act); }
+
+/* ── Het verdict-paneel plus de tabel ── */
+.pl-tonight {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+}
+.pl-verdict { background: var(--pl-plate); padding: clamp(20px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 18px; }
+.pl-verdict__score { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.pl-verdict__n {
+  font-size: clamp(3rem, 6vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+}
+.pl-verdict__rows { display: grid; gap: 0; margin: 0; }
+.pl-verdict__rows > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-verdict__rows > div:last-child { border-bottom: 0; }
+
+/* ── De tabel: een ephemeris, geen kaartenrij ── */
+.pl-eph { background: var(--pl-plate); min-width: 0; overflow-x: auto; }
+.pl-eph table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.pl-eph caption {
+  text-align: left;
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-eph th, .pl-eph td {
+  padding: 0 12px;
+  height: 44px;
+  text-align: right;
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+.pl-eph th:first-child, .pl-eph td:first-child { text-align: left; padding-left: 18px; }
+.pl-eph th:last-child,  .pl-eph td:last-child  { padding-right: 18px; }
+.pl-eph thead th {
+  height: 34px;
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-eph tbody tr { border-bottom: 1px solid var(--pl-rule-soft); transition: background 200ms var(--pl-ease); }
+.pl-eph tbody tr:last-child { border-bottom: 0; }
+.pl-eph tbody tr:hover { background: var(--pl-plate-2); }
+.pl-eph td { color: var(--pl-ink-2); }
+.pl-eph td:first-child { color: var(--pl-ink); font-weight: 600; }
+
+/* De beste nacht krijgt de chinagraph-ring: één rij omcirkeld, zoals een
+   archivaris de plaat aanstreept die telt. */
+.pl-eph tbody tr[data-best="1"] { position: relative; background: var(--pl-plate-lift); }
+.pl-eph tbody tr[data-best="1"] td { color: var(--pl-ink); }
+.pl-eph tbody tr[data-best="1"] td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 6px; right: 6px; top: 3px; bottom: 3px;
+  border: 1.6px solid var(--pl-mark);
+  border-radius: 42px / 50%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-eph tbody tr[data-best="1"] td:first-child::before {
+    animation: pl-mark-in 760ms var(--pl-ease) 500ms both;
+  }
+}
+.pl-eph__flag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--pl-rule);
+  font-size: 0.8125rem;
+  color: var(--pl-ink-2);
+}
+
+/* Een cel die een oordeel draagt: een gevulde staaf, geen gekleurde badge */
+.pl-cellbar {
+  display: inline-grid;
+  grid-template-columns: 34px auto;
+  gap: 9px;
+  align-items: center;
+  justify-items: end;
+}
+.pl-cellbar__t { height: 3px; width: 34px; background: var(--pl-rule-soft); position: relative; }
+.pl-cellbar__t > i { position: absolute; inset-block: 0; left: 0; width: 100%; background: currentColor; transform-origin: left center; }
+
+/* ── Waar: kaart plus plekken ── */
+.pl-where { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1px; background: var(--pl-rule); border: 1px solid var(--pl-rule); }
+.pl-where__map { background: var(--pl-plate-2); min-height: 420px; position: relative; }
+.pl-spots { background: var(--pl-plate); display: flex; flex-direction: column; }
+.pl-spot {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  width: 100%;
+  padding: 14px 18px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: background 200ms var(--pl-ease);
+}
+.pl-spot:last-child { border-bottom: 0; }
+.pl-spot:hover { background: var(--pl-plate-2); }
+.pl-spot[aria-pressed="true"] { background: var(--pl-plate-lift); }
+.pl-spot__no {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.72rem;
+  color: var(--pl-ink-3);
+  border: 1px solid var(--pl-rule);
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+}
+.pl-spot[aria-pressed="true"] .pl-spot__no { color: var(--pl-act); border-color: var(--pl-act); }
+.pl-spot__t { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.012em; }
+.pl-spot__km { font-family: var(--font-jetbrains), ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 0.78rem; color: var(--pl-ink-3); }
+
+/* Bortle als markering: gevulde blokjes, donkerder = meer blokjes */
+.pl-bortle { display: inline-flex; align-items: center; gap: 2px; }
+.pl-bortle i { width: 4px; height: 9px; background: var(--pl-rule); display: block; }
+.pl-bortle i[data-on="1"] { background: var(--pl-stamp); }
+
+/* ── Waarnaar: objecten en zwermen ── */
+/* De grond is de plaat, niet de hairline-kleur: bij vijf objecten in een
+   raster van vier bleef de laatste cel leeg en lichtte die lege ruimte op
+   als een paars vlak. De scheidingslijnen komen nu van de cellen zelf. */
+.pl-targets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 1px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+}
+.pl-target {
+  background: var(--pl-plate);
+  box-shadow: 0 0 0 1px var(--pl-rule);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.pl-target__t { font-size: 1rem; font-weight: 700; letter-spacing: -0.018em; }
+
+.pl-showers { width: 100%; border-collapse: collapse; }
+.pl-showers th, .pl-showers td { padding: 0 14px; height: 42px; text-align: right; font-size: 0.8125rem; white-space: nowrap; }
+.pl-showers th:first-child, .pl-showers td:first-child { text-align: left; }
+.pl-showers thead th {
+  height: 34px; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--pl-ink-3);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-showers tbody tr { border-bottom: 1px solid var(--pl-rule-soft); }
+.pl-showers tbody tr:last-child { border-bottom: 0; }
+.pl-showers tbody tr[data-next="1"] td { color: var(--pl-ink); }
+.pl-showers td { color: var(--pl-ink-2); font-family: var(--font-jetbrains), ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.pl-showers td:first-child { font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif; font-weight: 600; color: var(--pl-ink); }
+
+/* Rating als ladder van vijf, geen sterren-emoji */
+.pl-rate { display: inline-flex; align-items: flex-end; gap: 2px; height: 11px; }
+.pl-rate i { width: 3px; background: var(--pl-rule); display: block; }
+.pl-rate i:nth-child(1) { height: 3px }  .pl-rate i:nth-child(2) { height: 5px }
+.pl-rate i:nth-child(3) { height: 7px }  .pl-rate i:nth-child(4) { height: 9px }
+.pl-rate i:nth-child(5) { height: 11px }
+.pl-rate i[data-on="1"] { background: var(--pl-stamp); }
+
+/* ── Responsief ── */
+@media (max-width: 1080px) {
+  .pl-tonight { grid-template-columns: minmax(0, 1fr); }
+  .pl-where   { grid-template-columns: minmax(0, 1fr); }
+  .pl-where__map { min-height: 320px; }
+  .pl-locpick__in { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .pl-verdict { padding: 18px; }
+  .pl-eph caption { padding: 12px 14px 10px; }
+  .pl-eph th, .pl-eph td { padding: 0 9px; height: 42px; font-size: 0.78rem; }
+  .pl-eph th:first-child, .pl-eph td:first-child { padding-left: 14px; }
+}

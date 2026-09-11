@@ -139,6 +139,13 @@
     -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
   }
 
+  /* Leaflet-tegels: OpenStreetMap is licht van zichzelf, dus we keren hem
+     om tot een donkere kaart die bij de rest van de site past. CARTO's
+     kant-en-klare donkere tegels vragen sinds kort een API-sleutel. */
+  .ng-tiles-dark {
+    filter: invert(1) hue-rotate(185deg) brightness(0.78) contrast(1.18) saturate(0.55);
+  }
+
   /* Article level left-border (used by ArticleClient) */
   .level-border-beg { border-left: 2px solid #e05040; }
   .level-border-ama { border-left: 2px solid #3ddf90; }

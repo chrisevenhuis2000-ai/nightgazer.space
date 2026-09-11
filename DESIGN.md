@@ -229,7 +229,21 @@ archive is a cabinet and topics are drawers. A sticky rail on the left carries
 the topic drawers and the reading-level drawers with their counts; the open
 drawer fills the sheet beside it.
 
+**`/staging/sterrenkijken` — the observing planner.** Mode Operate. The
+exposure table: seven nights as rows, the factors as columns, read like an
+ephemeris. A verdict panel for tonight sits beside it; the map and the
+season's targets follow. Location lives in its own sticky bar, in the slot
+the other two surfaces give the quick filters.
+
 One behaviour rule this surface adds to the system:
+
+> **The best night wears the chinagraph ring.** The same hand-drawn ellipse
+> that circles today's plate on the front page circles the winning row here.
+> The ring marks the one thing that matters on a surface, never more than one.
+> When no night clears "matig", nothing is ringed and the page says so —
+> pointing at a best-of-bad would be a lie told with a mark.
+
+One behaviour rule the news surface adds:
 
 > **An open drawer slides out of the cabinet.** `padding-left` moves from 18px
 > to 24px and a 2px `--pl-act` grip appears on the leading edge. It is a
@@ -240,6 +254,25 @@ Filters compose in one direction: the quick tag narrows the pool, then the
 drawer and the level filter within it. Every count follows the narrowed pool,
 so no drawer ever promises rows an active filter has already excluded. The
 empty state names both active filters rather than shrugging.
+
+## Measurement scales
+
+Bortle class and meteor-shower quality are drawn as filled blocks
+(`.pl-bortle`, `.pl-rate`), not stars or coloured badges — same reason
+reading level is a ladder. The one exception is the dark-sky map's markers,
+which keep a four-step colour ramp: a map with a legend is the single place
+on this site where a colour scale carries a measurement rather than a
+category, and `DarkSkyMap` is shared with the live page.
+
+## Map tiles
+
+`DarkSkyMap` renders OpenStreetMap tiles under `.ng-tiles-dark`
+(`app/globals.css`), a CSS `invert + hue-rotate` that turns the light OSM
+basemap into a dark one. CARTO's Dark Matter tiles, which this used before,
+now stamp "API KEY REQUIRED" across every tile regardless of referer — the
+map was broken in production and nobody had noticed. Do not go back without
+a key. The light-pollution overlay is deliberately left unfiltered: its
+colours are the data.
 
 ## Content truth the design depends on
 
