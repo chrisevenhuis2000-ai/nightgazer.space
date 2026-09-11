@@ -146,6 +146,13 @@
     filter: invert(1) hue-rotate(185deg) brightness(0.78) contrast(1.18) saturate(0.55);
   }
 
+  /* De lichtvervuilingsoverlay draagt echte data in zijn kleurramp, dus die
+     blijft ongekeerd. Alleen iets ingetogener, zodat de kaart niet in een
+     regenboog verandert waar de rest van de site donker en stil is. */
+  .ng-lp-overlay {
+    filter: saturate(0.7) brightness(0.92);
+  }
+
   /* Article level left-border (used by ArticleClient) */
   .level-border-beg { border-left: 2px solid #e05040; }
   .level-border-ama { border-left: 2px solid #3ddf90; }

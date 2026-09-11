@@ -85,11 +85,19 @@ export default function DarkSkyMap({
         className:   'ng-tiles-dark',
       }).addTo(map)
 
-      // Light pollution overlay — World Atlas of Artificial Night Sky Brightness 2022
-      L.tileLayer('https://djlorenz.github.io/astronomy/lp2022/overlay/tiles/{z}/{x}/{y}.png', {
-        opacity:     0.65,
-        maxZoom:     10,
-        attribution: '&copy; <a href="https://djlorenz.github.io/astronomy/lp2022/">Falchi et al. World Atlas 2022</a>',
+      // Lichtvervuilingsoverlay — Lorenz, World Atlas of Artificial Night
+      // Sky Brightness, dataset 2025.
+      // Het oude pad (lp2022/overlay/tiles/{z}/{x}/{y}.png) geeft 404: het
+      // project is verhuisd en gebruikt nu een plat naamschema.
+      // maxNativeZoom is 6 omdat de dataset daar stopt; zonder dat vroeg
+      // Leaflet tegels op die niet bestaan en bleef de laag onzichtbaar
+      // vanaf het standaard zoomniveau 7 — dus altijd.
+      L.tileLayer('https://djlorenz.github.io/astronomy/image_tiles/tiles2025/tile_{z}_{x}_{y}.png', {
+        opacity:        0.42,
+        maxNativeZoom:  6,
+        maxZoom:        12,
+        className:      'ng-lp-overlay',
+        attribution: '&copy; <a href="https://djlorenz.github.io/astronomy/lp/">Lorenz, World Atlas 2025</a>',
       }).addTo(map)
 
       // Soft Bortle zone circles (semi-transparent fill, no outline)

@@ -271,8 +271,21 @@ category, and `DarkSkyMap` is shared with the live page.
 basemap into a dark one. CARTO's Dark Matter tiles, which this used before,
 now stamp "API KEY REQUIRED" across every tile regardless of referer — the
 map was broken in production and nobody had noticed. Do not go back without
-a key. The light-pollution overlay is deliberately left unfiltered: its
-colours are the data.
+a key.
+
+The light-pollution overlay was broken too, and more quietly: its old path
+404'd after the project moved, and the dataset stops at zoom 6 while the map
+opens at zoom 7, so the layer had never rendered at the default view. It now
+points at `image_tiles/tiles2025/tile_{z}_{x}_{y}.png` with
+`maxNativeZoom: 6`, which lets Leaflet upscale the deepest real tile instead
+of requesting ones that do not exist.
+
+Its colour ramp is kept — that ramp *is* the answer to "waar is het donker",
+and it is the second and last place a colour scale is allowed on this site.
+But it is held at `opacity: 0.42` under `.ng-lp-overlay`
+(`saturate(0.7) brightness(0.92)`), because at full strength it turned the
+map into a rainbow poster in a world that is otherwise dark and quiet. The
+data leads; it does not shout.
 
 ## Content truth the design depends on
 
