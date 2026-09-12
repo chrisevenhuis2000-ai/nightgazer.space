@@ -227,7 +227,8 @@ answer first, the reading layer follows, the ledger holds the volume.
 **`/staging/nieuws` — the news archive.** Mode Read. The drawer bank: the
 archive is a cabinet and topics are drawers. A sticky rail on the left carries
 the topic drawers and the reading-level drawers with their counts; the open
-drawer fills the sheet beside it.
+drawer fills the sheet beside it. Inside the sheet the plates step down: one
+lead plate with the chinagraph ring, two half-size plates, then the ledger.
 
 **`/staging/sterrenkijken` — the observing planner.** Mode Operate. The
 exposure table: seven nights as rows, the factors as columns, read like an
@@ -339,6 +340,31 @@ The axis reaches back to 1 January of the current year because the 32 flown
 missions all carry exact dates — that is where the actual cadence lives.
 Without them the strip showed four marks and implied nothing was happening,
 in a year with 27 launches already behind it.
+
+## Flat is usually opting out
+
+The news sheet read as machine-made, and the reason was not that the system
+is dull. It was that this one surface quietly skipped the system's strongest
+moves: no lead plate, no chinagraph ring, no change of pace — row one weighed
+exactly as much as row twenty. Every other surface leads with something.
+
+The fix used nothing new: the homepage's lead-plate device, the ring that
+already marks today's plate, the existing ladder, meta and read-link parts.
+Only the arrangement changed — one lead, two seconds, then the ledger — plus
+a cascade tied to the real act of pulling a drawer open. When a section reads
+flat, check what its neighbours do that it does not before reaching for a new
+effect.
+
+## Scrims over light images
+
+`.pl-emulsion::after` uses `mix-blend-mode: color`, which shifts hue but not
+luminance. Many articles carry a logo on a white field rather than a
+photograph, and those stayed blazing white in a dark page. Figures that can
+receive any source image get a second layer — a plain dark gradient — so a
+white logo sits down and the chinagraph ring has something to read against.
+Small thumbnails also use `.pl-emulsion--sm`: the same grade at 0.26 grayscale
+instead of 0.52, because the treatment that reads as art direction at 860px
+turns a logo at 150px into grey mush.
 
 ## Specificity traps
 

@@ -52,18 +52,95 @@ function drawerDescription(key: string): string | null {
   return TOPIC_PAGES.find(t => t.slug === d.slug)?.description ?? null
 }
 
-/* ── Eén ingang op het blad ───────────────────────────────────────────── */
-function Entry({ a, no }: { a: Article; no: string }) {
+/* ── De hoofdplaat van de open lade ───────────────────────────────────────
+   Het sterkste middel van het systeem: grote emulsie met de chinagraph-ring
+   eromheen, precies zoals de plaat van vandaag op de voorpagina. De
+   nieuwspagina was de enige surface die dit niet gebruikte. */
+function Lede({ a, no }: { a: Article; no: string }) {
   const lvl = getLevel(a.category)
   return (
-    <li>
+    <Link href={`/nieuws/${a.slug}`} className="pl-lede">
+      <span className="pl-lede__fig">
+        <span className="pl-emulsion" style={{ display: 'block' }}>
+          {a.imageUrl
+            ? <img src={img(a.imageUrl, 1100)} alt="" />
+            : <span style={{ position: 'absolute', inset: 0, background: 'var(--pl-plate-2)' }} />}
+        </span>
+        <svg className="pl-ring pl-ring--draw" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="60" cy="29" rx="19" ry="15" transform="rotate(-8 60 29)" />
+        </svg>
+        <span className="pl-stampno pl-num">{no}</span>
+      </span>
+
+      <span className="pl-lede__body">
+        <span className="pl-meta">
+          <span className="pl-label pl-label--stamp">Nieuwste plaat</span>
+          <span className="pl-meta__tick" aria-hidden="true" />
+          <span>{a.category}</span>
+        </span>
+
+        <span className="pl-lede__t">{a.title}</span>
+
+        {a.excerpt?.trim() && <span className="pl-lede__ex">{a.excerpt}</span>}
+
+        <span className="pl-meta" style={{ marginTop: 4 }}>
+          <Ladder level={lvl} />
+          <span>{LEVEL_WORD[lvl]}</span>
+          <span className="pl-meta__tick" aria-hidden="true" />
+          <span className="pl-num">{a.date}</span>
+          <span className="pl-meta__tick" aria-hidden="true" />
+          <span className="pl-num">{a.readTime} min</span>
+        </span>
+
+        <span className="pl-read" style={{ minHeight: 28 }}>
+          <span>Lees deze plaat</span>
+          <span className="pl-read__rule" aria-hidden="true" />
+          <Ico.arrow />
+        </span>
+      </span>
+    </Link>
+  )
+}
+
+/* ── De twee platen daaronder: half zo groot, dubbel zo veel ── */
+function Second({ a, no }: { a: Article; no: string }) {
+  const lvl = getLevel(a.category)
+  return (
+    <Link href={`/nieuws/${a.slug}`} className="pl-second">
+      <span className="pl-second__fig">
+        <span className="pl-emulsion pl-emulsion--sm" style={{ display: 'block' }}>
+          {a.imageUrl
+            ? <img src={img(a.imageUrl, 620)} alt="" loading="lazy" />
+            : <span style={{ position: 'absolute', inset: 0, background: 'var(--pl-plate-2)' }} />}
+        </span>
+      </span>
+      <span className="pl-meta">
+        <span className="pl-num">{no}</span>
+        <span className="pl-meta__tick" aria-hidden="true" />
+        <span>{a.category}</span>
+      </span>
+      <span className="pl-second__t">{a.title}</span>
+      <span className="pl-meta" style={{ marginTop: 'auto' }}>
+        <Ladder level={lvl} />
+        <span>{LEVEL_WORD[lvl]}</span>
+        <span className="pl-meta__tick" aria-hidden="true" />
+        <span className="pl-num">{a.readTime} min</span>
+      </span>
+    </Link>
+  )
+}
+
+/* ── Eén ingang op het blad ───────────────────────────────────────────── */
+function Entry({ a, no, bare = false }: { a: Article; no: string; bare?: boolean }) {
+  const lvl = getLevel(a.category)
+  const row = (
       <Link href={`/nieuws/${a.slug}`} className="pl-entry">
         <span className="pl-entry__no">{no}</span>
 
         <span className="pl-entry__fig">
-          <span className="pl-emulsion" style={{ display: 'block' }}>
+          <span className="pl-emulsion pl-emulsion--sm" style={{ display: 'block' }}>
             {a.imageUrl
-              ? <img src={img(a.imageUrl, 360)} alt="" loading="lazy" />
+              ? <img src={img(a.imageUrl, 420)} alt="" loading="lazy" />
               : <span style={{ position: 'absolute', inset: 0, background: 'var(--pl-plate-2)' }} />}
           </span>
         </span>
@@ -85,8 +162,8 @@ function Entry({ a, no }: { a: Article; no: string }) {
           </span>
         </span>
       </Link>
-    </li>
   )
+  return bare ? row : <li>{row}</li>
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
@@ -178,6 +255,9 @@ export default function NieuwsStaging() {
   const more = shown < matched.length
 
   useEffect(() => { setShown(ROWS_PER_PAGE) }, [drawer, level, quickTag])
+
+  /* De cascade hoort bij de handeling: nieuwe sleutel = lade opnieuw open. */
+  const settleKey = `${drawer}|${level}|${quickTag ?? ''}|${shown}`
 
   const openDrawer = useCallback((key: string) => setDrawer(key), [])
   const total = articles.length
@@ -295,6 +375,9 @@ export default function NieuwsStaging() {
 
               <div className="pl-edge" aria-hidden="true" />
 
+              {/* Gelaagd ritme: één hoofdplaat, twee tweede platen, dan pas het
+                  register. Zo weegt de nieuwste plaat zwaarder dan de
+                  twintigste, wat in een gelijkmatige rij nooit gebeurde. */}
               {rows.length === 0 ? (
                 <div style={{ padding: '56px 24px', display: 'grid', gap: 14, justifyItems: 'start', position: 'relative', zIndex: 1 }}>
                   <h3 className="pl-h3">Deze lade is leeg</h3>
@@ -311,9 +394,33 @@ export default function NieuwsStaging() {
                   </button>
                 </div>
               ) : (
-                <ol style={{ listStyle: 'none', margin: 0, padding: 0 }} aria-live="polite">
-                  {rows.map(a => <Entry key={a.slug} a={a} no={plateNo(total, order.get(a.slug) ?? 0)} />)}
-                </ol>
+                <div className="pl-settle" key={settleKey}>
+                  <Lede a={rows[0]} no={plateNo(total, order.get(rows[0].slug) ?? 0)} />
+
+                  {rows.length > 1 && (
+                    <div className="pl-seconds" style={{ ['--i' as string]: 1 }}>
+                      {rows.slice(1, 3).map(a => (
+                        <Second key={a.slug} a={a} no={plateNo(total, order.get(a.slug) ?? 0)} />
+                      ))}
+                    </div>
+                  )}
+
+                  {rows.length > 3 && (
+                    <>
+                      <div className="pl-sheet__rule" style={{ ['--i' as string]: 2 }}>
+                        <span className="pl-label">Verder in deze lade</span>
+                        <span aria-hidden="true" />
+                      </div>
+                      <ol style={{ listStyle: 'none', margin: 0, padding: 0 }} aria-live="polite">
+                        {rows.slice(3).map((a, i) => (
+                          <li key={a.slug} style={{ ['--i' as string]: Math.min(3 + i, 9) }}>
+                            <Entry a={a} no={plateNo(total, order.get(a.slug) ?? 0)} bare />
+                          </li>
+                        ))}
+                      </ol>
+                    </>
+                  )}
+                </div>
               )}
 
               {more && (

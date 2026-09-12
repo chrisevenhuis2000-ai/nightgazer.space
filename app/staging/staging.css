@@ -1429,8 +1429,14 @@ a:hover .pl-emulsion > img,
   color: var(--pl-ink-3);
   padding-top: 2px;
 }
-.pl-entry__fig { aspect-ratio: 4 / 3; }
+.pl-entry__fig { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
 .pl-entry__fig .pl-emulsion { width: 100%; height: 100%; }
+.pl-entry__fig::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(14,16,34,0.22);
+  pointer-events: none;
+}
 .pl-entry__t {
   font-size: 1.05rem;
   font-weight: 700;
@@ -2578,4 +2584,163 @@ a:hover .pl-emulsion > img,
 @media (max-width: 620px) {
   .pl-para { font-size: 1rem; line-height: 1.75; }
   .pl-para--lead { font-size: 1.0625rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Het nieuwsblad, versterkt
+   De ladenbank had geen hoofdplaat, geen chinagraph-ring en geen ritme:
+   rij 1 woog even zwaar als rij 20. Dit brengt de pagina op het niveau dat
+   de andere surfaces al halen, in het vocabulaire dat er al is.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── De hoofdplaat van de open lade ── */
+.pl-lede {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  border-bottom: 1px solid var(--pl-rule);
+  position: relative;
+  z-index: 1;
+}
+.pl-lede__fig {
+  position: relative;
+  overflow: hidden;
+  /* Vaste verhouding in plaats van meerekken met de tekst: anders bepaalt
+     een lange kop hoe groot het beeld wordt, en kreeg een opgeschaald logo
+     500px hoogte. */
+  aspect-ratio: 16 / 9;
+}
+.pl-lede__fig .pl-emulsion { position: absolute; inset: 0; }
+
+/* Een sluier over de plaat. `mix-blend-mode: color` verschuift alleen de
+   tint, dus een logo op een witte achtergrond bleef spierwit knallen in een
+   verder donkere pagina. Dit temt de luminantie en geeft de chinagraph-ring
+   iets om op te staan — hetzelfde middel als de hero op de voorpagina. */
+.pl-lede__fig::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(14,16,34,0.10) 0%, rgba(14,16,34,0.55) 100%),
+    linear-gradient(0deg, rgba(14,16,34,0.45) 0%, rgba(14,16,34,0.08) 46%);
+  pointer-events: none;
+  z-index: 1;
+}
+.pl-lede__fig .pl-ring,
+.pl-lede__fig .pl-stampno { z-index: 2; }
+.pl-lede__body {
+  padding: clamp(22px, 2.6vw, 38px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+}
+.pl-lede__t {
+  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  transition: color 200ms var(--pl-ease);
+}
+.pl-lede:hover .pl-lede__t { color: var(--pl-act); }
+.pl-lede__ex {
+  color: var(--pl-ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  max-width: 46ch;
+  text-wrap: pretty;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── De twee tweede platen ── */
+.pl-seconds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--pl-rule);
+  position: relative;
+  z-index: 1;
+}
+.pl-second {
+  padding: clamp(16px, 1.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  border-right: 1px solid var(--pl-rule-soft);
+  min-width: 0;
+  transition: background 240ms var(--pl-ease);
+}
+.pl-second:last-child { border-right: 0; }
+.pl-second:hover { background: var(--pl-plate-2); }
+.pl-second__fig { aspect-ratio: 16 / 10; position: relative; overflow: hidden; }
+.pl-second__fig .pl-emulsion { width: 100%; height: 100%; }
+.pl-second__fig::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(14,16,34,0.34) 0%, rgba(14,16,34,0.04) 55%);
+  pointer-events: none;
+}
+.pl-second__t {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.022em;
+  text-wrap: pretty;
+  transition: color 200ms var(--pl-ease);
+}
+.pl-second:hover .pl-second__t { color: var(--pl-act); }
+
+/* Kleine emulsie mag minder hard geknepen worden: de grade die op 860px
+   als art direction leest, maakt van een logo op 150px grijze pap. */
+.pl-emulsion--sm > img { filter: grayscale(0.26) contrast(1.02) brightness(0.95) saturate(1); }
+.pl-emulsion--sm::after { background: linear-gradient(200deg, rgba(24,95,165,0.16), rgba(14,16,34,0.34)); }
+
+/* ── Ritme: de ledger begint pas na de koppen ── */
+.pl-sheet__rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px 14px;
+}
+.pl-sheet__rule > span:last-child { flex: 1; height: 1px; background: var(--pl-rule); }
+
+/* ── De lade schuift open: de platen landen na elkaar ─────────────────────
+   Eén geautoriseerd moment, gekoppeld aan een echte handeling. Geen
+   scroll-versiering: dit gebeurt alleen als jij een lade opentrekt. */
+@media (prefers-reduced-motion: no-preference) {
+  .pl-settle > * {
+    animation: pl-settle 620ms var(--pl-ease) both;
+    animation-delay: calc(var(--i, 0) * 55ms);
+  }
+  /* De lijst zelf animeert niet: dan zouden zeventien rijen als één blok
+     invallen. De rijen dragen hun eigen trede, zodat de cascade doorloopt
+     van de hoofdplaat tot onder in het register. */
+  .pl-settle > ol { animation: none; }
+  .pl-settle > ol > li {
+    animation: pl-settle 560ms var(--pl-ease) both;
+    animation-delay: calc(var(--i, 0) * 42ms);
+  }
+}
+@keyframes pl-settle {
+  from { opacity: 0; transform: translateY(14px); filter: blur(3px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* ── Responsief ── */
+@media (max-width: 1080px) {
+  .pl-lede { grid-template-columns: minmax(0, 1fr); }
+  .pl-lede__fig { aspect-ratio: 2 / 1; }
+}
+@media (max-width: 620px) {
+  .pl-seconds { grid-template-columns: minmax(0, 1fr); }
+  .pl-second { border-right: 0; border-bottom: 1px solid var(--pl-rule-soft); }
+  .pl-second:last-child { border-bottom: 0; }
+  .pl-lede__fig { aspect-ratio: 3 / 2; }
 }
