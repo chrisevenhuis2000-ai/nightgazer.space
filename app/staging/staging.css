@@ -2744,3 +2744,162 @@ a:hover .pl-emulsion > img,
   .pl-second:last-child { border-bottom: 0; }
   .pl-lede__fig { aspect-ratio: 3 / 2; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Het lanceermanifest, versterkt
+   De pagina had geen beeld, geen hoofdplaat en geen ritme: vlucht 1 las als
+   vlucht 12. De strook toonde wel iets maar deed niets met de lijst eronder.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Zonder foto valt een vak terug op het geruite plaatoppervlak, niet op een
+   zwart gat. Beeld kan altijd wegvallen — dan is het nog steeds een plaat. */
+.pl-noimg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--pl-plate-2);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(39,44,80,0.5) 0 1px, transparent 1px 30px),
+    repeating-linear-gradient(0deg,  rgba(39,44,80,0.32) 0 1px, transparent 1px 30px);
+}
+
+/* ── De eerstvolgende vlucht als hoofdplaat ── */
+.pl-nextup {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  position: relative;
+  z-index: 1;
+}
+.pl-nextup__fig {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--pl-plate-2);
+}
+.pl-nextup__fig .pl-emulsion { position: absolute; inset: 0; }
+.pl-nextup__fig::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(14,16,34,0.12) 0%, rgba(14,16,34,0.58) 100%),
+    linear-gradient(0deg, rgba(14,16,34,0.52) 0%, rgba(14,16,34,0.06) 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.pl-nextup__fig .pl-ring, .pl-nextup__fig .pl-stampno { z-index: 2; }
+
+.pl-nextup__body {
+  padding: clamp(22px, 2.6vw, 36px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* De aftelling is een live, vergankelijke waarde: chinagraph dus. */
+.pl-count {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pl-count__n {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+}
+.pl-nextup__t {
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+  transition: color 200ms var(--pl-ease);
+}
+.pl-nextup:hover .pl-nextup__t { color: var(--pl-act); }
+.pl-nextup__spec {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+  gap: 16px;
+  border-top: 1px solid var(--pl-rule-soft);
+  padding-top: 16px;
+}
+.pl-nextup__spec dt { margin-bottom: 5px; }
+.pl-nextup__spec dd { margin: 0; font-size: 0.8125rem; color: var(--pl-ink-2); }
+
+/* ── De twee vluchten daarna ── */
+.pl-upnext {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+  border-top: 0;
+}
+.pl-upcell {
+  background: var(--pl-plate);
+  padding: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  transition: background 240ms var(--pl-ease);
+}
+.pl-upcell:hover { background: var(--pl-plate-2); }
+.pl-upcell__fig { aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
+.pl-upcell__fig .pl-emulsion { width: 100%; height: 100%; }
+.pl-upcell__fig::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(14,16,34,0.4) 0%, rgba(14,16,34,0.04) 55%);
+  pointer-events: none;
+}
+.pl-upcell__in { padding: 0 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.pl-upcell__t {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  transition: color 200ms var(--pl-ease);
+}
+.pl-upcell:hover .pl-upcell__t { color: var(--pl-act); }
+
+/* ── Strook en lijst praten met elkaar ─────────────────────────────────────
+   De strook toonde de cadans maar deed niets met de lijst eronder. Nu
+   licht het merkteken zijn vlucht op en omgekeerd. */
+.pl-flight[data-hot="1"] {
+  background: var(--pl-plate-lift);
+  box-shadow: inset 2px 0 0 var(--pl-act);
+}
+.pl-tick[data-hot="1"] {
+  background: var(--pl-act);
+  width: 4px;
+}
+/* Ook de koppen doen mee: juist die drie hebben een vaste datum en dus een
+   merkteken op de strook. Zonder hen wees de koppeling nergens naar. */
+.pl-nextup[data-hot="1"], .pl-upcell[data-hot="1"] { background: var(--pl-plate-lift); }
+
+/* ── Lopende missies: nu met beeld ── */
+.pl-fleetcell__fig { aspect-ratio: 16 / 9; position: relative; overflow: hidden; margin: -18px -18px 4px; }
+.pl-fleetcell__fig .pl-emulsion { width: 100%; height: 100%; }
+.pl-fleetcell__fig::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(14,16,34,0.46) 0%, rgba(14,16,34,0.04) 60%);
+  pointer-events: none;
+}
+
+/* ── Responsief ── */
+@media (max-width: 1080px) {
+  .pl-nextup { grid-template-columns: minmax(0, 1fr); }
+  .pl-nextup__fig { aspect-ratio: 2 / 1; }
+}
+@media (max-width: 620px) {
+  .pl-upnext { grid-template-columns: minmax(0, 1fr); }
+  .pl-nextup__fig { aspect-ratio: 3 / 2; }
+}

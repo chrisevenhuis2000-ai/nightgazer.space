@@ -267,13 +267,18 @@ One behaviour rule the education surface adds:
 > one, and it carries the same three steps, so the mark a reader learned to
 > recognise on a plate is the thing they press.
 
-One behaviour rule the missions surface adds:
+Two behaviour rules the missions surface adds:
 
 > **Only a real date earns a position.** An axis places things, and a
 > placement is a claim. Launch Library hands back "no earlier than December"
 > as 31 December, so 37 of 51 upcoming flights share one day. Drawing them
 > would invent a rush that does not exist. They are counted in the strip's
 > foot and labelled in the list instead — the month is real, the day is not.
+
+> **The strip answers the list.** Hovering a flight lights its mark on the
+> axis, and hovering a mark lights its flight. The three dated flights lead
+> the page, so they take part too — without them the link pointed at nothing,
+> since the ledger rows are the ones with no fixed date and therefore no mark.
 
 One behaviour rule the stargazing surface adds:
 

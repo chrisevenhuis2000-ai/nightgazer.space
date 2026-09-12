@@ -331,3 +331,70 @@ export function useArticles(backfill = 24): Article[] {
 export function editionLabel(): string {
   return new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })
 }
+
+
+/* ══ Missiebeeld ══════════════════════════════════════════════════════════
+   De missiedata draagt geen enkele afbeelding — 0 van de 84. In een wereld
+   die op emulsie en zilverkorrel draait is dat de reden dat die pagina
+   vlakker leest dan zijn buren. Hier wordt hetzelfde middel ingezet dat de
+   artikelen al gebruiken: de NASA-beeldbank via de proxy, met een vraag die
+   uit voertuig, agentschap en bestemming wordt opgebouwd. */
+
+const VEHICLE_Q: Record<string, string> = {
+  'falcon 9': 'falcon 9 launch',
+  'falcon heavy': 'falcon heavy launch',
+  starship: 'starship super heavy',
+  electron: 'rocket lab electron launch',
+  'ariane 6': 'ariane 6 rocket', 'ariane 62': 'ariane 6 rocket', 'ariane 64': 'ariane 6 rocket',
+  'vega-c': 'vega rocket launch',
+  'new glenn': 'new glenn rocket',
+  sls: 'space launch system rocket',
+  atlas: 'atlas v launch', vulcan: 'vulcan centaur rocket',
+}
+
+const BODY_Q: Record<string, string> = {
+  Mars: 'mars planet surface', Maan: 'moon lunar surface',
+  Jupiter: 'jupiter planet', 'L2-punt': 'space telescope deep space',
+  Interstellair: 'voyager interstellar space',
+  Poolbaan: 'earth from orbit polar', 'Lage aardbaan': 'earth from orbit',
+  Geostationair: 'satellite earth orbit', Suborbitaal: 'rocket launch',
+}
+
+function missionQuery(vehicle: string, agency: string, body: string): string {
+  const v = (vehicle || '').toLowerCase()
+  for (const key of Object.keys(VEHICLE_Q)) if (v.includes(key)) return VEHICLE_Q[key]
+  if (BODY_Q[body]) return BODY_Q[body]
+  if (/nasa/i.test(agency)) return 'nasa spacecraft launch'
+  if (/esa|ariane/i.test(agency)) return 'esa rocket launch'
+  return 'rocket launch spacecraft'
+}
+
+/** Haalt beeld op voor de meegegeven missies. Faalt stil: geen beeld is
+ *  beter dan een verkeerd beeld bij een missie. */
+export function useMissionImages(
+  items: { id: string; vehicle?: string; agency: string; body: string }[],
+  limit = 8,
+): Record<string, string> {
+  const [images, setImages] = useState<Record<string, string>>({})
+  const asked = useRef<Set<string>>(new Set())
+
+  useEffect(() => {
+    const todo = items.filter(m => !asked.current.has(m.id)).slice(0, limit)
+    if (!todo.length) return
+    todo.forEach(m => asked.current.add(m.id))
+
+    todo.forEach(async (m, i) => {
+      await new Promise(r => setTimeout(r, i * 160))
+      const hash = m.id.split('').reduce((a, c) => (a * 31 + c.charCodeAt(0)) & 0xffff, 0)
+      const q = missionQuery(m.vehicle ?? '', m.agency, m.body)
+      try {
+        const res = await fetch(`${PROXY}/image-search?q=${encodeURIComponent(q)}&page=${(hash % 5) + 1}&hash=${hash}`)
+        if (!res.ok) return
+        const data = await res.json()
+        if (data?.url) setImages(prev => ({ ...prev, [m.id]: data.url }))
+      } catch { /* zonder beeld valt de plaat terug op zijn emulsiegrond */ }
+    })
+  }, [items, limit])
+
+  return images
+}

@@ -20,6 +20,7 @@ import {
 import { Ico, Tip } from '../Instruments'
 import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
+  useMissionImages, img,
 } from '../shared'
 
 const DAYFMT: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }
@@ -29,7 +30,7 @@ function shortAgency(a: string): string {
 }
 
 /* ── De strook ─────────────────────────────────────────────────────────── */
-function Strip({ launches, flown, windows, active, onWindow, selected, onSelect, today }: {
+function Strip({ launches, flown, windows, active, onWindow, selected, onSelect, today, hot, onHot }: {
   launches: ScheduledLaunch[]
   flown: ScheduledLaunch[]
   windows: MonthWindow[]
@@ -38,6 +39,8 @@ function Strip({ launches, flown, windows, active, onWindow, selected, onSelect,
   selected: string | null
   onSelect: (id: string) => void
   today: Date
+  hot: string | null
+  onHot: (id: string | null) => void
 }) {
   /* De as loopt van het begin van de eerste maand tot het eind van de
      laatste, zodat maandvakken en merktekens dezelfde schaal delen. */
@@ -107,7 +110,10 @@ function Strip({ launches, flown, windows, active, onWindow, selected, onSelect,
               className="pl-tick"
               data-dim={dim ? '1' : '0'}
               data-sel={isSel ? '1' : '0'}
+              data-hot={hot === l.mission.id ? '1' : '0'}
               data-flown={isFlown ? '1' : '0'}
+              onMouseEnter={() => onHot(l.mission.id)}
+              onMouseLeave={() => onHot(null)}
               style={{ left: `${positions[i]}%`, height: `${(isFlown ? 18 : 26) + lanes[i] * 18}px` }}
               onClick={() => onSelect(l.mission.id)}
               aria-label={`${l.mission.name}, ${l.date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}${isFlown ? ', gevlogen' : ''}`}
@@ -172,12 +178,138 @@ function Strip({ launches, flown, windows, active, onWindow, selected, onSelect,
   )
 }
 
+/* ── Beeldvak ─────────────────────────────────────────────────────────────
+   Zonder foto, of als de bron 403 geeft — wat de NASA-beeldbank regelmatig
+   doet — valt het vak terug op het geruite plaatoppervlak. Een gebroken
+   afbeeldingsicoon hoort niet in deze wereld. */
+function Fig({ url, cls }: { url?: string; cls: string }) {
+  const [broken, setBroken] = useState(false)
+  const show = url && !broken
+  return (
+    <span className={cls}>
+      <span className="pl-emulsion" style={{ display: 'block' }}>
+        {show
+          ? <img src={img(url, 1000)} alt="" loading="lazy" onError={() => setBroken(true)} />
+          : <span className="pl-noimg" />}
+      </span>
+    </span>
+  )
+}
+
+/* ── De eerstvolgende vlucht, groot ─────────────────────────────────────── */
+function NextUp({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; onHot: (id: string | null) => void; hot: string | null }) {
+  const [broken, setBroken] = useState(false)
+  return (
+    <Link
+      href={`/missies/${l.mission.id}`}
+      className="pl-nextup"
+      data-hot={hot === l.mission.id ? '1' : '0'}
+      onMouseEnter={() => onHot(l.mission.id)}
+      onMouseLeave={() => onHot(null)}
+    >
+      <span className="pl-nextup__fig">
+        <span className="pl-emulsion" style={{ position: 'absolute', inset: 0, display: 'block' }}>
+          {image && !broken
+            ? <img src={img(image, 1100)} alt="" onError={() => setBroken(true)} />
+            : <span className="pl-noimg" />}
+        </span>
+        <svg className="pl-ring pl-ring--draw" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="58" cy="26" rx="18" ry="14" transform="rotate(-8 58 26)" />
+        </svg>
+        <span className="pl-stampno pl-num">{l.mission.vehicle || l.mission.agency}</span>
+      </span>
+
+      <span className="pl-nextup__body">
+        <span className="pl-label pl-label--stamp">Eerstvolgende vlucht</span>
+
+        <span className="pl-count">
+          {l.precision === 'dag' ? (
+            <>
+              <span className="pl-count__n pl-live">{l.days === 0 ? 'nu' : l.days}</span>
+              {l.days > 0 && <span className="pl-label">{l.days === 1 ? 'dag' : 'dagen'}</span>}
+              <span className="pl-label pl-num" style={{ marginLeft: 'auto' }}>
+                {l.date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="pl-count__n" style={{ fontSize: 'clamp(1.6rem,3vw,2.2rem)', color: 'var(--pl-ink-2)' }}>
+                {l.date.toLocaleDateString('nl-NL', { month: 'long' })}
+              </span>
+              <span className="pl-label">datum nog niet vast</span>
+            </>
+          )}
+        </span>
+
+        <span className="pl-nextup__t">{l.mission.name}</span>
+
+        {l.mission.objective && (
+          <span className="pl-body-s" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', maxWidth: '46ch' }}>
+            {l.mission.objective}
+          </span>
+        )}
+
+        <dl className="pl-nextup__spec">
+          <div>
+            <dt className="pl-label">Agentschap</dt>
+            <dd>{shortAgency(l.mission.agency)}</dd>
+          </div>
+          <div>
+            <dt className="pl-label">Voertuig</dt>
+            <dd>{l.mission.vehicle || '—'}</dd>
+          </div>
+          <div>
+            <dt className="pl-label">Bestemming</dt>
+            <dd>{destinationGroup(l.mission.body)}</dd>
+          </div>
+        </dl>
+      </span>
+    </Link>
+  )
+}
+
+/* ── De twee vluchten daarna ── */
+function UpNext({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; onHot: (id: string | null) => void; hot: string | null }) {
+  return (
+    <Link
+      href={`/missies/${l.mission.id}`}
+      className="pl-upcell"
+      data-hot={hot === l.mission.id ? '1' : '0'}
+      onMouseEnter={() => onHot(l.mission.id)}
+      onMouseLeave={() => onHot(null)}
+    >
+      <Fig url={image} cls="pl-upcell__fig" />
+      <span className="pl-upcell__in">
+        <span className="pl-meta">
+          <span className={l.precision === 'dag' ? 'pl-num pl-live' : 'pl-num'}>
+            {l.precision === 'dag'
+              ? (l.days === 0 ? 'vandaag' : `over ${l.days} d`)
+              : l.date.toLocaleDateString('nl-NL', { month: 'short' })}
+          </span>
+          <span className="pl-meta__tick" aria-hidden="true" />
+          <span>{shortAgency(l.mission.agency)}</span>
+        </span>
+        <span className="pl-upcell__t">{l.mission.name}</span>
+        <span className="pl-meta">
+          <span>{l.mission.vehicle || '—'}</span>
+          <span className="pl-meta__tick" aria-hidden="true" />
+          <span>{destinationGroup(l.mission.body)}</span>
+        </span>
+      </span>
+    </Link>
+  )
+}
+
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
 export default function MissiesStaging() {
   const [today, setToday] = useState<Date | null>(null)
   const [windowKey, setWindowKey] = useState<string | null>(null)
   const [agency, setAgency] = useState<string | null>(null)
   const [selected, setSelected] = useState<string | null>(null)
+  /* Welke vlucht staat onder de aandacht — gedeeld door strook en lijst,
+     zodat de strook iets dóét met de lijst eronder in plaats van alleen te
+     tonen. */
+  const [hot, setHot] = useState<string | null>(null)
 
   /* De datum pas na mount, zodat server en client niet uiteenlopen. */
   useEffect(() => { setToday(new Date()) }, [])
@@ -227,6 +359,16 @@ export default function MissiesStaging() {
     () => agency ? active.filter(m => m.agency === agency) : active,
     [active, agency]
   )
+
+  /* Beeld voor de drie koppen en de lopende missies. De missiedata draagt
+     geen enkele afbeelding; dit gebruikt dezelfde NASA-beeldbank die de
+     artikelen al aanvullen. */
+  const needImages = useMemo(
+    () => [...shown.slice(0, 3).map(l => l.mission), ...activeShown.slice(0, 9)]
+      .map(m => ({ id: m.id, vehicle: m.vehicle, agency: m.agency, body: m.body })),
+    [shown, activeShown]
+  )
+  const images = useMissionImages(needImages, 12)
 
   const pickTick = useCallback((id: string) => {
     setSelected(id)
@@ -310,6 +452,8 @@ export default function MissiesStaging() {
               selected={selected}
               onSelect={pickTick}
               today={today!}
+              hot={hot}
+              onHot={setHot}
             />
           )}
         </section>
@@ -330,8 +474,33 @@ export default function MissiesStaging() {
               <p className="pl-label pl-num">{schedule ? shown.length : ''}</p>
             </div>
 
-            <div className="pl-flights">
-              {!schedule && Array.from({ length: 12 }, (_, i) => (
+            {/* Gelaagd: de eerstvolgende vlucht groot, twee daarna half, dan
+                pas het register. Vlucht 1 las eerder als vlucht 12. */}
+            {/* Skelet met dezelfde hoogte als de hoofdplaat: zonder dit
+                verscheen die na mount en duwde alles eronder omlaag —
+                CLS sprong naar 0,13. */}
+            {!schedule && (
+              <>
+                <div className="pl-skel" style={{ height: 372, marginBottom: 1 }} aria-hidden="true" />
+                <div className="pl-skel" style={{ height: 300, marginBottom: 22 }} aria-hidden="true" />
+              </>
+            )}
+
+            {schedule && !windowKey && shown.length > 0 && (
+              <>
+                <NextUp l={shown[0]} image={images[shown[0].mission.id]} onHot={setHot} hot={hot} />
+                {shown.length > 2 && (
+                  <div className="pl-upnext">
+                    {shown.slice(1, 3).map(l => (
+                      <UpNext key={l.mission.id} l={l} image={images[l.mission.id]} onHot={setHot} hot={hot} />
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
+            <div className="pl-flights" style={{ marginTop: schedule && !windowKey ? 22 : 0 }}>
+              {!schedule && Array.from({ length: 6 }, (_, i) => (
                 <div key={`skel-${i}`} className="pl-flight" aria-hidden="true">
                   <span className="pl-skel" style={{ height: 13, width: 54 }} />
                   <span>
@@ -342,13 +511,16 @@ export default function MissiesStaging() {
                   <span className="pl-skel" style={{ height: 12, width: 90, justifySelf: 'end' }} />
                 </div>
               ))}
-              {schedule && (windowKey ? shown : shown.slice(0, 12)).map(l => (
+              {schedule && (windowKey ? shown : shown.slice(3, 15)).map(l => (
                 <Link
                   key={l.mission.id}
                   id={`vlucht-${l.mission.id}`}
                   href={`/missies/${l.mission.id}`}
                   className="pl-flight"
                   data-sel={selected === l.mission.id ? '1' : '0'}
+                  data-hot={hot === l.mission.id ? '1' : '0'}
+                  onMouseEnter={() => setHot(l.mission.id)}
+                  onMouseLeave={() => setHot(null)}
                 >
                   <span>
                     {l.precision === 'jaar' ? (
@@ -392,9 +564,9 @@ export default function MissiesStaging() {
               ))}
             </div>
 
-            {schedule && !windowKey && shown.length > 12 && (
+            {schedule && !windowKey && shown.length > 15 && (
               <p className="pl-label" style={{ marginTop: 14 }}>
-                Nog {shown.length - 12} vluchten verderop in het jaar — kies een maand op de strook.
+                Nog {shown.length - 15} vluchten verderop in het jaar — kies een maand op de strook.
               </p>
             )}
           </section>
@@ -418,6 +590,7 @@ export default function MissiesStaging() {
             <div className="pl-fleet">
               {activeShown.map((m: MissionDetail) => (
                 <Link key={m.id} href={`/missies/${m.id}`} className="pl-fleetcell pl-lift">
+                  <Fig url={images[m.id]} cls="pl-fleetcell__fig" />
                   <span className="pl-label">{shortAgency(m.agency)}</span>
                   <span className="pl-fleetcell__t">{m.name}</span>
                   <p className="pl-body-s" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', flex: 1 }}>
