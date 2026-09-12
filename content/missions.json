@@ -1,10 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-11T12:26:09.555Z",
-    "autoUpdated": [
-      "ussf-153",
-      "blacksky-gen-3-5"
-    ]
+    "lastUpdated": "2026-09-12T11:47:14.663Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -3773,13 +3770,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX brengt twee geheime Amerikaanse militaire satellieten rechtstreeks naar een geostationaire baan.",
+      "objective": "Transport van twee geheime militaire ladingen naar de geostationaire baan voor de Amerikaanse Space Force.",
       "body": "Geostationaire baan",
-      "highlight": "Geplande lancering op 31 december 2026 vanaf Kennedy Space Center.",
+      "highlight": "Geplande lancering: 31 december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de USSF-31-missie vervoert een Falcon 9-raket twee geheime payloads voor de United States Space Force naar een geostationaire baan op ongeveer 35.786 kilometer hoogte. De exacte aard en functie van de satellieten zijn door het Amerikaanse ministerie van Defensie niet vrijgegeven. Het is een van de meest veeleisende Falcon 9-missies, waarbij de raket de lading rechtstreeks naar GEO transporteert zonder tussenliggende overdrachtsban. SpaceX voert hiermee opnieuw een cruciale rol uit in het versterken van de militaire ruimtecapaciteiten van de Verenigde Staten.",
+      "description": "SpaceX voert met een Falcon 9-raket de USSF-31-missie uit voor de Amerikaanse Space Force. De missie draagt twee geclassificeerde militaire satellieten rechtstreeks naar de geostationaire baan op circa 35.786 kilometer hoogte. Details over de aard en het doel van de ladingen worden door het Amerikaanse defensieapparaat niet vrijgegeven. Het is opnieuw een bewijs van de hechte samenwerking tussen SpaceX en het Amerikaanse militaire ruimtevaartprogramma.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3801,9 +3798,11 @@
         "ussf",
         "spacex",
         "falcon 9",
-        "defensie"
+        "defensie",
+        "us space force",
+        "militaire ruimtevaart"
       ],
-      "_lastClaudeUpdate": "2026-08-13T09:01:45.233Z"
+      "_lastClaudeUpdate": "2026-09-12T11:47:14.658Z"
     },
     {
       "id": "victus-surgo",
