@@ -2298,3 +2298,284 @@ a:hover .pl-emulsion > img,
   .pl-lesson__body { padding: 14px 18px 20px; }
   .pl-lesson__side { padding: 18px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   De ontwikkelstrook — /staging/artikel
+   Het artikel ontwikkelt zich als een plaat in de donkere kamer: het
+   leesniveau is de belichting, en elke alinea komt tevoorschijn zodra zijn
+   herschrijving binnen is.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Belichtingsbalk ── */
+.pl-expose {
+  position: sticky;
+  top: 68px;
+  z-index: 25;
+  background: rgba(14, 16, 34, 0.94);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-expose__in {
+  max-width: var(--pl-max);
+  margin-inline: auto;
+  padding-inline: var(--pl-gut);
+  display: flex;
+  align-items: stretch;
+  min-height: 52px;
+}
+.pl-expose__lab {
+  display: flex; align-items: center;
+  padding-right: 16px;
+  border-right: 1px solid var(--pl-rule);
+  white-space: nowrap;
+}
+.pl-expose__set { display: flex; flex: 1; min-width: 0; }
+.pl-expose__btn {
+  flex: 1 1 0;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 12px;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--pl-rule-soft);
+  color: var(--pl-ink-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: color 200ms var(--pl-ease), background 200ms var(--pl-ease);
+}
+.pl-expose__btn:last-child { border-right: 0; }
+.pl-expose__btn:hover:not(:disabled) { color: var(--pl-act); background: var(--pl-plate-2); }
+.pl-expose__btn[aria-pressed="true"] { color: var(--pl-act); background: var(--pl-plate-lift); }
+.pl-expose__btn[aria-pressed="true"]::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--pl-act);
+}
+.pl-expose__btn:disabled { opacity: 0.5; cursor: wait; }
+
+/* Origineel draagt geen ladder maar een leeg kader: de onbewerkte afdruk. */
+.pl-orig { width: 11px; height: 11px; border: 1px solid currentColor; display: block; flex-shrink: 0; }
+
+/* Leesvoortgang als vullende randlineaal onder de balk */
+.pl-progress {
+  height: 2px;
+  background: var(--pl-rule-soft);
+  position: relative;
+}
+.pl-progress > i {
+  position: absolute; inset-block: 0; left: 0;
+  width: 100%;
+  background: var(--pl-act);
+  transform-origin: left center;
+  transition: transform 180ms linear;
+}
+
+/* ── De plaat zelf ── */
+.pl-read-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 268px;
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+}
+.pl-read-main { background: var(--pl-plate); padding: clamp(22px, 3vw, 40px); min-width: 0; }
+.pl-read-side {
+  background: var(--pl-ground);
+  padding: clamp(20px, 2.4vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-self: start;
+  position: sticky;
+  top: 124px;
+  min-width: 0;
+}
+
+.pl-read-main h1 {
+  font-size: clamp(1.75rem, 3.4vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
+  margin-top: 16px;
+  /* geen max-width: text-wrap: balance verdeelt de regels al, en een
+     kunstmatige beperking duwde de kop naar drie regels en de eerste
+     alinea onder de vouw */
+}
+
+/* 16:9 op een leeskolom van ~860px is 484px beeld: dan begint de eerste
+   alinea pas onder de vouw. Op een leespagina moet de lezer kunnen lezen,
+   dus de plaat krijgt presentie zonder de tekst te verdringen. */
+/* .pl-read-main erbij: de basisregel `.pl figure { margin: 0 }` heeft een
+   hogere specificiteit en at de marge op, waardoor kop en beeld elkaar
+   raakten. Dezelfde val als bij .pl a en .pl button. */
+.pl-read-main .pl-read-fig { margin: 30px 0 10px; }
+.pl-read-fig .pl-emulsion {
+  aspect-ratio: 21 / 9;
+  max-height: 340px;
+}
+.pl-read-fig figcaption {
+  margin-top: 9px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+}
+
+/* ── Een alinea die zich ontwikkelt ──────────────────────────────────────
+   Latent: de tekst staat er al maar is nog niet scherp. Ontwikkeld: hij
+   staat. Mislukt: hij zegt dat hij mislukt is, in plaats van eeuwig te
+   blijven gloeien. */
+.pl-para {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--pl-ink-2);
+  max-width: 68ch;
+  margin-top: 20px;
+  text-wrap: pretty;
+  position: relative;
+}
+.pl-para--lead {
+  font-size: 1.1875rem;
+  line-height: 1.72;
+  color: var(--pl-ink);
+}
+
+.pl-para[data-state="latent"] {
+  color: var(--pl-ink-3);
+  filter: blur(2.4px);
+  opacity: 0.55;
+  user-select: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-para {
+    transition: filter 620ms var(--pl-ease), opacity 620ms var(--pl-ease), color 620ms var(--pl-ease);
+  }
+  .pl-para[data-state="latent"] { animation: pl-latent 2.4s var(--pl-ease-o) infinite; }
+}
+@keyframes pl-latent {
+  0%, 100% { opacity: 0.42; }
+  50%      { opacity: 0.62; }
+}
+
+.pl-para[data-state="failed"] {
+  color: var(--pl-ink-2);
+  filter: none;
+  opacity: 1;
+}
+.pl-para__note {
+  display: block;
+  margin-top: 8px;
+  padding-left: 11px;
+  border-left: 1px solid var(--pl-warn);
+  font-size: 0.78rem;
+  color: var(--pl-ink-3);
+}
+
+/* ── Kantlijn ── */
+.pl-figs { display: grid; gap: 16px; }
+.pl-fig {
+  display: grid;
+  gap: 3px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-fig:last-child { border-bottom: 0; padding-bottom: 0; }
+.pl-fig__v {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--pl-ink);
+}
+.pl-fig__u { font-size: 0.75rem; color: var(--pl-ink-3); }
+
+.pl-quote {
+  border-top: 1px solid var(--pl-rule);
+  padding-top: 16px;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--pl-ink);
+  text-wrap: pretty;
+}
+.pl-quote cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+}
+
+/* ── Contactstrip met verwante platen ── */
+.pl-contact {
+  display: flex;
+  gap: 1px;
+  overflow-x: auto;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+  scroll-snap-type: x proximity;
+}
+.pl-contact a {
+  flex: 0 0 clamp(168px, 20vw, 210px);
+  background: var(--pl-plate);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-snap-align: start;
+  transition: background 220ms var(--pl-ease);
+}
+.pl-contact a:hover { background: var(--pl-plate-2); }
+.pl-contact__t {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  transition: color 180ms var(--pl-ease);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pl-contact a:hover .pl-contact__t { color: var(--pl-act); }
+.pl-contact__fig { aspect-ratio: 16 / 10; }
+.pl-contact__fig .pl-emulsion { width: 100%; height: 100%; }
+
+/* ── Responsief ── */
+@media (max-width: 1080px) {
+  .pl-read-grid { grid-template-columns: minmax(0, 1fr); }
+  .pl-read-side {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 24px;
+  }
+}
+@media (max-width: 760px) {
+  /* Vier belichtingen passen niet op 390px: de nowrap-labels liepen buiten
+     hun vak en werden aan beide kanten afgekapt. Scrollen met een
+     minimumbreedte, net als de ladenrail en de startbaanstrook. */
+  .pl-expose__lab { display: none; }
+  .pl-expose__in { padding-inline: 0; }
+  .pl-expose__set { overflow-x: auto; scrollbar-width: none; }
+  .pl-expose__set::-webkit-scrollbar { display: none; }
+  .pl-expose__btn { flex: 0 0 auto; min-width: 116px; letter-spacing: 0.08em; font-size: 0.72rem; padding: 0 14px; gap: 8px; }
+}
+
+@media (max-width: 620px) {
+  .pl-para { font-size: 1rem; line-height: 1.75; }
+  .pl-para--lead { font-size: 1.0625rem; }
+}

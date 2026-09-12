@@ -245,7 +245,21 @@ level *is* the page. One choice in a sticky bar rewrites all six topics at
 once, so a visitor reads across subjects at their own depth. The choice
 persists in `localStorage` and matches the level switch on article pages.
 
+**`/staging/artikel` — reading one plate.** Mode Read. The development strip:
+the reading level is the exposure, and each paragraph comes into focus as its
+rewrite lands. Marginalia carry the figures, facts and quote; progress fills a
+rule under the bar; a contact strip of related plates closes the page.
+
 One behaviour rule this surface adds:
+
+> **Latent is a real state, not a decoration.** The rewrite calls the proxy
+> per paragraph, so paragraphs genuinely arrive independently. A waiting
+> paragraph is blurred but still readable in its original words; a failed one
+> says so and keeps the original, because a paragraph that glows forever is a
+> promise that never arrives. Three states, no fourth: developed, latent,
+> failed.
+
+One behaviour rule the education surface adds:
 
 > **The ladder becomes the navigation.** Everywhere else the three-step
 > ladder is a mark that reports a level. Here it is the control that sets
@@ -325,6 +339,16 @@ The axis reaches back to 1 January of the current year because the 32 flown
 missions all carry exact dates — that is where the actual cadence lives.
 Without them the strip showed four marks and implied nothing was happening,
 in a year with 27 launches already behind it.
+
+## Specificity traps
+
+Three times now a base rule has silently eaten a component rule, always the
+same shape: `.pl a { color: inherit }` overrode `.pl-cta__primary`'s dark ink,
+`.pl button { color: inherit }` overrode `.pl-btn` and `.pl-tag`, and
+`.pl figure { margin: 0 }` overrode `.pl-read-fig`'s spacing so the headline
+and its image touched. A two-class base selector beats a one-class component
+selector, and nothing warns you. When a component rule appears not to apply,
+check the base block first.
 
 ## Column balance
 
