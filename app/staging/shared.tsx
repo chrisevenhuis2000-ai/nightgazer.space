@@ -30,7 +30,7 @@ export const STG_NAV: { href: string; label: string; key: string }[] = [
   { href: '/staging/nieuws', label: 'Nieuws',        key: 'nieuws' },
   { href: '/staging/sterrenkijken', label: 'Sterrenkijken', key: 'sterrenkijken' },
   { href: '/staging/missies',       label: 'Missies',       key: 'missies' },
-  { href: '/educatie',       label: 'Educatie',      key: 'educatie' },
+  { href: '/staging/educatie',      label: 'Educatie',      key: 'educatie' },
 ]
 
 export const ROWS_PER_PAGE = 20

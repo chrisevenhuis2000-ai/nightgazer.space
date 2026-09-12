@@ -240,7 +240,19 @@ time axis across 2026 where every flight with a real date is a mark. Flown
 marks are shorter and quieter than planned ones; the today line divides them.
 Month segments double as the window selector.
 
+**`/staging/educatie` — learning.** Mode Read. The level ladder: the reading
+level *is* the page. One choice in a sticky bar rewrites all six topics at
+once, so a visitor reads across subjects at their own depth. The choice
+persists in `localStorage` and matches the level switch on article pages.
+
 One behaviour rule this surface adds:
+
+> **The ladder becomes the navigation.** Everywhere else the three-step
+> ladder is a mark that reports a level. Here it is the control that sets
+> one, and it carries the same three steps, so the mark a reader learned to
+> recognise on a plate is the thing they press.
+
+One behaviour rule the missions surface adds:
 
 > **Only a real date earns a position.** An axis places things, and a
 > placement is a claim. Launch Library hands back "no earlier than December"
@@ -313,6 +325,19 @@ The axis reaches back to 1 January of the current year because the 32 flown
 missions all carry exact dates — that is where the actual cadence lives.
 Without them the strip showed four marks and implied nothing was happening,
 in a year with 27 launches already behind it.
+
+## Column balance
+
+A two-column plate only works when the columns are within reach of each
+other. On the education page the seven glossary terms sat stacked in the side
+column, making it 639px tall against a 240px text column — 371 to 423px of
+dead space at *every* level, because the Pro text is only 388 characters
+against Beginner's 271. Longer prose was never going to fill it.
+
+Glossary terms moved under the text as a chip row with one shared definition
+panel; the side column kept the facts and sources. Dead space fell to 26–78px
+and the plate from 639px to 363px. Measure both columns before assuming more
+text will close a gap.
 
 ## Content truth the design depends on
 
