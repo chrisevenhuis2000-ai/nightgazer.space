@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-13T12:54:46.147Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-09-14T14:32:27.402Z",
+    "autoUpdated": [
+      "o3b-mpower-11-13"
+    ]
   },
   "missions": [
     {
@@ -2527,15 +2529,15 @@
       "name": "O3b mPower 11-13",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "13 sep 2026",
-      "objective": "Lancering van drie O3b mPower-satellieten voor hoge-capaciteit internetdiensten in MEO.",
+      "objective": "Drie O3b mPower-communicatiesatellieten in een middelhoge baan om de aarde brengen voor SES.",
       "body": "Medium Earth Orbit",
-      "highlight": "Derde batch O3b mPower-satellieten vergroot capaciteit van SES-netwerk.",
+      "highlight": "Geplande lancering op 13 september 2026 vanuit Cape Canaveral.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket drie nieuwe satellieten voor het O3b mPower-systeem van telecomoperator SES. De satellieten, gebouwd door Boeing, worden geplaatst in een Medium Earth Orbit en breiden het bestaande mPower-constellatie verder uit. Het O3b mPower-netwerk biedt via flexibele spotbeams hoge doorvoercapaciteit aan scheepvaart, luchtvaart en ondernemingen wereldwijd. Deze missie vertegenwoordigt een volgende stap in de uitrol van een van de meest geavanceerde commerciële communicatieconstellaties in MEO.",
+      "description": "SpaceX lanceert met een Falcon 9-raket drie nieuwe satellieten voor het O3b mPower-constellation van telecomoperator SES. De satellieten, gebouwd door Boeing, worden geplaatst in een middelhoge aardbaan (MEO) en moeten de capaciteit van het hoogdoorvoer-netwerk verder uitbreiden. O3b mPower biedt wereldwijd snelle en betrouwbare connectiviteit aan maritieme, luchtvaart- en zakelijke klanten. Het is een van de meest ambitieuze commerciële satellietprogramma's in zijn soort, met tientallen geplande exemplaren.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -2563,7 +2565,7 @@
         "medium earth orbit",
         "spacex"
       ],
-      "_lastClaudeUpdate": "2026-08-29T13:28:17.519Z"
+      "_lastClaudeUpdate": "2026-09-14T14:32:27.386Z"
     },
     {
       "id": "5x-astranis-microgeo",
