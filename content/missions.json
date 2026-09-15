@@ -1,9 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-14T14:32:27.402Z",
-    "autoUpdated": [
-      "o3b-mpower-11-13"
-    ]
+    "lastUpdated": "2026-09-15T12:58:30.850Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -1972,13 +1970,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Negen Globalstar-3 satellieten lanceren om het mondiale mobiele communicatienetwerk te vernieuwen.",
+      "objective": "Negen Globalstar-3 satellieten lanceren om het bestaande LEO-communicatienetwerk te vernieuwen.",
       "body": "Low Earth Orbit",
-      "highlight": "MDA bouwt 17 vernieuwingssatellieten; Rocket Lab levert bussen en dispensers.",
+      "highlight": "Onderdeel van een vloot van 17 nieuwe gen-2 satellieten besteld bij MDA in 2022.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert negen tweede generatie Globalstar-satellieten naar een lage aardbaan van 1410 kilometer, gekanteld op 52 graden. De satellieten zijn onderdeel van een vernieuwingsprogramma dat Globalstar in vroeg 2022 initieerde met een contract voor zeventien nieuwe exemplaren. Bouwer MDA schakelde Rocket Lab in als onderaannemer voor de satellietbussen en lanceerplatforms. Het vernieuwde netwerk moet wereldwijde digitale spraak-, data- en faxdiensten via lage aardbaan-satellieten blijven garanderen.",
+      "description": "SpaceX lanceert met een Falcon 9-raket negen tweede generatie Globalstar-satellieten naar een lage aardbaan van 1410 kilometer hoog, met een inclinatie van 52 graden. De satellieten maken deel uit van een bredere vernieuwingsoperatie van de Globalstar-constellatie, die wereldwijde digitale spraak-, data- en faxdiensten aanbiedt. In vroeg 2022 sloot Globalstar een contract met MDA voor de bouw van zeventien nieuwe generatie-2-satellieten, waarbij Rocket Lab is ingeschakeld als onderaannemer voor de satellietbussen en lanceerdispensers. De missie draagt bij aan de continuïteit en capaciteitsverbetering van het wereldwijde mobiele communicatienetwerk van Globalstar.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -2005,7 +2003,7 @@
         "satellietcommunicatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-08-16T08:15:37.529Z"
+      "_lastClaudeUpdate": "2026-09-15T12:58:30.842Z"
     },
     {
       "id": "rivada-10",
