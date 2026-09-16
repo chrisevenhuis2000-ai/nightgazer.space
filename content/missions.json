@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-15T12:58:30.850Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-09-16T12:55:41.058Z",
+    "autoUpdated": [
+      "ussf-xxx-r-3"
+    ]
   },
   "missions": [
     {
@@ -3812,13 +3814,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "USSF lanceert tactisch responsieve ruimtemissie met Impulse Space-voertuigen naar GTO.",
+      "objective": "Amerikaanse Space Force test snelle ruimtelevering met Impulse Space voertuigen naar GTO-baan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor 31 december 2026 aan boord van Falcon 9.",
+      "highlight": "Gepland voor lancering eind 2026; missiedetails nog in ontwikkeling.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "VICTUS SURGO is een Tactically Responsive Space-missie van het United States Space Force Space Systems Command, gericht op het demonstreren van snelle en flexibele inzet van ruimtecapaciteit. De missie maakt gebruik van een Impulse Space Mira orbitaal transfervoertuig dat opereert in een geostationaire transferbaan, bereikt via een Impulse Space Helios kick stage vanuit een lage aardbaan. Naast de primaire payload wordt ook een rideshare-lading afgeleverd in de geostationaire baan. SpaceX verzorgt de lancering met een Falcon 9-raket, gepland voor eind 2026.",
+      "description": "VICTUS SURGO is een Tactically Responsive Space-missie van de Amerikaanse Space Force Space Systems Command, gericht op het demonstreren van snelle en flexibele ruimtelevering. De missie maakt gebruik van een Impulse Space Mira orbitaal transfervoertuig dat in een geostationaire transferbaan (GTO) zal opereren, nadat het vanuit een lage aardbaan omhoog is gebracht door een Impulse Space Helios kick stage. Naast het Mira-voertuig wordt ook een rideshare-lading via de Helios-trap naar een geostationaire baan gebracht. SpaceX verzorgt de lancering met een Falcon 9-raket.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3841,9 +3843,12 @@
         "tactically responsive space",
         "impulse space",
         "falcon 9",
-        "gto"
+        "gto",
+        "us space force",
+        "spacex falcon 9",
+        "geosynchronous transfer orbit"
       ],
-      "_lastClaudeUpdate": "2026-08-17T08:30:20.727Z"
+      "_lastClaudeUpdate": "2026-09-16T12:55:29.500Z"
     },
     {
       "id": "ussf-75",
@@ -4009,7 +4014,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "16 sep 2026",
+      "launched": "17 sep 2026",
       "objective": "Gelanceerde geheime militaire satellietmissie voor de Amerikaanse Space Force in een polaire baan.",
       "body": "Polar Orbit",
       "highlight": "Geclassificeerde lading; vermoedelijk Starshield-batch voor SDA Transport Layer.",
@@ -4042,6 +4047,42 @@
         "sda transport layer"
       ],
       "_lastClaudeUpdate": "2026-09-11T12:26:02.126Z"
+    },
+    {
+      "id": "ussf-xxx-r-3",
+      "_ll2Id": "7330d83b-c478-426c-8859-f9e3a335876d",
+      "name": "USSF-xxx (\"R-3\")",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "launched": "27 sep 2026",
+      "launchPrecision": "Minute",
+      "objective": "Lancering van een geheime USSF-missie, mogelijk bestaande uit Starshield-satellieten in een lage baan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Officiële missieaanduiding nog niet bevestigd door USSF.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX voert met een Falcon 9-raket een geheime missie uit voor de United States Space Force, voorlopig aangeduid als 'R-3'. De officiële USSF-missieaanduiding moet nog worden bevestigd. Op basis van de locaties van de valzones van de rakettrappen wordt vermoed dat het gaat om een batch geclassificeerde LEO-satellieten op het Starshield-satellietplatform van SpaceX, identiek aan eerdere Starlink Group 15-lanceringen. Starshield is SpaceX's militaire variant van het Starlink-netwerk, ontwikkeld voor overheidstoepassingen.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "27 sep 2026",
+          "event": "Geplande lancering van USSF-xxx (\"R-3\")"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "USSF",
+        "Starshield",
+        "Falcon 9",
+        "Geheime missie",
+        "LEO"
+      ]
     }
   ]
 }
