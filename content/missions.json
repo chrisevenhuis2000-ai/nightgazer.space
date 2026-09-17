@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-16T12:55:41.058Z",
+    "lastUpdated": "2026-09-17T12:52:05.873Z",
     "autoUpdated": [
-      "ussf-xxx-r-3"
+      "ussf-259"
     ]
   },
   "missions": [
@@ -2828,7 +2828,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "30 sep 2026",
+      "launched": "31 okt 2026",
       "objective": "SpaceX Crew-13 brengt astronauten naar het ISS als onderdeel van NASA's Commercial Crew Program.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland op 12 september 2026 om 22:34 UTC",
@@ -3860,11 +3860,11 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert een geheime lading voor de Amerikaanse Space Force naar een geostationaire baan.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland voor 31 december 2026, details over lading geheim.",
+      "highlight": "Geplande lancering eind december 2026 met Falcon Heavy.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de USSF-75-missie brengt SpaceX een geheime militaire satelliet van de United States Space Force in een geostationaire baan op zo'n 36.000 kilometer hoogte. De Falcon Heavy, een van de krachtigste raketten ter wereld, wordt ingezet voor deze zwaar geclassificeerde vlucht. Details over de lading worden door het Amerikaanse ministerie van Defensie niet vrijgegeven, wat gebruikelijk is bij militaire ruimtemissies van deze aard. De lancering staat gepland voor eind december 2026 vanaf het Kennedy Space Center in Florida.",
+      "description": "Met de USSF-75-missie brengt SpaceX opnieuw een geheime militaire satelliet in een geostationaire baan voor de United States Space Force. De Falcon Heavy, het krachtigste operationele raket ter wereld, wordt ingezet voor deze vertrouwelijke payload. Details over de aard en het doel van de lading zijn door het Amerikaanse ministerie van Defensie niet vrijgegeven. De missie onderstreept de groeiende samenwerking tussen SpaceX en het Amerikaanse militaire ruimtevaartprogramma.",
       "vehicle": "Falcon Heavy",
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
@@ -3889,7 +3889,7 @@
         "militair",
         "geostationaire baan"
       ],
-      "_lastClaudeUpdate": "2026-08-18T08:22:28.170Z"
+      "_lastClaudeUpdate": "2026-09-17T12:52:05.868Z"
     },
     {
       "id": "bandwagon-5-dedicated-mid-inclination-rideshare",
@@ -3976,7 +3976,7 @@
     },
     {
       "id": "haste-leidos-3",
-      "_ll2Id": "71489c66-8ecd-4610-9847-3620a543fd75",
+      "_ll2Id": "04522dea-1450-48f5-bc9d-2d7f1e637f9b",
       "name": "HASTE | Leidos-3",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
@@ -4013,15 +4013,15 @@
       "name": "USSF-259",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "17 sep 2026",
-      "objective": "Gelanceerde geheime militaire satellietmissie voor de Amerikaanse Space Force in een polaire baan.",
+      "objective": "Geheime lancering voor de Amerikaanse Space Force, vermoedelijk met Starshield-satellieten in polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Geclassificeerde lading; vermoedelijk Starshield-batch voor SDA Transport Layer.",
+      "highlight": "Geclassificeerde vracht; vermoedelijk Starshield LEO-satellieten voor USSF.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "USSF-259 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. Op basis van de locaties van de afvalzones van de eerste trap van de Falcon 9-raket vermoeden waarnemers dat het gaat om een reeks geheime LEO-satellieten gebouwd op het Starshield-satellietplatform van SpaceX. Dit patroon sluit nauw aan bij eerdere lanceringen van de SDA Transport Layer, een netwerk van militaire communicatie- en verkenningssatellieten in lage baan. De exacte lading en het aantal satellietenheld vertrouwelijk door het Amerikaanse ministerie van Defensie.",
+      "description": "USSF-259 is een geclassificeerde missie voor de United States Space Force, uitgevoerd door SpaceX met een Falcon 9-raket. De lading is officieel onbekend, maar de gekozen dropzones voor de eerste trap van de raket wijzen sterk op overeenkomsten met eerdere SDA Transport Layer-lanceringen. Analisten vermoeden daarom dat het gaat om een batch laardebaan-satellieten gebouwd op het Starshield-satellietplatform van SpaceX. De missie wordt in een polaire baan gebracht, wat past bij militaire aardobservatie- en communicatieconstellaties.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4044,9 +4044,11 @@
         "spacex",
         "falcon 9",
         "starshield",
-        "sda transport layer"
+        "sda transport layer",
+        "space force",
+        "polaire baan"
       ],
-      "_lastClaudeUpdate": "2026-09-11T12:26:02.126Z"
+      "_lastClaudeUpdate": "2026-09-17T12:51:50.642Z"
     },
     {
       "id": "ussf-xxx-r-3",
@@ -4055,15 +4057,15 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "27 sep 2026",
+      "launched": "26 sep 2026",
       "launchPrecision": "Minute",
-      "objective": "Lancering van een geheime USSF-missie, mogelijk bestaande uit Starshield-satellieten in een lage baan.",
+      "objective": "Geheime lancering van mogelijk Starshield-satellieten voor de Amerikaanse Space Force in een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Officiële missieaanduiding nog niet bevestigd door USSF.",
+      "highlight": "Geclassificeerde USSF-missie gepland voor september 2026.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket een geheime missie uit voor de United States Space Force, voorlopig aangeduid als 'R-3'. De officiële USSF-missieaanduiding moet nog worden bevestigd. Op basis van de locaties van de valzones van de rakettrappen wordt vermoed dat het gaat om een batch geclassificeerde LEO-satellieten op het Starshield-satellietplatform van SpaceX, identiek aan eerdere Starlink Group 15-lanceringen. Starshield is SpaceX's militaire variant van het Starlink-netwerk, ontwikkeld voor overheidstoepassingen.",
+      "description": "SpaceX voert met de Falcon 9 een geclassificeerde missie uit voor de United States Space Force onder de codenaam 'R-3'. Hoewel officiële details ontbreken, wijzen de locaties van de neervaldropping zones van de rakettrappen sterk op een batch LEO-satellieten gebaseerd op het Starshield-satelietplatform. Starshield is SpaceX's militaire variant van het Starlink-systeem, speciaal ontwikkeld voor veilige overheidstoepassingen en defensiedoeleinden. De lancering is gepland voor 26 september 2026 vanuit een niet nader gespecificeerde locatie.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4081,8 +4083,14 @@
         "Starshield",
         "Falcon 9",
         "Geheime missie",
-        "LEO"
-      ]
+        "LEO",
+        "spacex",
+        "falcon 9",
+        "united states space force",
+        "starshield",
+        "leo"
+      ],
+      "_lastClaudeUpdate": "2026-09-17T12:51:58.317Z"
     }
   ]
 }
