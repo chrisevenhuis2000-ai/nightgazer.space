@@ -1,7 +1,10 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-18T12:27:07.842Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-09-19T12:08:38.965Z",
+    "autoUpdated": [
+      "strix-launch-9",
+      "strix-launch-9"
+    ]
   },
   "missions": [
     {
@@ -1175,16 +1178,16 @@
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
       "status": "gepland",
-      "launched": "31 dec 2026",
-      "objective": "Lancering van een synthetische apertuurradar-satelliet voor het Japanse aardobservatiebedrijf Synspective.",
+      "launched": "26 sep 2026",
+      "objective": "Lancering van een synthetische-apertuurradarsatelliet voor het Japanse aardobservatiebedrijf Synspective.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Negende StriX-satelliet voor de groeiende SAR-constellatie van Synspective.",
+      "highlight": "Negende StriX-satelliet gelanceerd voor Synspective.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab lanceert met de Electron-raket opnieuw een StriX-satelliet voor het Japanse bedrijf Synspective, specialist in synthetische apertuurradar (SAR) voor aardobservatie. De satelliet wordt in een zonnesynchrone baan gebracht, waardoor consistente beeldvorming van het aardoppervlak onder vaste lichtomstandigheden mogelijk is. Het is de negende missie in de StriX-reeks, waarmee Synspective zijn groeiende SAR-constellatie verder uitbreidt. De data van deze satellieten wordt ingezet voor toepassingen zoals rampenmonitoring, stedelijke analyse en grondverzakking.",
+      "description": "Rocket Lab voert de StriX Launch 9-missie uit voor het Japanse bedrijf Synspective, waarbij opnieuw een StriX-satellieten met synthetische-apertuurradar (SAR) in een lage aardbaan wordt geplaatst. De SAR-technologie stelt Synspective in staat om ongeacht weersomstandigheden of daglichtniveau gedetailleerde beelden van het aardoppervlak te maken. Het is alweer de negende missie in de voortdurende samenwerking tussen Rocket Lab en Synspective, wat de groeiende vraag naar commerciële aardobservatie onderstreept. De Electron-raket vertrekt vanaf Rocket Labs lanceercomplex in Mahia, Nieuw-Zeeland.",
       "vehicle": "Electron",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Rocket Lab Launch Complex 1B",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
@@ -1208,7 +1211,7 @@
         "aardobservatie",
         "sar"
       ],
-      "_lastClaudeUpdate": "2026-08-29T13:28:33.233Z"
+      "_lastClaudeUpdate": "2026-09-19T12:08:38.956Z"
     },
     {
       "id": "the-grain-goddess-provides-iqps-launch-7",
@@ -1420,7 +1423,7 @@
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
       "status": "gepland",
-      "launched": "30 sep 2026",
+      "launched": "31 dec 2026",
       "objective": "Demonstratie van een volledig cryogeen vloeistofbeheersysteem in een lage aardbaan.",
       "body": "Low Earth Orbit",
       "highlight": "Gepland voor lancering in september 2026 aan boord van een Electron-raket.",
@@ -2826,7 +2829,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "31 okt 2026",
+      "launched": "1 okt 2026",
       "objective": "SpaceX Crew-13 brengt astronauten naar het ISS als onderdeel van NASA's Commercial Crew Program.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland op 12 september 2026 om 22:34 UTC",
@@ -3434,7 +3437,7 @@
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
       "status": "gepland",
-      "launched": "30 sep 2026",
+      "launched": "31 dec 2026",
       "objective": "Zes HawkEye 360-satellieten lanceren voor wereldwijde radiofrequentie-monitoring vanuit LEO.",
       "body": "Low Earth Orbit",
       "highlight": "Gepland voor lancering op 30 september 2026 met Electron-raket.",
@@ -3519,7 +3522,7 @@
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
       "status": "gepland",
-      "launched": "30 sep 2026",
+      "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatieSatellieten in een lage baan om de Aarde.",
       "body": "Low Earth Orbit",
       "highlight": "Geplande lancering: 30 september 2026 met Electron-raket.",
