@@ -2903,3 +2903,180 @@ a:hover .pl-emulsion > img,
   .pl-upnext { grid-template-columns: minmax(0, 1fr); }
   .pl-nextup__fig { aspect-ratio: 3 / 2; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Educatie als leerplatform
+   De pagina liet lezen maar nooit toetsen, en hield niet bij waar je was.
+   Er lagen vijftien quizvragen op drie niveaus ongebruikt in de data.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Voortgangsrail: waar sta je in de zes onderwerpen ── */
+.pl-track {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-track__dots { display: flex; align-items: center; gap: 5px; }
+/* Het raakvlak is 30x24 (WCAG 2.5.8); de streep erbinnen blijft een hairline.
+   Afgerond verschilt in hoogte én vulling, niet alleen in kleurtoon — twee
+   groenen tegen elkaar halen maar 1.23:1 en zijn dus geen voortgang. */
+.pl-track__dot {
+  flex: 1 1 0;
+  min-width: 30px;
+  height: 24px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+}
+.pl-track__dot::before {
+  content: '';
+  display: block;
+  height: 9px;                 /* vaste doos, scaleY doet het werk — geen layout */
+  background: var(--pl-ink-3);
+  opacity: 0.72;
+  transform: scaleY(0.34);
+  transition: background 260ms var(--pl-ease), opacity 200ms var(--pl-ease);
+}
+/* De hoogtesprong is zichtbare beweging; kleur en opacity blijven altijd staan
+   zodat de staat ook zonder animatie afleesbaar is. */
+@media (prefers-reduced-motion: no-preference) {
+  .pl-track__dot::before { transition: background 260ms var(--pl-ease),
+    opacity 200ms var(--pl-ease), transform 200ms var(--pl-ease-o); }
+}
+.pl-track__dot:hover::before { opacity: 1; transform: scaleY(0.67); }
+.pl-track__dot:focus-visible { outline: 1px solid var(--pl-act); outline-offset: 2px; }
+.pl-track__dot[data-state="done"]::before {
+  background: var(--pl-good);
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* ── De toets onder een les ── */
+.pl-check {
+  border-top: 1px solid var(--pl-rule);
+  margin-top: 22px;
+  padding-top: 20px;
+}
+.pl-check__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.pl-check__q {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  margin-bottom: 14px;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+.pl-check__opts { display: grid; gap: 7px; max-width: 62ch; }
+
+/* Een antwoord dat goed is groeit even; een fout antwoord schudt één keer.
+   Beide één keer, beide kort: het is een bevestiging, geen viering. */
+@media (prefers-reduced-motion: no-preference) {
+  .pl-opt[data-state="right"] { animation: pl-right 480ms var(--pl-ease-o) both; }
+  .pl-opt[data-state="wrong"] { animation: pl-wrong 380ms var(--pl-ease) both; }
+}
+@keyframes pl-right {
+  0%   { transform: scale(1); }
+  38%  { transform: scale(1.018); }
+  100% { transform: scale(1); }
+}
+@keyframes pl-wrong {
+  0%, 100% { transform: translateX(0); }
+  22%      { transform: translateX(-4px); }
+  58%      { transform: translateX(3px); }
+  82%      { transform: translateX(-1px); }
+}
+
+.pl-check__why {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: var(--pl-ground);
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-check__why { animation: pl-swap 420ms var(--pl-ease) both; }
+}
+
+/* Het vinkje dat landt als een onderwerp af is */
+.pl-done {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pl-good);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-done { animation: pl-land 520ms var(--pl-ease-o) both; }
+}
+@keyframes pl-land {
+  from { opacity: 0; transform: translateY(-6px) scale(0.92); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Een afgeronde les draagt een gemerkte rand, geen kleurvlak */
+.pl-lesson[data-done="1"] .pl-lesson__no { box-shadow: inset 2px 0 0 var(--pl-good); }
+
+/* ── Lesnummer wordt een ankerknop ── */
+.pl-lesson__no a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 180ms var(--pl-ease);
+}
+.pl-lesson__no a:hover { color: var(--pl-act); }
+
+/* ── Samenvatting bovenaan ── */
+.pl-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pl-summary__n {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--pl-good);
+}
+.pl-summary__n[data-zero="1"] { color: var(--pl-ink-3); }
+
+.pl-reset {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--pl-ink-3);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--pl-rule);
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl-reset:hover { color: var(--pl-act); border-color: var(--pl-act); }
+
+@media (max-width: 620px) {
+  .pl-track { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .pl-track__dot { width: 22px; }
+}

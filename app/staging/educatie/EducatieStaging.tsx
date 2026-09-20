@@ -13,6 +13,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { LEVELS, TOPIC_DETAILS, TOPICS, CONCEPTS, FAQS } from '@/lib/education-data'
+import { DAILY_QUESTIONS } from '@/lib/home-content'
 import { Ico, Tip } from '../Instruments'
 import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel, Ladder,
@@ -21,6 +22,29 @@ import {
 type Level = 'beg' | 'ama' | 'pro'
 const LEVEL_KEYS: Level[] = ['beg', 'ama', 'pro']
 const LEVEL_STORE = 'nightgazer_leesniveau'
+const DONE_STORE = 'nightgazer_educatie_af'
+
+/* ── Toetsvragen aan onderwerpen koppelen ────────────────────────────────
+   Er lagen vijftien vragen op drie niveaus in lib/home-content.ts, alleen
+   gebruikt door de quizwidget op de voorpagina. Op de pagina waar kennis
+   toetsen thuishoort, werd er niets mee gedaan. Elk onderwerp krijgt zijn
+   eigen vragen; geen enkele vraag wordt verzonnen. */
+const TOPIC_QUIZ: Record<string, number[]> = {
+  zonnestelsel:    [4, 12],
+  sterren:         [10, 5, 0],
+  sterrenstelsels: [3, 6],
+  kosmologie:      [1, 7, 11],
+  exoplaneten:     [2, 9],
+  ruimtevaart:     [8, 14],
+}
+
+function questionFor(topicId: string, level: Level, seed: number) {
+  const ids = TOPIC_QUIZ[topicId]
+  if (!ids?.length) return null
+  const entry = DAILY_QUESTIONS.find(q => q.id === ids[seed % ids.length])
+  if (!entry) return null
+  return { topic: entry.topic, ...entry[level] }
+}
 
 /* ── De ladder ─────────────────────────────────────────────────────────── */
 function LadderBar({ level, onPick }: { level: Level; onPick: (l: Level) => void }) {
@@ -47,12 +71,103 @@ function LadderBar({ level, onPick }: { level: Level; onPick: (l: Level) => void
   )
 }
 
+/* ── De toets onder een les ───────────────────────────────────────────────
+   Lezen en dan controleren of het is blijven hangen. Zonder dit is de
+   pagina een artikel, geen leerplatform. */
+function Check({ topicId, level, seed, done, onDone }: {
+  topicId: string
+  level: Level
+  seed: number
+  done: boolean
+  onDone: (ok: boolean) => void
+}) {
+  /* Eén gemiste poging mag een onderwerp niet permanent dichtzetten. De
+     eerste misser geeft een duw zonder het antwoord te verklappen — dat
+     terugbladeren ís het leermoment. Pas de tweede legt alles op tafel. */
+  const [picked, setPicked] = useState<number | null>(null)
+  const [wrongs, setWrongs] = useState<number[]>([])
+  const q = useMemo(() => questionFor(topicId, level, seed), [topicId, level, seed])
+
+  /* Van niveau wisselen betekent een andere vraag, dus het antwoord vervalt. */
+  useEffect(() => { setPicked(null); setWrongs([]) }, [level, seed])
+
+  if (!q) return null
+  const right  = picked !== null && picked === q.correct
+  const spent  = wrongs.length >= 2
+  const closed = right || spent
+  const nudge  = !closed && wrongs.length === 1
+
+  function answer(i: number) {
+    if (closed || wrongs.includes(i)) return
+    setPicked(i)
+    if (i === q!.correct) onDone(true)
+    else setWrongs(w => [...w, i])
+  }
+
+  return (
+    <div className="pl-check">
+      <div className="pl-check__head">
+        <span className="pl-label">Controleer jezelf</span>
+        <span className="pl-meta__tick" aria-hidden="true" />
+        <span className="pl-label">{q.topic}</span>
+        {done && !closed && (
+          <span className="pl-done" style={{ marginLeft: 'auto' }}>
+            <Ico.check size={13} />eerder goed
+          </span>
+        )}
+      </div>
+
+      <p className="pl-check__q">{q.q}</p>
+
+      <div className="pl-check__opts">
+        {q.options.map((opt: string, i: number) => {
+          const miss  = wrongs.includes(i)
+          const state = miss ? 'wrong'
+            : closed && i === q.correct ? 'right'
+            : undefined
+          return (
+            <button key={i} className="pl-opt" data-state={state} disabled={closed || miss} onClick={() => answer(i)}>
+              <span className="pl-opt__k pl-num">{['A', 'B', 'C', 'D'][i]}</span>
+              <span>{opt}</span>
+              <span style={{ display: 'flex', justifyContent: 'flex-end' }} aria-hidden="true">
+                {state === 'right' && <Ico.check size={14} />}
+                {state === 'wrong' && <Ico.cross size={14} />}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+
+      {nudge && (
+        <p className="pl-check__why" role="status">
+          <span className="pl-label" style={{ display: 'block', marginBottom: 7, color: 'var(--pl-warn)' }}>
+            Nog niet — je hebt nog één poging
+          </span>
+          Lees de uitleg hierboven nog eens terug en kies opnieuw.
+        </p>
+      )}
+
+      {closed && (
+        <p className="pl-check__why" role="status">
+          <span className="pl-label" style={{ display: 'block', marginBottom: 7, color: right ? 'var(--pl-good)' : 'var(--pl-warn)' }}>
+            {right ? 'Goed' : `Niet goed — het juiste antwoord is ${['A', 'B', 'C', 'D'][q.correct]}`}
+          </span>
+          {q.explain}
+        </p>
+      )}
+    </div>
+  )
+}
+
 /* ── Eén onderwerp op het gekozen niveau ───────────────────────────────── */
-function Lesson({ topic, level, no, swapKey }: {
+function Lesson({ topic, level, no, swapKey, index, done, onDone }: {
   topic: (typeof TOPICS)[number]
   level: Level
   no: string
   swapKey: number
+  index: number
+  done: boolean
+  onDone: (ok: boolean) => void
 }) {
   const detail = TOPIC_DETAILS[topic.id]
   const [term, setTerm] = useState<string | null>(null)
@@ -61,9 +176,14 @@ function Lesson({ topic, level, no, swapKey }: {
   const open = detail.glossary.find((g: { term: string }) => g.term === term)
 
   return (
-    <article className="pl-lesson">
+    <article className="pl-lesson" id={`les-${topic.id}`} data-done={done ? '1' : '0'}>
       <div className="pl-lesson__no">
         <span className="pl-num pl-label">{no}</span>
+        {done && (
+          <span className="pl-done" style={{ marginTop: 10, display: 'flex' }}>
+            <Ico.check size={12} />af
+          </span>
+        )}
       </div>
 
       <div className="pl-lesson__body">
@@ -105,6 +225,8 @@ function Lesson({ topic, level, no, swapKey }: {
             </p>
           )}
         </div>
+
+        <Check topicId={topic.id} level={level} seed={index} done={done} onDone={onDone} />
       </div>
 
       <aside className="pl-lesson__side">
@@ -136,6 +258,9 @@ export default function EducatieStaging() {
   const [level, setLevel] = useState<Level>('beg')
   const [swapKey, setSwapKey] = useState(0)
   const [restored, setRestored] = useState(false)
+  /* Welke onderwerpen je goed hebt beantwoord. Blijft staan, want een
+     leerplatform dat vergeet waar je was is geen leerplatform. */
+  const [done, setDone] = useState<Record<string, boolean>>({})
 
   /* Het gekozen niveau blijft staan — wie op Pro leest wil dat morgen weer. */
   useEffect(() => {
@@ -143,8 +268,29 @@ export default function EducatieStaging() {
       const saved = localStorage.getItem(LEVEL_STORE)
       if (saved && LEVEL_KEYS.includes(saved as Level)) setLevel(saved as Level)
     } catch { /* voorkeur niet beschikbaar, beginner blijft staan */ }
+    try {
+      const raw = localStorage.getItem(DONE_STORE)
+      if (raw) setDone(JSON.parse(raw) as Record<string, boolean>)
+    } catch { /* voortgang niet beschikbaar, begin gewoon opnieuw */ }
     setRestored(true)
   }, [])
+
+  const markDone = useCallback((id: string, ok: boolean) => {
+    if (!ok) return
+    setDone(prev => {
+      if (prev[id]) return prev
+      const next = { ...prev, [id]: true }
+      try { localStorage.setItem(DONE_STORE, JSON.stringify(next)) } catch { /* niet erg */ }
+      return next
+    })
+  }, [])
+
+  const resetProgress = useCallback(() => {
+    setDone({})
+    try { localStorage.removeItem(DONE_STORE) } catch { /* niet erg */ }
+  }, [])
+
+  const doneCount = useMemo(() => TOPICS.filter(t => done[t.id]).length, [done])
 
   const pick = useCallback((l: Level) => {
     setLevel(l)
@@ -185,6 +331,34 @@ export default function EducatieStaging() {
           <p className="pl-levelnote" key={`note-${level}-${swapKey}`} data-fresh="1">
             {active.desc}
           </p>
+
+          {/* Voortgangsrail: zes strepen, één per onderwerp. Klik om erheen
+              te springen. Dit is wat van een artikel een leerplatform maakt. */}
+          <div className="pl-track">
+            <div className="pl-summary">
+              <span className="pl-summary__n" data-zero={doneCount === 0 ? '1' : '0'}>{doneCount}</span>
+              <span className="pl-label">van {TOPICS.length} afgerond</span>
+            </div>
+
+            <div className="pl-track__dots" role="group" aria-label="Voortgang per onderwerp">
+              {TOPICS.map((t: (typeof TOPICS)[number]) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  className="pl-track__dot"
+                  data-state={done[t.id] ? 'done' : 'reading'}
+                  aria-label={`${t.title}${done[t.id] ? ' — afgerond' : ''}`}
+                  onClick={() => document.getElementById(`les-${t.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                />
+              ))}
+            </div>
+
+            {doneCount > 0 && (
+              <button type="button" className="pl-reset" onClick={resetProgress}>
+                Voortgang wissen
+              </button>
+            )}
+          </div>
         </section>
 
         {/* ══ De zes onderwerpen ══ */}
@@ -199,6 +373,9 @@ export default function EducatieStaging() {
                 level={level}
                 no={`NG-E${String(i + 1).padStart(2, '0')}`}
                 swapKey={swapKey}
+                index={i}
+                done={!!done[t.id]}
+                onDone={ok => markDone(t.id, ok)}
               />
             ))
           )}
