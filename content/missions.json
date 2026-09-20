@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-19T12:08:38.965Z",
+    "lastUpdated": "2026-09-20T12:44:23.683Z",
     "autoUpdated": [
-      "strix-launch-9",
-      "strix-launch-9"
+      "starlink-group-17-21",
+      "starlink-group-17-21"
     ]
   },
   "missions": [
@@ -767,13 +767,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Onbemande vlucht van Starliner-1 naar het ISS met cargo en systeemvalidatie.",
+      "objective": "Onbemande operationele Starliner-vlucht levert cargo aan het ISS na technische herziening.",
       "body": "Low Earth Orbit",
-      "highlight": "Omgebouwd naar onbemande cargomissie na RCS-problemen in 2024.",
+      "highlight": "Missie omgeschaald naar onbemand na RCS-problemen bij Crew Flight Test 2024.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Starliner-1 markeert de eerste operationele vlucht van Boeing's Starliner-ruimtevaartuig naar het Internationaal Ruimtestation in het kader van NASA's Commercial Crew Program. Na ernstige problemen met het RCS-aandrijfsysteem tijdens de Crew Flight Test-missie in 2024 heeft NASA besloten deze vlucht zonder bemanning uit te voeren. Het ruimtevaartuig zal in plaats daarvan essentiële cargo afleveren aan het orbitale laboratorium. Tegelijkertijd worden de doorgevoerde systeemverbeteringen in de praktijk gevalideerd, als cruciale stap richting toekomstige bemanningsvluchten.",
+      "description": "Starliner-1 markeert de eerste operationele vlucht van Boeing's Starliner-ruimtevaartuig naar het Internationaal Ruimtestation, maar zonder bemanning aan boord. NASA besloot de missie om te schalen na problemen met het RCS-houdingsregelingssysteem die opdoken tijdens de Crew Flight Test in 2024. In plaats van astronauten vervoert het vaartuig nu essentiële cargo naar het ruimtestation. De vlucht moet tegelijk dienen als validatie van de verbeteringen die zijn doorgevoerd na de problemen van vorig jaar.",
       "vehicle": "Atlas V N22",
       "launchSite": "Space Launch Complex 41",
       "duration": "Onbekend",
@@ -820,9 +820,11 @@
         "megaconstallatie",
         "nasa commercial crew",
         "cargo",
-        "systeemvalidatie"
+        "systeemvalidatie",
+        "starship",
+        "vlucht 14"
       ],
-      "_lastClaudeUpdate": "2026-09-07T13:46:29.904Z"
+      "_lastClaudeUpdate": "2026-09-20T12:44:23.676Z"
     },
     {
       "id": "starlink-group-10-24",
@@ -1038,12 +1040,12 @@
     },
     {
       "id": "amazon-leo-le-02",
-      "_ll2Id": "7bdc412b-c965-4517-a131-f57a01189803",
+      "_ll2Id": "ef9850ad-1096-425b-9d27-f7bbd186e61a",
       "name": "Amazon Leo (LE-02)",
       "agency": "Arianespace",
       "agencyColor": "#ffa040",
       "status": "gepland",
-      "launched": "7 okt 2026",
+      "launched": "31 okt 2026",
       "objective": "45 Amazon Kuiper-satellieten in een lage baan om de aarde brengen voor wereldwijd breedband internet.",
       "body": "Low Earth Orbit",
       "highlight": "Geplande lancering op 30 september 2026 met 45 satellieten aan boord.",
@@ -1051,8 +1053,8 @@
       "bgFrom": "#040408",
       "bgTo": "#080810",
       "description": "Amazon Leo, voorheen bekend als Project Kuiper, is een megaconstellatie van 3.276 satellieten die breedband internettoegang moet bieden vanuit een lage aardbaan. De constellatie wordt beheerd door Kuiper Systems LLC, een dochteronderneming van Amazon. De satellieten worden verdeeld over 98 orbitale vlakken in drie lagen op hoogtes van 590, 610 en 630 kilometer. Elke Vulcan VC6L-lancering draagt 45 satellieten tegelijk naar de gewenste baan.",
-      "vehicle": "Ariane 64",
-      "launchSite": "Ariane Launch Area 4",
+      "vehicle": "Vulcan VC6L",
+      "launchSite": "Space Launch Complex 41",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
@@ -1256,7 +1258,7 @@
     },
     {
       "id": "flight-12",
-      "_ll2Id": "8d2a11e2-51e3-4841-a616-d41589373025",
+      "_ll2Id": "9e27a1ed-e81a-4918-b32b-0380cf3a9f8f",
       "name": "Flight 12",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
@@ -1269,8 +1271,8 @@
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "SpaceX voert de twaalfde vlucht uit met de Gravity-2-raket, ontwikkeld door het Chinese ruimtevaartbedrijf OrienSpace. Het betreft de allereerste testvlucht van dit nieuwe rakettype, dat bedoeld is om de Chinese commerciële lanceermarkt verder te versterken. De lancering staat gepland voor 31 december 2026 en moet aantonen dat de Gravity-2 operationeel inzetbaar is voor toekomstige commerciële missies. De eindbestemming van de baan is nog niet bekendgemaakt.",
-      "vehicle": "Long March 10A",
-      "launchSite": "301",
+      "vehicle": "Mir",
+      "launchSite": "ADD Offshore launch platform",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/44/?format=json",
