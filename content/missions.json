@@ -1,10 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-20T12:44:23.683Z",
-    "autoUpdated": [
-      "starlink-group-17-21",
-      "starlink-group-17-21"
-    ]
+    "lastUpdated": "2026-09-21T14:40:01.420Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -1258,7 +1255,7 @@
     },
     {
       "id": "flight-12",
-      "_ll2Id": "9e27a1ed-e81a-4918-b32b-0380cf3a9f8f",
+      "_ll2Id": "a8d8d683-3ab0-40ab-beb0-e66bb55afd91",
       "name": "Flight 12",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
@@ -1271,11 +1268,11 @@
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "SpaceX voert de twaalfde vlucht uit met de Gravity-2-raket, ontwikkeld door het Chinese ruimtevaartbedrijf OrienSpace. Het betreft de allereerste testvlucht van dit nieuwe rakettype, dat bedoeld is om de Chinese commerciële lanceermarkt verder te versterken. De lancering staat gepland voor 31 december 2026 en moet aantonen dat de Gravity-2 operationeel inzetbaar is voor toekomstige commerciële missies. De eindbestemming van de baan is nog niet bekendgemaakt.",
-      "vehicle": "Mir",
-      "launchSite": "ADD Offshore launch platform",
+      "vehicle": "Nebula-1",
+      "launchSite": "Land Launch Pad 1",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/44/?format=json",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1051/?format=json",
       "timeline": [
         {
           "date": "31 mei 2026",
@@ -3902,13 +3899,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 okt 2026",
-      "objective": "SpaceX lanceert tientallen micro- en nanosatellieten naar een mid-inclinatiebaan via een dedicated rideshare-vlucht.",
+      "objective": "SpaceX lanceert tientallen micro- en nanosatellieten naar een mid-inclinatiebaan in een gedeelde vlucht.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering op 31 oktober 2026.",
+      "highlight": "Gepland voor oktober 2026; meerdere payloads bevestigd.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Bandwagon 5 is de vijfde editie van SpaceX's succesvolle Bandwagon-rideshare-programma, gericht op klanten die behoefte hebben aan een mid-inclinatiebaan in plaats van de polaire banen die via het Transporter-programma worden aangeboden. Aan boord bevinden zich tientallen kleine satellieten voor commerciële en gouvernementele opdrachtgevers, die dankzij het gedeelde vluchtmodel aanzienlijk op lanceerkosten besparen. De Falcon 9-raket, bekend om zijn herbruikbare eerste trap, voert de missie uit vanuit één van SpaceX's lanceerlocaties aan de Amerikaanse kust. Het Bandwagon-programma biedt een toegankelijke weg naar de ruimte voor organisaties met kleinere payloads die specifieke orbitale vereisten hebben.",
+      "description": "Bandwagon 5 is de vijfde editie van SpaceX's populaire rideshare-programma voor een mid-inclinatiebaan, waarbij tientallen kleine satellieten van commerciële en overheidsklanten gelijktijdig worden gelanceerd. Het programma biedt een kostenefficiënte toegang tot de ruimte voor organisaties die een baan nodig hebben die niet door het polaire Transporter-programma wordt bediend. De Falcon 9-raket, bekend om zijn herbruikbaarheid en betrouwbaarheid, verzorgt de lancering vanuit de Verenigde Staten. Bandwagon-vluchten richten zich op een inclinatie van circa 45 graden, ideaal voor aardobservatie en connectiviteitssatellieten.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -3933,7 +3930,7 @@
         "low earth orbit",
         "nanosatellieten"
       ],
-      "_lastClaudeUpdate": "2026-08-22T08:17:28.206Z"
+      "_lastClaudeUpdate": "2026-09-21T14:40:01.408Z"
     },
     {
       "id": "ussf-153",
