@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-21T14:40:01.420Z",
+    "lastUpdated": "2026-09-22T12:55:04.205Z",
     "autoUpdated": []
   },
   "missions": [
@@ -1512,7 +1512,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "31 okt 2026",
+      "launched": "1 okt 2026",
       "objective": "SpaceX brengt tientallen microsatellieten en nanosatellieten naar een zonsynchrone baan.",
       "body": "Sun-Synchronous Orbit",
       "highlight": "Gepland voor lancering op 31 oktober 2026 vanaf SpaceX-lanceerplatform.",
