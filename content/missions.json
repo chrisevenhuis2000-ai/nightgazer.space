@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-24T12:59:51.876Z",
+    "lastUpdated": "2026-09-25T13:05:41.239Z",
     "autoUpdated": []
   },
   "missions": [
@@ -1037,12 +1037,12 @@
     },
     {
       "id": "amazon-leo-le-02",
-      "_ll2Id": "ef9850ad-1096-425b-9d27-f7bbd186e61a",
+      "_ll2Id": "ca3d56b7-2175-48e4-9a6a-2ecc9996d96b",
       "name": "Amazon Leo (LE-02)",
       "agency": "Arianespace",
       "agencyColor": "#ffa040",
       "status": "gepland",
-      "launched": "31 okt 2026",
+      "launched": "31 dec 2026",
       "objective": "45 Amazon Kuiper-satellieten in een lage baan om de aarde brengen voor wereldwijd breedband internet.",
       "body": "Low Earth Orbit",
       "highlight": "Geplande lancering op 30 september 2026 met 45 satellieten aan boord.",
@@ -1050,8 +1050,8 @@
       "bgFrom": "#040408",
       "bgTo": "#080810",
       "description": "Amazon Leo, voorheen bekend als Project Kuiper, is een megaconstellatie van 3.276 satellieten die breedband internettoegang moet bieden vanuit een lage aardbaan. De constellatie wordt beheerd door Kuiper Systems LLC, een dochteronderneming van Amazon. De satellieten worden verdeeld over 98 orbitale vlakken in drie lagen op hoogtes van 590, 610 en 630 kilometer. Elke Vulcan VC6L-lancering draagt 45 satellieten tegelijk naar de gewenste baan.",
-      "vehicle": "Vulcan VC6L",
-      "launchSite": "Space Launch Complex 41",
+      "vehicle": "New Glenn",
+      "launchSite": "Launch Complex 36A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
@@ -2907,21 +2907,21 @@
     },
     {
       "id": "bluebird-block-2-3",
-      "_ll2Id": "56a85c82-ea71-449b-828c-b583f6f4a18b",
+      "_ll2Id": "f0460950-3cb6-4889-8cbe-707f063d0565",
       "name": "BlueBird Block 2 #3",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "5 aug 2026",
-      "objective": "Lancering van drie BlueBird Block 2-satellieten voor 24/7 breedbanddekking via reguliere mobiele telefoons.",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van 8 BlueBird Block 2-satellieten voor continu 4G/5G-breedbanddekking boven de VS.",
       "body": "Low Earth Orbit",
-      "highlight": "Grootste commerciële LEO-satellieten ooit, met 223 m² communicatiepanelen.",
+      "highlight": "Grootste commerciële LEO-satellieten ooit, met antennes tot 223 m².",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket drie BlueBird Block 2-satellieten voor AST SpaceMobile in een lage aardbaan. Deze tweede generatie satellieten bieden tot tien keer meer bandbreedtecapaciteit dan hun voorgangers, met communicatiepanelen van maar liefst 223 vierkante meter. De satellieten ondersteunen piektransmissiesnelheden tot 120 Mbps en zijn bedoeld voor spraak, data en video via gewone smartphones. Eenmaal operationeel worden het de grootste commercieel ingezette satellieten in de lage aardbaan ooit.",
-      "vehicle": "Falcon 9",
-      "launchSite": "Space Launch Complex 40",
+      "description": "SpaceX lanceert met de New Glenn-raket acht BlueBird Block 2-satellieten voor AST SpaceMobile. Deze geavanceerde satellieten bieden tot tien keer meer bandbreedtecapaciteit dan hun voorgangers en ondersteunen pieksnelheden van 120 Mbps voor spraak, data en video. Met communicatieantennes van wel 223 vierkante meter worden het de grootste commerciële satellieten ooit in een lage aardbaan. De missie is een cruciale stap richting 24/7 cellulaire breedbanddekking voor gewone smartphones in de Verenigde Staten.",
+      "vehicle": "New Glenn",
+      "launchSite": "Launch Complex 36A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/c3f48f48-0e0a-4bca-917e-de494cfca35b/?format=json",
@@ -2944,9 +2944,10 @@
         "satellietinternet",
         "falcon 9",
         "low earth orbit",
-        "bluebird block 2"
+        "bluebird block 2",
+        "new glenn"
       ],
-      "_lastClaudeUpdate": "2026-07-30T10:11:16.076Z"
+      "_lastClaudeUpdate": "2026-09-25T13:05:41.236Z"
     },
     {
       "id": "sirius-sxm-11",
@@ -3686,7 +3687,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "31 okt 2026",
+      "launched": "2 okt 2026",
       "objective": "Lancering van een geheime verkenningssatelliet voor het US National Reconnaissance Office.",
       "body": "Unknown",
       "highlight": "Lanceerdatum gepland op 31 oktober 2026, details geheim.",
