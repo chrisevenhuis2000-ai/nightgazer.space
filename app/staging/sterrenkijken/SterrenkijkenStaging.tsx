@@ -37,6 +37,9 @@ import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
 } from '../shared'
 
+import ObjectVanDeNacht from './ObjectVanDeNacht'
+import Hemelagenda from './Hemelagenda'
+
 const DarkSkyMap = dynamic(() => import('../../sterrenkijken/DarkSkyMap'), {
   ssr: false,
   loading: () => <div className="pl-skel" style={{ position: 'absolute', inset: 0 }} />,
@@ -485,6 +488,25 @@ export default function SterrenkijkenStaging() {
         </section>
 
         {/* ══ Waarnaar ══ */}
+        {/* ══ Object van de nacht ══ */}
+        <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-tonight">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-tonight" className="pl-h2">Zoek dit vannacht op</h2>
+              <span className="pl-label">met zoekkaart</span>
+            </div>
+            <p className="pl-label">{location.name}</p>
+          </div>
+
+          <ObjectVanDeNacht
+            lat={location.lat}
+            lon={location.lon}
+            plaats={location.name}
+            maanVerlicht={moonLit(tonightPhase)}
+            nacht={today}
+          />
+        </section>
+
         <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-what">
           <div className="pl-band">
             <div className="pl-band__t">
@@ -557,6 +579,19 @@ export default function SterrenkijkenStaging() {
               </tbody>
             </table>
           </div>
+        </section>
+
+        {/* ══ Hemelagenda ══ */}
+        <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-agenda">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-agenda" className="pl-h2">Zet het in je agenda</h2>
+              <span className="pl-label">.ics voor elke agenda-app</span>
+            </div>
+            <p className="pl-label">zwermen en lanceringen</p>
+          </div>
+
+          <Hemelagenda />
         </section>
 
         <div className="pl-wrap">

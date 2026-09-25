@@ -56,6 +56,20 @@ export type LaunchPrecision = 'dag' | 'maand' | 'jaar'
  * gelabeld; dat is een veel kleinere fout dan 37 verzonnen merktekens op
  * één dag zetten.
  */
+/**
+ * Zet de precisie van Launch Library om naar de drie klassen die de site
+ * gebruikt. Alles wat een dag of scherper is telt als een echte datum; een
+ * week is dat niet, want dan klopt de dag al niet meer.
+ */
+export function mapPrecision(raw: string | undefined): LaunchPrecision | null {
+  if (!raw) return null
+  const v = raw.toLowerCase()
+  if (v === 'minute' || v === 'hour' || v === 'day') return 'dag'
+  if (v === 'week' || v === 'month') return 'maand'
+  if (v === 'quarter' || v === 'year') return 'jaar'
+  return null
+}
+
 export function inferPrecision(d: Date): LaunchPrecision {
   const next = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1)
   if (next.getMonth() === d.getMonth()) return 'dag'
@@ -80,7 +94,9 @@ export function buildSchedule(now = new Date()): {
     const date = parseLaunchDate(mission.launched)
     if (!date) { undated.push(mission); continue }
     const days = Math.round((startOfDay(date).getTime() - today.getTime()) / 86_400_000)
-    const entry: ScheduledLaunch = { mission, date, days, precision: inferPrecision(date) }
+    /* De echte precisie als de bron hem levert; anders de heuristiek. */
+    const precision = mapPrecision(mission.launchPrecision) ?? inferPrecision(date)
+    const entry: ScheduledLaunch = { mission, date, days, precision }
     ;(days >= 0 ? upcoming : past).push(entry)
   }
 

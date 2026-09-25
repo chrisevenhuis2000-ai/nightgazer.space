@@ -35,17 +35,37 @@ export const DARK_SPOTS = [
   { name: 'Fochteloërveen',  lat: 52.96, lon: 6.38, bortle: '4',   desc: 'Hoogveengebied met weinig lichtvervuiling. Dichtbij en toegankelijk.',            tip: 'Vlak terrein = groot hemelbereik. Parkeer bij de ingang.' },
 ]
 
+/* Het jaar waarop de piekdata en de conditie-inschatting hieronder slaan.
+   Eén plek om bij te werken; de agenda leidt er de echte datum uit af in
+   plaats van hem te raden. */
+export const SHOWER_YEAR = 2026
+
 export const METEORS = [
-  { name: 'Quadrantiden',  peak: '3–4 jan',   zhr: 110, rating: 1, month: 1,  note: 'Volle maan verstoorde zicht volledig' },
-  { name: 'Lyriden',       peak: '21–22 apr',  zhr: 18,  rating: 4, month: 4,  note: 'Donkere hemel! Beste na middernacht' },
-  { name: 'Eta Aquariden', peak: '5–6 mei',    zhr: 50,  rating: 2, month: 5,  note: 'Maanlicht verstoort helaas veel' },
-  { name: 'Perseïden',     peak: '12–13 aug',  zhr: 100, rating: 5, month: 8,  note: 'BESTE KANS 2026! Nieuwe maan = perfecte condities' },
-  { name: 'Draconiden',    peak: '8–9 okt',    zhr: 10,  rating: 3, month: 10, note: 'Klein maar donkere hemel, vroege avond' },
-  { name: 'Orioniden',     peak: '21 okt',     zhr: 20,  rating: 2, month: 10, note: 'Maanlicht hindert, alleen helderste zichtbaar' },
-  { name: 'Leoniden',      peak: '16–17 nov',  zhr: 15,  rating: 3, month: 11, note: 'Halve maan, redelijke condities' },
-  { name: 'Geminiden',     peak: '13–14 dec',  zhr: 150, rating: 5, month: 12, note: 'Grootste shower! Minimale maanlicht' },
-  { name: 'Ursiden',       peak: '21–22 dec',  zhr: 10,  rating: 1, month: 12, note: 'Bijna volle maan, lastig' },
+  { name: 'Quadrantiden',  peak: '3–4 jan',   day: 3,  zhr: 110, rating: 1, month: 1,  radiant: 'Ossenhoeder',  note: 'Volle maan verstoorde zicht volledig' },
+  { name: 'Lyriden',       peak: '21–22 apr',  day: 21, zhr: 18,  rating: 4, month: 4,  radiant: 'Lier',         note: 'Donkere hemel! Beste na middernacht' },
+  { name: 'Eta Aquariden', peak: '5–6 mei',    day: 5,  zhr: 50,  rating: 2, month: 5,  radiant: 'Waterman',     note: 'Maanlicht verstoort helaas veel' },
+  { name: 'Perseïden',     peak: '12–13 aug',  day: 12, zhr: 100, rating: 5, month: 8,  radiant: 'Perseus',      note: 'BESTE KANS 2026! Nieuwe maan = perfecte condities' },
+  { name: 'Draconiden',    peak: '8–9 okt',    day: 8,  zhr: 10,  rating: 3, month: 10, radiant: 'Draak', vroeg: true, note: 'Klein maar donkere hemel, vroege avond' },
+  { name: 'Orioniden',     peak: '21 okt',     day: 21, zhr: 20,  rating: 2, month: 10, radiant: 'Orion',        note: 'Maanlicht hindert, alleen helderste zichtbaar' },
+  { name: 'Leoniden',      peak: '16–17 nov',  day: 16, zhr: 15,  rating: 3, month: 11, radiant: 'Leeuw',        note: 'Halve maan, redelijke condities' },
+  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimale maanlicht' },
+  { name: 'Ursiden',       peak: '21–22 dec',  day: 21, zhr: 10,  rating: 1, month: 12, radiant: 'Kleine Beer',  note: 'Bijna volle maan, lastig' },
 ]
+
+export type Shower = (typeof METEORS)[number]
+
+/**
+ * Het kijkvenster op de piekavond. De meeste zwermen zijn het best na
+ * middernacht, wanneer je je aan de voorkant van de Aarde bevindt en er
+ * frontaal in vliegt. De Draconiden zijn de uitzondering: hun radiant staat
+ * bij het invallen van de duisternis het hoogst en zakt daarna, dus daar is
+ * 22:00 al aan de late kant.
+ */
+export function showerWindow(s: Shower, year = SHOWER_YEAR): { start: Date; end: Date } {
+  const vroeg = 'vroeg' in s && s.vroeg
+  const start = new Date(year, s.month - 1, s.day, vroeg ? 20 : 22, 0, 0)
+  return { start, end: new Date(start.getTime() + (vroeg ? 3 : 4) * 3600_000) }
+}
 
 export const SEASONS = [
   { name: 'Melkweg Seizoen',         icon: '🌌', months: [3,4,5,6,7,8,9,10], color: '#c080ff', targets: 'Galactische kern, Sagittarius sterrenwolk, Rho Ophiuchi',          tip: 'Beste na middernacht bij nieuwe maan. Ga naar Lauwersmeer of Terschelling.' },

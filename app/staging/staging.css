@@ -3080,3 +3080,231 @@ a:hover .pl-emulsion > img,
   .pl-track { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .pl-track__dot { width: 22px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Object van de nacht, zoekkaart en hemelagenda
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-band--klein { padding-top: 12px; margin-bottom: 14px; }
+
+.pl-btn--act {
+  background: color-mix(in srgb, var(--pl-act) 14%, transparent);
+  border-color: var(--pl-act);
+}
+
+/* ── Het paneel ─────────────────────────────────────────────────────────── */
+.pl-tonight {
+  display: grid;
+  grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+  grid-template-areas: 'kaart tekst' 'waar waar';
+  gap: 0;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-tonight__kaart { grid-area: kaart; border-right: 1px solid var(--pl-rule); padding: 22px; }
+.pl-tonight__tekst { grid-area: tekst; padding: 22px 26px; display: grid; align-content: start; gap: 18px; }
+.pl-tonight__waar  { grid-area: waar;  padding: 4px 26px 24px; border-top: 1px solid var(--pl-rule); }
+
+.pl-tonight--leeg { padding: 26px; display: grid; gap: 10px; }
+
+.pl-tonight__naam {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 700; letter-spacing: -0.02em; line-height: 1.05;
+  margin: 6px 0 8px;
+}
+.pl-tonight__kop .pl-label { color: var(--pl-ink-3); }
+
+.pl-tonight__feiten {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border-top: 1px solid var(--pl-rule-soft);
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-tonight__feiten > div {
+  padding: 11px 20px 11px 0;
+  margin-right: 20px;
+  border-right: 1px solid var(--pl-rule-soft);
+}
+.pl-tonight__feiten > div:last-child { border-right: 0; margin-right: 0; }
+.pl-tonight__feiten dt {
+  font-size: 0.66rem; letter-spacing: 0.17em; text-transform: uppercase;
+  color: var(--pl-ink-3); margin-bottom: 4px;
+}
+.pl-tonight__feiten dd { margin: 0; color: var(--pl-ink); font-size: 0.9rem; }
+
+.pl-tonight__blok .pl-label { display: block; margin-bottom: 6px; color: var(--pl-ink-3); }
+.pl-tonight__tip { margin-top: 12px; color: var(--pl-ink-2); }
+
+/* ── De zoekkaart ───────────────────────────────────────────────────────── */
+.pl-chart { margin: 0; }
+.pl-chart svg { display: block; width: 100%; height: auto; }
+
+.pl-chart__veld { fill: var(--pl-ground); stroke: var(--pl-rule); stroke-width: 1; }
+.pl-chart__lijn { stroke: var(--pl-orbit); stroke-width: 1.1; opacity: 0.85; }
+.pl-chart__ster { fill: var(--pl-ink); }
+.pl-chart__naam {
+  fill: var(--pl-ink-3);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 9px; letter-spacing: 0.06em;
+}
+.pl-chart__as {
+  fill: var(--pl-ink-3);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.14em;
+}
+/* Het doel erft --pl-mark van .pl-live: dit is een waarde die per nacht wisselt. */
+.pl-chart__doel circle { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.pl-chart__doel line   { stroke: currentColor; stroke-width: 1.6; }
+
+.pl-chart__schaal line { stroke: var(--pl-ink-3); stroke-width: 1; }
+.pl-chart__schaal text {
+  fill: var(--pl-ink-3);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 9px;
+}
+.pl-chart__cap {
+  margin-top: 12px;
+  display: grid; gap: 4px;
+  font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--pl-ink-3);
+}
+
+/* ── Horizon ────────────────────────────────────────────────────────────── */
+.pl-horizon { display: block; width: 100%; height: auto; margin: 4px 0 2px; }
+.pl-horizon__grid  { stroke: var(--pl-rule-soft); stroke-width: 1; }
+.pl-horizon__grond { stroke: var(--pl-rule); stroke-width: 1; }
+.pl-horizon__tik   { stroke: var(--pl-rule); stroke-width: 1; }
+.pl-horizon__lood  { stroke: currentColor; stroke-width: 1; opacity: 0.45; }
+.pl-horizon__obj   { fill: currentColor; }
+.pl-horizon__lab, .pl-horizon__kompas {
+  fill: var(--pl-ink-3);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 9px; letter-spacing: 0.1em;
+}
+
+/* ── Tijdschuif ─────────────────────────────────────────────────────────── */
+.pl-tonight__schuif {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center; gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-tonight__schuif input[type='range'] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 22px; background: none; cursor: pointer;
+}
+.pl-tonight__schuif input[type='range']::-webkit-slider-runnable-track {
+  height: 3px; background: var(--pl-rule);
+}
+.pl-tonight__schuif input[type='range']::-moz-range-track {
+  height: 3px; background: var(--pl-rule);
+}
+.pl-tonight__schuif input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 4px; height: 22px; margin-top: -9px;
+  background: var(--pl-act); border: 0; border-radius: 0;
+}
+.pl-tonight__schuif input[type='range']::-moz-range-thumb {
+  width: 4px; height: 22px;
+  background: var(--pl-act); border: 0; border-radius: 0;
+}
+.pl-tonight__schuif input[type='range']:focus-visible {
+  outline: 1px solid var(--pl-act); outline-offset: 3px;
+}
+.pl-tonight__uit {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 0.78rem; color: var(--pl-ink-2); white-space: nowrap;
+}
+
+/* ── Meelopers ──────────────────────────────────────────────────────────── */
+.pl-tonight__meer { margin-top: 14px; border-top: 1px solid var(--pl-rule-soft); padding-top: 12px; }
+.pl-tonight__meer .pl-label { display: block; margin-bottom: 9px; color: var(--pl-ink-3); }
+.pl-tonight__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.pl-chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  min-height: 34px; padding: 0 13px;
+  background: transparent;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-2);
+  font: inherit; font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 200ms var(--pl-ease), color 200ms var(--pl-ease),
+              background 200ms var(--pl-ease);
+}
+.pl-chip .pl-num { color: var(--pl-ink-3); font-size: 0.72rem; }
+.pl-chip:hover { border-color: var(--pl-act); color: var(--pl-act); }
+.pl-chip:hover .pl-num { color: var(--pl-act); }
+.pl-chip[aria-pressed='true'] {
+  border-color: var(--pl-act);
+  background: color-mix(in srgb, var(--pl-act) 12%, transparent);
+  color: var(--pl-act);
+}
+.pl-chip:focus-visible { outline: 1px solid var(--pl-act); outline-offset: 2px; }
+
+/* ── Hemelagenda ────────────────────────────────────────────────────────── */
+.pl-agenda__lijst {
+  list-style: none; margin: 0; padding: 0;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-agenda__rij {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  align-items: start; gap: 22px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  transition: background 200ms var(--pl-ease);
+}
+.pl-agenda__rij:last-child { border-bottom: 0; }
+.pl-agenda__rij:hover { background: var(--pl-plate-2); }
+
+.pl-agenda__datum { display: grid; gap: 2px; }
+.pl-agenda__dag { font-size: 1.05rem; color: var(--pl-ink); letter-spacing: -0.01em; }
+.pl-agenda__datum .pl-label { color: var(--pl-ink-3); }
+
+.pl-agenda__wat { display: grid; gap: 5px; }
+.pl-agenda__soort { color: var(--pl-ink-3); }
+.pl-agenda__titel { font-size: 1.02rem; font-weight: 600; color: var(--pl-ink); }
+.pl-agenda__wat .pl-body-s { color: var(--pl-ink-2); margin: 2px 0 0; }
+
+/* Een zwerm en een lancering zijn verschillende dingen; de leesrichting
+   markeert dat met een streep, niet met een gekleurd kaartje. */
+.pl-agenda__rij[data-soort='zwerm']     { box-shadow: inset 3px 0 0 var(--pl-orbit); }
+.pl-agenda__rij[data-soort='lancering'] { box-shadow: inset 3px 0 0 var(--pl-rule); }
+
+.pl-agenda__actie { display: flex; align-items: center; min-height: 44px; }
+.pl-agenda__schatting {
+  color: var(--pl-ink-3);
+  border: 1px dashed var(--pl-rule);
+  padding: 7px 12px;
+  white-space: nowrap;
+}
+.pl-agenda__voet { margin-top: 14px; color: var(--pl-ink-3); max-width: 62ch; }
+
+/* ── Smal ───────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pl-tonight {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'kaart' 'tekst' 'waar';
+  }
+  .pl-tonight__kaart { border-right: 0; border-bottom: 1px solid var(--pl-rule); }
+  .pl-tonight__tekst { padding: 20px; }
+  .pl-tonight__waar  { padding: 4px 20px 22px; }
+  .pl-tonight__schuif { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .pl-tonight__uit { white-space: normal; flex-wrap: wrap; }
+
+  .pl-agenda__rij { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 16px 18px; }
+  .pl-agenda__datum { display: flex; align-items: baseline; gap: 8px; }
+  .pl-agenda__actie { min-height: 0; }
+  .pl-agenda__actie .pl-btn { width: 100%; }
+}
+
+/* De verrekijkerring: hoeveel je in één blik ziet. */
+.pl-chart__kijker {
+  fill: none;
+  stroke: var(--pl-rule);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}

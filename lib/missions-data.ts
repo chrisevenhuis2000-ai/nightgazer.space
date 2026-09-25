@@ -12,6 +12,12 @@ export interface MissionDetail {
   agencyColor: string
   status:      MissionStatus
   launched:    string
+  /**
+   * Hoe hard de lanceerdatum is, rechtstreeks uit Launch Library 2
+   * ('Minute', 'Hour', 'Day', 'Month', 'Quarter', 'Year', ...). Ontbreekt op
+   * oudere records; dan valt mission-schedule terug op een heuristiek.
+   */
+  launchPrecision?: string
   objective:   string
   body:        string
   highlight:   string
