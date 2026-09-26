@@ -14,21 +14,12 @@ account_id = "81e3376cdf10af6f23d939f91c4d920c"
 [triggers]
 crons = ["*/15 * * * *"]
 
-# Zet de meldingen aan in drie stappen:
+# De opslag voor pushabonnementen. Aangemaakt op 26-09-2026 via
+# .github/workflows/setup-push.yml; de VAPID-sleutels staan als secret op de
+# worker (VAPID_PUBLIC_KEY en VAPID_PRIVATE_KEY).
 #
-#   1. Maak de opslag aan en plak de id hieronder:
-#        npx wrangler kv namespace create SUBS --config cf-worker/wrangler.toml
-#
-#   2. Haal de blokhaken hieronder weg en vul de id in.
-#
-#   3. Maak een sleutelpaar en zet beide als secret:
-#        node cf-worker/generate-vapid.mjs
-#        npx wrangler secret put VAPID_PUBLIC_KEY  --config cf-worker/wrangler.toml
-#        npx wrangler secret put VAPID_PRIVATE_KEY --config cf-worker/wrangler.toml
-#
-# Tot dat gebeurd is antwoordt /push/key netjes dat push nog niet leeft, en
-# toont de site een eerlijke melding in plaats van een knop die niets doet.
-#
-# [[kv_namespaces]]
-# binding = "SUBS"
-# id = "PLAK_HIER_DE_ID"
+# Valt deze binding ooit weg, dan antwoordt /push/key dat de dienst niet leeft
+# en toont de site dat eerlijk in plaats van een knop die niets doet.
+[[kv_namespaces]]
+binding = "SUBS"
+id = "62db9e6a234047c5907a7c18f4f99151"
