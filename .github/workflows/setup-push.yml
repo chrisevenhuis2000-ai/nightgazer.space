@@ -66,6 +66,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           set -o pipefail
+          # Staan ze er al? Dan afblijven. Nieuwe sleutels maken elk bestaand
+          # abonnement ongeldig, en dat mag nooit een bijvangst zijn van een
+          # run die eigenlijk voor de KV-namespace bedoeld is.
+          npx --yes wrangler@4 secret list > secrets.json 2>/dev/null || echo '[]' > secrets.json
+          AL=$(node -e "
+            const t=require('fs').readFileSync('secrets.json','utf8');
+            const a=t.indexOf('['), b=t.lastIndexOf(']');
+            let l=[]; if(a!==-1&&b>a){ try{ l=JSON.parse(t.slice(a,b+1)) }catch{} }
+            const n=l.map(x=>x.name||'');
+            console.log(n.includes('VAPID_PUBLIC_KEY') && n.includes('VAPID_PRIVATE_KEY') ? 'ja' : 'nee');
+          ")
+          if [ "$AL" = "ja" ]; then
+            echo 'Beide VAPID-secrets bestaan al — ongemoeid gelaten.'
+            exit 0
+          fi
           node generate-vapid.mjs > paar.txt
           PUB=$(sed -n '3p' paar.txt)
           PRIV=$(sed -n '6p' paar.txt)

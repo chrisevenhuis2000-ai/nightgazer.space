@@ -1,10 +1,12 @@
 Dit bestand is een aanzetknop, geen configuratie.
 
 Een wijziging hierin laat .github/workflows/setup-push.yml draaien: die maakt
-de KV-namespace aan en zet een nieuw VAPID-sleutelpaar als secret.
+de KV-namespace aan en zet, als ze er nog niet zijn, een VAPID-sleutelpaar als
+secret. Bestaande sleutels blijven staan — de workflow raakt ze niet aan.
 
-Raak het alleen aan als je de sleutels bewust wilt vervangen. Een nieuw paar
-maakt elk bestaand pushabonnement ongeldig — iedereen die meldingen aan heeft
-staan moet zich dan opnieuw aanmelden.
+Wil je de sleutels bewust vervangen, verwijder ze dan eerst in Cloudflare:
+  npx wrangler secret delete VAPID_PUBLIC_KEY  --config cf-worker/wrangler.toml
+  npx wrangler secret delete VAPID_PRIVATE_KEY --config cf-worker/wrangler.toml
+Iedereen met meldingen aan moet zich daarna opnieuw aanmelden.
 
-Laatst aangezet: 2026-09-26 (tweede poging, token-permissies uitzoeken)
+Laatst aangezet: 2026-09-27 (KV-permissie toegevoegd aan het build token)
