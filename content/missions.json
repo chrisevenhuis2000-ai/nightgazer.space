@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-25T13:05:41.239Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-09-26T12:33:05.097Z",
+    "autoUpdated": [
+      "strix-launch-9"
+    ]
   },
   "missions": [
     {
@@ -1176,15 +1178,15 @@
       "name": "StriX Launch 9",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "actief",
       "launched": "26 sep 2026",
       "objective": "Lancering van een synthetische-apertuurradarsatelliet voor het Japanse aardobservatiebedrijf Synspective.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Negende StriX-satelliet gelanceerd voor Synspective.",
+      "highlight": "Gepland voor 26 september 2026 vanaf Mahia, Nieuw-Zeeland.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab voert de StriX Launch 9-missie uit voor het Japanse bedrijf Synspective, waarbij opnieuw een StriX-satellieten met synthetische-apertuurradar (SAR) in een lage aardbaan wordt geplaatst. De SAR-technologie stelt Synspective in staat om ongeacht weersomstandigheden of daglichtniveau gedetailleerde beelden van het aardoppervlak te maken. Het is alweer de negende missie in de voortdurende samenwerking tussen Rocket Lab en Synspective, wat de groeiende vraag naar commerciële aardobservatie onderstreept. De Electron-raket vertrekt vanaf Rocket Labs lanceercomplex in Mahia, Nieuw-Zeeland.",
+      "description": "Rocket Lab voert met de Electron-raket de negende vlucht uit in de StriX-serie voor het Japanse bedrijf Synspective. De missie brengt een synthetische-apertuurradarsatelliet (SAR) in een lage aardbaan, waarmee Synspective zijn constellatie verder uitbreidt. SAR-technologie maakt het mogelijk om de aarde te fotograferen ongeacht weersomstandigheden of het tijdstip van de dag. De gegevens worden ingezet voor toepassingen zoals rampenmonitoring, infrastructuurbeheer en stedelijke analyse.",
       "vehicle": "Electron",
       "launchSite": "Rocket Lab Launch Complex 1B",
       "duration": "Onbekend",
@@ -1210,7 +1212,7 @@
         "aardobservatie",
         "sar"
       ],
-      "_lastClaudeUpdate": "2026-09-19T12:08:38.956Z"
+      "_lastClaudeUpdate": "2026-09-26T12:33:05.083Z"
     },
     {
       "id": "the-grain-goddess-provides-iqps-launch-7",
@@ -1255,7 +1257,7 @@
     },
     {
       "id": "flight-12",
-      "_ll2Id": "a8d8d683-3ab0-40ab-beb0-e66bb55afd91",
+      "_ll2Id": "1b11f81e-cdbf-49aa-a7ce-aa79f609046c",
       "name": "Flight 12",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
@@ -1268,11 +1270,11 @@
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "SpaceX voert de twaalfde vlucht uit met de Gravity-2-raket, ontwikkeld door het Chinese ruimtevaartbedrijf OrienSpace. Het betreft de allereerste testvlucht van dit nieuwe rakettype, dat bedoeld is om de Chinese commerciële lanceermarkt verder te versterken. De lancering staat gepland voor 31 december 2026 en moet aantonen dat de Gravity-2 operationeel inzetbaar is voor toekomstige commerciële missies. De eindbestemming van de baan is nog niet bekendgemaakt.",
-      "vehicle": "Nebula-1",
-      "launchSite": "Land Launch Pad 1",
+      "vehicle": "Prime",
+      "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1051/?format=json",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1033/?format=json",
       "timeline": [
         {
           "date": "31 mei 2026",
