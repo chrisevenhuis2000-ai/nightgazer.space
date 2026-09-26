@@ -3455,3 +3455,113 @@ a:hover .pl-emulsion > img,
   .pl-aurora__nwoord { grid-column: 1 / -1; }
   .pl-meld__rij .pl-btn { width: 100%; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ISS-overkomsten
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-iss {
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  display: grid;
+}
+.pl-iss--leeg { padding: 20px 24px; gap: 8px; }
+.pl-iss--leeg .pl-label { color: var(--pl-ink-3); }
+.pl-iss--leeg .pl-body-s { color: var(--pl-ink-2); max-width: 74ch; margin: 0; }
+
+/* Een heldere overkomst mag de plaat markeren; een zwakke niet. */
+.pl-iss[data-sterkte='3'] { box-shadow: inset 3px 0 0 var(--pl-good); }
+.pl-iss[data-sterkte='2'] { box-shadow: inset 3px 0 0 var(--pl-stamp); }
+
+.pl-iss__eerste {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 0;
+}
+.pl-iss__tekst { padding: 22px 26px; display: grid; align-content: start; gap: 11px; }
+.pl-iss__tekst > .pl-label { color: var(--pl-ink-3); }
+.pl-iss__tekst .pl-body-s { color: var(--pl-ink-2); margin: 0; max-width: 60ch; }
+.pl-iss__hoe { color: var(--pl-ink-3) !important; }
+
+.pl-iss__zin {
+  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  line-height: 1.35;
+  color: var(--pl-ink);
+  margin: 0;
+}
+.pl-iss__zin b { font-weight: 700; }
+.pl-iss__woord { font-weight: 600; }
+.pl-iss__woord[data-sterkte='3'] { color: var(--pl-good); }
+.pl-iss__woord[data-sterkte='2'] { color: var(--pl-stamp); }
+.pl-iss__knoppen { margin-top: 5px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.pl-iss__koepel {
+  margin: 0;
+  padding: 22px;
+  border-left: 1px solid var(--pl-rule);
+  display: grid; gap: 10px; align-content: start;
+}
+.pl-iss__koepel figcaption { color: var(--pl-ink-3); text-align: center; }
+
+/* ── De koepel ──────────────────────────────────────────────────────────── */
+.pl-koepel { display: block; width: 100%; height: auto; }
+.pl-koepel__rand { fill: var(--pl-ground); stroke: var(--pl-rule); stroke-width: 1; }
+.pl-koepel__ring { fill: none; stroke: var(--pl-rule-soft); stroke-width: 1; }
+.pl-koepel__as {
+  fill: var(--pl-ink-3);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.12em;
+}
+.pl-koepel__spoor { fill: none; stroke: var(--pl-stamp); stroke-width: 2; stroke-linecap: round; }
+.pl-koepel__op { fill: var(--pl-good); }
+.pl-koepel__af { fill: none; stroke: var(--pl-ink-3); stroke-width: 1.5; }
+
+/* ── De lijst ───────────────────────────────────────────────────────────── */
+.pl-iss__lijst { border-top: 1px solid var(--pl-rule); padding: 18px 26px 20px; }
+.pl-iss__lijst > .pl-label { display: block; margin-bottom: 10px; color: var(--pl-ink-3); }
+.pl-iss__lijst ol { list-style: none; margin: 0; padding: 0; }
+
+.pl-iss__rij {
+  display: grid;
+  grid-template-columns: 148px 62px 74px 48px minmax(0, 1fr) 96px auto;
+  align-items: center; gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-iss__rij:last-child { border-bottom: 0; }
+.pl-iss__wanneer { color: var(--pl-ink-2); }
+.pl-iss__tijd { font-size: 0.95rem; }
+.pl-iss__duur, .pl-iss__hoogte { color: var(--pl-ink-2); font-size: 0.82rem; }
+.pl-iss__helder { color: var(--pl-ink-3); font-size: 0.86rem; }
+.pl-iss__rij[data-sterkte='3'] .pl-iss__helder { color: var(--pl-good); }
+.pl-iss__rij[data-sterkte='2'] .pl-iss__helder { color: var(--pl-stamp); }
+.pl-iss__route { color: var(--pl-ink-3); }
+.pl-iss__agenda { min-height: 30px; padding: 0 11px; font-size: 0.72rem; }
+
+.pl-iss__bron {
+  border-top: 1px solid var(--pl-rule-soft);
+  padding: 11px 26px 13px;
+  color: var(--pl-ink-3);
+}
+
+@media (max-width: 860px) {
+  .pl-iss__eerste { grid-template-columns: minmax(0, 1fr); }
+  .pl-iss__koepel {
+    border-left: 0; border-top: 1px solid var(--pl-rule);
+    padding: 18px; justify-items: center;
+  }
+  .pl-koepel { max-width: 260px; }
+  .pl-iss__tekst { padding: 18px; }
+  .pl-iss__lijst { padding: 16px 18px 18px; }
+  .pl-iss__rij {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3px 12px;
+    padding: 13px 0;
+  }
+  .pl-iss__wanneer { grid-column: 1; }
+  .pl-iss__tijd { grid-column: 2; grid-row: 1; text-align: right; }
+  .pl-iss__duur, .pl-iss__hoogte, .pl-iss__route { display: none; }
+  .pl-iss__helder { grid-column: 1; }
+  .pl-iss__agenda { grid-column: 2; grid-row: 2; justify-self: end; }
+  .pl-iss__bron { padding: 11px 18px 13px; }
+}

@@ -213,6 +213,13 @@ export const KOMPAS = ['N', 'NO', 'O', 'ZO', 'Z', 'ZW', 'W', 'NW'] as const
 export function compass(az: number): string {
   return KOMPAS[Math.round(norm360(az) / 45) % 8]
 }
+/* Zestien punten voor een baan over de hemel: met acht punten staat er bij
+   een korte overkomst 'ZW naar ZW', wat klopt maar leest als een fout. */
+const KOMPAS16 = ['N','NNO','NO','ONO','O','OZO','ZO','ZZO','Z','ZZW','ZW','WZW','W','WNW','NW','NNW'] as const
+export function compass16(az: number): string {
+  return KOMPAS16[Math.round(norm360(az) / 22.5) % 16]
+}
+
 export const KOMPAS_VOLUIT: Record<string, string> = {
   N: 'het noorden', NO: 'het noordoosten', O: 'het oosten', ZO: 'het zuidoosten',
   Z: 'het zuiden', ZW: 'het zuidwesten', W: 'het westen', NW: 'het noordwesten',

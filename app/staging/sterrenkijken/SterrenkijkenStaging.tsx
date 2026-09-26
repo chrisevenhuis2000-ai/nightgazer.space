@@ -37,6 +37,7 @@ import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
 } from '../shared'
 
+import IssOverkomsten from './IssOverkomsten'
 import Noorderlicht from './Noorderlicht'
 import ObjectVanDeNacht from './ObjectVanDeNacht'
 import Hemelagenda from './Hemelagenda'
@@ -441,6 +442,19 @@ export default function SterrenkijkenStaging() {
               </div>
             </div>
           )}
+        </section>
+
+        {/* ══ ISS ══ */}
+        <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-iss">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-iss" className="pl-h2">Wanneer vliegt het ISS over?</h2>
+              <span className="pl-label">zichtbaar met het blote oog</span>
+            </div>
+            <p className="pl-label">{location.name}</p>
+          </div>
+
+          <IssOverkomsten lat={location.lat} lon={location.lon} plaats={location.name} />
         </section>
 
         {/* ══ Noorderlicht ══ */}
