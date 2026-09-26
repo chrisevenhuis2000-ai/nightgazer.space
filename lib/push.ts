@@ -56,12 +56,21 @@ export function registreerSw(): Promise<ServiceWorkerRegistration> {
   return registratie
 }
 
-/** De publieke VAPID-sleutel van de server, of null als push nog niet leeft. */
+/**
+ * De publieke VAPID-sleutel, maar alleen als de dienst ook werkelijk kan
+ * opslaan wat er binnenkomt.
+ *
+ * Een sleutel zonder opslag is een halve inrichting: de browser kan zich dan
+ * wel abonneren, maar de server gooit het abonnement weg met een 503. De
+ * knop zou werken en toch niets opleveren. Daarom telt `actief` mee, en niet
+ * alleen of de sleutel er staat.
+ */
 export async function serverSleutel(signal?: AbortSignal): Promise<string | null> {
   try {
     const res = await fetch(`${PROXY}/push/key`, { signal })
     if (!res.ok) return null
     const d = await res.json()
+    if (d?.actief !== true) return null
     return typeof d?.publicKey === 'string' && d.publicKey.length > 20 ? d.publicKey : null
   } catch {
     return null
