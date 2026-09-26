@@ -4,13 +4,13 @@ excerpt: ""
 category: "missies"
 author: "Redactie CosmosNL"
 publishedAt: "2026-09-26T12:01:13.854Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/09/25/spacex-falcon-9-to-launch-classified-mission-for-u-s-space-force-from-west-coast/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20240924-SPX01_0003/KSC-20240924-SPX01_0003~medium.jpg"
+imageAlt: "SpaceX Falcon 9 to launch classified mission for U.S. Space Force from West Coast"
+imageCredit: "SpaceX / KSC"
 ---
 
 Liftoff of the USSF-385 mission atop a Falcon 9 is scheduled for 7 a.m. PDT (10 a.m. EDT / 1400 UTC) at the opening of a three-hour launch window.
