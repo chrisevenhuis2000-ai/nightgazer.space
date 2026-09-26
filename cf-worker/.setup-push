@@ -1,0 +1,10 @@
+Dit bestand is een aanzetknop, geen configuratie.
+
+Een wijziging hierin laat .github/workflows/setup-push.yml draaien: die maakt
+de KV-namespace aan en zet een nieuw VAPID-sleutelpaar als secret.
+
+Raak het alleen aan als je de sleutels bewust wilt vervangen. Een nieuw paar
+maakt elk bestaand pushabonnement ongeldig — iedereen die meldingen aan heeft
+staan moet zich dan opnieuw aanmelden.
+
+Laatst aangezet: 2026-09-26
