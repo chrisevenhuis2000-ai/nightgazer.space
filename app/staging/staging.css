@@ -3308,3 +3308,150 @@ a:hover .pl-emulsion > img,
   stroke-width: 1;
   stroke-dasharray: 3 5;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Noorderlicht
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-aurora {
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  padding: 22px 26px 24px;
+  display: grid;
+  gap: 16px;
+}
+/* Rustig is één regel. Een kastje dat elke dag 'geen kans' roept leert
+   bezoekers het over te slaan, en dan missen ze de avond dat het raak is. */
+.pl-aurora--stil { padding: 14px 20px; gap: 0; }
+.pl-aurora--laden { padding: 14px 20px; }
+.pl-aurora__regel {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.pl-aurora__regel .pl-label { color: var(--pl-ink-3); }
+.pl-aurora__kp { font-size: 0.95rem; }
+.pl-aurora__kort { color: var(--pl-ink-2); font-size: 0.9rem; }
+.pl-aurora__rest { color: var(--pl-ink-3); }
+
+/* Bij alarm mag de plaat zelf oplichten — maar met een hairline, niet met
+   een kleurvlak: de wereld hier kent geen gevulde kaartjes. */
+.pl-aurora[data-toon='kans']  { box-shadow: inset 3px 0 0 var(--pl-stamp); }
+.pl-aurora[data-toon='alarm'] { box-shadow: inset 3px 0 0 var(--pl-good); border-color: color-mix(in srgb, var(--pl-good) 40%, var(--pl-rule)); }
+
+.pl-aurora__kop { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.pl-aurora__nu .pl-label { color: var(--pl-ink-3); }
+.pl-aurora__groot {
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  margin: 8px 0 6px;
+}
+.pl-aurora__groot .pl-num {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1;
+}
+.pl-aurora__oordeel { font-size: 1.05rem; font-weight: 600; color: var(--pl-ink); }
+.pl-aurora__oordeel[data-toon='grens'] { color: var(--pl-ink-2); }
+.pl-aurora__oordeel[data-toon='kans']  { color: var(--pl-stamp); }
+.pl-aurora__oordeel[data-toon='alarm'] { color: var(--pl-good); }
+.pl-aurora__kop .pl-dot { color: var(--pl-good); margin-top: 6px; }
+
+.pl-aurora__uitleg, .pl-aurora__ovaal { color: var(--pl-ink-2); margin: 0; max-width: 72ch; }
+.pl-aurora__ovaal { color: var(--pl-ink-3); }
+
+/* ── De schaal ──────────────────────────────────────────────────────────── */
+.pl-kpschaal { display: grid; gap: 7px; }
+.pl-kpschaal__spoor {
+  position: relative;
+  height: 26px;
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-kpschaal__vul {
+  position: absolute; left: 0; bottom: 0;
+  width: 100%;                 /* scaleX vult, zodat er geen layout beweegt */
+  height: 5px;
+  transform-origin: left center;
+  background: var(--pl-orbit);
+}
+.pl-kpschaal__vul[data-toon='kans']  { background: var(--pl-stamp); }
+.pl-kpschaal__vul[data-toon='alarm'] { background: var(--pl-good); }
+@media (prefers-reduced-motion: no-preference) {
+  .pl-kpschaal__vul { transition: transform 600ms var(--pl-ease); }
+}
+.pl-kpschaal__drempel { position: absolute; bottom: 0; transform: translateX(-50%); }
+.pl-kpschaal__drempel i {
+  display: block; width: 1px; height: 11px;
+  background: var(--pl-ink-3);
+  margin: 0 auto;
+}
+.pl-kpschaal__drempel b {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  font-size: 0.66rem; font-weight: 400; color: var(--pl-ink-3);
+}
+/* De huidige stand erft --pl-mark van .pl-live: een waarde die verandert. */
+.pl-kpschaal__nu {
+  position: absolute; bottom: -5px; left: 0;
+  width: 3px; height: 19px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-kpschaal__nu { transition: left 600ms var(--pl-ease); }
+}
+.pl-kpschaal__voet { display: flex; justify-content: space-between; color: var(--pl-ink-3); }
+
+/* ── Komende nachten ────────────────────────────────────────────────────── */
+.pl-aurora__nachten > .pl-label { display: block; margin-bottom: 9px; color: var(--pl-ink-3); }
+.pl-aurora__nachten ol {
+  list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-aurora__nachten li {
+  display: grid;
+  grid-template-columns: 130px 84px minmax(0, 1fr) auto;
+  align-items: baseline; gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-aurora__nachten li .pl-label { color: var(--pl-ink-2); }
+.pl-aurora__nkp { color: var(--pl-ink); }
+.pl-aurora__nwoord { color: var(--pl-ink-3); font-size: 0.88rem; }
+.pl-aurora__nachten li[data-toon='kans']  .pl-aurora__nwoord { color: var(--pl-stamp); }
+.pl-aurora__nachten li[data-toon='alarm'] .pl-aurora__nwoord { color: var(--pl-good); }
+.pl-aurora__nachten li[data-toon='alarm'] .pl-aurora__nkp    { color: var(--pl-good); }
+.pl-aurora__schat { color: var(--pl-ink-3); }
+
+/* ── Voorwaarden ────────────────────────────────────────────────────────── */
+.pl-aurora__check > .pl-label { display: block; margin-bottom: 8px; color: var(--pl-ink-3); }
+.pl-aurora__check ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.pl-aurora__check li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--pl-ink-2);
+  font-size: 0.86rem; line-height: 1.6;
+}
+.pl-aurora__check li::before {
+  content: ''; position: absolute; left: 0; top: 0.52em;
+  width: 9px; height: 1px; background: var(--pl-ink-3);
+}
+.pl-aurora__check li[data-ok='1']::before { background: var(--pl-good); height: 2px; }
+.pl-aurora__check li[data-ok='0']::before { background: var(--pl-warn); height: 2px; }
+
+/* ── Melding ────────────────────────────────────────────────────────────── */
+.pl-meld { border-top: 1px solid var(--pl-rule); padding-top: 15px; display: grid; gap: 11px; }
+.pl-meld__kop { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pl-meld__kop .pl-label { color: var(--pl-ink-3); }
+.pl-meld__aan {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--pl-good);
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.pl-meld__rij { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pl-meld__rij .pl-label { color: var(--pl-ink-3); }
+.pl-seg--smal button { min-height: 36px; padding: 0 15px; }
+.pl-meld__uitleg { color: var(--pl-ink-3); max-width: 76ch; margin: 0; }
+.pl-meld__uitleg a { color: var(--pl-act); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .pl-aurora { padding: 18px 18px 20px; }
+  .pl-aurora__nachten li { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; }
+  .pl-aurora__nwoord { grid-column: 1 / -1; }
+  .pl-meld__rij .pl-btn { width: 100%; }
+}

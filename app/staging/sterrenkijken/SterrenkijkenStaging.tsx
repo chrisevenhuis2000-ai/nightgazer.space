@@ -37,8 +37,10 @@ import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
 } from '../shared'
 
+import Noorderlicht from './Noorderlicht'
 import ObjectVanDeNacht from './ObjectVanDeNacht'
 import Hemelagenda from './Hemelagenda'
+import { haalKp, laatstGemeten } from '@/lib/aurora'
 
 const DarkSkyMap = dynamic(() => import('../../sterrenkijken/DarkSkyMap'), {
   ssr: false,
@@ -259,14 +261,17 @@ export default function SterrenkijkenStaging() {
     return () => { alive = false }
   }, [location])
 
-  /* Ruimteweer: Kp bepaalt of poollicht überhaupt kan */
+  /* Ruimteweer: Kp bepaalt of poollicht überhaupt kan.
+     Rechtstreeks bij NOAA in plaats van via de eigen proxy — die geeft sinds
+     NOAA's formaatwijziging null terug voor alles, waardoor deze kolom leeg
+     bleef. NOAA staat CORS toe, dus de tussenstap voegde niets toe. */
   useEffect(() => {
+    const ac = new AbortController()
     let alive = true
-    fetch(`${PROXY}/space-weather`)
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(d => { if (alive && typeof d?.kp === 'number') setKp(d.kp) })
+    haalKp(ac.signal)
+      .then(e => { const n = laatstGemeten(e); if (alive && n) setKp(n.kp) })
       .catch(() => { /* Kp-kolom blijft leeg in plaats van te liegen */ })
-    return () => { alive = false }
+    return () => { alive = false; ac.abort() }
   }, [])
 
   const tonightScore = useMemo(() => tonight ? calcScore(tonight) : null, [tonight])
@@ -436,6 +441,23 @@ export default function SterrenkijkenStaging() {
               </div>
             </div>
           )}
+        </section>
+
+        {/* ══ Noorderlicht ══ */}
+        <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-aurora">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-aurora" className="pl-h2">Kans op noorderlicht</h2>
+              <span className="pl-label">Kp-index · NOAA</span>
+            </div>
+            <p className="pl-label">oordeel voor Noord-Nederland</p>
+          </div>
+
+          <Noorderlicht
+            lat={location.lat}
+            lon={location.lon}
+            bewolking={tonight ? Math.round(tonight.cloud_cover) : null}
+          />
         </section>
 
         {/* ══ Waar ══ */}
