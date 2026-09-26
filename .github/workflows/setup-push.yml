@@ -15,8 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 🔍 Wat mag dit token eigenlijk?
+        working-directory: cf-worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx --yes wrangler@4 whoami 2>&1 | tail -30
+
       - name: 🗄️ KV-namespace aanmaken of hergebruiken
         id: kv
+        continue-on-error: true
         working-directory: cf-worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -44,6 +51,8 @@ jobs:
           echo "::notice title=KV-namespace::SUBS = $ID"
 
       - name: 🔑 VAPID-sleutels maken en als secret zetten
+        id: vapid
+        continue-on-error: true
         working-directory: cf-worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -60,10 +69,14 @@ jobs:
           rm -f paar.txt
           echo 'Beide secrets gezet.'
 
-      - name: 📋 Wat er nu nog moet gebeuren
+      - name: 📋 Uitkomst
         run: |
-          echo "Zet dit in cf-worker/wrangler.toml en push:"
-          echo ""
-          echo "[[kv_namespaces]]"
-          echo 'binding = "SUBS"'
-          echo 'id = "${{ steps.kv.outputs.KV_ID }}"'
+          echo "KV-namespace : ${{ steps.kv.outcome }}  ${{ steps.kv.outputs.KV_ID }}"
+          echo "VAPID-secrets: ${{ steps.vapid.outcome }}"
+          if [ "${{ steps.kv.outcome }}" = "success" ]; then
+            echo ""
+            echo "Zet dit in cf-worker/wrangler.toml en push:"
+            echo "[[kv_namespaces]]"
+            echo 'binding = "SUBS"'
+            echo 'id = "${{ steps.kv.outputs.KV_ID }}"'
+          fi
