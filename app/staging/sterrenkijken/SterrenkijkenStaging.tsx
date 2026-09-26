@@ -38,6 +38,7 @@ import {
 } from '../shared'
 
 import IssOverkomsten from './IssOverkomsten'
+import Meldingen from './Meldingen'
 import Noorderlicht from './Noorderlicht'
 import ObjectVanDeNacht from './ObjectVanDeNacht'
 import Hemelagenda from './Hemelagenda'
@@ -472,6 +473,19 @@ export default function SterrenkijkenStaging() {
             lon={location.lon}
             bewolking={tonight ? Math.round(tonight.cloud_cover) : null}
           />
+        </section>
+
+        {/* ══ Meldingen ══ */}
+        <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-meld">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-meld" className="pl-h2">Laat het me weten</h2>
+              <span className="pl-label">meldingen op je telefoon</span>
+            </div>
+            <p className="pl-label">{location.name}</p>
+          </div>
+
+          <Meldingen lat={location.lat} lon={location.lon} plaats={location.name} />
         </section>
 
         {/* ══ Waar ══ */}

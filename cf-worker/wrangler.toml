@@ -7,3 +7,28 @@ account_id = "81e3376cdf10af6f23d939f91c4d920c"
 # Uncomment when DNS is configured:
 # [env.production]
 # routes = [{ pattern = "api.nightgazer.space", custom_domain = true }]
+
+# ── Pushmeldingen ─────────────────────────────────────────────────────────
+# De cron draait ook zonder de KV hieronder: de handler stopt dan meteen.
+# Zo blijft `wrangler deploy` werken tot de rest is ingericht.
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Zet de meldingen aan in drie stappen:
+#
+#   1. Maak de opslag aan en plak de id hieronder:
+#        npx wrangler kv namespace create SUBS --config cf-worker/wrangler.toml
+#
+#   2. Haal de blokhaken hieronder weg en vul de id in.
+#
+#   3. Maak een sleutelpaar en zet beide als secret:
+#        node cf-worker/generate-vapid.mjs
+#        npx wrangler secret put VAPID_PUBLIC_KEY  --config cf-worker/wrangler.toml
+#        npx wrangler secret put VAPID_PRIVATE_KEY --config cf-worker/wrangler.toml
+#
+# Tot dat gebeurd is antwoordt /push/key netjes dat push nog niet leeft, en
+# toont de site een eerlijke melding in plaats van een knop die niets doet.
+#
+# [[kv_namespaces]]
+# binding = "SUBS"
+# id = "PLAK_HIER_DE_ID"

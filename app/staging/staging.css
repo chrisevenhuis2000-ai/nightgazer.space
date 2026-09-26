@@ -3565,3 +3565,78 @@ a:hover .pl-emulsion > img,
   .pl-iss__agenda { grid-column: 2; grid-row: 2; justify-self: end; }
   .pl-iss__bron { padding: 11px 18px 13px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Meldingen
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-meldk {
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  padding: 22px 26px 20px;
+  display: grid;
+  gap: 16px;
+}
+.pl-meldk[data-staat='aan'] { box-shadow: inset 3px 0 0 var(--pl-good); }
+
+.pl-meldk__kop { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.pl-meldk__kop .pl-label { color: var(--pl-ink-3); }
+.pl-meldk__zin { margin: 7px 0 0; color: var(--pl-ink); font-size: 1.02rem; max-width: 56ch; }
+.pl-meldk__aan {
+  display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+  color: var(--pl-good);
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+}
+
+.pl-meldk__lijst {
+  list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-meldk__lijst > li { border-bottom: 1px solid var(--pl-rule-soft); }
+
+.pl-meldk__sein {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 14px; align-items: start;
+  width: 100%;
+  padding: 13px 0;
+  background: none; border: 0;
+  font: inherit; text-align: left;
+  cursor: pointer;
+  transition: opacity 180ms var(--pl-ease);
+}
+.pl-meldk__sein:disabled { cursor: default; opacity: 0.5; }
+.pl-meldk__vink {
+  display: grid; place-items: center;
+  width: 19px; height: 19px; margin-top: 1px;
+  border: 1px solid var(--pl-rule);
+  color: var(--pl-ground);
+  transition: background 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl-meldk__sein[aria-pressed='true'] .pl-meldk__vink {
+  background: var(--pl-act);
+  border-color: var(--pl-act);
+}
+.pl-meldk__sein:not(:disabled):hover .pl-meldk__vink { border-color: var(--pl-act); }
+.pl-meldk__sein:focus-visible { outline: 1px solid var(--pl-act); outline-offset: 2px; }
+
+.pl-meldk__naam { display: block; color: var(--pl-ink); font-size: 0.95rem; margin-bottom: 3px; }
+.pl-meldk__sein .pl-body-s { color: var(--pl-ink-3); margin: 0; }
+
+.pl-meldk__drempel {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 0 13px 36px;
+}
+.pl-meldk__drempel .pl-label { color: var(--pl-ink-3); }
+
+.pl-meldk__uitleg { color: var(--pl-ink-2); margin: 0; max-width: 70ch; }
+.pl-meldk__fout { color: var(--pl-warn); margin: 0; }
+
+.pl-meldk__voet { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.pl-meldk__plaats { color: var(--pl-ink-3); }
+
+@media (max-width: 700px) {
+  .pl-meldk { padding: 18px; }
+  .pl-meldk__drempel { padding-left: 0; }
+  .pl-meldk__voet .pl-btn { width: 100%; }
+}
