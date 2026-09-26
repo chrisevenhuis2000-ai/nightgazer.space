@@ -623,8 +623,15 @@ export default {
        afgeronde coördinaat gedeeld. */
     let kp = null, launches = []
     try { kp = await huidigeKp() } catch { /* geen Kp: dat sein slaat over */ }
-    if (uurUtc >= 6 && uurUtc < 9) {
-      try { launches = await lanceringenVandaag() } catch { /* idem */ }
+
+    /* Launch Library knijpt een gedeeld Cloudflare-IP af rond vijftien
+       aanvragen per uur, en /launches deelt datzelfde budget met de
+       missiepagina. Elk kwartier vragen zou die pagina uithongeren voor een
+       melding die maar één keer per dag hoeft. Dus: alleen de eerste tik van
+       zeven uur, met acht uur als herkansing als het dan misging. */
+    const minUtc = new Date(nu).getUTCMinutes()
+    if ((uurUtc === 7 || uurUtc === 8) && minUtc < 15) {
+      try { launches = await lanceringenVandaag() } catch { /* geen lijst: sein slaat over */ }
     }
     const weerCache = new Map()
 
