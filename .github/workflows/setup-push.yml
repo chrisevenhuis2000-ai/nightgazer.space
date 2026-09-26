@@ -19,7 +19,15 @@ jobs:
         working-directory: cf-worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: npx --yes wrangler@4 whoami 2>&1 | tail -30
+        run: |
+          npx --yes wrangler@4 whoami 2>&1 | tail -30
+          # Welk van de twee tokens in het dashboard is dit? De id hieronder
+          # staat in de URL als je dat token daar aanklikt.
+          code=$(curl -s -o /tmp/tok.json -w "%{http_code}" \
+            https://api.cloudflare.com/client/v4/user/tokens/verify \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN")
+          id=$(node -e "const fs=require('fs');let r='onbekend';try{r=JSON.parse(fs.readFileSync('/tmp/tok.json','utf8')).result.id}catch(e){};console.log(r)")
+          echo "::notice title=Token in gebruik::id=$id (http $code)"
 
       - name: 🗄️ KV-namespace aanmaken of hergebruiken
         id: kv
