@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-09-26T12:33:05.097Z",
+    "lastUpdated": "2026-09-27T13:23:30.651Z",
     "autoUpdated": [
-      "strix-launch-9"
+      "ussf-xxx-r-3"
     ]
   },
   "missions": [
@@ -4059,16 +4059,16 @@
       "name": "USSF-xxx (\"R-3\")",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "26 sep 2026",
       "launchPrecision": "Minute",
-      "objective": "Geheime lancering van mogelijk Starshield-satellieten voor de Amerikaanse Space Force in een lage aardbaan.",
+      "objective": "Geheime USSF-missie vermoedelijk met batch Starshield-satellieten in lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Geclassificeerde USSF-missie gepland voor september 2026.",
+      "highlight": "Lancering gepland op 26 september 2026; lading geclassificeerd.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met de Falcon 9 een geclassificeerde missie uit voor de United States Space Force onder de codenaam 'R-3'. Hoewel officiële details ontbreken, wijzen de locaties van de neervaldropping zones van de rakettrappen sterk op een batch LEO-satellieten gebaseerd op het Starshield-satelietplatform. Starshield is SpaceX's militaire variant van het Starlink-systeem, speciaal ontwikkeld voor veilige overheidstoepassingen en defensiedoeleinden. De lancering is gepland voor 26 september 2026 vanuit een niet nader gespecificeerde locatie.",
+      "description": "SpaceX voert met een Falcon 9-raket een geheime missie uit voor de United States Space Force. De exacte aard van de lading is geclassificeerd, maar de gekozen dropzones voor de eerste trap sluiten nauwkeurig aan bij eerdere Starlink Group 15-lanceringen. Dit doet vermoeden dat het gaat om een batch satellieten op basis van het Starshield-busplatform, een militaire variant van Starlinks technologie. De missie draagt de interne aanduiding 'R-3' en wordt gelanceerd vanuit een nog nader te bevestigen locatie.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4091,9 +4091,10 @@
         "falcon 9",
         "united states space force",
         "starshield",
-        "leo"
+        "leo",
+        "ussf"
       ],
-      "_lastClaudeUpdate": "2026-09-17T12:51:58.317Z"
+      "_lastClaudeUpdate": "2026-09-27T13:23:30.638Z"
     }
   ]
 }
