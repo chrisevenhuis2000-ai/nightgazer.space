@@ -1,7 +1,11 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-01T14:54:45.059Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-10-02T14:17:21.588Z",
+    "autoUpdated": [
+      "crew-13",
+      "transporter-17-dedicated-sso-rideshare",
+      "nrol-95"
+    ]
   },
   "missions": [
     {
@@ -1512,15 +1516,15 @@
       "name": "Transporter 17 (Dedicated SSO Rideshare)",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "1 okt 2026",
-      "objective": "SpaceX brengt tientallen microsatellieten en nanosatellieten naar een zonsynchrone baan.",
+      "objective": "SpaceX brengt tientallen micro- en nanosatellieten naar een zonssynchrone baan via een gedeelde vlucht.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Gepland voor lancering op 31 oktober 2026 vanaf SpaceX-lanceerplatform.",
+      "highlight": "Lancering gepland voor 1 oktober 2026 om 18:18 UTC",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Transporter 17-missie voert SpaceX opnieuw een toegewijde rideshare-vlucht uit naar een zonsynchrone baan. Aan boord bevinden zich tientallen kleine micro- en nanosatellieten voor zowel commerciële als overheidsklanten. De Falcon 9-raket is speciaal geconfigureerd voor deze poolbaanvlucht, waarbij meerdere satellieten tegelijk worden uitgestoten. De missie maakt deel uit van SpaceX' groeiende Transporter-programma, dat betaalbare toegang tot de ruimte biedt voor kleine payloads.",
+      "description": "SpaceX voert met de Falcon 9 de zeventiende editie uit van zijn populaire Transporter-ridesharedienst, gericht op een zonssynchrone baan. Aan boord bevinden zich tientallen kleine micro- en nanosatellieten van zowel commerciële als overheidsklanten wereldwijd. Het Transporter-programma biedt kleinere spelers een kostenefficiënte toegang tot de ruimte door opstartkosten te delen. De lancering is gepland voor 1 oktober 2026 vanaf het SpaceX-lanceercomplex.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -1549,7 +1553,7 @@
         "nanosatelliet",
         "zonsynchrone baan"
       ],
-      "_lastClaudeUpdate": "2026-09-06T11:48:54.988Z"
+      "_lastClaudeUpdate": "2026-10-02T14:17:13.461Z"
     },
     {
       "id": "mrv-1",
@@ -2837,15 +2841,15 @@
       "name": "Crew-13",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "1 okt 2026",
       "objective": "Crew Dragon transporteert astronauten naar het ISS als onderdeel van NASA's Commercial Crew Program.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering op 1 oktober 2026 vanaf de Amerikaanse oostkust.",
+      "highlight": "Gepland voor lancering op 1 oktober 2026 om 15:10 UTC.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX Crew-13 is de dertiende operationele bemande vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie maakt deel uit van het NASA Commercial Crew Program, waarmee de Amerikaanse ruimtevaartorganisatie afhankelijkheid van buitenlandse lanceermiddelen verder terugdringt. Een Falcon 9-raket zal de capsule op 1 oktober 2026 vanuit Florida naar een lage aardbaan schieten. Met deze vlucht bouwt SpaceX verder aan zijn indrukwekkende reeks succesvolle bemande ruimtemissies.",
+      "description": "SpaceX Crew-13 is de dertiende operationele bemande vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie wordt uitgevoerd in samenwerking met NASA als onderdeel van het Commercial Crew Program, dat commerciële partners inzet voor routinematig astronauentransport. De Falcon 9-raket brengt de capsule vanuit het Kennedy Space Center in een lage aardbaan, waarna aanmering met het ISS plaatsvindt. Crew-13 onderstreept de volwassenheid van de samenwerking tussen NASA en SpaceX voor duurzame bemanningsrotaties.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -2872,7 +2876,7 @@
         "falcon 9",
         "commercial crew"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:13:15.658Z"
+      "_lastClaudeUpdate": "2026-10-02T14:17:06.279Z"
     },
     {
       "id": "nrol-172",
@@ -3697,15 +3701,15 @@
       "name": "NROL-95",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "launched": "2 okt 2026",
-      "objective": "Lancering van een geheime verkenningssatelliet voor het US National Reconnaissance Office.",
+      "objective": "SpaceX lanceert een geheime verkenningssatelliet voor de Amerikaanse inlichtingendienst NRO.",
       "body": "Unknown",
-      "highlight": "Lanceerdatum gepland op 31 oktober 2026, details geheim.",
+      "highlight": "Gelanceerd op 2 oktober 2026 met geheime NRO-lading aan boord.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Op 31 oktober 2026 zal SpaceX een geheime payload van het US National Reconnaissance Office (NRO) in een onbekende baan brengen met behulp van de Falcon Heavy. De exacte aard en het doel van de satelliet blijven vertrouwelijk, zoals gebruikelijk is bij NRO-missies. De Falcon Heavy, een van de krachtigste operationele raketten ter wereld, is bij uitstek geschikt voor het transporteren van zware en gevoelige overheids­ladingen. Het is opnieuw een voorbeeld van de nauwe samenwerking tussen SpaceX en de Amerikaanse inlichtingengemeenschap.",
+      "description": "Op 2 oktober 2026 lanceerde SpaceX een Falcon Heavy-raket met aan boord een geheime lading voor het National Reconnaissance Office (NRO), de Amerikaanse dienst die verantwoordelijk is voor spionagesatellieten. De exacte aard van de payload en de doelbaan zijn niet openbaar gemaakt, wat gebruikelijk is bij NRO-missies. De Falcon Heavy, een van de krachtigste operationele raketten ter wereld, wordt ingezet voor zwaargewicht of veeleisende trajecten die extra stuwkracht vereisen. De samenwerking tussen SpaceX en het NRO weerspiegelt het groeiende vertrouwen van de Amerikaanse overheid in commerciële ruimtevaartbedrijven voor nationale veiligheidsmissies.",
       "vehicle": "Falcon Heavy",
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
@@ -3730,9 +3734,10 @@
         "defensie",
         "inlichtingen",
         "falcon heavy",
-        "verkenningssatelliet"
+        "verkenningssatelliet",
+        "geheime missie"
       ],
-      "_lastClaudeUpdate": "2026-09-09T12:33:26.583Z"
+      "_lastClaudeUpdate": "2026-10-02T14:17:21.577Z"
     },
     {
       "id": "the-lightning-god-defends-iqps-launch-8",
