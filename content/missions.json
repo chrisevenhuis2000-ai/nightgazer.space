@@ -1,11 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-02T14:17:21.588Z",
-    "autoUpdated": [
-      "crew-13",
-      "transporter-17-dedicated-sso-rideshare",
-      "nrol-95"
-    ]
+    "lastUpdated": "2026-10-03T12:51:18.485Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -3199,13 +3195,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor de breedbandig internetconstellatie van Telesat.",
+      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor het breedbandnetwerk van Telesat in een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Geplande lancering eind 2026; satellieten vervaardigd door MDA.",
+      "highlight": "Geplande lancering eind december 2026 met maximaal 18 MDA-satellieten.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX brengt met een Falcon 9-raket tot achttien satellieten de ruimte in voor de Lightspeed-constellatie van het Canadese telecombedrijf Telesat. De satellieten worden gebouwd door het Canadese ruimtevaartbedrijf MDA en vormen een onderdeel van Telesats ambitieuze Low Earth Orbit-netwerk dat wereldwijd snelle internetverbindingen moet bieden. De Lightspeed-constellatie is ontworpen om zowel bedrijven als overheden te voorzien van betrouwbare en lage-latentie breedbandverbindingen. Met deze lancering zet Telesat een cruciale stap in de uitrol van zijn concurrerende LEO-netwerk.",
+      "description": "SpaceX voert met een Falcon 9-raket de eerste lancering uit voor Telesat's Lightspeed-constellatie, een ambitieus project dat snelle breedbandinternetdiensten moet bieden via een netwerk van honderden satellieten in een lage aardbaan. De tot 18 satellieten aan boord zijn gebouwd door het Canadese bedrijf MDA Space in opdracht van de Canadese satellietoperator Telesat. Lightspeed richt zich voornamelijk op zakelijke klanten, overheden en aanbieders in afgelegen gebieden die behoefte hebben aan betrouwbare, snelle connectiviteit. De missie markeert een cruciale stap in de uitrol van de volgende generatie Telesat-infrastructuur.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3232,9 +3228,11 @@
         "spacex",
         "falcon 9",
         "leo",
-        "leo-internet"
+        "leo-internet",
+        "mda space",
+        "leo-constellatie"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:20:48.994Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:17.301Z"
     },
     {
       "id": "galileo-l15-foc-fm28-fm31",
@@ -3244,13 +3242,13 @@
       "agencyColor": "#ffa040",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van twee Galileo-navigatiesatellieten naar een Medium Earth Orbit met de Ariane 62.",
+      "objective": "Twee Galileo-satellieten (FOC FM28 & FM31) in een middelbare aardbaan brengen voor Europese navigatie.",
       "body": "Medium Earth Orbit",
-      "highlight": "Geplande lancering in 2026 met Ariane 62",
+      "highlight": "Gepland voor 31 december 2026 aan boord van Ariane 62.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Arianespace lanceert met de Ariane 62 de vijftiende Galileo-vlucht, met aan boord de twee Full Operational Capability-satellieten FM28 en FM31. Deze missie versterkt het Europese navigatiesysteem Galileo, dat concurreert met het Amerikaanse GPS en het Russische GLONASS. De satellieten worden in een Medium Earth Orbit gebracht op een hoogte van circa 23.222 kilometer. Met deze lancering groeit de Galileo-constellatie verder richting volledige operationele capaciteit.",
+      "description": "Met de Galileo L15-missie plaatst Arianespace twee nieuwe Full Operational Capability-satellieten in een middelbare aardbaan, waarmee Europa's eigen navigatiesysteem Galileo verder wordt uitgebreid. De lancering markeert opnieuw een primeur voor de Ariane 6-raket, die een sleutelrol speelt in Europese ruimtevaartonafhankelijkheid. Galileo biedt burgers en bedrijven nauwkeurigere positionering dan GPS en versterkt de strategische autonomie van de Europese Unie. De missie is gepland voor eind 2026 en wordt uitgevoerd vanuit het ruimtehavencomplex in Kourou, Frans-Guyana.",
       "vehicle": "Ariane 62",
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
@@ -3274,9 +3272,11 @@
         "navigatiesatellieten",
         "medium earth orbit",
         "arianespace",
-        "ariane 6"
+        "ariane 6",
+        "navigatiesatelliet",
+        "meo"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:20:57.384Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:25.408Z"
     },
     {
       "id": "chorus",
@@ -3286,13 +3286,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "MDA's CHORUS-constellation met C- en X-band radarsatellieten biedt dagelijkse aardobservatie in nagenoeg alle weersomstandigheden.",
+      "objective": "Lancering van MDA's CHORUS-constellatie met twee radarsatellieten voor aardobservatie vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Geplande lancering eind 2026 via SpaceX Falcon 9 naar LEO.",
+      "highlight": "Geplande lancering eind 2026 met Falcon 9 naar een 600 km LEO-baan.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "CHORUS is de volgende generatie aardobservatie-constellatie van het Canadese MDA Space, bestaande uit twee radarsatellieten die op 600 kilometer hoogte in een baan van 53,5 graden rondom de aarde vliegen. De C-band- en X-band SAR-satellieten werken samen als een multisensorisch systeem, waarbij de X-band de C-band met zestig minuten volgt voor maximale dekking en flexibiliteit. Met een beeldvlak van maar liefst 700 kilometer breed en een resolutie tot onder de meter biedt CHORUS ongeëvenaarde radarcapaciteit, dag en nacht en ongeacht de weersomstandigheden. De constellatie bereikt dagelijks tot 95 procent van het beoogde dekking gebied en voorziet in nabij-realtime inzichten voor diverse toepassingen.",
+      "description": "CHORUS is de volgende generatie aardobservatiemissie van het Canadese bedrijf MDA, bestaande uit twee radarsatellieten — één met C-band SAR en één met X-band SAR — in een baan op 600 kilometer hoogte met een inclinatie van 53,5 graden. De X-band satelliet volgt de C-band op 60 minuten afstand, waardoor een unieke multi-sensor synergiewerking ontstaat. De constellatie biedt dagelijkse dekking van tot 95% van het oppervlak, ongeacht weersomstandigheden of dag-nachtcyclus, met een beeldstrook van maar liefst 700 kilometer breed én sub-meter resolutie. CHORUS wil de meest uitgebreide commerciële radarobservatiecapaciteit op de markt bieden in één enkele missie.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3322,7 +3322,7 @@
         "sar",
         "radarconstellatie"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:21:12.604Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:33.311Z"
     },
     {
       "id": "inmarsat-7-f1-gx-7",
@@ -3332,13 +3332,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van de Inmarsat GX-7-satelliet voor high-throughput breedbandverbindingen via Ka-band.",
+      "objective": "Lancering van de Inmarsat GX-7 sateliet voor wereldwijde Ka-band breedbanddiensten voor mobiele gebruikers.",
       "body": "Geostationaire baan",
-      "highlight": "Gepland voor lancering eind 2026 aan boord van een Falcon 9-raket.",
+      "highlight": "Geplande lancering eind 2026 als onderdeel van een driedelige satellietreeks.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Inmarsat-7 F1, ook bekend als GX-7, is de eerste van drie nieuwe generatiesatellieten voor de Londense mobiele satellietcommunicatie-operator Inmarsat. De satelliet maakt gebruik van het volledig herconfigureerbare OneSat-platform van Airbus en biedt duizenden dynamisch gevormde bundels die capaciteit met lasernauwkeurigheid over drukke gebieden richten. GX-7 is onderdeel van het Global Xpress-netwerk en levert high-throughput breedbandconnectiviteit voor de mobiliteitssector, waaronder luchtvaart en maritiem transport. Dankzij aan boord aanwezige verwerking en actieve antennes kan de satelliet zijn dekking, capaciteit en frequentie in real-time aanpassen.",
+      "description": "Inmarsat-7 GX-7 is de eerste van drie geavanceerde communicatiesatellieten die Inmarsat's Global Xpress-netwerk aanzienlijk zal versterken. De satelliet is gebouwd op het OneSat-platform van Airbus en beschikt over een volledig herconfigureerbare Ka-band payload met duizenden dynamisch gevormde bundels. Daarmee kan capaciteit met uiterste precisie worden gericht op gebieden met hoge vraag, ideaal voor maritieme, luchtvaart- en andere mobiliteitstoepassingen. SpaceX verzorgt de lancering met een Falcon 9-raket naar een geostationaire baan.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3364,9 +3364,10 @@
         "hts",
         "communicatiesatelliet",
         "geostationaire baan",
-        "airbus onesat"
+        "airbus onesat",
+        "spacex falcon 9"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:21:21.310Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:41.152Z"
     },
     {
       "id": "nova-c-im-3",
@@ -3453,13 +3454,13 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Zes HawkEye 360-satellieten lanceren voor wereldwijde radiofrequentie-monitoring vanuit LEO.",
+      "objective": "Lancering van 6 HawkEye 360-satellieten voor wereldwijde radiofrequentiekartering vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering op 30 september 2026 met Electron-raket.",
+      "highlight": "Geplande lancering eind 2026 via Rocket Lab Electron.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab lanceert zes nieuwe satellieten voor HawkEye 360, een commercieel bedrijf dat een ruimtegebaseerd inlichtingennetwerk opbouwt op basis van radiofrequentietechnologie. De kleine Hawk-satellieten verzamelen wereldwijd data over radiosignalen om lucht-, land- en zeetransport nauwkeurig in kaart te brengen. Daarnaast ondersteunt het netwerk noodhulpdiensten en civiele SIGINT-toepassingen. De constellatie opereert vanuit een lage aardbaan en biedt klanten hoogprecieze RF-analyses en -kartografie.",
+      "description": "Rocket Lab zet met een Electron-raket zes nieuwe satellieten van HawkEye 360 in een lage aardbaan. Het Hawk-cluster breidt een commercieel signalintelligentienetwerk uit dat radiofrequenties wereldwijd in kaart brengt. De data helpt overheden en bedrijven bij het monitoren van lucht-, land- en zeetransport, evenals bij noodsituaties. HawkEye 360 positioneert zich als toonaangevende leverancier van civiele SIGINT-data vanuit de ruimte.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3485,7 +3486,7 @@
         "leo",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:20:22.571Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:48.363Z"
     },
     {
       "id": "blacksky-gen-3-5",
@@ -3538,13 +3539,13 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van BlackSky Gen-3 aardobservatieSatellieten in een lage baan om de Aarde.",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Geplande lancering: 30 september 2026 met Electron-raket.",
+      "highlight": "Gepland voor eind 2026 als onderdeel van lopende BlackSky-constellatieopbouw.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab lanceert met zijn Electron-raket een nieuwe generatie aardobservatiesatellieten voor BlackSky, een commercieel bedrijf gespecialiseerd in hoge-resolutie beeldvorming vanuit de ruimte. De Gen-3-satellieten vertegenwoordigen de nieuwste technologische generatie binnen BlackSky's groeiende constellatie en zijn ontworpen voor snellere en scherpere opnames van het aardoppervlak. De missie wordt uitgevoerd vanuit Rocket Labs lanceerplatform en voegt opnieuw capaciteit toe aan BlackSky's netwerk dat overheden en commerciële klanten bedient. De geplande lancering staat gepland voor eind september 2026.",
+      "description": "Rocket Lab zet met de Electron-raket een nieuwe generatie BlackSky Gen-3 aardobservatiesatellieten in een lage baan om de aarde. De Gen-3-satellieten vertegenwoordigen de nieuwste lichting in BlackSky's commerciële beeldvormingsconstellatie en bieden verbeterde resolutie en revisitfrequentie ten opzichte van hun voorgangers. BlackSky levert realtime geospatiale inlichtingen aan overheids- en commerciële klanten wereldwijd. De missie onderstreept opnieuw de rol van Rocket Lab als een van de meest actieve kleine lanceerders voor commerciële aardobservatiebedrijven.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3569,7 +3570,7 @@
         "aardobservatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:20:39.613Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:55.772Z"
     },
     {
       "id": "blacksky-gen-3-7",
@@ -3579,13 +3580,13 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van BlackSky Gen-3 aardobservatiepaar satelliet nr. 7 naar lage aardbaan.",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor Q4 2026, onderdeel van doorlopende BlackSky-constellatieopbouw.",
+      "highlight": "Gepland voor lancering op 31 december 2026 vanuit Nieuw-Zeeland.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab voert met zijn Electron-raket de lancering uit van de zevende BlackSky Gen-3 aardobservatiesatelliet. BlackSky exploiteert een commercieel beeldvormingsnetwerk dat realtime satellietdata levert aan overheids- en commerciële klanten wereldwijd. De Gen-3-generatie biedt verbeterde beeldresolutie en een hogere revisitefrequentie ten opzichte van voorgaande modellen. De missie versterkt het groeiende constellatienetwerk van BlackSky in de lage aardbaan.",
+      "description": "Rocket Lab plant de lancering van een nieuwe BlackSky Gen-3 aardobservatiebsatelliet met de Electron-raket. De missie voegt capaciteit toe aan het commerciële beeldvormingsnetwerk van BlackSky, dat hoogfrequente en scherpe satellietbeelden levert aan overheids- en commerciële klanten wereldwijd. De Gen-3-generatie satellieten vertegenwoordigt een significante stap vooruit in beeldresolutie en herbezoektijd ten opzichte van voorgaande generaties. Rocket Lab heeft eerder meerdere BlackSky-satellieten succesvol in een baan gebracht en bestendigt zo de samenwerking tussen beide bedrijven.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3610,7 +3611,7 @@
         "aardobservatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:21:29.887Z"
+      "_lastClaudeUpdate": "2026-10-03T12:51:03.506Z"
     },
     {
       "id": "blacksky-gen-3-8",
@@ -3622,11 +3623,11 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Geplande lancering eind december 2026 vanaf Rocket Labs lanceercomplex.",
+      "highlight": "Gepland voor lancering eind 2026 vanuit Rocket Lab's lanceerbasis.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab zal met zijn Electron-raket een nieuwe generatie BlackSky Gen-3 aardobservatiesatellieten in een lage aardbaan brengen. De Gen-3-satellieten zijn de nieuwste toevoeging aan het commerciële beeldvormingsnetwerk van BlackSky, dat realtime beelden van de aarde levert aan overheids- en commerciële klanten wereldwijd. Electron, het kleine maar betrouwbare lanceervoertuig van Rocket Lab, heeft zich de afgelopen jaren bewezen als een veelgevraagd platform voor dit type missies. De lancering staat gepland voor eind december 2026 en markeert opnieuw de samenwerking tussen BlackSky en Rocket Lab.",
+      "description": "Rocket Lab bereidt de lancering voor van de achtste BlackSky Gen-3-missie met de Electron-raket. De Gen-3-satellieten zijn geavanceerde aardobservatiepaltforms die hoogresolutiebeelden van het aardoppervlak kunnen maken voor commerciële en overheidsklanten. BlackSky exploiteert een groeiend constellatie van satellieten die vrijwel real-time beeldvorming en geo-analyticsdiensten aanbieden. De Electron-raket van Rocket Lab heeft zich bewezen als een betrouwbare lanceerder voor kleine satellieten in commerciële constellaties.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3651,7 +3652,7 @@
         "aardobservatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:21:37.867Z"
+      "_lastClaudeUpdate": "2026-10-03T12:51:11.062Z"
     },
     {
       "id": "blacksky-gen-3-9",
@@ -3661,13 +3662,13 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage baan om de aarde.",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor eind 2026; onderdeel van BlackSky's Gen-3 constellation-uitbreiding.",
+      "highlight": "Gepland voor 31 december 2026 als onderdeel van BlackSky's uitbreidingsplan.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab voert met zijn Electron-raket de BlackSky Gen-3 9-missie uit, waarbij een nieuwe generatie aardobservatiesatellieten van BlackSky in een lage baan om de aarde worden gebracht. De Gen-3-satellieten zijn ontworpen voor hoogwaardige beeldvorming van de aarde en versterken het groeiende commerciële observatienetwerk van BlackSky. Met deze lancering breidt BlackSky zijn constellation verder uit, wat zorgt voor hogere beeldfrequentie en verbeterde dekking van kritieke gebieden wereldwijd. Electron blijft een betrouwbare keuze voor het lanceren van kleine commerciële satellieten naar specifieke banen.",
+      "description": "Rocket Lab zal met zijn Electron-raket een nieuwe BlackSky Gen-3 aardobservatiesatelliet in een lage aardbaan brengen. De Gen-3-generatie van BlackSky vertegenwoordigt de nieuwste generatie commerciële aardobservatietechnologie, ontworpen voor hogere beeldresolutie en snellere herbezoekfrequenties. BlackSky exploiteert een commercieel satellietnetwerk dat realtime geospatiale inlichtingen levert aan overheids- en commerciële klanten wereldwijd. De lancering is gepland voor eind december 2026 en versterkt verder het groeiende Earth-imaging-constellation van BlackSky.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3693,7 +3694,7 @@
         "leo",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-09-03T12:21:46.173Z"
+      "_lastClaudeUpdate": "2026-10-03T12:51:18.478Z"
     },
     {
       "id": "nrol-95",
