@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-05T16:33:35.638Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-10-06T14:34:44.675Z",
+    "autoUpdated": [
+      "ussf-xxx-r-3"
+    ]
   },
   "missions": [
     {
@@ -1221,13 +1223,13 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor eind 2026; zevende lancering in de iQPS-reeks.",
+      "highlight": "Zevende iQPS-satelliet voor radarobservatie vanuit lage aardbaan.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab lanceert met zijn Electron-raket de zevende satelliet voor het Japanse aardobservatiebedrijf iQPS. Het ruimtevaartuig is uitgerust met een synthetische apertuurradar (SAR), waarmee het ongeacht weersomstandigheden of daglicht gedetailleerde beelden van het aardoppervlak kan maken. De missie draagt de naam 'The Grain Goddess Provides', een verwijzing naar de Japanse rijstgodin Inari, en versterkt de groeiende vloot van iQPS in een lage baan om de aarde. Met deze lancering bouwt iQPS verder aan zijn commerciële constellatie voor snelle en frequente beeldvorming van de aarde.",
+      "description": "Rocket Lab lanceert met zijn Electron-raket de zevende satelliet voor het Japanse bedrijf iQPS, gespecialiseerd in synthetische apertuurradar (SAR) aardobservatie. De missie, toepasselijk 'The Grain Goddess Provides' gedoopt, plaatst de satelliet in een lage aardbaan van waaruit gedetailleerde radaropnamen van het aardoppervlak kunnen worden gemaakt. SAR-technologie maakt beeldvorming mogelijk ongeacht weersomstandigheden of daglicht, wat de satelliet bijzonder waardevol maakt voor monitoring van landbouw, infrastructuur en rampengebieden. Het is alweer de zevende samenwerking tussen Rocket Lab en iQPS, wat de sterke band tussen de twee bedrijven onderstreept.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -1252,7 +1254,7 @@
         "sar",
         "sar-satelliet"
       ],
-      "_lastClaudeUpdate": "2026-09-06T11:49:04.002Z"
+      "_lastClaudeUpdate": "2026-10-06T14:34:44.667Z"
     },
     {
       "id": "flight-12",
@@ -4070,20 +4072,20 @@
     },
     {
       "id": "ussf-xxx-r-3",
-      "_ll2Id": "7330d83b-c478-426c-8859-f9e3a335876d",
+      "_ll2Id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
       "name": "USSF-xxx (\"R-3\")",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "actief",
-      "launched": "26 sep 2026",
+      "status": "gepland",
+      "launched": "15 okt 2026",
       "launchPrecision": "Minute",
-      "objective": "Geheime USSF-missie vermoedelijk met batch Starshield-satellieten in lage aardbaan.",
+      "objective": "Geheime lancering van vermoedelijk militaire LEO-satellieten voor de United States Space Force.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland op 26 september 2026; lading geclassificeerd.",
+      "highlight": "Geplande lancering op 15 oktober 2026 vanuit een poolbaan-lanceerfaciliteit.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket een geheime missie uit voor de United States Space Force. De exacte aard van de lading is geclassificeerd, maar de gekozen dropzones voor de eerste trap sluiten nauwkeurig aan bij eerdere Starlink Group 15-lanceringen. Dit doet vermoeden dat het gaat om een batch satellieten op basis van het Starshield-busplatform, een militaire variant van Starlinks technologie. De missie draagt de interne aanduiding 'R-3' en wordt gelanceerd vanuit een nog nader te bevestigen locatie.",
+      "description": "SpaceX voert met een Falcon 9 een geheime missie uit voor de United States Space Force, aangeduid als USSF-xxx of 'R-3'. De payload wordt naar een polaire baan gebracht en is hoogstwaarschijnlijk een batch geclassificeerde laarde-observatie- of communicatiesatellieten op basis van het Starshield-satellietplatform van SpaceX. Die conclusie wordt ondersteund door de locaties van de dropzones voor de eerste trap van de raket, die overeenkomen met eerdere lanceringen van het SDA Transport Layer-programma. De exacte aard en het aantal satellieten zijn door het Amerikaanse ministerie van Defensie niet bekendgemaakt.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4107,9 +4109,10 @@
         "united states space force",
         "starshield",
         "leo",
-        "ussf"
+        "ussf",
+        "sda transport layer"
       ],
-      "_lastClaudeUpdate": "2026-09-27T13:23:30.638Z"
+      "_lastClaudeUpdate": "2026-10-06T14:34:36.122Z"
     }
   ]
 }
