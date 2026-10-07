@@ -1,9 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-06T14:34:44.675Z",
-    "autoUpdated": [
-      "ussf-xxx-r-3"
-    ]
+    "lastUpdated": "2026-10-07T14:52:36.947Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -760,12 +758,12 @@
     },
     {
       "id": "starlink-group-17-21",
-      "_ll2Id": "07e945c1-2ec6-4d29-a500-1afbe920440f",
+      "_ll2Id": "97c6f5e1-299e-4652-b72d-9618ac047076",
       "name": "Starlink Group 17-21",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "31 dec 2026",
+      "launched": "10 okt 2026",
       "objective": "Onbemande Starliner-1 vlucht levert cargo aan ISS en valideert verbeterde systemen na eerdere problemen.",
       "body": "Low Earth Orbit",
       "highlight": "Missie omgezet naar onbemand na RCS-problemen tijdens Crew Flight Test 2024.",
@@ -773,8 +771,8 @@
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "Starliner-1 markeert de eerste operationele vlucht van Boeing's Starliner-ruimtevaartuig naar het Internationaal Ruimtestation in het kader van NASA's Commercial Crew Program. Na technische problemen met het RCS-attitudecontrolesysteem tijdens de bemande testvlucht in 2024 heeft NASA besloten deze missie onbemand uit te voeren. Het ruimtevaartuig zal essentiële cargo naar het orbitale laboratorium vervoeren en tegelijkertijd de doorgevoerde systeemverbeteringen in de praktijk valideren. De missie is daarmee een cruciale tussenstap om Starliner alsnog geschikt te maken voor toekomstige bemande vluchten.",
-      "vehicle": "Atlas V N22",
-      "launchSite": "Space Launch Complex 41",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
@@ -2153,13 +2151,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation van Rivada in een polaire baan.",
+      "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Geplande lancering: 31 december 2026",
+      "highlight": "Gepland voor 31 december 2026 – polaire lancering met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 7-missie stuurt SpaceX opnieuw een batch van 24 satellieten de ruimte in voor het groeiende internetnetwerk van Rivada Space Networks. De Falcon 9-raket plaatst de satellieten in een polaire baan, waarmee wereldwijde dekking – inclusief de poolgebieden – een stap dichterbij komt. Rivada streeft naar een eigen low-earth orbit-constellatie die betrouwbare breedbanddiensten moet bieden aan gebruikers over de hele wereld. De lancering staat gepland voor eind december 2026 en markeert een volgende fase in de uitrol van het netwerk.",
+      "description": "Op 31 december 2026 voert SpaceX de Rivada 7-missie uit met een Falcon 9-raket, waarbij 24 satellieten in een polaire baan worden gebracht. De satellieten maken deel uit van het groeiende constellation van Rivada Space Networks, een bedrijf dat wereldwijde breedbandverbindingen via de lage aardbaan wil aanbieden. Met een polaire baan kunnen de satellieten ook afgelegen gebieden op hoge breedtegraden bedienen. De missie onderstreept de toenemende vraag naar commerciële satellietlanceringen en SpaceX's dominante positie in die markt.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -2184,9 +2182,10 @@
         "internetsatellieten",
         "constellatie",
         "spacex",
-        "rivada"
+        "rivada",
+        "satellite internet"
       ],
-      "_lastClaudeUpdate": "2026-09-07T13:46:44.266Z"
+      "_lastClaudeUpdate": "2026-10-07T14:52:29.549Z"
     },
     {
       "id": "rivada-8",
@@ -2196,13 +2195,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation-netwerk van Rivada Space Networks.",
+      "objective": "Lancering van 24 satellieten voor het internet-constellation van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Gepland voor lancering op 31 december 2026.",
+      "highlight": "Lancering gepland voor 31 december 2026 vanuit een polaire baan.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 8-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het groeiende breedband-constellatienetwerk van Rivada Space Networks. Het Ierse bedrijf bouwt aan een laarde-omloopbaan-netwerk dat wereldwijde, lage-latentie internetverbindingen moet bieden, met name voor zakelijke en overheidsklanten. De Falcon 9-raket, het werkpaard van SpaceX, verzorgt de lancering vanuit een van de Amerikaanse lanceerbases. De missie is een verdere stap in de uitrol van Rivada's ambitieuze connectiviteitsinfrastructuur in de ruimte.",
+      "description": "SpaceX lanceert met een Falcon 9-raket 24 satellieten voor Rivada Space Networks, een ambitieus bedrijf dat een eigen breedbandnetwerk in de ruimte wil opbouwen. De satellieten worden in een polaire baan gebracht, wat wereldwijde dekking mogelijk maakt, ook boven afgelegen gebieden en de poolstreken. Rivada richt zich met zijn constellatie op zakelijke en overheidsklanten die behoefte hebben aan veilige en betrouwbare verbindingen. De lancering staat gepland voor eind december 2026 en is onderdeel van een bredere uitrol van het Rivada-netwerk.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -2226,9 +2225,10 @@
         "falcon 9",
         "internetsatelliet",
         "polaire baan",
-        "satellietinternet"
+        "satellietinternet",
+        "internetsatellieten"
       ],
-      "_lastClaudeUpdate": "2026-09-07T13:46:52.303Z"
+      "_lastClaudeUpdate": "2026-10-07T14:52:36.940Z"
     },
     {
       "id": "rivada-9",
