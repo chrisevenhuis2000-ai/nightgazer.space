@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-07T14:52:36.947Z",
+    "lastUpdated": "2026-10-08T15:02:36.771Z",
     "autoUpdated": []
   },
   "missions": [
@@ -763,7 +763,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "10 okt 2026",
+      "launched": "12 okt 2026",
       "objective": "Onbemande Starliner-1 vlucht levert cargo aan ISS en valideert verbeterde systemen na eerdere problemen.",
       "body": "Low Earth Orbit",
       "highlight": "Missie omgezet naar onbemand na RCS-problemen tijdens Crew Flight Test 2024.",
@@ -2238,13 +2238,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "SpaceX lanceert 24 satellieten voor het internettoegangsnetwerk van Rivada Space Networks.",
+      "objective": "Lancering van 24 satellieten voor het Rivada-internetconstellatie in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Gepland voor eind 2026; onderdeel van groeiende Rivada-constellatie.",
+      "highlight": "Geplande lancering op 31 december 2026 vanuit SpaceX-locatie.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 9-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het groeiende constellatienetwerk van Rivada Space Networks. Het bedrijf wil met zijn Low Earth Orbit-netwerk wereldwijde, veilige breedbanddiensten aanbieden, met een focus op overheden en defensieklanten. De Falcon 9-raket, het werkpaard van SpaceX, verzorgt de lancering vanuit een van de Amerikaanse lanceerbases. De missie vormt een verdere uitbreiding van een ambitieuze commerciële constellatie die strijdt om marktaandeel in de snel groeiende satellietinternetsector.",
+      "description": "SpaceX voert met een Falcon 9-raket de Rivada 9-missie uit, waarbij 24 satellieten in een polaire baan worden gebracht. De satellieten maken deel uit van de groeiende constellatie van Rivada Space Networks, dat wereldwijde breedbandconnectiviteit nastreeft. Met een polaire baan kunnen de satellieten ook de meest afgelegen regio's op aarde bedienen, waaronder de poolgebieden. De missie markeert een volgende stap in de opbouw van Rivada's ambitieuze internetsatellietnetwerk.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -2266,9 +2266,11 @@
         "rivada space networks",
         "falcon 9",
         "spacex",
-        "internetsatellieten"
+        "internetsatellieten",
+        "rivada",
+        "satellieten"
       ],
-      "_lastClaudeUpdate": "2026-09-08T12:22:07.969Z"
+      "_lastClaudeUpdate": "2026-10-08T15:02:36.763Z"
     },
     {
       "id": "flight-13",
