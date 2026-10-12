@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-11T14:28:29.540Z",
+    "lastUpdated": "2026-10-12T17:07:08.947Z",
     "autoUpdated": []
   },
   "missions": [
@@ -758,12 +758,12 @@
     },
     {
       "id": "starlink-group-17-21",
-      "_ll2Id": "97c6f5e1-299e-4652-b72d-9618ac047076",
+      "_ll2Id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
       "name": "Starlink Group 17-21",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "12 okt 2026",
+      "launched": "20 okt 2026",
       "objective": "Onbemande Starliner-1 vlucht levert cargo aan ISS en valideert verbeterde systemen na eerdere problemen.",
       "body": "Low Earth Orbit",
       "highlight": "Missie omgezet naar onbemand na RCS-problemen tijdens Crew Flight Test 2024.",
@@ -3794,13 +3794,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "31 dec 2026",
-      "objective": "Transport van twee geheime militaire ladingen naar de geostationaire baan voor de Amerikaanse Space Force.",
+      "objective": "SpaceX lanceert twee geheime militaire payloads voor de US Space Force rechtstreeks naar geostationaire baan.",
       "body": "Geostationaire baan",
-      "highlight": "Geplande lancering: 31 december 2026",
+      "highlight": "Lancering gepland voor 31 december 2026, details geclassificeerd.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket de USSF-31-missie uit voor de Amerikaanse Space Force. De missie draagt twee geclassificeerde militaire satellieten rechtstreeks naar de geostationaire baan op circa 35.786 kilometer hoogte. Details over de aard en het doel van de ladingen worden door het Amerikaanse defensieapparaat niet vrijgegeven. Het is opnieuw een bewijs van de hechte samenwerking tussen SpaceX en het Amerikaanse militaire ruimtevaartprogramma.",
+      "description": "Met de USSF-31-missie brengt SpaceX twee geclassificeerde payloads van de Amerikaanse Space Force rechtstreeks naar de geostationaire baan op ongeveer 35.786 kilometer hoogte. De Falcon 9-raket voert hiermee een van de meest veeleisende trajecten uit die het voertuig aankan, waarbij geen tussenliggende transferbaan wordt gebruikt. Details over de aard van de payloads blijven staatsgeheim, wat gebruikelijk is bij militaire ruimtevaartmissies van dit kaliber. De lancering is gepland voor eind december 2026 en onderstreept de voortdurende samenwerking tussen SpaceX en het Amerikaanse militaire ruimtevaartprogramma.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -3824,9 +3824,10 @@
         "falcon 9",
         "defensie",
         "us space force",
-        "militaire ruimtevaart"
+        "militaire ruimtevaart",
+        "geclassificeerd"
       ],
-      "_lastClaudeUpdate": "2026-09-12T11:47:14.658Z"
+      "_lastClaudeUpdate": "2026-10-12T17:07:08.941Z"
     },
     {
       "id": "victus-surgo",
