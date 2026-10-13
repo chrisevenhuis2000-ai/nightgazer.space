@@ -1,7 +1,12 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-12T17:07:08.947Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-10-13T15:23:44.854Z",
+    "autoUpdated": [
+      "starlink-group-17-21",
+      "starlink-group-17-21",
+      "the-sea-god-surveys-iqps-launch-9",
+      "the-mountain-god-rises-iqps-launch-10"
+    ]
   },
   "missions": [
     {
@@ -764,13 +769,13 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "launched": "20 okt 2026",
-      "objective": "Onbemande Starliner-1 vlucht levert cargo aan ISS en valideert verbeterde systemen na eerdere problemen.",
+      "objective": "SpaceX lanceert 27 Starlink-satellieten naar een lage aardbaan voor wereldwijd satelietinternet.",
       "body": "Low Earth Orbit",
-      "highlight": "Missie omgezet naar onbemand na RCS-problemen tijdens Crew Flight Test 2024.",
+      "highlight": "Lancering gepland op 20 oktober 2026 om 22:14 UTC.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Starliner-1 markeert de eerste operationele vlucht van Boeing's Starliner-ruimtevaartuig naar het Internationaal Ruimtestation in het kader van NASA's Commercial Crew Program. Na technische problemen met het RCS-attitudecontrolesysteem tijdens de bemande testvlucht in 2024 heeft NASA besloten deze missie onbemand uit te voeren. Het ruimtevaartuig zal essentiële cargo naar het orbitale laboratorium vervoeren en tegelijkertijd de doorgevoerde systeemverbeteringen in de praktijk valideren. De missie is daarmee een cruciale tussenstap om Starliner alsnog geschikt te maken voor toekomstige bemande vluchten.",
+      "description": "SpaceX voert met een Falcon 9-raket de missie Starlink Group 17-21 uit, waarbij 27 nieuwe satellieten worden toegevoegd aan de groeiende Starlink-megaconstellatie. Het netwerk is ontworpen om wereldwijd snel en betrouwbaar internet vanuit de ruimte te leveren, ook in afgelegen gebieden. De lancering vindt plaats op 20 oktober 2026 en draagt bij aan de verdere uitbreiding van SpaceX's commerciële internetdienst. Met duizenden satellieten in een lage aardbaan streeft Starlink naar wereldwijde dekking en minimale latentie.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -822,7 +827,7 @@
         "vlucht 14",
         "starlink v3"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:14:38.561Z"
+      "_lastClaudeUpdate": "2026-10-13T15:23:28.155Z"
     },
     {
       "id": "starlink-group-10-24",
@@ -1215,7 +1220,7 @@
     },
     {
       "id": "the-grain-goddess-provides-iqps-launch-7",
-      "_ll2Id": "426bd2a5-02dd-4fbd-9f4d-2b8439c3a1ff",
+      "_ll2Id": "f9a8c9f6-5dc4-4e83-9876-2a51140ec806",
       "name": "The Grain Goddess Provides (iQPS Launch 7)",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
@@ -3457,7 +3462,7 @@
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
       "status": "gepland",
-      "launched": "31 dec 2026",
+      "launched": "21 okt 2026",
       "objective": "Lancering van 6 HawkEye 360-satellieten voor wereldwijde radiofrequentiekartering vanuit LEO.",
       "body": "Low Earth Orbit",
       "highlight": "Geplande lancering eind 2026 via Rocket Lab Electron.",
@@ -3921,7 +3926,7 @@
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "31 okt 2026",
+      "launched": "19 okt 2026",
       "objective": "SpaceX lanceert tientallen micro- en nanosatellieten naar een mid-inclinatiebaan in een gedeelde vlucht.",
       "body": "Low Earth Orbit",
       "highlight": "Gepland voor oktober 2026; meerdere payloads bevestigd.",
@@ -4116,6 +4121,78 @@
         "sda transport layer"
       ],
       "_lastClaudeUpdate": "2026-10-06T14:34:36.122Z"
+    },
+    {
+      "id": "the-sea-god-surveys-iqps-launch-9",
+      "_ll2Id": "426bd2a5-02dd-4fbd-9f4d-2b8439c3a1ff",
+      "name": "The Sea God Surveys (iQPS Launch 9)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "launched": "4 nov 2026",
+      "launchPrecision": "Day",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor november 2026 vanuit Nieuw-Zeeland.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met de Electron-raket de negende lancering uit voor het Japanse aardobservatiebedrijf iQPS. Aan boord bevindt zich een synthetic aperture radar (SAR)-satelliet die ongeacht weersomstandigheden of lichtinval gedetailleerde beelden van het aardoppervlak kan maken. De missie draagt de naam 'The Sea God Surveys', een verwijzing naar de mythologische zeegod die de oceanen overziet. Met deze vlucht breidt iQPS zijn groeiende constellatie van SAR-satellieten verder uit.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "timeline": [
+        {
+          "date": "4 nov 2026",
+          "event": "Geplande lancering van The Sea God Surveys (iQPS Launch 9)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "iQPS",
+        "SAR-satelliet",
+        "Aardobservatie"
+      ]
+    },
+    {
+      "id": "the-mountain-god-rises-iqps-launch-10",
+      "_ll2Id": "db3500ac-965b-4ad8-b417-cb8d8d005586",
+      "name": "The Mountain God Rises (iQPS Launch 10)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "launched": "10 nov 2026",
+      "launchPrecision": "Day",
+      "objective": "Lancering van een synthetische apertuurradar-satelliet voor het Japanse aardobservatiebedrijf iQPS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Tiende iQPS-satelliet vergroot groeiende SAR-constellatie in LEO.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab lanceert met zijn Electron-raket de tiende satelliet voor het Japanse bedrijf iQPS, gespecialiseerd in aardobservatie. De satelliet maakt gebruik van synthetische apertuurradartechnologie (SAR), waarmee hoge-resolutiebeelden van het aardoppervlak kunnen worden gemaakt, ongeacht weersomstandigheden of belichting. iQPS bouwt aan een eigen constellatie van SAR-satellieten om frequente en betrouwbare beeldvorming van de aarde te bieden. De missie, met de naam 'The Mountain God Rises', wordt uitgevoerd vanuit het lanceercomplex van Rocket Lab en plaatst de satelliet in een lage aardbaan.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "timeline": [
+        {
+          "date": "10 nov 2026",
+          "event": "Geplande lancering van The Mountain God Rises (iQPS Launch 10)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "iQPS",
+        "SAR-satelliet",
+        "Aardobservatie"
+      ]
     }
   ]
 }
