@@ -1,12 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-13T15:23:44.854Z",
-    "autoUpdated": [
-      "starlink-group-17-21",
-      "starlink-group-17-21",
-      "the-sea-god-surveys-iqps-launch-9",
-      "the-mountain-god-rises-iqps-launch-10"
-    ]
+    "lastUpdated": "2026-10-14T13:10:29.467Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -763,12 +758,12 @@
     },
     {
       "id": "starlink-group-17-21",
-      "_ll2Id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+      "_ll2Id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
       "name": "Starlink Group 17-21",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
       "status": "gepland",
-      "launched": "20 okt 2026",
+      "launched": "24 okt 2026",
       "objective": "SpaceX lanceert 27 Starlink-satellieten naar een lage aardbaan voor wereldwijd satelietinternet.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland op 20 oktober 2026 om 22:14 UTC.",
@@ -2719,7 +2714,7 @@
       "agency": "Arianespace",
       "agencyColor": "#ffa040",
       "status": "gepland",
-      "launched": "30 nov 2026",
+      "launched": "31 dec 2026",
       "objective": "Lancering van de tweede Metop-SG B-weersatelliet voor verbeterde weersvoorspellingen vanuit poolbaan.",
       "body": "Sun-Synchronous Orbit",
       "highlight": "Gepland voor lancering op 30 november 2026 met Ariane 62.",
@@ -4131,13 +4126,13 @@
       "status": "gepland",
       "launched": "4 nov 2026",
       "launchPrecision": "Day",
-      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor november 2026 vanuit Nieuw-Zeeland.",
+      "highlight": "Gepland voor lancering in november 2026 vanaf Rocket Lab LC-1.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab voert met de Electron-raket de negende lancering uit voor het Japanse aardobservatiebedrijf iQPS. Aan boord bevindt zich een synthetic aperture radar (SAR)-satelliet die ongeacht weersomstandigheden of lichtinval gedetailleerde beelden van het aardoppervlak kan maken. De missie draagt de naam 'The Sea God Surveys', een verwijzing naar de mythologische zeegod die de oceanen overziet. Met deze vlucht breidt iQPS zijn groeiende constellatie van SAR-satellieten verder uit.",
+      "description": "Rocket Lab voert met de Electron-raket de negende lancering uit voor het Japanse bedrijf iQPS, dat gespecialiseerd is in aardobservatie vanuit de ruimte. De missie draagt de naam 'The Sea God Surveys' en brengt een synthetische apertuurradar (SAR) satelliet in een lage aardbaan. SAR-technologie maakt het mogelijk om de aarde onafhankelijk van weersomstandigheden en daglicht te fotograferen. De satelliet versterkt het groeiende constellatienetwerk van iQPS voor commerciële beelddiensten.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4155,8 +4150,14 @@
         "Electron",
         "iQPS",
         "SAR-satelliet",
-        "Aardobservatie"
-      ]
+        "Aardobservatie",
+        "rocket lab",
+        "electron",
+        "iqps",
+        "sar",
+        "aardobservatie"
+      ],
+      "_lastClaudeUpdate": "2026-10-14T13:10:21.715Z"
     },
     {
       "id": "the-mountain-god-rises-iqps-launch-10",
@@ -4167,13 +4168,13 @@
       "status": "gepland",
       "launched": "10 nov 2026",
       "launchPrecision": "Day",
-      "objective": "Lancering van een synthetische apertuurradar-satelliet voor het Japanse aardobservatiebedrijf iQPS.",
+      "objective": "Lancering van een synthetische apertuurradar-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Tiende iQPS-satelliet vergroot groeiende SAR-constellatie in LEO.",
+      "highlight": "Geplande lancering in november 2026 vanaf Mahia, Nieuw-Zeeland.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab lanceert met zijn Electron-raket de tiende satelliet voor het Japanse bedrijf iQPS, gespecialiseerd in aardobservatie. De satelliet maakt gebruik van synthetische apertuurradartechnologie (SAR), waarmee hoge-resolutiebeelden van het aardoppervlak kunnen worden gemaakt, ongeacht weersomstandigheden of belichting. iQPS bouwt aan een eigen constellatie van SAR-satellieten om frequente en betrouwbare beeldvorming van de aarde te bieden. De missie, met de naam 'The Mountain God Rises', wordt uitgevoerd vanuit het lanceercomplex van Rocket Lab en plaatst de satelliet in een lage aardbaan.",
+      "description": "Rocket Lab voert met de Electron-raket de tiende lancering uit voor het Japanse aardobservatiebedrijf iQPS. Aan boord bevindt zich een SAR-satelliet (synthetic aperture radar) die in staat is om de aarde ongeacht weersomstandigheden of dag-nachtcycli te fotograferen. De missie draagt de naam 'The Mountain God Rises', een verwijzing naar de Japanse mythologie, en plaatst de satelliet in een lage aardbaan. iQPS bouwt zo verder aan zijn groeiende constellatie van radarsatellieten voor commerciële aardobservatie.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4191,8 +4192,14 @@
         "Electron",
         "iQPS",
         "SAR-satelliet",
-        "Aardobservatie"
-      ]
+        "Aardobservatie",
+        "rocket lab",
+        "electron",
+        "iqps",
+        "sar-satelliet",
+        "aardobservatie"
+      ],
+      "_lastClaudeUpdate": "2026-10-14T13:10:29.457Z"
     }
   ]
 }
