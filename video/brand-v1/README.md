@@ -21,3 +21,12 @@ ffmpeg -ss 29 -i out/nightgazer-brand-v1.mp4 -frames:v 1 out/nightgazer-brand-v1
 ```
 
 `out/` staat in `.gitignore`: de MP4 en poster worden niet gecommit.
+
+## OG-afbeelding
+
+`compositions/og.html` is een losse, statische compositie van 1200×630 voor `public/og-image.png`. Hij bevat de plaat met hoekmerken en liniaal, het logo op native 500 px, `nightgazer.space` en de tagline. Er staat geen CTA in, want een OG-afbeelding is niet klikbaar.
+
+```bash
+npx hyperframes render . -c compositions/og.html --format png-sequence --fps 1 -o out/og
+cp out/og/frame_000001.png ../../public/og-image.png
+```
