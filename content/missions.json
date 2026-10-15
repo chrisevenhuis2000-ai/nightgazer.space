@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T09:55:23.777Z",
+    "lastUpdated": "2026-10-15T11:25:51.383Z",
     "autoUpdated": []
   },
   "missions": [
@@ -4146,7 +4146,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "15 okt 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Geclassificeerde lancering van een nuttige lading voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
       "highlight": "Lancering gepland: 15 okt 2026",
