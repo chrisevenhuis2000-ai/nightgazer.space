@@ -12,11 +12,12 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
+import { SLOT_EDUCATIE } from '@/lib/adsense'
 import { LEVELS, TOPIC_DETAILS, TOPICS, CONCEPTS, FAQS } from '@/lib/education-data'
 import { DAILY_QUESTIONS } from '@/lib/home-content'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder,
 } from '@/app/_plate/shared'
 
 type Level = 'beg' | 'ama' | 'pro'
@@ -431,6 +432,9 @@ export default function Niveauladder() {
           </div>
         </section>
 
+        <div className="pl-wrap">
+          <AdPlate slot={SLOT_EDUCATIE} />
+        </div>
       </main>
 
       <SiteFooter cols={FOOTER_COLS} note="Bronnen per onderwerp staan in de zijkolom" />

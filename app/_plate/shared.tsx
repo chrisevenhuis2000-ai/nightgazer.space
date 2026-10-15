@@ -9,6 +9,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import { Archivo } from 'next/font/google'
 import { AdUnit } from '../components/AdUnit'
+import { isSlot } from '@/lib/adsense'
 import { type FooterCol } from '../components/SiteFooter'
 import {
   PROXY, type Article, FALLBACK_ARTICLES,
@@ -212,19 +213,12 @@ export function QuickBar({ articles, active, onPick }: {
 
 
 /* ══ Labelled advertising field ═══════════════════════════════════════════
-   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder slot rendert het
-   veld niets: geen gereserveerde ruimte voor een advertentie die niet komt. */
+   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder geldig slot rendert
+   het veld niets: geen gereserveerde ruimte voor een advertentie die niet
+   komt. Toestemming regelt de Google CMP; blijft het blok leeg (AdSense zet
+   data-ad-status="unfilled"), dan verbergt globals.css het hele veld. */
 export function AdPlate({ slot }: { slot?: string }) {
-  if (!slot) return null
-  return <AdField slot={slot} />
-}
-
-function AdField({ slot }: { slot: string }) {
-  const [consented, setConsented] = useState<boolean | null>(null)
-  useEffect(() => {
-    try { setConsented(localStorage.getItem('nightgazer_consent') === 'all') } catch { setConsented(false) }
-  }, [])
-
+  if (!isSlot(slot)) return null
   return (
     <aside className="pl-ad" aria-label="Advertentie">
       <div className="pl-ad__head">
@@ -235,11 +229,6 @@ function AdField({ slot }: { slot: string }) {
       </div>
       <div className="pl-ad__body">
         <AdUnit slot={slot} style={{ width: '100%' }} />
-        {consented === false && (
-          <p className="pl-label" style={{ letterSpacing: '0.1em', textAlign: 'center', lineHeight: 1.7 }}>
-            Gereserveerde ruimte — de advertentie verschijnt hier<br />zodra cookies zijn geaccepteerd.
-          </p>
-        )}
       </div>
     </aside>
   )

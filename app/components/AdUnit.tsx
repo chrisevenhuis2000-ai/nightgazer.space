@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import { ADSENSE_CLIENT, isSlot } from '@/lib/adsense'
 
 interface AdUnitProps {
-  /** Slot-ID uit jouw AdSense-dashboard (Advertenties → Weergaveadvertenties → slot) */
+  /** Slot-ID uit het AdSense-dashboard (Advertenties → Per advertentieblok). */
   slot: string
   style?: React.CSSProperties
 }
@@ -12,34 +13,28 @@ declare global {
 }
 
 /**
- * AdSense display-unit — rendert alleen na expliciete cookie-toestemming.
- * Roep in AdSense-dashboard "Weergaveadvertentie" aan per gewenste plek en
- * kopieer het gegenereerde slot-ID als prop mee.
+ * AdSense display-unit. Toestemming regelt de Google CMP (via adsbygoogle.js
+ * in <head>): zonder toestemming vraagt AdSense zelf geen gepersonaliseerde
+ * advertenties op, of geen enkele. Geen eigen consent-check meer.
+ * Zonder geldig slot (nog een placeholder) rendert er niets.
  */
 export function AdUnit({ slot, style }: AdUnitProps) {
-  const [show,   setShow]   = useState(false)
-  const pushed               = useRef(false)
+  const pushed = useRef(false)
 
-  // Controleer consent na mount (localStorage bestaat alleen client-side)
   useEffect(() => {
-    if (localStorage.getItem('nightgazer_consent') === 'all') setShow(true)
-  }, [])
-
-  // Push naar adsbygoogle zodra de <ins> in de DOM staat
-  useEffect(() => {
-    if (!show || pushed.current) return
+    if (!isSlot(slot) || pushed.current) return
     pushed.current = true
     try { ;(window.adsbygoogle = window.adsbygoogle || []).push({}) } catch {}
-  }, [show])
+  }, [slot])
 
-  if (!show) return null
+  if (!isSlot(slot)) return null
 
   return (
     <div style={{ textAlign: 'center', overflow: 'hidden', lineHeight: 0, ...style }}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
-        data-ad-client="ca-pub-1782461224909980"
+        data-ad-client={ADSENSE_CLIENT}
         data-ad-slot={slot}
         data-ad-format="auto"
         data-full-width-responsive="true"

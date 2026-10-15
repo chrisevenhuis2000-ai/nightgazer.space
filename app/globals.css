@@ -408,9 +408,6 @@
   100% { transform: scale(2.8); opacity: 0; }
 }
 
-@keyframes slideUp   { from { transform: translateY(100%); } to { transform: translateY(0); } }
-@keyframes slideDown { from { transform: translateY(0); }    to { transform: translateY(100%); } }
-
 @keyframes orbit-spin-cw  { from { transform: translateY(-50%) rotate(0deg); }   to { transform: translateY(-50%) rotate(360deg); } }
 @keyframes orbit-spin-ccw { from { transform: translateY(-50%) rotate(0deg); }   to { transform: translateY(-50%) rotate(-360deg); } }
 @keyframes planet-pulse   { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
@@ -590,3 +587,9 @@
   .ticker-scroll { animation: none; }
   .ticker-mask { mask-image: none; -webkit-mask-image: none; }
 }
+
+/* ── Advertentieveld zonder advertentie ──────────────────────────────────────
+   AdSense zet data-ad-status="unfilled" als er niets getoond wordt (geen fill
+   of geen toestemming via de Google CMP). Dan verdwijnt het hele gelabelde
+   veld (AdPlate in app/_plate/shared.tsx), in plaats van een lege kader. */
+.pl-ad:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
