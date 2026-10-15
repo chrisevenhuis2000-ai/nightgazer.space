@@ -4,10 +4,7 @@
 
 /* ── Design tokens ───────────────────────────────────────────────────────── */
 :root {
-  /* Fonts */
-  --font-display: var(--font-playfair, 'Playfair Display'), Georgia, serif;
-  --font-sans:    var(--font-inter, 'Inter'), system-ui, -apple-system, sans-serif;
-  --font-mono:    var(--font-jetbrains, 'JetBrains Mono'), 'Courier New', monospace;
+  /* Fonts: zie body hieronder — de font-tokens staan daar, niet hier. */
 
   /* Brand colours — NightGazer */
   --night:    #1A1A2E;   /* primary dark background */
@@ -65,6 +62,15 @@
     /* Tailwind 4 draait hier zonder preflight (de @tailwind-regels genereren
        geen reset), dus de standaardmarge van de browser moet expliciet weg. */
     margin: 0;
+
+    /* Font-tokens op body en niet in :root: next/font zet --font-inter,
+       --font-playfair en --font-jetbrains (layout.tsx) op <body>. Een var()
+       in :root ziet die niet en viel terug op een naam die niet geladen is
+       (Times, Courier of het systeemfont in plaats van de echte fonts). */
+    --font-display: var(--font-playfair, 'Playfair Display'), Georgia, serif;
+    --font-sans:    var(--font-inter, 'Inter'), system-ui, -apple-system, sans-serif;
+    --font-mono:    var(--font-jetbrains, 'JetBrains Mono'), 'Courier New', monospace;
+
     background: var(--night);
     color: var(--text-primary);
     font-family: var(--font-sans);
@@ -326,9 +332,7 @@
   .fout-ster    { position: absolute; border-radius: 9999px; background: #fff; }
   .fout-inhoud  { position: relative; z-index: 10; max-width: 28rem; }
   .fout-kicker {
-    /* De next/font-variabelen staan op <body>; --font-mono/--font-display in
-       :root kunnen ze niet zien en vallen terug op een niet-geladen naam. */
-    font-family: var(--font-jetbrains), 'Courier New', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     line-height: 1rem;
     letter-spacing: 0.1em;
@@ -337,7 +341,7 @@
     margin: 0 0 16px;
   }
   .fout-titel {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.1;
     margin: 0 0 16px;
