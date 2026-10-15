@@ -13,7 +13,7 @@ jobs:
   inrichten:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: 🔍 Wat mag dit token eigenlijk?
         working-directory: cf-worker
