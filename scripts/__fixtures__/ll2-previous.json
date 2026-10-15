@@ -1,0 +1,156 @@
+{
+  "_toelichting": "Verzonnen LL2 previous-response voor scripts/test-missie-status.js; de _ll2Id's zijn echte id's van missies die met een verstreken datum op gepland staan. next is gevuld om de waarschuwing voor een tweede pagina te testen.",
+  "next": "https://ll.thespacedevs.com/2.3.0/launches/previous/?limit=100&offset=100",
+  "results": [
+    {
+      "id": "2c5686ec-b0fd-4987-935d-587e3c85fa2d",
+      "name": "Rocket | GPS III SV10",
+      "url": "",
+      "status": {
+        "name": "Launch Successful"
+      },
+      "window_start": "2026-04-24T12:00:00.000Z",
+      "net": "2026-04-24T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "GPS III SV10",
+        "type": "Communications",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "missie": "gps-iii-sv10",
+        "status": "voltooid",
+        "launched": "24 apr 2026"
+      }
+    },
+    {
+      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
+      "name": "Rocket | Nancy Grace Roman Space Telescope",
+      "url": "",
+      "status": {
+        "name": "Launch Successful"
+      },
+      "window_start": "2026-09-02T12:00:00.000Z",
+      "net": "2026-09-02T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Nancy Grace Roman Space Telescope",
+        "type": "Astrophysics",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "missie": "nancy-grace-roman-space-telescope",
+        "status": "actief",
+        "launched": "2 sep 2026"
+      }
+    },
+    {
+      "id": "e6cefffc-19a6-4a4b-a7f0-ebe907d5a6aa",
+      "name": "Rocket | Curveball",
+      "url": "",
+      "status": {
+        "name": "Launch Failure"
+      },
+      "window_start": "2026-06-11T12:00:00.000Z",
+      "net": "2026-06-11T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Curveball",
+        "type": "Communications",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "missie": "curveball",
+        "status": "mislukt"
+      }
+    },
+    {
+      "id": "4e074623-426a-4ab2-8729-a85200684bef",
+      "name": "Rocket | Bubbles",
+      "url": "",
+      "status": {
+        "name": "Partial Failure"
+      },
+      "window_start": "2026-04-22T12:00:00.000Z",
+      "net": "2026-04-22T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Bubbles",
+        "type": "Communications",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "missie": "bubbles",
+        "status": "mislukt"
+      }
+    }
+  ]
+}
