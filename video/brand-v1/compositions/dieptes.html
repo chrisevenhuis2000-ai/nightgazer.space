@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #dieptes-sheet { display: flex; flex-direction: column; }
+
+        #dieptes-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; margin-top: 26px; }
+        #dieptes-title {
+          font-family: var(--sans);
+          font-size: 112px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.032em;
+          color: var(--pl-ink);
+          padding-right: 0.06em;
+        }
+
+        /* The reading-level ladder: three steps, the mark for "depth". */
+        #dieptes-levels { display: flex; align-items: flex-end; gap: 28px; padding-bottom: 10px; }
+        #dieptes-ladder { display: flex; align-items: flex-end; gap: 5px; height: 34px; }
+        #dieptes-ladder i { display: block; width: 11px; background: var(--pl-rule); }
+        #dieptes-ladder i:nth-child(1) { height: 14px; }
+        #dieptes-ladder i:nth-child(2) { height: 24px; }
+        #dieptes-ladder i:nth-child(3) { height: 34px; }
+        #dieptes-ladder i.dieptes-on { background: var(--pl-stamp); }
+        .dieptes-lvl { position: relative; }
+        .dieptes-lvl b { font-weight: 600; color: var(--pl-ink); position: absolute; left: 0; top: 0; opacity: 0; }
+
+        #dieptes-rule { height: 1px; background: var(--pl-rule); margin: 40px 0 48px; transform-origin: left center; }
+
+        #dieptes-body { position: relative; flex: 1; }
+        .dieptes-text {
+          position: absolute;
+          left: 0; top: 0;
+          max-width: 1500px;
+          text-wrap: pretty;
+          font-family: var(--sans);
+          font-size: 60px;
+          font-weight: 500;
+          line-height: 1.3;
+          letter-spacing: -0.012em;
+          color: var(--pl-ink);
+          opacity: 0;
+        }
+        .dieptes-keep { white-space: nowrap; }
+        .dieptes-text .ng-num { font-size: 0.92em; letter-spacing: 0; white-space: nowrap; }
+        .dieptes-text sup { font-size: 0.6em; line-height: 0; vertical-align: 0.7em; }
+        .dieptes-arrow { display: inline-block; width: 1.3em; height: 0.5em; vertical-align: 0.12em; }
+
+        #dieptes-note { position: absolute; left: 0; bottom: 0; }
+
+        #dieptes-wipe {
+          position: absolute;
+          top: 150px; bottom: 150px;
+          left: 160px;
+          width: 1px;
+          background: var(--pl-stamp);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="dieptes" data-width="1920" data-height="1080">
+        <div id="dieptes-sheet" class="ng-sheet">
+          <span id="dieptes-kicker" class="ng-label">Eén onderwerp · drie dieptes</span>
+
+          <div id="dieptes-head">
+            <h1 id="dieptes-title">Kernfusie</h1>
+            <div id="dieptes-levels">
+              <span id="dieptes-ladder"><i id="dieptes-step1"></i><i id="dieptes-step2"></i><i id="dieptes-step3"></i></span>
+              <span class="dieptes-lvl ng-label">Beginner<b id="dieptes-lvl1">Beginner</b></span>
+              <span class="dieptes-lvl ng-label">Amateur<b id="dieptes-lvl2">Amateur</b></span>
+              <span class="dieptes-lvl ng-label">Pro<b id="dieptes-lvl3">Pro</b></span>
+            </div>
+          </div>
+
+          <div id="dieptes-rule"></div>
+
+          <!-- The opening sentence of each level, verbatim from lib/education-data.ts (topic "sterren"). -->
+          <div id="dieptes-body">
+            <p id="dieptes-beg" class="dieptes-text">In het hart van de zon smelten waterstofatomen samen tot helium.</p>
+            <p id="dieptes-ama" class="dieptes-text">In sterren zoals de zon verloopt fusie via de <span class="dieptes-keep">proton-protonketen (pp-keten):</span> <span class="ng-num">4&#8239;<sup>1</sup>H <svg class="dieptes-arrow" viewBox="0 0 52 20" aria-label="wordt"><path d="M1 10 H49 M41 3 L49 10 L41 17" fill="none" stroke="currentColor" stroke-width="2.2"/></svg> <sup>4</sup>He + 2e<sup>+</sup> + 2νe + 26,7 MeV</span>.</p>
+            <p id="dieptes-pro" class="dieptes-text">De pp-I keten levert ~85% van de zonne-energie.</p>
+            <span id="dieptes-note" class="ng-label ng-label--stamp">Voorbeeld · uit /educatie</span>
+          </div>
+        </div>
+        <i id="dieptes-wipe"></i>
+      </div>
+
+      <script>
+        (function () {
+          const ease = "expo.out";
+          const tl = gsap.timeline({ paused: true });
+
+          // Header.
+          tl.fromTo("#dieptes-kicker", { opacity: 0 }, { opacity: 1, duration: 0.5, ease }, 0.15);
+          tl.fromTo("#dieptes-title", { clipPath: "inset(-10% 100% -10% 0)" },
+                    { clipPath: "inset(-10% 0% -10% 0)", duration: 0.7, ease: "power3.inOut" }, 0.25);
+          tl.fromTo("#dieptes-levels", { opacity: 0 }, { opacity: 1, duration: 0.5, ease }, 0.45);
+          tl.fromTo("#dieptes-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease }, 0.4);
+          tl.fromTo("#dieptes-note", { opacity: 0 }, { opacity: 1, duration: 0.5, ease }, 0.9);
+
+          // A level is developed like an exposure: latent (blurred, faint) → sharp.
+          function develop(sel, t) {
+            tl.fromTo(sel, { opacity: 0.25, filter: "blur(10px)" },
+                           { opacity: 1, filter: "blur(0px)", duration: 0.5, ease, immediateRender: false }, t);
+          }
+          function fade(sel, t) {
+            tl.to(sel, { opacity: 0, filter: "blur(6px)", duration: 0.25, ease: "power1.in" }, t);
+          }
+          function step(n, t) {
+            for (let i = 1; i <= 3; i++) {
+              tl.set("#dieptes-step" + i, { className: i <= n ? "dieptes-on" : "" }, t);
+              tl.set("#dieptes-lvl" + i, { opacity: i === n ? 1 : 0 }, t);
+            }
+          }
+
+          // Beginner 0.7 → fully developed 1.2, held 2.0s.
+          step(1, 0.7);  develop("#dieptes-beg", 0.7);  fade("#dieptes-beg", 3.2);
+          // Amateur 3.45 → 3.95, held 2.5s (longest sentence, carries the formula).
+          step(2, 3.45); develop("#dieptes-ama", 3.45); fade("#dieptes-ama", 6.45);
+          // Pro 6.7 → 7.2, held until the exit wipe at 9.1 (1.9s).
+          step(3, 6.7);  develop("#dieptes-pro", 6.7);
+
+          // Exit: hairline wipe.
+          tl.set("#dieptes-wipe", { opacity: 1 }, 9.1);
+          tl.fromTo("#dieptes-wipe", { x: 0 }, { x: 1600, duration: 0.4, ease: "power2.in" }, 9.1);
+          tl.fromTo("#dieptes-sheet", { clipPath: "inset(-5% -5% -5% -5%)" },
+                    { clipPath: "inset(-5% -5% -5% 105%)", duration: 0.4, ease: "power2.in" }, 9.1);
+          tl.set("#dieptes-wipe", { opacity: 0 }, 9.5);
+
+          window.__timelines["dieptes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

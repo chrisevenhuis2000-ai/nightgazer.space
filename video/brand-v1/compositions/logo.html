@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+
+        /* The light-box loupe: one orbit-blue field lifting the emulsion under the mark. */
+        #logo-loupe {
+          position: absolute;
+          left: 360px; top: 190px; width: 1200px; height: 620px;
+          background: radial-gradient(50% 50% at 50% 50%, rgba(24,95,165,0.30) 0%, rgba(24,95,165,0) 70%);
+        }
+
+        #logo-stack {
+          position: absolute;
+          left: 0; right: 0; top: 0; bottom: 0;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          gap: 56px;
+        }
+        /* Native size (500×100), never scaled up. */
+        #logo-mark { display: block; width: 500px; height: 100px; }
+        #logo-tagline {
+          font-family: var(--sans);
+          font-size: 64px;
+          font-weight: 700;
+          line-height: 1.1;
+          letter-spacing: -0.028em;
+          color: var(--pl-ink);
+          padding: 0 0.06em;
+        }
+        #logo-rule { width: 520px; height: 1px; background: var(--pl-rule); transform-origin: center; }
+      </style>
+
+      <div id="root" data-composition-id="logo" data-width="1920" data-height="1080">
+        <div id="logo-loupe"></div>
+        <div id="logo-stack">
+          <img id="logo-mark" src="../assets/brand/logo-transparent.png" alt="NightGazer.space" width="500" height="100" />
+          <div id="logo-rule"></div>
+          <p id="logo-tagline">Astronomie voor Iedereen</p>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const ease = "expo.out";
+          const tl = gsap.timeline({ paused: true });
+
+          // Exposure: the loupe comes up first, then the mark develops (opacity + focus only).
+          tl.fromTo("#logo-loupe", { opacity: 0 }, { opacity: 1, duration: 1.0, ease }, 0.1);
+          tl.fromTo("#logo-mark", { opacity: 0, filter: "blur(8px)" },
+                    { opacity: 1, filter: "blur(0px)", duration: 0.9, ease }, 0.2);
+          tl.fromTo("#logo-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease }, 0.7);
+          tl.fromTo("#logo-tagline", { clipPath: "inset(-10% 100% -10% 0)" },
+                    { clipPath: "inset(-10% 0% -10% 0)", duration: 0.7, ease: "power3.inOut" }, 0.9);
+          // Tagline fully revealed at 1.6s, held until the exposure fade at 3.1s.
+
+          // Exit: exposure fade.
+          tl.to("#logo-stack", { opacity: 0, duration: 0.4, ease: "power1.in" }, 3.1);
+          tl.to("#logo-loupe", { opacity: 0.55, duration: 0.4, ease: "power1.in" }, 3.1);
+
+          window.__timelines["logo"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
