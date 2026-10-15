@@ -425,7 +425,7 @@ function MissionRail() {
               <span
                 className="pl-status"
                 data-on={live ? '1' : '0'}
-                style={{ color: live ? 'var(--pl-good)' : 'var(--pl-ink-3)' }}
+                style={{ color: live ? 'var(--pl-good)' : m.status === 'mislukt' ? 'var(--pl-warn)' : 'var(--pl-ink-3)' }}
               >
                 <i aria-hidden="true" />{m.status}
               </span>

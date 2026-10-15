@@ -1,0 +1,119 @@
+{
+  "_toelichting": "Verzonnen LL2 upcoming-response voor scripts/test-missie-status.js. Echte _ll2Id's uit missions.json waar een bestaande missie geraakt moet worden; de rest is verzonnen. __TOEKOMST_nnD__ wordt door de test vervangen.",
+  "results": [
+    {
+      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+      "name": "Rocket | Telesat Lightspeed 1",
+      "url": "",
+      "status": {
+        "name": "Launch in Flight"
+      },
+      "window_start": "__TOEKOMST_1D__",
+      "net": "__TOEKOMST_1D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Telesat Lightspeed 1",
+        "type": "Communications",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "missie": "telesat-lightspeed-1",
+        "status": "actief"
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-astro0000001",
+      "name": "Rocket | Testtelescoop Astro",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "__TOEKOMST_40D__",
+      "net": "__TOEKOMST_40D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "NASA"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Testtelescoop Astro",
+        "type": "Astrophysics",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "toevoegen": "testtelescoop-astro",
+        "soort": "missie",
+        "status": "gepland",
+        "waarschuwing": true
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-comms0000001",
+      "name": "Rocket | Testconstellatie Comms 1",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "__TOEKOMST_40D__",
+      "net": "__TOEKOMST_40D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Testconstellatie Comms 1",
+        "type": "Communications",
+        "description": "Test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_verwacht": {
+        "toevoegen": "testconstellatie-comms-1",
+        "soort": "lancering",
+        "status": "gepland"
+      }
+    }
+  ]
+}

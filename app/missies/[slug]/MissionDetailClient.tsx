@@ -32,6 +32,7 @@ const STATUS_STYLE = {
   actief:   { bg: 'rgba(61,223,144,0.15)',  color: '#3ddf90', label: 'Actief' },
   gepland:  { bg: 'rgba(55,138,221,0.15)',  color: '#378ADD', label: 'Gepland' },
   voltooid: { bg: 'rgba(74,90,138,0.15)',   color: '#8A9BC4', label: 'Voltooid' },
+  mislukt:  { bg: 'rgba(224,104,90,0.15)',  color: '#E0685A', label: 'Mislukt' },
 }
 
 // ── Starfield ───────────────────────────────────────────────────────────────
