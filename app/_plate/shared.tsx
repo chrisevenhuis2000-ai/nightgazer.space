@@ -1,9 +1,9 @@
 'use client'
 
-/* Gedeelde chrome voor de /staging-surfaces.
-   De homepage en de nieuwspagina lezen hier uit één bron, zodat de kop,
-   de filterbalk, het advertentieveld en de markeringen niet uit elkaar
-   kunnen lopen. De wereld staat in DESIGN.md. */
+/* Gedeelde chrome voor de plaatarchief-surfaces (home, nieuws, artikel,
+   missies, educatie, sterrenkijken). Alle pagina's lezen hier uit één bron,
+   zodat de kop, de filterbalk, het advertentieveld en de markeringen niet
+   uit elkaar kunnen lopen. De wereld staat in DESIGN.md. */
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ import {
   PROXY, type Article, FALLBACK_ARTICLES,
 } from '@/lib/home-content'
 import { Ico } from './Instruments'
-import './staging.css'
+import './plate.css'
 
 export const archivo = Archivo({
   subsets: ['latin'],
@@ -23,14 +23,12 @@ export const archivo = Archivo({
   display: 'swap',
 })
 
-/* Navigatie binnen staging: de twee herontworpen surfaces linken naar
-   elkaar, de nog niet herontworpen pagina's linken naar de live versie. */
-export const STG_NAV: { href: string; label: string; key: string }[] = [
-  { href: '/staging',        label: 'Archief',       key: 'home' },
-  { href: '/staging/nieuws', label: 'Nieuws',        key: 'nieuws' },
-  { href: '/staging/sterrenkijken', label: 'Sterrenkijken', key: 'sterrenkijken' },
-  { href: '/staging/missies',       label: 'Missies',       key: 'missies' },
-  { href: '/staging/educatie',      label: 'Educatie',      key: 'educatie' },
+export const NAV: { href: string; label: string; key: string }[] = [
+  { href: '/',              label: 'Archief',       key: 'home' },
+  { href: '/nieuws',        label: 'Nieuws',        key: 'nieuws' },
+  { href: '/sterrenkijken', label: 'Sterrenkijken', key: 'sterrenkijken' },
+  { href: '/missies',       label: 'Missies',       key: 'missies' },
+  { href: '/educatie',      label: 'Educatie',      key: 'educatie' },
 ]
 
 export const ROWS_PER_PAGE = 20
@@ -131,13 +129,13 @@ export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
     <>
       <header className="pl-head">
         <div className="pl-head__in">
-          <Link href="/" className="pl-head__logo" aria-label="NightGazer — naar de huidige homepage">
+          <Link href="/" className="pl-head__logo" aria-label="NightGazer — naar de homepage">
             <img src="/logo-transparent.png" alt="NightGazer" />
           </Link>
 
           <nav aria-label="Hoofdnavigatie">
             <ul className="pl-nav">
-              {STG_NAV.map(({ href, label, key }) => (
+              {NAV.map(({ href, label, key }) => (
                 <li key={key}>
                   <Link href={href} aria-current={key === current ? 'page' : undefined}>{label}</Link>
                 </li>
@@ -165,7 +163,7 @@ export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
 
       {open && (
         <nav id="pl-mobnav" className="pl-mobnav" aria-label="Mobiele navigatie">
-          {STG_NAV.map(({ href, label, key }) => (
+          {NAV.map(({ href, label, key }) => (
             <Link key={key} href={href} onClick={close} aria-current={key === current ? 'page' : undefined}>
               {label}
             </Link>
@@ -229,8 +227,15 @@ export function QuickBar({ articles, active, onPick }: {
 }
 
 
-/* ══ Labelled advertising field ═══════════════════════════════════════════ */
-export function AdPlate() {
+/* ══ Labelled advertising field ═══════════════════════════════════════════
+   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder slot rendert het
+   veld niets: geen gereserveerde ruimte voor een advertentie die niet komt. */
+export function AdPlate({ slot }: { slot?: string }) {
+  if (!slot) return null
+  return <AdField slot={slot} />
+}
+
+function AdField({ slot }: { slot: string }) {
   const [consented, setConsented] = useState<boolean | null>(null)
   useEffect(() => {
     try { setConsented(localStorage.getItem('nightgazer_consent') === 'all') } catch { setConsented(false) }
@@ -245,7 +250,7 @@ export function AdPlate() {
         </span>
       </div>
       <div className="pl-ad__body">
-        <AdUnit slot="8887478647" style={{ width: '100%' }} />
+        <AdUnit slot={slot} style={{ width: '100%' }} />
         {consented === false && (
           <p className="pl-label" style={{ letterSpacing: '0.1em', textAlign: 'center', lineHeight: 1.7 }}>
             Gereserveerde ruimte — de advertentie verschijnt hier<br />zodra cookies zijn geaccepteerd.

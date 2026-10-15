@@ -32,10 +32,10 @@ interface Night {
   score: number
   label: string
 }
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
-} from '../shared'
+} from '@/app/_plate/shared'
 
 import IssOverkomsten from './IssOverkomsten'
 import Meldingen from './Meldingen'
@@ -645,7 +645,7 @@ export default function SterrenkijkenStaging() {
         </section>
 
         <div className="pl-wrap">
-          <AdPlate />
+          <AdPlate slot="6261315300" />
         </div>
       </main>
 

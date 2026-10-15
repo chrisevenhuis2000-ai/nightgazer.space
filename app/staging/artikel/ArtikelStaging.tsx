@@ -18,10 +18,10 @@ import { SiteFooter } from '../../components/SiteFooter'
 import { LEVELS, type ReadingLevel } from '@/types'
 import { type ArticleData, type Enrichment, PROXY, IMG, parseMarkdown } from '@/lib/article-data'
 import { type Article } from '@/lib/home-content'
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel, Ladder, plateNo,
-} from '../shared'
+} from '@/app/_plate/shared'
 
 const ORDER: ReadingLevel[] = ['original', 'beginner', 'amateur', 'pro']
 const LADDER: Record<Exclude<ReadingLevel, 'original'>, 'beg' | 'ama' | 'pro'> = {
@@ -412,7 +412,7 @@ ${article.rawBody.slice(0, 2500)}` }],
         )}
 
         <div className="pl-wrap">
-          <AdPlate />
+          <AdPlate slot="2395877471" />
         </div>
       </main>
 

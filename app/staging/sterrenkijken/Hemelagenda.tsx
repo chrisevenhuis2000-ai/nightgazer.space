@@ -18,7 +18,7 @@ import { useMemo, useState } from 'react'
 import { METEORS, SHOWER_YEAR, showerWindow, type Shower } from '@/lib/sky-data'
 import { buildSchedule, type ScheduledLaunch } from '@/lib/mission-schedule'
 import { downloadIcs, slugFile, type CalEvent } from '@/lib/ics'
-import { Ico } from '../Instruments'
+import { Ico } from '@/app/_plate/Instruments'
 
 type Soort = 'zwerm' | 'lancering'
 interface Item {

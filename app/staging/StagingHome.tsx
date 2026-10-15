@@ -25,12 +25,12 @@ import {
 import {
   Ico, Tip, useSky, skyTone, useUpcoming, type SkyState,
   SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate, NiveauPlate,
-} from './Instruments'
+} from '@/app/_plate/Instruments'
 import {
   archivo, ROWS_PER_PAGE, TOPICS, QUICK_TAGS, quickMatches,
   FOOTER_COLS, LEVEL_WORD, LEVEL_STEP, plateNo, img, Ladder,
   StagingBanner, PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
-} from './shared'
+} from '@/app/_plate/shared'
 
 
 /* ══ Ticker: the latest plates, filling the void under the lead ══════════ */
@@ -712,7 +712,7 @@ export default function StagingHome() {
         </section>
 
         <div className="pl-wrap">
-          <AdPlate />
+          <AdPlate slot="8887478647" />
         </div>
 
         <div className="pl-wrap pl-gap-lg">

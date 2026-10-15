@@ -19,7 +19,7 @@ import {
 } from '@/lib/iss'
 import { compass, compass16, KOMPAS_VOLUIT } from '@/lib/sky-chart'
 import { downloadIcs, slugFile } from '@/lib/ics'
-import { Ico } from '../Instruments'
+import { Ico } from '@/app/_plate/Instruments'
 
 const VENSTER = 5      // dagen die standaard getoond worden
 const VER_VENSTER = 21 // waar we zoeken als het venster leeg is

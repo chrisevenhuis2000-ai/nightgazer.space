@@ -14,10 +14,10 @@ import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { LEVELS, TOPIC_DETAILS, TOPICS, CONCEPTS, FAQS } from '@/lib/education-data'
 import { DAILY_QUESTIONS } from '@/lib/home-content'
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel, Ladder,
-} from '../shared'
+} from '@/app/_plate/shared'
 
 type Level = 'beg' | 'ama' | 'pro'
 const LEVEL_KEYS: Level[] = ['beg', 'ama', 'pro']

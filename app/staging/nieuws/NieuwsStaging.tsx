@@ -13,12 +13,12 @@ import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { type Article, getLevel, topicMatches } from '@/lib/home-content'
 import { TOPICS as TOPIC_PAGES } from '@/lib/topics'
-import { Ico } from '../Instruments'
+import { Ico } from '@/app/_plate/Instruments'
 import {
   archivo, ROWS_PER_PAGE, QUICK_TAGS, quickMatches,
   FOOTER_COLS, LEVEL_WORD, plateNo, img, Ladder,
   StagingBanner, PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
-} from '../shared'
+} from '@/app/_plate/shared'
 
 /* ── De laden ─────────────────────────────────────────────────────────────
    Elke lade is een echte categorie uit het archief. De omschrijvingen komen
@@ -447,7 +447,7 @@ export default function NieuwsStaging() {
         </div>
 
         <div className="pl-wrap">
-          <AdPlate />
+          <AdPlate slot="3395478818" />
         </div>
 
       </main>

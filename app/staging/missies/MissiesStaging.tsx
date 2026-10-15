@@ -17,11 +17,11 @@ import {
   buildSchedule, monthWindows, assignLanes, agencyCounts, destinationGroup,
   type ScheduledLaunch, type MonthWindow,
 } from '@/lib/mission-schedule'
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
   archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
   useMissionImages, img,
-} from '../shared'
+} from '@/app/_plate/shared'
 
 const DAYFMT: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }
 
