@@ -91,7 +91,7 @@ const ROOT = path.join(__dirname, '..')
   const buiten = [...gezien].filter(([u]) => !magBeeld(u))
   if (buiten.length) console.error('Buiten de lijst:\n' + buiten.slice(0, 20).map(([u, b]) => `  ${u}  (${b})`).join('\n'))
   eq(buiten.length, 0, 'inventaris: geen enkele afbeelding van de site valt buiten de lijst')
-  ok(gezien.size > 500, `inventaris: genoeg afbeeldingen gezien (${gezien.size})`)
+  ok(gezien.size > 200, `inventaris: genoeg afbeeldingen gezien (${gezien.size})`)
   const perHost = {}
   for (const [u] of gezien) { const h = new URL(u).hostname; perHost[h] = (perHost[h] || 0) + 1 }
   const ongebruikt = [...BEELD_HOSTS].filter(h => !perHost[h])

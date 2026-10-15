@@ -218,7 +218,7 @@ export const CONCEPTS = [
   { slug: 'neutronenster-uitgelegd',   icon: '💫', title: 'Neutronenster',    category: 'Sterren',        color: '#d4a84b', desc: 'De extreem compacte overblijfselen van massieve sterren.' },
   { slug: 'desi-donkere-energie',       icon: '🌑', title: 'Donkere Energie',  category: 'Kosmologie',     color: '#c080ff', desc: 'De mysterieuze kracht achter de versnelde uitdijing van het heelal.' },
   { slug: 'james-webb-k2-18b-biosignatuur', icon: '🌍', title: 'Exoplaneten',     category: 'Exoplaneten',    color: '#3ddf90', desc: 'Planeten buiten ons zonnestelsel en de zoektocht naar leven.' },
-  { slug: 'starship-mechazilla',        icon: '🚀', title: 'Orbitale Mechanica', category: 'Ruimtevaart',  color: '#3dcfdf', desc: 'Hoe raketten de juiste baan bereiken en terugkeren naar Aarde.' },
+  { slug: 'smiles-journey-from-launch-to-orbit', icon: '🚀', title: 'Orbitale Mechanica', category: 'Ruimtevaart',  color: '#3dcfdf', desc: 'Hoe een raket een satelliet in de juiste baan brengt, aan de hand van de reis van Smile.' },
 ]
 
 export const FAQS = [
