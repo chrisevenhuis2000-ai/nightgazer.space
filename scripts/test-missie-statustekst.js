@@ -10,6 +10,11 @@
 //               precies 1 detailed-request + 1 Claude-aanroep).
 //   Run 2:      verandert niets, geen requests, geen Claude.
 //   Zonder API-sleutel: sjabloon wel, geen detailed-request.
+//   D. Lancering-sjabloon wint altijd: elke lancering krijgt elke run de
+//      highlight uit het sjabloon, ongeacht de tekst (ook Claude's tekst bij
+//      een nieuwe lancering); een missie houdt de zijne. `_herverrijk` op
+//      een actieve missie → 1 detailed-request + 1 Claude, vlag weg. Run 2:
+//      0 aanroepen, geen requests, geen diff. Zonder sleutel blijft de vlag.
 //
 // MISSIE_SCRIPT wijst een ander script aan (zie test-missie-verrijking-mutaties.js).
 
@@ -81,11 +86,11 @@ const pool = [
   launch('st-missie', 'Launch Successful', '2026-04-14T10:00:00Z', 'Falcon 9'),
 ]
 
-function setup() {
+function setup(lijst = missies, up = upcoming) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'missie-statustekst-'))
   const tmp = { dir, missions: path.join(dir, 'missions.json'), up: path.join(dir, 'up.json') }
-  fs.writeFileSync(tmp.missions, JSON.stringify({ _meta: {}, missions: missies }, null, 2))
-  fs.writeFileSync(tmp.up, JSON.stringify(upcoming))
+  fs.writeFileSync(tmp.missions, JSON.stringify({ _meta: {}, missions: lijst }, null, 2))
+  fs.writeFileSync(tmp.up, JSON.stringify(up))
   return tmp
 }
 
@@ -160,6 +165,51 @@ async function run(tmp, ll2, claude, key = 'test-sleutel') {
   fs.rmSync(tmpK.dir, { recursive: true, force: true })
 
   await ll2.close()
+
+  // ── D. Lancering-sjabloon wint altijd; _herverrijk ────────────────────
+  const overJaar = new Date(Date.now() + 200 * DAY).toISOString()
+  const dMissies = [
+    { ...mission('d-lanc-oud', 'lancering', '3 mrt 2026'), status: 'voltooid', vehicle: 'Electron', highlight: 'Eerste vlucht – nieuwe generatie debuteert' },
+    { ...mission('d-lanc-gepland', 'lancering', '31 dec 2026'), highlight: 'Geplande lancering eind 2026 met Falcon 9 naar een polaire baan.' },
+    { ...mission('d-lanc-mislukt', 'lancering', '5 mei 2026'), status: 'mislukt', vehicle: 'Electron', highlight: 'Details volgen later.' },
+    { ...mission('d-missie', 'missie', '14 apr 2026'), status: 'actief', highlight: 'Lancering gepland voor 14 april 2026', _herverrijk: true },
+    { ...mission('d-missie-tekst', 'missie', '1 jan 2020'), status: 'actief', highlight: 'Eigen tekst van een missie' },
+  ]
+  const dUp = { results: [launch('nieuw-lanc', 'Go for Launch', morgenIso, 'Falcon 9')] }
+  dUp.results[0].mission.name = 'Nieuw Lanc'
+  const dPool = [launch('d-missie', 'Launch Successful', '2026-04-14T10:00:00Z', 'Falcon 9')]
+  const ll2D = await startMock(dPool)
+  const tmpD = setup(dMissies, dUp)
+  const d1 = await run(tmpD, ll2D, claude)
+  const md = d1.missions
+  eq(md.get('d-lanc-oud').highlight, 'Gelanceerd op 3 mrt 2026 met Electron', 'D: voltooide lancering → sjabloon, ook zonder "gepland" in de oude tekst')
+  eq(md.get('d-lanc-gepland').highlight, 'Lancering gepland: 31 dec 2026', 'D: geplande lancering → sjabloon, ook over Claude-tekst heen')
+  eq(md.get('d-lanc-mislukt').highlight, 'Lancering mislukt op 5 mei 2026 (Electron)', 'D: mislukte lancering → sjabloon')
+  eq(md.get('nieuw-lanc').highlight, `Lancering gepland: ${fmt(morgenIso)}`, 'D: nieuwe lancering → sjabloon wint van Claude\'s highlight')
+  eq(md.get('nieuw-lanc').description, 'Verrijkte beschrijving van Nieuw Lanc.', 'D: nieuwe lancering → wel Claude-beschrijving')
+  eq(md.get('d-missie-tekst').highlight, 'Eigen tekst van een missie', 'D: missie houdt zijn eigen highlight')
+  eq(md.get('d-missie').highlight, 'Gelanceerd op 14 apr 2026 — missie in bedrijf', 'D: _herverrijk → sjabloon actief')
+  eq(md.get('d-missie').description, 'Verrijkte beschrijving van d-missie.', 'D: _herverrijk → Claude-tekst uit de detailed-data')
+  eq(md.get('d-missie')._herverrijk, undefined, 'D: _herverrijk-vlag weg')
+  eq(d1.calls, ['Nieuw Lanc', 'd-missie'], 'D run 1: Claude voor de nieuwe lancering (bij aanmaak) en d-missie (_herverrijk)')
+  eq(d1.detailed.map(u => u.searchParams.get('id')), ['00000000-d-missie'], 'D run 1: precies één detailed-request, voor d-missie')
+
+  const voorD = fs.readFileSync(tmpD.missions, 'utf-8')
+  const d2 = await run(tmpD, ll2D, claude)
+  eq(d2.calls, [], 'D run 2: 0 Claude-aanroepen')
+  eq(d2.list.length + d2.detailed.length, 0, 'D run 2: geen LL2-requests')
+  eq(fs.readFileSync(tmpD.missions, 'utf-8'), voorD, 'D run 2: geen diff')
+  ok(d2.stdout.split('\n').includes('Claude-aanroepen: 0'), 'D run 2: log meldt "Claude-aanroepen: 0"')
+  fs.rmSync(tmpD.dir, { recursive: true, force: true })
+
+  const tmpDK = setup(dMissies, dUp)
+  const dk = await run(tmpDK, ll2D, claude, '')
+  eq(dk.missions.get('d-missie')._herverrijk, true, 'D zonder sleutel: _herverrijk blijft staan')
+  eq(dk.detailed.length, 0, 'D zonder sleutel: geen detailed-request')
+  eq(dk.missions.get('d-lanc-oud').highlight, 'Gelanceerd op 3 mrt 2026 met Electron', 'D zonder sleutel: lancering-sjabloon wel')
+  fs.rmSync(tmpDK.dir, { recursive: true, force: true })
+  await ll2D.close()
+
   await claude.close()
-  console.log(`✅ ${checks} statustekstcontroles geslaagd (run 1: 2 Claude, 1 detailed; run 2: niets)`)
+  console.log(`✅ ${checks} statustekstcontroles geslaagd (run 1: 2 Claude, 1 detailed; run 2: niets; D: sjabloon wint, _herverrijk)`)
 })().catch(err => { console.error(err); process.exit(1) })

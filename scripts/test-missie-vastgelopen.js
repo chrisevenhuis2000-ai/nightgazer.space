@@ -23,6 +23,9 @@ const { startMock } = require('./__fixtures__/ll2-mock.js')
 let checks = 0
 const ok = (cond, msg) => { assert.ok(cond, msg); checks++ }
 const eq = (a, b, msg) => { assert.deepEqual(a, b, msg); checks++ }
+// De highlight van een lancering komt elke run uit het sjabloon (status, datum,
+// voertuig); test-missie-statustekst.js test die. Hier telt de rest.
+const vgl = m => (m && m.soort === 'lancering' ? { ...m, highlight: undefined } : m)
 
 const FIX = path.join(__dirname, '__fixtures__')
 const DAY = 86400 * 1000
@@ -110,7 +113,7 @@ const read = tmp => JSON.parse(fs.readFileSync(tmp.missions, 'utf-8')).missions
 
   // Missies die nooit vast zaten, zijn onveranderd.
   const fin = byId(read(tmp))
-  for (const m of start) if (!isStale(m)) eq(JSON.stringify(fin.get(m.id)), JSON.stringify(m), `${m.id} onveranderd`)
+  for (const m of start) if (!isStale(m)) eq(JSON.stringify(vgl(fin.get(m.id))), JSON.stringify(vgl(m)), `${m.id} onveranderd`)
   fs.rmSync(tmp.dir, { recursive: true, force: true })
 
   // ── B. Mislukte request: geen misser ─────────────────────────────────
