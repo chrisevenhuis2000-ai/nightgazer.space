@@ -81,7 +81,10 @@ export function parseMarkdown(raw: string, slug: string): ArticleData {
   const category = fm.category || 'Astronomie'
   let date = fm.publishedAt || ''
   if (date) {
-    try { date = new Date(date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }) } catch {}
+    // Vaste tijdzone: de build draait in UTC, de lezer in Nederland. Zonder
+    // dit krijgt een artikel van 23:30 UTC op de server een andere datum dan
+    // in de browser, en dat geeft een hydratie-mismatch.
+    try { date = new Date(date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' }) } catch {}
   }
 
   return {
