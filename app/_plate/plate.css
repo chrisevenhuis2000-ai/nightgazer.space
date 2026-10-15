@@ -554,29 +554,8 @@ a:hover .pl-emulsion > img,
 .pl-lead__fig { position: relative; aspect-ratio: 16 / 9; }
 .pl-lead__fig .pl-emulsion { position: absolute; inset: 0; }
 
-/* The chinagraph ring: the archivist's mark around the subject. */
-.pl-ring {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: visible;
-}
-.pl-ring ellipse {
-  fill: none;
-  stroke: var(--pl-mark);
-  stroke-width: 1.6;
-  stroke-dasharray: 5 6;
-  stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
-  opacity: 0.92;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .pl-ring--draw ellipse {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: pl-mark-in 760ms var(--pl-ease) 420ms both;
-  }
-}
+/* De chinagraph-ring tekent zichzelf één keer in. Alleen nog gebruikt door
+   de beste nacht op /sterrenkijken (.pl-eph tr[data-best="1"]). */
 @keyframes pl-mark-in {
   from { opacity: 0; transform: scale(1.09) rotate(-2.5deg); }
   to   { opacity: 0.92; transform: none; }
@@ -929,7 +908,8 @@ a:hover .pl-emulsion > img,
 
 /* ══ Motion budget ═══════════════════════════════════════════════════════
    One authored moment: the light-box loupe over the archive.
-   Two supporting signatures: the chinagraph ring drawing itself once, and
+   Two supporting signatures: the chinagraph ring drawing itself once around
+   the best night on /sterrenkijken, and
    the continuous readout under a live feed. Nothing else animates on entry —
    every section is visible from the first paint.
    ═══════════════════════════════════════════════════════════════════════ */
@@ -2594,7 +2574,7 @@ a:hover .pl-emulsion > img,
 
 /* Een sluier over de plaat. `mix-blend-mode: color` verschuift alleen de
    tint, dus een logo op een witte achtergrond bleef spierwit knallen in een
-   verder donkere pagina. Dit temt de luminantie en geeft de chinagraph-ring
+   verder donkere pagina. Dit temt de luminantie en geeft het plaatnummer
    iets om op te staan — hetzelfde middel als de hero op de voorpagina. */
 .pl-lede__fig::after {
   content: '';
@@ -2606,7 +2586,6 @@ a:hover .pl-emulsion > img,
   pointer-events: none;
   z-index: 1;
 }
-.pl-lede__fig .pl-ring,
 .pl-lede__fig .pl-stampno { z-index: 2; }
 .pl-lede__body {
   padding: clamp(22px, 2.6vw, 38px);
@@ -2768,7 +2747,7 @@ a:hover .pl-emulsion > img,
   pointer-events: none;
   z-index: 1;
 }
-.pl-nextup__fig .pl-ring, .pl-nextup__fig .pl-stampno { z-index: 2; }
+.pl-nextup__fig .pl-stampno { z-index: 2; }
 
 .pl-nextup__body {
   padding: clamp(22px, 2.6vw, 36px);

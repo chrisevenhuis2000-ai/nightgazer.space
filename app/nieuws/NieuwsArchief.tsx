@@ -53,9 +53,9 @@ function drawerDescription(key: string): string | null {
 }
 
 /* ── De hoofdplaat van de open lade ───────────────────────────────────────
-   Het sterkste middel van het systeem: grote emulsie met de chinagraph-ring
-   eromheen, precies zoals de plaat van vandaag op de voorpagina. De
-   nieuwspagina was de enige surface die dit niet gebruikte. */
+   Grote emulsie met plaatnummer, precies zoals de plaat van vandaag op de
+   voorpagina. Geen ring meer: die is voortaan alleen voor de beste nacht
+   op /sterrenkijken. */
 function Lede({ a, no }: { a: Article; no: string }) {
   const lvl = getLevel(a.category)
   return (
@@ -66,9 +66,6 @@ function Lede({ a, no }: { a: Article; no: string }) {
             ? <img src={img(a.imageUrl, 1100)} alt="" />
             : <span style={{ position: 'absolute', inset: 0, background: 'var(--pl-plate-2)' }} />}
         </span>
-        <svg className="pl-ring pl-ring--draw" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-          <ellipse cx="60" cy="29" rx="19" ry="15" transform="rotate(-8 60 29)" />
-        </svg>
         <span className="pl-stampno pl-num">{no}</span>
       </span>
 
