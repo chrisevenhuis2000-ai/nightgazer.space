@@ -17,6 +17,9 @@ export interface ArticleData {
   tags:        string[]
   paragraphs:  string[]
   rawBody:     string
+  /** Oorspronkelijke bron (frontmatter `source`/`sourceUrl`), onderaan getoond. */
+  source:      string
+  sourceUrl:   string
 }
 
 export interface Enrichment {
@@ -100,6 +103,8 @@ export function parseMarkdown(raw: string, slug: string): ArticleData {
     tags:        tags.slice(0, 6),
     paragraphs:  paragraphs.length ? paragraphs : ['Dit artikel wordt geladen...'],
     rawBody:     body,
+    source:      fm.source || '',
+    sourceUrl:   /^https?:\/\//.test(fm.sourceUrl || '') ? fm.sourceUrl : '',
   }
 }
 

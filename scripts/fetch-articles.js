@@ -7,6 +7,12 @@
  * Pulls articles from free RSS feeds, passes them through Claude for
  * a Dutch summary + rewrite, and saves as markdown files in content/articles/.
  *
+ * Regel: geen geldige Nederlandse herschrijving = niet publiceren (zie
+ * scripts/nieuws-herschrijf.js). Een overgeslagen item krijgt geen bestand en
+ * wordt dus de volgende run opnieuw geprobeerd. De run-samenvatting
+ * ($GITHUB_STEP_SUMMARY) meldt "Claude-aanroepen: N" en gepubliceerd /
+ * overgeslagen, met een ::warning:: per overgeslagen item.
+ *
  * Feeds used (all free, no auth):
  *   - NASA News:       https://www.nasa.gov/rss/dyn/breaking_news.rss
  *   - SpaceFlightNow: https://spaceflightnow.com/feed/
@@ -18,9 +24,9 @@
 const fs      = require('fs')
 const path    = require('path')
 const Parser  = require('rss-parser')
+const N       = require('./nieuws-herschrijf')
 
 const ARTICLES_DIR  = path.join(__dirname, '..', 'content', 'articles')
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
 
 const FEEDS = [
   {
@@ -87,53 +93,6 @@ function slugify(str) {
     .slice(0, 60)
 }
 
-async function translateAndSummarise(title, content) {
-  if (!ANTHROPIC_KEY) {
-    console.warn('  No ANTHROPIC_API_KEY — skipping AI translation')
-    return { titleNL: title, excerptNL: content?.slice(0, 200) || '', bodyNL: content || '' }
-  }
-
-  const prompt = `Je bent een redacteur van een Nederlandse astronomie-website. Vertaal en herschrijf het volgende Engelstalige nieuwsartikel in het Nederlands. Geef je antwoord UITSLUITEND als JSON (geen markdown):
-{
-  "title": "Nederlandse titel",
-  "excerpt": "Nederlandse samenvatting in 2-3 zinnen",
-  "body": "Volledig artikel in het Nederlands (3-5 alinea's, journalistieke stijl)"
-}`
-
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method:  'POST',
-    headers: {
-      'Content-Type':      'application/json',
-      'x-api-key':         ANTHROPIC_KEY,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model:      'claude-sonnet-4-6',
-      max_tokens: 1000,
-      messages:   [{
-        role:    'user',
-        content: `Titel: ${title}\n\nInhoud: ${content?.slice(0, 1500) || ''}`,
-      }],
-      system: prompt,
-    }),
-  })
-
-  const data    = await res.json()
-  const rawText = data.content?.[0]?.text || '{}'
-  const cleaned = rawText.replace(/```json\n?|\n?```/g, '').trim()
-
-  try {
-    const parsed = JSON.parse(cleaned)
-    return {
-      titleNL:   parsed.title   || title,
-      excerptNL: parsed.excerpt || '',
-      bodyNL:    parsed.body    || content || '',
-    }
-  } catch {
-    return { titleNL: title, excerptNL: '', bodyNL: content || '' }
-  }
-}
-
 /**
  * Parse og:image / twitter:image from an HTML string.
  * Returns an absolute URL or null.
@@ -178,7 +137,7 @@ async function fetchOgImage(sourceUrl) {
   if (!sourceUrl) return null
   try {
     const res = await fetch(sourceUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CosmosNLBot/1.0)' },
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; NightGazerBot/1.0)' },
       signal:  AbortSignal.timeout(8000),
     })
     if (!res.ok) return null
@@ -227,8 +186,18 @@ async function extractImage(item, title, source) {
   return { imageUrl: '', imageAlt: '', imageCredit: '' }
 }
 
-async function main() {
-  if (!fs.existsSync(ARTICLES_DIR)) fs.mkdirSync(ARTICLES_DIR, { recursive: true })
+const yaml = s => String(s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r?\n/g, ' ')
+const melding = s => String(s).replace(/\r?\n/g, ' ').replace(/::/g, ': :')
+
+/**
+ * @param {object} [opts] alleen voor de tests: feeds, articlesDir, laadFeed
+ *   (feed → items), fetchPagina, client, now, samenvattingPad
+ */
+async function main(opts = {}) {
+  const feeds       = opts.feeds || FEEDS
+  const articlesDir = opts.articlesDir || ARTICLES_DIR
+  const now         = opts.now || (() => new Date())
+  if (!fs.existsSync(articlesDir)) fs.mkdirSync(articlesDir, { recursive: true })
 
   const parser = new Parser({
     timeout: 10000,
@@ -240,70 +209,102 @@ async function main() {
       ],
     },
   })
-  let newCount = 0
+  const laadFeed = opts.laadFeed || (async feed => (await parser.parseURL(feed.url)).items)
 
-  for (const feed of FEEDS) {
+  const heeftSleutel = !!(opts.client || process.env.ANTHROPIC_API_KEY)
+  const client = opts.client || (heeftSleutel ? N.maakClient() : null)
+  const stats = { aanroepen: 0, gepubliceerd: 0, overgeslagen: 0 }
+  const overgeslagen = []
+  const sla = (titel, reden) => {
+    stats.overgeslagen++
+    overgeslagen.push({ titel, reden })
+    console.log(`::warning title=Niet gepubliceerd::${melding(titel)} — ${melding(reden)}`)
+  }
+
+  if (!heeftSleutel) console.log('::warning title=Geen ANTHROPIC_API_KEY::zonder sleutel wordt er niets gepubliceerd (geen ruwe RSS-tekst meer)')
+
+  for (const feed of feeds) {
     console.log(`\n📡 Fetching: ${feed.source}`)
 
-    let feedData
+    let items
     try {
-      feedData = await parser.parseURL(feed.url)
+      items = await laadFeed(feed)
     } catch (e) {
-      console.warn(`  ⚠ Could not fetch ${feed.url}: ${e.message}`)
+      console.log(`::warning title=Feed niet bereikbaar::${feed.source} (${feed.url}): ${melding(e.message)}`)
       continue
     }
 
     // Take only the 3 most recent items per feed
-    const items = feedData.items.slice(0, 3)
-
-    for (const item of items) {
+    for (const item of (items || []).slice(0, 3)) {
       const title    = item.title?.trim() || 'Untitled'
       const slug     = slugify(title)
-      const filePath = path.join(ARTICLES_DIR, `${slug}.md`)
+      const filePath = path.join(articlesDir, `${slug}.md`)
 
-      // Skip if already exists
+      // Al gepubliceerd. Een eerder overgeslagen item heeft geen bestand en
+      // komt dus vanzelf opnieuw aan de beurt.
       if (fs.existsSync(filePath)) {
         console.log(`  ⏭  Already exists: ${title}`)
         continue
       }
 
       console.log(`  ✍  Processing: ${title}`)
+      if (!client) { sla(title, 'geen ANTHROPIC_API_KEY'); continue }
 
-      const content  = item.contentSnippet || item.summary || item.content || ''
-      const category = guessCategory(title, feed.category)
+      const bron = await N.brontekst(item, feed.url, opts.fetchPagina)
+      if (bron.woorden < N.MIN_WOORDEN_BRON) {
+        sla(title, `brontekst te kort (${bron.woorden} woorden, minimaal ${N.MIN_WOORDEN_BRON}; geen Claude-aanroep)`)
+        continue
+      }
 
-      const [{ titleNL, excerptNL, bodyNL }, { imageUrl, imageAlt, imageCredit }] = await Promise.all([
-        translateAndSummarise(title, content),
-        extractImage(item, title, feed.source),
+      const [r, { imageUrl, imageAlt, imageCredit }] = await Promise.all([
+        N.herschrijf(client, { titel: title, tekst: bron.tekst, bron: feed.source }),
+        opts.extractImage ? opts.extractImage(item, title, feed.source) : extractImage(item, title, feed.source),
       ])
+      if (r.aanroep) stats.aanroepen++
+      if (!r.ok) { sla(title, r.reden); continue }
 
+      const category = guessCategory(title, feed.category)
       const frontmatter = `---
-title: "${titleNL.replace(/"/g, '\\"')}"
-excerpt: "${excerptNL.replace(/"/g, '\\"')}"
+title: "${yaml(r.data.title)}"
+excerpt: "${yaml(r.data.excerpt)}"
 category: "${category}"
-author: "Redactie CosmosNL"
-publishedAt: "${new Date().toISOString()}"
+author: "Redactie NightGazer"
+publishedAt: "${now().toISOString()}"
 featured: false
 tags: []
-source: "${feed.source}"
-sourceUrl: "${item.link || ''}"
-imageUrl: "${imageUrl}"
-imageAlt: "${imageAlt.replace(/"/g, '\\"')}"
-imageCredit: "${imageCredit}"
+source: "${yaml(feed.source)}"
+sourceUrl: "${yaml(item.link || '')}"
+imageUrl: "${yaml(imageUrl)}"
+imageAlt: "${yaml(imageAlt)}"
+imageCredit: "${yaml(imageCredit)}"
 ---
 
-${bodyNL}
+${r.data.body}
 `
       fs.writeFileSync(filePath, frontmatter)
-      newCount++
-      console.log(`  ✅ Saved: ${slug}.md`)
+      stats.gepubliceerd++
+      console.log(`  ✅ Saved: ${slug}.md (${N.woorden(r.data.body)} woorden, bron ${bron.woorden} woorden${bron.uitPagina ? ' uit de artikelpagina' : ' uit de feed'})`)
 
       // Rate limit: wait 1s between API calls
-      await new Promise(r => setTimeout(r, 1000))
+      if (!opts.client) await new Promise(res => setTimeout(res, 1000))
     }
   }
 
-  console.log(`\n✨ Done! ${newCount} new articles saved to content/articles/`)
+  const regels = [
+    `Claude-aanroepen: ${stats.aanroepen}`,
+    `Gepubliceerd: ${stats.gepubliceerd} / overgeslagen: ${stats.overgeslagen}`,
+    ...overgeslagen.map(o => `- overgeslagen: ${o.titel} — ${o.reden}`),
+  ]
+  console.log('\n' + regels.join('\n'))
+  const pad = opts.samenvattingPad ?? process.env.GITHUB_STEP_SUMMARY
+  if (pad) {
+    try { fs.appendFileSync(pad, `### Nieuwsbot\n\n${regels.join('\n')}\n`) } catch (e) { console.warn(`⚠️  Run-samenvatting niet geschreven: ${e.message}`) }
+  }
+  return stats
 }
 
-main().catch(console.error)
+module.exports = { main, FEEDS }
+
+if (require.main === module) {
+  main().catch(err => { console.error(err); process.exit(1) })
+}
