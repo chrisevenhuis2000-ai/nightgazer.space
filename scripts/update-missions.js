@@ -19,6 +19,11 @@ const LL2_FIXTURE   = process.env.LL2_FIXTURE || null
 const LL2_BASE_URL  = process.env.LL2_BASE_URL || null
 const LL2_BASE      = LL2_BASE_URL || 'https://ll.thespacedevs.com'
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
+// ANTHROPIC_BASE_URL en MISSIE_GEEN_PAUZE zijn er voor
+// scripts/test-missie-verrijking.js (nep-Claude, geen wachttijd tussen
+// requests); de workflow zet ze niet.
+const ANTHROPIC_BASE = new URL(process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com')
+const GEEN_PAUZE    = !!process.env.MISSIE_GEEN_PAUZE
 
 const MONTHS_NL = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec']
 
@@ -146,14 +151,14 @@ function fetchJSON(url) {
   })
 }
 
-async function sleep(ms) { return new Promise(r => setTimeout(r, ms)) }
+async function sleep(ms) { return new Promise(r => setTimeout(r, GEEN_PAUZE ? 0 : ms)) }
 
 // ── Claude verrijking ─────────────────────────────────────────────────────────
+// Elke request naar de API telt mee, ook een mislukte: dit getal komt als
+// "Claude-aanroepen: N" in de run-samenvatting, zodat de kosten te volgen zijn.
+let claudeAanroepen = 0
+
 async function enrichWithClaude(mission, ll2Data) {
-  if (!ANTHROPIC_KEY) {
-    console.log(`  ⚠️  Geen ANTHROPIC_API_KEY — Claude verrijking overgeslagen voor ${mission.name}`)
-    return null
-  }
 
   const body = JSON.stringify({
     model:      'claude-sonnet-4-6',
@@ -186,9 +191,11 @@ Geef JSON met precies deze velden:
     }],
   })
 
+  claudeAanroepen++
   return new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'api.anthropic.com',
+    const req = (ANTHROPIC_BASE.protocol === 'http:' ? http : https).request({
+      hostname: ANTHROPIC_BASE.hostname,
+      port:     ANTHROPIC_BASE.port || undefined,
       path:     '/v1/messages',
       method:   'POST',
       headers: {
@@ -217,6 +224,7 @@ Geef JSON met precies deze velden:
       })
     })
     req.on('error', reject)
+    req.setTimeout(60000, () => { req.destroy(); reject(new Error('timeout')) })
     req.write(body)
     req.end()
   })
@@ -239,6 +247,72 @@ function cleanEnrichment(e) {
 }
 
 const hasDescription = d => typeof d === 'string' && d.trim().length > 0
+
+// Wanneer gaat een bestaande missie (opnieuw) naar Claude? Geeft de reden
+// terug, of null. De regels:
+//  - statuswijziging: altijd (de tekst beschrijft dan een achterhaalde stand);
+//  - nog openstaand (nooit verrijkt, of de laatste poging is nieuwer dan de
+//    laatste geslaagde verrijking): ja, maar een mislukte of overgeslagen
+//    poging pas na 30 dagen opnieuw — eerder alleen als die poging werd
+//    overgeslagen wegens een ontbrekende LL2-beschrijving en LL2 er nu wél
+//    een heeft;
+//  - verversen na 30 dagen: alleen soort 'missie'. Een lancering verandert
+//    niet zonder statuswijziging; die wordt alleen bij aanmaak verrijkt.
+// Nieuwe missies krijgen hun verrijking bij aanmaak (reden 'nieuw').
+const CLAUDE_INTERVAL_DAGEN = 30
+function claudeReden(mission, { statusGewijzigd = false, heeftBeschrijving = false, now = Date.now() } = {}) {
+  if (statusGewijzigd) return 'status'
+  const dagenSinds = iso => (iso ? (now - new Date(iso).getTime()) / 86400000 : Infinity)
+  const poging = mission._lastClaudeAttempt || null
+  const laatste = mission._lastClaudeUpdate || null
+  const openstaand = !laatste || (poging && new Date(poging.at) > new Date(laatste))
+  let reden = null
+  if (openstaand) reden = laatste ? 'eerdere poging' : 'nooit verrijkt'
+  else if (mission.soort === 'missie' && dagenSinds(laatste) > CLAUDE_INTERVAL_DAGEN) reden = `${CLAUDE_INTERVAL_DAGEN} dagen`
+  if (!reden) return null
+  if (poging && dagenSinds(poging.at) <= CLAUDE_INTERVAL_DAGEN) {
+    const nuWelBeschrijving = poging.reden === 'geen-beschrijving' && heeftBeschrijving
+    if (!nuWelBeschrijving) return null
+  }
+  return reden
+}
+
+// Verrijkt één missie in place. Gelukt → _lastClaudeUpdate en de poging weg;
+// mislukt of geen LL2-beschrijving → _lastClaudeAttempt { at, reden }, zodat
+// claudeReden() het niet de volgende dag opnieuw probeert. Zonder
+// ANTHROPIC_API_KEY gebeurt er niets (en wordt er ook niets vastgelegd).
+// Geeft true als de missie veranderd is.
+async function verrijk(mission, ll2Data, reden, { vervangTags = false } = {}) {
+  if (!ANTHROPIC_KEY) return false
+  const at = new Date().toISOString()
+  if (!hasDescription(ll2Data.description)) {
+    console.log(`  ⏭️  ${mission.name}: geen LL2-beschrijving — verrijking (${reden}) overgeslagen`)
+    mission._lastClaudeAttempt = { at, reden: 'geen-beschrijving' }
+    return true
+  }
+  try {
+    console.log(`  🤖 Claude verrijking voor ${mission.name} (${reden})...`)
+    await sleep(1000)
+    const enriched = cleanEnrichment(await enrichWithClaude(mission, ll2Data))
+    const bruikbaar = enriched && (enriched.objective || enriched.description || enriched.highlight || enriched.relatedTags.length)
+    if (!bruikbaar) throw new Error('geen bruikbare velden in het antwoord')
+    if (enriched.objective)   mission.objective   = enriched.objective
+    if (enriched.description) mission.description = enriched.description
+    if (enriched.highlight)   mission.highlight   = enriched.highlight
+    if (enriched.relatedTags.length) {
+      // Nieuwe missie: Claude's tags vervangen de standaardtags. Bestaande
+      // missie: union van bestaande + nieuwe tags.
+      mission.relatedTags = vervangTags ? enriched.relatedTags : [...new Set([...(mission.relatedTags || []), ...enriched.relatedTags])]
+    }
+    mission._lastClaudeUpdate = at
+    delete mission._lastClaudeAttempt
+    console.log(`     ✅ Verrijking geslaagd`)
+  } catch (err) {
+    console.warn(`     ⚠️  Claude mislukt: ${err.message} — volgende poging over ${CLAUDE_INTERVAL_DAGEN} dagen`)
+    mission._lastClaudeAttempt = { at, reden: 'mislukt' }
+  }
+  return true
+}
 
 // Vastgelopen missies opvragen op id: /launches/?id=a,b,…&mode=list geeft
 // precies die lanceringen terug (status en net zitten in mode=list). Hooguit
@@ -375,7 +449,8 @@ async function main() {
 
     // Status bijwerken (API wint altijd)
     const newStatus = mapLL2Status(ll2Data.ll2Status, mission.soort)
-    if (mission.status !== newStatus) {
+    const statusGewijzigd = mission.status !== newStatus
+    if (statusGewijzigd) {
       console.log(`  ✏️  ${mission.name}: status ${mission.status} → ${newStatus}`)
       mission.status = newStatus
       changed = true
@@ -408,35 +483,10 @@ async function main() {
       changed = true
     }
 
-    // Claude verrijking (alleen als status gewijzigd of >30 dagen geleden)
-    const lastClaude = mission._lastClaudeUpdate ? new Date(mission._lastClaudeUpdate) : null
-    const daysSince  = lastClaude ? (Date.now() - lastClaude.getTime()) / 86400000 : Infinity
-    const needsClaude = autoUpdated.includes(mission.id) || daysSince > 30
-
-    // Geen LL2-beschrijving → geen verrijking: anders schrijft Claude op
-    // basis van niets.
-    if (needsClaude && hasDescription(ll2Data.description)) {
-      try {
-        console.log(`  🤖 Claude verrijking voor ${mission.name}...`)
-        await sleep(1000)
-        const enriched = cleanEnrichment(await enrichWithClaude(mission, ll2Data))
-        if (enriched) {
-          if (enriched.objective)    mission.objective    = enriched.objective
-          if (enriched.description)  mission.description  = enriched.description
-          if (enriched.highlight)    mission.highlight    = enriched.highlight
-          if (enriched.relatedTags.length) {
-            // Union van bestaande + nieuwe tags
-            const existing = new Set(mission.relatedTags || [])
-            for (const t of enriched.relatedTags) existing.add(t)
-            mission.relatedTags = [...existing]
-          }
-          mission._lastClaudeUpdate = new Date().toISOString()
-          changed = true
-          console.log(`     ✅ Verrijking geslaagd`)
-        }
-      } catch (err) {
-        console.warn(`     ⚠️  Claude mislukt: ${err.message}`)
-      }
+    // Claude verrijking: zie claudeReden() voor wanneer.
+    if (ANTHROPIC_KEY) {
+      const reden = claudeReden(mission, { statusGewijzigd, heeftBeschrijving: hasDescription(ll2Data.description) })
+      if (reden && await verrijk(mission, ll2Data, reden)) changed = true
     }
   }
 
@@ -543,27 +593,10 @@ async function main() {
       orbit,
     }
 
-    let objective   = `${launchName} — ${agencyName} missie naar ${orbit}.`
-    let description = `${launchName} is een geplande missie van ${agencyName} naar ${orbit}.`
-    let highlight   = `Lancering gepland: ${formatDutch(ll2Data.launchDate)}`
-    let relatedTags = [slugify(launchName), slugify(agencyName), slugify(orbit)]
-
-    // Claude verrijking voor nieuwe missie
-    if (ANTHROPIC_KEY && hasDescription(ll2Data.description)) {
-      try {
-        await sleep(1000)
-        const enriched = cleanEnrichment(await enrichWithClaude({ name: launchName, agency: agencyName, vehicle: ll2Data.vehicle, body: orbit, launched: formatDutch(ll2Data.launchDate), soort, objective }, ll2Data))
-        if (enriched) {
-          objective   = enriched.objective   || objective
-          description = enriched.description || description
-          highlight   = enriched.highlight   || highlight
-          relatedTags = enriched.relatedTags.length ? enriched.relatedTags : relatedTags
-          console.log(`     ✅ Claude verrijking geslaagd`)
-        }
-      } catch (err) {
-        console.warn(`     ⚠️  Claude mislukt: ${err.message}`)
-      }
-    }
+    const objective   = `${launchName} — ${agencyName} missie naar ${orbit}.`
+    const description = `${launchName} is een geplande missie van ${agencyName} naar ${orbit}.`
+    const highlight   = `Lancering gepland: ${formatDutch(ll2Data.launchDate)}`
+    const relatedTags = [slugify(launchName), slugify(agencyName), slugify(orbit)]
 
     const newMission = {
       id:          slugify(launchName),
@@ -594,10 +627,23 @@ async function main() {
       relatedTags,
     }
 
+    // Claude verrijking bij aanmaak; daarna alleen nog bij een statuswijziging
+    // (en voor soort 'missie' elke 30 dagen) — zie claudeReden().
+    await verrijk(newMission, ll2Data, 'nieuw', { vervangTags: true })
+
     missions.push(newMission)
     autoUpdated.push(newMission.id)
     changed = true
     console.log(`     ➕ Toegevoegd: ${newMission.id}`)
+  }
+
+  // ── Run-samenvatting ──────────────────────────────────────────────────────
+  const samenvatting = `Claude-aanroepen: ${claudeAanroepen}`
+  console.log(`\n${samenvatting}`)
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${samenvatting}\n`) } catch (err) {
+      console.warn(`⚠️  Run-samenvatting niet geschreven: ${err.message}`)
+    }
   }
 
   // ── Opslaan ───────────────────────────────────────────────────────────────
@@ -613,7 +659,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden }
 
 if (require.main === module) {
   main().catch(err => {
