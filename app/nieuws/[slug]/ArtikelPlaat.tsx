@@ -426,7 +426,7 @@ ${article.rawBody.slice(0, 2500)}` }],
                       <span
                         className="pl-status"
                         data-on={mission.status === 'actief' ? '1' : '0'}
-                        style={{ color: mission.status === 'actief' ? 'var(--pl-good)' : 'var(--pl-ink-3)' }}
+                        style={{ color: mission.status === 'actief' ? 'var(--pl-good)' : mission.status === 'mislukt' ? 'var(--pl-warn)' : 'var(--pl-ink-3)' }}
                       >
                         <i aria-hidden="true" />{mission.status}
                       </span>

@@ -34,7 +34,7 @@ The existing NightGazer palette, re-cast in archive roles.
 | `--pl-orbit` | `#185FA5` | Structural brand blue: lit fiducials, meters, loupe. |
 | `--pl-stamp` | `#B5D4F4` | Provenance: plate numbers, focus rings, action rules. |
 | `--pl-good` | `#4FD39B` | Conditions good, answer correct. |
-| `--pl-warn` | `#E0685A` | Conditions poor, answer wrong. |
+| `--pl-warn` | `#E0685A` | Conditions poor, answer wrong, launch failed. |
 
 ### Two reserved colours, two questions
 
@@ -244,8 +244,12 @@ marks are shorter and quieter than planned ones; the today line divides them.
 Month segments double as the window selector. Below the fleet, a register
 lists every mission whose date has passed (or has no usable date), so no
 detail page under `/missies/[slug]` is left without a link. It says "datum
-voorbij", never "gevlogen": the bot only sees upcoming launches, so the data
-cannot tell a flight from a slip.
+voorbij", never "gevlogen", unless the status says more: the bot reads
+`/launches/previous/` for passed dates, and then the row says "gelanceerd"
+(a `lancering` delivered its payload), "afgerond" (a `missie` ended) or
+"mislukt" in `--pl-warn`. Whether a success makes something `actief` is the
+mission's `soort`, not its name: only a `missie` has an operational phase
+and appears under "Wat er nu vliegt".
 
 **`/educatie` — learning.** Mode Read. The level ladder: the reading
 level *is* the page. One choice in a sticky bar rewrites all six topics at

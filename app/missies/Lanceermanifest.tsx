@@ -23,6 +23,15 @@ import {
   useMissionImages, img,
 } from '@/app/_plate/shared'
 
+/* Wat het register over een vlucht zegt. 'voltooid' betekent bij een
+   lancering 'de lading is afgeleverd' en bij een missie 'de missie is
+   voorbij'; zonder status bewijst een verstreken datum niets. */
+function registerWord(m: MissionDetail): string {
+  if (m.status === 'mislukt') return 'mislukt'
+  if (m.status === 'voltooid') return m.soort === 'lancering' ? 'gelanceerd' : 'afgerond'
+  return 'datum voorbij'
+}
+
 const DAYFMT: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }
 
 function shortAgency(a: string): string {
@@ -366,7 +375,7 @@ export default function Lanceermanifest() {
     if (!schedule) return { flownList: [] as ScheduledLaunch[], undated: [] as MissionDetail[] }
     const upcomingIds = new Set(schedule.upcoming.map(l => l.mission.id))
     const keep = (m: MissionDetail) =>
-      m.status !== 'actief' && (m.status === 'voltooid' || !upcomingIds.has(m.id)) &&
+      m.status !== 'actief' && (m.status === 'voltooid' || m.status === 'mislukt' || !upcomingIds.has(m.id)) &&
       (!agency || m.agency === agency)
     return {
       flownList: schedule.past.filter(l => keep(l.mission)),
@@ -631,7 +640,7 @@ export default function Lanceermanifest() {
             <div className="pl-band">
               <div className="pl-band__t">
                 <h2 id="pl-register" className="pl-h2">Uit het manifest</h2>
-                <span className="pl-label">Datum voorbij of afgerond</span>
+                <span className="pl-label">Gelanceerd, afgerond, mislukt of datum voorbij</span>
               </div>
               <p className="pl-label pl-num">{archiveCount}</p>
             </div>
@@ -645,8 +654,8 @@ export default function Lanceermanifest() {
                         ? l.date.toLocaleDateString('nl-NL', DAYFMT)
                         : l.date.toLocaleDateString('nl-NL', { month: 'short', year: 'numeric' })}
                     </span>
-                    <span className="pl-flight__in">
-                      {l.mission.status === 'voltooid' ? 'afgerond' : 'datum voorbij'}
+                    <span className="pl-flight__in" style={l.mission.status === 'mislukt' ? { color: 'var(--pl-warn)' } : undefined}>
+                      {registerWord(l.mission)}
                     </span>
                   </span>
                   <span style={{ minWidth: 0 }}>
