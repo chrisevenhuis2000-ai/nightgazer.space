@@ -70,13 +70,16 @@ def expdecay(start, tau, length=None):
     return e
 
 
-def click_safe(x, ms=3.0):
-    """Short raised-cosine fades at both ends of a burst (no discontinuities)."""
-    k = max(2, int(SR * ms / 1000))
-    w = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, k))
+def click_safe(x, ms=3.0, out_ms=None):
+    """Raised-cosine fades at both ends of a burst (no discontinuities). Never shorter than 2 ms;
+    `out_ms` sets a longer fade-out for bursts whose tail is still ringing."""
+    def win(m):
+        k = max(int(SR * 0.002), int(SR * m / 1000))
+        return 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, k))
+    wi, wo = win(ms), win(ms if out_ms is None else out_ms)
     x = x.copy()
-    x[:k] *= w
-    x[-k:] *= w[::-1]
+    x[:len(wi)] *= wi
+    x[-len(wo):] *= wo[::-1]
     return x
 
 
@@ -159,6 +162,9 @@ def convolve(x, ir, wet):
     if x.ndim == 1:
         x = np.stack([x, x], axis=-1)
     y = np.stack([signal.fftconvolve(x[:, c], ir[:, c])[:N] for c in range(2)], axis=-1)
+    # the tail may be wide, but not in the low end: side signal high-passed at 200 Hz (mono bass)
+    mid, side = 0.5 * (y[:, 0] + y[:, 1]), hp(0.5 * (y[:, 0] - y[:, 1]), 200, 4)
+    y = np.stack([mid + side, mid - side], axis=-1)
     return x * (1 - wet) + y * wet
 
 
@@ -174,8 +180,9 @@ def orbit_drone():
     breath = 0.82 + 0.18 * np.sin(2 * np.pi * 0.1 * t)       # one slow breath per 10 s
     x = sum(a * np.sin(2 * np.pi * fr * t) for fr, a in zip(f, amp)) * breath
     x = sat(0.6 * x, 1.6)                                   # harmonics for small speakers
-    # level: full under the Earth and at the end (loop seam), low in between
-    lvl = 1 - 0.82 * seg(S["cut"], S["cut"] + 40 * SPF) + 0.82 * seg(S["still"] - 6 * SPF, S["end"] - 3 * SPF)
+    # level: full under the Earth and at the end (loop seam), low in between. It only comes back
+    # in the last half second, under the chord's tail, so the end card belongs to the chord.
+    lvl = 1 - 0.82 * seg(S["cut"], S["cut"] + 40 * SPF) + 0.82 * seg(S["end"] - 15 * SPF, S["end"] - 1 * SPF)
     return to_stereo(0.20 * x * lvl)
 
 
@@ -196,8 +203,9 @@ def city_glitter():
 
 
 def planet_drone():
-    """1.6–4.6 s: D1/D2/A2 with the sus4 (G) entering; a low-pass follows the terminator."""
-    x = saw(HZ["D2"], 12) + 0.7 * saw(HZ["A2"], 10) + 0.5 * np.sin(2 * np.pi * HZ["D1"] * t)
+    """1.6 s, fading out 4.4–5.4 s: D2/A2 with the sus4 (G) entering; a low-pass follows the
+    terminator. No D1 sine: 37 Hz is inaudible on a phone and only eats headroom."""
+    x = saw(HZ["D2"], 12) + 0.7 * saw(HZ["A2"], 10)
     x += 0.45 * seg(S["cut"] + 30 * SPF, S["cut"] + 54 * SPF) * saw(HZ["G2"], 10)   # sus4 tension from ~2.6 s
     x = sat(0.5 * x, 2.0)
     # cutoff opens as the lit side sweeps in (1.6 → 4.2 s), then closes as the camera leaves the planet
@@ -208,14 +216,18 @@ def planet_drone():
 
 
 def galaxy_pad():
-    """4.2–7.2 s: three layers enter with the picture's depth layers; tension (Bb) rises; the
-    whole space collapses into a room at 7.2 s."""
+    """4.2–7.2 s: three layers stack during the push-in (a musical build, not picture cues); tension
+    (Bb) enters; the space collapses into a room at 7.2 s. A thin, filtered G/Bb stays on "through the
+    plate" until the logo, where the chord resolves it (G → F#, Bb → A)."""
     out = np.zeros((N, 2))
     layers = [  # (entry, notes, level)
-        (S["open"],        ("D3", "A3"),         0.11),
-        (S["layer_mid"],   ("E4", "G4", "Bb4"),  0.065),
-        (S["layer_stars"], ("A4", "D5", "E5"),   0.05),
+        (S["open"],        ("D3", "A3"),         0.13),
+        (S["layer_mid"],   ("E4", "G4", "Bb4"),  0.04),
+        (S["layer_stars"], ("A4", "D5", "E5"),   0.028),
     ]
+    hold = np.zeros(N)
+    for nm in ("G4", "Bb4"):
+        hold += 0.5 * (saw(HZ[nm], 6, detune=-0.1) + saw(HZ[nm], 6, detune=0.1))
     for i, (at, notes, lvl) in enumerate(layers):
         for j, nm in enumerate(notes):
             f = HZ[nm]
@@ -224,11 +236,15 @@ def galaxy_pad():
             env = seg(at, at + 18 * SPF)
             out[:, 0] += v * env * lvl
             out[:, 1] += v * env * lvl
-    # brighten as the camera pushes in
-    fc = 500 + 3200 * seg(S["open"], S["plate"])
+    # brighten a little as the camera pushes in (capped: a colour change, not a filter-sweep riser)
+    fc = 500 + 1700 * seg(S["open"], S["plate"])
     out = np.stack([sweep_lp(out[:, c], fc) for c in range(2)], axis=-1)
     # 7.2 s: space falls away to a room
     out *= (1 - seg(S["plate"], S["plate"] + 9 * SPF))[:, None]
+    # the unresolved G/Bb stays, thin and dark, from the plate to the logo, then gives way to the chord
+    h_env = seg(S["plate"], S["plate"] + 9 * SPF) * (1 - seg(S["logo"], S["logo"] + 4 * SPF))
+    h = lp(hold * h_env, 900) * 0.035
+    out += to_stereo(h)
     return convolve(out * 1.5, reverb_ir(3.4, 11, 5000, width=0.3), 0.45)
 
 
@@ -241,14 +257,14 @@ def star_cloud():
     tm = t0
     while tm < t1:
         prog = (tm - t0) / (t1 - t0)
-        dens = 18 + 150 * prog ** 1.5                       # grains per second
-        f = pitches[r.integers(len(pitches))] * (2 if r.random() < prog * 0.5 else 1)
+        dens = 18 + 62 * prog                               # grains per second, ≤ 80 (thickens, does not accelerate into a riser)
+        f = pitches[r.integers(len(pitches))] * (2 if r.random() < prog * 0.25 else 1)
         L = int(SR * r.uniform(0.012, 0.045))
         n = np.arange(L) / SR
         g = np.sin(2 * np.pi * f * n + r.uniform(0, 2 * np.pi)) * np.hanning(L)
         place(out, pan(g * r.uniform(0.2, 1.0), r.uniform(-1, 1)), int(tm * SR))
         tm += r.exponential(1 / dens)
-    out *= (0.07 * (0.35 + 0.95 * seg(S["open"], S["plate"])))[:, None]
+    out *= (0.07 * (0.6 + 0.5 * seg(S["open"], S["plate"])))[:, None]
     out *= (1 - seg(S["plate"], S["plate"] + 6 * SPF))[:, None]
     return convolve(out, reverb_ir(3.0, 13, 9000, width=1.0), 0.6)
 
@@ -265,7 +281,7 @@ def counter_tick(level=1.0):
     second = np.zeros(L)
     second[int(0.011 * SR)] = 0.35                           # the escapement's second, smaller click
     second = bp(second, 2500, 7000, 2) * 6
-    return click_safe((body + ring + second) * level, 1)
+    return click_safe((body + ring + second) * level, 2)
 
 
 def emulsion_rustle(dur=0.17, seed=303):
@@ -276,38 +292,41 @@ def emulsion_rustle(dur=0.17, seed=303):
     return click_safe(x * env, 3)
 
 
-def glass_ting(f0, dur=1.4, seed=404):
-    """A glass rim: inharmonic partials, each with its own decay."""
+def glass_ting(f0, seed=404, tau=0.55):
+    """A glass rim: inharmonic partials, each with its own decay. The burst runs 5x the longest
+    decay (≈ −43 dB) and then fades out over 40 ms, so the ring dies away instead of being cut."""
     r = rng(seed)
-    L = int(SR * dur)
+    L = int(SR * 5 * tau)
     n = np.arange(L) / SR
     ratios = [1.0, 2.32, 4.25, 6.63]
-    decays = [0.55, 0.25, 0.12, 0.06]
+    decays = [tau, tau * 0.45, tau * 0.22, tau * 0.11]
     x = sum(np.sin(2 * np.pi * f0 * k * n + r.uniform(0, 1)) * np.exp(-n / d) / (i + 1)
             for i, (k, d) in enumerate(zip(ratios, decays)))
-    return click_safe(x, 1)
+    return click_safe(x, 2, out_ms=40)
 
 
 def glass_on_glass():
     """Two plates touching: a bright clink and a smaller second contact 45 ms later."""
-    a = glass_ting(2637.0, 0.5, 505) * 0.9
-    b = glass_ting(3135.0, 0.4, 506) * 0.45
-    out = np.zeros(int(SR * 0.6))
-    out[:len(a)] += a
+    a = glass_ting(2637.0, 505) * 0.9
+    b = glass_ting(3135.0, 506, tau=0.45) * 0.45
     k = int(0.045 * SR)
-    out[k:k + len(b)] += b[: len(out) - k]
+    out = np.zeros(max(len(a), k + len(b)))
+    out[:len(a)] += a
+    out[k:k + len(b)] += b
     return out
 
 
 def lightbox():
-    """The lightbox strikes: two starter ticks, then a low mains hum (50 Hz family) that settles."""
+    """The lightbox strikes: two starter ticks, then a low ballast hum that settles. The hum is tuned
+    to A (55/110/220/330 Hz), the fifth of D, so it stays in key, and it ducks under the chord."""
     out = np.zeros(N)
     for k, at in enumerate((S["lightbox"], S["lightbox"] + 2 * SPF)):
         place(out, counter_tick(0.6 + 0.2 * k) * 0.8, at)
-    hum = (np.sin(2 * np.pi * 100 * t) + 0.5 * np.sin(2 * np.pi * 200 * t)
-           + 0.25 * np.sin(2 * np.pi * 300 * t) + 0.1 * np.sin(2 * np.pi * 50 * t))
+    hum = (np.sin(2 * np.pi * 110 * t) + 0.5 * np.sin(2 * np.pi * 220 * t)
+           + 0.25 * np.sin(2 * np.pi * 330 * t) + 0.1 * np.sin(2 * np.pi * 55 * t))
     hum = sat(hum * 0.5, 1.5)
-    env = seg(S["lightbox"] + 2 * SPF, S["lightbox"] + 10 * SPF) * (1 - seg(S["still"], S["end"] - 6 * SPF))
+    env = (seg(S["lightbox"] + 2 * SPF, S["lightbox"] + 10 * SPF)
+           * (1 - 0.7 * seg(S["logo"], S["logo"] + 6 * SPF)) * (1 - seg(S["still"], S["end"] - 6 * SPF)))
     flick = 1 + 0.25 * seg(S["lightbox"] + 2 * SPF, S["lightbox"] + 4 * SPF) * (1 - seg(S["lightbox"] + 4 * SPF, S["lightbox"] + 7 * SPF))
     return out + hum * env * flick * 0.022
 
@@ -318,7 +337,7 @@ def stamp_thock():
     r = rng(606)
     body = np.sin(2 * np.pi * 180 * n) * np.exp(-n / 0.035) + 0.6 * np.sin(2 * np.pi * 410 * n) * np.exp(-n / 0.018)
     hit = lp(r.standard_normal(L), 1400) * np.exp(-n / 0.008) * 0.8
-    return click_safe(sat(body + hit, 1.4), 1)
+    return click_safe(sat(body + hit, 1.4), 2)
 
 
 def shutter():
@@ -338,7 +357,7 @@ def shutter():
     k = int(0.052 * SR)
     out[k:] += clk(0.7)[: L - k]
     out += 0.05 * np.sin(2 * np.pi * 1180 * n) * np.exp(-n / 0.08)
-    return click_safe(out, 1)
+    return click_safe(out, 2)
 
 
 def archive_events():
@@ -346,9 +365,9 @@ def archive_events():
     return [
         ("lock", counter_tick() * 0.42),
         ("wipe", emulsion_rustle() * 0.10),
-        ("promise", glass_ting(HZ["A5"] * 2, 1.4) * 0.05),   # A6: a quiet accent, not louder than the text
+        ("promise", glass_ting(HZ["A5"] * 2) * 0.05),        # A6: a quiet accent, not louder than the text
         ("readout", counter_tick() * 0.30),
-        ("plate", glass_on_glass() * 0.30),
+        ("plate", glass_on_glass() * 0.15),                  # restrained: a touch of glass, not a hit
         ("stamp", stamp_thock() * 0.30),
         ("logo", shutter() * 0.36),
     ]
@@ -364,22 +383,28 @@ def archive_layer():
 
 
 # ── LAYER 3 — IMPACT: the match cut ──────────────────────────────────────────
-def impact():
-    """1.6 s: deep, short and damped; the tail hands over to the planet drone (D)."""
+def impact_burst():
+    """The dry match-cut burst: a short damped thump, not a trailer sub-drop. Its tail is gone
+    (≈ −35 dB) before text 2 at 2.27 s."""
     L = int(SR * 2.2)
     n = np.arange(L) / SR
-    f = 38 + 30 * np.exp(-n / 0.07)                       # 68 → 38 Hz pitch fall
+    f = 42 + 14 * np.exp(-n / 0.05)                       # 56 → 42 Hz: a slight settle, not a dive
     ph = 2 * np.pi * np.cumsum(f) / SR
-    sub = np.sin(ph) * np.exp(-n / 0.42)
-    body = sat(sub * 1.4, 2.2)                            # 2nd/3rd harmonics: audible on a phone
+    sub = np.sin(ph) * np.exp(-n / 0.25)
+    body = sat(sub * 1.4, 2.2)                            # tanh: odd harmonics (3rd/5th), audible on a phone
     r = rng(707)
     thump = lp(r.standard_normal(L), 180, 4) * np.exp(-n / 0.03) * 0.9
     tone = 0.25 * np.sin(2 * np.pi * HZ["D2"] * n) * (1 - np.exp(-n / 0.15)) * np.exp(-n / 0.9)
-    x = click_safe(body + thump + tone, 2)
+    return click_safe(body + thump + tone, 2, out_ms=20)
+
+
+def impact():
+    """1.6 s: deep, short and damped; the D2 tail hands over to the planet drone."""
     out = np.zeros(N)
-    place(out, x, S["cut"])
-    out = lp(out, 900)
-    return convolve(to_stereo(out * 0.55), reverb_ir(2.4, 19, 2500, width=0.2), 0.3)
+    place(out, impact_burst(), S["cut"])
+    out = lp(out, 900) * 0.39                             # −3 dB against v1
+    wet = convolve(to_stereo(hp(out, 120)), reverb_ir(2.4, 19, 2500, width=0.2), 1.0)
+    return to_stereo(out) * 0.7 + wet * 0.3               # reverb fed from 120 Hz up only
 
 
 # ── LAYER 4 — CHORD: resolution at the logo ──────────────────────────────────
@@ -396,12 +421,12 @@ def chord():
     att = seg(S["logo"], S["logo"] + int(0.07 * SR))
     dec = np.ones(N)
     k = np.arange(N - S["logo"])
-    dec[S["logo"]:] = np.exp(-k / (0.55 * SR))            # ≈ -50 dB by 10.0 s
-    env = att * dec
+    dec[S["logo"]:] = np.exp(-k / (1.8 * SR))             # long, warm tail: ≈ −7.7 dB by 10.0 s
+    env = att * dec * (1 - seg(S["end"] - 18 * SPF, S["end"] - 1 * SPF))   # hands over to the drone for the loop
     env[: S["logo"]] = 0
     out *= env[:, None]
     out = np.stack([lp(out[:, c], 2400) for c in range(2)], axis=-1)
-    out = sat(out * 0.5, 1.3) * 0.16
+    out = sat(out * 0.5, 1.3) * 0.36
     out = convolve(out, reverb_ir(3.0, 23, 4500, width=0.3), 0.35)
     return out
 
@@ -415,8 +440,10 @@ def truepeak_limit(x, ceiling_db=-1.5, release_ms=80.0, look_ms=1.5):
     need = np.minimum(1.0, ceil / np.maximum(peak, 1e-12))
     look = int(SR * look_ms / 1000)
     # look ahead: the gain must already be down when the peak arrives
-    from scipy.ndimage import minimum_filter1d
+    from scipy.ndimage import minimum_filter1d, uniform_filter1d
     need = minimum_filter1d(need, size=2 * look + 1, origin=0)
+    # smooth attack: averaging over ±look/2 of a ±look minimum never rises above the need at the peak
+    need = uniform_filter1d(need, size=look + 1)
     g = np.empty_like(need)
     a_rel = np.exp(-1 / (SR * release_ms / 1000))
     cur = 1.0
@@ -452,15 +479,24 @@ def build():
     return stems, truepeak_limit(mix * gain), gain
 
 
-def write(path, x):
-    sf.write(path, x.astype(np.float64), SR, subtype="PCM_24")
+def write(path, x, subtype="PCM_24"):
+    sf.write(path, x.astype(np.float64), SR, subtype=subtype)
 
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     stems, master, gain = build()
     for name, x in stems.items():
-        write(OUT / f"stem-{name}.wav", (x - x.mean(axis=0)) * gain)   # same master gain, before the limiter
+        # same master gain, before the limiter (24-bit: float WAVs carry a timestamped PEAK chunk,
+        # which would break bit-identical output)
+        stem = (x - x.mean(axis=0)) * gain
+        assert np.abs(stem).max() < 1.0, f"stem {name} would clip"
+        write(OUT / f"stem-{name}.wav", stem)
     write(OUT / "nightgazer-social-v2-master.wav", master)
     meter = pyln.Meter(SR)
-    print(f"master gain {20*np.log10(gain):+.2f} dB · integrated {meter.integrated_loudness(master):.2f} LUFS")
+    mix = sum(stems.values()) * gain
+    pre = 20 * np.log10(np.abs(mix).max())
+    blk = lambda x: np.abs(x[: N // 480 * 480]).max(axis=1).reshape(-1, 480).max(axis=1)   # 10 ms block peaks
+    gr = 20 * np.log10(np.max(blk(mix) / np.maximum(blk(master), 1e-12)))
+    print(f"master gain {20*np.log10(gain):+.2f} dB · integrated {meter.integrated_loudness(master):.2f} LUFS"
+          f" · pre-limiter peak {pre:+.2f} dBFS · max gain reduction {gr:.2f} dB")

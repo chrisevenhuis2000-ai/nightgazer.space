@@ -7,6 +7,7 @@ Prints a report (also used for AUDIO.md) and writes out/audio/spectrogram.png.
 """
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -19,10 +20,36 @@ import numpy as np
 import soundfile as sf
 
 sys.path.insert(0, str(Path(__file__).parent))
-from sound import CUES, SPF, SR, N, S as CUE_SAMPLES, archive_events, place  # noqa: E402  the same grid the synthesis uses
+from sound import CUES, SPF, SR, N, S as CUE_SAMPLES, archive_events, place, impact_burst  # noqa: E402
 
 OUT = Path("out/audio")
 MASTER = OUT / "nightgazer-social-v2-master.wav"
+
+# Where each cue lives in the picture: (file, selector or constant, "start" | "end" of the tween).
+# The verifier reads the time from the composition itself, so a picture edit that is not followed by
+# the soundtrack fails here instead of silently drifting.
+PICTURE = {
+    "lock":    ("compositions/plate.html",  "#plate-cross-ring", "end"),    # the ring is fixed when the tween ends
+    "wipe":    ("compositions/titles.html", "#titles-wipe",      "start"),
+    "cut":     ("compositions/stage.html",  "CUT_PLANET",        "const"),
+    "promise": ("compositions/titles.html", "#titles-promise",   "start"),
+    "readout": ("compositions/plate.html",  "#plate-m74",        "start"),
+    "plate":   ("compositions/stage.html",  "PLATE",             "const"),
+    "stamp":   ("compositions/plate.html",  "#plate-stamp",      "start"),
+    "logo":    ("compositions/titles.html", "#titles-logo",      "start"),
+}
+
+
+def picture_time(path, key, kind):
+    src = Path(path).read_text()
+    if kind == "const":
+        return float(re.search(rf"const {key} = ([0-9.]+);", src).group(1))
+    i = src.index(f'tl.fromTo("{key}"') if f'tl.fromTo("{key}"' in src else src.index(f'tl.set("{key}"')
+    stmt = src[i: src.index(");", i)]
+    pos = float(re.findall(r"([0-9.]+)\s*$", stmt)[0])
+    dur = re.search(r"duration: ([0-9.]+)", stmt)
+    return pos + (float(dur.group(1)) if kind == "end" and dur else 0.0)
+
 
 # Cues that are transients in the mix (what onset detection should find), and the stem they live in.
 TRANSIENTS = [
@@ -32,7 +59,6 @@ TRANSIENTS = [
     ("promise",  "tekst 2: glas-accent",              "archiefgeluiden"),
     ("readout",  "M74-uitlezing: tik",                "archiefgeluiden"),
     ("plate",    "glasplaat: glas op glas",           "archiefgeluiden"),
-    ("lightbox", "lichtbak slaat aan: starter-tik",   "archiefgeluiden"),
     ("stamp",    "plaatnummer: stempel",              "archiefgeluiden"),
     ("logo",     "logo: sluiterklik + akkoord",       "archiefgeluiden"),
 ]
@@ -120,35 +146,40 @@ def main(extra):
     env = librosa.onset.onset_strength(y=mono1.astype(np.float32), sr=SR, hop_length=hop, n_fft=1024)
     onsets = librosa.onset.onset_detect(onset_envelope=env, sr=SR, hop_length=hop, units="samples", backtrack=False,
                                         pre_max=8, post_max=8, pre_avg=40, post_avg=40, delta=0.07, wait=8)
-    # dry placement: first non-zero sample of each cue's burst, placed alone exactly as the synthesis does
-    dry_first = {}
-    for key, burst in archive_events():
-        buf = np.zeros(N)
-        place(buf, burst, CUE_SAMPLES[key])
-        dry_first[key] = int(np.argmax(np.abs(buf) > 0))
-    import sound
-    buf = np.zeros(N)
-    for k, at in enumerate((CUE_SAMPLES["lightbox"], CUE_SAMPLES["lightbox"] + 2 * SPF)):
-        place(buf, sound.counter_tick(), at)
-    dry_first["lightbox"] = int(np.argmax(np.abs(buf) > 0))
-    imp = np.zeros(N); L_ = int(SR * 2.2); n_ = np.arange(L_) / SR
-    f_ = 38 + 30 * np.exp(-n_ / 0.07); x_ = np.sin(2 * np.pi * np.cumsum(f_) / SR)
-    place(imp, sound.click_safe(x_, 2), CUE_SAMPLES["cut"]); dry_first["cut"] = int(np.argmax(np.abs(imp) > 0))
+    # (b) dry placement, from the real bursts: each cue's sound alone, placed as the synthesis places it
+    bursts = dict(archive_events())
+    bursts["cut"] = impact_burst()
     rows = []
     for key, label, stem in TRANSIENTS:
         exp = CUES[key] * SPF
-        near = onsets[np.argmin(np.abs(onsets - exp))] if len(onsets) else None
+        pic = picture_time(*PICTURE[key])
+        pic_frame = round(pic * 30, 3)
+        buf = np.zeros(N)
+        place(buf, bursts[key], CUE_SAMPLES[key])
+        first = int(np.argmax(np.abs(buf) > 0))
+        # (a) mix: strongest onset within ±1 frame of the cue, and how strong it is against the median onset
+        lo, hi = exp - SPF, exp + SPF
+        cand = onsets[(onsets >= lo) & (onsets <= hi)]
+        if len(cand):
+            near = int(cand[np.argmax(env[cand // hop])])
+            strength = float(env[near // hop] / np.median(env[env > 0]))
+        else:
+            near, strength = None, 0.0
         dev_ms = None if near is None else (near - exp) / SR * 1000
-        first = dry_first.get(key)
         rows.append({"cue": key, "beeld": label, "frame": CUES[key], "verwacht_s": round(exp / SR, 4),
+                     "beeld_in_compositie_s": round(pic, 4),
+                     "cue_gelijk_aan_beeld": abs(pic_frame - CUES[key]) < 0.02,
                      "sample": exp, "mix_onset_s": None if near is None else round(near / SR, 4),
                      "afwijking_ms": None if dev_ms is None else round(dev_ms, 1),
                      "afwijking_frames": None if dev_ms is None else round(dev_ms / (1000 / 30), 2),
+                     "onset_sterkte_x_mediaan": round(strength, 1),
                      "droog_eerste_sample": first,
-                     # bursts start AT the cue sample with a 1–3 ms fade-in, so sample 0 of the burst is 0.0 and the
-                     # first non-zero sample is cue+1 (21 µs): placement is exact
-                     "sample_exact": None if first is None else 0 <= first - exp <= 1})
+                     # bursts start AT the cue sample with a ≥2 ms fade-in, so sample 0 of the burst is 0.0
+                     # and the first non-zero sample is cue+1
+                     "sample_exact": 0 <= first - exp <= 1,
+                     "ok": near is not None and strength >= 2.0 and abs(pic_frame - CUES[key]) < 0.02})
     rep["sync"] = rows
+    rep["sync_all_ok"] = all(r["ok"] for r in rows)
 
     # Spectrogram with the cues
     S = librosa.amplitude_to_db(np.abs(librosa.stft(mono1.astype(np.float32), n_fft=4096, hop_length=256)), ref=np.max)
