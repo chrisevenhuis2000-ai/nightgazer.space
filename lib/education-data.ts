@@ -225,5 +225,5 @@ export const FAQS = [
   { q: 'Moet ik een telescoop hebben om te leren?',   a: 'Nee! Veel van de astronomie-concepten zijn puur theoretisch. Voor sterrenkijken helpt een verrekijker al enorm — maar kennis vereist geen instrument.' },
   { q: 'Wat is het verschil tussen de niveaus?',      a: 'Beginner gebruikt alledaagse taal en vergelijkingen. Amateur voegt getallen en terminologie toe. Pro is wetenschappelijk niveau met formules.' },
   { q: 'Kan ik van niveau wisselen in artikelen?',    a: 'Ja — elke artikel pagina heeft een Beginner / Amateur / Pro knop. Onze AI herschrijft het artikel direct voor jouw niveau.' },
-  { q: 'Zijn er Nederlandse bronnen voor meer info?', a: 'Wij zijn het grootste Nederlandse astronomie-platform. Daarnaast zijn NOVA Astronomie en Sterrewacht Leiden uitstekende bronnen.' },
+  { q: 'Zijn er Nederlandse bronnen voor meer info?', a: 'NightGazer verzamelt dagelijks astronomie- en ruimtevaartnieuws van onder meer NASA en ESA, en elk artikel is op drie leesniveaus te lezen. Voor verdieping zijn NOVA Astronomie en Sterrewacht Leiden uitstekende Nederlandse bronnen.' },
 ]

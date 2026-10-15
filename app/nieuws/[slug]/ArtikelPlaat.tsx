@@ -9,7 +9,10 @@
    werkelijke gedrag vallen samen.
 
    De route is statisch per slug (generateStaticParams + generateMetadata in
-   page.tsx); de tekst zelf komt client-side uit /content/articles/<slug>.md.
+   page.tsx). page.tsx parseert de markdown tijdens de build en geeft hem als
+   `initial` mee, zodat kop, beeld en originele tekst in de statische HTML
+   staan. Alleen zonder `initial` haalt de client /content/articles/<slug>.md
+   op. Herschrijven, verrijking en verwante platen blijven client-side.
    ══════════════════════════════════════════════════════════════════════════ */
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
@@ -115,12 +118,16 @@ function Para({ text, state, lead }: { text: string; state: ParaState; lead: boo
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
-export default function ArtikelPlaat({ slug }: { slug: string }) {
-  const [article, setArticle] = useState<ArticleData | null>(null)
+export default function ArtikelPlaat({ slug, initial = null }: {
+  slug: string
+  /** Tijdens de build geparseerd; staat daarmee in de statische HTML. */
+  initial?: ArticleData | null
+}) {
+  const [article, setArticle] = useState<ArticleData | null>(initial)
   const [notFound, setNotFound] = useState(false)
   const [level, setLevel] = useState<ReadingLevel>('original')
-  const [texts, setTexts] = useState<string[]>([])
-  const [states, setStates] = useState<ParaState[]>([])
+  const [texts, setTexts] = useState<string[]>(initial?.paragraphs ?? [])
+  const [states, setStates] = useState<ParaState[]>(() => (initial?.paragraphs ?? []).map(() => 'developed'))
   const [busy, setBusy] = useState(false)
   const [enrich, setEnrich] = useState<Enrichment | null>(null)
   const [related, setRelated] = useState<Article[]>([])
@@ -129,12 +136,12 @@ export default function ArtikelPlaat({ slug }: { slug: string }) {
   const [nasaImage, setNasaImage] = useState<{ url: string; credit: string } | null>(null)
   const [progress, setProgress] = useState(0)
 
-  const cache = useRef<Partial<Record<ReadingLevel, string[]>>>({})
+  const cache = useRef<Partial<Record<ReadingLevel, string[]>>>(initial ? { original: initial.paragraphs } : {})
   const runId = useRef(0)
 
-  /* De plaat ophalen */
+  /* De plaat ophalen — alleen als de build hem niet al meegaf */
   useEffect(() => {
-    if (!slug) return
+    if (!slug || initial) return
     fetch(`/content/articles/${slug}.md`)
       .then(r => r.ok ? r.text() : Promise.reject(r.status))
       .then(raw => {
@@ -145,7 +152,7 @@ export default function ArtikelPlaat({ slug }: { slug: string }) {
         cache.current = { original: parsed.paragraphs }
       })
       .catch(() => setNotFound(true))
-  }, [slug])
+  }, [slug, initial])
 
   /* Verwante platen en het archieftotaal */
   useEffect(() => {
