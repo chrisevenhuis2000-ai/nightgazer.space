@@ -43,28 +43,28 @@ Elk geluid begint met een fade-in van minimaal 2 ms en eindigt met een fade-out 
 
 ## Metingen (definitieve versie)
 
-Alle metingen zijn gemaakt met `scripts/audio-verify.py` (ffmpeg `loudnorm`). Controle met ffmpeg `ebur128=peak=true` op de MP4: −14,0 LUFS, LRA 3,2 LU.
+Alle metingen zijn gemaakt met `scripts/audio-verify.py` (ffmpeg `loudnorm`). Controle met ffmpeg `ebur128=peak=true` op de MP4: −14,0 LUFS, LRA 2,7 LU.
 
 | Meting | Master-WAV | Definitieve MP4 (AAC) | Norm |
 |---|---|---|---|
-| Integrated loudness | −14,30 LUFS | **−14,31 LUFS** | −14 ± 1 |
+| Integrated loudness | −14,22 LUFS | **−14,23 LUFS** | −14 ± 1 |
 | True peak | −1,50 dBTP | **−1,50 dBTP** | ≤ −1,0 |
-| Loudness range | 2,8 LU | 2,8 LU | compact |
+| Loudness range | 2,6 LU | 2,6 LU | compact |
 
-- **Formaat:** master en stems 48 kHz, PCM 24-bit, stereo, 480 000 samples. Stems clippen niet: de hoogste piek is −3,3 dBFS.
-- **Limiter:** de pre-limiter-piek is −1,47 dBFS en de limiter grijpt maximaal 0,15 dB in, met een afgevlakte attack.
+- **Formaat:** master en stems 48 kHz, PCM 24-bit, stereo, 480 000 samples. Stems clippen niet: de hoogste piek is −2,7 dBFS.
+- **Limiter:** de pre-limiter-piek is −0,79 dBFS en de limiter grijpt maximaal 0,83 dB in, met een afgevlakte attack.
 - **MP4-audio:** AAC LC, 48 kHz, stereo, doel 320 kbps. ffprobe meet gemiddeld 264 kbps: de AAC-encoder van ffmpeg gebruikt bij dit signaal minder bits dan het doel. De audio staat op **0 samples offset** van de master (kruiscorrelatie).
 - **Videostream:** bit-identiek aan de HyperFrames-render, in zowel de MP4 met geluid als de stille MP4.
-- **Mono:** correlatie gemiddeld 0,98 (per 100 ms minimaal 0,85); in mono verlies je 0,09 LU. Onder 150 Hz is de correlatie 0,98–1,00, omdat alle galmen hun zijsignaal pas boven 200 Hz doorlaten. Breedte zit alleen in de glinstering, de sterrenwolk en de galmstaarten erboven.
-- **DC-offset:** < 4·10⁻⁶.
-- **Lus 10,0 s → 0,0 s:** een sprong van 0,0076, tegen een normale samplestap (p99) van 0,058. Er ontstaat dus geen klik.
+- **Mono:** correlatie gemiddeld 0,98 (per 100 ms minimaal 0,83); in mono verlies je 0,09 LU. Onder 150 Hz is de correlatie 0,99–1,00, omdat alle galmen hun zijsignaal pas boven 200 Hz doorlaten. Breedte zit alleen in de glinstering, de sterrenwolk en de galmstaarten erboven.
+- **DC-offset:** < 1,3·10⁻⁵.
+- **Lus 10,0 s → 0,0 s:** een sprong van 0,0082, tegen een normale samplestap (p99) van 0,06. Er ontstaat dus geen klik.
 - **Tekstmomenten zijn niet het drukst.** Momentane loudness (400 ms, maximum per stuk):
-  - hook 0–1,43 s: −13,1 LUFS;
-  - tekst 2, 2,27–3,8 s: −14,2 LUFS;
-  - eindkaart 8,4–10 s: −13,7 LUFS;
-  - tegenover impact −10,0 en push-in −10,6. De opbouw stijgt vanaf 4,8 s met 3 LU (van −13,6 naar −10,6).
-- **Eindkaart:** het akkoord is het luidste element van 8,6 tot 9,4 s (−13,5 LUFS). De drone komt pas vanaf 9,5 s terug, onder het akkoord (−22,5 tegen −18,2 bij 9,6 s).
-- **Determinisme:** twee aparte runs geven bit-identieke WAV's, voor de master en alle vier stems. SHA-256 van de master: `bafe8d379b7a2d76c03a636f49e0936916f050b517b4e52baa0e1f951b40ba50`.
+  - hook 0–1,43 s: −12,4 LUFS;
+  - tekst 2, 2,27–3,8 s: −13,6 LUFS;
+  - eindkaart 8,4–10 s: −13,1 LUFS;
+  - tegenover impact −9,6 en push-in −11,7. De push-in stijgt van −16,7 (4,2 s, overgang uit de planeet) naar −11,7 (6,3 s); vanaf 4,8 s is dat 2,5 LU. De impact blijft 2,1 LU boven de piek van de push-in.
+- **Eindkaart:** het akkoord leidt van 8,5 tot 10 s (stem −12,9 LUFS op 8,7 s, −15,0 op 9,3 s). De drones blijven tot 9,3 s rond −29 en komen pas vanaf 9,5 s terug, onder het akkoord (−22,0 tegen −17,7 bij 9,6 s).
+- **Determinisme:** twee aparte runs geven bit-identieke WAV's, voor de master en alle vier stems. SHA-256 van de master: `47932b7215066ce652168b1d0e58eaeb59876d752bd9841a6bbbea9d340ac5eb`.
 
 ### Synchronisatie
 
@@ -72,16 +72,17 @@ De cue-tijden komen uit de composities zelf: `audio-verify.py` leest ze uit `sta
 
 | Cue | Beeld in compositie (s) | Gemeten in MP4 (s) | Afwijking | In frames | Onset-sterkte |
 |---|---|---|---|---|---|
-| Kruisje vergrendelt | 1,0000 | 1,0133 | +13,3 ms | +0,40 | 11,7× |
-| Hook weg (ritsel) | 1,4333 | 1,4480 | +14,7 ms | +0,44 | 5,6× |
+| Kruisje vergrendelt | 1,0000 | 1,0133 | +13,3 ms | +0,40 | 11,8× |
+| Hook weg (ritsel) | 1,4333 | 1,4493 | +16,0 ms | +0,48 | 5,6× |
 | Match-cut (impact) | 1,6000 | 1,6040 | +4,0 ms | +0,12 | 3,9× |
 | Tekst 2 (glas) | 2,2667 | 2,2707 | +4,0 ms | +0,12 | 8,4× |
 | M74-uitlezing (tik) | 4,9000 | 4,9027 | +2,7 ms | +0,08 | 2,9× |
-| Glasplaat (glas op glas) | 7,2000 | 7,2040 | +4,0 ms | +0,12 | 5,8× |
-| Stempel | 8,1000 | 8,1080 | +8,0 ms | +0,24 | 8,1× |
-| Logo (sluiter + akkoord) | 8,4000 | 8,4040 | +4,0 ms | +0,12 | 4,7× |
+| Glasplaat (glas op glas) | 7,2000 | 7,2040 | +4,0 ms | +0,12 | 5,9× |
+| Lichtbak (starter-tik) | 7,3000 ¹ | 7,3147 | +14,7 ms | +0,44 | 7,0× |
+| Stempel | 8,1000 | 8,1080 | +8,0 ms | +0,24 | 8,5× |
+| Logo (sluiter + akkoord) | 8,4000 | 8,4040 | +4,0 ms | +0,12 | 4,9× |
 
-Alle cues zijn ook droog sample-exact geplaatst: elk geluid begint op exact frame × 1600. De positieve afwijkingen zijn de stijgtijd van de onset-functie. Bij de kruisje-tik (+13 ms) pakt de detector de escapement-naklik op 11 ms. De ritsel (+15 ms) heeft geen scherpe aanzet. De lichtbak (7,3 s) staat niet in de tabel: daar hoort geen tween bij in de compositie, want hij volgt uit de lift die op 7,2 s begint.
+Alle cues zijn ook droog sample-exact geplaatst: elk geluid begint op exact frame × 1600. De positieve afwijkingen zijn de stijgtijd van de onset-functie. Bij de kruisje-tik (+13 ms) pakt de detector de escapement-naklik op 11 ms. De ritsel (+15 ms) heeft geen scherpe aanzet. ¹ De lichtbak heeft geen eigen tween: hij komt in beeld doordat de plaat vanaf `PLATE` (7,2 s) wordt opgetild. De verifier toetst hem daarom als `PLATE` + 0,1 s (3 frames). De +15 ms is de stijgtijd van de zachte eerste tik.
 
 ## Onafhankelijke review
 
@@ -93,20 +94,22 @@ Een aparte agent die de audio niet had gemaakt, heeft de cue-sheet, het spectrog
 | 2 | **Blokkerend:** het akkoord was het zachtste moment, en de drone nam de eindkaart over | Akkoord +7 dB, verval 0,55 → 1,8 s; de drone komt pas vanaf 9,5 s terug, onder het akkoord |
 | 3 | Geluid op 7,2/7,3 s vóór de zichtbare lift (expo.inOut) | **Beeld aangepast:** de lift gebruikt nu `power3.out`, dus hij is op 7,2 s al in beweging en op 7,3 s staat de lichtbak in beeld |
 | 4 | Glas op glas te luid | 0,30 → 0,15 (−6 dB) |
-| 5 | Impact te zwaar, limiter 5 dB gain reduction, D1-sinus onhoorbaar | Impact −3 dB; verval 0,42 → 0,25 s; sweep 68→38 werd 56→42 Hz (geen sub-drop-gebaar meer); de galm krijgt pas signaal vanaf 120 Hz; D1 is weg; de limiter grijpt nu maximaal 0,15 dB in, met een afgevlakte attack |
+| 5 | Impact te zwaar, limiter 5 dB gain reduction, D1-sinus onhoorbaar | Impact −3 dB; verval 0,42 → 0,25 s; sweep 68→38 werd 56→42 Hz (geen sub-drop-gebaar meer); de galm krijgt pas signaal vanaf 120 Hz; D1 is weg; de limiter grijpt nu maximaal 0,83 dB in (doel ≤ 2 dB), met een afgevlakte attack |
 | 6 | Breedte in het laag | Het zijsignaal van alle galmen loopt door een high-pass op 200 Hz. De correlatie onder 150 Hz is nu ≥ 0,98 |
-| 7 | De opbouw werkte als een riser | Korreldichtheid ≤ 80/s; filter ≤ 2,2 kHz; de lagen zijn anders verdeeld; de stijging is nu 3 LU |
+| 7 | De opbouw werkte als een riser | Korreldichtheid ≤ 80/s; filter ≤ 2,2 kHz; de lagen zijn anders verdeeld; na de herbeoordeling de pad nog 2 dB lager. De push-in-piek ligt nu 2,1 LU onder de impact |
 | 8 | De spanning verdween vóór het logo; de brom zat niet in de toonsoort | Een dunne G/Bb blijft van 7,2 tot 8,4 s staan en lost op in het akkoord; de brom is gestemd op A en duikt bij het logo weg |
 | 9 | Fades van 1 ms | Minimaal 2 ms, afgedwongen in `click_safe` |
 | 10 | Stem-impacts clipte | Opgelost door de lagere impact; `sound.py` controleert nu dat geen enkele stem clipt. Float-WAV heb ik niet gebruikt: libsndfile schrijft daar een PEAK-chunk met tijdstempel in, en dan zijn de stems niet meer bit-identiek |
 | 11 | AUDIO.md en de code liepen uiteen | Gecorrigeerd: planeet-drone 1,6–5,4 s; oneven harmonischen; uitleg van de lichtbak; 5,2/6,2 s gemarkeerd als muzikale opbouw |
-| 12 | De verifier kon geen sync-fout vangen | Leest de cue-tijden nu uit de composities, neemt het sterkste onset binnen ±1 frame met een minimale sterkte, en gebruikt de echte impact-burst |
+| 12 | De verifier kon geen sync-fout vangen | Leest de cue-tijden nu uit de composities, neemt het sterkste onset binnen ±1 frame met een minimale sterkte, en gebruikt de echte impact-burst. Na de herbeoordeling is de lichtbak weer meegenomen |
+
+**Herbeoordeling:** dezelfde agent heeft de nieuwe versie opnieuw gemeten. Beide blokkerende punten zijn opgelost en er zijn geen nieuwe blokkerende punten ("Approved"). Zijn twee kleine opmerkingen (de push-in en de lichtbak in de verifier) zijn daarna verwerkt.
 
 ## Bestanden
 
 `out/` staat niet in git; alles wordt opnieuw gemaakt met de scripts.
 - `out/audio/nightgazer-social-v2-master.wav`: master, 48 kHz/24-bit, na de limiter.
-- `out/audio/stem-ruimte-drones.wav`, `stem-archiefgeluiden.wav`, `stem-impacts.wav`, `stem-akkoord.wav`: met dezelfde master-gain, vóór de true-peak-limiter (die maximaal 0,15 dB ingrijpt). Opgeteld zijn ze daarom vrijwel gelijk aan de master.
+- `out/audio/stem-ruimte-drones.wav`, `stem-archiefgeluiden.wav`, `stem-impacts.wav`, `stem-akkoord.wav`: met dezelfde master-gain, vóór de true-peak-limiter (die maximaal 0,83 dB ingrijpt). Opgeteld zijn ze daarom vrijwel gelijk aan de master.
 - `out/audio/spectrogram.png`: de hele mix met de cue-momenten. `out/audio/verify.json`: alle metingen.
 - `out/nightgazer-social-v2.mp4` (met audio), `out/nightgazer-social-v2-stil.mp4` (zonder audio) en `out/cover.png`.
 

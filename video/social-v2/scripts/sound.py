@@ -245,7 +245,7 @@ def galaxy_pad():
     h_env = seg(S["plate"], S["plate"] + 9 * SPF) * (1 - seg(S["logo"], S["logo"] + 4 * SPF))
     h = lp(hold * h_env, 900) * 0.035
     out += to_stereo(h)
-    return convolve(out * 1.5, reverb_ir(3.4, 11, 5000, width=0.3), 0.45)
+    return convolve(out * 1.2, reverb_ir(3.4, 11, 5000, width=0.3), 0.45)
 
 
 def star_cloud():

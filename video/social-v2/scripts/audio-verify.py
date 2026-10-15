@@ -35,15 +35,17 @@ PICTURE = {
     "promise": ("compositions/titles.html", "#titles-promise",   "start"),
     "readout": ("compositions/plate.html",  "#plate-m74",        "start"),
     "plate":   ("compositions/stage.html",  "PLATE",             "const"),
+    # no tween of its own: the lightbox is revealed by the plate lift (power3.out from PLATE), 3 frames in
+    "lightbox": ("compositions/stage.html", "PLATE",             "const", 0.1),
     "stamp":   ("compositions/plate.html",  "#plate-stamp",      "start"),
     "logo":    ("compositions/titles.html", "#titles-logo",      "start"),
 }
 
 
-def picture_time(path, key, kind):
+def picture_time(path, key, kind, offset=0.0):
     src = Path(path).read_text()
     if kind == "const":
-        return float(re.search(rf"const {key} = ([0-9.]+);", src).group(1))
+        return float(re.search(rf"const {key} = ([0-9.]+);", src).group(1)) + offset
     i = src.index(f'tl.fromTo("{key}"') if f'tl.fromTo("{key}"' in src else src.index(f'tl.set("{key}"')
     stmt = src[i: src.index(");", i)]
     pos = float(re.findall(r"([0-9.]+)\s*$", stmt)[0])
@@ -59,6 +61,7 @@ TRANSIENTS = [
     ("promise",  "tekst 2: glas-accent",              "archiefgeluiden"),
     ("readout",  "M74-uitlezing: tik",                "archiefgeluiden"),
     ("plate",    "glasplaat: glas op glas",           "archiefgeluiden"),
+    ("lightbox", "lichtbak in beeld: starter-tik",    "archiefgeluiden"),
     ("stamp",    "plaatnummer: stempel",              "archiefgeluiden"),
     ("logo",     "logo: sluiterklik + akkoord",       "archiefgeluiden"),
 ]
@@ -149,6 +152,8 @@ def main(extra):
     # (b) dry placement, from the real bursts: each cue's sound alone, placed as the synthesis places it
     bursts = dict(archive_events())
     bursts["cut"] = impact_burst()
+    import sound
+    bursts["lightbox"] = sound.counter_tick(0.6) * 0.8
     rows = []
     for key, label, stem in TRANSIENTS:
         exp = CUES[key] * SPF
