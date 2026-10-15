@@ -126,5 +126,6 @@ const articles = files.map(file => {
   }
 }).sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
 
+fs.mkdirSync(path.dirname(OUTPUT), { recursive: true })
 fs.writeFileSync(OUTPUT, JSON.stringify(articles, null, 2))
 console.log(`✅ articles-index.json gegenereerd met ${articles.length} artikelen`)
