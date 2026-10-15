@@ -47,7 +47,7 @@ export const TOPIC_DETAILS: Record<string, {
     featuredConcept: 'Kernfusie',
     beg: 'In het hart van de zon smelten waterstofatomen samen tot helium. Dit heet kernfusie en levert enorm veel energie op — het is waarom de zon straalt. Elke seconde zet de zon 600 miljoen ton waterstof om. De zon doet dit al 4,6 miljard jaar en heeft nog minstens evenveel brandstof over.',
     ama: 'In sterren zoals de zon verloopt fusie via de proton-protonketen (pp-keten): 4 ¹H → ⁴He + 2e⁺ + 2νe + 26,7 MeV. In zwaardere sterren (> 1,3 M☉) domineert de efficiëntere CNO-cyclus (T-gevoeligheid ∝ T²⁰). De kern heeft T ≈ 15 miljoen K en P ≈ 250 miljard atm. De zon produceert 3,8 × 10²⁶ W aan stralingsvermogen.',
-    pro: 'De pp-I keten levert ~85% van de zonneenergie. Neutrino-experimenten (Super-Kamiokande, SNO) bevestigen het standaard zonnemodel en losten het zonnige-neutrino-probleem op via neutrino-oscillatie. Na de hoofdreeks: heliumfusie via de triple-alpha-reactie (3 ⁴He → ¹²C) bij ~10⁸ K. Massieve sterren (>8 M☉) doorlopen snel Si-fusie tot een ijzerkern die implodeert als supernova type II.',
+    pro: 'De pp-I keten levert ~85% van de zonne-energie. Neutrino-experimenten (Super-Kamiokande, SNO) bevestigen het standaard zonnemodel en losten het zonnige-neutrino-probleem op via neutrino-oscillatie. Na de hoofdreeks: heliumfusie via de triple-alpha-reactie (3 ⁴He → ¹²C) bij ~10⁸ K. Massieve sterren (>8 M☉) doorlopen snel Si-fusie tot een ijzerkern die implodeert als supernova type II.',
     keyFacts: [
       'Zon: oppervlaktetemperatuur ~5.778 K, kerntemperatuur ~15 miljoen K',
       'HR-diagram: hoofdreeks, reuzen, witten dwergen',
