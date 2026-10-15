@@ -1,0 +1,171 @@
+"""Measures the NightGazer social v2 soundtrack: format, loudness, true peak, mono, DC, seams,
+text-moment levels, sync against the cue grid, and a spectrogram with the cues drawn on.
+
+    python3 scripts/audio-verify.py [path/to/file.wav|.mp4 ...]
+
+Prints a report (also used for AUDIO.md) and writes out/audio/spectrogram.png.
+"""
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+import librosa
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import soundfile as sf
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sound import CUES, SPF, SR, N, S as CUE_SAMPLES, archive_events, place  # noqa: E402  the same grid the synthesis uses
+
+OUT = Path("out/audio")
+MASTER = OUT / "nightgazer-social-v2-master.wav"
+
+# Cues that are transients in the mix (what onset detection should find), and the stem they live in.
+TRANSIENTS = [
+    ("lock",     "kruisje vergrendelt: tik",          "archiefgeluiden"),
+    ("wipe",     "hook weg: emulsie-ritsel",          "archiefgeluiden"),
+    ("cut",      "match-cut: impact",                 "impacts"),
+    ("promise",  "tekst 2: glas-accent",              "archiefgeluiden"),
+    ("readout",  "M74-uitlezing: tik",                "archiefgeluiden"),
+    ("plate",    "glasplaat: glas op glas",           "archiefgeluiden"),
+    ("lightbox", "lichtbak slaat aan: starter-tik",   "archiefgeluiden"),
+    ("stamp",    "plaatnummer: stempel",              "archiefgeluiden"),
+    ("logo",     "logo: sluiterklik + akkoord",       "archiefgeluiden"),
+]
+
+
+def sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def ffmpeg_loudness(path):
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(path), "-af",
+                        "loudnorm=I=-14:TP=-1:LRA=11:print_format=json", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    js = r.stderr[r.stderr.rfind("{"): r.stderr.rfind("}") + 1]
+    d = json.loads(js)
+    return {"integrated_LUFS": float(d["input_i"]), "true_peak_dBTP": float(d["input_tp"]),
+            "LRA_LU": float(d["input_lra"]), "threshold": float(d["input_thresh"])}
+
+
+def k_weighted_short_term(x, win=0.4, hop=0.1):
+    """Momentary loudness (400 ms, BS.1770 K-weighting) every 100 ms, in LUFS."""
+    import pyloudnorm as pyln
+    m = pyln.Meter(SR, block_size=win)
+    vals, times = [], []
+    w, h = int(win * SR), int(hop * SR)
+    for i in range(0, len(x) - w, h):
+        try:
+            vals.append(m.integrated_loudness(x[i:i + w]))
+        except Exception:
+            vals.append(-70.0)
+        times.append((i + w / 2) / SR)
+    v = np.array(vals)
+    v[~np.isfinite(v)] = -70.0
+    return np.array(times), v
+
+
+def main(extra):
+    x, sr = sf.read(MASTER, dtype="float64", always_2d=True)
+    info = sf.info(MASTER)
+    rep = {"format": f"{info.samplerate} Hz · {info.subtype} · {info.channels} ch · {info.frames} samples",
+           "sha256_master": sha(MASTER)}
+
+    # Loudness and peak (ffmpeg, as specified)
+    rep["loudness_master_wav"] = ffmpeg_loudness(MASTER)
+    for p in extra:
+        rep[f"loudness_{Path(p).name}"] = ffmpeg_loudness(p)
+
+    # Mono compatibility
+    L, R = x[:, 0], x[:, 1]
+    corr = float(np.sum(L * R) / np.sqrt(np.sum(L * L) * np.sum(R * R)))
+    wins = [(L[i:i + 4800], R[i:i + 4800]) for i in range(0, len(L) - 4800, 4800)]
+    wc = [np.sum(a * b) / np.sqrt(np.sum(a * a) * np.sum(b * b)) for a, b in wins if np.sum(a * a) > 1e-9]
+    import pyloudnorm as pyln
+    m = pyln.Meter(SR)
+    mono = (0.5 * (L + R))[:, None].repeat(2, axis=1)
+    rep["mono"] = {"correlation_overall": round(corr, 3), "correlation_mean_100ms": round(float(np.mean(wc)), 3),
+                   "correlation_min_100ms": round(float(np.min(wc)), 3),
+                   "loudness_drop_mono_LU": round(m.integrated_loudness(x) - m.integrated_loudness(mono), 2)}
+
+    # DC, seams, loop
+    rep["dc_offset"] = [float(f"{v:.2e}") for v in x.mean(axis=0)]
+    step = np.abs(np.diff(x, axis=0)).max(axis=1)
+    rep["seam"] = {"first_sample": [round(float(v), 6) for v in x[0]], "last_sample": [round(float(v), 6) for v in x[-1]],
+                   "loop_jump_end_to_start": round(float(np.abs(x[-1] - x[0]).max()), 6),
+                   "typical_step_p99": round(float(np.percentile(step, 99)), 6)}
+    stems = {p.stem.replace("stem-", ""): sf.read(p, dtype="float64", always_2d=True)[0] for p in sorted(OUT.glob("stem-*.wav"))}
+    rep["stems_edges"] = {k: {"start": round(float(np.abs(v[0]).max()), 6), "end": round(float(np.abs(v[-1]).max()), 6)}
+                          for k, v in stems.items()}
+
+    # Text moments must not be the busiest: momentary loudness inside text windows vs. the whole
+    tt, mom = k_weighted_short_term(x)
+    def mx(a, b): return float(mom[(tt >= a) & (tt < b)].max())
+    rep["momentary_LUFS"] = {
+        "hook 0.0–1.43 (tekst)": round(mx(0.0, 1.43), 1),
+        "impact 1.6–2.2": round(mx(1.6, 2.2), 1),
+        "tekst 2 2.27–3.8": round(mx(2.27, 3.8), 1),
+        "push-in 4.2–7.2": round(mx(4.2, 7.2), 1),
+        "eindkaart 8.4–10 (tekst)": round(mx(8.4, 10.0), 1),
+        "max overall": round(float(mom.max()), 1),
+    }
+
+    # Sync: (a) onsets in the mix; (b) sample-exact start of each cue in its stem
+    mono1 = 0.5 * (L + R)
+    hop = 64
+    env = librosa.onset.onset_strength(y=mono1.astype(np.float32), sr=SR, hop_length=hop, n_fft=1024)
+    onsets = librosa.onset.onset_detect(onset_envelope=env, sr=SR, hop_length=hop, units="samples", backtrack=False,
+                                        pre_max=8, post_max=8, pre_avg=40, post_avg=40, delta=0.07, wait=8)
+    # dry placement: first non-zero sample of each cue's burst, placed alone exactly as the synthesis does
+    dry_first = {}
+    for key, burst in archive_events():
+        buf = np.zeros(N)
+        place(buf, burst, CUE_SAMPLES[key])
+        dry_first[key] = int(np.argmax(np.abs(buf) > 0))
+    import sound
+    buf = np.zeros(N)
+    for k, at in enumerate((CUE_SAMPLES["lightbox"], CUE_SAMPLES["lightbox"] + 2 * SPF)):
+        place(buf, sound.counter_tick(), at)
+    dry_first["lightbox"] = int(np.argmax(np.abs(buf) > 0))
+    imp = np.zeros(N); L_ = int(SR * 2.2); n_ = np.arange(L_) / SR
+    f_ = 38 + 30 * np.exp(-n_ / 0.07); x_ = np.sin(2 * np.pi * np.cumsum(f_) / SR)
+    place(imp, sound.click_safe(x_, 2), CUE_SAMPLES["cut"]); dry_first["cut"] = int(np.argmax(np.abs(imp) > 0))
+    rows = []
+    for key, label, stem in TRANSIENTS:
+        exp = CUES[key] * SPF
+        near = onsets[np.argmin(np.abs(onsets - exp))] if len(onsets) else None
+        dev_ms = None if near is None else (near - exp) / SR * 1000
+        first = dry_first.get(key)
+        rows.append({"cue": key, "beeld": label, "frame": CUES[key], "verwacht_s": round(exp / SR, 4),
+                     "sample": exp, "mix_onset_s": None if near is None else round(near / SR, 4),
+                     "afwijking_ms": None if dev_ms is None else round(dev_ms, 1),
+                     "afwijking_frames": None if dev_ms is None else round(dev_ms / (1000 / 30), 2),
+                     "droog_eerste_sample": first,
+                     # bursts start AT the cue sample with a 1–3 ms fade-in, so sample 0 of the burst is 0.0 and the
+                     # first non-zero sample is cue+1 (21 µs): placement is exact
+                     "sample_exact": None if first is None else 0 <= first - exp <= 1})
+    rep["sync"] = rows
+
+    # Spectrogram with the cues
+    S = librosa.amplitude_to_db(np.abs(librosa.stft(mono1.astype(np.float32), n_fft=4096, hop_length=256)), ref=np.max)
+    fig, ax = plt.subplots(figsize=(16, 7), dpi=110)
+    img = librosa.display.specshow(S, sr=SR, hop_length=256, x_axis="time", y_axis="log", ax=ax, cmap="magma", vmin=-90, vmax=0)
+    marks = [(k, f) for k, f in sorted(CUES.items(), key=lambda kv: kv[1]) if k not in ("start", "end", "promise_out")]
+    for i, (key, frame) in enumerate(marks):
+        tsec = frame * SPF / SR
+        ax.axvline(tsec, color="#3DCFDF", lw=1.0, alpha=0.9)
+        ax.text(tsec + 0.03, 15000 if i % 2 == 0 else 9000, f"{key}\n{tsec:.3f}s", color="#EEF2FB", fontsize=8, va="top")
+    ax.set_title("NightGazer social v2 — mix (mono sum), cue-momenten als verticale lijnen")
+    fig.colorbar(img, ax=ax, format="%+2.0f dB")
+    fig.tight_layout()
+    fig.savefig(OUT / "spectrogram.png")
+    print(json.dumps(rep, indent=1, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    import librosa.display  # noqa: F401
+    main(sys.argv[1:])

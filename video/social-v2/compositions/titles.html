@@ -46,24 +46,24 @@
         (function () {
           const tl = gsap.timeline({ paused: true });
 
-          // 1 — Hook. Complete in frame 0 (the poster), still until 1.42, then swept off by a hairline.
-          tl.set("#titles-wipe", { opacity: 1 }, 1.42);
-          tl.fromTo("#titles-wipe", { x: 0 }, { x: 888, duration: 0.18, ease: "power2.in", immediateRender: false }, 1.42);
+          // 1 — Hook. Complete in frame 0 (the poster), still until 1.4333 (frame 43), then swept off by a hairline.
+          tl.set("#titles-wipe", { opacity: 1 }, 1.4333);
+          tl.fromTo("#titles-wipe", { x: 0 }, { x: 888, duration: 0.1667, ease: "power2.in", immediateRender: false }, 1.4333);
           tl.fromTo("#titles-hook", { clipPath: "inset(-10% -5% -10% 0%)" },
-                    { clipPath: "inset(-10% -5% -10% 105%)", duration: 0.18, ease: "power2.in", immediateRender: false }, 1.42);
+                    { clipPath: "inset(-10% -5% -10% 105%)", duration: 0.1667, ease: "power2.in", immediateRender: false }, 1.4333);
           tl.set("#titles-wipe", { opacity: 0 }, 1.6);
 
-          // 2 — Promise. Revealed by 2.5, still until 3.8 (1.3 s).
+          // 2 — Promise. Revealed by 2.49 (from frame 68), still until 3.8 (frame 114).
           tl.fromTo("#titles-promise", { clipPath: "inset(-10% 105% -10% 0%)" },
-                    { clipPath: "inset(-10% -5% -10% 0%)", duration: 0.22, ease: "power3.out" }, 2.28);
+                    { clipPath: "inset(-10% -5% -10% 0%)", duration: 0.22, ease: "power3.out" }, 2.2667);
           tl.to("#titles-promise", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power1.in" }, 3.8);
           tl.to("#titles-scrim", { opacity: 0, duration: 0.5, ease: "power1.in" }, 3.9);
 
           // 3 — Sign-off on the lifted plate. Settled by 8.95, then completely still.
           tl.fromTo("#titles-field", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 8.3);
           tl.fromTo("#titles-logo", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 8.4);
-          tl.fromTo("#titles-domain", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 8.52);
-          tl.fromTo("#titles-cta", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.32, ease: "power3.inOut" }, 8.62);
+          tl.fromTo("#titles-domain", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 8.5333);
+          tl.fromTo("#titles-cta", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.32, ease: "power3.inOut" }, 8.6333);
 
           tl.set({}, {}, 10);
           window.__timelines["titles"] = tl;

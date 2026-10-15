@@ -61,9 +61,11 @@
 
         <svg id="plate-roofmark" viewBox="0 0 1080 1920" aria-hidden="true">
           <line id="plate-leader" x1="0" y1="0" x2="0" y2="0" stroke="#378ADD" stroke-width="1.5" />
-          <g id="plate-cross" fill="none" stroke="#378ADD" stroke-width="1.5">
-            <circle r="14" /><line x1="-26" y1="0" x2="-8" y2="0" /><line x1="8" y1="0" x2="26" y2="0" />
-            <line x1="0" y1="-26" x2="0" y2="-8" /><line x1="0" y1="8" x2="0" y2="26" />
+          <g id="plate-cross">
+            <g id="plate-cross-ring" fill="none" stroke="#378ADD" stroke-width="1.5">
+              <circle r="14" /><line x1="-26" y1="0" x2="-8" y2="0" /><line x1="8" y1="0" x2="26" y2="0" />
+              <line x1="0" y1="-26" x2="0" y2="-8" /><line x1="0" y1="8" x2="0" y2="26" />
+            </g>
           </g>
         </svg>
         <div id="plate-roof" class="plate-read">
@@ -98,6 +100,9 @@
           const tl = gsap.timeline({ paused: true });
           // Readout over the Earth (0–1.6): on from frame 0, gone at the match cut.
           tl.set(["#plate-roof", "#plate-roofmark"], { opacity: 1 }, 0);
+          // The reading locks onto the roof: the ring closes in and is fixed exactly at 1.0 s (frame 30).
+          tl.fromTo("#plate-cross-ring", { scale: 1.5, opacity: 0.55, svgOrigin: "0 0" },
+                    { scale: 1, opacity: 1, duration: 0.3, ease: "power3.in" }, 0.7);
           tl.set(["#plate-roof", "#plate-roofmark"], { opacity: 0 }, 1.6);
           // Galaxy readout + mandatory visible credit, from the moment M74 is in view.
           tl.fromTo("#plate-m74", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 4.9);

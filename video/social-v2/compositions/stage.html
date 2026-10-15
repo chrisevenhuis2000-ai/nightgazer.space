@@ -89,7 +89,7 @@
         deepScene.add(m74, starfield({ seed: 23 }));
         const planetScene = new THREE.Scene();
         // Lit from behind and above: the camera arrives on the night side with a lit limb, as on the Earth.
-        const giant = planet({ seed: 3, sunDir: new THREE.Vector3(-0.95, 0.42, -0.18) });
+        const giant = planet({ seed: 3, radius: 1.018, sunDir: new THREE.Vector3(-0.95, 0.42, -0.18) });  // radius = the Earth's atmosphere shell, so the limbs coincide at the cut
         planetScene.add(giant);
 
         const cam = new THREE.PerspectiveCamera(40, W / H, 0.005, 600);
@@ -97,7 +97,7 @@
 
         // One orbit geometry shared by the last Earth frame and the first planet frame:
         // the planet's limb lands exactly where the Earth's horizon was.
-        const GROUND = latLon(37.5, 3.0);
+        const GROUND = latLon(33.0, 2.6);
         const CUT = { alt: 0.62, pitch: 56, roll: 0.05, yaw: -4 };
         const UTRECHT = latLon(52.09, 5.12);
 
@@ -108,6 +108,7 @@
           // Pin the readout to the roof it names: project Utrecht to the screen for the plate's leader line.
           const p = UTRECHT.clone().project(cam);
           window.__ngRoof = { x: (p.x * 0.5 + 0.5) * W, y: (0.5 - p.y * 0.5) * H };
+          document.documentElement.dataset.roof = window.__ngRoof.x.toFixed(1) + "," + window.__ngRoof.y.toFixed(1);
           window.dispatchEvent(new CustomEvent("ng-roof", { detail: window.__ngRoof }));
           renderer.clear();
           renderer.render(earthScene, cam);
