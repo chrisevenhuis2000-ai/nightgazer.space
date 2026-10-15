@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { TOPICS, getTopic } from '@/lib/topics'
+import { breadcrumbList, jsonLd } from '@/lib/structured-data'
 import NieuwsArchief from '../../NieuwsArchief'
 
 export function generateStaticParams() {
@@ -23,5 +24,15 @@ export function generateMetadata({ params }: { params: { category: string } }): 
 export default function TopicPage({ params }: { params: { category: string } }) {
   const topic = getTopic(params.category)
   if (!topic) notFound()
-  return <NieuwsArchief initialTopic={topic.slug} />
+  const crumbs = breadcrumbList([
+    { name: 'Home', path: '/' },
+    { name: 'Nieuws', path: '/nieuws/' },
+    { name: topic.label, path: `/nieuws/onderwerp/${topic.slug}/` },
+  ])
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(crumbs) }} />
+      <NieuwsArchief initialTopic={topic.slug} />
+    </>
+  )
 }
