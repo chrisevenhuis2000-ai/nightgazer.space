@@ -34,9 +34,11 @@ import {
 
 
 /* ══ Ticker: the latest plates, filling the void under the lead ══════════ */
-function Ticker({ articles }: { articles: Article[] }) {
+function Ticker({ articles, exclude }: { articles: Article[]; exclude: Set<string> }) {
   const laneRef = useRef<HTMLDivElement>(null)
-  const items = articles.slice(0, 14)
+  /* De hoofdplaat en de zijplaten staan er al vlak boven; de strip begint
+     bij de eerstvolgende, zodat geen kop twee keer onder elkaar staat. */
+  const items = articles.filter(a => !exclude.has(a.slug)).slice(0, 14)
 
   /* Constant speed, not constant duration: a lane with more plates in it is
      wider, so the duration has to grow with it or the scroll speeds up. */
@@ -300,8 +302,23 @@ function FirstView({ apod, iss, issFailed, total, latest, sky }: {
 }
 
 /* ══ Lead plate ═══════════════════════════════════════════════════════════ */
+/* Is deze plaat van vandaag, in Nederlandse tijd? Pas na mount bepaald: de
+   statische HTML is op de bouwdag gemaakt en weet niet wanneer hij gelezen
+   wordt. Tot dan zegt het label 'Nieuwste plaat', wat altijd klopt. */
+function useIsToday(iso?: string): boolean {
+  const [today, setToday] = useState(false)
+  useEffect(() => {
+    if (!iso) { setToday(false); return }
+    const day = (d: Date) => d.toLocaleDateString('nl-NL', { timeZone: 'Europe/Amsterdam' })
+    const t = new Date(iso)
+    setToday(!isNaN(t.getTime()) && day(t) === day(new Date()))
+  }, [iso])
+  return today
+}
+
 function LeadPlate({ lead, side, total }: { lead: Article; side: Article[]; total: number }) {
   const lvl = getLevel(lead.category)
+  const isToday = useIsToday(lead.publishedAt)
 
   return (
     <section className="pl-lead" aria-labelledby="pl-lead-title">
@@ -321,7 +338,7 @@ function LeadPlate({ lead, side, total }: { lead: Article; side: Article[]; tota
 
         <div className="pl-lead__body">
           <div className="pl-meta">
-            <span className="pl-label pl-label--stamp">Plaat van vandaag</span>
+            <span className="pl-label pl-label--stamp">{isToday ? 'Plaat van vandaag' : 'Nieuwste plaat'}</span>
             <span className="pl-meta__tick" aria-hidden="true" />
             <span>{lead.category}</span>
           </div>
@@ -611,11 +628,15 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
 }
 
 /* ══ Page ═════════════════════════════════════════════════════════════════ */
-export default function HomePage() {
+export default function HomePage({ initial, initialTotal = 0 }: {
+  /** Nieuwste platen uit de index, tijdens de build gelezen (app/page.tsx). */
+  initial?: Article[]
+  initialTotal?: number
+} = {}) {
   const [apod, setApod] = useState<APODData | null>(null)
   const [iss, setIss] = useState<ISSData | null>(null)
   const [issFailed, setIssFailed] = useState(false)
-  const articles = useArticles(24)
+  const articles = useArticles(24, initial)
 
   /* APOD, cached per day */
   useEffect(() => {
@@ -660,9 +681,14 @@ export default function HomePage() {
     }
   }, [])
 
-  const lead = articles.find(a => a.featured) ?? articles[0]
-  const side = articles.filter(a => a.slug !== lead?.slug).slice(0, 3)
-  const total = articles.length
+  /* Altijd de nieuwste plaat. 'featured' werd hier eerder gevolgd, maar in
+     de index draagt alleen K2-18b (11 mrt 2026) die vlag, waardoor de hero
+     sinds maart hetzelfde artikel toonde. */
+  const lead = articles[0]
+  const side = articles.slice(1, 4)
+  /* Tot de volledige index binnen is, telt het totaal uit de build. */
+  const total = Math.max(articles.length, initialTotal)
+  const onTop = useMemo(() => new Set([lead, ...side].filter(Boolean).map(a => a.slug)), [lead, side])
   const edition = editionLabel()
 
   return (
@@ -684,7 +710,7 @@ export default function HomePage() {
 
         {/* Fills what was an empty band of ground under the lead plate. */}
         <div className="pl-wrap">
-          <Ticker articles={articles} />
+          <Ticker articles={articles} exclude={onTop} />
         </div>
 
         <div className="pl-wrap pl-gap-lg">

@@ -280,8 +280,11 @@ function imageQuery(title: string, cat: string): string {
   return CAT_Q[(cat || '').toLowerCase()] || 'space astronomy cosmos'
 }
 
-export function useArticles(backfill = 24): Article[] {
-  const [articles, setArticles] = useState<Article[]>(FALLBACK_ARTICLES)
+/** `initial`: tijdens de build uit de index gelezen, zodat de statische HTML
+ *  de echte nieuwste platen toont in plaats van de fallback-lijst. De volledige
+ *  index komt daarna client-side. */
+export function useArticles(backfill = 24, initial?: Article[]): Article[] {
+  const [articles, setArticles] = useState<Article[]>(initial?.length ? initial : FALLBACK_ARTICLES)
   const fetched = useRef<Set<string>>(new Set())
 
   useEffect(() => {

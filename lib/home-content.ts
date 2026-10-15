@@ -35,6 +35,8 @@ export interface Article {
   readTime:  number
   featured:  boolean
   imageUrl?: string
+  /** ISO-tijdstip uit de index; ontbreekt bij FALLBACK_ARTICLES. */
+  publishedAt?: string
 }
 
 // ── Fallback articles ──────────────────────────────────────────────────────
