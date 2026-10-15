@@ -45,9 +45,27 @@ const LOGO = 'https://science.nasa.gov/wp-content/themes/nasa-child/assets/image
   eq(A.geldigBeeld('https://assets.science.nasa.gov/video/a.mp4'), null, 'beeld: geen video-bestand')
   eq(A.geldigBeeld(''), null, 'beeld: leeg')
 
+  // Credit = copyright: alleen zonder credit toont de site "Publiek domein · NASA".
   eq(A.vindCredit('Image Credit & Copyright: Jan & Anna'), { credit: 'Jan & Anna', copyright: 'Jan & Anna' }, 'credit met copyright')
-  eq(A.vindCredit('Image Credit: NASA, ESA, Hubble'), { credit: 'NASA, ESA, Hubble', copyright: null }, 'credit zonder copyright → geen copyright')
-  eq(A.vindCredit('Video Credit & License: X'), { credit: 'X', copyright: null }, 'licentie is geen copyright')
+  eq(A.vindCredit('Image Credit: NASA, ESA, Hubble'), { credit: 'NASA, ESA, Hubble', copyright: 'NASA, ESA, Hubble' }, 'credit zonder het woord copyright → toch als copyright')
+  eq(A.vindCredit('Video Credit & License: X'), { credit: 'X', copyright: 'X' }, 'video-credit met licentie')
+  eq(A.vindCredit('Geen credit hier.'), { credit: null, copyright: null }, 'geen credit → null')
+
+  // De echte APOD van 15 okt 2026 (credit Jason Kurth, Ty Buckley), in de
+  // vormen die science.nasa.gov kan gebruiken.
+  const MANHATTAN = 'Jason Kurth, Ty Buckley'
+  const item15 = { ...items[0], title: 'The Milky Way over Manhattan', content: '', description: 'City lights outshine the stars. [&#8230;]' }
+  for (const [f, wat] of [['artikel-credit-los.html', 'label en namen in aparte elementen, namen als links'],
+                          ['artikel-credit-class.html', 'element met "credit" in de class, spatie vóór de komma'],
+                          ['artikel-credit-jsonld.html', 'alleen in JSON-LD (creditText)']]) {
+    eq(A.vindCredit('', lees(f)).credit, MANHATTAN, `credit uit het artikel: ${wat}`)
+    const ap = A.bouwApod(item15, lees(f))
+    eq(ap.copyright, MANHATTAN, `apod.copyright gevuld: ${wat}`)
+    ok(!/Kurth/.test(ap.explanation), `credit niet in de uitleg: ${wat}`)
+  }
+  const zonder15 = A.bouwApod(item15, lees('artikel-zonder-credit.html'))
+  eq(zonder15.copyright, undefined, 'echt geen credit (teaser "Image Credit: NASA/JPL" buiten <article> telt niet) → geen copyright → site toont "Publiek domein · NASA"')
+  eq(zonder15.media_type, 'image', 'zonder credit wel gewoon het beeld')
 
   // Goede APOD
   const goed = A.bouwApod(items[0], lees('artikel.html'))
@@ -80,7 +98,7 @@ const LOGO = 'https://science.nasa.gov/wp-content/themes/nasa-child/assets/image
 
   // ── 2. De route in worker.js ─────────────────────────────────────────
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'apod-worker-'))
-  fs.copyFileSync(path.join(__dirname, '..', 'cf-worker', 'apod.mjs'), path.join(dir, 'apod.mjs'))
+  for (const f of ['apod.mjs', 'beeldhosts.mjs']) fs.copyFileSync(path.join(__dirname, '..', 'cf-worker', f), path.join(dir, f))
   fs.copyFileSync(path.join(__dirname, '..', 'cf-worker', 'worker.js'), path.join(dir, 'worker.mjs'))
   const worker = (await import(path.join(dir, 'worker.mjs'))).default
 
@@ -103,7 +121,7 @@ const LOGO = 'https://science.nasa.gov/wp-content/themes/nasa-child/assets/image
   }
   const vraag = () => worker.fetch(new Request('https://cosmosnl-proxy.example/apod', { headers: { Origin: 'https://nightgazer.space' } }), {})
   const vandaag = A.apodDatum(Date.now())
-  const sleutel = `https://nasa-apod-cache/apod-v2?date=${vandaag}`
+  const sleutel = `https://nasa-apod-cache/apod-v3?date=${vandaag}`
 
   scenario = 'kapot'
   let r = await vraag()
@@ -129,4 +147,34 @@ const LOGO = 'https://science.nasa.gov/wp-content/themes/nasa-child/assets/image
 
   fs.rmSync(dir, { recursive: true, force: true })
   console.log(`✅ ${checks} APOD-controles geslaagd (fixtures: ${fs.readdirSync(FIX).join(', ')})`)
+})().catch(e => { console.error(e); process.exit(1) })
+
+// ── 3. localStorage op de homepage (lib/apod-cache.ts) ──────────────────
+// Getranspileerd met de TypeScript van het project, zodat de test de echte
+// code draait.
+;(async () => {
+  const ts = require('typescript')
+  const src = fs.readFileSync(path.join(__dirname, '..', 'lib', 'apod-cache.ts'), 'utf-8')
+  const js = ts.transpileModule(src, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2019 } }).outputText
+  const mod = { exports: {} }
+  new Function('module', 'exports', 'require', js)(mod, mod.exports, require)
+  const C = mod.exports
+  let n = 0
+  const t = (c, m) => { assert.ok(c, m); n++ }
+  const goed = { date: '2026-10-15', title: 'The Milky Way over Manhattan', explanation: 'x', url: 'https://assets.science.nasa.gov/a.jpg', hdurl: 'https://assets.science.nasa.gov/a.jpg', media_type: 'image', copyright: 'Jason Kurth, Ty Buckley' }
+  const logo = { ...goed, title: 'NASA Science', url: 'https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png', hdurl: 'https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png' }
+  t(C.isGeldigeApod(goed), 'cache: goede APOD geldig')
+  t(!C.isGeldigeApod(logo), 'cache: oude logo-APOD ongeldig')
+  t(!C.isGeldigeApod({ ...goed, title: 'NASA Science' }), 'cache: titel "NASA Science" ongeldig')
+  t(!C.isGeldigeApod({ ...goed, hdurl: 'https://science.nasa.gov/wp-content/themes/x/bg.jpg' }), 'cache: /themes/ in hdurl ongeldig')
+  t(!C.isGeldigeApod({ ...goed, url: 'https://assets.science.nasa.gov/nasa-logo.png' }), 'cache: nasa-logo in url ongeldig')
+  t(!C.isGeldigeApod(null) && !C.isGeldigeApod({}), 'cache: leeg ongeldig')
+  const vandaag = '2026-10-15'
+  t(C.leesApodCache(C.schrijfApodCache(goed, vandaag), vandaag)?.title === goed.title, 'cache: goede APOD van vandaag terug')
+  t(C.leesApodCache(C.schrijfApodCache(logo, vandaag), vandaag) === null, 'cache: logo-APOD van vandaag → null (opnieuw ophalen)')
+  t(C.leesApodCache(JSON.stringify({ date: vandaag, data: logo }), vandaag) === null, 'cache: oud formaat (zonder versie) met logo → null')
+  t(C.leesApodCache(JSON.stringify({ date: vandaag, data: goed }), vandaag) === null, 'cache: oud formaat zonder versie → één keer opnieuw ophalen')
+  t(C.leesApodCache(C.schrijfApodCache(goed, '2026-10-14'), vandaag) === null, 'cache: van gisteren → null')
+  t(C.leesApodCache('{kapot', vandaag) === null && C.leesApodCache(null, vandaag) === null, 'cache: kapot of leeg → null')
+  console.log(`✅ ${n} localStorage-controles geslaagd (lib/apod-cache.ts)`)
 })().catch(e => { console.error(e); process.exit(1) })
