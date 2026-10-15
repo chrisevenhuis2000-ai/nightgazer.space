@@ -43,7 +43,7 @@ neither may answer the other's.
 
 **`--pl-mark` (#378ADD) — "is this changing?"** Live, perishable values only:
 tonight's score, cloud cover, ISS coordinates, a countdown, today's APOD date,
-the ring around today's plate. Never a link, a border, a hover state, or
+the ring around the best night on `/sterrenkijken`. Never a link, a border, a hover state, or
 decoration.
 
 **`--pl-act` (#3DCFDF) — "does this respond to me?"** Interactive affordance
@@ -178,7 +178,8 @@ its place by carrying information.
 
 **Depth and place**
 
-5. **The chinagraph ring** settles in once over today's plate.
+5. **The chinagraph ring** settles in once around the best night on
+   `/sterrenkijken` — the only place the ring is used.
 6. **`.pl-lift`** raises card-like surfaces exactly 2px on hover and focus,
    with a shadow tinted to the ground (`rgba(6,8,20,0.66)`) plus an
    orbit-blue rim — never generic black. Ledger rows are excluded on purpose:
@@ -229,7 +230,8 @@ answer first, the reading layer follows, the ledger holds the volume.
 archive is a cabinet and topics are drawers. A sticky rail on the left carries
 the topic drawers and the reading-level drawers with their counts; the open
 drawer fills the sheet beside it. Inside the sheet the plates step down: one
-lead plate with the chinagraph ring, two half-size plates, then the ledger.
+lead plate (no ring — that is reserved for `/sterrenkijken`), two half-size
+plates, then the ledger.
 
 **`/sterrenkijken` — the observing planner.** Mode Operate. The
 exposure table: seven nights as rows, the factors as columns, read like an
@@ -297,9 +299,11 @@ One behaviour rule the stargazing surface adds:
 > phase — rounding to eight phases would mark four. The phase is the mean
 > cycle, and the sheet says so: it can be a day off the almanac.
 
-> **The best night wears the chinagraph ring.** The same hand-drawn ellipse
-> that circles today's plate on the front page circles the winning row here.
-> The ring marks the one thing that matters on a surface, never more than one.
+> **The best night wears the chinagraph ring.** A hand-drawn ellipse circles
+> the winning row. This is the only ring on the site: the lead plates on `/`,
+> `/nieuws` and `/missies` used to carry one too, and lost it — a ring on every
+> lead stopped meaning anything. The ring marks the one thing that matters,
+> never more than one.
 > When no night clears "matig", nothing is ringed and the page says so —
 > pointing at a best-of-bad would be a lie told with a mark.
 
@@ -368,8 +372,9 @@ is dull. It was that this one surface quietly skipped the system's strongest
 moves: no lead plate, no chinagraph ring, no change of pace — row one weighed
 exactly as much as row twenty. Every other surface leads with something.
 
-The fix used nothing new: the homepage's lead-plate device, the ring that
-already marks today's plate, the existing ladder, meta and read-link parts.
+The fix used nothing new: the homepage's lead-plate device, the existing
+ladder, meta and read-link parts. (The ring it borrowed back then has since
+gone from every lead plate; it now lives only on the best night.)
 Only the arrangement changed — one lead, two seconds, then the ledger — plus
 a cascade tied to the real act of pulling a drawer open. When a section reads
 flat, check what its neighbours do that it does not before reaching for a new
@@ -381,7 +386,7 @@ effect.
 luminance. Many articles carry a logo on a white field rather than a
 photograph, and those stayed blazing white in a dark page. Figures that can
 receive any source image get a second layer — a plain dark gradient — so a
-white logo sits down and the chinagraph ring has something to read against.
+white logo sits down and the plate number has something to read against.
 Small thumbnails also use `.pl-emulsion--sm`: the same grade at 0.26 grayscale
 instead of 0.52, because the treatment that reads as art direction at 860px
 turns a logo at 150px into grey mush.

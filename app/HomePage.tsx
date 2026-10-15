@@ -329,10 +329,6 @@ function LeadPlate({ lead, side, total }: { lead: Article; side: Article[]; tota
               ? <img src={img(lead.imageUrl, 1200)} alt="" />
               : <div style={{ position: 'absolute', inset: 0, background: 'var(--pl-plate-2)' }} />}
           </div>
-          {/* The archivist's chinagraph ring around today's selected plate */}
-          <svg className="pl-ring pl-ring--draw" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true">
-            <ellipse cx="58" cy="26" rx="17" ry="13" transform="rotate(-8 58 26)" />
-          </svg>
           <span className="pl-stampno pl-num">{plateNo(total, 0)}</span>
         </Link>
 

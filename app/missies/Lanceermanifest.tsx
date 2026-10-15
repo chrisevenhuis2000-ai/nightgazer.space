@@ -222,9 +222,6 @@ function NextUp({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; 
             ? <img src={img(image, 1100)} alt="" onError={() => setBroken(true)} />
             : <span className="pl-noimg" />}
         </span>
-        <svg className="pl-ring pl-ring--draw" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true">
-          <ellipse cx="58" cy="26" rx="18" ry="14" transform="rotate(-8 58 26)" />
-        </svg>
         <span className="pl-stampno pl-num">{l.mission.vehicle || l.mission.agency}</span>
       </span>
 
