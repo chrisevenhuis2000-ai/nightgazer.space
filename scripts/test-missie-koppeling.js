@@ -53,7 +53,9 @@ const after = JSON.parse(fs.readFileSync(tmpMissions, 'utf-8')).missions
 const byIdAfter = new Map(after.map(m => [m.id, m]))
 
 const KEY_FIELDS = ['_ll2Id', 'status', 'launched', 'vehicle', 'launchSite', 'objective', 'description', 'highlight']
-const same = (a, b) => KEY_FIELDS.every(f => JSON.stringify(a[f]) === JSON.stringify(b[f]))
+// De highlight van een lancering volgt uit status, datum en voertuig (sjabloon,
+// elke run); die velden worden al vergeleken.
+const same = (a, b) => KEY_FIELDS.every(f => (f === 'highlight' && a.soort === 'lancering') || JSON.stringify(a[f]) === JSON.stringify(b[f]))
 let checks = 0
 const ok = (cond, msg) => { assert.ok(cond, msg); checks++ }
 

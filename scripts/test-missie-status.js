@@ -18,6 +18,9 @@ const { mapLL2Status, soortVoorType, cleanEnrichment, parseDutch } = require('./
 let checks = 0
 const ok = (cond, msg) => { assert.ok(cond, msg); checks++ }
 const eq = (a, b, msg) => { assert.deepEqual(a, b, msg); checks++ }
+// De highlight van een lancering komt elke run uit het sjabloon (status, datum,
+// voertuig); test-missie-statustekst.js test die. Hier telt de rest.
+const vgl = m => (m && m.soort === 'lancering' ? { ...m, highlight: undefined } : m)
 
 // ── 1. Regels als losse functies ─────────────────────────────────────────
 for (const [st, soort, want] of [
@@ -114,10 +117,10 @@ for (const m of before) {
   const now = byId.get(m.id)
   if (missed.has(m.id)) {
     const { _previousMisses, ...rest } = now
-    eq(JSON.stringify(rest), JSON.stringify(m), `${m.id} is verder onveranderd`)
+    eq(JSON.stringify(vgl(rest)), JSON.stringify(vgl(m)), `${m.id} is verder onveranderd`)
     continue
   }
-  eq(JSON.stringify(now), JSON.stringify(m), `${m.id} is onverwacht veranderd`)
+  eq(JSON.stringify(vgl(now)), JSON.stringify(vgl(m)), `${m.id} is onverwacht veranderd`)
 }
 
 console.log(`✅ ${checks} statuscontroles geslaagd (${warnings.length} waarschuwingen)`)

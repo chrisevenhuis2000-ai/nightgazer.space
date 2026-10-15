@@ -154,6 +154,16 @@ function fetchJSON(url) {
 async function sleep(ms) { return new Promise(r => setTimeout(r, GEEN_PAUZE ? 0 : ms)) }
 
 // ── Claude verrijking ─────────────────────────────────────────────────────────
+// De status zoals Claude hem meekrijgt, zodat de tekst de juiste tijd heeft.
+function statusVoorPrompt(m) {
+  switch (m.status) {
+    case 'actief':   return `gelanceerd op ${m.launched}; de missie is in bedrijf`
+    case 'voltooid': return `gelanceerd op ${m.launched}; de lancering is voltooid`
+    case 'mislukt':  return `lancering op ${m.launched} is mislukt`
+    default:         return `nog niet gelanceerd; gepland voor ${m.launched}`
+  }
+}
+
 // Elke request naar de API telt mee, ook een mislukte: dit getal komt als
 // "Claude-aanroepen: N" in de run-samenvatting, zodat de kosten te volgen zijn.
 let claudeAanroepen = 0
@@ -166,6 +176,8 @@ async function enrichWithClaude(mission, ll2Data) {
     system: [
       'Je bent redacteur van Nightgazer.space. Schrijf in het Nederlands, journalistieke stijl.',
       'Gebruik uitsluitend de gegevens die hieronder worden aangeleverd. Voeg geen feiten, aantallen, namen of doelen toe die daar niet in staan.',
+      'Voeg ook geen duiding toe die niet in de gegevens staat: geen oordelen over belang, betrouwbaarheid of reputatie, geen doelgroepen of regio\'s. Vertaal technische termen getrouw. Zeggen de gegevens weinig, schrijf dan kort; vul niet aan.',
+      'Schrijf in de tijd die bij de status past: is de lancering al geweest, beschrijf haar dan niet als gepland.',
       'Verander het type missie niet. Een lancering van satellieten blijft een lancering, een ruimtesonde blijft een sonde, een bemande vlucht blijft een bemande vlucht. De huidige omschrijving geeft het type aan.',
       'Kun je een veld niet invullen op basis van de gegevens, geef dan een lege string ("") of een lege lijst.',
       'Antwoord UITSLUITEND als geldig JSON zonder markdown of uitleg.',
@@ -178,13 +190,14 @@ Huidige omschrijving (bepaalt het type, niet veranderen): ${mission.objective ||
 Agentschap: ${mission.agency}
 Voertuig: ${ll2Data.vehicle || mission.vehicle}
 Lanceerdatum: ${ll2Data.launchDate || mission.launched}
+Status: ${statusVoorPrompt(mission)}
 Baan/bestemming: ${ll2Data.orbit || mission.body}
 Beschrijving uit Launch Library 2 (EN): ${ll2Data.description}
 
 Geef JSON met precies deze velden:
 {
   "objective": "Één zin die het doel samenvat (max 120 tekens)",
-  "description": "Volledige beschrijving in 3-4 zinnen, journalistieke toon",
+  "description": "Beschrijving in 1-4 zinnen, journalistieke toon; niet langer dan de gegevens dragen",
   "highlight": "Huidige status of meest recente prestatie (max 80 tekens)",
   "relatedTags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
 }`,
@@ -328,6 +341,7 @@ async function verrijk(mission, ll2Data, reden, { vervangTags = false, behoudHig
   }
   try {
     console.log(`  🤖 Claude verrijking voor ${mission.name} (${reden})...`)
+    console.log(`     LL2-beschrijving: ${ll2Data.description.replace(/\s+/g, ' ').trim()}`)
     await sleep(1000)
     const enriched = cleanEnrichment(await enrichWithClaude(mission, ll2Data))
     const bruikbaar = enriched && (enriched.objective || enriched.description || (enriched.highlight && !behoudHighlight) || enriched.relatedTags.length)
@@ -420,6 +434,25 @@ function isNewLaunch(missions, ll2Launch) {
     return false
   }
   return true
+}
+
+// Een 'missie' die actief is geworden: deze ene id volledig ophalen (mode=list
+// heeft geen missiebeschrijving) en Claude laten verrijken; de highlight uit
+// het sjabloon blijft staan. Geeft true als Claude aan de beurt is geweest
+// (gelukt of mislukt — verrijk() legt dat vast), false als de LL2-details
+// niet opgehaald konden worden.
+async function naarActief(mission) {
+  try {
+    await sleep(1000)
+    const page = await fetchJSON(launchDetailedUrl(mission._ll2Id))
+    const detail = (page.results || []).find(x => x.id === mission._ll2Id)
+    if (!detail) throw new Error('niet teruggegeven')
+    await verrijk(mission, ll2DataVan(detail), 'status', { behoudHighlight: true })
+    return true
+  } catch (err) {
+    console.warn(`⚠️  ${mission.name}: LL2-details niet opgehaald (${err.message}) — verrijking volgt bij een volgende kans`)
+    return false
+  }
 }
 
 // ── Hoofdlogica ───────────────────────────────────────────────────────────────
@@ -585,20 +618,29 @@ async function main() {
       if (!statusGewijzigd) continue
       mission.highlight = highlightVoorMissie(mission)
 
-      // Een 'missie' die actief wordt, krijgt nieuwe tekst van Claude. mode=list
-      // heeft geen missiebeschrijving, dus eerst deze ene id volledig ophalen.
+      // Een 'missie' die actief wordt, krijgt nieuwe tekst van Claude.
       if (ANTHROPIC_KEY && claudeReden(mission, { statusGewijzigd, heeftBeschrijving: true }) === 'status') {
-        try {
-          await sleep(1000)
-          const page = await fetchJSON(launchDetailedUrl(mission._ll2Id))
-          const detail = (page.results || []).find(x => x.id === mission._ll2Id)
-          if (!detail) throw new Error('niet teruggegeven')
-          await verrijk(mission, ll2DataVan(detail), 'status', { behoudHighlight: true })
-        } catch (err) {
-          console.warn(`⚠️  ${mission.name}: LL2-details niet opgehaald (${err.message}) — verrijking volgt bij een volgende kans`)
-        }
+        await naarActief(mission)
       }
     }
+  }
+
+  // ── Handmatig aangevraagd: opnieuw door de route 'missie → actief' ───────
+  // Zet `"_herverrijk": true` op een actieve missie (met _ll2Id) en de
+  // volgende run haalt hem met mode=detailed op en laat Claude verrijken,
+  // net als bij een statuswijziging. De vlag verdwijnt zodra Claude aan de
+  // beurt is geweest; zonder API-sleutel of bij een LL2-fout blijft hij staan.
+  for (const mission of missions) {
+    if (!mission._herverrijk) continue
+    if (mission.soort !== 'missie' || mission.status !== 'actief' || !mission._ll2Id) {
+      warn(`${mission.name}: _herverrijk staat op een missie die niet 'missie' + 'actief' met _ll2Id is — overgeslagen`)
+      continue
+    }
+    if (!ANTHROPIC_KEY) continue
+    console.log(`  🔁 ${mission.name}: opnieuw verrijken op verzoek (_herverrijk)`)
+    const highlight = highlightVoorMissie(mission)
+    if (mission.highlight !== highlight) { mission.highlight = highlight; changed = true }
+    if (await naarActief(mission)) { delete mission._herverrijk; changed = true }
   }
 
   // ── Nieuwe missies detecteren ─────────────────────────────────────────────
@@ -684,6 +726,19 @@ async function main() {
     console.log(`     ➕ Toegevoegd: ${newMission.id}`)
   }
 
+  // ── Lanceringen: highlight altijd uit het sjabloon ───────────────────────
+  // Een lancering heeft geen operationele fase: status, datum en voertuig
+  // zeggen alles. Elke run, ongeacht wat er stond (ook Claude-tekst).
+  for (const mission of missions) {
+    if (mission.soort !== 'lancering') continue
+    const highlight = highlightVoorMissie(mission)
+    if (mission.highlight !== highlight) {
+      console.log(`  ✏️  ${mission.name}: highlight → ${highlight}`)
+      mission.highlight = highlight
+      changed = true
+    }
+  }
+
   // ── Run-samenvatting ──────────────────────────────────────────────────────
   const samenvatting = `Claude-aanroepen: ${claudeAanroepen}`
   console.log(`\n${samenvatting}`)
@@ -706,7 +761,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl, statusVoorPrompt }
 
 if (require.main === module) {
   main().catch(err => {
