@@ -12,6 +12,9 @@ const https   = require('https')
 // (scripts/test-missie-koppeling.js); de workflow zet ze niet.
 const MISSIONS_PATH = process.env.MISSIONS_PATH || path.join(process.cwd(), 'content', 'missions.json')
 const LL2_FIXTURE   = process.env.LL2_FIXTURE || null
+// Fixture voor /launches/previous/. Met LL2_FIXTURE maar zonder deze wordt
+// die request overgeslagen: de test gaat nooit het netwerk op.
+const LL2_PREVIOUS_FIXTURE = process.env.LL2_PREVIOUS_FIXTURE || null
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
 
 const MONTHS_NL = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec']
@@ -50,6 +53,14 @@ function formatDutch(isoString) {
   const d = new Date(isoString)
   if (isNaN(d.getTime())) return 'Onbekend'
   return `${d.getUTCDate()} ${MONTHS_NL[d.getUTCMonth()]} ${d.getUTCFullYear()}`
+}
+
+// '9 apr 2026' → Date (UTC, net als formatDutch). Andere vormen → null.
+function parseDutch(s) {
+  const m = /^(\d{1,2}) ([a-z]{3}) (\d{4})$/.exec(s || '')
+  if (!m) return null
+  const month = MONTHS_NL.indexOf(m[2])
+  return month < 0 ? null : new Date(Date.UTC(+m[3], month, +m[1]))
 }
 
 function slugify(name) {
@@ -375,6 +386,64 @@ async function main() {
     }
   }
 
+  // ── Vastgelopen 'gepland' oplossen ────────────────────────────────────────
+  // Een lancering verdwijnt uit /upcoming/ zodra hij gevlogen heeft, en dan
+  // bleef de status voor altijd op 'gepland' staan. Voor missies met een
+  // _ll2Id, een verstreken datum en geen plek meer in upcoming wordt één
+  // keer /previous/ gelezen (samen met upcoming twee requests per run, ruim
+  // binnen de LL2-limiet). Koppelen gebeurt hier alleen op _ll2Id.
+  const now = Date.now()
+  const inUpcoming = new Set(ll2Launches.map(l => l.id))
+  const stale = missions.filter(m => {
+    if (!m._ll2Id || m.status !== 'gepland' || inUpcoming.has(m._ll2Id)) return false
+    const d = parseDutch(m.launched)
+    return d && d.getTime() < now
+  })
+  if (stale.length) {
+    const oldest = new Date(Math.min(...stale.map(m => parseDutch(m.launched).getTime())) - 7 * 86400 * 1000)
+    const since = oldest.toISOString().slice(0, 10)
+    let previous = null
+    try {
+      if (LL2_PREVIOUS_FIXTURE) {
+        previous = JSON.parse(fs.readFileSync(LL2_PREVIOUS_FIXTURE, 'utf-8'))
+      } else if (!LL2_FIXTURE) {
+        console.log(`📡 LL2 previous ophalen (${stale.length} missies met verstreken datum, sinds ${since})...`)
+        await sleep(1000)
+        previous = await fetchJSON(
+          `https://ll.thespacedevs.com/2.3.0/launches/previous/?format=json&limit=100&ordering=-net&net__gte=${since}`
+        )
+      }
+    } catch (err) {
+      console.warn(`⚠️  LL2 previous niet bereikbaar: ${err.message} — statussen blijven staan`)
+    }
+    if (previous) {
+      if (previous.next) {
+        warn(`/launches/previous/ heeft meer dan ${(previous.results || []).length} lanceringen sinds ${since}; alleen de eerste pagina gelezen (geen extra request vanwege de LL2-limiet)`)
+      }
+      const byId = new Map((previous.results || []).map(l => [l.id, l]))
+      for (const mission of stale) {
+        const l = byId.get(mission._ll2Id)
+        if (!l) {
+          warn(`${mission.name} (${mission._ll2Id}): datum ${mission.launched} is voorbij, maar de lancering staat niet in upcoming of previous — status blijft '${mission.status}'`)
+          continue
+        }
+        const newStatus = mapLL2Status(l.status?.name, mission.soort)
+        if (newStatus !== mission.status) {
+          console.log(`  ✏️  ${mission.name}: status ${mission.status} → ${newStatus} (LL2 previous: ${l.status?.name})`)
+          mission.status = newStatus
+          autoUpdated.push(mission.id)
+          changed = true
+        }
+        const date = formatDutch(l.net || l.window_start)
+        if (date !== 'Onbekend' && date !== mission.launched) {
+          console.log(`  ✏️  ${mission.name}: datum ${mission.launched} → ${date}`)
+          mission.launched = date
+          changed = true
+        }
+      }
+    }
+  }
+
   // ── Nieuwe missies detecteren ─────────────────────────────────────────────
   const now180 = Date.now() + 180 * 86400 * 1000
   for (const ll2Launch of ll2Launches) {
@@ -483,7 +552,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch }
 
 if (require.main === module) {
   main().catch(err => {
