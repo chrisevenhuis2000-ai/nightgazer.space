@@ -1,15 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T08:40:28.713Z",
-    "autoUpdated": [
-      "amazon-leo-le-02",
-      "gps-iii-sv10",
-      "strix-launch-9",
-      "flight-12",
-      "cas500-2-others",
-      "bubbles",
-      "curveball"
-    ]
+    "lastUpdated": "2026-10-15T08:56:34.294Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -3931,7 +3923,11 @@
         "haste-leidos-3",
         "rocket-lab",
         "aardeomloopbaan"
-      ]
+      ],
+      "_lastClaudeAttempt": {
+        "at": "2026-10-15T08:56:34.288Z",
+        "reden": "geen-beschrijving"
+      }
     },
     {
       "id": "ussf-259",
@@ -4953,7 +4949,11 @@
         "haste-leidos-4",
         "rocket-lab",
         "aardeomloopbaan"
-      ]
+      ],
+      "_lastClaudeAttempt": {
+        "at": "2026-10-15T08:56:34.289Z",
+        "reden": "geen-beschrijving"
+      }
     },
     {
       "id": "haste-leidos-5",
@@ -4988,7 +4988,11 @@
         "haste-leidos-5",
         "rocket-lab",
         "aardeomloopbaan"
-      ]
+      ],
+      "_lastClaudeAttempt": {
+        "at": "2026-10-15T08:56:34.289Z",
+        "reden": "geen-beschrijving"
+      }
     }
   ]
 }
