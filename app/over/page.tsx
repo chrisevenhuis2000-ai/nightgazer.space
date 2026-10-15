@@ -1,28 +1,17 @@
 import type { Metadata } from 'next'
-import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { SiteNav } from '@/app/components/SiteNav'
 import { SiteFooter } from '@/app/components/SiteFooter'
 
 export const metadata: Metadata = {
   title:       'Over de maker',
-  description: 'Wie maakt NightGazer, waarom de site bestaat en hoe het nieuws tot stand komt: AI-ondersteund, met bronvermelding bij elk artikel.',
+  description: 'NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen. Lees waarom de site bestaat en hoe het nieuws tot stand komt.',
   alternates:  { canonical: '/over/' },
   openGraph: {
     title:       'Over de maker — NightGazer',
-    description: 'Wie maakt NightGazer, waarom de site bestaat en hoe het nieuws tot stand komt.',
+    description: 'NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen.',
     url:         '/over/',
   },
-}
-
-/* Plekken die Crix zelf moet invullen. Bewust opvallend geel, zodat de pagina
-   niet per ongeluk live gaat met een open plek erin. */
-function InTeVullen({ children }: { children: ReactNode }) {
-  return (
-    <mark style={{ background: '#3a3205', color: '#ffd84a', padding: '1px 6px', borderRadius: 3, fontFamily: 'var(--font-mono)', fontSize: '0.8em' }}>
-      [IN TE VULLEN: {children}]
-    </mark>
-  )
 }
 
 const kaart = { background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' } as const
@@ -54,47 +43,43 @@ export default function OverPage() {
             <h2 style={kop}>Wie maakt dit?</h2>
             <p style={tekst}>
               NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen.
-              Ik kijk en fotografeer bij het Lauwersmeer, onder een Bortle 4-hemel.
             </p>
             <p style={{ ...tekst, marginTop: 12 }}>
-              <InTeVullen>hoe en wanneer je met sterrenkijken en astrofotografie bent begonnen</InTeVullen>
+              Mijn sterrenkijken begon in januari 2026, eigenlijk per ongeluk. Ik kocht een telescoop
+              voor mijn vriendin, als romantisch cadeau. Al snel stond ik er zelf vaker achter dan zij,
+              en zo werd het mijn hobby.
             </p>
             <p style={{ ...tekst, marginTop: 12 }}>
-              <InTeVullen>je uitrusting (telescoop, camera, montering) en wat je het liefst fotografeert</InTeVullen>
-            </p>
-            <p style={{ ...tekst, marginTop: 12 }}>
-              <InTeVullen>eventueel een eigen astrofoto met korte uitleg (object, datum, belichting)</InTeVullen>
+              Ik kijk en fotografeer met een Explore Scientific Comet Hunter op een iOptron
+              CEM25P-montering, met een Canon EOS 6D als camera. Mijn hemel is die van Groningen:
+              Bortle 4, vlak bij het Lauwersmeer.
             </p>
           </section>
 
           <section style={kaart}>
-            <h2 style={kop}>Waarom deze site?</h2>
+            <h2 style={kop}>Waarom NightGazer?</h2>
             <p style={tekst}>
-              Goed ruimtenieuws is er genoeg, maar bijna allemaal in het Engels. NightGazer brengt het
-              in het Nederlands, en combineert het met wat je als waarnemer in Nederland echt nodig hebt:
-              wanneer is het donker en helder genoeg, waar is de hemel donker, wat staat er vannacht.
+              Ik heb mijn hele leven al stiekem naar boven gekeken, maar me nooit echt afgevraagd wat
+              erachter zit. Sinds begin 2026 ben ik daar echt naar op zoek, en heb ik meerdere cursussen
+              astronomie gevolgd.
             </p>
             <p style={{ ...tekst, marginTop: 12 }}>
-              <InTeVullen>je eigen reden: waarom je de site bent begonnen en voor wie je hem maakt</InTeVullen>
+              NightGazer is wat ik zelf had willen vinden toen ik begon: ruimtenieuws in het Nederlands,
+              uitleg op je eigen niveau, en de tools om te weten of je vannacht iets kunt zien.
             </p>
           </section>
 
           <section style={kaart}>
             <h2 style={kop}>Hoe het nieuws wordt gemaakt</h2>
             <p style={tekst}>
-              Het nieuws is <strong style={{ color: '#c8d4f0' }}>AI-ondersteund</strong>. Een script haalt
-              dagelijks berichten op uit de openbare nieuwsfeeds van NASA, ESA, SpaceNews en Spaceflight Now.
-              Claude, het taalmodel van Anthropic, schrijft op basis van het oorspronkelijke artikel een
-              Nederlandse versie, met de opdracht alleen feiten uit de bron te gebruiken.
+              Het nieuws op NightGazer wordt automatisch verzameld bij bronnen als NASA, ESA en SpaceNews,
+              en met AI in het Nederlands herschreven. Onder elk artikel staat de bron, met een link naar
+              het origineel. Ik lees de nieuwe artikelen elke ochtend bij de koffie.
             </p>
             <ul style={{ ...lijst, marginTop: 12 }}>
-              <li>Een artikel wordt alleen gepubliceerd als die Nederlandse versie compleet is: echt Nederlands, een vertaalde titel en een volwaardige tekst. Lukt dat niet, dan verschijnt er niets.</li>
-              <li>Onder elk artikel staat de bron, met een link naar het oorspronkelijke bericht.</li>
+              <li>Een artikel wordt alleen gepubliceerd als de Nederlandse versie compleet is: echt Nederlands, een vertaalde titel en een volwaardige tekst. Lukt dat niet, dan verschijnt er niets.</li>
               <li>Zie je toch een fout? <Link href="/contact/" style={link}>Laat het weten</Link>.</li>
             </ul>
-            <p style={{ ...tekst, marginTop: 12 }}>
-              <InTeVullen>lees of corrigeer je artikelen zelf voor of na publicatie? Zo ja: hoe</InTeVullen>
-            </p>
             <p style={{ ...tekst, marginTop: 12 }}>
               Elk artikel kun je bovendien op drie niveaus lezen, van beginner tot pro. Ook die versies
               worden met AI gemaakt, uit hetzelfde artikel.
@@ -110,7 +95,8 @@ export default function OverPage() {
               <li>Op de <Link href="/" style={link}>homepage</Link>: de actuele positie van de ISS, de astronomiefoto van de dag van NASA en een dagelijkse quiz.</li>
             </ul>
             <p style={{ ...tekst, marginTop: 12 }}>
-              <InTeVullen>welke tool gebruik je zelf het meest, en hoe helpt die je bij het waarnemen</InTeVullen>
+              Zelf gebruik ik de sterrenkijkgids het meest. Heldere nachten zijn schaars in Nederland,
+              en die gids vertelt me of het vannacht de moeite waard is om de telescoop buiten te zetten.
             </p>
           </section>
 
