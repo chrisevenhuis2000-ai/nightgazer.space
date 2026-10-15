@@ -1,6 +1,6 @@
 // ── Gedeelde artikel-logica ────────────────────────────────────────────────
-// Uit app/nieuws/[slug]/ArticleClient.tsx getrokken zodat de live pagina en
-// de /staging-rework dezelfde markdown op dezelfde manier lezen.
+// Gebruikt door de artikelpagina (app/nieuws/[slug]/ArtikelPlaat.tsx): types,
+// proxy, beeld-URL en de markdown-parser.
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -25,14 +25,6 @@ export interface Enrichment {
   quote:       { text: string; author: string } | null
   headings:    string[]
 }
-
-export interface RelatedItem {
-  slug:     string
-  title:    string
-  category: string
-  imageUrl: string
-}
-
 
 export const CAT_COLORS: Record<string, string> = {
   'james-webb':    '#7aadff',

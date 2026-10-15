@@ -91,22 +91,6 @@ export function Ladder({ level }: { level: 'beg' | 'ama' | 'pro' }) {
   )
 }
 
-/* ══ Staging banner ═══════════════════════════════════════════════════════ */
-export function StagingBanner() {
-  return (
-    <div className="pl-staging" role="region" aria-label="Omgevingswaarschuwing">
-      <div className="pl-staging__in">
-        <span className="pl-staging__stamp">Staging</span>
-        <span className="pl-staging__note">
-          Voorstel voor de nieuwe homepage. Nog niet live en niet geïndexeerd door zoekmachines.
-        </span>
-        <Link href="/" className="pl-staging__link">Naar de huidige homepage</Link>
-      </div>
-    </div>
-  )
-}
-
-
 /* ══ Header ═══════════════════════════════════════════════════════════════ */
 export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
   total: number
@@ -265,7 +249,7 @@ function AdField({ slot }: { slot: string }) {
 
 /* ══ Article loading ══════════════════════════════════════════════════════
    The index plus the NASA image backfill for plates that carry no image.
-   Both /staging surfaces use this, so the fetch behaviour cannot drift. */
+   Every plate surface uses this, so the fetch behaviour cannot drift. */
 
 const CAT_Q: Record<string, string> = {
   missies: 'rocket launch spacecraft', missions: 'rocket launch spacecraft',

@@ -1,8 +1,8 @@
 ---
 version: 1
 slug: "app-staging-missies-page-tsx"
-primary_target: "app/staging/missies/page.tsx"
-related_targets: ["app/staging/missies/MissiesStaging.tsx","lib/mission-schedule.ts"]
+primary_target: "app/missies/page.tsx"
+related_targets: ["app/missies/Lanceermanifest.tsx","lib/mission-schedule.ts"]
 ---
 
 Scope: de missiepagina, /staging/missies, vierde surface naast archief, nieuws en sterrenkijken. Visitor mode: Read.

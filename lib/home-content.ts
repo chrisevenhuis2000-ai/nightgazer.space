@@ -1,5 +1,5 @@
 // ── Shared homepage content & helpers ──────────────────────────────────────
-// Extracted from app/page.tsx so the live homepage and the /staging rework
+// Shared by the homepage (app/HomePage.tsx) and the plate surfaces so they
 // read from one source instead of two copies.
 
 export const PROXY = 'https://cosmosnl-proxy.chrisevenhuis2000.workers.dev'
@@ -54,50 +54,6 @@ export function getLevel(category: string): 'beg' | 'ama' | 'pro' {
   if (c.includes('kosmologie') || c.includes('theoret'))    return 'pro'
   return 'ama'
 }
-export const LEVEL_LABEL = { beg: 'Beginner', ama: 'Amateur', pro: 'Pro' }
-export const LEVEL_COLOR = {
-  beg: { bg: 'rgba(224,80,64,0.12)',  color: '#e05040', border: '#e05040' },
-  ama: { bg: 'rgba(61,223,144,0.12)', color: '#3ddf90', border: '#3ddf90' },
-  pro: { bg: 'rgba(61,207,223,0.12)', color: '#3dcfdf', border: '#3dcfdf' },
-}
-
-// ── Per-article unique visual fingerprint ──────────────────────────────────
-// Deterministic hash so every article always gets the same visual
-export function slugHash(s: string): number {
-  let h = 0
-  for (let i = 0; i < s.length; i++) {
-    h = Math.imul(31, h) + s.charCodeAt(i) | 0
-  }
-  return Math.abs(h)
-}
-
-// Dark background color pairs — visually distinct across categories
-export const DARK_PAIRS = [
-  ['#04060f', '#0b1226'],
-  ['#08040e', '#140820'],
-  ['#04090a', '#0c1c1e'],
-  ['#0e0804', '#201408'],
-  ['#04080f', '#081524'],
-  ['#0a0408', '#1c0810'],
-  ['#060a04', '#101e08'],
-  ['#0b060e', '#1a0c22'],
-] as const
-
-export function articleVisual(article: Article) {
-  const h = slugHash(article.slug)
-  const angle = 108 + (h % 144)                   // 108°–252°, unique angle
-  const pair  = DARK_PAIRS[h % DARK_PAIRS.length]  // unique dark bg pair
-  const cx    = 10 + (h % 75)                      // glow circle x: 10–85%
-  const cy    = 5  + ((h >> 8) % 70)               // glow circle y: 5–75%
-  return {
-    gradient: `linear-gradient(${angle}deg, ${pair[0]} 0%, ${pair[1]} 100%)`,
-    cx, cy,
-  }
-}
-
-// ── Ticker fallback (shown before articles-index.json loads) ───────────────
-export const TICKER_FALLBACK = FALLBACK_ARTICLES.map(a => a.title)
-
 // ── Topic filters ──────────────────────────────────────────────────────────
 export const TOPICS = ['Alles', 'James Webb', 'Mars', 'Missies', 'Zwarte Gaten', 'Maan', 'Sterrenkijken', 'Zonnestelsel', 'Kosmologie']
 
@@ -112,8 +68,6 @@ export function topicMatches(category: string, topic: string): boolean {
   if (topic === 'Alles') return true
   return normaliseTopic(category).includes(normaliseTopic(topic))
 }
-
-export const PAGE_SIZE = 12 // articles per page
 
 export const SK_DARK_SPOTS = [
   { name: 'Terschelling',    lat: 53.43, lon: 5.35 },

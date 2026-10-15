@@ -1,8 +1,8 @@
 ---
 version: 1
 slug: "app-staging-educatie-page-tsx"
-primary_target: "app/staging/educatie/page.tsx"
-related_targets: ["app/staging/educatie/EducatieStaging.tsx","lib/education-data.ts"]
+primary_target: "app/educatie/page.tsx"
+related_targets: ["app/educatie/Niveauladder.tsx","lib/education-data.ts"]
 ---
 
 Scope: de educatiepagina, /staging/educatie, vijfde en laatste hoofdsurface van de rework. Visitor mode: Read.

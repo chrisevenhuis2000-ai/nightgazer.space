@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /staging
 
 Sitemap: https://nightgazer.space/sitemap.xml

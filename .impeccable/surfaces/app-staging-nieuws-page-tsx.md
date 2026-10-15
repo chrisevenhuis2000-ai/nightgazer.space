@@ -1,8 +1,8 @@
 ---
 version: 1
 slug: "app-staging-nieuws-page-tsx"
-primary_target: "app/staging/nieuws/page.tsx"
-related_targets: ["app/staging/nieuws/NieuwsStaging.tsx","app/staging/shared.tsx"]
+primary_target: "app/nieuws/page.tsx"
+related_targets: ["app/nieuws/NieuwsArchief.tsx","app/_plate/shared.tsx"]
 ---
 
 Scope: het nieuwsarchief, /staging/nieuws, ter beoordeling naast /staging voordat het app/nieuws vervangt. Visitor mode: Read.

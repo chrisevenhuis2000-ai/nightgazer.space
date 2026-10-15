@@ -1,7 +1,7 @@
 # Design — NightGazer
 
-<!-- Written from the built /staging homepage. The live pages still carry the
-     previous system; this file describes what replaces it. -->
+<!-- Written from the /staging build, now live on all six surfaces. The
+     shared chrome lives in app/_plate/ (shared.tsx, Instruments.tsx, plate.css). -->
 
 ## World
 
@@ -34,7 +34,7 @@ The existing NightGazer palette, re-cast in archive roles.
 | `--pl-orbit` | `#185FA5` | Structural brand blue: lit fiducials, meters, loupe. |
 | `--pl-stamp` | `#B5D4F4` | Provenance: plate numbers, focus rings, action rules. |
 | `--pl-good` | `#4FD39B` | Conditions good, answer correct. |
-| `--pl-warn` | `#E0685A` | Conditions poor, answer wrong, staging stamp. |
+| `--pl-warn` | `#E0685A` | Conditions poor, answer wrong. |
 
 ### Two reserved colours, two questions
 
@@ -216,37 +216,41 @@ track and thumb (WebKit and `scrollbar-color`), focus ring
 
 ## Surfaces
 
-Two surfaces exist in this world. They share `app/staging/shared.tsx`: the
-staging banner, the plate header, the quick bar, the advertising field, the
-`Ladder` mark, `plateNo`/`img`, and `useArticles`. Anything used by both goes
-there — a second copy is how the two drift apart.
+Six surfaces exist in this world. They share `app/_plate/shared.tsx`: the
+plate header, the quick bar, the advertising field (`AdPlate`, which takes
+each page's own AdSense slot and renders nothing without one), the `Ladder`
+mark, `plateNo`/`img`, and `useArticles`. Anything used by more than one goes
+there — a second copy is how they drift apart.
 
-**`/staging` — the front page.** Mode Operate. The observer's live instruments
+**`/` — the front page.** Mode Operate. The observer's live instruments
 answer first, the reading layer follows, the ledger holds the volume.
 
-**`/staging/nieuws` — the news archive.** Mode Read. The drawer bank: the
+**`/nieuws` and `/nieuws/onderwerp/[category]` — the news archive.** Mode Read. The drawer bank: the
 archive is a cabinet and topics are drawers. A sticky rail on the left carries
 the topic drawers and the reading-level drawers with their counts; the open
 drawer fills the sheet beside it. Inside the sheet the plates step down: one
 lead plate with the chinagraph ring, two half-size plates, then the ledger.
 
-**`/staging/sterrenkijken` — the observing planner.** Mode Operate. The
+**`/sterrenkijken` — the observing planner.** Mode Operate. The
 exposure table: seven nights as rows, the factors as columns, read like an
 ephemeris. A verdict panel for tonight sits beside it; the map and the
-season's targets follow. Location lives in its own sticky bar, in the slot
-the other two surfaces give the quick filters.
+season's targets, the moon calendar and the meteor showers follow. Location
+lives in its own sticky bar, in the slot the other surfaces give the quick
+filters.
 
-**`/staging/missies` — the launch manifest.** Mode Read. The launch strip: a
+**`/missies` — the launch manifest.** Mode Read. The launch strip: a
 time axis across 2026 where every flight with a real date is a mark. Flown
 marks are shorter and quieter than planned ones; the today line divides them.
-Month segments double as the window selector.
+Month segments double as the window selector. Below the fleet, a register
+lists every mission that has flown (or has no usable date), so no detail
+page under `/missies/[slug]` is left without a link.
 
-**`/staging/educatie` — learning.** Mode Read. The level ladder: the reading
+**`/educatie` — learning.** Mode Read. The level ladder: the reading
 level *is* the page. One choice in a sticky bar rewrites all six topics at
 once, so a visitor reads across subjects at their own depth. The choice
 persists in `localStorage` and matches the level switch on article pages.
 
-**`/staging/artikel` — reading one plate.** Mode Read. The development strip:
+**`/nieuws/[slug]` — reading one plate.** Mode Read. The development strip:
 the reading level is the exposure, and each paragraph comes into focus as its
 rewrite lands. Marginalia carry the figures, facts and quote; progress fills a
 rule under the bar; a contact strip of related plates closes the page.
@@ -281,6 +285,11 @@ Two behaviour rules the missions surface adds:
 > since the ledger rows are the ones with no fixed date and therefore no mark.
 
 One behaviour rule the stargazing surface adds:
+
+> **A moon mark sits on one day.** The calendar marks new and full moon only
+> on the day the moment actually falls, not on every day that rounds to that
+> phase — rounding to eight phases would mark four. The phase is the mean
+> cycle, and the sheet says so: it can be a day off the almanac.
 
 > **The best night wears the chinagraph ring.** The same hand-drawn ellipse
 > that circles today's plate on the front page circles the winning row here.
@@ -373,8 +382,10 @@ turns a logo at 150px into grey mush.
 
 ## Specificity traps
 
-Three times now a base rule has silently eaten a component rule, always the
-same shape: `.pl a { color: inherit }` overrode `.pl-cta__primary`'s dark ink,
+Four times now a base rule has silently eaten a component rule, always the
+same shape — the fourth was `.pl button { font: inherit }` making button
+drawers 15px next to 13px link drawers, fixed with `.pl button.pl-drawer`.
+The first three: `.pl a { color: inherit }` overrode `.pl-cta__primary`'s dark ink,
 `.pl button { color: inherit }` overrode `.pl-btn` and `.pl-tag`, and
 `.pl figure { margin: 0 }` overrode `.pl-read-fig`'s spacing so the headline
 and its image touched. A two-class base selector beats a one-class component
