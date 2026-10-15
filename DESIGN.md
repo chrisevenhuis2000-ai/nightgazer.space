@@ -242,8 +242,10 @@ filters.
 time axis across 2026 where every flight with a real date is a mark. Flown
 marks are shorter and quieter than planned ones; the today line divides them.
 Month segments double as the window selector. Below the fleet, a register
-lists every mission that has flown (or has no usable date), so no detail
-page under `/missies/[slug]` is left without a link.
+lists every mission whose date has passed (or has no usable date), so no
+detail page under `/missies/[slug]` is left without a link. It says "datum
+voorbij", never "gevlogen": the bot only sees upcoming launches, so the data
+cannot tell a flight from a slip.
 
 **`/educatie` — learning.** Mode Read. The level ladder: the reading
 level *is* the page. One choice in a sticky bar rewrites all six topics at

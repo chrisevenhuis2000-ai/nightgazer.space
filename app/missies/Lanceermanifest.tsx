@@ -358,7 +358,9 @@ export default function Lanceermanifest() {
 
   /* Het register: alles wat niet meer in het manifest staat en ook niet
      vliegt. Zonder dit zijn hun detailpagina's wees — niets op deze pagina
-     linkt er dan naartoe. Gevlogen (datum voorbij, of status 'voltooid')
+     linkt er dan naartoe. 'Datum voorbij' zegt niet 'gevlogen': de bot ziet
+     alleen aankomende lanceringen, dus of een vlucht echt ging weet de data
+     niet. Datum voorbij of status 'voltooid'
      eerst, nieuwste bovenaan; missies zonder bruikbare datum daarna. */
   const archive = useMemo(() => {
     if (!schedule) return { flownList: [] as ScheduledLaunch[], undated: [] as MissionDetail[] }
@@ -628,8 +630,8 @@ export default function Lanceermanifest() {
           <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-register">
             <div className="pl-band">
               <div className="pl-band__t">
-                <h2 id="pl-register" className="pl-h2">Gevlogen en afgerond</h2>
-                <span className="pl-label">Het register</span>
+                <h2 id="pl-register" className="pl-h2">Uit het manifest</h2>
+                <span className="pl-label">Datum voorbij of afgerond</span>
               </div>
               <p className="pl-label pl-num">{archiveCount}</p>
             </div>
@@ -644,7 +646,7 @@ export default function Lanceermanifest() {
                         : l.date.toLocaleDateString('nl-NL', { month: 'short', year: 'numeric' })}
                     </span>
                     <span className="pl-flight__in">
-                      {l.mission.status === 'voltooid' ? 'afgerond' : 'gevlogen'}
+                      {l.mission.status === 'voltooid' ? 'afgerond' : 'datum voorbij'}
                     </span>
                   </span>
                   <span style={{ minWidth: 0 }}>
