@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T09:35:40.896Z",
+    "lastUpdated": "2026-10-15T09:38:21.794Z",
     "autoUpdated": []
   },
   "missions": [
@@ -1350,13 +1350,13 @@
       "status": "actief",
       "soort": "missie",
       "launched": "27 aug 2026",
-      "objective": "MTG-I2 is de derde Meteosat Third Generation satelliet voor geavanceerde weersvoorspellingen.",
+      "objective": "MTG-I2 is de derde satelliet van de Meteosat Third Generation-serie voor geavanceerde weersvoorspellingen.",
       "body": "Geostationaire baan",
       "highlight": "Gelanceerd op 27 aug 2026 — missie in bedrijf",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "MTG-I2 is de derde satelliet binnen de Meteosat Third Generation-reeks van EUMETSAT, bedoeld voor geavanceerde weersvoorspellingen vanuit een geostationaire baan. De lancering is gepland voor 27 augustus 2026 met een Ariane 62-raket, uitgevoerd door Arianespace. Vanuit zijn geostationaire positie zal de satelliet bijdragen aan nauwkeurigere en snellere weersdata voor Europa en omliggende regio's.",
+      "description": "MTG-I2 werd op 27 augustus 2026 gelanceerd door Arianespace met een Ariane 62-raket. De satelliet is de derde van EUMETSAT's derde generatie weersatellieten en bevindt zich in een geostationaire baan. De missie is operationeel.",
       "vehicle": "Ariane 62",
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
@@ -1386,10 +1386,10 @@
         "meteosat third generation",
         "meteorologie",
         "klimaatmonitoring",
-        "mtg"
+        "mtg",
+        "arianespace"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:35:13.698Z",
-      "_herverrijk": true
+      "_lastClaudeUpdate": "2026-10-15T09:37:58.859Z"
     },
     {
       "id": "transporter-17-dedicated-sso-rideshare",
@@ -2378,7 +2378,7 @@
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "De Nancy Grace Roman Space Telescope is een NASA-infraroodtelescoop met een primaire spiegel met een beeldveld van 2,4 meter en twee wetenschappelijke instrumenten. Het Wide-Field Instrument (WFI) is een 300,8-megapixelcamera die zichtbaar en nabij-infrarood licht vastlegt over een beeldveld dat honderd keer groter is dan de camera's van de Hubble-telescoop. Het Coronagraphic Instrument (CGI) maakt gebruik van innovatieve sterrenlichtonderdrukkingstechnologie om planeten en andere objecten in hoog contrast te bestuderen. De telescoop heeft als doelen het opsporen van exoplaneten via gravitationele microlenzing en het onderzoeken van donkere energie, de consistentie van de algemene relativiteitstheorie en de kromming van de ruimtetijd.",
+      "description": "De Nancy Grace Roman Space Telescope is een NASA-infraroodtelescoop met een primaire spiegel van 2,4 meter en twee wetenschappelijke instrumenten. Het Wide-Field Instrument (WFI) is een 300,8-megapixelcamera voor zichtbaar en nabij-infrarood licht met een gezichtsveld van 0,28 vierkante graden, honderd keer groter dan de beeldcamera's van de Hubble Space Telescope. Het Coronagrafisch Instrument (CGI) is een hoog-contrast camera en spectrometer met een klein gezichtsveld, uitgerust met nieuwe technologie om sterrenlicht te onderdrukken. De telescoop zoekt naar exoplaneten via zwaartekrachtmicrolensing en onderzoekt de expansiegeschiedenis van het heelal en de groei van kosmische structuur, met als doel de effecten van donkere energie, de consistentie van de algemene relativiteitstheorie en de kromming van de ruimtetijd te meten.",
       "vehicle": "Falcon Heavy",
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
@@ -2401,10 +2401,11 @@
         "nasa",
         "infraroodzwelescoop",
         "l2-punt",
-        "infrarood"
+        "infrarood",
+        "nancy grace roman space telescope",
+        "falcon heavy"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:35:23.203Z",
-      "_herverrijk": true
+      "_lastClaudeUpdate": "2026-10-15T09:38:05.688Z"
     },
     {
       "id": "o3b-mpower-11-13",
@@ -2729,7 +2730,7 @@
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX Crew-13 is de dertiende operationele bemande vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie maakt deel uit van NASA's Commercial Crew Program, waarmee de Amerikaanse ruimtevaartorganisatie betrouwbare en regelmatige bemanningswissels op het ISS waarborgt. De lancering staat gepland voor 1 oktober 2026 met een Falcon 9-raket als draagraket. Met Crew-13 zet SpaceX zijn bewezen rol als vaste partner van NASA voor bemande ruimtevaart voort.",
+      "description": "SpaceX Crew-13 is de dertiende bemande operationele vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie werd op 1 oktober 2026 gelanceerd met een Falcon 9-raket en is momenteel actief in een lage aardbaan.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -2756,8 +2757,7 @@
         "falcon 9",
         "commercial crew"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:35:33.827Z",
-      "_herverrijk": true
+      "_lastClaudeUpdate": "2026-10-15T09:38:16.965Z"
     },
     {
       "id": "nrol-172",
