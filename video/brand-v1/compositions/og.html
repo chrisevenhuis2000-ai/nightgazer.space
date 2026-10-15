@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200, height=630" />
+    <title>NightGazer — og-image</title>
+    <script src="../assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="../assets/plate.css" />
+    <style>
+      /* Archivo + JetBrains Mono, shipped locally (SIL OFL, assets/fonts/). */
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("../assets/fonts/archivo-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("../assets/fonts/archivo-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("../assets/fonts/archivo-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("../assets/fonts/archivo-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("../assets/fonts/archivo-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("../assets/fonts/archivo-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("../assets/fonts/archivo-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("../assets/fonts/archivo-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("../assets/fonts/archivo-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("../assets/fonts/archivo-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("../assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("../assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("../assets/fonts/jetbrains-mono-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("../assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("../assets/fonts/jetbrains-mono-greek-400-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("../assets/fonts/jetbrains-mono-greek-500-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; overflow: hidden; background: #0E1022; }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0E1022;
+        font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+      }
+      #og-card { position: absolute; inset: 0; }
+
+      /* The plate: emulsion field, ruled grid, 1px edge. */
+      #og-plate {
+        position: absolute;
+        left: 24px; top: 24px; width: 1152px; height: 582px;
+        background-color: #15182F;
+        background-image:
+          repeating-linear-gradient(90deg, rgba(39,44,80,0.40) 0 1px, transparent 1px 36px),
+          repeating-linear-gradient(0deg,  rgba(39,44,80,0.26) 0 1px, transparent 1px 36px);
+        background-position: 18px 18px;
+        border: 1px solid #272C50;
+      }
+      #og-lines { position: absolute; inset: 0; width: 1200px; height: 630px; }
+
+      /* The light-box loupe under the mark. */
+      #og-loupe {
+        position: absolute;
+        left: 200px; top: 70px; width: 800px; height: 490px;
+        background: radial-gradient(50% 50% at 50% 50%, rgba(24,95,165,0.30) 0%, rgba(24,95,165,0) 70%);
+      }
+
+      #og-stack {
+        position: absolute;
+        inset: 24px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+      }
+      /* Native size (500x100), never scaled. */
+      #og-logo { display: block; width: 500px; height: 100px; }
+      #og-rule { width: 420px; height: 1px; background: #272C50; margin: 34px 0 30px; }
+      #og-domain {
+        font-family: "Archivo", sans-serif;
+        font-size: 92px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.032em;
+        color: #EEF2FB;
+        padding: 0 0.06em;
+      }
+      #og-tagline {
+        margin-top: 22px;
+        font-family: "Archivo", sans-serif;
+        font-size: 38px;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #9AA6C8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Static 1200x630 still for public/og-image.png. No CTA: an OG image is not clickable.
+         Export: npx hyperframes render -c compositions/og.html --format png-sequence -o out/og -->
+    <div id="root" data-composition-id="og" data-start="0" data-duration="1" data-width="1200" data-height="630">
+      <div id="og-card" class="clip" data-start="0" data-duration="1" data-track-index="0">
+        <div id="og-plate"></div>
+        <div id="og-loupe"></div>
+        <svg id="og-lines" viewBox="0 0 1200 630" aria-hidden="true">
+          <!-- Corner registration marks, as on .pl-plate. -->
+          <polyline points="32.5,50.5 32.5,32.5 50.5,32.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.5" stroke-width="1" />
+          <polyline points="1167.5,579.5 1167.5,597.5 1149.5,597.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.5" stroke-width="1" />
+          <g id="og-ruler-top" stroke="#185FA5" stroke-width="1"></g>
+          <g id="og-ruler-left" stroke="#185FA5" stroke-width="1"></g>
+        </svg>
+        <div id="og-stack">
+          <img id="og-logo" src="../assets/brand/logo-transparent.png" alt="NightGazer.space" width="500" height="100" />
+          <div id="og-rule"></div>
+          <p id="og-domain">nightgazer.space</p>
+          <p id="og-tagline">Astronomie voor Iedereen</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        // Edge fiducial rulers: a tick every 10px, a long tick every 10th. Deterministic.
+        const NS = "http://www.w3.org/2000/svg";
+        const top = document.getElementById("og-ruler-top");
+        for (let i = 0, x = 64.5; x < 1136; i++, x += 10) {
+          const l = document.createElementNS(NS, "line");
+          l.setAttribute("x1", x); l.setAttribute("x2", x);
+          l.setAttribute("y1", 25); l.setAttribute("y2", i % 10 === 0 ? 37 : 31);
+          top.appendChild(l);
+        }
+        const left = document.getElementById("og-ruler-left");
+        for (let i = 0, y = 64.5; y < 566; i++, y += 10) {
+          const l = document.createElementNS(NS, "line");
+          l.setAttribute("y1", y); l.setAttribute("y2", y);
+          l.setAttribute("x1", 25); l.setAttribute("x2", i % 10 === 0 ? 37 : 31);
+          left.appendChild(l);
+        }
+        const tl = gsap.timeline({ paused: true });
+        tl.set({}, {}, 1);
+        window.__timelines["og"] = tl;
+      })();
+    </script>
+  </body>
+</html>

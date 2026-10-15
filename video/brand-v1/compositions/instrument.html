@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #instrument-sheet { display: flex; flex-direction: column; }
+
+        #instrument-head { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 26px; }
+        #instrument-title {
+          font-family: var(--sans);
+          font-size: 84px;
+          font-weight: 800;
+          line-height: 1.02;
+          letter-spacing: -0.032em;
+          color: var(--pl-ink);
+          max-width: 15ch;
+          padding-right: 0.06em;
+        }
+
+        /* Readouts printed over the plate: no fill of their own, ruled cells. */
+        #instrument-bar {
+          display: grid;
+          grid-template-columns: 1.1fr 1.3fr 0.9fr;
+          border: 1px solid var(--pl-rule);
+          margin-top: 80px;
+        }
+        .instrument-cell {
+          padding: 56px 44px 60px;
+          border-right: 1px solid var(--pl-rule);
+          display: flex; flex-direction: column; gap: 34px;
+          min-width: 0;
+        }
+        .instrument-cell:last-child { border-right: 0; }
+        .instrument-lab { display: flex; align-items: center; gap: 16px; }
+
+        /* .pl-dot: square, breathes only where the value is live. */
+        .instrument-dot { position: relative; display: block; width: 11px; height: 11px; background: var(--pl-mark); flex-shrink: 0; }
+        .instrument-halo { position: absolute; inset: -6px; border: 1px solid var(--pl-mark); opacity: 0; }
+
+        .instrument-val { font-size: 56px; font-weight: 500; line-height: 1; white-space: nowrap; }
+        .instrument-unit { font-size: 30px; color: var(--pl-ink-3); }
+        .instrument-sub { font-family: var(--sans); font-size: 24px; color: var(--pl-ink-2); line-height: 1.2; }
+        .instrument-sub .ng-num { font-size: 22px; }
+
+        .instrument-readout { height: 3px; background: var(--pl-rule-soft); overflow: hidden; position: relative; }
+        .instrument-readout i { position: absolute; top: 0; bottom: 0; left: 0; width: 34%; background: var(--pl-mark); }
+
+        /* Bortle as filled blocks, like .pl-bortle. */
+        #instrument-bortle { display: flex; align-items: center; gap: 14px; }
+        #instrument-blocks { display: flex; gap: 4px; }
+        #instrument-blocks i { display: block; width: 8px; height: 20px; background: var(--pl-rule); }
+        #instrument-blocks i.instrument-on { background: var(--pl-stamp); }
+
+        #instrument-wipe {
+          position: absolute;
+          top: 150px; bottom: 150px;
+          left: 160px;
+          width: 1px;
+          background: var(--pl-stamp);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="instrument" data-width="1920" data-height="1080">
+        <div id="instrument-sheet" class="ng-sheet">
+          <span id="instrument-kicker" class="ng-label">Instrumenten · vannacht</span>
+
+          <div id="instrument-head">
+            <h1 id="instrument-title">Het instrument antwoordt eerst.</h1>
+            <span id="instrument-note" class="ng-label ng-label--stamp">Illustratieve waarden</span>
+          </div>
+
+          <div id="instrument-bar">
+            <div id="instrument-iss" class="instrument-cell">
+              <span class="instrument-lab"><i id="instrument-dot1" class="instrument-dot"><i id="instrument-halo1" class="instrument-halo"></i></i><span class="ng-label">ISS · positie</span></span>
+              <span class="instrument-val ng-num ng-live"><span id="instrument-lat">51.62°</span> <span id="instrument-lon">4.18°</span></span>
+              <span class="instrument-sub">breedte · lengte</span>
+              <span class="instrument-readout"><i id="instrument-sweep"></i></span>
+            </div>
+            <div id="instrument-launch" class="instrument-cell">
+              <span class="instrument-lab"><span class="ng-label">Volgende lancering</span></span>
+              <span class="instrument-val ng-num ng-live">T–<span id="instrument-count">2d 14:37:09</span></span>
+              <span class="instrument-sub">aftelling tot het venster</span>
+            </div>
+            <div id="instrument-sky" class="instrument-cell">
+              <span class="instrument-lab"><i id="instrument-dot2" class="instrument-dot"><i id="instrument-halo2" class="instrument-halo"></i></i><span class="ng-label">Vannacht</span></span>
+              <span class="instrument-val ng-num"><span class="ng-live">7</span><span class="instrument-unit">/10</span></span>
+              <span id="instrument-bortle" class="instrument-sub">
+                <span class="ng-label">Bortle</span>
+                <span id="instrument-blocks">
+                  <i class="instrument-on"></i><i class="instrument-on"></i><i class="instrument-on"></i><i class="instrument-on"></i><i></i><i></i><i></i><i></i><i></i>
+                </span>
+                <span class="ng-num">4</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <i id="instrument-wipe"></i>
+      </div>
+
+      <script>
+        (function () {
+          const ease = "expo.out";
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#instrument-kicker", { opacity: 0 }, { opacity: 1, duration: 0.5, ease }, 0.1);
+          tl.fromTo("#instrument-title", { clipPath: "inset(-10% 100% -10% 0)" },
+                    { clipPath: "inset(-10% 0% -10% 0)", duration: 0.7, ease: "power3.inOut" }, 0.15);
+          tl.fromTo("#instrument-note", { opacity: 0 }, { opacity: 1, duration: 0.5, ease }, 0.5);
+          // The bar is wiped onto the plate, cells in a short cascade.
+          tl.fromTo("#instrument-bar", { clipPath: "inset(0 100% 0 0)" },
+                    { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "power3.inOut" }, 0.3);
+
+          // Live from 0.9s: only these values move. Everything else holds still.
+          const LIVE = 0.9, END = 3.6;
+
+          // ISS coordinates drift (illustrative values, realistic rate).
+          const pos = { lat: 51.62, lon: 4.18 };
+          const lat = document.getElementById("instrument-lat");
+          const lon = document.getElementById("instrument-lon");
+          tl.to(pos, {
+            lat: 51.79, lon: 5.06, duration: END - LIVE, ease: "none",
+            onUpdate: () => { lat.textContent = pos.lat.toFixed(2) + "°"; lon.textContent = pos.lon.toFixed(2) + "°"; },
+          }, LIVE);
+
+          // Countdown ticks down, whole seconds.
+          const cd = { t: 0 };
+          const count = document.getElementById("instrument-count");
+          const startS = ((2 * 24 + 14) * 60 + 37) * 60 + 9;
+          const fmt = (s) => {
+            const d = Math.floor(s / 86400), h = Math.floor(s / 3600) % 24, m = Math.floor(s / 60) % 60, x = s % 60;
+            return d + "d " + String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") + ":" + String(x).padStart(2, "0");
+          };
+          tl.to(cd, {
+            t: END - LIVE, duration: END - LIVE, ease: "none",
+            onUpdate: () => { count.textContent = fmt(startS - Math.floor(cd.t)); },
+          }, LIVE);
+
+          // The dot breathes and its hairline halo expands — realtime, not an alarm.
+          ["1", "2"].forEach((n) => {
+            tl.fromTo("#instrument-dot" + n, { boxShadow: "0 0 0 0 rgba(55,138,221,0.42)" },
+                      { boxShadow: "0 0 14px 3px rgba(55,138,221,0.34)", duration: 1.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, LIVE);
+            tl.fromTo("#instrument-halo" + n, { opacity: 0.5, scale: 0.72 },
+                      { opacity: 0, scale: 1.5, duration: 1.9, ease: "power2.out", immediateRender: false }, LIVE);
+          });
+
+          // Continuous readout under the live feed.
+          tl.fromTo("#instrument-sweep", { xPercent: -100 }, { xPercent: 295, duration: 1.35, ease: "power2.inOut", repeat: 1 }, LIVE);
+
+          // Exit: hairline wipe.
+          tl.set("#instrument-wipe", { opacity: 1 }, END);
+          tl.fromTo("#instrument-wipe", { x: 0 }, { x: 1600, duration: 0.4, ease: "power2.in" }, END);
+          tl.fromTo("#instrument-sheet", { clipPath: "inset(-5% -5% -5% -5%)" },
+                    { clipPath: "inset(-5% -5% -5% 105%)", duration: 0.4, ease: "power2.in" }, END);
+          tl.set("#instrument-wipe", { opacity: 0 }, END + 0.4);
+
+          window.__timelines["instrument"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

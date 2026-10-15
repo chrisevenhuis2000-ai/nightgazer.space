@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #belofte-sheet { display: flex; flex-direction: column; justify-content: space-between; }
+
+        #belofte-display { display: flex; flex-direction: column; gap: 6px; }
+        .belofte-line {
+          position: relative;
+          display: block;
+          align-self: flex-start;
+          font-family: var(--sans);
+          font-size: 124px;
+          font-weight: 800;
+          line-height: 1.04;
+          letter-spacing: -0.032em;
+          color: var(--pl-ink);
+          white-space: nowrap;
+        }
+        .belofte-text { display: block; padding-right: 0.06em; }
+        /* The hairline that leads each wipe. */
+        .belofte-track { position: absolute; inset: 0; display: block; }
+        .belofte-cursor {
+          position: absolute;
+          top: 6%; bottom: 2%;
+          left: 0;
+          width: 1px;
+          background: var(--pl-stamp);
+          opacity: 0;
+        }
+
+        #belofte-ledger { display: flex; flex-direction: column; }
+        #belofte-src { margin-bottom: 22px; }
+        .belofte-row {
+          display: grid;
+          grid-template-columns: 230px minmax(0, 1fr) auto;
+          align-items: center;
+          height: 84px;
+          border-top: 1px solid var(--pl-rule);
+        }
+        .belofte-row:last-child { border-bottom: 1px solid var(--pl-rule); }
+        .belofte-date { font-size: 24px; color: var(--pl-ink-3); }
+        .belofte-title {
+          font-family: var(--sans);
+          font-size: 36px;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          color: var(--pl-ink);
+          white-space: nowrap;
+        }
+
+        #belofte-wipe {
+          position: absolute;
+          top: 150px; bottom: 150px;
+          left: 160px;
+          width: 1px;
+          background: var(--pl-stamp);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="belofte" data-width="1920" data-height="1080">
+        <div id="belofte-sheet" class="ng-sheet">
+          <div id="belofte-display">
+            <span id="belofte-l1" class="belofte-line"><span class="belofte-text">Ruimtenieuws.</span><i class="belofte-track" data-layout-allow-overflow><i class="belofte-cursor"></i></i></span>
+            <span id="belofte-l2" class="belofte-line"><span class="belofte-text">Elke dag.</span><i class="belofte-track" data-layout-allow-overflow><i class="belofte-cursor"></i></i></span>
+            <span id="belofte-l3" class="belofte-line"><span class="belofte-text">In het Nederlands.</span><i class="belofte-track" data-layout-allow-overflow><i class="belofte-cursor"></i></i></span>
+          </div>
+
+          <div id="belofte-ledger">
+            <span id="belofte-src" class="ng-label">Bron · NASA · ESA · SpaceflightNow</span>
+            <!-- Real titles from content/articles/ (artemis-ii-splashes-down.md,
+                 curiosity-shakes-loose-a-pesky-rock.md), with their real dates. -->
+            <div id="belofte-r1" class="belofte-row">
+              <span class="belofte-date ng-num">12.04.2026</span>
+              <span class="belofte-title">Artemis II landt succesvol in de Stille Oceaan</span>
+              <span class="ng-label">Missies</span>
+            </div>
+            <div id="belofte-r2" class="belofte-row">
+              <span class="belofte-date ng-num">16.05.2026</span>
+              <span class="belofte-title">Curiosity schudt vastklevende steen los</span>
+              <span class="ng-label">Missies</span>
+            </div>
+          </div>
+        </div>
+        <i id="belofte-wipe"></i>
+      </div>
+
+      <script>
+        (function () {
+          const ease = "expo.out";
+          const tl = gsap.timeline({ paused: true });
+
+          // Each display line is wiped in behind a travelling hairline.
+          ["#belofte-l1", "#belofte-l2", "#belofte-l3"].forEach((id, i) => {
+            const t = 0.3 + i * 0.4;
+            const text = id + " .belofte-text";
+            const cur = id + " .belofte-cursor";
+            const track = id + " .belofte-track";
+            tl.fromTo(text, { clipPath: "inset(-10% 100% -10% 0)" },
+                            { clipPath: "inset(-10% 0% -10% 0)", duration: 0.7, ease: "power3.inOut" }, t);
+            tl.set(cur, { opacity: 1 }, t);
+            tl.fromTo(track, { xPercent: 0 }, { xPercent: 100, duration: 0.7, ease: "power3.inOut" }, t);
+            tl.to(cur, { opacity: 0, duration: 0.3, ease: "none" }, t + 0.7);
+          });
+
+          // The ledger: two ruled rows, printed in a short cascade.
+          tl.fromTo("#belofte-src", { opacity: 0 }, { opacity: 1, duration: 0.5, ease }, 1.7);
+          tl.fromTo(["#belofte-r1", "#belofte-r2"], { opacity: 0, y: 14 },
+                    { opacity: 1, y: 0, duration: 0.6, ease, stagger: 0.25 }, 1.9);
+          // Fully readable by ~2.8s, held until the exit wipe at 4.55s.
+
+          // Exit: a hairline sweeps the plate clean, left to right.
+          tl.set("#belofte-wipe", { opacity: 1 }, 4.55);
+          tl.fromTo("#belofte-wipe", { x: 0 }, { x: 1600, duration: 0.45, ease: "power2.in" }, 4.55);
+          tl.fromTo("#belofte-sheet", { clipPath: "inset(-5% -5% -5% -5%)" },
+                    { clipPath: "inset(-5% -5% -5% 105%)", duration: 0.45, ease: "power2.in" }, 4.55);
+          tl.set("#belofte-wipe", { opacity: 0 }, 5.0);
+
+          window.__timelines["belofte"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

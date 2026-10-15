@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+
+        /* The emulsion field: plate fill plus the site's ruled "no plate loaded" grid. */
+        #frame-plate {
+          position: absolute;
+          left: 72px; top: 72px; width: 1776px; height: 936px;
+          background-color: var(--pl-plate);
+          background-image:
+            repeating-linear-gradient(90deg, rgba(39,44,80,0.40) 0 1px, transparent 1px 48px),
+            repeating-linear-gradient(0deg,  rgba(39,44,80,0.26) 0 1px, transparent 1px 48px);
+          background-position: 24px 24px;
+        }
+        #frame-lines { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        #frame-ruler-top, #frame-ruler-left { position: absolute; overflow: hidden; }
+        #frame-ruler-top  { left: 120px; top: 73px;  width: 1680px; height: 20px; }
+        #frame-ruler-left { left: 73px;  top: 120px; width: 20px;   height: 840px; }
+        #frame-ruler-top svg, #frame-ruler-left svg { display: block; }
+
+        .frame-field { position: absolute; display: flex; align-items: baseline; gap: 18px; }
+        #frame-plateno-field { left: 120px; top: 124px; }
+        #frame-date-field    { right: 120px; top: 124px; }
+        #frame-archive-field { left: 120px; bottom: 112px; }
+        #frame-count-field   { right: 120px; bottom: 112px; }
+
+        #frame-plateno {
+          display: block;
+          font-size: 30px;
+          font-weight: 500;
+          color: var(--pl-stamp);
+          line-height: 1;
+          transform-origin: left center;
+        }
+        #frame-date { font-size: 22px; color: var(--pl-ink-2); line-height: 1; }
+        #frame-count { position: relative; width: 7.2ch; white-space: nowrap; height: 22px; font-size: 22px; color: var(--pl-ink-3); line-height: 1; }
+        #frame-count span { position: absolute; right: 0; top: 0; opacity: 0; }
+      </style>
+
+      <div id="root" data-composition-id="frame" data-width="1920" data-height="1080">
+        <div id="frame-plate"></div>
+
+        <svg id="frame-lines" viewBox="0 0 1920 1080" aria-hidden="true">
+          <!-- Plate edge: one 1px rule, the only elevation device. -->
+          <rect id="frame-edge" x="72.5" y="72.5" width="1775" height="935"
+                fill="none" stroke="#272C50" stroke-width="1" />
+          <!-- Corner registration marks, top-left and bottom-right as on .pl-plate. -->
+          <polyline id="frame-reg-tl" points="84.5,106.5 84.5,84.5 106.5,84.5"
+                    fill="none" stroke="#B5D4F4" stroke-opacity="0.5" stroke-width="1" />
+          <polyline id="frame-reg-br" points="1835.5,973.5 1835.5,995.5 1813.5,995.5"
+                    fill="none" stroke="#B5D4F4" stroke-opacity="0.5" stroke-width="1" />
+        </svg>
+
+        <!-- Edge fiducial rulers (lit), filled in by the script below. -->
+        <div id="frame-ruler-top"><svg id="frame-ruler-top-svg" width="1680" height="20" viewBox="0 0 1680 20"></svg></div>
+        <div id="frame-ruler-left"><svg id="frame-ruler-left-svg" width="20" height="840" viewBox="0 0 20 840"></svg></div>
+
+        <div id="frame-plateno-field" class="frame-field">
+          <span id="frame-plateno-label" class="ng-label">Plaat</span>
+          <span id="frame-plateno" class="ng-num">NG-0001</span>
+        </div>
+        <div id="frame-date-field" class="frame-field">
+          <span id="frame-date-label" class="ng-label">Belicht</span>
+          <span id="frame-date" class="ng-num">15.10.2026</span>
+        </div>
+        <div id="frame-archive-field" class="frame-field">
+          <span id="frame-archive" class="ng-label">NightGazer · Plaatarchief</span>
+        </div>
+        <div id="frame-count-field" class="frame-field">
+          <span id="frame-count" class="ng-num">
+            <span id="frame-n1">01 / 06</span>
+            <span id="frame-n2">02 / 06</span>
+            <span id="frame-n3">03 / 06</span>
+            <span id="frame-n4">04 / 06</span>
+            <span id="frame-n5">05 / 06</span>
+            <span id="frame-n6">06 / 06</span>
+          </span>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const NS = "http://www.w3.org/2000/svg";
+          // Fiducial ticks: every 12px, a long tick every 10th. Deterministic.
+          const top = document.getElementById("frame-ruler-top-svg");
+          for (let i = 0, x = 0.5; x < 1680; i++, x += 12) {
+            const l = document.createElementNS(NS, "line");
+            l.setAttribute("x1", x); l.setAttribute("x2", x);
+            l.setAttribute("y1", 0); l.setAttribute("y2", i % 10 === 0 ? 16 : 8);
+            l.setAttribute("stroke", "#185FA5"); l.setAttribute("stroke-width", "1");
+            top.appendChild(l);
+          }
+          const left = document.getElementById("frame-ruler-left-svg");
+          for (let i = 0, y = 0.5; y < 840; i++, y += 12) {
+            const l = document.createElementNS(NS, "line");
+            l.setAttribute("y1", y); l.setAttribute("y2", y);
+            l.setAttribute("x1", 0); l.setAttribute("x2", i % 10 === 0 ? 16 : 8);
+            l.setAttribute("stroke", "#185FA5"); l.setAttribute("stroke-width", "1");
+            left.appendChild(l);
+          }
+
+          const ease = "expo.out"; // ≈ cubic-bezier(0.16, 1, 0.3, 1), the plate easing
+          const tl = gsap.timeline({ paused: true });
+
+          // 1 — the empty plate draws itself.
+          tl.fromTo("#frame-edge", { strokeDasharray: 5420, strokeDashoffset: 5420 },
+                                   { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, 0.2);
+          tl.fromTo("#frame-plate", { opacity: 0 }, { opacity: 1, duration: 1.0, ease }, 0.6);
+          tl.fromTo(["#frame-reg-tl", "#frame-reg-br"], { strokeDasharray: 44, strokeDashoffset: 44 },
+                                   { strokeDashoffset: 0, duration: 0.6, ease, stagger: 0.12 }, 1.0);
+          tl.fromTo("#frame-ruler-top",  { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.0, ease: "power2.inOut" }, 1.2);
+          tl.fromTo("#frame-ruler-left", { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 1.0, ease: "power2.inOut" }, 1.25);
+
+          // Printed envelope fields.
+          tl.fromTo(["#frame-plateno-label", "#frame-date-field", "#frame-archive-field"],
+                    { opacity: 0 }, { opacity: 1, duration: 0.6, ease, stagger: 0.1 }, 1.7);
+
+          // The plate number is stamped once: a short press, no bounce.
+          tl.fromTo("#frame-plateno", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.32, ease: "power3.out" }, 2.4);
+
+          // Scene counter, set (not tweened) at each scene boundary.
+          const marks = [0, 4, 9, 18.5, 22.5, 26];
+          tl.fromTo("#frame-count-field", { opacity: 0 }, { opacity: 1, duration: 0.6, ease }, 1.9);
+          marks.forEach((t, i) => {
+            tl.set("#frame-n" + (i + 1), { opacity: 1 }, t);
+            if (i > 0) tl.set("#frame-n" + i, { opacity: 0 }, t);
+          });
+
+          tl.set({}, {}, 29.5);
+          window.__timelines["frame"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
