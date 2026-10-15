@@ -1,26 +1,28 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer artikel — /staging/artikel?slug=…
+   NightGazer artikel — /nieuws/[slug]
 
    Compositie: de ontwikkelstrook. Het leesniveau is de belichting; elke
    alinea komt tevoorschijn zodra zijn herschrijving binnen is. Dat is geen
    versiering: de rewrite kómt al per alinea binnen, dus de metafoor en het
    werkelijke gedrag vallen samen.
 
-   Deze route leest elk artikel client-side uit /content/articles/<slug>.md,
-   zodat de staging-preview geen 887 extra pagina's aan de export toevoegt.
+   De route is statisch per slug (generateStaticParams + generateMetadata in
+   page.tsx); de tekst zelf komt client-side uit /content/articles/<slug>.md.
    ══════════════════════════════════════════════════════════════════════════ */
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link'
-import { SiteFooter } from '../../components/SiteFooter'
+import { SiteFooter } from '@/app/components/SiteFooter'
 import { LEVELS, type ReadingLevel } from '@/types'
 import { type ArticleData, type Enrichment, PROXY, IMG, parseMarkdown } from '@/lib/article-data'
 import { type Article } from '@/lib/home-content'
+import { MISSIONS } from '@/lib/missions-data'
+import { TOPICS } from '@/lib/topics'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel, Ladder, plateNo,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo,
 } from '@/app/_plate/shared'
 
 const ORDER: ReadingLevel[] = ['original', 'beginner', 'amateur', 'pro']
@@ -28,6 +30,72 @@ const LADDER: Record<Exclude<ReadingLevel, 'original'>, 'beg' | 'ama' | 'pro'> =
   beginner: 'beg', amateur: 'ama', pro: 'pro',
 }
 const LEVEL_STORE = 'nightgazer_leesniveau_artikel'
+
+/* Categorie → missiepagina. Naam, agentschap en status komen uit de
+   missiedata zelf, zodat de kaart nooit iets beweert dat daar niet staat. */
+const CATEGORY_TO_MISSION: Record<string, string> = {
+  'james-webb': 'jwst', jwst: 'jwst', kosmologie: 'jwst',
+  missies: 'starship', mars: 'perseverance', artemis: 'artemis', maan: 'artemis',
+}
+
+/* ── NASA-beeld voor platen zonder eigen beeld ─────────────────────────────
+   Overgenomen van de vorige artikelpagina: zoekwoorden uit titel en tags,
+   dan alleen de titel, dan de categorie. Deterministisch per slug, zodat
+   hetzelfde artikel steeds hetzelfde beeld krijgt. */
+const STOP = new Set([
+  'a','an','the','of','in','to','for','on','at','by','from','and','or',
+  'with','is','are','was','its','it','as','be','do','go','up','no','so',
+  'if','live','coverage','how','nasa','esas','nasas',
+  'makes','made','launches','launched','ready','preparing','gets','new',
+  'returns','second','first','third','next','last','latest','update','updates',
+  'invites','selects','selected','catches','finds','found','blog','sols',
+  'data','stream','added','daily','minor','plane','bit','wave','rolls',
+  'roll','oddly','high','rates','restless','unexpectedly','further',
+  'teases','another','shot','ahead','about','will','has','have','had',
+  'this','that','then','than','when','where','which',
+])
+const CAT_QUERIES: Record<string, string> = {
+  missies: 'rocket launch spacecraft mission', missions: 'rocket launch spacecraft mission',
+  'james-webb': 'james webb space telescope',
+  kosmologie: 'galaxy nebula deep space hubble', cosmology: 'galaxy nebula deep space hubble',
+  mars: 'mars surface curiosity rover',
+  sterrenkijken: 'telescope observatory night sky', observing: 'telescope observatory night sky',
+  educatie: 'astronaut spacewalk earth orbit', education: 'astronaut spacewalk earth orbit',
+}
+
+function imageQueries(a: ArticleData, slug: string): string[] {
+  const title = (a.title || slug.replace(/-/g, ' '))
+    .toLowerCase()
+    .replace(/[''`'"]/g, '')
+    .replace(/[^a-z0-9\-]/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(w => {
+      if (!w || w.length < 2) return false
+      if (/^[a-z\d]+-\d/.test(w) || /^\d+-[a-z]/.test(w)) return true
+      return w.length > 2 && !STOP.has(w)
+    })
+    .slice(0, 6)
+    .join(' ')
+  const tags = (a.tags || [])
+    .slice(0, 4)
+    .map(t => t.toLowerCase().replace(/[^a-z0-9\s\-]/g, '').trim())
+    .filter(t => t.length > 2 && !STOP.has(t))
+    .join(' ')
+  const combined = [title, tags].filter(Boolean).join(' ')
+    .split(/\s+/)
+    .filter((w, i, arr) => arr.indexOf(w) === i)
+    .slice(0, 7)
+    .join(' ')
+  const cat = CAT_QUERIES[a.category?.toLowerCase() || ''] || 'space telescope astronomy'
+  return [combined, title, cat].filter((q, i, arr) => q && arr.indexOf(q) === i)
+}
+
+/** Tag → onderwerp-pagina, alleen als die echt bestaat. */
+function tagTopic(tag: string): string | null {
+  const t = tag.toLowerCase()
+  return TOPICS.find(x => x.slug === t || x.label.toLowerCase() === t)?.slug ?? null
+}
 
 /** Per alinea: waar staat de ontwikkeling? */
 type ParaState = 'developed' | 'latent' | 'failed'
@@ -47,8 +115,7 @@ function Para({ text, state, lead }: { text: string; state: ParaState; lead: boo
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
-export default function ArtikelStaging() {
-  const [slug, setSlug] = useState<string | null>(null)
+export default function ArtikelPlaat({ slug }: { slug: string }) {
   const [article, setArticle] = useState<ArticleData | null>(null)
   const [notFound, setNotFound] = useState(false)
   const [level, setLevel] = useState<ReadingLevel>('original')
@@ -58,20 +125,12 @@ export default function ArtikelStaging() {
   const [enrich, setEnrich] = useState<Enrichment | null>(null)
   const [related, setRelated] = useState<Article[]>([])
   const [total, setTotal] = useState(0)
+  const [index, setIndex] = useState(-1)
+  const [nasaImage, setNasaImage] = useState<{ url: string; credit: string } | null>(null)
   const [progress, setProgress] = useState(0)
 
   const cache = useRef<Partial<Record<ReadingLevel, string[]>>>({})
   const runId = useRef(0)
-
-  /* Welk artikel? Query-param, anders het nieuwste uit de index. */
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get('slug')
-    if (q) { setSlug(q); return }
-    fetch('/content/articles-index.json')
-      .then(r => r.json())
-      .then((list: Article[]) => setSlug(list[0]?.slug ?? null))
-      .catch(() => setNotFound(true))
-  }, [])
 
   /* De plaat ophalen */
   useEffect(() => {
@@ -94,12 +153,40 @@ export default function ArtikelStaging() {
     fetch('/content/articles-index.json')
       .then(r => r.json())
       .then((list: Article[]) => {
+        const cat = article.category.toLowerCase()
         setTotal(list.length)
+        setIndex(list.findIndex(a => a.slug === slug))
         setRelated(
-          list.filter(a => a.slug !== slug && a.category === article.category).slice(0, 6)
+          list.filter(a => a.slug !== slug && a.category.toLowerCase() === cat).slice(0, 6)
         )
       })
       .catch(() => { /* zonder index geen contactstrip, geen ramp */ })
+  }, [article, slug])
+
+  /* Geen eigen beeld: zoek er een in de NASA-beeldbank. Faalt stil. */
+  useEffect(() => {
+    if (!article || article.imageUrl) return
+    let alive = true
+    const hash = slug.split('').reduce((acc, c) => (acc * 31 + c.charCodeAt(0)) & 0xffff, 0)
+    const tryFetch = async (q: string, page: number) => {
+      try {
+        const res = await fetch(`${PROXY}/image-search?q=${encodeURIComponent(q)}&page=${page}&hash=${hash}`)
+        if (!res.ok) return false
+        const data = await res.json()
+        if (!data?.url) return false
+        if (alive) setNasaImage({ url: data.url, credit: data.credit || 'NASA' })
+        return true
+      } catch { return false }
+    }
+    ;(async () => {
+      const page = (hash % 3) + 1
+      for (const q of imageQueries(article, slug)) {
+        if (!alive) return
+        if (await tryFetch(q, page)) return
+        if (await tryFetch(q, 1)) return
+      }
+    })()
+    return () => { alive = false }
   }, [article, slug])
 
   /* Bewaard niveau terughalen */
@@ -206,23 +293,29 @@ ${article.rawBody.slice(0, 2500)}` }],
     return () => { alive = false }
   }, [article])
 
+  const imageUrl = article?.imageUrl || nasaImage?.url || ''
+  const imageCredit = article?.imageCredit || nasaImage?.credit || ''
+  const mission = useMemo(() => {
+    const id = CATEGORY_TO_MISSION[article?.category?.toLowerCase() ?? '']
+    return id ? MISSIONS.find(m => m.id === id) ?? null : null
+  }, [article])
+
   const developing = useMemo(() => states.filter(s => s === 'latent').length, [states])
   const failed = useMemo(() => states.filter(s => s === 'failed').length, [states])
 
   if (notFound) {
     return (
       <div className={`pl ${archivo.variable}`}>
-        <StagingBanner />
         <PlateHead total={0} edition={editionLabel()} current="nieuws" totalLabel="platen" />
         <main id="pl-main" className="pl-stack">
           <div className="pl-wrap">
             <div className="pl-plate" style={{ padding: '56px 24px', display: 'grid', gap: 14, justifyItems: 'start' }}>
               <h1 className="pl-h2">Deze plaat zit niet in het archief</h1>
               <p className="pl-body-s">
-                Geef een bestaande slug mee, bijvoorbeeld
-                {' '}<code>/staging/artikel?slug=james-webb-k2-18b-biosignatuur</code>.
+                Het artikel kon niet geladen worden. Probeer het opnieuw, of zoek
+                verder in het archief.
               </p>
-              <Link href="/staging/nieuws" className="pl-btn">Naar het archief</Link>
+              <Link href="/nieuws/" className="pl-btn">Naar het archief</Link>
             </div>
           </div>
         </main>
@@ -234,7 +327,6 @@ ${article.rawBody.slice(0, 2500)}` }],
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <StagingBanner />
       <PlateHead total={total} edition={editionLabel()} current="nieuws" totalLabel="platen" />
 
       {/* ══ Belichting ══ */}
@@ -272,7 +364,7 @@ ${article.rawBody.slice(0, 2500)}` }],
             <div className="pl-read-grid">
               <article className="pl-read-main">
                 <div className="pl-meta">
-                  <span className="pl-num">{total > 0 ? plateNo(total, 0) : '—'}</span>
+                  <span className="pl-num">{total > 0 && index >= 0 ? plateNo(total, index) : '—'}</span>
                   <span className="pl-meta__tick" aria-hidden="true" />
                   <span>{article.category}</span>
                   <span className="pl-meta__tick" aria-hidden="true" />
@@ -283,12 +375,12 @@ ${article.rawBody.slice(0, 2500)}` }],
 
                 <h1>{article.title}</h1>
 
-                {article.imageUrl && (
+                {imageUrl && (
                   <figure className="pl-read-fig">
                     <div className="pl-emulsion">
-                      <img src={IMG(article.imageUrl, 1200)} alt="" />
+                      <img src={IMG(imageUrl, 1200)} alt="" />
                     </div>
-                    {article.imageCredit && <figcaption>Beeld · {article.imageCredit}</figcaption>}
+                    {imageCredit && <figcaption>Beeld · {imageCredit}</figcaption>}
                   </figure>
                 )}
 
@@ -313,16 +405,35 @@ ${article.rawBody.slice(0, 2500)}` }],
 
                 {article.tags.length > 0 && (
                   <div className="pl-terms" style={{ marginTop: 30 }}>
-                    {article.tags.map(t => (
-                      <Link key={t} href={`/staging/nieuws?onderwerp=${encodeURIComponent(t)}`}>
-                        <button type="button">{t}</button>
-                      </Link>
-                    ))}
+                    {article.tags.map(t => {
+                      const topic = tagTopic(t)
+                      return topic
+                        ? <Link key={t} href={`/nieuws/onderwerp/${topic}/`}>{t}</Link>
+                        : <span key={t}>{t}</span>
+                    })}
                   </div>
                 )}
               </article>
 
               <aside className="pl-read-side">
+                {mission && (
+                  <Link href={`/missies/${mission.id}/`} className="pl-mission pl-lift">
+                    <span className="pl-label">Gerelateerde missie</span>
+                    <strong className="pl-h3">{mission.name}</strong>
+                    <span className="pl-meta">
+                      <span>{mission.agency}</span>
+                      <span className="pl-meta__tick" aria-hidden="true" />
+                      <span
+                        className="pl-status"
+                        data-on={mission.status === 'actief' ? '1' : '0'}
+                        style={{ color: mission.status === 'actief' ? 'var(--pl-good)' : 'var(--pl-ink-3)' }}
+                      >
+                        <i aria-hidden="true" />{mission.status}
+                      </span>
+                    </span>
+                  </Link>
+                )}
+
                 <Tip label={
                   <>
                     <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>Waar komt dit vandaan?</span>
@@ -386,7 +497,7 @@ ${article.rawBody.slice(0, 2500)}` }],
                 </h2>
                 <span className="pl-label">{article?.category}</span>
               </div>
-              <Link href="/staging/nieuws" className="pl-read">
+              <Link href="/nieuws/" className="pl-read">
                 <span>Het hele archief</span>
                 <span className="pl-read__rule" aria-hidden="true" />
                 <Ico.arrow />
@@ -395,7 +506,7 @@ ${article.rawBody.slice(0, 2500)}` }],
 
             <div className="pl-contact">
               {related.map(r => (
-                <Link key={r.slug} href={`/staging/artikel?slug=${r.slug}`}>
+                <Link key={r.slug} href={`/nieuws/${r.slug}/`}>
                   <span className="pl-contact__fig">
                     <span className="pl-emulsion" style={{ display: 'block' }}>
                       {r.imageUrl

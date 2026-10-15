@@ -2202,7 +2202,11 @@ a:hover .pl-emulsion > img,
   gap: 6px;
   margin-top: 6px;
 }
-.pl-terms button {
+.pl-terms button,
+.pl-terms > a,
+.pl-terms > span {
+  display: inline-flex;
+  align-items: center;
   min-height: 30px;
   padding: 0 11px;
   background: none;
@@ -2213,6 +2217,7 @@ a:hover .pl-emulsion > img,
   cursor: pointer;
   transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease), background 180ms var(--pl-ease);
 }
+.pl-terms > a:hover,
 .pl-terms button:hover { color: var(--pl-act); border-color: var(--pl-act); }
 .pl-terms button[aria-pressed="true"] {
   color: var(--pl-act);
@@ -2397,6 +2402,20 @@ a:hover .pl-emulsion > img,
   border: 1px solid var(--pl-rule);
 }
 .pl-read-main { background: var(--pl-plate); padding: clamp(22px, 3vw, 40px); min-width: 0; }
+/* Gerelateerde missie in de kantlijn: één plaat, dezelfde statusmarkering
+   als de missierail op de voorpagina. */
+.pl-mission {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+}
+.pl-mission .pl-h3 { transition: color 180ms var(--pl-ease); }
+.pl-mission:hover .pl-h3,
+.pl-mission:focus-visible .pl-h3 { color: var(--pl-act); }
+
 .pl-read-side {
   background: var(--pl-ground);
   padding: clamp(20px, 2.4vw, 28px);

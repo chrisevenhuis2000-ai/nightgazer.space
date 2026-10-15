@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import ArticleClient from './ArticleClient'
+import ArtikelPlaat from './ArtikelPlaat'
 import { getAllSlugs } from './generateParams'
 
 export function generateStaticParams() {
@@ -28,5 +28,5 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
-  return <ArticleClient slug={params.slug} />
+  return <ArtikelPlaat slug={params.slug} />
 }
