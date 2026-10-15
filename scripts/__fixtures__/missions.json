@@ -1,0 +1,4100 @@
+{
+  "_meta": {
+    "lastUpdated": "2026-10-14T13:10:29.467Z",
+    "autoUpdated": []
+  },
+  "missions": [
+    {
+      "id": "starship",
+      "_ll2Id": null,
+      "name": "SpaceX Starship",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "IFT-7 · Mrt 2026",
+      "objective": "Volledig herbruikbare super-heavy raket testen voor Maan & Mars-missies.",
+      "body": "Aardebaan",
+      "highlight": "Mechazilla-arm ving booster op bij IFT-7",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Starship is het volledig herbruikbare twee-traps lanceersysteem van SpaceX, ontworpen voor transport van mensen en vracht naar de Maan, Mars en verder. Met een hoogte van 121 meter is het de krachtigste raket die ooit is gebouwd. Het systeem bestaat uit de Super Heavy-booster met 33 Raptor-motoren en het Starship-bovenste gedeelte met 6 Raptor-motoren. Bij IFT-7 (maart 2026) werd de Super Heavy-booster voor de tweede keer succesvol gevangen door de zogenoemde Mechazilla-armen aan de lanceerinstallatie in Boca Chica, Texas. Starship is ook geselecteerd door NASA als Human Landing System (HLS) voor de Artemis-maanlandingen.",
+      "vehicle": "Super Heavy + Starship (volledig stapel)",
+      "launchSite": "Starbase, Boca Chica, Texas, VS",
+      "duration": "Varieert per missie",
+      "distanceKm": "Lage Aardeomloopbaan (~400 km)",
+      "missionUrl": "https://www.spacex.com/vehicles/starship/",
+      "timeline": [
+        {
+          "date": "apr 2023",
+          "event": "IFT-1: eerste geïntegreerde vluchttest, explosie na scheiding"
+        },
+        {
+          "date": "nov 2023",
+          "event": "IFT-2: succesvolle scheiding booster/schip, beide verloren boven zee"
+        },
+        {
+          "date": "mrt 2024",
+          "event": "IFT-3: beide voertuigen bereiken ruimte; gecontroleerde herentry"
+        },
+        {
+          "date": "jun 2024",
+          "event": "IFT-4: Starship-schip landt zacht in Indische Oceaan"
+        },
+        {
+          "date": "okt 2024",
+          "event": "IFT-5: booster gevangen door Mechazilla-armen (eerste keer)"
+        },
+        {
+          "date": "jan 2025",
+          "event": "IFT-6: booster wederom gevangen; schip gecontroleerd neergekomen"
+        },
+        {
+          "date": "mrt 2026",
+          "event": "IFT-7: booster opnieuw gevangen; schip herentry geslaagd"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Hoogte (volledig)",
+          "value": "121 meter"
+        },
+        {
+          "label": "Super Heavy motoren",
+          "value": "33 × Raptor V2"
+        },
+        {
+          "label": "Starship motoren",
+          "value": "6 × Raptor (3 zeeniveau + 3 vacuüm)"
+        },
+        {
+          "label": "Stuwkracht (liftoff)",
+          "value": "~74,4 MN (>Apollo Saturn V × 2)"
+        },
+        {
+          "label": "Max. lading LEO",
+          "value": ">100 ton (herbruikbaar)"
+        },
+        {
+          "label": "Bouwmateriaal",
+          "value": "Roestvrij staal (304L)"
+        }
+      ],
+      "relatedTags": [
+        "starship",
+        "spacex",
+        "superheavy",
+        "falcon",
+        "musk",
+        "boca chica",
+        "mechazilla"
+      ]
+    },
+    {
+      "id": "artemis",
+      "_ll2Id": null,
+      "name": "NASA Artemis II",
+      "agency": "NASA",
+      "agencyColor": "#378ADD",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "1 apr 2026",
+      "objective": "Eerste bemande vlucht rond de Maan sinds Apollo 17 (1972).",
+      "body": "Maan",
+      "highlight": "Vier astronauten vliegen de Orion capsule",
+      "icon": "🌕",
+      "bgFrom": "#080812",
+      "bgTo": "#141430",
+      "description": "Artemis II is de eerste bemande vlucht van het Artemis-programma en de eerste bemande reis naar de Maan in meer dan vijftig jaar. Vier astronauten — drie van NASA en één van het Canadese ruimtevaartagentschap CSA — zullen in de Orion-capsule op het SLS Block 1-raketsysteem een vrije-retour-baan om de Maan beschrijven zonder te landen. De missie duurt ongeveer tien dagen en valideert alle systemen voor de latere Artemis III-maanlanding. De vier bemanningsleden zijn Reid Wiseman (commandant), Victor Glover, Christina Koch en de Canadees Jeremy Hansen.",
+      "vehicle": "SLS Block 1 + Orion MPCV",
+      "launchSite": "LC-39B, Kennedy Space Center, Florida, VS",
+      "duration": "~10 dagen",
+      "distanceKm": "~400.000 km (Maan)",
+      "missionUrl": "https://www.nasa.gov/mission/artemis-ii/",
+      "timeline": [
+        {
+          "date": "nov 2022",
+          "event": "Artemis I: onbemande testmissie van SLS + Orion succesvol"
+        },
+        {
+          "date": "apr 2023",
+          "event": "Bemanning Artemis II officieel bekendgemaakt"
+        },
+        {
+          "date": "2024–2025",
+          "event": "Vluchtsimulaties en trainingscampagnes voor bemanning"
+        },
+        {
+          "date": "1 apr 2026",
+          "event": "Lancering Artemis II (vrije-retour Maanbaan)"
+        },
+        {
+          "date": "TBD 2027+",
+          "event": "Artemis III: eerste maanlanding met Starship HLS"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Bemanning",
+          "value": "Reid Wiseman, Victor Glover, Christina Koch, Jeremy Hansen"
+        },
+        {
+          "label": "Raket",
+          "value": "Space Launch System (SLS) Block 1"
+        },
+        {
+          "label": "Capsule",
+          "value": "Orion MPCV (Multi-Purpose Crew Vehicle)"
+        },
+        {
+          "label": "Traject",
+          "value": "Vrije-retour Maanbaan (geen landing)"
+        },
+        {
+          "label": "Max. afstand tot Aarde",
+          "value": "~8.900 km achter Maan (dichts bij totale terugweg)"
+        },
+        {
+          "label": "Eerste keer CSA bemand",
+          "value": "Ja — Jeremy Hansen is eerste Canadees bij de Maan"
+        }
+      ],
+      "relatedTags": [
+        "artemis",
+        "nasa",
+        "maan",
+        "orion",
+        "sls",
+        "maanlanding",
+        "moon"
+      ]
+    },
+    {
+      "id": "perseverance",
+      "_ll2Id": null,
+      "name": "Mars 2020 Perseverance",
+      "agency": "NASA",
+      "agencyColor": "#378ADD",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "30 jul 2020",
+      "objective": "Zoeken naar tekenen van vroeger microbieel leven in Jezero-krater.",
+      "body": "Mars",
+      "highlight": "Heeft >23 rotsmonsters verzameld voor toekomstige terugreis",
+      "icon": "🤖",
+      "bgFrom": "#140804",
+      "bgTo": "#281408",
+      "description": "Perseverance is de meest geavanceerde rover die ooit op Mars is geland. Hij landde op 18 februari 2021 in de Jezero-krater, waarvan wetenschappers geloven dat het ooit een meer was gevoed door een rivierdelta — een ideale omgeving voor het bewaren van fossiele biosignaturen. Aan boord bevindt zich ook de Ingenuity-helikopter, die als technologiedemonstrator meer dan 70 aangedreven vluchten maakte in de dunne Marsatmosfeer. Perseverance verzamelt zorgvuldig geselecteerde rotsmonsters die in buisjes worden opgeslagen op het Marsoppervlak voor een toekomstige Mars Sample Return-missie.",
+      "vehicle": "Atlas V 541",
+      "launchSite": "SLC-41, Cape Canaveral, Florida, VS",
+      "duration": "Onbepaald (nominaal: 1 Mars-jaar ≈ 687 Aarde-dagen)",
+      "distanceKm": "~225.000.000 km (gemiddeld Aarde–Mars)",
+      "missionUrl": "https://mars.nasa.gov/mars2020/",
+      "timeline": [
+        {
+          "date": "30 jul 2020",
+          "event": "Lancering met Atlas V 541"
+        },
+        {
+          "date": "18 feb 2021",
+          "event": "Landing in Jezero-krater via Sky Crane"
+        },
+        {
+          "date": "19 apr 2021",
+          "event": "Ingenuity maakt eerste aangedreven vlucht op Mars"
+        },
+        {
+          "date": "sep 2021",
+          "event": "Eerste rotsmonster succesvol geboord en opgeslagen"
+        },
+        {
+          "date": "jan 2022",
+          "event": "MOXIE produceert zuurstof uit Marsatmosfeer"
+        },
+        {
+          "date": "2023–2026",
+          "event": ">23 monsters verzameld; depots aangelegd voor MSR"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Massa",
+          "value": "1.025 kg"
+        },
+        {
+          "label": "Afmetingen",
+          "value": "3,0 × 2,7 × 2,2 meter"
+        },
+        {
+          "label": "Energiebron",
+          "value": "Multi-Mission RTG (MMRTG)"
+        },
+        {
+          "label": "Instrumenten",
+          "value": "7 wetenschappelijke instrumenten + Ingenuity"
+        },
+        {
+          "label": "Geboorde monsters",
+          "value": ">23 (stand mrt 2026)"
+        },
+        {
+          "label": "Rijafstand",
+          "value": ">20 km (stand mrt 2026)"
+        }
+      ],
+      "relatedTags": [
+        "perseverance",
+        "mars",
+        "nasa",
+        "jezero",
+        "rover",
+        "ingenuity",
+        "mars sample return"
+      ]
+    },
+    {
+      "id": "jwst",
+      "_ll2Id": null,
+      "name": "James Webb Ruimtetelescoop",
+      "agency": "NASA / ESA / CSA",
+      "agencyColor": "#c080ff",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "25 dec 2021",
+      "objective": "Infrarood telescoop in L2-punt — het vroegste heelal en exoplaneet-atmosferen.",
+      "body": "L2-punt",
+      "highlight": "Detecteerde mogelijke biosignaturen op K2-18b",
+      "icon": "🔭",
+      "bgFrom": "#08041a",
+      "bgTo": "#120828",
+      "description": "De James Webb Space Telescope is de wetenschappelijk krachtigste ruimtetelescoop ooit gebouwd, een samenwerking van NASA, ESA en CSA. Met een primaire spiegel van 6,5 meter — opgebouwd uit 18 gouden berylliumsegmenten — en instrumenten die werken in het nabij- en midden-infrarood, kan Webb objecten zien die voor Hubble onzichtbaar zijn. Het opereert op het Zon–Aarde L2-punt, 1,5 miljoen kilometer van de Aarde, waar een vijflaags zonnescherm ter grootte van een tennisveld het teleskoop koel houdt op –233°C. In 2023 detecteerde Webb dimethylsulfide (DMS) op exoplaneet K2-18b — een mogelijk biosignaal.",
+      "vehicle": "Ariane 5 ECA",
+      "launchSite": "ELA-3, Kourou, Frans-Guiana",
+      "duration": "Nominaal 10 jaar (brandstof voor 20+ jaar)",
+      "distanceKm": "1.500.000 km (L2-punt)",
+      "missionUrl": "https://webb.nasa.gov/",
+      "timeline": [
+        {
+          "date": "25 dec 2021",
+          "event": "Lancering met Ariane 5 vanuit Kourou"
+        },
+        {
+          "date": "jan 2022",
+          "event": "Ontvouwing spiegel en zonnescherm succesvol afgerond"
+        },
+        {
+          "date": "24 jan 2022",
+          "event": "Injectie in L2-omloopbaan"
+        },
+        {
+          "date": "jul 2022",
+          "event": "Eerste wetenschappelijke beelden vrijgegeven"
+        },
+        {
+          "date": "sep 2022",
+          "event": "Directe beeldvorming van exoplaneet HIP 65426 b"
+        },
+        {
+          "date": "sep 2023",
+          "event": "DMS gedetecteerd op K2-18b — mogelijk biosignaal"
+        },
+        {
+          "date": "2025–2026",
+          "event": "Continue observaties vroeg heelal, exoplaneet-atmosferen"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Spiegel diameter",
+          "value": "6,5 meter (18 segmenten)"
+        },
+        {
+          "label": "Spiegelmateriaal",
+          "value": "Beryllium, verguld met goud"
+        },
+        {
+          "label": "Golflengtebereik",
+          "value": "0,6–28 micrometer (infrarood)"
+        },
+        {
+          "label": "Werktemperatuur",
+          "value": "–233°C (40 Kelvin)"
+        },
+        {
+          "label": "Zonnescherm",
+          "value": "5 lagen Kapton, zo groot als een tennisveld"
+        },
+        {
+          "label": "Kostprijs",
+          "value": "~$10 miljard"
+        }
+      ],
+      "relatedTags": [
+        "webb",
+        "jwst",
+        "james webb",
+        "nasa",
+        "esa",
+        "telescoop",
+        "infrarood",
+        "exoplaneet",
+        "K2-18b"
+      ]
+    },
+    {
+      "id": "smile",
+      "_ll2Id": null,
+      "name": "ESA SMILE",
+      "agency": "ESA / CAS",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "9 apr 2026",
+      "objective": "Solar wind–Magnetosphere–Ionosphere Link Explorer: sondeert aardse magneetsfeer.",
+      "body": "Aardebaan (elliptisch)",
+      "highlight": "Eerste satelliet die auroragebieden simultaan in beeld brengt",
+      "icon": "🛰️",
+      "bgFrom": "#0e0a04",
+      "bgTo": "#1e1408",
+      "description": "SMILE (Solar wind Magnetosphere Ionosphere Link Explorer) is een gezamenlijke missie van de Europese Ruimtevaartorganisatie (ESA) en de Chinese Academie van Wetenschappen (CAS). De satelliet onderzoekt hoe de zonnewind wisselwerkt met de magneetsfeer en ionosfeer van de Aarde — processen die verantwoordelijk zijn voor de aurora borealis en kunnen leiden tot verstoring van satellieten en stroomnetten. SMILE is de eerste missie die gelijktijdig röntgenbeelden van de magnetopauze en UV-beelden van de auroravlekken kan maken, van hoog boven de pool.",
+      "vehicle": "Vega-C",
+      "launchSite": "SLC-2, Kourou, Frans-Guiana",
+      "duration": "3 jaar (nominaal)",
+      "distanceKm": "~121.000 km (apogeum elliptische baan)",
+      "missionUrl": "https://www.esa.int/Science_Exploration/Space_Science/SMILE",
+      "timeline": [
+        {
+          "date": "2015",
+          "event": "SMILE geselecteerd als ESA/CAS gezamenlijke missie"
+        },
+        {
+          "date": "2019–2024",
+          "event": "Ontwikkeling en bouw van instrumenten in Europa en China"
+        },
+        {
+          "date": "9 apr 2026",
+          "event": "Geplande lancering met Vega-C"
+        },
+        {
+          "date": "mei 2026",
+          "event": "Injectie in driedaagse elliptische poolomloopbaan"
+        },
+        {
+          "date": "2026–2029",
+          "event": "Wetenschappelijke observaties magneetsfeer en aurora"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Massa",
+          "value": "~2.000 kg"
+        },
+        {
+          "label": "Instrumenten",
+          "value": "SXI (röntgen), UVI (UV), LIA (lichtbeeldvorming), MAG (magnetometer)"
+        },
+        {
+          "label": "Omlooptijd",
+          "value": "~3 dagen (elliptisch)"
+        },
+        {
+          "label": "Hoogste punt (apogeum)",
+          "value": "~121.000 km"
+        },
+        {
+          "label": "Laagste punt (perigeum)",
+          "value": "~5.000 km"
+        },
+        {
+          "label": "Samenwerking",
+          "value": "ESA + Chinese Academie van Wetenschappen (CAS)"
+        }
+      ],
+      "relatedTags": [
+        "smile",
+        "esa",
+        "cas",
+        "magneetsfeer",
+        "aurora",
+        "zonnewind",
+        "ionosfeer"
+      ]
+    },
+    {
+      "id": "juice",
+      "_ll2Id": null,
+      "name": "ESA JUICE",
+      "agency": "ESA",
+      "agencyColor": "#ffa040",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "14 apr 2023",
+      "objective": "Jupiter Icy Moons Explorer — onderzoekt Europa, Ganymede en Callisto op bewoonbaarheid.",
+      "body": "Jupiter-stelsel",
+      "highlight": "Arriveert in 2031 bij Jupiter na Venus+Aarde-zwaartekrachtassist",
+      "icon": "🪐",
+      "bgFrom": "#0c0a04",
+      "bgTo": "#1a160a",
+      "description": "De Jupiter Icy Moons Explorer (JUICE) is de grootste interplanetaire missie die ESA ooit heeft gelanceerd. Na een reeks zwaartekrachtassists — langs Aarde/Maan (aug 2024), Venus (okt 2024) en nogmaals Aarde (jan 2026) — arriveert JUICE in juli 2031 bij Jupiter. Daar bestudeer de sonde drie ijsmanen: Ganymede, Callisto en Europa. Ganymede, de grootste maan van ons zonnestelsel, is bijzonder interessant omdat het de enige maan is met een eigen magnetisch veld en mogelijk een vloeibare oceaan diep onder zijn ijsoppervlak. In 2034 injecteert JUICE in een baan om Ganymede — de eerste sonde ooit in een baan om een maan van een andere planeet dan de Aarde.",
+      "vehicle": "Ariane 5 ECA+",
+      "launchSite": "ELA-3, Kourou, Frans-Guiana",
+      "duration": "~12 jaar (tot einde missie ~2035)",
+      "distanceKm": "~628.000.000 km (Jupiter gemiddeld)",
+      "missionUrl": "https://www.esa.int/Science_Exploration/Space_Science/Juice",
+      "timeline": [
+        {
+          "date": "14 apr 2023",
+          "event": "Lancering met Ariane 5 ECA+ vanuit Kourou"
+        },
+        {
+          "date": "aug 2024",
+          "event": "Aarde/Maan-zwaartekrachtassist"
+        },
+        {
+          "date": "okt 2024",
+          "event": "Venus-zwaartekrachtassist"
+        },
+        {
+          "date": "jan 2026",
+          "event": "Tweede Aarde-zwaartekrachtassist"
+        },
+        {
+          "date": "jul 2031",
+          "event": "Aankomst Jupiter-systeem; beginnen verkenning ijsmanen"
+        },
+        {
+          "date": "dec 2034",
+          "event": "Injectie in baan om Ganymede (GEO)"
+        },
+        {
+          "date": "sep 2035",
+          "event": "Einde missie: impactlanding op Ganymede"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Massa (bij lancering)",
+          "value": "5.963 kg"
+        },
+        {
+          "label": "Instrumenten",
+          "value": "10 wetenschappelijke instrumenten"
+        },
+        {
+          "label": "Zonnepanelen",
+          "value": "85 m² (grootste interplanetaire sonde)"
+        },
+        {
+          "label": "Vermogen bij Jupiter",
+          "value": "~820 W"
+        },
+        {
+          "label": "Communicatietijd",
+          "value": "43–52 minuten (bij Jupiter)"
+        },
+        {
+          "label": "Reistijd tot Jupiter",
+          "value": "~8 jaar"
+        }
+      ],
+      "relatedTags": [
+        "juice",
+        "jupiter",
+        "esa",
+        "ganymede",
+        "europa",
+        "callisto",
+        "ijsmaan",
+        "maan"
+      ]
+    },
+    {
+      "id": "curiosity",
+      "_ll2Id": null,
+      "name": "MSL Curiosity",
+      "agency": "NASA",
+      "agencyColor": "#378ADD",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "26 nov 2011",
+      "objective": "Onderzoekt geologische geschiedenis van Gale-krater op Mars.",
+      "body": "Mars",
+      "highlight": "Meer dan 4400 Mars-dagen actief — recordhouder",
+      "icon": "🤖",
+      "bgFrom": "#140a04",
+      "bgTo": "#241408",
+      "description": "De Mars Science Laboratory-rover Curiosity landt op 6 augustus 2012 in de Gale-krater op Mars en is inmiddels meer dan 4.400 Marsdagen (sols) actief — een absoluut record voor een Mars-rover. Curiosity's primaire ontdekking was het bewijs dat vloeibaar water vroeger heeft bestaan op het Marsoppervlak en dat de omstandigheden gunstig kunnen zijn geweest voor microbieel leven. De rover rijdt langzaam omhoog langs Mount Sharp, de centrale berg in de Gale-krater, en analyseert steeds oudere geologische lagen met zijn geavanceerde instrumentenpakket, inclusief een laserkanon (ChemCam) en een boorinstallatie.",
+      "vehicle": "Atlas V 541",
+      "launchSite": "SLC-41, Cape Canaveral, Florida, VS",
+      "duration": ">4.400 sols (nog actief, stand mrt 2026)",
+      "distanceKm": "~225.000.000 km (gemiddeld)",
+      "missionUrl": "https://mars.nasa.gov/msl/",
+      "timeline": [
+        {
+          "date": "26 nov 2011",
+          "event": "Lancering met Atlas V 541"
+        },
+        {
+          "date": "6 aug 2012",
+          "event": "Landing in Gale-krater via Sky Crane (\"7 minuten van terreur\")"
+        },
+        {
+          "date": "sep 2013",
+          "event": "Bevestigd: Mars had ooit bewoonbare omstandigheden"
+        },
+        {
+          "date": "dec 2013",
+          "event": "Naamgeving \"John Klein\"-boorlocatie na eerste succesvol boren"
+        },
+        {
+          "date": "2015–2020",
+          "event": "Beklimming Mount Sharp; vondst complex organisch materiaal"
+        },
+        {
+          "date": "2021–2026",
+          "event": "Actief onderzoek hoger gelegen lagen; >32 km gereden"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Massa",
+          "value": "899 kg"
+        },
+        {
+          "label": "Afmetingen",
+          "value": "3,0 × 2,7 × 2,1 meter"
+        },
+        {
+          "label": "Energiebron",
+          "value": "Multi-Mission RTG (MMRTG)"
+        },
+        {
+          "label": "Rijsnelheid max.",
+          "value": "4 cm/s (~144 m/uur)"
+        },
+        {
+          "label": "Rijafstand",
+          "value": ">32 km (stand mrt 2026)"
+        },
+        {
+          "label": "Instrumenten",
+          "value": "10, waaronder ChemCam en SAM"
+        }
+      ],
+      "relatedTags": [
+        "curiosity",
+        "mars",
+        "nasa",
+        "gale",
+        "msl",
+        "rover",
+        "mount sharp"
+      ]
+    },
+    {
+      "id": "voyager1",
+      "_ll2Id": null,
+      "name": "Voyager 1",
+      "agency": "NASA",
+      "agencyColor": "#378ADD",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "5 sep 1977",
+      "objective": "Verkenning buitenste planeten, nu door interstellaire ruimte.",
+      "body": "Interstellair",
+      "highlight": "Verst object door mensen gemaakt — >24 miljard km van de Zon",
+      "icon": "🌌",
+      "bgFrom": "#04060e",
+      "bgTo": "#080c18",
+      "description": "Voyager 1 is het verst verwijderde door mensen gemaakte object in de geschiedenis van de ruimtevaart. Gelanceerd in september 1977, maakte de sonde iconische opnamen van Jupiter (1979) en Saturnus (1980), inclusief de ontdekking van actieve vulkanen op Io. In augustus 2012 passeerde Voyager 1 officieel de heliopauze — de grens van de zonnewind — en begeeft zich nu door interstellaire ruimte. Radiogolven doen er ruim 22 uur over om de Aarde te bereiken. Aan boord bevindt zich een Gouden Plaat met geluiden en beelden van de Aarde, als boodschap voor eventuele buitenaardse beschavingen.",
+      "vehicle": "Titan IIIE / Centaur",
+      "launchSite": "LC-41, Cape Canaveral, Florida, VS",
+      "duration": ">48 jaar (nog actief, stand 2026)",
+      "distanceKm": ">24.000.000.000 km (>163 AU, stand mrt 2026)",
+      "missionUrl": "https://voyager.jpl.nasa.gov/",
+      "timeline": [
+        {
+          "date": "5 sep 1977",
+          "event": "Lancering met Titan IIIE/Centaur"
+        },
+        {
+          "date": "mrt 1979",
+          "event": "Jupiter-flyby; ontdekking vulkanische activiteit op Io"
+        },
+        {
+          "date": "nov 1980",
+          "event": "Saturnus-flyby; gedetailleerde beelden ringen en Titan"
+        },
+        {
+          "date": "14 feb 1990",
+          "event": "\"Pale Blue Dot\" foto: Aarde vastgelegd op 6 miljard km"
+        },
+        {
+          "date": "aug 2012",
+          "event": "Officieel de heliopauze gepasseerd — interstellaire ruimte bereikt"
+        },
+        {
+          "date": "nov 2023",
+          "event": "Communicatieprobleem opgelost; sonde hervatten wetenschapdata"
+        },
+        {
+          "date": "mrt 2026",
+          "event": ">163 AU van de Zon; signaalvertraging >22 uur"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Massa",
+          "value": "721,9 kg"
+        },
+        {
+          "label": "Afstand van Zon",
+          "value": ">163 AU / >24 miljard km (mrt 2026)"
+        },
+        {
+          "label": "Snelheid",
+          "value": "~17 km/s (~61.200 km/uur)"
+        },
+        {
+          "label": "Signaalvertraging",
+          "value": ">22 uur enkele reis"
+        },
+        {
+          "label": "Energiebron",
+          "value": "3 × RTG (radioactief thermoelektrisch)"
+        },
+        {
+          "label": "Gouden Plaat",
+          "value": "Beelden en geluiden van de Aarde (Carl Sagan)"
+        }
+      ],
+      "relatedTags": [
+        "voyager",
+        "voyager 1",
+        "nasa",
+        "interstellair",
+        "jupiter",
+        "saturnus",
+        "pale blue dot"
+      ]
+    },
+    {
+      "id": "europa-clipper",
+      "_ll2Id": null,
+      "name": "Europa Clipper",
+      "agency": "NASA",
+      "agencyColor": "#378ADD",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "14 okt 2024",
+      "objective": "Onderzoekt of Jupiter's ijsmaan Europa bewoonbaar is — met een oceaan onder het ijs.",
+      "body": "Europa (Jupiter)",
+      "highlight": "Grootste NASA interplanetaire sonde ooit; aankomst Jupiter 2030",
+      "icon": "🌊",
+      "bgFrom": "#04080e",
+      "bgTo": "#080f1e",
+      "description": "Europa Clipper is de grootste ruimtesonde die NASA ooit heeft gebouwd voor een interplanetaire missie. Gelanceerd op 14 oktober 2024 met een SpaceX Falcon Heavy, zal de sonde in april 2030 bij het Jupiter-systeem aankomen. Daarna maakt Europa Clipper 49 vluchten langs Europa — de ijsmaan van Jupiter waarvan wetenschappers denken dat er een grote vloeibare oceaan onder het bevroren oppervlak schuilt. Die oceaan zou meer water kunnen bevatten dan alle oceanen op Aarde samen. De missie onderzoekt of die oceaan bewoonbaar zou kunnen zijn voor microbieel leven.",
+      "vehicle": "Falcon Heavy",
+      "launchSite": "LC-39A, Kennedy Space Center, Florida, VS",
+      "duration": "~6 jaar (tot ~2031)",
+      "distanceKm": "~628.000.000 km (Jupiter gemiddeld)",
+      "missionUrl": "https://europa.nasa.gov/",
+      "timeline": [
+        {
+          "date": "14 okt 2024",
+          "event": "Lancering met SpaceX Falcon Heavy vanuit Kennedy Space Center"
+        },
+        {
+          "date": "mrt 2025",
+          "event": "Mars-flyby voor eerste zwaartekrachtassist"
+        },
+        {
+          "date": "dec 2026",
+          "event": "Aarde-flyby voor tweede zwaartekrachtassist"
+        },
+        {
+          "date": "apr 2030",
+          "event": "Aankomst Jupiter-systeem; begin verkenningsfase"
+        },
+        {
+          "date": "2030–2034",
+          "event": "49 geplande vluchten langs Europa op lage hoogte (tot ~25 km)"
+        }
+      ],
+      "facts": [
+        {
+          "label": "Massa (gelanceerd)",
+          "value": "~6.065 kg"
+        },
+        {
+          "label": "Zonnepanelen",
+          "value": "~30 m²"
+        },
+        {
+          "label": "Wetenschapsinstrumenten",
+          "value": "9, waaronder REASON (ijs-penetrerende radar)"
+        },
+        {
+          "label": "Laagste flyby-hoogte",
+          "value": "~25 km boven Europa's oppervlak"
+        },
+        {
+          "label": "Oceaandiepte (schatting)",
+          "value": "~100–200 km"
+        },
+        {
+          "label": "Communicatietijd",
+          "value": "43–52 minuten (bij Jupiter)"
+        }
+      ],
+      "relatedTags": [
+        "europa clipper",
+        "europa",
+        "jupiter",
+        "nasa",
+        "ijsmaan",
+        "oceaan",
+        "bewoonbaarheid",
+        "falcon heavy"
+      ]
+    },
+    {
+      "id": "starlink-group-17-21",
+      "_ll2Id": "f6c9396f-5f02-49e6-a847-83e4c774e0e9",
+      "name": "Starlink Group 17-21",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "11 apr 2026",
+      "objective": "SpaceX lanceert 25 nieuwe Starlink-satellieten naar een lage aardbaan om het mondiale internetnetwerk uit te breiden.",
+      "body": "Low Earth Orbit",
+      "highlight": "Onderdeel van de snelgroeiende Starlink-megaconstellatie met duizenden satellieten.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de Falcon 9-raket stuurt SpaceX opnieuw een groep van 25 satellieten de ruimte in als onderdeel van de Starlink-megaconstellatie. Dit netwerk is ontworpen om wereldwijd breedbandinternet vanuit de ruimte aan te bieden, ook in afgelegen gebieden zonder traditionele infrastructuur. De missie draagt de naam Starlink Group 17-21 en is een van de vele routinelanceringen die SpaceX uitvoert om de constellatie verder uit te breiden en te onderhouden. Met duizenden satellieten in een lage aardbaan streeft Starlink ernaar lage latentie en hoge snelheden te combineren.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "11 apr 2026",
+          "event": "Geplande lancering van Starlink Group 17-21"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Starlink",
+        "SpaceX",
+        "Falcon 9",
+        "Low Earth Orbit",
+        "Internetsatellieten",
+        "starlink",
+        "spacex",
+        "falcon 9",
+        "satellietinternet",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-04-11T08:31:26.583Z"
+    },
+    {
+      "id": "starlink-group-10-24",
+      "_ll2Id": "5352577c-d94a-4e68-a0c8-b0b684621a4f",
+      "name": "Starlink Group 10-24",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "14 apr 2026",
+      "objective": "Uitbreiding van het Starlink-netwerk met 29 nieuwe satellieten in een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering op 14 april 2026 om 06:13 UTC.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert opnieuw een batch van 29 Starlink-satellieten als onderdeel van de voortdurende uitbreiding van haar mega-constellatie voor wereldwijde internettoegang vanuit de ruimte. De Falcon 9-raket vertrekt op 14 april 2026 en brengt de satellieten in een lage aardbaan op enkele honderden kilometers hoogte. Met deze lancering groeit het Starlink-netwerk verder en verbetert SpaceX de dekking en capaciteit voor gebruikers wereldwijd. Het project is inmiddels een van de grootste commerciële satellietconstellaties ooit gebouwd.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "14 apr 2026",
+          "event": "Geplande lancering van Starlink Group 10-24"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Starlink",
+        "SpaceX",
+        "Falcon 9",
+        "Megaconstellatie",
+        "Lage aardbaan",
+        "spacex",
+        "starlink",
+        "falcon 9",
+        "low earth orbit",
+        "satelietinternet",
+        "leo",
+        "satellietinternet"
+      ],
+      "_lastClaudeUpdate": "2026-04-15T09:10:04.972Z"
+    },
+    {
+      "id": "starlink-group-17-27",
+      "_ll2Id": "7cb38bf5-6e8b-4325-be4e-3d226be5eada",
+      "name": "Starlink Group 17-27",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "15 apr 2026",
+      "objective": "Lancering van 25 Starlink-satellieten naar een lage aardbaan ter uitbreiding van SpaceX's internetsatellietstelsel.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering op 15 april 2026 om 02:00 UTC.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert opnieuw een batch van 25 satellieten voor het Starlink-megaconstellation, het ambitieuze project dat wereldwijd snel internet via de ruimte moet bieden. De missie, aangeduid als Group 17-27, wordt uitgevoerd met een Falcon 9-raket die vertrekt in de vroege ochtenduren. Met elke nieuwe lancering groeit het netwerk verder en verbetert de dekkingsgraad en capaciteit voor gebruikers wereldwijd. Starlink bedient inmiddels miljoenen abonnees en breidt zijn diensten gestaag uit naar afgelegen en onderontwikkelde regio's.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "15 apr 2026",
+          "event": "Geplande lancering van Starlink Group 17-27"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Starlink",
+        "SpaceX",
+        "Falcon 9",
+        "Low Earth Orbit",
+        "Satellietinternet",
+        "starlink",
+        "spacex",
+        "falcon 9",
+        "leo",
+        "internetsatellieten",
+        "megaconstellation",
+        "satellietinternet"
+      ],
+      "_lastClaudeUpdate": "2026-04-15T09:10:12.934Z"
+    },
+    {
+      "id": "starlink-group-17-22",
+      "_ll2Id": "0727a92f-0a9c-4e01-9bf4-1dc698e17e6b",
+      "name": "Starlink Group 17-22",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "19 apr 2026",
+      "objective": "SpaceX lanceert 25 Starlink-satellieten naar een lage aardbaan om het wereldwijde internetnetwerk verder uit te breiden.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering op 19 april 2026 om 14:00 UTC",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de Starlink Group 17-22-missie stuurt SpaceX opnieuw 25 satellieten de ruimte in als onderdeel van zijn snel groeiende megaconstellatie. De Falcon 9-raket vertrekt op 19 april 2026 en plaatst de satellieten in een lage aardbaan, van waaruit ze bijdragen aan breedbandinternet voor gebruikers wereldwijd. Starlink telt inmiddels duizenden actieve satellieten en bedient miljoenen klanten in tientallen landen. SpaceX blijft het netwerk uitbreiden om de dekking en capaciteit verder te verbeteren.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "18 apr 2026",
+          "event": "Geplande lancering van Starlink Group 17-22"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Starlink",
+        "SpaceX",
+        "Falcon 9",
+        "satellietinternet",
+        "LEO",
+        "starlink",
+        "spacex",
+        "falcon 9",
+        "low earth orbit",
+        "megaconstellatie"
+      ],
+      "_lastClaudeUpdate": "2026-04-20T09:48:36.442Z"
+    },
+    {
+      "id": "starlink-group-17-14",
+      "_ll2Id": "20418dc6-1870-4018-adda-1e6156717f02",
+      "name": "Starlink Group 17-14",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "23 apr 2026",
+      "objective": "SpaceX lanceert 24 Starlink-satellieten naar een lage aardbaan voor wereldwijde internettoegang.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor 23 april 2026 – 24 nieuwe Starlink-satellieten voor groep 17-14.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de lancering van Starlink Group 17-14 stuurt SpaceX opnieuw 24 satellieten de ruimte in als onderdeel van het groeiende Starlink-megaconstellation. De Falcon 9-raket brengt de satellietbatch naar een lage aardbaan, van waaruit ze bijdragen aan wereldwijde breedbandinternetdekking. Het Starlink-netwerk telt inmiddels duizenden actieve satellieten en bedient miljoenen gebruikers wereldwijd. Deze missie bevestigt SpaceX's onverminderde inzet om de capaciteit en dekking van het netwerk verder uit te breiden.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "22 apr 2026",
+          "event": "Geplande lancering van Starlink Group 17-14"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Starlink",
+        "SpaceX",
+        "Falcon 9",
+        "LEO",
+        "satellietinternet",
+        "starlink",
+        "spacex",
+        "falcon 9",
+        "satellieten",
+        "lage aardbaan",
+        "leo",
+        "internetsatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-04-23T09:18:29.063Z"
+    },
+    {
+      "id": "kakushin-rising-jaxa-rideshare",
+      "_ll2Id": "9281afa8-140d-425b-a560-2fa59feef814",
+      "name": "Kakushin Rising (JAXA Rideshare)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "23 apr 2026",
+      "objective": "JAXA rideshare met acht kleine satellieten naar een zonsynchrone baan via Rocket Lab Electron.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Acht JAXA-satellieten succesvol in zonsynchrone baan gebracht.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Op 23 april 2026 lanceerde Rocket Lab een Electron-raket met acht Japanse satellieten aan boord als onderdeel van de JAXA Kakushin Rising rideshare-missie. De payloads omvatten educatieve nanosatellieten, een oceaanmonitoringsatelliet, een demonstratiesatelliet voor ultrakompakte multispectrale camera's en OrigamiSat-2, een opvouwbare antenne die dankzij origamitechnieken tot 25 keer zijn opgerolde formaat kan uitvouwen. De missie was oorspronkelijk bestemd voor de Japanse Epsilon-S-raket, maar aanhoudende vertragingen door mislukte testbranden dwongen JAXA uit te wijken naar Rocket Lab. De acht satellieten — waaronder MAGNARO-II, KOSEN-2R, WASEDA-SAT-ZERO-II en PRELUDE — werden succesvol in een zonsynchrone baan gebracht.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 1A",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/37/?format=json",
+      "timeline": [
+        {
+          "date": "23 apr 2026",
+          "event": "Geplande lancering van Kakushin Rising (JAXA Rideshare)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "JAXA",
+        "Rocket Lab",
+        "Electron",
+        "Rideshare",
+        "Sun-Synchronous Orbit",
+        "jaxa",
+        "rocket lab",
+        "electron",
+        "rideshare",
+        "origamisat",
+        "origamisat-2"
+      ],
+      "_lastClaudeUpdate": "2026-04-23T09:18:21.702Z"
+    },
+    {
+      "id": "amazon-leo-le-02",
+      "_ll2Id": "7bffe283-a708-427d-ba0d-43ea741453b1",
+      "name": "Amazon Leo (LE-02)",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "28 apr 2026",
+      "objective": "Lancering van 32 Amazon Kuiper-satellieten voor breedband internettoegang vanuit een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering op 28 april 2026 met 32 Kuiper-satellieten aan boord.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Amazon Leo, voorheen bekend als Project Kuiper, is een megaconstellatie van 3.276 satellieten in een lage aardbaan die betaalbare breedbandverbindingen wereldwijd moet bieden. De constellatie wordt beheerd door Kuiper Systems LLC, een dochteronderneming van Amazon. De satellieten worden verspreid over 98 orbitale vlakken op drie hoogtelagen: 590, 610 en 630 kilometer. Deze vlucht met de Ariane 64 brengt 32 satellieten tegelijk naar hun bestemming.",
+      "vehicle": "Ariane 64",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
+      "timeline": [
+        {
+          "date": "28 apr 2026",
+          "event": "Geplande lancering van Amazon Leo (LE-02)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Amazon Kuiper",
+        "Megaconstellatie",
+        "Ariane 64",
+        "Arianespace",
+        "Breedbandinternet"
+      ]
+    },
+    {
+      "id": "gps-iii-sv10",
+      "_ll2Id": "2c5686ec-b0fd-4987-935d-587e3c85fa2d",
+      "name": "GPS III SV10",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "21 apr 2026",
+      "objective": "Lancering van de tiende en laatste GPS III-satelliet ter verbetering van het Amerikaanse navigatienetwerk.",
+      "body": "Medium Earth Orbit",
+      "highlight": "Tiende en laatste missie in de GPS III-reeks gepland voor april 2026.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de lancering van GPS III SV10 sluit SpaceX de volledige reeks van tien GPS III-missies af in opdracht van de Amerikaanse Space Force. De GPS III-satellieten bieden een drie keer nauwkeurigere positionering en een acht keer betere storingsbestendigheid dan hun voorgangers. De Falcon 9-raket brengt de satelliet naar een Medium Earth Orbit, waar hij deel uitmaakt van het mondiale GPS-constellatie. Deze tiende missie markeert de voltooiing van een langlopend moderniseringsprogramma voor het Amerikaanse navigatiesysteem.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "30 apr 2026",
+          "event": "Geplande lancering van GPS III SV10"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "GPS III",
+        "SpaceX",
+        "Falcon 9",
+        "Medium Earth Orbit",
+        "Navigatiesatelliet",
+        "gps iii",
+        "spacex",
+        "falcon 9",
+        "space force",
+        "navigatiesatelliet"
+      ],
+      "_lastClaudeUpdate": "2026-04-11T08:32:19.939Z"
+    },
+    {
+      "id": "viasat-3-f3-viasat-3-asia-pacific",
+      "_ll2Id": "4cc237b2-c61a-491e-9532-466cce81f524",
+      "name": "ViaSat-3 F3 (ViaSat-3 Asia-Pacific)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "29 apr 2026",
+      "objective": "Lancering van de ViaSat-3 F3-satelliet voor breedbandinternet boven de Aziatisch-Pacifische regio.",
+      "body": "Geostationaire baan",
+      "highlight": "Gepland voor lancering op 29 april 2026 met Falcon Heavy.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon Heavy de derde en laatste satelliet uit de ViaSat-3-serie naar een geostationaire baan. De ViaSat-3 F3-satelliet zal de Aziatisch-Pacifische regio voorzien van ultrasnelle internetconnectiviteit via Ka-band technologie. Elke satelliet in de reeks biedt een netwerkcapaciteit van meer dan één terabit per seconde, wat hem tot een van de krachtigste commerciële communicatiesatellieten ter wereld maakt. Dankzij geavanceerde flexibiliteit kan de capaciteit dynamisch worden gericht op gebieden waar de vraag het grootst is.",
+      "vehicle": "Falcon Heavy",
+      "launchSite": "Launch Complex 39A",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1062/?format=json",
+      "timeline": [
+        {
+          "date": "30 apr 2026",
+          "event": "Geplande lancering van ViaSat-3 F3 (ViaSat-3 Asia-Pacific)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "ViaSat-3",
+        "Ka-band",
+        "Geostationaire baan",
+        "Falcon Heavy",
+        "Satellietinternet",
+        "viasat-3",
+        "ka-band",
+        "geostationaire baan",
+        "falcon heavy",
+        "breedbandsatelliet",
+        "viasat",
+        "spacex"
+      ],
+      "_lastClaudeUpdate": "2026-04-30T09:57:37.698Z"
+    },
+    {
+      "id": "strix-launch-9",
+      "_ll2Id": "156a9e46-01b5-46f4-818e-ea563c71c5fe",
+      "name": "StriX Launch 9",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mei 2026",
+      "objective": "Lancering van een SAR-aardobservatiehoefsatelliet voor het Japanse bedrijf Synspective.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Geplande lancering: 31 mei 2026",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab lanceert met de Electron-raket de negende StriX-satelliet voor het Japanse aardobservatiebedrijf Synspective. De StriX-serie bestaat uit compacte satellieten uitgerust met synthetische apertuurradar, waarmee onafhankelijk van weersomstandigheden en daglicht beelden van het aardoppervlak kunnen worden gemaakt. De missie wordt uitgevoerd vanuit het lanceercomplex op het Mahia-schiereiland in Nieuw-Zeeland naar een zonnesynchrone baan. Met deze vlucht breidt Synspective zijn commerciële SAR-constellatie verder uit, gericht op toepassingen zoals rampenmonitoring, stadsplanning en maritieme surveillance.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
+      "timeline": [
+        {
+          "date": "31 mei 2026",
+          "event": "Geplande lancering van StriX Launch 9"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "Synspective",
+        "SAR-satelliet",
+        "Zonnesynchrone baan"
+      ]
+    },
+    {
+      "id": "the-grain-goddess-provides-iqps-launch-7",
+      "_ll2Id": "8b7e748c-6ed5-4681-a898-827b4a23b8d7",
+      "name": "The Grain Goddess Provides (iQPS Launch 7)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mei 2026",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering op 31 mei 2026 vanuit Mahia, Nieuw-Zeeland.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met de Electron-raket de zevende lanceringsopdracht uit voor het Japanse beeldbedrijf iQPS. Aan boord bevindt zich een satelliet met synthetische apertuurradar (SAR), waarmee de aarde bij dag en nacht en door wolken heen gefotografeerd kan worden. De missie draagt de poëtische naam 'The Grain Goddess Provides', een verwijzing naar de Japanse godin Toyouke. Met deze vlucht breidt iQPS zijn commerciële SAR-constellatie in een lage aardbaan verder uit.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/8b7e748c-6ed5-4681-a898-827b4a23b8d7/?format=json",
+      "timeline": [
+        {
+          "date": "31 mei 2026",
+          "event": "Geplande lancering van The Grain Goddess Provides (iQPS Launch 7)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "iQPS",
+        "SAR-satelliet",
+        "aardobservatie",
+        "rocket lab",
+        "electron",
+        "iqps",
+        "sar"
+      ],
+      "_lastClaudeUpdate": "2026-04-11T08:32:50.195Z"
+    },
+    {
+      "id": "flight-12",
+      "_ll2Id": "ed83366c-872c-4484-97c1-bc74832304fc",
+      "name": "Flight 12",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mei 2026",
+      "objective": "Twaalfde testvlucht van Starship, met de primeur van de volledig nieuwe Starship V3-configuratie.",
+      "body": "Suborbital",
+      "highlight": "Eerste vlucht van Starship V3 – nieuwe generatie supertanker debuteert",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX bereidt zich voor op de twaalfde testvlucht van het tweestapsraket Starship-systeem, gepland voor 31 mei 2026. Deze vlucht markeert een historisch moment: voor het eerst zal de nieuwe Starship V3-variant de lucht ingaan. De suborbitale testvlucht moet aanvullende data opleveren over de prestaties en betrouwbaarheid van het verbeterde voertuig. Het is een cruciale stap in SpaceX' ambitie om Starship operationeel in te zetten voor maanmissies en interplanetaire reizen.",
+      "vehicle": "Starship",
+      "launchSite": "Orbital Launch Pad 2",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "31 mei 2026",
+          "event": "Geplande lancering van Flight 12"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Starship",
+        "Starship V3",
+        "Testvlucht",
+        "Suborbital"
+      ]
+    },
+    {
+      "id": "amazon-leo-le-03",
+      "_ll2Id": "ed8ccd18-b530-4f55-92ae-bda89ac2985c",
+      "name": "Amazon Leo (LE-03)",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "17 jun 2026",
+      "objective": "Lancering van 35-40 Amazon Kuiper-satellieten naar een lage aardbaan voor mondiale breedbandinternet.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering op 31 mei 2026 met Ariane 64 vanaf Kourou.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Amazon Leo, voorheen bekend als Project Kuiper, is een megaconstellatie van 3.276 satellieten in een lage aardbaan, bedoeld om wereldwijd breedbandinternet aan te bieden. De constellatie wordt beheerd door Kuiper Systems LLC, een dochteronderneming van Amazon, en wordt verdeeld over 98 orbitale vlakken op hoogtes van 590, 610 en 630 kilometer. Elke Ariane 64-vlucht brengt 35 tot 40 satellieten tegelijk in een baan, wat de lancering tot een cruciale schakel maakt in de opbouw van het netwerk. Met deze missie versterkt Arianespace zijn positie als strategische partner in de commerciële megaconstellatiemarkt.",
+      "vehicle": "Ariane 64",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
+      "timeline": [
+        {
+          "date": "31 mei 2026",
+          "event": "Geplande lancering van Amazon Leo (LE-03)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Amazon Kuiper",
+        "Megaconstellatie",
+        "Ariane 64",
+        "Breedband internet",
+        "Low Earth Orbit",
+        "amazon kuiper",
+        "ariane 64",
+        "arianespace",
+        "megaconstellation",
+        "leo-internet",
+        "megaconstellatie",
+        "breedbandinternet"
+      ],
+      "_lastClaudeUpdate": "2026-05-11T10:52:57.069Z"
+    },
+    {
+      "id": "loxsat-1",
+      "_ll2Id": "599ba2df-7483-4b2f-a083-2b5ddc06e069",
+      "name": "LOXSAT 1",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Demonstratie van een volledig cryogeen vloeistofbeheersysteem in een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering eind 2026 aan boord van Rocket Lab Electron.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "LOXSAT 1 is een demonstratiesatelliet die een compleet cryogeen zuurstofbeheersysteem in een lage aardbaan test, ontwikkeld door Eta Space en gefinancierd via NASA's Tipping Point-programma. Het systeem wordt geïntegreerd op een Rocket Lab Photon-LEO satellietbus en zal gedurende negen maanden cruciale gegevens verzamelen over de opslag en overdracht van vloeibaar zuurstof in de ruimte. De missie moet aantonen dat cryogene vloeistoffen betrouwbaar in de ruimte bewaard en overgeheveld kunnen worden, een sleuteltechnologie voor toekomstige ruimteverkenning. Eta Space wil de opgedane kennis gebruiken om een commercieel brandstofopslag- en transferdepot te bouwen dat meerdere klanten kan bedienen.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/599ba2df-7483-4b2f-a083-2b5ddc06e069/?format=json",
+      "timeline": [
+        {
+          "date": "25 jun 2026",
+          "event": "Geplande lancering van LOXSAT 1"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "NASA",
+        "Cryogene technologie",
+        "Lage aardbaan",
+        "rocket lab",
+        "electron",
+        "nasa tipping point",
+        "eta space",
+        "cryogene technologie",
+        "rocket lab electron",
+        "photon-leo"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:14:46.815Z"
+    },
+    {
+      "id": "mtg-i2",
+      "_ll2Id": "a57aed97-b94f-42e1-905e-9421dbd96ac8",
+      "name": "MTG-I2",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "27 aug 2026",
+      "objective": "MTG-I2 is de derde Meteosat Third Generation satelliet voor geavanceerde weersvoorspellingen vanuit een geostationaire baan.",
+      "body": "Geostationaire baan",
+      "highlight": "Lancering gepland voor 27 augustus 2026 met Ariane 62",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "MTG-I2 is de derde satelliet binnen de nieuwe generatie weersatellieten van EUMETSAT, de Europese organisatie voor meteorologische satellieten. De lancering staat gepland voor augustus 2026 aan boord van een Ariane 62-raket vanaf het Europese ruimtevaartcentrum in Kourou, Frans-Guyana. De satelliet zal vanuit een geostationaire baan op circa 36.000 kilometer hoogte continue beelden en data leveren ter ondersteuning van nauwkeurigere weersvoorspellingen en klimaatmonitoring. MTG-I2 maakt deel uit van een bredere vloot die EUMETSAT voor de komende decennia voorbereidt op de groeiende behoefte aan betrouwbare meteorologische informatie boven Europa en Afrika.",
+      "vehicle": "Ariane 62",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/232/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van MTG-I2"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Eumetsat",
+        "Weersatelliet",
+        "Ariane 64",
+        "Geostationaire baan",
+        "MTG-serie",
+        "eumetsat",
+        "weersatelliet",
+        "ariane 64",
+        "geostationaire baan",
+        "meteosat",
+        "ariane 6",
+        "mtg-serie",
+        "ariane 62",
+        "meteosat third generation",
+        "meteorologie",
+        "klimaatmonitoring"
+      ],
+      "_lastClaudeUpdate": "2026-08-28T19:45:06.460Z"
+    },
+    {
+      "id": "transporter-17-dedicated-sso-rideshare",
+      "_ll2Id": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
+      "name": "Transporter 17 (Dedicated SSO Rideshare)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 jun 2026",
+      "objective": "Tientallen micro- en nanosatellieten naar een zonsynchrone baan brengen voor commerciële en overheidsklanten.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Geplande lancering op 30 juni 2026 vanuit een SpaceX-lanceerplatform.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX voert met de Transporter 17-missie opnieuw een dedicated rideshare-vlucht uit naar een zonsynchrone baan. Aan boord bevinden zich tientallen kleine micro- en nanosatellieten van uiteenlopende commerciële en overheidsklanten. De missie maakt gebruik van de beproefde Falcon 9-raket, waarvan de eerste trap naar verwachting zal landen voor hergebruik. Transporter-vluchten bieden kleine satellietoperators betaalbare en regelmatige toegang tot de ruimte.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Transporter 17 (Dedicated SSO Rideshare)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "Rideshare",
+        "Zonsynchrone baan",
+        "Nanosatellieten"
+      ]
+    },
+    {
+      "id": "mrv-1",
+      "_ll2Id": "0f6780cf-edae-4d7c-99d6-ce7de784d140",
+      "name": "MRV-1",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "21 jul 2026",
+      "objective": "MRV-1 brengt een robotvoertuig en verlengingspods naar geostationaire baan om satellieten te onderhouden.",
+      "body": "Geostationaire baan",
+      "highlight": "Gepland voor lancering in september 2026 met Falcon 9.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert in september 2026 de MRV-1-missie voor SpaceLogistics, een dochteronderneming van Northrop Grumman. De payload bestaat uit een Mission Robotic Vehicle (MRV) en meerdere Mission Extension Pods (MEPs), bedoeld om de levensduur van bestaande geostationairen satellieten te verlengen. Het robotvoertuig kan zich zelfstandig koppelen aan klantensatellieten en de pods als permanente aandrijfmodules achterlaten. Dit is een belangrijke stap in de opkomende markt van satellietsonderhoud in de ruimte.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/0f6780cf-edae-4d7c-99d6-ce7de784d140/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van MRV-1"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "Satellietonderhoud",
+        "Geostationaire baan",
+        "SpaceLogistics",
+        "spacelogistics",
+        "satellietonderhoud",
+        "falcon 9",
+        "geostationaire baan",
+        "northrop grumman",
+        "spacex",
+        "geo",
+        "on-orbit service"
+      ],
+      "_lastClaudeUpdate": "2026-06-29T12:25:48.791Z"
+    },
+    {
+      "id": "sda-tranche-1-tracking-layer-a",
+      "_ll2Id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
+      "name": "SDA Tranche 1 Tracking Layer A",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van 21 militaire satellieten voor een veerkrachtig, laaglatentie datanetwerk in lage aardbaan.",
+      "body": "Polar Orbit",
+      "highlight": "Geplande lancering op 5 oktober 2026 in polaire baan.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9 in totaal 21 satellieten van fabrikant Northrop Grumman als onderdeel van de Tranche 1 Tracking Layer A-missie van het Amerikaanse Space Force. Deze satellieten vormen een bouwsteen van de Proliferated Warfighter Space Architecture (PWSA), een grootschalig militair satellietnetwerk dat wereldwijd betrouwbare en laaglatente datacommunicatie moet bieden aan militaire platforms. De satellietconstellation maakt gebruik van optische inter-satellietverbindingen (OISL), die aanzienlijk beter presteren dan bestaande radiofrequentieverbindingen. Het netwerk opereert via Ka-band en is dynamisch ingericht voor bredere bandbreedte, stereodekking en verhoogde fouttolerantie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Tracking Layer A"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "US Space Force",
+        "SDA",
+        "Hypersonische raketten",
+        "spacex",
+        "falcon 9",
+        "space force",
+        "sda",
+        "hypersonische raketten",
+        "space development agency",
+        "pwsa",
+        "raketafweer",
+        "militaire ruimtevaart",
+        "northrop grumman",
+        "militaire satellieten"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:13:24.218Z"
+    },
+    {
+      "id": "sda-tranche-1-tracking-layer-c",
+      "_ll2Id": "dca8749f-1552-485a-8061-f1ad79055b8d",
+      "name": "SDA Tranche 1 Tracking Layer C",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van satellieten voor wereldwijde tracking en vroegtijdige waarschuwing van hypersonische raketdreigingen.",
+      "body": "Polar Orbit",
+      "highlight": "Geplande lancering in 2026 als onderdeel van vijf SDA Tranche 1-missies.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De SDA Tranche 1 Tracking Layer C-missie is een van de vijf geplande lanceringen door de Amerikaanse Space Force Space Development Agency (SDA) voor de Proliferated Warfighter Space Architecture (PWSA). Het constellation biedt wereldwijde detectie, waarschuwing en targeting van geavanceerde raketdreigingen, inclusief hypersonische systemen. SpaceX voert de lancering uit met een Falcon 9-raket vanuit een polaire baan. De missie vormt een cruciale bouwsteen voor de militaire ruimtevaartinfrastructuur van de Verenigde Staten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Tracking Layer C"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SDA",
+        "SpaceX Falcon 9",
+        "Militaire satelliet",
+        "Hypersonische verdediging",
+        "Polaire baan",
+        "space force",
+        "sda",
+        "pwsa",
+        "hypersonische raketten",
+        "falcon 9",
+        "spacex",
+        "raketafweer",
+        "raketdetectie",
+        "rakettracering"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:14:00.579Z"
+    },
+    {
+      "id": "sda-tranche-1-tracking-layer-e",
+      "_ll2Id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van satellietcluster voor wereldwijde detectie en tracking van hypersonische raketdreigingen.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor eind 2026 als vijfde vlucht binnen het Tranche 1-programma.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De SDA Tranche 1 Tracking Layer E-missie is een van vijf geplande lanceringen door de Amerikaanse Space Development Agency voor de Proliferated Warfighter Space Architecture. Het constellation biedt wereldwijde waarschuwings- en trackingcapaciteiten tegen geavanceerde raketdreigingen, waaronder hypersonische wapensystemen. SpaceX voert de lancering uit met een Falcon 9-raket vanuit een polaire baan. De missie maakt deel uit van een breder programma van de U.S. Space Force om militaire ruimteinfrastructuur te moderniseren.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Tracking Layer E"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "Space Development Agency",
+        "PWSA",
+        "Militaire satellieten",
+        "spacex",
+        "falcon 9",
+        "space development agency",
+        "hypersonische raketten",
+        "pwsa",
+        "space force",
+        "sda",
+        "militaire satellieten",
+        "hypersonische dreigingen",
+        "defensie",
+        "militaire ruimtevaart"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:14:07.842Z"
+    },
+    {
+      "id": "sda-tranche-1-transport-layer-a",
+      "_ll2Id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+      "name": "SDA Tranche 1 Transport Layer A",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 jun 2026",
+      "objective": "21 militaire satellieten lanceren voor een veerkrachtig, wereldwijd low-latency datanetwerk in een lage aardbaan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland voor 30 juni 2026 met Falcon 9 in polaire baan.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert 21 door Northrop Grumman gebouwde satellieten voor de Proliferated Warfighter Space Architecture (PWSA) van de Amerikaanse Space Development Agency. Het gaat om de eerste van zes missies voor de zogenoemde Tranche 1 Transport Layer, een constellatie in een polaire baan die militaire eenheden wereldwijd voorziet van snelle en veerkrachtige datacommunicatie. De satellieten zijn via optische inter-satellietverbindingen (OISL) met elkaar verbonden, wat aanzienlijk hogere prestaties biedt dan bestaande radiofrequentie-crosslinks. Het netwerk opereert in de Ka-band en is dynamisch ingericht voor betere bandbreedte, eenvoudigere handoffs en verhoogde storingstolerantie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Transport Layer A"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Space Development Agency",
+        "PWSA",
+        "Northrop Grumman",
+        "militaire satellieten",
+        "Falcon 9"
+      ]
+    },
+    {
+      "id": "sda-tranche-1-transport-layer-d",
+      "_ll2Id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
+      "name": "SDA Tranche 1 Transport Layer D",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert militaire satellieten voor het Amerikaanse PWSA Tranche 1 Transport Layer-netwerk.",
+      "body": "Polar Orbit",
+      "highlight": "Geplande lancering eind 2026 via Falcon 9 naar een polaire baan.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De SDA Tranche 1 Transport Layer D-missie is onderdeel van een reeks van zes lanceringen door de US Space Force Space Development Agency voor de Proliferated Warfighter Space Architecture. Het netwerk van Low Earth Orbit-satellieten moet wereldwijd betrouwbare, veerkrachtige en latentiearme militaire datacommunicatie bieden aan een breed scala aan strijdkrachtplatformen. De satellieten zijn onderling verbonden via optische inter-satellietlinks, die aanzienlijk beter presteren dan traditionele radiofrequente verbindingen. Het systeem opereert in de Ka-band en is dynamisch genetswerkt voor grotere bandbreedte, eenvoudigere overdrachtsmomenten en verhoogde fouttolerantie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Transport Layer D"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Space Force",
+        "SDA",
+        "militaire satelliet",
+        "PWSA",
+        "Falcon 9",
+        "space force",
+        "pwsa",
+        "sda",
+        "militaire satellieten",
+        "falcon 9",
+        "leo",
+        "militair ruimtevaart",
+        "leo-constellatie",
+        "spacex",
+        "space development agency",
+        "us space force"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:14:15.764Z"
+    },
+    {
+      "id": "sda-tranche-1-transport-layer-e",
+      "_ll2Id": "d9adedc4-8fa1-4a36-84f9-43b8893a6865",
+      "name": "SDA Tranche 1 Transport Layer E",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "16 jul 2026",
+      "objective": "Lancering van 21 militaire satellieten voor het Amerikaanse PWSA Tranche 1 Transport Layer netwerk.",
+      "body": "Polar Orbit",
+      "highlight": "Zesde en laatste van zes SDA Tranche 1 Transport Layer-missies gepland.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9-raket 21 satellieten van fabrikant York Space Systems naar een poolomloopbaan. De missie maakt deel uit van de Proliferated Warfighter Space Architecture (PWSA) van de Amerikaanse Space Development Agency, die wereldwijde militaire connectiviteit vanuit een lage aardbaan moet garanderen. De satellieten zijn onderling verbonden via optische inter-satellietverbindingen (OISLs), die aanzienlijk beter presteren dan traditionele radiofrequentieverbindingen. Het netwerk opereert in de Ka-band en biedt stereobedekkig, dynamische routering en verhoogde fouttolerantie voor militaire platforms.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Transport Layer E"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SDA",
+        "PWSA",
+        "militair",
+        "SpaceX",
+        "Falcon 9",
+        "space force",
+        "sda",
+        "pwsa",
+        "militaire satellieten",
+        "falcon 9",
+        "spacex",
+        "leo",
+        "space development agency",
+        "leo-constellatie"
+      ],
+      "_lastClaudeUpdate": "2026-07-17T09:45:33.823Z"
+    },
+    {
+      "id": "sda-tranche-1-transport-layer-f",
+      "_ll2Id": "c5783e2b-d458-4b99-9936-4043c236190b",
+      "name": "SDA Tranche 1 Transport Layer F",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van militaire satellietcluster voor wereldwijde lage-latentie dataconnectiviteit vanuit LEO.",
+      "body": "Polar Orbit",
+      "highlight": "Geplande lancering eind 2026 met SpaceX Falcon 9 in polaire baan.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De SDA Tranche 1 Transport Layer F is de zesde en laatste missie in een reeks lanceringen van de Amerikaanse Space Development Agency voor de Proliferated Warfighter Space Architecture. De satellietenconstellation biedt militaire eenheden wereldwijd veilige en veerkrachtige dataverbindingen vanuit een lage aardbaan. Een opvallend kenmerk is het gebruik van optische inter-satellietverbindingen (OISLs), die aanzienlijk hogere prestaties leveren dan traditionele radiofrequente verbindingen. Het netwerk opereert in de Ka-band en is dynamisch geconfigureerd voor grotere bandbreedte, betere fouttolerantie en eenvoudigere overdrachten tussen satellieten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Transport Layer F"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "Space Development Agency",
+        "Militaire satellieten",
+        "PWSA",
+        "space force",
+        "sda",
+        "pwsa",
+        "militaire satellieten",
+        "falcon 9",
+        "polair baan",
+        "spacex",
+        "leo-constellatie",
+        "spacex falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:14:23.945Z"
+    },
+    {
+      "id": "victus-haze-puma",
+      "_ll2Id": "04154b70-045b-4e3a-bb5a-e5436091ba37",
+      "name": "VICTUS HAZE Puma",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 jun 2026",
+      "objective": "True Anomaly's Jackal AOV voert nabijheidsoperaties uit in een lage aardbaan voor de U.S. Space Force.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering op afroep: volledige startvoorbereiding binnen 24 uur vereist.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "De VICTUS HAZE Puma-missie brengt het Jackal Autonomous Orbital Vehicle (AOV) van True Anomaly in een lage aardbaan, waar het nabijheidsoperaties zal uitvoeren rond een ander ruimtevaartuig gebouwd door Rocket Lab National Security. De missie maakt deel uit van het Tactically Responsive Space-programma van de U.S. Space Force Space Systems Command, gericht op snelle en flexibele ruimteoperaties. Het spacecraft blijft gereed totdat de Space Force het startsein geeft, waarna het Firefly-team slechts 24 uur heeft om de raket klaar te stomen voor lancering. Met de Firefly Alpha Block 2 demonstreert het programma een ongekende operationele wendbaarheid in militaire ruimtevaart.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/04154b70-045b-4e3a-bb5a-e5436091ba37/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van VICTUS HAZE Puma"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "Space Force",
+        "Tactische Ruimtevaart",
+        "Ruimtedomeinbewustzijn",
+        "u.s. space force",
+        "firefly alpha",
+        "tacrs",
+        "true anomaly",
+        "nabijheidsoperaties"
+      ],
+      "_lastClaudeUpdate": "2026-04-11T08:34:26.560Z"
+    },
+    {
+      "id": "9-x-globalstar-3",
+      "_ll2Id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
+      "name": "9 x Globalstar-3",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mei 2026",
+      "objective": "Negen Globalstar-3 satellieten in lage baan brengen ter versterking van het mondiale mobiele netwerk.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland voor medio 2026; satellieten in productie bij MDA en Rocket Lab.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert negen derde generatie Globalstar-satellieten naar een lage aardbaan op 1410 kilometer hoogte, met een inclinatie van 52 graden. De nieuwe satellieten moeten de bestaande constellatie verjongen en de capaciteit voor wereldwijde spraak-, data- en faxdiensten uitbreiden. MDA kreeg begin 2022 het contract voor de bouw van in totaal 17 nieuwe satellieten, waarbij Rocket Lab verantwoordelijk is voor de satellietbussen en lanceerdispensers. De missie onderstreept de groeiende samenwerking tussen grote ruimtevaartbedrijven voor commerciële communicatie-infrastructuur.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/204/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van 9 x Globalstar-3"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Globalstar",
+        "SpaceX",
+        "Falcon 9",
+        "LEO",
+        "communicatiesatellieten",
+        "globalstar",
+        "spacex",
+        "falcon 9",
+        "leo"
+      ],
+      "_lastClaudeUpdate": "2026-04-11T08:34:33.761Z"
+    },
+    {
+      "id": "rivada-10",
+      "_ll2Id": "511a3ef8-799e-4723-9293-b954d9d2eb83",
+      "name": "Rivada 10",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert 24 satellieten voor de internetconstellatie van het Ierse bedrijf Rivada Space Networks.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor juni 2026; onderdeel van groeiende Rivada-constellatie.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de Rivada 10-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor Rivada Space Networks, een Iers bedrijf dat wereldwijde breedbanddiensten wil aanbieden. De constellatie richt zich op zakelijke en overheidsklanten met lage latentie en hoge capaciteit via een Low Earth Orbit-netwerk. De lancering maakt gebruik van de beproefde Falcon 9-raket, die inmiddels een dominante rol speelt in de commerciële satellietmarkt. Rivada bouwt hiermee verder aan zijn ambitieuze plan om te concurreren met gevestigde spelers zoals Starlink en OneWeb.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Rivada 10"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rivada Space Networks",
+        "SpaceX",
+        "Falcon 9",
+        "internetconstellatie",
+        "polaire baan",
+        "rivada space networks",
+        "spacex",
+        "falcon 9",
+        "internetsatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-04-11T08:34:41.744Z"
+    },
+    {
+      "id": "rivada-11",
+      "_ll2Id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
+      "name": "Rivada 11",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert 24 satellieten voor het breedbandinternetnetwerk van Rivada Space Networks.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor 31 december 2026; onderdeel van groeiende Rivada-constellatie.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de Rivada 11-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het ambitieuze internetconstellatieproject van Rivada Space Networks. Het Ierse bedrijf werkt aan een wereldwijd dekkend netwerk in een lage aardbaan om betrouwbare connectiviteit te bieden aan ondernemingen en overheden. De Falcon 9-raket verzorgt wederom het transport, conform de bewezen aanpak van herbruikbare lanceervoertuigen. De missie staat gepland voor eind december 2026 en markeert een volgende stap in de uitbouw van Rivada's infrastructuur in de ruimte.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Rivada 11"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rivada Space Networks",
+        "Falcon 9",
+        "SpaceX",
+        "Internetsatelliet",
+        "Poolbaan",
+        "rivada space networks",
+        "falcon 9",
+        "satellietinternet",
+        "polaire baan",
+        "leo-constellatie",
+        "spacex",
+        "internetsatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:15:02.802Z"
+    },
+    {
+      "id": "rivada-12",
+      "_ll2Id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
+      "name": "Rivada 12",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert 24 satellieten voor het internetconstellatie van Rivada Space Networks.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor 31 december 2026; onderdeel van groeiende Rivada-constellatie.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de Rivada 12-missie brengt SpaceX opnieuw een batch van 24 satellieten in een polaire baan voor het groeiende netwerk van Rivada Space Networks. Dit bedrijf werkt aan een commercieel low-earth orbit netwerk dat veilige, lage-latentie connectiviteit moet bieden aan overheden en bedrijven wereldwijd. De Falcon 9-raket, bewezen werkpaard voor satellietlanceringen, verzorgt ook deze vlucht. De missie staat gepland voor eind december 2026 en vormt een volgende stap in de uitbouw van Rivada's ruimteinfrastructuur.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Rivada 12"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rivada Space Networks",
+        "Falcon 9",
+        "SpaceX",
+        "Satelliettconstellatie",
+        "Polaire baan",
+        "rivada space networks",
+        "falcon 9",
+        "satellietinternet",
+        "polaire baan",
+        "spacex",
+        "poolbaan",
+        "rivada",
+        "satellietconstellation",
+        "breedband internet"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:15:10.686Z"
+    },
+    {
+      "id": "rivada-7",
+      "_ll2Id": "1fa3741c-3339-4954-a026-2cd9d36161c0",
+      "name": "Rivada 7",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation van Rivada Space Networks.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor 31 december 2026 – polaire lancering met Falcon 9",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Op 31 december 2026 voert SpaceX de Rivada 7-missie uit met een Falcon 9-raket, waarbij 24 satellieten in een polaire baan worden gebracht. De satellieten maken deel uit van het groeiende constellation van Rivada Space Networks, een bedrijf dat wereldwijde breedbandverbindingen via de lage aardbaan wil aanbieden. Met een polaire baan kunnen de satellieten ook afgelegen gebieden op hoge breedtegraden bedienen. De missie onderstreept de toenemende vraag naar commerciële satellietlanceringen en SpaceX's dominante positie in die markt.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Rivada 7"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rivada Space Networks",
+        "Falcon 9",
+        "SpaceX",
+        "satellietinternet",
+        "polaire baan",
+        "rivada space networks",
+        "falcon 9",
+        "leo-constellatie",
+        "internetsatellieten",
+        "constellatie",
+        "spacex",
+        "rivada",
+        "satellite internet"
+      ],
+      "_lastClaudeUpdate": "2026-10-07T14:52:29.549Z"
+    },
+    {
+      "id": "rivada-8",
+      "_ll2Id": "7d77bd89-af23-4a5a-b632-de0034003a64",
+      "name": "Rivada 8",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van 24 satellieten voor het internet-constellation van Rivada Space Networks.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland voor 31 december 2026 vanuit een polaire baan.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9-raket 24 satellieten voor Rivada Space Networks, een ambitieus bedrijf dat een eigen breedbandnetwerk in de ruimte wil opbouwen. De satellieten worden in een polaire baan gebracht, wat wereldwijde dekking mogelijk maakt, ook boven afgelegen gebieden en de poolstreken. Rivada richt zich met zijn constellatie op zakelijke en overheidsklanten die behoefte hebben aan veilige en betrouwbare verbindingen. De lancering staat gepland voor eind december 2026 en is onderdeel van een bredere uitrol van het Rivada-netwerk.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Rivada 8"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rivada Space Networks",
+        "SpaceX",
+        "Falcon 9",
+        "LEO-constellatie",
+        "Polaire baan",
+        "rivada space networks",
+        "spacex",
+        "falcon 9",
+        "internetsatelliet",
+        "polaire baan",
+        "satellietinternet",
+        "internetsatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-10-07T14:52:36.940Z"
+    },
+    {
+      "id": "rivada-9",
+      "_ll2Id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
+      "name": "Rivada 9",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van 24 satellieten voor het Rivada-internetconstellatie in een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Geplande lancering op 31 december 2026 vanuit SpaceX-locatie.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX voert met een Falcon 9-raket de Rivada 9-missie uit, waarbij 24 satellieten in een polaire baan worden gebracht. De satellieten maken deel uit van de groeiende constellatie van Rivada Space Networks, dat wereldwijde breedbandconnectiviteit nastreeft. Met een polaire baan kunnen de satellieten ook de meest afgelegen regio's op aarde bedienen, waaronder de poolgebieden. De missie markeert een volgende stap in de opbouw van Rivada's ambitieuze internetsatellietnetwerk.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Rivada 9"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rivada Space Networks",
+        "Falcon 9",
+        "SpaceX",
+        "satellietinternet",
+        "polaire baan",
+        "rivada space networks",
+        "falcon 9",
+        "spacex",
+        "internetsatellieten",
+        "rivada",
+        "satellieten"
+      ],
+      "_lastClaudeUpdate": "2026-10-08T15:02:36.763Z"
+    },
+    {
+      "id": "flight-13",
+      "_ll2Id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
+      "name": "Flight 13",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "24 jul 2026",
+      "objective": "Dertiende testvlucht van Starship V3 met eerste lading van 20 Starlink-satellieten aan boord.",
+      "body": "Suborbital",
+      "highlight": "Eerste Starship-vlucht ooit met operationele Starlink-satellietlading aan boord.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX voert op 24 juli 2026 de dertiende testvlucht uit van het tweestapsraket Starship, tevens de tweede vlucht van de V3-variant. Voor het eerst draagt Starship een payload mee de ruimte in: twintig V3 Starlink-satellieten die hun zonnepanelen en antennes ontvouwen en via krachtige lasers verbinding proberen te maken met grondstations in Zuid-Afrika en het bestaande Starlink-netwerk. Zes van de satellieten zijn uitgerust met camera's die Starships hitteschild in beeld brengen om nieuwe inspectiemethoden te testen voor toekomstige terugkeer naar de lanceerlocatie. Meerdere tegels zijn wit geschilderd om ontbrekende tegels te simuleren en als referentiepunten te dienen voor de beeldanalyse.",
+      "vehicle": "Starship",
+      "launchSite": "Orbital Launch Pad 2",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Flight 13"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Starship",
+        "Starship V3",
+        "Testvlucht",
+        "Suborbitaal",
+        "spacex",
+        "starship",
+        "starship v3",
+        "testvlucht",
+        "suborbital",
+        "herbruikbare raket",
+        "suborbitaal",
+        "starlink",
+        "hitteschild"
+      ],
+      "_lastClaudeUpdate": "2026-07-25T09:26:36.865Z"
+    },
+    {
+      "id": "strix-launch-10",
+      "_ll2Id": "add0a5be-1cf0-49cb-975a-e8c8e18d37ec",
+      "name": "StriX Launch 10",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "26 jun 2026",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf Synspective.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Tiende StriX-satelliet voor Synspective's SAR-constellatie.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met de Electron-raket de tiende StriX-missie uit voor Synspective, een Japans bedrijf gespecialiseerd in aardobservatie. De satelliet maakt gebruik van synthetische apertuurradar (SAR), waarmee het aardoppervlak onafhankelijk van weersomstandigheden en daglicht in kaart kan worden gebracht. De missie wordt gelanceerd naar een zonnesynchrone baan, ideaal voor consistente en herhaalbare beeldvorming van dezelfde locaties op aarde. Het is opnieuw een bewijs van de groeiende samenwerking tussen Rocket Lab en Synspective binnen het commerciële ruimtevaartecosysteem.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 1B",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
+      "timeline": [
+        {
+          "date": "31 jul 2026",
+          "event": "Geplande lancering van StriX Launch 10"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "Synspective",
+        "SAR",
+        "Aardobservatie",
+        "rocket lab",
+        "electron",
+        "synspective",
+        "sar-satelliet",
+        "aardobservatie",
+        "sar",
+        "zonnesynchrone baan"
+      ],
+      "_lastClaudeUpdate": "2026-05-11T10:54:28.429Z"
+    },
+    {
+      "id": "aspera",
+      "_ll2Id": "0d6ad64c-3aed-4041-b095-e1d951bc6d29",
+      "name": "Aspera",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 dec 2026",
+      "objective": "Aspera brengt ultraviolet licht van het intergalactisch medium in kaart om de geboorte van sterren te ontrafelen.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering eind 2026 aan boord van een Electron-raket.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "De Aspera-missie draagt een ultraviolettelescoop aan boord en richt zich op het hete gas in het intergalactische medium, dat vermoedelijk een sleutelrol speelt bij de vorming van sterren en planeten. Het ruimtevaartuig wordt gelanceerd door Rocket Lab op een Electron-raket naar een lage aardbaan. Aspera wordt de eerste NASA-astrofysicamissie die ultraviolette lichtsignaturen van dit gas verzamelt en in kaart brengt. De bevindingen kunnen een dieper inzicht geven in de oorsprong van sterren, planeten en mogelijk het leven zelf in het heelal.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/44/?format=json",
+      "timeline": [
+        {
+          "date": "15 aug 2026",
+          "event": "Geplande lancering van Aspera"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Ultraviolet astronomie",
+        "Intergalactisch medium",
+        "NASA astrophysics",
+        "Rocket Lab Electron",
+        "Sterrenentstaan",
+        "aspera",
+        "nasa",
+        "rocket lab",
+        "ultraviolet astronomie",
+        "intergalactisch medium",
+        "ultraviolet",
+        "astrofysica"
+      ],
+      "_lastClaudeUpdate": "2026-07-30T10:13:41.161Z"
+    },
+    {
+      "id": "strix-launch-11",
+      "_ll2Id": "9f5a4cb6-63f9-47e1-9512-b468bae2a8e6",
+      "name": "StriX Launch 11",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "2 sep 2026",
+      "objective": "Lancering van een synthetische-apertuurradarsatelliet voor het Japanse aardobservatiebedrijf Synspective.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Geplande lancering op 31 augustus 2026 om 12:05 UTC.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met zijn Electron-raket de elfde missie uit in de StriX-reeks voor het Japanse bedrijf Synspective. De satelliet maakt gebruik van synthetische-apertuurradar (SAR), waarmee de aarde ook bij bewolking en in het donker in beeld kan worden gebracht. De lanceerbasis is gelegen in Nieuw-Zeeland, vanwaar Electron zijn koers zet naar een lage aardbaan. Met deze vlucht breidt Synspective zijn commerciële SAR-constellatie verder uit voor toepassingen zoals rampenmonitoring en stedelijke analyse.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
+      "timeline": [
+        {
+          "date": "31 aug 2026",
+          "event": "Geplande lancering van StriX Launch 11"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "Synspective",
+        "SAR-satelliet",
+        "Aardobservatie",
+        "rocket lab",
+        "electron",
+        "synspective",
+        "sar-satelliet",
+        "aardobservatie"
+      ],
+      "_lastClaudeUpdate": "2026-08-29T13:27:54.288Z"
+    },
+    {
+      "id": "sda-tranche-2-transport-layer-a",
+      "_ll2Id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
+      "name": "SDA Tranche 2 Transport Layer A",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van geclassificeerde SDA Tranche 2 Transport Layer satellieten in een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor lancering eind 2026 vanuit een Amerikaanse lanceerbasis.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert namens het Space Development Agency (SDA) een nieuwe reeks satellieten als onderdeel van de Tranche 2 Transport Layer. Dit segment vormt een cruciale schakel in het groeiende militaire low-earth-orbit netwerk van het Amerikaanse Ministerie van Defensie, bedoeld voor veilige datacommunicatie en vroege detectiecapaciteiten. De Falcon 9-raket plaatst de geclassificeerde payloads in een polaire baan, waardoor wereldwijde dekking mogelijk wordt. Tranche 2 bouwt voort op eerdere lanceringen en vergroot de capaciteit en veerkracht van het netwerk aanzienlijk.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "31 aug 2026",
+          "event": "Geplande lancering van SDA Tranche 2 Transport Layer A"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SDA",
+        "Tranche 2",
+        "Transport Layer",
+        "SpaceX Falcon 9",
+        "Militaire satellieten",
+        "sda",
+        "transport layer",
+        "militair",
+        "spacex",
+        "falcon 9",
+        "militaire ruimtevaart",
+        "polaire baan",
+        "space development agency",
+        "militaire satellieten",
+        "tranche 2",
+        "militaire satelliet",
+        "defensie",
+        "satellietcommunicatie"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:15:32.635Z"
+    },
+    {
+      "id": "nancy-grace-roman-space-telescope",
+      "_ll2Id": "521f3a1c-f977-4306-9b7f-495858719adf",
+      "name": "Nancy Grace Roman Space Telescope",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "30 aug 2026",
+      "objective": "NASA's infrarood-ruimtetelescoop onderzoekt donkere energie en exoplaneten vanuit het L2-punt.",
+      "body": "L2-punt",
+      "highlight": "Lancering gepland voor 30 augustus 2026 aan boord van SpaceX Falcon Heavy.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De Nancy Grace Roman Space Telescope is een krachtige NASA-infraroodtelescoop met een primaire spiegel van 2,4 meter en twee wetenschappelijke instrumenten. Het Wide-Field Instrument biedt een gezichtsveld dat honderd keer groter is dan Hubble's camera's, met een resolutie van 300,8 megapixel. De telescoop gaat op zoek naar exoplaneten via gravitationele microlenzen en brengt de expansiegeschiedenis van het heelal in kaart om meer te leren over donkere energie en de kromming van de ruimtetijd. SpaceX lanceert het observatorium in augustus 2026 met een Falcon Heavy-raket naar het L2-punt.",
+      "vehicle": "Falcon Heavy",
+      "launchSite": "Launch Complex 39A",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/521f3a1c-f977-4306-9b7f-495858719adf/?format=json",
+      "timeline": [
+        {
+          "date": "28 sep 2026",
+          "event": "Geplande lancering van Nancy Grace Roman Space Telescope"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Nancy Grace Roman",
+        "NASA",
+        "infraroodtelescoop",
+        "donkere energie",
+        "exoplaneten",
+        "nancy grace roman",
+        "nasa",
+        "infraroodzwelescoop",
+        "l2-punt",
+        "infrarood"
+      ],
+      "_lastClaudeUpdate": "2026-08-29T13:27:45.169Z"
+    },
+    {
+      "id": "o3b-mpower-11-13",
+      "_ll2Id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "13 sep 2026",
+      "objective": "Drie O3b mPower-communicatiesatellieten in een middelhoge baan om de aarde brengen voor SES.",
+      "body": "Medium Earth Orbit",
+      "highlight": "Geplande lancering op 13 september 2026 vanuit Cape Canaveral.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9-raket drie nieuwe satellieten voor het O3b mPower-constellation van telecomoperator SES. De satellieten, gebouwd door Boeing, worden geplaatst in een middelhoge aardbaan (MEO) en moeten de capaciteit van het hoogdoorvoer-netwerk verder uitbreiden. O3b mPower biedt wereldwijd snelle en betrouwbare connectiviteit aan maritieme, luchtvaart- en zakelijke klanten. Het is een van de meest ambitieuze commerciële satellietprogramma's in zijn soort, met tientallen geplande exemplaren.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/203/?format=json",
+      "timeline": [
+        {
+          "date": "30 sep 2026",
+          "event": "Geplande lancering van O3b mPower 11-13"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SES",
+        "O3b mPower",
+        "MEO",
+        "Boeing",
+        "telecommunicatie",
+        "ses",
+        "o3b mpower",
+        "meo",
+        "boeing",
+        "communicatiesatellieten",
+        "communicatiesatelliet",
+        "medium earth orbit",
+        "spacex"
+      ],
+      "_lastClaudeUpdate": "2026-09-14T14:32:27.386Z"
+    },
+    {
+      "id": "5x-astranis-microgeo",
+      "_ll2Id": "9bfa0324-db74-444f-8dc3-1c7d373ca659",
+      "name": "5x Astranis MicroGEO",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Vijf Astranis MicroGEO-satellieten naar een geostationaire baan brengen voor klanten in vier landen.",
+      "body": "Geostationaire baan",
+      "highlight": "Lancering gepland voor eind 2026; klanten in vier landen aan boord.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9 maar liefst vijf MicroGEO-communicatiesatellieten van Astranis tegelijk naar een geostationaire transferbaan. Na uitstoot voeren de satellieten zelfstandig baanmanoeuvres uit om hun individuele geostationairen slots te bereiken. De vijf toestellen zijn bestemd voor Apco in Mexico (twee stuks), Thaicom-9 in Thailand, Chunghwa Telecom in Taiwan en MB Group in Oman. De missie illustreert de groeiende vraag naar compacte, betaalbare GEO-communicatiesatellieten voor regionale breedbanddiensten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/9bfa0324-db74-444f-8dc3-1c7d373ca659/?format=json",
+      "timeline": [
+        {
+          "date": "30 sep 2026",
+          "event": "Geplande lancering van 5x Astranis MicroGEO"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Astranis",
+        "MicroGEO",
+        "SpaceX",
+        "Falcon 9",
+        "Geostationaire baan",
+        "astranis",
+        "microgeo",
+        "spacex",
+        "falcon 9",
+        "geostationaire baan",
+        "geo"
+      ],
+      "_lastClaudeUpdate": "2026-09-11T12:26:09.550Z"
+    },
+    {
+      "id": "sda-tranche-2-tracking-layer-a",
+      "_ll2Id": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
+      "name": "SDA Tranche 2 Tracking Layer A",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert geclassificeerde SDA Tranche 2 satellieten voor ruimtegebaseerde raketdetectie in poolbaan.",
+      "body": "Polar Orbit",
+      "highlight": "Gepland voor lancering in Q4 2026 als onderdeel van PWSA Tranche 2.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De Space Development Agency (SDA) zet met deze missie een nieuwe reeks satellieten in voor de Tranche 2 Tracking Layer, een onderdeel van het Amerikaanse Proliferated Warfighter Space Architecture (PWSA). De satellieten zijn ontworpen om ballistische en hypersonische raketten vanuit de ruimte te detecteren en te volgen, wat de militaire situational awareness aanzienlijk vergroot. SpaceX voert de lancering uit met een Falcon 9-raket naar een polaire baan, wat wereldwijde dekking mogelijk maakt. De missie is geclassificeerd en verdere technische details worden niet vrijgegeven door het Amerikaanse Ministerie van Defensie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 sep 2026",
+          "event": "Geplande lancering van SDA Tranche 2 Tracking Layer A"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SDA",
+        "SpaceX",
+        "Falcon 9",
+        "Militaire ruimtevaart",
+        "Tracking Layer",
+        "sda",
+        "falcon 9",
+        "spacex",
+        "defensie",
+        "tracking layer",
+        "polaire baan",
+        "poolbaan"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:15:18.786Z"
+    },
+    {
+      "id": "sda-tranche-2-tracking-layer-b",
+      "_ll2Id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+      "name": "SDA Tranche 2 Tracking Layer B",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert geclassificeerde SDA-satellieten voor de Tranche 2 Tracking Layer in een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland voor eind 2026 in polaire baan",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De Space Development Agency (SDA) zet met deze missie een nieuwe reeks satellieten in voor de Tranche 2 Tracking Layer, een onderdeel van het Amerikaanse militaire ruimtevaartnetwerk. De Tracking Layer is ontworpen om ballistische raketten en hypersonische dreigingen wereldwijd te volgen vanuit een lage baan. SpaceX voert de lancering uit met een Falcon 9-raket vanuit een geschikte lanceerbasis. Details over de precieze payload en het aantal satellieten zijn geclassificeerd.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "timeline": [
+        {
+          "date": "30 sep 2026",
+          "event": "Geplande lancering van SDA Tranche 2 Tracking Layer B"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SDA",
+        "Tracking Layer",
+        "SpaceX",
+        "Falcon 9",
+        "Defensie",
+        "sda",
+        "spacex",
+        "falcon 9",
+        "militair",
+        "polaire baan",
+        "tracking layer",
+        "space development agency",
+        "defensie"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:15:25.328Z"
+    },
+    {
+      "id": "metop-sg-b1",
+      "_ll2Id": "22e117bf-041c-49d5-9d09-7b180036e143",
+      "name": "Metop-SG B1",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van de tweede Metop-SG B-weersatelliet voor verbeterde weersvoorspellingen vanuit poolbaan.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Gepland voor lancering op 30 november 2026 met Ariane 62.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Metop-SG B1 is de tweede satelliet binnen EUMETSATs tweede generatie Metop-weersatellieten en wordt gelanceerd met een Ariane 62-raket. De missie volgt op de A-serie van Metop-SG en richt zich op nauwkeurigere metingen van de atmosfeer vanuit een zonnesynchrone baan. De gegevens die de satelliet verzamelt, zijn cruciaal voor weermodellen en klimaatonderzoek wereldwijd. Arianespace verzorgt de lancering, gepland voor eind november 2026.",
+      "vehicle": "Ariane 62",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/22e117bf-041c-49d5-9d09-7b180036e143/?format=json",
+      "timeline": [
+        {
+          "date": "6 okt 2026",
+          "event": "Geplande lancering van Metop-SG B1"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "EUMETSAT",
+        "Weersatelliet",
+        "Metop",
+        "Ariane 6",
+        "Zonnesynchrone baan",
+        "eumetsat",
+        "meteorologie",
+        "ariane 62",
+        "weersatelliet",
+        "aardobservatie",
+        "poolbaan",
+        "zonsynchrone baan",
+        "klimaatmonitoring",
+        "metop-sg",
+        "zonnesynchrone baan"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:13:39.975Z"
+    },
+    {
+      "id": "cas500-2-others",
+      "_ll2Id": "05530ccb-7184-41e7-b2e5-c090b61e0e3a",
+      "name": "CAS500-2 & Others",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "3 mei 2026",
+      "objective": "Rideshare-vlucht met aardobservatiesatellieten naar een zonnesynchrone baan.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Geplande lancering op 31 mei 2026 vanaf een SpaceX-lanceerplatform.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9-raket een rideshare-missie naar een zonnesynchrone baan, met aan boord de Zuid-Koreaanse CAS500-2 en drie Planet Labs Pelican-satellieten. De CAS500-2, ontwikkeld door het Koreaanse ruimteagentschap KASA, brengt de aarde in beeld met een resolutie van 0,5 meter in panchromatische modus en 2 meter in kleur. De Pelican-satellieten van Planet Labs maken deel uit van een geplande constellatie van 32 SmallSats die met hogere resolutie en snellere reactietijden werken dan de bestaande SkySat- en Dove-vloten. De missie onderstreept de groeiende populariteit van rideshare-vluchten voor commerciële en overheidssatellieten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/05530ccb-7184-41e7-b2e5-c090b61e0e3a/?format=json",
+      "timeline": [
+        {
+          "date": "31 mei 2026",
+          "event": "Geplande lancering van CAS500-2 & Others"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Falcon 9",
+        "Aardobservatie",
+        "Planet Labs",
+        "KASA",
+        "Rideshare",
+        "aardobservatie",
+        "rideshare",
+        "planet labs",
+        "kasa",
+        "falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-04-12T08:37:08.073Z"
+    },
+    {
+      "id": "bubbles",
+      "_ll2Id": "4e074623-426a-4ab2-8729-a85200684bef",
+      "name": "Bubbles",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "22 apr 2026",
+      "objective": "Suborbiale testvlucht onder het HASTE-programma van Rocket Lab met de Electron-raket.",
+      "body": "Suborbital",
+      "highlight": "Details over payload en testdoelstellingen worden later aangekondigd.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met de missie 'Bubbles' een suborbiale vlucht uit als onderdeel van het Hypersonic Accelerator Suborbital Test Electron (HASTE)-programma. Dit programma richt zich op het testen van hypersonische technologieën en payloads in een realistische vluchtsomgeving. De Electron-raket wordt hierbij ingezet als kosteneffectief testplatform voor snelle en herhaalbare suborbiale lanceringen. Verdere details over de specifieke payload en testdoelstellingen zijn nog niet bekendgemaakt.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/4e074623-426a-4ab2-8729-a85200684bef/?format=json",
+      "timeline": [
+        {
+          "date": "22 apr 2026",
+          "event": "Geplande lancering van Bubbles"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "HASTE",
+        "Hypersonisch",
+        "Suborbaal",
+        "rocket lab",
+        "electron",
+        "haste",
+        "hypersonisch",
+        "suborbaal"
+      ],
+      "_lastClaudeUpdate": "2026-04-17T09:08:14.735Z"
+    },
+    {
+      "id": "crew-13",
+      "_ll2Id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+      "name": "Crew-13",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "actief",
+      "soort": "missie",
+      "launched": "1 okt 2026",
+      "objective": "Crew Dragon transporteert astronauten naar het ISS als onderdeel van NASA's Commercial Crew Program.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering op 1 oktober 2026 om 15:10 UTC.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX Crew-13 is de dertiende operationele bemande vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie wordt uitgevoerd in samenwerking met NASA als onderdeel van het Commercial Crew Program, dat commerciële partners inzet voor routinematig astronauentransport. De Falcon 9-raket brengt de capsule vanuit het Kennedy Space Center in een lage aardbaan, waarna aanmering met het ISS plaatsvindt. Crew-13 onderstreept de volwassenheid van de samenwerking tussen NASA en SpaceX voor duurzame bemanningsrotaties.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/16/?format=json",
+      "timeline": [
+        {
+          "date": "30 sep 2026",
+          "event": "Geplande lancering van Crew-13"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Crew Dragon",
+        "ISS",
+        "NASA",
+        "Commercial Crew Program",
+        "spacex",
+        "crew dragon",
+        "iss",
+        "nasa",
+        "commercial crew program",
+        "falcon 9",
+        "commercial crew"
+      ],
+      "_lastClaudeUpdate": "2026-10-02T14:17:06.279Z"
+    },
+    {
+      "id": "nrol-172",
+      "_ll2Id": "24f0b5b1-f573-4cc9-8898-1eb7fd5cc0f2",
+      "name": "NROL-172",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "11 mei 2026",
+      "objective": "Lancering van de dertiende batch verkenningssatellieten voor de NRO als onderdeel van een gezamenlijk SpaceX-Northrop Grumman constellatie.",
+      "body": "Unknown",
+      "highlight": "Dertiende batch van een geheime NRO-verkenningsconstellatie succesvol gelanceerd.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de NROL-172-missie brengt SpaceX de dertiende reeks satellieten in een baan om de aarde voor de National Reconnaissance Office. De constellatie, ontwikkeld in samenwerking met Northrop Grumman, is ontworpen om geavanceerde beeldvorming en andere inlichtingencapaciteiten te leveren vanuit de ruimte. De Falcon 9-raket voert de lancering uit vanaf de Amerikaanse kust, waarmee SpaceX opnieuw zijn centrale rol in Amerikaanse overheidsruimteprogramma's bevestigt. De exacte baanparameters blijven geheim vanwege de gevoelige aard van de nationale veiligheidsmissie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
+      "timeline": [
+        {
+          "date": "12 mei 2026",
+          "event": "Geplande lancering van NROL-172"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "NRO",
+        "SpaceX",
+        "Falcon 9",
+        "Northrop Grumman",
+        "Verkenningssatelliet",
+        "nro",
+        "spacex",
+        "falcon 9",
+        "northrop grumman",
+        "verkenningssatelliet"
+      ],
+      "_lastClaudeUpdate": "2026-05-12T10:23:34.956Z"
+    },
+    {
+      "id": "bluebird-block-2-3",
+      "_ll2Id": "c3f48f48-0e0a-4bca-917e-de494cfca35b",
+      "name": "BlueBird Block 2 #3",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 jun 2026",
+      "objective": "Lancering van drie BlueBird Block 2-satellieten voor continu 4G/5G-breedbanddekking vanuit de ruimte.",
+      "body": "Low Earth Orbit",
+      "highlight": "Grootste commerciële satellieten ooit in LEO; tot 10x meer bandbreedte dan Block 1.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert drie BlueBird Block 2-satellieten voor AST SpaceMobile, de meest geavanceerde commerciële communicatiesatellieten die ooit in een lage aardbaan worden ingezet. Met communicatiepanelen van maximaal 223 vierkante meter bieden deze satellieten tot tienmaal meer bandbreedte dan hun voorgangers uit de eerste generatie. De Block 2-satellieten ondersteunen pieksnelheden tot 120 Mbps en zijn ontworpen voor 24/7 breedbanddekking in de Verenigde Staten. Zij maken gebruik van gewone smartphones zonder speciale antenne, wat directe satellietconnectiviteit voor de massa een stap dichterbij brengt.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/c3f48f48-0e0a-4bca-917e-de494cfca35b/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van BlueBird Block 2 #3"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "AST SpaceMobile",
+        "BlueBird Block 2",
+        "Falcon 9",
+        "Low Earth Orbit",
+        "mobiel breedband",
+        "ast spacemobile",
+        "bluebird",
+        "leo",
+        "satellietinternet",
+        "falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-05-08T09:04:33.872Z"
+    },
+    {
+      "id": "sirius-sxm-11",
+      "_ll2Id": "ce3db8f7-ba9b-4a2a-953c-c6c6ee926541",
+      "name": "Sirius SXM-11",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "29 jun 2026",
+      "objective": "Lancering van de SXM-11 satelliet voor SiriusXM naar een geostationaire baan.",
+      "body": "Geostationaire baan",
+      "highlight": "Lancering gepland voor 29 juni 2026 om 02:25 UTC.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SXM-11 is de twaalfde krachtige digitale radiosatelliet die Lanteris Space (voorheen Maxar/SSL) bouwt voor SiriusXM. Het toestel is gebaseerd op het beproefde IM-1300-platform en wordt vervaardigd in de productiefaciliteit van het bedrijf in Palo Alto, Californië. Een opvallend kenmerk is de grote, opvouwbare meshreflector met een diameter van bijna tien meter, waarmee SiriusXM-programmering zelfs rijdende voertuigen kan bereiken. SpaceX verzorgt de lancering met een Falcon 9-raket vanuit Cape Canaveral.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/ce3db8f7-ba9b-4a2a-953c-c6c6ee926541/?format=json",
+      "timeline": [
+        {
+          "date": "30 jun 2026",
+          "event": "Geplande lancering van Sirius SXM-11"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "sirius-sxm-11",
+        "spacex",
+        "geostationaire-baan",
+        "siriusxm",
+        "falcon 9",
+        "geostationaire baan",
+        "communicatiesatelliet",
+        "lanteris space"
+      ],
+      "_lastClaudeUpdate": "2026-06-29T12:22:52.884Z"
+    },
+    {
+      "id": "kompsat-7a",
+      "_ll2Id": "9642cfef-4687-495a-af2e-2ac81fa1e12a",
+      "name": "KOMPSAT-7A",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 nov 2026",
+      "objective": "Lancering van de Zuid-Koreaanse aardobservatiemissie KOMPSAT-7A voor high-resolution beeldvorming.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Lancering gepland voor november 2026 aan boord van een Falcon 9-raket.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "KOMPSAT-7A is een Zuid-Koreaanse aardobservatiemissie die in het verlengde ligt van de KOMPSAT-3A-satelliet. De missie voorziet in hoogresolutie satellietbeelden ten behoeve van gouvernementele en institutionele behoeften van Zuid-Korea. SpaceX zal de satelliet met een Falcon 9-raket in een zonnesynchrone baan brengen, gepland voor eind november 2026. Het satellietprogramma versterkt de onafhankelijke beeldvormingscapaciteit van Zuid-Korea voor toepassingen zoals ruimtelijke ordening, defensie en rampenmonitoring.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/41/?format=json",
+      "timeline": [
+        {
+          "date": "30 nov 2026",
+          "event": "Geplande lancering van KOMPSAT-7A"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "kompsat-7a",
+        "spacex",
+        "sun-synchronous-orbit",
+        "kompsat",
+        "aardobservatie",
+        "falcon 9",
+        "zonnesynchrone baan"
+      ],
+      "_lastClaudeUpdate": "2026-06-29T12:27:25.366Z"
+    },
+    {
+      "id": "griffin-mission-one",
+      "_ll2Id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+      "name": "Griffin Mission One",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 dec 2026",
+      "objective": "Demonstratievlucht van de Astrobotic Griffin-lander richting de maan met de FLIP-rover van Astrolab.",
+      "body": "Maan",
+      "highlight": "FLIP-rover van Astrolab vervangt geannuleerde NASA VIPER-payload.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Griffin Mission One is een demonstratievlucht van de Astrobotic Griffin-lander, oorspronkelijk ontwikkeld voor de NASA VIPER-missie die werd geannuleerd. Na het wegvallen van de VIPER-rover neemt de FLIP-rover van Astrolab de vrijgekomen plek op de lander over. De Falcon Heavy van SpaceX zal het ruimtevaartuig in 2026 naar de maan lanceren. De missie moet de motoren en systemen van de Griffin-lander valideren voor toekomstige maanmissies.",
+      "vehicle": "Falcon Heavy",
+      "launchSite": "Launch Complex 39A",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1069/?format=json",
+      "timeline": [
+        {
+          "date": "30 nov 2026",
+          "event": "Geplande lancering van Griffin Mission One"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "griffin-mission-one",
+        "spacex",
+        "maan",
+        "astrobotic",
+        "falcon heavy",
+        "clps",
+        "flip-rover",
+        "griffin-lander",
+        "astrolab flip",
+        "maanlander"
+      ],
+      "_lastClaudeUpdate": "2026-09-28T16:13:46.354Z"
+    },
+    {
+      "id": "curveball",
+      "_ll2Id": "e6cefffc-19a6-4a4b-a7f0-ebe907d5a6aa",
+      "name": "Curveball",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "11 jun 2026",
+      "objective": "Curveball — Rocket Lab missie naar Suborbital.",
+      "body": "Suborbital",
+      "highlight": "Lancering gepland: 11 jun 2026",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Curveball is een geplande missie van Rocket Lab naar Suborbital.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/e6cefffc-19a6-4a4b-a7f0-ebe907d5a6aa/?format=json",
+      "timeline": [
+        {
+          "date": "11 jun 2026",
+          "event": "Geplande lancering van Curveball"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "curveball",
+        "rocket-lab",
+        "suborbital"
+      ]
+    },
+    {
+      "id": "project-starfall-demonstration-mission",
+      "_ll2Id": "74bf8472-9ba1-42d6-9245-b014f8e91de9",
+      "name": "Project Starfall Demonstration Mission",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "23 jun 2026",
+      "objective": "Project Starfall Demonstration Mission — SpaceX missie naar Low Earth Orbit.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 21 jun 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Project Starfall Demonstration Mission is een geplande missie van SpaceX naar Low Earth Orbit.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/74bf8472-9ba1-42d6-9245-b014f8e91de9/?format=json",
+      "timeline": [
+        {
+          "date": "21 jun 2026",
+          "event": "Geplande lancering van Project Starfall Demonstration Mission"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "project-starfall-demonstration-mission",
+        "spacex",
+        "low-earth-orbit"
+      ]
+    },
+    {
+      "id": "blue-ghost-lunar-lander-mission-2",
+      "_ll2Id": "387aadc6-68ca-4090-9be7-d57603ad7c79",
+      "name": "Blue Ghost Lunar Lander Mission 2",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 dec 2026",
+      "objective": "Firefly's tweede Blue Ghost-maanlander zet twee NASA-instrumenten af op de verre zijde van de Maan.",
+      "body": "Maan",
+      "highlight": "Geplande lancering eind 2026; eerste landing ooit op verre zijde door commercieel voertuig.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De Blue Ghost Mission 2 is de tweede maanlander van Firefly Aerospace en introduceert een gloednieuw tweefasig ontwerp. Een Elytra Dark-transfervoertuig brengt de lander en de experimentele communicatiesatelliet Lunar Pathfinder van de Europese Ruimtevaartorganisatie in maanbaan. De lander zal vervolgens neerdalen op de verre zijde van de Maan, een bijzonder ambitieus doel, om twee NASA-instrumenten te plaatsen: het LuSEE-Night elektromagnetisch experiment en een User Terminal. De lancering staat gepland voor eind 2026 aan boord van een Falcon 9-raket van SpaceX.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/387aadc6-68ca-4090-9be7-d57603ad7c79/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van Blue Ghost Lunar Lander Mission 2"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Firefly Aerospace",
+        "Maanlander",
+        "NASA CLPS",
+        "ESA Lunar Pathfinder",
+        "Verre zijde Maan",
+        "maan",
+        "firefly aerospace",
+        "esa",
+        "falcon 9",
+        "nasa clps",
+        "maanlander",
+        "verre zijde maan",
+        "esa lunar pathfinder"
+      ],
+      "_lastClaudeUpdate": "2026-08-04T10:26:29.883Z"
+    },
+    {
+      "id": "telesat-lightspeed-1",
+      "_ll2Id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+      "name": "Telesat Lightspeed 1",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor het breedbandnetwerk van de Canadese operator Telesat.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor eind 2026; tot 18 MDA-gebouwde satellieten aan boord.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX lanceert met een Falcon 9-raket tot 18 satellieten voor de Lightspeed-constellatie van het Canadese Telesat. De satellieten worden gebouwd door MDA en vormen een belangrijk onderdeel van Telesats ambitie om wereldwijde breedbandconnectiviteit via een Low Earth Orbit-netwerk aan te bieden. De Lightspeed-constellatie is specifiek gericht op zakelijke en overheidssegmenten die behoefte hebben aan betrouwbare, lage-latentie internetverbindingen. De lancering staat gepland voor eind 2026 en markeert een cruciale stap in de uitrol van Telesats next-generation satellietdiensten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van Telesat Lightspeed 1"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Telesat",
+        "Lightspeed",
+        "SpaceX",
+        "Falcon 9",
+        "LEO-constellatie",
+        "telesat",
+        "lightspeed",
+        "mda",
+        "spacex falcon 9",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-07-05T10:02:50.057Z"
+    },
+    {
+      "id": "galileo-l15-foc-fm28-fm31",
+      "_ll2Id": "0b85fcca-5252-48d7-9ccb-c10b1da9d183",
+      "name": "Galileo L15 (FOC FM28 & FM31)",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Twee Galileo-satellieten (FOC FM28 & FM31) in een middelbare aardbaan brengen voor Europese navigatie.",
+      "body": "Medium Earth Orbit",
+      "highlight": "Gepland voor 31 december 2026 aan boord van Ariane 62.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Met de Galileo L15-missie plaatst Arianespace twee nieuwe Full Operational Capability-satellieten in een middelbare aardbaan, waarmee Europa's eigen navigatiesysteem Galileo verder wordt uitgebreid. De lancering markeert opnieuw een primeur voor de Ariane 6-raket, die een sleutelrol speelt in Europese ruimtevaartonafhankelijkheid. Galileo biedt burgers en bedrijven nauwkeurigere positionering dan GPS en versterkt de strategische autonomie van de Europese Unie. De missie is gepland voor eind 2026 en wordt uitgevoerd vanuit het ruimtehavencomplex in Kourou, Frans-Guyana.",
+      "vehicle": "Ariane 62",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/27/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van Galileo L15 (FOC FM28 & FM31)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Galileo",
+        "Navigatie",
+        "Ariane 6",
+        "Arianespace",
+        "Medium Earth Orbit",
+        "galileo",
+        "ariane 62",
+        "navigatiesatellieten",
+        "medium earth orbit",
+        "arianespace",
+        "ariane 6",
+        "navigatiesatelliet",
+        "meo"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:50:25.408Z"
+    },
+    {
+      "id": "chorus",
+      "_ll2Id": "8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
+      "name": "CHORUS",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van MDA's CHORUS-constellatie met twee radarsatellieten voor aardobservatie vanuit LEO.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering eind 2026 met Falcon 9 naar een 600 km LEO-baan.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "CHORUS is de volgende generatie aardobservatiemissie van het Canadese bedrijf MDA, bestaande uit twee radarsatellieten — één met C-band SAR en één met X-band SAR — in een baan op 600 kilometer hoogte met een inclinatie van 53,5 graden. De X-band satelliet volgt de C-band op 60 minuten afstand, waardoor een unieke multi-sensor synergiewerking ontstaat. De constellatie biedt dagelijkse dekking van tot 95% van het oppervlak, ongeacht weersomstandigheden of dag-nachtcyclus, met een beeldstrook van maar liefst 700 kilometer breed én sub-meter resolutie. CHORUS wil de meest uitgebreide commerciële radarobservatiecapaciteit op de markt bieden in één enkele missie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van CHORUS"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Aardobservatie",
+        "SAR-radar",
+        "MDA",
+        "Falcon 9",
+        "LEO",
+        "aardobservatie",
+        "sar-radar",
+        "mda",
+        "low earth orbit",
+        "constellatie",
+        "mda space",
+        "falcon 9",
+        "leo-constellatie",
+        "sar",
+        "radarconstellatie"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:50:33.311Z"
+    },
+    {
+      "id": "inmarsat-7-f1-gx-7",
+      "_ll2Id": "01ca3653-126a-4c01-94fb-a9467b39cdac",
+      "name": "Inmarsat-7 F1 (GX-7)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van de Inmarsat GX-7 sateliet voor wereldwijde Ka-band breedbanddiensten voor mobiele gebruikers.",
+      "body": "Geostationaire baan",
+      "highlight": "Geplande lancering eind 2026 als onderdeel van een driedelige satellietreeks.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Inmarsat-7 GX-7 is de eerste van drie geavanceerde communicatiesatellieten die Inmarsat's Global Xpress-netwerk aanzienlijk zal versterken. De satelliet is gebouwd op het OneSat-platform van Airbus en beschikt over een volledig herconfigureerbare Ka-band payload met duizenden dynamisch gevormde bundels. Daarmee kan capaciteit met uiterste precisie worden gericht op gebieden met hoge vraag, ideaal voor maritieme, luchtvaart- en andere mobiliteitstoepassingen. SpaceX verzorgt de lancering met een Falcon 9-raket naar een geostationaire baan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/01ca3653-126a-4c01-94fb-a9467b39cdac/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van Inmarsat-7 F1 (GX-7)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Inmarsat",
+        "Global Xpress",
+        "Ka-band",
+        "OneSat",
+        "HTS",
+        "inmarsat",
+        "global xpress",
+        "ka-band",
+        "onesat",
+        "hts",
+        "communicatiesatelliet",
+        "geostationaire baan",
+        "airbus onesat",
+        "spacex falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:50:41.152Z"
+    },
+    {
+      "id": "nova-c-im-3",
+      "_ll2Id": "0c26b3d4-43e3-4c1a-8976-592ff319bc51",
+      "name": "Nova-C IM-3",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 dec 2026",
+      "objective": "Intuitive Machines landt voor de derde keer op de maan met 130 kg aan wetenschappelijke lading.",
+      "body": "Maan",
+      "highlight": "Gepland voor lancering op 31 december 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "De Nova-C IM-3-missie is de derde maanlanding van het Amerikaanse bedrijf Intuitive Machines en wordt gelanceerd met een Falcon 9-raket van SpaceX. Het ruimtevaartuig draagt 130 kilogram aan payloads naar het maanoppervlak. Opvallend is dat de missie ook rideshare-mogelijkheden biedt: dankzij overtollige capaciteit op de draagraket kunnen extra ladingen meeliften. De lancering staat gepland voor eind december 2026.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1067/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van Nova-C IM-3"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Intuitive Machines",
+        "Nova-C",
+        "Maanlanding",
+        "SpaceX Falcon 9",
+        "Commerciële ruimtevaart",
+        "maanmissie",
+        "intuitive machines",
+        "nova-c",
+        "spacex",
+        "falcon 9",
+        "maanlanding",
+        "spacex falcon 9",
+        "commerciële maanmissie"
+      ],
+      "_lastClaudeUpdate": "2026-08-04T10:27:10.973Z"
+    },
+    {
+      "id": "ariane-64-go-1",
+      "_ll2Id": "b78857c4-3b8d-4462-929e-bc76f39c0e6d",
+      "name": "Ariane 64 | GO-1",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Ariane 64 | GO-1 — Arianespace missie naar Aardeomloopbaan.",
+      "body": "Aardeomloopbaan",
+      "highlight": "Lancering gepland: 31 dec 2026",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Ariane 64 | GO-1 is een geplande missie van Arianespace naar Aardeomloopbaan.",
+      "vehicle": "Ariane 64",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/b78857c4-3b8d-4462-929e-bc76f39c0e6d/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van Ariane 64 | GO-1"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "ariane-64-go-1",
+        "arianespace",
+        "aardeomloopbaan"
+      ]
+    },
+    {
+      "id": "6x-hawkeye-360",
+      "_ll2Id": "7766f3bb-674c-4c71-b986-963bd633fcfe",
+      "name": "6x HawkEye 360",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "21 okt 2026",
+      "objective": "Lancering van 6 HawkEye 360-satellieten voor wereldwijde radiofrequentiekartering vanuit LEO.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering eind 2026 via Rocket Lab Electron.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab zet met een Electron-raket zes nieuwe satellieten van HawkEye 360 in een lage aardbaan. Het Hawk-cluster breidt een commercieel signalintelligentienetwerk uit dat radiofrequenties wereldwijd in kaart brengt. De data helpt overheden en bedrijven bij het monitoren van lucht-, land- en zeetransport, evenals bij noodsituaties. HawkEye 360 positioneert zich als toonaangevende leverancier van civiele SIGINT-data vanuit de ruimte.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1061/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van 6x HawkEye 360"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "HawkEye 360",
+        "Rocket Lab",
+        "Electron",
+        "SIGINT",
+        "Low Earth Orbit",
+        "hawkeye 360",
+        "rocket lab",
+        "electron",
+        "sigint",
+        "leo",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:50:48.363Z"
+    },
+    {
+      "id": "blacksky-gen-3-5",
+      "_ll2Id": "b81156da-c0b8-46c8-aebd-8af8d2be83cd",
+      "name": "BlackSky Gen-3 5",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "11 sep 2026",
+      "objective": "Lancering van de vijfde BlackSky Gen-3 aardobservatiesatelliet naar een lage baan.",
+      "body": "Low Earth Orbit",
+      "highlight": "5e Gen-3-satelliet versterkt BlackSky's aardobservatienetwerk",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab lanceert met zijn Electron-raket de vijfde satellieten van de derde generatie BlackSky-aardobservatieconstellatie. De Gen-3-satelliet beschikt over een hogere beeldresolutie dan zijn voorgangers en vergroot zo de capaciteit van BlackSky's commerciële aardbeeldingsvloot. De lancering vindt plaats vanuit Nieuw-Zeeland en plaatst de satelliet in een lage aardbaan. Details over de exacte lading en specifieke klantinformatie zijn door Rocket Lab niet openbaar gemaakt.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 1A",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1064/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van BlackSky Gen-3 5"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "BlackSky",
+        "Rocket Lab",
+        "Electron",
+        "Aardobservatie",
+        "Low Earth Orbit",
+        "rocket lab",
+        "electron",
+        "blacksky",
+        "aardobservatie",
+        "low earth orbit",
+        "commerciële ruimtevaart",
+        "leo"
+      ],
+      "_lastClaudeUpdate": "2026-09-11T12:25:54.173Z"
+    },
+    {
+      "id": "blacksky-gen-3-6",
+      "_ll2Id": "548df42c-ae26-4cc9-921a-f0042941911a",
+      "name": "BlackSky Gen-3 6",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor eind 2026 als onderdeel van lopende BlackSky-constellatieopbouw.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab zet met de Electron-raket een nieuwe generatie BlackSky Gen-3 aardobservatiesatellieten in een lage baan om de aarde. De Gen-3-satellieten vertegenwoordigen de nieuwste lichting in BlackSky's commerciële beeldvormingsconstellatie en bieden verbeterde resolutie en revisitfrequentie ten opzichte van hun voorgangers. BlackSky levert realtime geospatiale inlichtingen aan overheids- en commerciële klanten wereldwijd. De missie onderstreept opnieuw de rol van Rocket Lab als een van de meest actieve kleine lanceerders voor commerciële aardobservatiebedrijven.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/548df42c-ae26-4cc9-921a-f0042941911a/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van BlackSky Gen-3 6"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "BlackSky",
+        "Electron",
+        "Rocket Lab",
+        "Aardobservatie",
+        "Commerciële ruimtevaart",
+        "blacksky",
+        "electron",
+        "rocket lab",
+        "aardobservatie",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:50:55.772Z"
+    },
+    {
+      "id": "blacksky-gen-3-7",
+      "_ll2Id": "5aa3575e-f3ff-48ec-969f-e7e4c669f866",
+      "name": "BlackSky Gen-3 7",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage baan om de aarde.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering op 31 december 2026 vanuit Nieuw-Zeeland.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab plant de lancering van een nieuwe BlackSky Gen-3 aardobservatiebsatelliet met de Electron-raket. De missie voegt capaciteit toe aan het commerciële beeldvormingsnetwerk van BlackSky, dat hoogfrequente en scherpe satellietbeelden levert aan overheids- en commerciële klanten wereldwijd. De Gen-3-generatie satellieten vertegenwoordigt een significante stap vooruit in beeldresolutie en herbezoektijd ten opzichte van voorgaande generaties. Rocket Lab heeft eerder meerdere BlackSky-satellieten succesvol in een baan gebracht en bestendigt zo de samenwerking tussen beide bedrijven.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/5aa3575e-f3ff-48ec-969f-e7e4c669f866/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van BlackSky Gen-3 7"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "BlackSky",
+        "Rocket Lab",
+        "Electron",
+        "Aardobservatie",
+        "LEO",
+        "blacksky",
+        "rocket lab",
+        "electron",
+        "aardobservatie",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:51:03.506Z"
+    },
+    {
+      "id": "blacksky-gen-3-8",
+      "_ll2Id": "280fba47-8e6e-4a4f-8bdd-b9687d99a9c5",
+      "name": "BlackSky Gen-3 8",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering eind 2026 vanuit Rocket Lab's lanceerbasis.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab bereidt de lancering voor van de achtste BlackSky Gen-3-missie met de Electron-raket. De Gen-3-satellieten zijn geavanceerde aardobservatiepaltforms die hoogresolutiebeelden van het aardoppervlak kunnen maken voor commerciële en overheidsklanten. BlackSky exploiteert een groeiend constellatie van satellieten die vrijwel real-time beeldvorming en geo-analyticsdiensten aanbieden. De Electron-raket van Rocket Lab heeft zich bewezen als een betrouwbare lanceerder voor kleine satellieten in commerciële constellaties.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/280fba47-8e6e-4a4f-8bdd-b9687d99a9c5/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van BlackSky Gen-3 8"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "BlackSky",
+        "Aardobservatie",
+        "Rocket Lab",
+        "Electron",
+        "Small Sat",
+        "rocket lab",
+        "electron",
+        "blacksky",
+        "aardobservatie",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:51:11.062Z"
+    },
+    {
+      "id": "blacksky-gen-3-9",
+      "_ll2Id": "54e907ad-f988-488b-ab35-cd86f63edf8d",
+      "name": "BlackSky Gen-3 9",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor 31 december 2026 als onderdeel van BlackSky's uitbreidingsplan.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab zal met zijn Electron-raket een nieuwe BlackSky Gen-3 aardobservatiesatelliet in een lage aardbaan brengen. De Gen-3-generatie van BlackSky vertegenwoordigt de nieuwste generatie commerciële aardobservatietechnologie, ontworpen voor hogere beeldresolutie en snellere herbezoekfrequenties. BlackSky exploiteert een commercieel satellietnetwerk dat realtime geospatiale inlichtingen levert aan overheids- en commerciële klanten wereldwijd. De lancering is gepland voor eind december 2026 en versterkt verder het groeiende Earth-imaging-constellation van BlackSky.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/54e907ad-f988-488b-ab35-cd86f63edf8d/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van BlackSky Gen-3 9"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "BlackSky",
+        "Aardobservatie",
+        "Rocket Lab",
+        "Electron",
+        "Smallsat",
+        "blacksky",
+        "rocket lab",
+        "electron",
+        "aardobservatie",
+        "leo",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-03T12:51:18.478Z"
+    },
+    {
+      "id": "nrol-95",
+      "_ll2Id": "24675e3d-2458-48a3-8c70-5196e44d4dc3",
+      "name": "NROL-95",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 jul 2026",
+      "objective": "SpaceX lanceert een geheime verkenningssatelliet voor het Amerikaanse National Reconnaissance Office.",
+      "body": "Unknown",
+      "highlight": "Geplande lancering op 30 juli 2026 om 06:37 UTC",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Op 30 juli 2026 voert SpaceX de NROL-95-missie uit namens het National Reconnaissance Office (NRO), de Amerikaanse inlichtingendienst verantwoordelijk voor spionagesatellieten. De lading is volledig geclassificeerd en details over de bestemming of het doel van de satelliet worden niet vrijgegeven. Een Falcon 9-raket verzorgt de lancering vanaf een nog te bevestigen lanceerplaats. Het NRO beheert een van 's werelds meest geavanceerde ruimtegebaseerde inlichtingennetwerken.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
+      "timeline": [
+        {
+          "date": "30 jul 2026",
+          "event": "Geplande lancering van NROL-95"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "NRO",
+        "SpaceX",
+        "Falcon 9",
+        "Defensie",
+        "Inlichtingen",
+        "nro",
+        "spacex",
+        "falcon 9",
+        "defensie",
+        "inlichtingen"
+      ],
+      "_lastClaudeUpdate": "2026-07-22T10:14:00.086Z"
+    },
+    {
+      "id": "the-lightning-god-defends-iqps-launch-8",
+      "_ll2Id": "57280454-470e-4c5d-8de1-1bbd0ea41b49",
+      "name": "The Lightning God Defends (iQPS Launch 8)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "20 aug 2026",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Achtste Electron-lancering voor iQPS; uitbreiding SAR-constellatie.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert de achtste lancering uit voor het Japanse aardobservatiebedrijf iQPS, waarbij een synthetische apertuurradar (SAR) satelliet in een lage aardbaan wordt gebracht. De Electron-raket vertrekt met als doel de groeiende SAR-constellatie van iQPS verder uit te breiden, waarmee het bedrijf hoge-resolutie beelden van het aardoppervlak kan produceren, ongeacht weersomstandigheden of lichtinval. iQPS streeft naar een dichte constellatie die snelle herbezoektijden mogelijk maakt voor klanten wereldwijd. De missienaam 'The Lightning God Defends' verwijst naar de Japanse mythologische traditie die iQPS hanteert voor haar satellieten.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 1B",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "timeline": [
+        {
+          "date": "31 aug 2026",
+          "event": "Geplande lancering van The Lightning God Defends (iQPS Launch 8)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "iQPS",
+        "SAR-satelliet",
+        "Aardobservatie",
+        "iqps",
+        "rocket lab",
+        "electron",
+        "sar",
+        "aardobservatie",
+        "sar-satelliet"
+      ],
+      "_lastClaudeUpdate": "2026-08-21T08:26:15.508Z"
+    },
+    {
+      "id": "ussf-31",
+      "_ll2Id": "4c78e865-8f03-4f47-a081-b507da270d19",
+      "name": "USSF-31",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert twee geheime militaire payloads voor de US Space Force rechtstreeks naar geostationaire baan.",
+      "body": "Geostationaire baan",
+      "highlight": "Lancering gepland voor 31 december 2026, details geclassificeerd.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de USSF-31-missie brengt SpaceX twee geclassificeerde payloads van de Amerikaanse Space Force rechtstreeks naar de geostationaire baan op ongeveer 35.786 kilometer hoogte. De Falcon 9-raket voert hiermee een van de meest veeleisende trajecten uit die het voertuig aankan, waarbij geen tussenliggende transferbaan wordt gebruikt. Details over de aard van de payloads blijven staatsgeheim, wat gebruikelijk is bij militaire ruimtevaartmissies van dit kaliber. De lancering is gepland voor eind december 2026 en onderstreept de voortdurende samenwerking tussen SpaceX en het Amerikaanse militaire ruimtevaartprogramma.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van USSF-31"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "US Space Force",
+        "geostationaire baan",
+        "militair",
+        "ussf",
+        "spacex",
+        "falcon 9",
+        "defensie",
+        "us space force",
+        "militaire ruimtevaart",
+        "geclassificeerd"
+      ],
+      "_lastClaudeUpdate": "2026-10-12T17:07:08.941Z"
+    },
+    {
+      "id": "victus-surgo",
+      "_ll2Id": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
+      "name": "VICTUS SURGO",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "Amerikaanse Space Force test snelle ruimtelevering met Impulse Space voertuigen naar GTO-baan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering eind 2026; missiedetails nog in ontwikkeling.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "VICTUS SURGO is een Tactically Responsive Space-missie van de Amerikaanse Space Force Space Systems Command, gericht op het demonstreren van snelle en flexibele ruimtelevering. De missie maakt gebruik van een Impulse Space Mira orbitaal transfervoertuig dat in een geostationaire transferbaan (GTO) zal opereren, nadat het vanuit een lage aardbaan omhoog is gebracht door een Impulse Space Helios kick stage. Naast het Mira-voertuig wordt ook een rideshare-lading via de Helios-trap naar een geostationaire baan gebracht. SpaceX verzorgt de lancering met een Falcon 9-raket.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/fc1bd321-e502-4d0f-81f4-1926dece81c6/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van VICTUS SURGO"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Space Force",
+        "Impulse Space",
+        "Tactically Responsive Space",
+        "SpaceX Falcon 9",
+        "GTO",
+        "ussf",
+        "tactically responsive space",
+        "impulse space",
+        "falcon 9",
+        "gto",
+        "us space force",
+        "spacex falcon 9",
+        "geosynchronous transfer orbit"
+      ],
+      "_lastClaudeUpdate": "2026-09-16T12:55:29.500Z"
+    },
+    {
+      "id": "ussf-75",
+      "_ll2Id": "c1bd775a-2fff-45bb-9726-765b69817c19",
+      "name": "USSF-75",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "SpaceX lanceert een geheime lading voor de Amerikaanse Space Force naar een geostationaire baan.",
+      "body": "Geostationaire baan",
+      "highlight": "Geplande lancering eind december 2026 met Falcon Heavy.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Met de USSF-75-missie brengt SpaceX opnieuw een geheime militaire satelliet in een geostationaire baan voor de United States Space Force. De Falcon Heavy, het krachtigste operationele raket ter wereld, wordt ingezet voor deze vertrouwelijke payload. Details over de aard en het doel van de lading zijn door het Amerikaanse ministerie van Defensie niet vrijgegeven. De missie onderstreept de groeiende samenwerking tussen SpaceX en het Amerikaanse militaire ruimtevaartprogramma.",
+      "vehicle": "Falcon Heavy",
+      "launchSite": "Launch Complex 39A",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van USSF-75"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon Heavy",
+        "USSF",
+        "Militair",
+        "Geostationaire baan",
+        "spacex",
+        "falcon heavy",
+        "ussf",
+        "militair",
+        "geostationaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-09-17T12:52:05.868Z"
+    },
+    {
+      "id": "bandwagon-5-dedicated-mid-inclination-rideshare",
+      "_ll2Id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
+      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "19 okt 2026",
+      "objective": "SpaceX lanceert tientallen micro- en nanosatellieten naar een mid-inclinatiebaan in een gedeelde vlucht.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor oktober 2026; meerdere payloads bevestigd.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Bandwagon 5 is de vijfde editie van SpaceX's populaire rideshare-programma voor een mid-inclinatiebaan, waarbij tientallen kleine satellieten van commerciële en overheidsklanten gelijktijdig worden gelanceerd. Het programma biedt een kostenefficiënte toegang tot de ruimte voor organisaties die een baan nodig hebben die niet door het polaire Transporter-programma wordt bediend. De Falcon 9-raket, bekend om zijn herbruikbaarheid en betrouwbaarheid, verzorgt de lancering vanuit de Verenigde Staten. Bandwagon-vluchten richten zich op een inclinatie van circa 45 graden, ideaal voor aardobservatie en connectiviteitssatellieten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "31 okt 2026",
+          "event": "Geplande lancering van Bandwagon 5 (Dedicated Mid-Inclination Rideshare)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "SpaceX",
+        "Falcon 9",
+        "Rideshare",
+        "Low Earth Orbit",
+        "Nanosatellieten",
+        "spacex",
+        "falcon 9",
+        "rideshare",
+        "low earth orbit",
+        "nanosatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-09-21T14:40:01.408Z"
+    },
+    {
+      "id": "ussf-153",
+      "_ll2Id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
+      "name": "USSF-153",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "10 sep 2026",
+      "objective": "Gelanceerde geheime missie voor de Amerikaanse Space Force in een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geclassificeerde lading; vermoedelijk militaire Starshield-satellieten aan boord.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-153 is een geclassificeerde missie uitgevoerd door SpaceX in opdracht van de United States Space Force. De lading bestaat mogelijk uit een batch geheime satellieten op basis van het Starshield-satellietplatform, een militaire variant van SpaceX's Starlink-technologie. Die aanname wordt ondersteund door het feit dat de geplande landingszones van de rakettrappen exact overeenkomen met eerdere Starlink Group 15-lanceringen. Details over de precieze functie en het aantal satellieten zijn door het Amerikaanse ministerie van Defensie niet vrijgegeven.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "10 sep 2026",
+          "event": "Geplande lancering van USSF-153"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "USSF-153",
+        "US Space Force",
+        "Starshield",
+        "Falcon 9",
+        "Geclassificeerde missie",
+        "space force",
+        "spacex",
+        "falcon 9",
+        "starshield",
+        "geclassificeerd",
+        "ussf-153"
+      ],
+      "_lastClaudeUpdate": "2026-09-11T12:25:46.730Z"
+    },
+    {
+      "id": "haste-leidos-3",
+      "_ll2Id": "04522dea-1450-48f5-bc9d-2d7f1e637f9b",
+      "name": "HASTE | Leidos-3",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "objective": "HASTE | Leidos-3 — Rocket Lab missie naar Aardeomloopbaan.",
+      "body": "Aardeomloopbaan",
+      "highlight": "Lancering gepland: 31 dec 2026",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "HASTE | Leidos-3 is een geplande missie van Rocket Lab naar Aardeomloopbaan.",
+      "vehicle": "Electron",
+      "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/04522dea-1450-48f5-bc9d-2d7f1e637f9b/?format=json",
+      "timeline": [
+        {
+          "date": "31 dec 2026",
+          "event": "Geplande lancering van HASTE | Leidos-3"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "haste-leidos-3",
+        "rocket-lab",
+        "aardeomloopbaan"
+      ]
+    },
+    {
+      "id": "ussf-259",
+      "_ll2Id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
+      "name": "USSF-259",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "17 sep 2026",
+      "objective": "Geheime lancering voor de Amerikaanse Space Force, vermoedelijk met Starshield-satellieten in polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Geclassificeerde vracht; vermoedelijk Starshield LEO-satellieten voor USSF.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-259 is een geclassificeerde missie voor de United States Space Force, uitgevoerd door SpaceX met een Falcon 9-raket. De lading is officieel onbekend, maar de gekozen dropzones voor de eerste trap van de raket wijzen sterk op overeenkomsten met eerdere SDA Transport Layer-lanceringen. Analisten vermoeden daarom dat het gaat om een batch laardebaan-satellieten gebouwd op het Starshield-satellietplatform van SpaceX. De missie wordt in een polaire baan gebracht, wat past bij militaire aardobservatie- en communicatieconstellaties.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "16 sep 2026",
+          "event": "Geplande lancering van USSF-259"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "USSF",
+        "SpaceX",
+        "Falcon 9",
+        "Starshield",
+        "SDA Transport Layer",
+        "ussf",
+        "spacex",
+        "falcon 9",
+        "starshield",
+        "sda transport layer",
+        "space force",
+        "polaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-09-17T12:51:50.642Z"
+    },
+    {
+      "id": "ussf-xxx-r-3",
+      "_ll2Id": "7330d83b-c478-426c-8859-f9e3a335876d",
+      "name": "USSF-xxx (\"R-3\")",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "voltooid",
+      "soort": "lancering",
+      "launched": "26 sep 2026",
+      "launchPrecision": "Minute",
+      "objective": "Geheime USSF-missie vermoedelijk met batch Starshield-satellieten in lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland op 26 september 2026; lading geclassificeerd.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX voert met een Falcon 9-raket een geheime missie uit voor de United States Space Force. De exacte aard van de lading is geclassificeerd, maar de gekozen dropzones voor de eerste trap sluiten nauwkeurig aan bij eerdere Starlink Group 15-lanceringen. Dit doet vermoeden dat het gaat om een batch satellieten op basis van het Starshield-busplatform, een militaire variant van Starlinks technologie. De missie draagt de interne aanduiding 'R-3' en wordt gelanceerd vanuit een nog nader te bevestigen locatie.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "timeline": [
+        {
+          "date": "27 sep 2026",
+          "event": "Geplande lancering van USSF-xxx (\"R-3\")"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "USSF",
+        "Starshield",
+        "Falcon 9",
+        "Geheime missie",
+        "LEO",
+        "spacex",
+        "falcon 9",
+        "united states space force",
+        "starshield",
+        "leo",
+        "ussf"
+      ],
+      "_lastClaudeUpdate": "2026-09-27T13:23:30.638Z"
+    },
+    {
+      "id": "the-sea-god-surveys-iqps-launch-9",
+      "_ll2Id": "426bd2a5-02dd-4fbd-9f4d-2b8439c3a1ff",
+      "name": "The Sea God Surveys (iQPS Launch 9)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "4 nov 2026",
+      "launchPrecision": "Day",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor lancering in november 2026 vanaf Rocket Lab LC-1.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met de Electron-raket de negende lancering uit voor het Japanse bedrijf iQPS, dat gespecialiseerd is in aardobservatie vanuit de ruimte. De missie draagt de naam 'The Sea God Surveys' en brengt een synthetische apertuurradar (SAR) satelliet in een lage aardbaan. SAR-technologie maakt het mogelijk om de aarde onafhankelijk van weersomstandigheden en daglicht te fotograferen. De satelliet versterkt het groeiende constellatienetwerk van iQPS voor commerciële beelddiensten.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "timeline": [
+        {
+          "date": "4 nov 2026",
+          "event": "Geplande lancering van The Sea God Surveys (iQPS Launch 9)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "iQPS",
+        "SAR-satelliet",
+        "Aardobservatie",
+        "rocket lab",
+        "electron",
+        "iqps",
+        "sar",
+        "aardobservatie"
+      ],
+      "_lastClaudeUpdate": "2026-10-14T13:10:21.715Z"
+    },
+    {
+      "id": "the-mountain-god-rises-iqps-launch-10",
+      "_ll2Id": "db3500ac-965b-4ad8-b417-cb8d8d005586",
+      "name": "The Mountain God Rises (iQPS Launch 10)",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "10 nov 2026",
+      "launchPrecision": "Day",
+      "objective": "Lancering van een synthetische apertuurradar-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Geplande lancering in november 2026 vanaf Mahia, Nieuw-Zeeland.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab voert met de Electron-raket de tiende lancering uit voor het Japanse aardobservatiebedrijf iQPS. Aan boord bevindt zich een SAR-satelliet (synthetic aperture radar) die in staat is om de aarde ongeacht weersomstandigheden of dag-nachtcycli te fotograferen. De missie draagt de naam 'The Mountain God Rises', een verwijzing naar de Japanse mythologie, en plaatst de satelliet in een lage aardbaan. iQPS bouwt zo verder aan zijn groeiende constellatie van radarsatellieten voor commerciële aardobservatie.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "timeline": [
+        {
+          "date": "10 nov 2026",
+          "event": "Geplande lancering van The Mountain God Rises (iQPS Launch 10)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "Rocket Lab",
+        "Electron",
+        "iQPS",
+        "SAR-satelliet",
+        "Aardobservatie",
+        "rocket lab",
+        "electron",
+        "iqps",
+        "sar-satelliet",
+        "aardobservatie"
+      ],
+      "_lastClaudeUpdate": "2026-10-14T13:10:29.457Z"
+    }
+  ]
+}

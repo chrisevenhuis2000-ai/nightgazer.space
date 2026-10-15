@@ -1,6 +1,5 @@
 {
-  "_toelichting": "Verzonnen LL2 previous-response voor scripts/test-missie-status.js; de _ll2Id's zijn echte id's van missies die met een verstreken datum op gepland staan. next is gevuld om de waarschuwing voor een tweede pagina te testen.",
-  "next": "https://ll.thespacedevs.com/2.3.0/launches/previous/?limit=100&offset=100",
+  "_toelichting": "Pool voor de nep-LL2 (scripts/__fixtures__/ll2-mock.js) in scripts/test-missie-status.js: lanceringen die /launches/?id=… teruggeeft. De id's zijn echte _ll2Id's van missies die met een verstreken datum op gepland staan; vastgelopen missies die hier niet in staan, kent de nep-LL2 niet.",
   "results": [
     {
       "id": "2c5686ec-b0fd-4987-935d-587e3c85fa2d",

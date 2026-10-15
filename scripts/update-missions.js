@@ -7,14 +7,17 @@
 const fs      = require('fs')
 const path    = require('path')
 const https   = require('https')
+const http    = require('http')
 
 // MISSIONS_PATH en LL2_FIXTURE zijn er voor de lokale test
 // (scripts/test-missie-koppeling.js); de workflow zet ze niet.
 const MISSIONS_PATH = process.env.MISSIONS_PATH || path.join(process.cwd(), 'content', 'missions.json')
 const LL2_FIXTURE   = process.env.LL2_FIXTURE || null
-// Fixture voor /launches/previous/. Met LL2_FIXTURE maar zonder deze wordt
-// die request overgeslagen: de test gaat nooit het netwerk op.
-const LL2_PREVIOUS_FIXTURE = process.env.LL2_PREVIOUS_FIXTURE || null
+// LL2_BASE_URL laat de test de opvraging per id tegen een lokale nep-LL2
+// draaien. Met LL2_FIXTURE maar zonder LL2_BASE_URL wordt die opvraging
+// overgeslagen: de test gaat nooit het echte netwerk op.
+const LL2_BASE_URL  = process.env.LL2_BASE_URL || null
+const LL2_BASE      = LL2_BASE_URL || 'https://ll.thespacedevs.com'
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
 
 const MONTHS_NL = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec']
@@ -128,7 +131,8 @@ function mapOrbit(orbitName) {
 // ── Fetch helpers ─────────────────────────────────────────────────────────────
 function fetchJSON(url) {
   return new Promise((resolve, reject) => {
-    const req = https.get(url, { headers: { 'User-Agent': 'NightGazer/1.0 (nightgazer.space)' } }, res => {
+    const client = url.startsWith('http://') ? http : https
+    const req = client.get(url, { headers: { 'User-Agent': 'NightGazer/1.0 (nightgazer.space)' } }, res => {
       let data = ''
       res.on('data', chunk => data += chunk)
       res.on('end', () => {
@@ -236,6 +240,19 @@ function cleanEnrichment(e) {
 
 const hasDescription = d => typeof d === 'string' && d.trim().length > 0
 
+// Vastgelopen missies opvragen op id: /launches/?id=a,b,…&mode=list geeft
+// precies die lanceringen terug (status en net zitten in mode=list). Hooguit
+// 100 id's per request; meer wordt in stukken van 100 gesplitst.
+const IDS_PER_REQUEST = 100
+function launchesByIdUrls(ids) {
+  const urls = []
+  for (let i = 0; i < ids.length; i += IDS_PER_REQUEST) {
+    const chunk = ids.slice(i, i + IDS_PER_REQUEST)
+    urls.push(`${LL2_BASE}/2.3.0/launches/?format=json&mode=list&limit=${IDS_PER_REQUEST}&id=${chunk.join(',')}`)
+  }
+  return urls
+}
+
 // ── Missie matchen ────────────────────────────────────────────────────────────
 // Streng. Een LL2-id hoort bij precies één lancering, dus:
 //   1. dezelfde _ll2Id → koppelen;
@@ -310,7 +327,7 @@ async function main() {
     const ll2 = LL2_FIXTURE
       ? JSON.parse(fs.readFileSync(LL2_FIXTURE, 'utf-8'))
       : await fetchJSON(
-        'https://ll.thespacedevs.com/2.3.0/launches/upcoming/?format=json&limit=100&ordering=window_start'
+        `${LL2_BASE}/2.3.0/launches/upcoming/?format=json&limit=100&ordering=window_start`
       )
     ll2Launches = ll2.results || []
     console.log(`   ${ll2Launches.length} aankomende lanceringen gevonden\n`)
@@ -346,6 +363,9 @@ async function main() {
       missionUrl:  ll2Launch.mission?.agencies?.[0]?.url || null,
       ll2Status:   ll2Launch.status?.name || null,
     }
+
+    // Weer in upcoming (verschoven lancering): de missertelling geldt niet meer.
+    if (mission._previousMisses) { delete mission._previousMisses; changed = true }
 
     // Sla _ll2Id op voor snelle toekomstige matching
     if (mission._ll2Id !== ll2Launch.id) {
@@ -422,10 +442,16 @@ async function main() {
 
   // ── Vastgelopen 'gepland' oplossen ────────────────────────────────────────
   // Een lancering verdwijnt uit /upcoming/ zodra hij gevlogen heeft, en dan
-  // bleef de status voor altijd op 'gepland' staan. Voor missies met een
-  // _ll2Id, een verstreken datum en geen plek meer in upcoming wordt één
-  // keer /previous/ gelezen (samen met upcoming twee requests per run, ruim
-  // binnen de LL2-limiet). Koppelen gebeurt hier alleen op _ll2Id.
+  // bleef de status voor altijd op 'gepland' staan. Missies met een _ll2Id,
+  // een verstreken datum en geen plek meer in upcoming worden in één request
+  // op id opgevraagd (/launches/?id=…; stukken van 100 als het er ooit meer
+  // zijn). Geen datumvenster: elke vastgelopen missie zit er elke run in.
+  //
+  // Geeft LL2 een id niet terug (geschrapt, nieuwe id), dan telt
+  // _previousMisses een misser; vanaf MAX_PREVIOUS_MISSES volgt elke run een
+  // ::warning:: om de missie handmatig na te kijken. Teruggevonden of weer in
+  // upcoming → teller weg.
+  const MAX_PREVIOUS_MISSES = 3
   const now = Date.now()
   const inUpcoming = new Set(ll2Launches.map(l => l.id))
   const stale = missions.filter(m => {
@@ -433,47 +459,48 @@ async function main() {
     const d = parseDutch(m.launched)
     return d && d.getTime() < now
   })
-  if (stale.length) {
-    const oldest = new Date(Math.min(...stale.map(m => parseDutch(m.launched).getTime())) - 7 * 86400 * 1000)
-    const since = oldest.toISOString().slice(0, 10)
-    let previous = null
-    try {
-      if (LL2_PREVIOUS_FIXTURE) {
-        previous = JSON.parse(fs.readFileSync(LL2_PREVIOUS_FIXTURE, 'utf-8'))
-      } else if (!LL2_FIXTURE) {
-        console.log(`📡 LL2 previous ophalen (${stale.length} missies met verstreken datum, sinds ${since})...`)
+  if (stale.length && (LL2_BASE_URL || !LL2_FIXTURE)) {
+    const urls = launchesByIdUrls(stale.map(m => m._ll2Id))
+    console.log(`📡 LL2 op id ophalen (${stale.length} vastgelopen missies, ${urls.length} request${urls.length === 1 ? '' : 's'})`)
+    const found = new Map()
+    let complete = true
+    for (const url of urls) {
+      try {
         await sleep(1000)
-        previous = await fetchJSON(
-          `https://ll.thespacedevs.com/2.3.0/launches/previous/?format=json&limit=100&ordering=-net&net__gte=${since}`
-        )
+        const page = await fetchJSON(url)
+        for (const l of page.results || []) found.set(l.id, l)
+      } catch (err) {
+        complete = false
+        console.warn(`⚠️  LL2 niet bereikbaar: ${err.message} — statussen blijven staan`)
       }
-    } catch (err) {
-      console.warn(`⚠️  LL2 previous niet bereikbaar: ${err.message} — statussen blijven staan`)
     }
-    if (previous) {
-      if (previous.next) {
-        warn(`/launches/previous/ heeft meer dan ${(previous.results || []).length} lanceringen sinds ${since}; alleen de eerste pagina gelezen (geen extra request vanwege de LL2-limiet)`)
+    for (const mission of stale) {
+      const l = found.get(mission._ll2Id)
+      if (!l) {
+        // Een mislukte request is geen bewijs dat LL2 de id niet kent.
+        if (!complete) continue
+        mission._previousMisses = (mission._previousMisses || 0) + 1
+        changed = true
+        if (mission._previousMisses >= MAX_PREVIOUS_MISSES) {
+          warn(`${mission.name} (${mission._ll2Id}): ${mission._previousMisses}× niet teruggegeven door LL2 — handmatig nakijken (geschrapt of nieuwe LL2-id?); status blijft '${mission.status}'`)
+        } else {
+          console.log(`   ${mission.name}: niet teruggegeven door LL2 (${mission._previousMisses}/${MAX_PREVIOUS_MISSES})`)
+        }
+        continue
       }
-      const byId = new Map((previous.results || []).map(l => [l.id, l]))
-      for (const mission of stale) {
-        const l = byId.get(mission._ll2Id)
-        if (!l) {
-          warn(`${mission.name} (${mission._ll2Id}): datum ${mission.launched} is voorbij, maar de lancering staat niet in upcoming of previous — status blijft '${mission.status}'`)
-          continue
-        }
-        const newStatus = mapLL2Status(l.status?.name, mission.soort)
-        if (newStatus !== mission.status) {
-          console.log(`  ✏️  ${mission.name}: status ${mission.status} → ${newStatus} (LL2 previous: ${l.status?.name})`)
-          mission.status = newStatus
-          autoUpdated.push(mission.id)
-          changed = true
-        }
-        const date = formatDutch(l.net || l.window_start)
-        if (date !== 'Onbekend' && date !== mission.launched) {
-          console.log(`  ✏️  ${mission.name}: datum ${mission.launched} → ${date}`)
-          mission.launched = date
-          changed = true
-        }
+      if (mission._previousMisses) { delete mission._previousMisses; changed = true }
+      const newStatus = mapLL2Status(l.status?.name, mission.soort)
+      if (newStatus !== mission.status) {
+        console.log(`  ✏️  ${mission.name}: status ${mission.status} → ${newStatus} (LL2: ${l.status?.name})`)
+        mission.status = newStatus
+        autoUpdated.push(mission.id)
+        changed = true
+      }
+      const date = formatDutch(l.net || l.window_start)
+      if (date !== 'Onbekend' && date !== mission.launched) {
+        console.log(`  ✏️  ${mission.name}: datum ${mission.launched} → ${date}`)
+        mission.launched = date
+        changed = true
       }
     }
   }
@@ -586,7 +613,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls }
 
 if (require.main === module) {
   main().catch(err => {

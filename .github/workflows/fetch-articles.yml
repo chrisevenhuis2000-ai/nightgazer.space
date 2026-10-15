@@ -2,8 +2,9 @@ name: 🤖 Auto-Fetch Articles
 
 on:
   schedule:
-    # Run every day at 07:00 UTC (09:00 NL time)
-    - cron: '0 7 * * *'
+    # Dagelijks 07:17 UTC. Niet op het hele uur: GitHub vertraagt geplande
+    # runs op :00 het sterkst (missie-runs liepen uren te laat).
+    - cron: '17 7 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
