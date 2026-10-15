@@ -1363,17 +1363,20 @@ a:hover .pl-emulsion > img,
   position: relative;
   transition: color 180ms var(--pl-ease), background 180ms var(--pl-ease);
 }
+/* `.pl button { font: inherit }` out-specifies .pl-drawer, which made button
+   drawers 15px and link drawers 13px side by side. Restate the size here. */
+.pl button.pl-drawer { font-size: 0.8125rem; font-weight: 500; }
 .pl-drawer:last-child { border-bottom: 0; }
 .pl-drawer:hover { color: var(--pl-act); background: var(--pl-plate-2); }
 
 /* De open lade schuift half uit de kast: een 2px greep aan de linkerrand
    en een gelichte ondergrond. Geen kleurbadge — een positie. */
-.pl-drawer[aria-current="true"] {
+.pl-drawer:is([aria-current="true"], [aria-current="page"]) {
   color: var(--pl-ink);
   background: var(--pl-plate-lift);
   padding-left: 24px;
 }
-.pl-drawer[aria-current="true"]::before {
+.pl-drawer:is([aria-current="true"], [aria-current="page"])::before {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
@@ -1388,7 +1391,7 @@ a:hover .pl-emulsion > img,
   min-width: 3.2ch;
   text-align: right;
 }
-.pl-drawer[aria-current="true"] .pl-drawer__n { color: var(--pl-act); }
+.pl-drawer:is([aria-current="true"], [aria-current="page"]) .pl-drawer__n { color: var(--pl-act); }
 .pl-drawer:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* Niveau-laden dragen hun ladder als markering */
@@ -1496,8 +1499,8 @@ a:hover .pl-emulsion > img,
     border-right: 1px solid var(--pl-rule-soft);
     white-space: nowrap;
   }
-  .pl-drawer[aria-current="true"] { padding-left: 18px; }
-  .pl-drawer[aria-current="true"]::before { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; }
+  .pl-drawer:is([aria-current="true"], [aria-current="page"]) { padding-left: 18px; }
+  .pl-drawer:is([aria-current="true"], [aria-current="page"])::before { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; }
   .pl-entry { grid-template-columns: 116px minmax(0, 1fr); gap: 16px; }
   .pl-entry__no { display: none; }
 

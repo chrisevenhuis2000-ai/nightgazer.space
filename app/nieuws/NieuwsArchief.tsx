@@ -1,7 +1,7 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer nieuwsarchief — /staging/nieuws
+   NightGazer nieuwsarchief — /nieuws en /nieuws/onderwerp/[category]
 
    Compositie: de ladenbank. Het archief is een kast, onderwerpen zijn laden.
    Een plakkende ladenrail links, de gekozen lade vult het blad rechts.
@@ -10,14 +10,14 @@
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
-import { SiteFooter } from '../../components/SiteFooter'
+import { SiteFooter } from '../components/SiteFooter'
 import { type Article, getLevel, topicMatches } from '@/lib/home-content'
 import { TOPICS as TOPIC_PAGES } from '@/lib/topics'
 import { Ico } from '@/app/_plate/Instruments'
 import {
   archivo, ROWS_PER_PAGE, QUICK_TAGS, quickMatches,
   FOOTER_COLS, LEVEL_WORD, plateNo, img, Ladder,
-  StagingBanner, PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
+  PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
 } from '@/app/_plate/shared'
 
 /* ── De laden ─────────────────────────────────────────────────────────────
@@ -167,10 +167,23 @@ function Entry({ a, no, bare = false }: { a: Article; no: string; bare?: boolean
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
-export default function NieuwsStaging() {
+/** Href van een lade op een onderwerp-pagina. Daar is elke lade een echte
+ *  link, zodat URL en open lade nooit uit elkaar lopen. */
+function drawerHref(d: { key: string; slug?: string }): string {
+  if (d.slug) return `/nieuws/onderwerp/${d.slug}/`
+  if (d.key === 'Alles') return '/nieuws/'
+  return `/nieuws/?onderwerp=${encodeURIComponent(d.key.toLowerCase())}`
+}
+
+export default function NieuwsArchief({ initialTopic }: {
+  /** Slug uit lib/topics.ts; zet de lade al in de statische HTML open. */
+  initialTopic?: string
+} = {}) {
   const articles = useArticles(24)
 
-  const [drawer, setDrawer] = useState('Alles')
+  const [drawer, setDrawer] = useState(
+    () => DRAWERS.find(d => d.slug && d.slug === initialTopic)?.key ?? 'Alles'
+  )
   const [level, setLevel] = useState<Level>('alle')
   const [quickTag, setQuickTag] = useState<string | null>(null)
   const [shown, setShown] = useState(ROWS_PER_PAGE)
@@ -179,8 +192,8 @@ export default function NieuwsStaging() {
   const loupeRef = useRef<HTMLDivElement>(null)
   const frame = useRef(0)
 
-  /* Diep linken: /staging/nieuws?onderwerp=mars opent die lade meteen, zodat
-     de bestaande /nieuws/onderwerp/[slug]-routes hierheen kunnen wijzen. */
+  /* Diep linken: /nieuws?onderwerp=zwarte%20gaten opent die lade meteen,
+     ook voor laden zonder eigen onderwerp-pagina. */
   useEffect(() => {
     const p = new URLSearchParams(window.location.search)
     const slug = p.get('onderwerp')
@@ -267,7 +280,6 @@ export default function NieuwsStaging() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <StagingBanner />
       <PlateHead total={total} edition={editionLabel()} current="nieuws" />
       <QuickBar articles={articles} active={quickTag} onPick={setQuickTag} />
 
@@ -276,7 +288,7 @@ export default function NieuwsStaging() {
         <div className="pl-wrap">
           <div className="pl-band">
             <div className="pl-band__t">
-              <h1 className="pl-h2">Het nieuwsarchief</h1>
+              <h1 className="pl-h2">{initialTopic ? `${active.label} — nieuws` : 'Het nieuwsarchief'}</h1>
               {quickTag && (
                 <button type="button" className="pl-tag" aria-pressed="true" onClick={() => setQuickTag(null)}>
                   #{quickTag}
@@ -299,6 +311,14 @@ export default function NieuwsStaging() {
                 {DRAWERS.map(d => {
                   const n = drawerCounts[d.key] ?? 0
                   const isOpen = drawer === d.key
+                  if (initialTopic) {
+                    return (
+                      <Link key={d.key} href={drawerHref(d)} className="pl-drawer" aria-current={isOpen ? 'page' : undefined}>
+                        <span>{d.label}</span>
+                        <span className="pl-drawer__n">{n}</span>
+                      </Link>
+                    )
+                  }
                   return (
                     <button
                       key={d.key}
@@ -341,7 +361,7 @@ export default function NieuwsStaging() {
 
               <div className="pl-dgroup pl-dgroup--elders">
                 <div className="pl-dgroup__head"><span className="pl-label">Elders</span></div>
-                <Link href="/staging" className="pl-drawer">
+                <Link href="/" className="pl-drawer">
                   <span>Naar de voorpagina</span>
                   <span aria-hidden="true"><Ico.arrow size={12} /></span>
                 </Link>
