@@ -1,8 +1,9 @@
 // scripts/test-missie-verrijking-mutaties.js
-// Mutatietest voor test-missie-verrijking.js: elke mutatie hieronder zet één
-// regel uit update-missions.js terug naar fout gedrag (o.a. de oude bug: een
-// nieuwe missie zonder _lastClaudeUpdate). De test moet op elke mutant
-// falen; slaagt hij, dan beschermt hij die regel niet.
+// Mutatietest voor test-missie-verrijking.js en test-missie-statustekst.js:
+// elke mutatie hieronder zet één regel uit update-missions.js terug naar fout
+// gedrag (o.a. de oude bug: een nieuwe missie zonder _lastClaudeUpdate). Op
+// elke mutant moet minstens één van de twee tests falen; slagen ze allebei,
+// dan beschermt niets die regel.
 
 const fs   = require('fs')
 const os   = require('os')
@@ -10,7 +11,7 @@ const path = require('path')
 const { spawnSync } = require('child_process')
 
 const SRC = fs.readFileSync(path.join(__dirname, 'update-missions.js'), 'utf-8')
-const TEST = path.join(__dirname, 'test-missie-verrijking.js')
+const TESTS = ['test-missie-verrijking.js', 'test-missie-statustekst.js'].map(f => path.join(__dirname, f))
 
 const MUTATIES = [
   ['nieuwe missie zonder _lastClaudeUpdate (de oude bug)',
@@ -22,9 +23,28 @@ const MUTATIES = [
   ['geen 30-dagenverversing voor missies',
     "else if (mission.soort === 'missie' && dagenSinds(laatste)",
     'else if (false && dagenSinds(laatste)'],
-  ['statuswijziging niet naar Claude',
-    "if (statusGewijzigd) return 'status'",
+  ['missie → actief niet naar Claude',
+    "if (statusGewijzigd && mission.soort === 'missie' && mission.status === 'actief') return 'status'",
     ''],
+  ['elke statuswijziging weer naar Claude',
+    "if (statusGewijzigd && mission.soort === 'missie' && mission.status === 'actief') return 'status'",
+    "if (statusGewijzigd) return 'status'"],
+  ['geen sjabloon-highlight in upcoming',
+    'if (statusGewijzigd) mission.highlight = highlightVoorMissie(mission)',
+    ''],
+  ['geen sjabloon-highlight bij opvragen op id',
+    `if (!statusGewijzigd) continue
+      mission.highlight = highlightVoorMissie(mission)`,
+    'if (!statusGewijzigd) continue'],
+  ['Claude overschrijft de sjabloon-highlight',
+    'if (enriched.highlight && !behoudHighlight) mission.highlight = enriched.highlight',
+    'if (enriched.highlight) mission.highlight = enriched.highlight'],
+  ['missie → actief op id zonder detailed-request',
+    "if (ANTHROPIC_KEY && claudeReden(mission, { statusGewijzigd, heeftBeschrijving: true }) === 'status') {",
+    'if (false) {'],
+  ['sjabloon mislukt zonder voertuig',
+    'voertuig ? `Lancering mislukt op ${d} (${voertuig})`',
+    'voertuig ? `Lancering mislukt op ${d}`'],
   ['mislukte poging de volgende dag opnieuw',
     'if (poging && dagenSinds(poging.at) <= CLAUDE_INTERVAL_DAGEN) {',
     'if (false) {'],
@@ -48,9 +68,9 @@ for (const [naam, van, naar] of MUTATIES) {
   }
   const mutant = path.join(dir, `mutant-${gevangen}.js`)
   fs.writeFileSync(mutant, SRC.replace(van, naar))
-  const r = spawnSync(process.execPath, [TEST], { env: { ...process.env, MISSIE_SCRIPT: mutant }, encoding: 'utf-8' })
-  if (r.status === 0) {
-    console.error(`❌ Mutatie '${naam}' niet gevangen: test-missie-verrijking.js slaagt nog`)
+  const r = TESTS.map(t => spawnSync(process.execPath, [t], { env: { ...process.env, MISSIE_SCRIPT: mutant }, encoding: 'utf-8' })).find(x => x.status !== 0)
+  if (!r) {
+    console.error(`❌ Mutatie '${naam}' niet gevangen: beide tests slagen nog`)
     process.exit(1)
   }
   const reden = (r.stderr.match(/AssertionError \[ERR_ASSERTION\]: ([^\n]*)/) || [, r.stderr.trim().split('\n')[0]])[1]
@@ -58,4 +78,4 @@ for (const [naam, van, naar] of MUTATIES) {
   gevangen++
 }
 fs.rmSync(dir, { recursive: true, force: true })
-console.log(`✅ ${gevangen}/${MUTATIES.length} mutaties gevangen door test-missie-verrijking.js`)
+console.log(`✅ ${gevangen}/${MUTATIES.length} mutaties gevangen door test-missie-verrijking.js / test-missie-statustekst.js`)

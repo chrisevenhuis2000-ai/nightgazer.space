@@ -9,7 +9,8 @@
 //   B. Synthetisch, over vier runs:
 //      - een lancering zonder statuswijziging gaat niet naar Claude, ook niet
 //        na 31 (of 400) dagen;
-//      - een lancering met statuswijziging wel;
+//      - een lancering met statuswijziging ook niet (alleen de highlight uit
+//        het sjabloon; zie test-missie-statustekst.js);
 //      - een missie wél na 31 dagen, niet na 5;
 //      - een mislukte poging wordt niet de volgende dag herhaald, wel na 31
 //        dagen;
@@ -76,7 +77,9 @@ async function run(tmp, claude) {
   const now = Date.now()
   const r = (m, o = {}) => claudeReden(m, { heeftBeschrijving: true, now, ...o })
   eq(r({ soort: 'lancering', _lastClaudeUpdate: ago(400) }), null, 'lancering, 400 dagen, geen statuswijziging → niet')
-  eq(r({ soort: 'lancering', _lastClaudeUpdate: ago(1) }, { statusGewijzigd: true }), 'status', 'lancering met statuswijziging → wel')
+  eq(r({ soort: 'lancering', status: 'voltooid', _lastClaudeUpdate: ago(1) }, { statusGewijzigd: true }), null, 'lancering met statuswijziging → niet (highlight uit het sjabloon)')
+  eq(r({ soort: 'missie', status: 'actief', _lastClaudeUpdate: ago(1) }, { statusGewijzigd: true }), 'status', 'missie → actief → wel')
+  eq(r({ soort: 'missie', status: 'mislukt', _lastClaudeUpdate: ago(1) }, { statusGewijzigd: true }), null, 'missie → mislukt → niet')
   eq(r({ soort: 'missie', _lastClaudeUpdate: ago(31) }), '30 dagen', 'missie na 31 dagen → wel')
   eq(r({ soort: 'missie', _lastClaudeUpdate: ago(29) }), null, 'missie na 29 dagen → niet')
   eq(r({ soort: 'lancering' }), 'nooit verrijkt', 'nooit verrijkt → wel')
@@ -163,9 +166,10 @@ async function run(tmp, claude) {
 
   // Run 1
   const b1 = await run(tmpB, claude)
-  eq(b1, ['Nieuw Een', 'lanc-faalt', 'lanc-status', 'missie-oud'], 'B run 1: nieuw, statuswijziging, missie na 31 dagen, nooit verrijkt')
+  eq(b1, ['Nieuw Een', 'lanc-faalt', 'missie-oud'], 'B run 1: nieuw, missie na 31 dagen, nooit verrijkt')
   let m = byId(read(tmpB).missions)
   ok(!b1.includes('lanc-oud'), 'B run 1: lancering zonder statuswijziging niet, ook niet na 31 dagen')
+  ok(!b1.includes('lanc-status'), 'B run 1: lancering met statuswijziging niet')
   ok(!b1.includes('missie-vers'), 'B run 1: missie na 5 dagen niet')
   eq(m.get('lanc-faalt')._lastClaudeAttempt?.reden, 'mislukt', 'B run 1: mislukte poging vastgelegd')
   eq(m.get('lanc-faalt')._lastClaudeUpdate, undefined, 'B run 1: mislukt → geen _lastClaudeUpdate')
@@ -176,7 +180,8 @@ async function run(tmp, claude) {
   eq(m.get('nieuw-een').relatedTags, ['verrijkt'], 'B run 1: nieuwe missie krijgt Claude\'s tags')
   ok(m.get('nieuw-een')._lastClaudeUpdate && !m.get('nieuw-een')._lastClaudeAttempt, 'B run 1: nieuwe missie krijgt _lastClaudeUpdate')
   eq(m.get('lanc-status').status, 'voltooid', 'B run 1: lanc-status → voltooid')
-  eq(m.get('lanc-status').relatedTags, ['bestaand', 'verrijkt'], 'B run 1: bestaande missie: tags samengevoegd')
+  eq(m.get('lanc-status').highlight, 'Gelanceerd op ' + m.get('lanc-status').launched + ' met Falcon 9', 'B run 1: lanc-status: highlight uit het sjabloon')
+  eq(m.get('missie-oud').relatedTags, ['bestaand', 'verrijkt'], 'B run 1: bestaande missie: tags samengevoegd')
   ok(new Date(m.get('missie-oud')._lastClaudeUpdate) > new Date(ago(1)), 'B run 1: missie-oud ververst')
 
   // Run 2, de volgende dag: niets opnieuw, ook de mislukte poging niet.
