@@ -1,3 +1,5 @@
+import { APOD_FEED, parseFeed, bouwApod, apodDatum } from './apod.mjs'
+
 const ALLOWED_ORIGINS = [
   'https://nightgazer.space',
   'https://www.nightgazer.space',
@@ -253,33 +255,45 @@ export default {
     }
 
     // ── GET /apod ─────────────────────────────────────────────────────────
-    // Proxies NASA APOD and caches the result for a full day via CF Cache API
-    // — APOD only changes once every 24h, so the cache key is date-scoped
-    // (rather than a static key) and kept for 24h instead of re-fetching
-    // NASA hourly. API key stays server-side — never exposed to the browser.
+    // APOD uit science.nasa.gov (zie apod.mjs: api.nasa.gov geeft sinds de
+    // verhuizing het NASA-logo terug). Zelfde JSON-vorm als vroeger.
+    //
+    // Cache per dag (oostkusttijd, zoals NASA dateert). Alleen een APOD van
+    // vandaag gaat 24 uur de cache in; staat de feed nog op gisteren, of is
+    // het beeld afgekeurd (media_type 'none'), dan 1 uur, zodat de nieuwe of
+    // goede versie dezelfde dag nog doorkomt. Een fout wordt nooit gecachet.
     if (request.method === 'GET' && url.pathname === '/apod') {
-      const today    = new Date().toISOString().slice(0, 10) // YYYY-MM-DD (UTC)
-      const cacheKey = new Request(`https://nasa-apod-cache/apod?date=${today}`)
+      const vandaag  = apodDatum(Date.now())
+      const cacheKey = new Request(`https://nasa-apod-cache/apod-v2?date=${vandaag}`)
       const cache    = caches.default
 
       const cached = await cache.match(cacheKey)
-      if (cached) {
-        const data = await cached.json()
-        return cors(request, JSON.stringify(data))
+      if (cached) return cors(request, await cached.text())
+
+      const kop = { 'User-Agent': 'Mozilla/5.0 (compatible; NightGazerBot/1.0; +https://nightgazer.space)' }
+      let apod
+      try {
+        const feed = await fetch(APOD_FEED, { headers: { ...kop, Accept: 'application/rss+xml, application/xml, text/xml' } })
+        if (!feed.ok) throw new Error(`feed ${feed.status}`)
+        const item = parseFeed(await feed.text())[0]
+        if (!item) throw new Error('feed zonder items')
+
+        let html = ''
+        if (item.link && /^https:\/\/science\.nasa\.gov\//.test(item.link)) {
+          const art = await fetch(item.link, { headers: { ...kop, Accept: 'text/html' } })
+          if (art.ok) html = await art.text()
+        }
+        apod = bouwApod(item, html)
+      } catch (e) {
+        return cors(request, JSON.stringify({ error: `APOD niet beschikbaar: ${e.message}` }), 502)
       }
 
-      const apiKey = env.NASA_API_KEY || 'DEMO_KEY'
-      const res    = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
-      if (!res.ok) {
-        return cors(request, JSON.stringify({ error: `NASA ${res.status}` }), 502)
-      }
-      const data = await res.json()
-
-      await cache.put(cacheKey, new Response(JSON.stringify(data), {
-        headers: { 'Cache-Control': 'public, max-age=86400', 'Content-Type': 'application/json' },
+      const ttl = apod.date === vandaag && apod.media_type === 'image' ? 86400 : 3600
+      const body = JSON.stringify(apod)
+      await cache.put(cacheKey, new Response(body, {
+        headers: { 'Cache-Control': `public, max-age=${ttl}`, 'Content-Type': 'application/json' },
       }))
-
-      return cors(request, JSON.stringify(data))
+      return cors(request, body)
     }
 
     // ── GET /weather?lat=52.37&lon=4.90 ──────────────────────────────────
