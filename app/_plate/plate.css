@@ -1068,6 +1068,9 @@ a:hover .pl-emulsion > img,
 /* No motion: the strip becomes an ordinary horizontal scroller. */
 @media (prefers-reduced-motion: reduce) {
   .pl-ticker__view { overflow-x: auto; }
+  /* De tweede set bestaat alleen voor de naadloze loop. Zonder animatie zou
+     wie scrolt elk item twee keer zien. */
+  .pl-ticker__item[aria-hidden="true"] { display: none; }
 }
 
 .pl-ticker__item {
