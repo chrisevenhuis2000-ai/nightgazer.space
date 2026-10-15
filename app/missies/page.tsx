@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
-import MissiesClient from './MissiesClient'
+import Lanceermanifest from './Lanceermanifest'
 
 export const metadata: Metadata = {
   title:       'Ruimtemissies',
-  description: 'Volg actieve ruimtemissies van NASA, ESA en meer. Live status, interactieve zonnestelselkaart en lanceertijdlijn.',
+  description: 'Volg actieve en geplande ruimtemissies van NASA, ESA, SpaceX en meer. Het lanceermanifest van dit jaar, wat er nu vliegt en wat al gevlogen heeft.',
+  alternates:  { canonical: '/missies/' },
   openGraph: {
     title:       'Ruimtemissies — NightGazer',
-    description: 'Live status van Starship, JWST, Perseverance en meer — met interactieve kaart en tijdlijn.',
+    description: 'Het lanceermanifest: geplande vluchten, lopende missies en het register van wat al gevlogen heeft.',
   },
 }
 
 export default function Page() {
-  return <MissiesClient />
+  return <Lanceermanifest />
 }
