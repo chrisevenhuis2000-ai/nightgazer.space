@@ -52,7 +52,7 @@ PRODUCT.md / DESIGN.md  productbrief en designsysteem van de redesign
 | Workflow | Wanneer | Wat |
 |---|---|---|
 | `fetch-articles.yml` | dagelijks 07:17 UTC | RSS → Claude → `content/articles/`, daarna image-backfill |
-| `update-missions.yml` | dagelijks 07:43 UTC | missiedata bijwerken → `content/missions.json`; Claude-tekst bij een nieuwe missie, een statuswijziging en (alleen soort `missie`) elke 30 dagen. De run-samenvatting meldt `Claude-aanroepen: N` |
+| `update-missions.yml` | dagelijks 07:43 UTC | missiedata bijwerken → `content/missions.json`; bij een statuswijziging een vaste highlight (sjabloon); Claude-tekst bij een nieuwe missie, en voor soort `missie` bij actief worden en elke 30 dagen. De run-samenvatting meldt `Claude-aanroepen: N` |
 | `deploy.yml` | elke push naar main | Cloudflare Worker deployen |
 | `setup-push.yml` | eenmalig | KV-namespace + VAPID-sleutels voor push |
 | `backfill-images-once.yml` | handmatig | afbeeldingen opnieuw ophalen |
