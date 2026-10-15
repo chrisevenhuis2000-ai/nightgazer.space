@@ -410,6 +410,16 @@ ${article.rawBody.slice(0, 2500)}` }],
                   </p>
                 )}
 
+                {article.sourceUrl && (
+                  <p className="pl-body-s" style={{ marginTop: 30 }}>
+                    Bron:{' '}
+                    <a href={article.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>
+                      {article.source || new URL(article.sourceUrl).hostname}
+                    </a>
+                    . Deze Nederlandse versie is met AI-ondersteuning geschreven op basis van het oorspronkelijke artikel.
+                  </p>
+                )}
+
                 {article.tags.length > 0 && (
                   <div className="pl-terms" style={{ marginTop: 30 }}>
                     {article.tags.map(t => {
