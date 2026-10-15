@@ -1,41 +1,14 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T08:10:57.005Z",
+    "lastUpdated": "2026-10-15T08:40:28.713Z",
     "autoUpdated": [
-      "the-grain-goddess-provides-iqps-launch-7",
-      "transporter-17-dedicated-sso-rideshare",
-      "mrv-1",
-      "sda-tranche-1-transport-layer-a",
-      "victus-haze-puma",
-      "9-x-globalstar-3",
-      "strix-launch-11",
-      "nancy-grace-roman-space-telescope",
-      "bluebird-block-2-3",
-      "sirius-sxm-11",
-      "nrol-95",
-      "ussf-481",
-      "starlink-group-15-15",
-      "starlink-group-15-16",
-      "amazon-leo-le-04",
-      "sda-tranche-2-transport-layer-d",
-      "sda-tranche-2-transport-layer-e",
-      "flight-15",
-      "globalstar-2-r-mission-2-x-9",
-      "iqps-launch-11",
-      "rivada-1",
-      "rivada-2",
-      "rivada-3",
-      "rivada-4",
-      "rivada-5",
-      "rivada-6",
-      "telesat-lightspeed-2",
-      "telesat-lightspeed-3",
-      "telesat-lightspeed-4",
-      "telesat-lightspeed-5",
-      "telesat-lightspeed-6",
-      "telesat-lightspeed-7",
-      "haste-leidos-4",
-      "haste-leidos-5"
+      "amazon-leo-le-02",
+      "gps-iii-sv10",
+      "strix-launch-9",
+      "flight-12",
+      "cas500-2-others",
+      "bubbles",
+      "curveball"
     ]
   },
   "missions": [
@@ -1059,9 +1032,9 @@
       "name": "Amazon Leo (LE-02)",
       "agency": "Arianespace",
       "agencyColor": "#ffa040",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
-      "launched": "28 apr 2026",
+      "launched": "30 apr 2026",
       "objective": "Lancering van 32 Amazon Kuiper-satellieten voor breedband internettoegang vanuit een lage aardbaan.",
       "body": "Low Earth Orbit",
       "highlight": "Geplande lancering op 28 april 2026 met 32 Kuiper-satellieten aan boord.",
@@ -1095,7 +1068,7 @@
       "name": "GPS III SV10",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "21 apr 2026",
       "objective": "Lancering van de tiende en laatste GPS III-satelliet ter verbetering van het Amerikaanse navigatienetwerk.",
@@ -1181,9 +1154,9 @@
       "name": "StriX Launch 9",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
-      "launched": "31 mei 2026",
+      "launched": "22 mei 2026",
       "objective": "Lancering van een SAR-aardobservatiehoefsatelliet voor het Japanse bedrijf Synspective.",
       "body": "Sun-Synchronous Orbit",
       "highlight": "Geplande lancering: 31 mei 2026",
@@ -1258,9 +1231,9 @@
       "name": "Flight 12",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
-      "launched": "31 mei 2026",
+      "launched": "22 mei 2026",
       "objective": "Twaalfde testvlucht van Starship, met de primeur van de volledig nieuwe Starship V3-configuratie.",
       "body": "Suborbital",
       "highlight": "Eerste vlucht van Starship V3 – nieuwe generatie supertanker debuteert",
@@ -2668,7 +2641,7 @@
       "name": "CAS500-2 & Others",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "3 mei 2026",
       "objective": "Rideshare-vlucht met aardobservatiesatellieten naar een zonnesynchrone baan.",
@@ -2710,7 +2683,7 @@
       "name": "Bubbles",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "22 apr 2026",
       "objective": "Suborbiale testvlucht onder het HASTE-programma van Rocket Lab met de Electron-raket.",
@@ -3001,7 +2974,7 @@
       "name": "Curveball",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "11 jun 2026",
       "objective": "Curveball — Rocket Lab missie naar Suborbital.",
@@ -4144,13 +4117,13 @@
       "soort": "lancering",
       "launched": "15 okt 2026",
       "launchPrecision": "Minute",
-      "objective": "Geclassificeerde missie voor de United States Space Force naar een polaire baan.",
+      "objective": "Geclassificeerde lancering van een nuttige lading voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Geplande lancering op 15 oktober 2026 vanuit polaire baan.",
+      "highlight": "Geplande lancering op 15 oktober 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "USSF-481 is een geclassificeerde missie van SpaceX voor de United States Space Force, uitgevoerd met een Falcon 9-raket vanuit een lanceerlocatie gericht op een polaire baan. De exacte lading is niet openbaar gemaakt, maar op basis van de ligging van de dropzones van de eerste trap lijkt het te gaan om een batch geclassificeerde satellieten op een lage aardbaan, mogelijk gebouwd op het Starshield-satellietplatform van SpaceX. Eerdere missies met vergelijkbare vliegprofielen waren gerelateerd aan het SDA Transport Layer-programma.",
+      "description": "USSF-481 is een geclassificeerde missie van de United States Space Force, uitgevoerd door SpaceX met een Falcon 9-raket. De lading wordt gebracht naar een polaire baan. Op basis van de locaties van de neervallende rakettrappen wordt vermoed dat het mogelijk gaat om een batch geclassificeerde satellieten op basis van het Starshield-satellietbus van SpaceX. Een vergelijking met eerdere SDA Transport Layer-lanceringen versterkt dat vermoeden, al heeft de Space Force de aard van de lading niet bevestigd.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4168,8 +4141,11 @@
         "spacex",
         "falcon 9",
         "starshield",
-        "polar orbit"
-      ]
+        "polar orbit",
+        "polaire baan",
+        "geclassificeerd"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:38:29.370Z"
     },
     {
       "id": "starlink-group-15-15",
@@ -4183,11 +4159,11 @@
       "launchPrecision": "Minute",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's satellietinternetnetwerk.",
       "body": "Low Earth Orbit",
-      "highlight": "27 nieuwe Starlink-satellieten op weg naar Low Earth Orbit.",
+      "highlight": "Lancering gepland op 20 oktober 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket een nieuwe groep van 27 satellieten voor de Starlink-megaconstellatie. Deze constellatie vormt de ruggengraat van SpaceX's ambitie om wereldwijd snel internet via de ruimte aan te bieden. De missie, aangeduid als Starlink Group 15-15, brengt de satellieten naar een lage aardbaan. Met elke lancering breidt het Starlink-netwerk zijn capaciteit en dekking verder uit.",
+      "description": "SpaceX lanceert met een Falcon 9-raket een nieuwe groep van 27 Starlink-satellieten naar een lage aardbaan. De satellieten maken deel uit van de Starlink-megaconstellatie, waarmee SpaceX wereldwijd snel internet via de ruimte aanbiedt. Met deze missie breidt het bedrijf zijn satellietnetwerk verder uit.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4206,7 +4182,8 @@
         "falcon 9",
         "low earth orbit",
         "satellietinternet"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:38:34.785Z"
     },
     {
       "id": "starlink-group-15-16",
@@ -4220,11 +4197,11 @@
       "launchPrecision": "Minute",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's internetsatellietsysteem.",
       "body": "Low Earth Orbit",
-      "highlight": "Geplande lancering op 24 oktober 2026 om 05:29 UTC",
+      "highlight": "Lancering gepland op 24 oktober 2026 om 05:29 UTC",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket een nieuwe groep van 27 satellieten voor de Starlink-megaconstellatie. Deze satellieten worden in een lage aardbaan gebracht als onderdeel van SpaceX's project voor een ruimtegebaseerd internetcommunicatiesysteem. De missie, aangeduid als Starlink Group 15-16, staat gepland voor 24 oktober 2026 en vertrekt om 05:29 UTC.",
+      "description": "SpaceX lanceert met een Falcon 9-raket een nieuwe groep van 27 Starlink-satellieten naar een lage aardbaan. De satellieten maken deel uit van de voortdurend groeiende Starlink-megaconstellation, waarmee SpaceX wereldwijd breedbandinternettoegang via de ruimte wil aanbieden. De lancering staat gepland voor 24 oktober 2026 en vertrekt om 05:29 UTC.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4242,8 +4219,10 @@
         "starlink",
         "falcon 9",
         "low earth orbit",
-        "satellietinternet"
-      ]
+        "satellietinternet",
+        "satellieten"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:38:40.506Z"
     },
     {
       "id": "amazon-leo-le-04",
@@ -4255,13 +4234,13 @@
       "soort": "lancering",
       "launched": "23 nov 2026",
       "launchPrecision": "Day",
-      "objective": "Lancering van Amazon Kuiper-satellieten naar een lage aardbaan voor wereldwijd breedband internet.",
+      "objective": "Lancering van Amazon Kuiper-satellieten naar een lage aardbaan voor wereldwijd breedbandinternet.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering op 23 november 2026 met Ariane 64.",
+      "highlight": "Geplande lancering op 23 november 2026 met Ariane 64.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Amazon Leo (LE-04) is een Arianespace-missie die satellieten van het Kuiper-netwerk naar een lage aardbaan brengt met een Ariane 64-raket. Kuiper Systems LLC, een dochteronderneming van Amazon, beheert deze megaconstellatie die uiteindelijk uit 3.276 satellieten zal bestaan. De satellieten worden verdeeld over 98 orbitale vlakken op hoogtes van 590, 610 en 630 kilometer. Per Ariane 6-vlucht worden 35 tot 40 satellieten aan boord meegenomen.",
+      "description": "Amazon Leo, voorheen bekend als Project Kuiper, is een megaconstellatie van in totaal 3.276 satellieten in een lage aardbaan, beheerd door Kuiper Systems LLC, een dochteronderneming van Amazon. De satellieten worden verdeeld over 98 orbitale vlakken op drie hoogtelagen: 590 km, 610 km en 630 km. Arianespace voert de lancering uit met een Ariane 64-raket, die per vlucht 35 tot 40 satellieten meeneemt. Het doel van de constellatie is het bieden van breedbandinternetdiensten wereldwijd.",
       "vehicle": "Ariane 64",
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
@@ -4280,7 +4259,8 @@
         "ariane 64",
         "megaconstellatie",
         "low earth orbit"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:38:46.597Z"
     },
     {
       "id": "sda-tranche-2-transport-layer-d",
@@ -4294,11 +4274,11 @@
       "launchPrecision": "Month",
       "objective": "SpaceX lanceert geclassificeerde SDA-satellieten voor de Tranche 2 Transport Layer in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Gepland voor lancering in 2026 in een polaire baan.",
+      "highlight": "Geplande lancering gepland voor 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket een geclassificeerde missie uit voor het Amerikaanse Space Development Agency (SDA). De vlucht maakt deel uit van de Tranche 2 Transport Layer, een militair satellietsysteem dat in fasen wordt opgebouwd. De lading wordt afgeleverd in een polaire baan. Verdere details over de missie zijn niet openbaar gemaakt.",
+      "description": "SpaceX voert een geclassificeerde lancering uit voor de Space Development Agency (SDA) als onderdeel van de Tranche 2 Transport Layer. De missie brengt satellieten in een polaire baan met behulp van een Falcon 9-raket. Verdere details over de lading zijn niet openbaar gemaakt vanwege de geclassificeerde aard van de missie.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4317,7 +4297,8 @@
         "sda",
         "tranche 2",
         "polaire baan"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:38:51.259Z"
     },
     {
       "id": "sda-tranche-2-transport-layer-e",
@@ -4331,11 +4312,11 @@
       "launchPrecision": "Month",
       "objective": "Lancering van geclassificeerde SDA Tranche 2 Transport Layer-satellieten naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Gepland voor lancering in december 2026.",
+      "highlight": "Geplande lancering in 2026 met Falcon 9 naar polaire baan.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket een geclassificeerde missie uit voor de Space Development Agency (SDA). De lading maakt deel uit van de Tranche 2 Transport Layer, een uitbreiding van het militaire satellietnetwerk in een polaire baan. Verdere details over de missie zijn niet openbaar gemaakt.",
+      "description": "SpaceX voert namens de Space Development Agency (SDA) een geclassificeerde lancering uit van satellieten voor de Tranche 2 Transport Layer. De missie brengt de satellieten in een polaire baan met behulp van een Falcon 9-raket. Details over de lading en de precieze doelstellingen zijn niet openbaar gemaakt vanwege de vertrouwelijke aard van de missie.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4353,8 +4334,10 @@
         "falcon 9",
         "sda",
         "polar orbit",
-        "transport layer"
-      ]
+        "transport layer",
+        "polaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:38:56.499Z"
     },
     {
       "id": "flight-15",
@@ -4366,13 +4349,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Quarter 4",
-      "objective": "Vijftiende testvlucht van het tweefasige Starship-raketsysteem, voor het eerst in de V3-configuratie.",
+      "objective": "Vijftiende testvlucht van het Starship-raketsysteem, voor het eerst in de V3-configuratie.",
       "body": "Low Earth Orbit",
-      "highlight": "Vierde vlucht van Starship V3; lancering gepland voor eind 2026.",
+      "highlight": "Eerste testvlucht van Starship in de V3-configuratie",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Flight 15 is de vijftiende testvlucht van SpaceX' Starship, het tweefasige lanceervoertuig dat is ontworpen voor transporten naar Low Earth Orbit en verder. Het is tevens de vierde vlucht van de nieuwste Starship V3-variant. SpaceX gebruikt deze missie om de systemen van het voertuig verder te testen en te verfijnen. De vlucht is gepland voor eind 2026.",
+      "description": "SpaceX voert de vijftiende testvlucht uit van het tweefasige Starship-raketsysteem. Het is tevens de vierde vlucht met de Starship V3-configuratie, een belangrijke stap in de verdere ontwikkeling van het grootste raket ter wereld. De vlucht heeft als doel een nuttige lading af te leveren in een lage aardbaan. Met elke testvlucht bouwt SpaceX voort op eerder vergaarde data om het systeem verder te verfijnen.",
       "vehicle": "Starship",
       "launchSite": "Orbital Launch Pad 2",
       "duration": "Onbekend",
@@ -4391,7 +4374,8 @@
         "testvlucht",
         "low earth orbit",
         "starship v3"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:02.155Z"
     },
     {
       "id": "globalstar-2-r-mission-2-x-9",
@@ -4405,11 +4389,11 @@
       "launchPrecision": "Year Half 2",
       "objective": "Negen Globalstar 2de-generatie satellieten lanceren naar een baan op 1410 km hoogte.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor eind 2026 als onderdeel van een bredere constellatievernieuwing.",
+      "highlight": "Lancering gepland voor eind 2026 met Falcon 9.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9 de tweede verversingsmissie uit voor het Globalstar-netwerk, waarbij negen nieuwe satellieten van de tweede generatie worden afgeleverd in een lage aardbaan. Het Globalstar-netwerk biedt wereldwijde digitale spraak-, data- en faxdiensten via een satellietconstellatie op 1410 kilometer hoogte met een inclinatie van 52 graden. Begin 2022 sloot Globalstar een contract met MDA voor de bouw van zeventien vernieuwde satellieten om de bestaande constellatie aan te vullen. Rocket Lab is als onderaannemer betrokken bij de bouw van de satellietbussen en de lanceerdispensers.",
+      "description": "SpaceX lanceert negen vernieuwde Globalstar-satellieten van de tweede generatie naar een lage aardbaan op 1410 kilometer hoogte. De satellieten maken deel uit van een bredere verversing van het bestaande Globalstar-constellatie, dat wereldwijd digitale spraak-, data- en faxdiensten aanbiedt. In vroeg 2022 sloot Globalstar een contract met MDA voor de bouw van zeventien nieuwe satellieten, waarbij Rocket Lab werd ingeschakeld als onderaannemer voor de satellietbussen en lanceerdispensers. De missie wordt uitgevoerd met een Falcon 9-raket van SpaceX.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -4427,8 +4411,10 @@
         "spacex",
         "falcon 9",
         "low earth orbit",
-        "satellietconstellatie"
-      ]
+        "satellietconstellatie",
+        "communicatiesatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:09.515Z"
     },
     {
       "id": "iqps-launch-11",
@@ -4442,11 +4428,11 @@
       "launchPrecision": "Year",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor eind december 2026 vanuit Rocket Lab.",
+      "highlight": "Gepland voor lancering in december 2026.",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Rocket Lab zet met de Electron-raket een synthetische-apertuurradar (SAR) satelliet in een lage aardbaan voor het Japanse aardobservatiebedrijf iQPS. De satelliet zal de aarde vanuit de ruimte in beeld brengen met behulp van radartechnologie, die ook bij bewolking en in het donker beelden kan produceren. Het is de elfde lanceerovereenkomst in het kader van het iQPS-programma en benadrukt de groeiende vraag naar commerciële SAR-capaciteit vanuit Japan. De missie is gepland voor eind 2026.",
+      "description": "Rocket Lab zal met een Electron-raket een synthetische-apertuurradar (SAR) aardobservatiesatelliet lanceren voor het Japanse bedrijf iQPS. De satelliet wordt in een lage aardbaan gebracht en maakt deel uit van de groeiende vloot van iQPS voor commerciële aardobservatie. SAR-technologie stelt de satelliet in staat om ook bij bewolking en in het donker beelden van het aardoppervlak te maken.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4465,7 +4451,8 @@
         "aardobservatie",
         "electron",
         "rocket lab"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:15.701Z"
     },
     {
       "id": "rivada-1",
@@ -4477,13 +4464,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van 24 satellieten voor het Rivada-internetconstellatie in een poolbaan.",
+      "objective": "Lancering van 24 satellieten voor de Rivada-internetconstellatie in een poolbaan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland voor eind december 2026.",
+      "highlight": "Lancering gepland voor 31 december 2026.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 1-missie brengt SpaceX 24 satellieten in een polaire baan voor het internetnetwerk van Rivada. De Falcon 9-raket voert de lancering uit vanuit een nog te bevestigen lanceerbasis. De satellieten vormen onderdeel van Rivada's opkomende breedbandconstellatie die mondiale connectiviteit moet bieden. De lancering staat gepland voor eind 2026.",
+      "description": "SpaceX bereidt zich voor op de lancering van 24 satellieten voor Rivada Space Networks, bestemd voor een poolbaan. Deze satellieten vormen een onderdeel van Rivada's ambitie om een wereldwijd dekkend internetnetwerk vanuit de ruimte op te bouwen. De missie wordt uitgevoerd met een Falcon 9-raket en staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4501,8 +4488,10 @@
         "falcon 9",
         "rivada",
         "polar orbit",
-        "internetconstellatie"
-      ]
+        "internetconstellatie",
+        "poolbaan"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:20.947Z"
     },
     {
       "id": "rivada-2",
@@ -4514,13 +4503,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van 24 satellieten voor het internet­constellatie van Rivada naar een polaire baan.",
+      "objective": "Lancering van 24 satellieten voor de internetconstellatie van Rivada naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland voor eind december 2026.",
+      "highlight": "Gepland voor 31 december 2026 vanaf een SpaceX-lanceerlocatie.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 2-missie brengt SpaceX 24 satellieten naar een polaire baan als onderdeel van het groeiende internetconstellatie van Rivada. De Falcon 9-raket verzorgt de lancering en levert de nuttige lading af op de beoogde hoogte. De missie is gepland voor eind december 2026 en vormt een volgende stap in de opbouw van Rivada's satellietnetwerk.",
+      "description": "SpaceX voert met een Falcon 9-raket de tweede Rivada-missie uit, waarbij 24 satellieten worden afgeleverd in een polaire baan. De satellieten maken deel uit van de groeiende internetconstellatie van Rivada, een bedrijf dat wereldwijde breedbandverbindingen wil aanbieden. De polaire baan stelt de constellatie in staat ook afgelegen en polair gelegen gebieden van dekking te voorzien. De lancering staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4538,8 +4527,11 @@
         "falcon 9",
         "rivada",
         "polar orbit",
-        "satellietconstellatie"
-      ]
+        "satellietconstellatie",
+        "internetsatellieten",
+        "polaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:27.233Z"
     },
     {
       "id": "rivada-3",
@@ -4551,13 +4543,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van 24 satellieten voor het internetconstellatie van Rivada in een polaire baan.",
+      "objective": "Lancering van 24 satellieten voor de internetconstellatie van Rivada in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland voor eind 2026 vanuit polaire baan.",
+      "highlight": "Gepland voor december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket de derde Rivada-missie uit, waarbij 24 satellieten in een polaire baan worden gebracht. De satellieten maken deel uit van de groeiende internetconstellatie van Rivada Space Networks. Met een polaire baan kunnen de satellieten vrijwel het gehele aardoppervlak bedekken, inclusief de poolgebieden. De lancering staat gepland voor eind 2026.",
+      "description": "SpaceX voert met een Falcon 9-raket de derde missie uit voor Rivada Space Networks. Aan boord bevinden zich 24 satellieten die worden ingezet in een polaire baan als onderdeel van Rivada's groeiende internetconstellatie. De missie is gepland voor eind 2026 en bouwt voort op eerdere lanceringen binnen hetzelfde programma.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4575,8 +4567,10 @@
         "falcon 9",
         "rivada",
         "internetsatellieten",
-        "polaire baan"
-      ]
+        "polaire baan",
+        "satellietconstellatie"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:32.833Z"
     },
     {
       "id": "rivada-4",
@@ -4588,13 +4582,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "SpaceX brengt 24 satellieten voor het internetnetwerk van Rivada naar een polaire baan.",
+      "objective": "SpaceX lanceert 24 Rivada-satellieten naar een polaire baan voor een nieuw internetnetwerk.",
       "body": "Polar Orbit",
-      "highlight": "Geplande lancering eind 2026 met Falcon 9 naar polaire baan.",
+      "highlight": "Lancering gepland voor eind 2026 met Falcon 9.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 4-missie lanceert SpaceX 24 satellieten voor de internetconstellatie van Rivada Space Networks. De Falcon 9-raket plaatst de lading in een polaire baan, van waaruit de satellieten wereldwijde internetdekking moeten verzorgen. De missie maakt deel uit van Rivada's bredere plannen om een commercieel breedbandsatellietnetwerk op te bouwen. Een exacte lanceerdatum binnen 2026 is nog niet vastgesteld.",
+      "description": "Met de Rivada 4-missie brengt SpaceX 24 satellieten in een polaire baan als onderdeel van het groeiende internetnetwerk van Rivada. De lancering wordt uitgevoerd met een Falcon 9-raket. De polaire baan stelt de satellieten in staat een breed geografisch bereik te bedienen, waaronder gebieden op hoge breedtegraden.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4612,8 +4606,10 @@
         "falcon 9",
         "rivada",
         "satellietconstellatie",
-        "polaire baan"
-      ]
+        "polaire baan",
+        "internetsatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:38.188Z"
     },
     {
       "id": "rivada-5",
@@ -4625,13 +4621,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "SpaceX brengt 24 satellieten voor het internetnetwerk van Rivada in een polaire baan.",
+      "objective": "SpaceX lanceert 24 satellieten voor het internetnetwerk van Rivada in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Gepland voor lancering in 2026 met Falcon 9 naar polaire baan.",
+      "highlight": "Geplande lancering op 31 december 2026.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Met de Rivada 5-missie lanceert SpaceX 24 satellieten voor het groeiende internetconstellation van Rivada Space Networks. De Falcon 9-raket brengt de lading in een polaire baan, wat wereldwijde dekking mogelijk maakt. De missie maakt deel uit van Rivada's ambitie om een commercieel breedbandnetwerk vanuit de ruimte op te bouwen.",
+      "description": "Met de Rivada 5-missie brengt SpaceX 24 satellieten in een polaire baan ten behoeve van het internetnetwerk van Rivada. De Falcon 9-raket voert de lading uit om het groeiende constellatienetwerk van het bedrijf verder uit te breiden. De polaire baan zorgt voor een brede dekking over de aardbol, inclusief hogere breedtegraden.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4649,8 +4645,10 @@
         "falcon 9",
         "rivada",
         "internetsatellieten",
-        "polaire baan"
-      ]
+        "polaire baan",
+        "satellietinternet"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:43.905Z"
     },
     {
       "id": "rivada-6",
@@ -4662,13 +4660,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "lancering van 24 satellieten voor het Rivada-internetconstelatie in een polaire baan.",
+      "objective": "Lancering van 24 satellieten voor het Rivada-internetconstelatie in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland voor 31 december 2026 in polaire baan.",
+      "highlight": "Gepland voor december 2026 aan boord van een Falcon 9.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX zal met een Falcon 9-raket 24 satellieten lanceren voor Rivada Space Networks. De satellieten worden in een polaire baan gebracht als onderdeel van Rivada's groeiende internetconstelatie. De missie staat gepland voor eind december 2026 en draagt bij aan de verdere uitbouw van commerciële breedbandconnectiviteit vanuit de ruimte.",
+      "description": "SpaceX bereidt zich voor op de lancering van Rivada 6, een missie waarbij 24 satellieten voor het internetconstelatie van Rivada in een polaire baan worden gebracht. Het is de zesde vlucht in het kader van dit constelatie, dat wereldwijde internetdekking beoogt via een netwerk van meerdere satellieten. De Falcon 9-raket van SpaceX verzorgt de lancering, gepland voor eind december 2026. Met polaire banen kunnen de satellieten een brede geografische dekking bieden, ook over de poolgebieden.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
@@ -4686,8 +4684,10 @@
         "falcon 9",
         "rivada",
         "polar orbit",
-        "internetsatellieten"
-      ]
+        "internetsatellieten",
+        "polaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:50.605Z"
     },
     {
       "id": "telesat-lightspeed-2",
@@ -4699,13 +4699,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor Telesat naar een lage aardbaan.",
+      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor de Canadese operator Telesat naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor december 2026",
+      "highlight": "Gepland voor eind 2026; onderdeel van Telesats Lightspeed-constellatieopbouw.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket maximaal 18 satellieten voor de Canadese satellietoperator Telesat. De satellieten zijn vervaardigd door MDA en maken deel uit van Telesats Lightspeed-constellatie in een lage aardbaan. De Lightspeed-constellatie is ontworpen om wereldwijde breedbandinternetdiensten aan te bieden. De lancering staat gepland voor eind december 2026.",
+      "description": "SpaceX zal met een Falcon 9-raket maximaal 18 satellieten lanceren voor de Lightspeed-constellatie van het Canadese bedrijf Telesat. De satellieten worden gebouwd door MDA en zijn bestemd voor een lage aardbaan. Met de Lightspeed-constellatie wil Telesat een breedband-internetnetwerk vanuit de ruimte opbouwen. Deze vlucht is de tweede Lightspeed-lancering in het kader van dat programma.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4723,8 +4723,10 @@
         "lightspeed",
         "spacex",
         "falcon 9",
-        "low earth orbit"
-      ]
+        "low earth orbit",
+        "leo"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:39:57.300Z"
     },
     {
       "id": "telesat-lightspeed-3",
@@ -4736,13 +4738,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor Canadees operator Telesat naar Low Earth Orbit.",
+      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor Telesat naar Low Earth Orbit.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor 31 december 2026",
+      "highlight": "Lancering gepland voor eind 2026 met Falcon 9.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket de derde missie uit voor de Lightspeed-constellatie van de Canadese satellietoperator Telesat. Aan boord bevinden zich maximaal 18 satellieten, vervaardigd door het Canadese technologiebedrijf MDA. De Lightspeed-constellatie is ontworpen om breedbandinternet vanuit een lage aardbaan te leveren. De lancering staat gepland voor eind 2026.",
+      "description": "SpaceX lanceert met een Falcon 9-raket maximaal 18 satellieten voor de Canadese operator Telesat. De satellieten zijn vervaardigd door MDA en maken deel uit van Telesats Lightspeed-constellatie in een lage aardbaan. Met de Lightspeed-constellatie wil Telesat wereldwijde breedbandverbindingen aanbieden vanuit de ruimte. De lancering staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4761,7 +4763,8 @@
         "telesat",
         "lightspeed",
         "low earth orbit"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:40:03.044Z"
     },
     {
       "id": "telesat-lightspeed-4",
@@ -4773,13 +4776,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van tot 18 Lightspeed-satellieten voor het Canadese bedrijf Telesat naar een lage aardbaan.",
+      "objective": "Lancering van tot 18 Lightspeed-satellieten voor Telesat naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor eind 2026 met een Falcon 9-raket.",
+      "highlight": "Gepland voor december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert met een Falcon 9-raket de Telesat Lightspeed 4-missie uit, waarbij tot 18 satellieten worden afgeleverd in een lage aardbaan. De satellieten zijn gebouwd door het Canadese technologiebedrijf MDA voor de satellietoperator Telesat. Met deze lancering breidt Telesat zijn Lightspeed-constellatie verder uit, een netwerk dat breedbandinternet vanuit de ruimte moet leveren.",
+      "description": "SpaceX voert de vierde Lightspeed-lancering uit voor het Canadese bedrijf Telesat met een Falcon 9-raket. Aan boord bevinden zich tot 18 satellieten, gebouwd door MDA, bestemd voor Telesats Lightspeed-constellatie in een lage aardbaan. Deze constellatie moet in de toekomst breedbandinternet via de ruimte leveren. De lancering staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4797,8 +4800,10 @@
         "lightspeed",
         "spacex",
         "falcon 9",
-        "low earth orbit"
-      ]
+        "low earth orbit",
+        "leo"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:40:09.109Z"
     },
     {
       "id": "telesat-lightspeed-5",
@@ -4812,11 +4817,11 @@
       "launchPrecision": "Year",
       "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor de Canadese operator Telesat.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering eind 2026.",
+      "highlight": "Gepland voor eind december 2026 vanuit een SpaceX-lanceerlocatie.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket maximaal 18 satellieten voor de Lightspeed-constellatie van de Canadese satellietoperator Telesat. De satellieten zijn vervaardigd door MDA en worden in een lage aardbaan gebracht. De Lightspeed-constellatie is ontworpen om wereldwijde breedbandverbindingen vanuit de ruimte te bieden. Het is een van de meerdere geplande lanceermissies om de constellatie op te bouwen.",
+      "description": "SpaceX voert met een Falcon 9-raket de vijfde missie uit voor het Lightspeed-programma van de Canadese satellietoperator Telesat. Bij deze lancering worden maximaal 18 satellieten in een lage aardbaan gebracht, gebouwd door MDA. De satellieten vormen een onderdeel van Telesats Lightspeed-constellatie, die breedbandinternet vanuit de ruimte moet leveren. De lancering staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4835,7 +4840,8 @@
         "telesat",
         "lightspeed",
         "low earth orbit"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:40:15.126Z"
     },
     {
       "id": "telesat-lightspeed-6",
@@ -4847,13 +4853,13 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Year",
-      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor Canadese operator Telesat naar een lage aardbaan.",
+      "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor Telesat naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland voor eind 2026.",
+      "highlight": "Gepland voor eind december 2026; zesde lanceermissie binnen het Lightspeed-programma.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket maximaal 18 satellieten voor de Lightspeed-constellatie van het Canadese bedrijf Telesat. De satellieten zijn vervaardigd door MDA en worden in een lage aardbaan gebracht. De Lightspeed-constellatie is ontworpen om wereldwijde breedbandconnectiviteit aan te bieden. Deze missie vormt een volgende stap in de uitrol van het Telesat-netwerk.",
+      "description": "SpaceX voert met een Falcon 9-raket de zesde lanceermissie uit voor de Lightspeed-constellatie van de Canadese operator Telesat. Aan boord bevinden zich maximaal 18 satellieten, gebouwd door MDA, die deel uitmaken van Telesats ambitieuze breedband-netwerk in een lage aardbaan. De Lightspeed-constellatie is ontworpen om hoogwaardige internetverbindingen te leveren aan zakelijke en overheidsklanten wereldwijd. De lancering staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4872,7 +4878,8 @@
         "telesat",
         "lightspeed",
         "low earth orbit"
-      ]
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:40:21.977Z"
     },
     {
       "id": "telesat-lightspeed-7",
@@ -4886,11 +4893,11 @@
       "launchPrecision": "Year",
       "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor de Canadese operator Telesat naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering in 2026 met maximaal 18 MDA-satellieten aan boord.",
+      "highlight": "Gepland voor december 2026 door SpaceX met een Falcon 9-raket.",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX lanceert met een Falcon 9-raket maximaal 18 satellieten voor de Lightspeed-constellatie van de Canadese satellietoperator Telesat. De satellieten worden vervaardigd door MDA en vormen een onderdeel van Telesats ambitieuze breedband-internetnetwerk in een lage aardbaan. De missie draagt bij aan de opbouw van de Lightspeed-constellatie, die hoogwaardige connectiviteit moet bieden aan bedrijven en overheden wereldwijd.",
+      "description": "SpaceX voert met een Falcon 9-raket de zevende Lightspeed-missie uit voor de Canadese satellietoperator Telesat. De vlucht brengt maximaal 18 satellieten, vervaardigd door MDA, naar een lage aardbaan. Deze satellieten maken deel uit van Telesats Lightspeed-constellatie, bedoeld om wereldwijd breedbanddiensten aan te bieden. De lancering staat gepland voor eind 2026.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
@@ -4908,8 +4915,10 @@
         "lightspeed",
         "spacex",
         "falcon 9",
-        "low earth orbit"
-      ]
+        "low earth orbit",
+        "leo"
+      ],
+      "_lastClaudeUpdate": "2026-10-15T08:40:27.458Z"
     },
     {
       "id": "haste-leidos-4",
