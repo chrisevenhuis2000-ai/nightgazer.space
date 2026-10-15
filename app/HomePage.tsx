@@ -1,10 +1,10 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer homepage — full layout rework, staging build.
+   NightGazer homepage — the photographic plate archive (DESIGN.md).
 
    Structure, top to bottom:
-     staging banner → plate header → first viewport (live instrument bar on
+     plate header → first viewport (live instrument bar on
      the emulsion) → lead plate + two side plates → mission rail →
      instrument bank A → labelled ad field → archive ledger (800+ plates,
      filterable, with the light-box loupe) → instrument bank B → footer
@@ -16,7 +16,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import { MISSIONS } from '@/lib/missions-data'
-import { SiteFooter } from '../components/SiteFooter'
+import { SiteFooter } from './components/SiteFooter'
 import {
   PROXY, APOD_CACHE_KEY,
   type APODData, type ISSData, type Article,
@@ -29,7 +29,7 @@ import {
 import {
   archivo, ROWS_PER_PAGE, TOPICS, QUICK_TAGS, quickMatches,
   FOOTER_COLS, LEVEL_WORD, LEVEL_STEP, plateNo, img, Ladder,
-  StagingBanner, PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
+  PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
 } from '@/app/_plate/shared'
 
 
@@ -611,7 +611,7 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
 }
 
 /* ══ Page ═════════════════════════════════════════════════════════════════ */
-export default function StagingHome() {
+export default function HomePage() {
   const [apod, setApod] = useState<APODData | null>(null)
   const [iss, setIss] = useState<ISSData | null>(null)
   const [issFailed, setIssFailed] = useState(false)
@@ -668,7 +668,6 @@ export default function StagingHome() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <StagingBanner />
       <PlateHead total={total} edition={edition} current="home" />
       <QuickBar articles={articles} active={quickTag} onPick={pickQuick} />
 
