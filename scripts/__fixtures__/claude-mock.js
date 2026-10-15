@@ -6,7 +6,7 @@
 const http = require('http')
 
 function startClaudeMock() {
-  const state = { calls: [], fail: new Set() }
+  const state = { calls: [], prompts: {}, fail: new Set() }
   const server = http.createServer((req, res) => {
     let body = ''
     req.on('data', c => body += c)
@@ -15,6 +15,7 @@ function startClaudeMock() {
       const prompt = JSON.parse(body).messages[0].content
       const name = (prompt.match(/^Missie: (.*)$/m) || [])[1] || '?'
       state.calls.push(name)
+      state.prompts[name] = prompt
       res.writeHead(200, { 'Content-Type': 'application/json' })
       if (state.fail.has(name)) {
         res.end(JSON.stringify({ type: 'error', error: { type: 'overloaded_error' } }))

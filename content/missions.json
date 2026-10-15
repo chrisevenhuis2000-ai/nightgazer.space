@@ -1388,7 +1388,8 @@
         "klimaatmonitoring",
         "mtg"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:35:13.698Z"
+      "_lastClaudeUpdate": "2026-10-15T09:35:13.698Z",
+      "_herverrijk": true
     },
     {
       "id": "transporter-17-dedicated-sso-rideshare",
@@ -2402,7 +2403,8 @@
         "l2-punt",
         "infrarood"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:35:23.203Z"
+      "_lastClaudeUpdate": "2026-10-15T09:35:23.203Z",
+      "_herverrijk": true
     },
     {
       "id": "o3b-mpower-11-13",
@@ -2754,7 +2756,8 @@
         "falcon 9",
         "commercial crew"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:35:33.827Z"
+      "_lastClaudeUpdate": "2026-10-15T09:35:33.827Z",
+      "_herverrijk": true
     },
     {
       "id": "nrol-172",

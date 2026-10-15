@@ -154,6 +154,16 @@ function fetchJSON(url) {
 async function sleep(ms) { return new Promise(r => setTimeout(r, GEEN_PAUZE ? 0 : ms)) }
 
 // ── Claude verrijking ─────────────────────────────────────────────────────────
+// De status zoals Claude hem meekrijgt, zodat de tekst de juiste tijd heeft.
+function statusVoorPrompt(m) {
+  switch (m.status) {
+    case 'actief':   return `gelanceerd op ${m.launched}; de missie is in bedrijf`
+    case 'voltooid': return `gelanceerd op ${m.launched}; de lancering is voltooid`
+    case 'mislukt':  return `lancering op ${m.launched} is mislukt`
+    default:         return `nog niet gelanceerd; gepland voor ${m.launched}`
+  }
+}
+
 // Elke request naar de API telt mee, ook een mislukte: dit getal komt als
 // "Claude-aanroepen: N" in de run-samenvatting, zodat de kosten te volgen zijn.
 let claudeAanroepen = 0
@@ -166,6 +176,8 @@ async function enrichWithClaude(mission, ll2Data) {
     system: [
       'Je bent redacteur van Nightgazer.space. Schrijf in het Nederlands, journalistieke stijl.',
       'Gebruik uitsluitend de gegevens die hieronder worden aangeleverd. Voeg geen feiten, aantallen, namen of doelen toe die daar niet in staan.',
+      'Voeg ook geen duiding toe die niet in de gegevens staat: geen oordelen over belang, betrouwbaarheid of reputatie, geen doelgroepen of regio\'s. Vertaal technische termen getrouw. Zeggen de gegevens weinig, schrijf dan kort; vul niet aan.',
+      'Schrijf in de tijd die bij de status past: is de lancering al geweest, beschrijf haar dan niet als gepland.',
       'Verander het type missie niet. Een lancering van satellieten blijft een lancering, een ruimtesonde blijft een sonde, een bemande vlucht blijft een bemande vlucht. De huidige omschrijving geeft het type aan.',
       'Kun je een veld niet invullen op basis van de gegevens, geef dan een lege string ("") of een lege lijst.',
       'Antwoord UITSLUITEND als geldig JSON zonder markdown of uitleg.',
@@ -178,13 +190,14 @@ Huidige omschrijving (bepaalt het type, niet veranderen): ${mission.objective ||
 Agentschap: ${mission.agency}
 Voertuig: ${ll2Data.vehicle || mission.vehicle}
 Lanceerdatum: ${ll2Data.launchDate || mission.launched}
+Status: ${statusVoorPrompt(mission)}
 Baan/bestemming: ${ll2Data.orbit || mission.body}
 Beschrijving uit Launch Library 2 (EN): ${ll2Data.description}
 
 Geef JSON met precies deze velden:
 {
   "objective": "Één zin die het doel samenvat (max 120 tekens)",
-  "description": "Volledige beschrijving in 3-4 zinnen, journalistieke toon",
+  "description": "Beschrijving in 1-4 zinnen, journalistieke toon; niet langer dan de gegevens dragen",
   "highlight": "Huidige status of meest recente prestatie (max 80 tekens)",
   "relatedTags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
 }`,
@@ -748,7 +761,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl, statusVoorPrompt }
 
 if (require.main === module) {
   main().catch(err => {

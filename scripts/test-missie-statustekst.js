@@ -191,6 +191,8 @@ async function run(tmp, ll2, claude, key = 'test-sleutel') {
   eq(md.get('d-missie').highlight, 'Gelanceerd op 14 apr 2026 — missie in bedrijf', 'D: _herverrijk → sjabloon actief')
   eq(md.get('d-missie').description, 'Verrijkte beschrijving van d-missie.', 'D: _herverrijk → Claude-tekst uit de detailed-data')
   eq(md.get('d-missie')._herverrijk, undefined, 'D: _herverrijk-vlag weg')
+  ok(claude.state.prompts['d-missie'].includes('Status: gelanceerd op 14 apr 2026; de missie is in bedrijf'), 'D: Claude krijgt de status mee (actief)')
+  ok(claude.state.prompts['Nieuw Lanc'].includes('Status: nog niet gelanceerd; gepland voor'), 'D: Claude krijgt de status mee (gepland)')
   eq(d1.calls, ['Nieuw Lanc', 'd-missie'], 'D run 1: Claude voor de nieuwe lancering (bij aanmaak) en d-missie (_herverrijk)')
   eq(d1.detailed.map(u => u.searchParams.get('id')), ['00000000-d-missie'], 'D run 1: precies één detailed-request, voor d-missie')
 
