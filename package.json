@@ -13,7 +13,8 @@
     "type-check": "tsc --noEmit",
     "update-missions": "node scripts/update-missions.js",
     "prebuild": "node scripts/generate-missions-module.js && node scripts/generate-index.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js && mkdir -p public/content/articles && cp content/articles/*.md public/content/articles/",
-    "test:missies": "node scripts/test-missie-koppeling.js && node scripts/test-missie-status.js && node scripts/test-missie-vastgelopen.js && node scripts/test-missie-verrijking.js && node scripts/test-missie-statustekst.js && node scripts/test-missie-verrijking-mutaties.js"
+    "test:missies": "node scripts/test-missie-koppeling.js && node scripts/test-missie-status.js && node scripts/test-missie-vastgelopen.js && node scripts/test-missie-verrijking.js && node scripts/test-missie-statustekst.js && node scripts/test-missie-verrijking-mutaties.js",
+    "test:apod": "node scripts/test-apod.js"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",
