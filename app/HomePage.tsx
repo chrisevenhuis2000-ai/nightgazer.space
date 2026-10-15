@@ -22,6 +22,7 @@ import {
   type APODData, type ISSData, type Article,
   getLevel, topicMatches,
 } from '@/lib/home-content'
+import { leesApodCache, schrijfApodCache, isGeldigeApod } from '@/lib/apod-cache'
 import {
   Ico, Tip, useSky, skyTone, useUpcoming, type SkyState,
   SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate, NiveauPlate,
@@ -638,18 +639,19 @@ export default function HomePage({ initial, initialTotal = 0 }: {
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10)
     try {
-      const cached = localStorage.getItem(APOD_CACHE_KEY)
-      if (cached) {
-        const { date, data } = JSON.parse(cached)
-        if (date === today && data) { setApod(data); return }
-      }
+      const raw = localStorage.getItem(APOD_CACHE_KEY)
+      const cached = leesApodCache(raw, today)
+      if (cached) { setApod(cached); return }
+      // Ongeldig (logo, "NASA Science"), van gisteren of een oude versie: weg.
+      if (raw) localStorage.removeItem(APOD_CACHE_KEY)
     } catch { /* storage blocked — fetch instead */ }
 
     fetch(`${PROXY}/apod`)
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then((data: APODData) => {
+        if (!isGeldigeApod(data)) return  // liever geen APOD dan een logo
         setApod(data)
-        try { localStorage.setItem(APOD_CACHE_KEY, JSON.stringify({ date: today, data })) } catch { /* ignore */ }
+        try { localStorage.setItem(APOD_CACHE_KEY, schrijfApodCache(data, today)) } catch { /* ignore */ }
       })
       .catch(() => { /* the plate ground stays empty rather than wrong */ })
   }, [])

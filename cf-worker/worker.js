@@ -1,4 +1,5 @@
 import { APOD_FEED, parseFeed, bouwApod, apodDatum } from './apod.mjs'
+import { magBeeld } from './beeldhosts.mjs'
 
 const ALLOWED_ORIGINS = [
   'https://nightgazer.space',
@@ -264,7 +265,7 @@ export default {
     // goede versie dezelfde dag nog doorkomt. Een fout wordt nooit gecachet.
     if (request.method === 'GET' && url.pathname === '/apod') {
       const vandaag  = apodDatum(Date.now())
-      const cacheKey = new Request(`https://nasa-apod-cache/apod-v2?date=${vandaag}`)
+      const cacheKey = new Request(`https://nasa-apod-cache/apod-v3?date=${vandaag}`)
       const cache    = caches.default
 
       const cached = await cache.match(cacheKey)
@@ -343,6 +344,12 @@ export default {
         return cors(request, JSON.stringify({ error: 'Invalid URL' }), 400)
       }
 
+      // Alleen hosts die de site echt gebruikt (beeldhosts.mjs); de rest 403.
+      // Vóór de cache, zodat ook een eerder gecachet antwoord niet meer komt.
+      if (!magBeeld(imageUrl)) {
+        return cors(request, JSON.stringify({ error: 'Host niet toegestaan' }), 403)
+      }
+
       // Normalize URL: re-encode any non-ASCII / bare special characters
       let safeUrl = imageUrl
       try { safeUrl = new URL(imageUrl).href } catch { /* use as-is */ }
@@ -378,9 +385,21 @@ export default {
           } catch { /* weserv unavailable — fall through */ }
         }
 
-        // Direct fetch (primary when no w=, or fallback when weserv fails)
+        // Direct fetch (primary when no w=, or fallback when weserv fails).
+        // Redirects volgen we zelf, met dezelfde hostcheck per stap: anders
+        // kan een toegestane host doorsturen naar een willekeurige andere.
         if (!upstream) {
-          upstream = await fetch(safeUrl, { headers: directHeaders, redirect: 'follow' })
+          let doel = safeUrl
+          for (let stap = 0; stap < 5; stap++) {
+            const r = await fetch(doel, { headers: directHeaders, redirect: 'manual' })
+            const loc = r.status >= 300 && r.status < 400 ? r.headers.get('Location') : null
+            if (!loc) { upstream = r; break }
+            doel = new URL(loc, doel).href
+            if (!magBeeld(doel)) {
+              return cors(request, JSON.stringify({ error: 'Redirect naar een host die niet is toegestaan' }), 403)
+            }
+          }
+          if (!upstream) return cors(request, JSON.stringify({ error: 'Te veel redirects' }), 502)
         }
 
         if (!upstream.ok) {

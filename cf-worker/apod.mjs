@@ -88,19 +88,88 @@ export function geldigBeeld(url) {
   return u.href
 }
 
-// "Image Credit & Copyright: Naam" → { credit, copyright }. copyright alleen
-// als er "Copyright" staat; anders is het (zoals bij de oude API) publiek
-// domein en blijft het veld weg.
-export function vindCredit(text) {
-  const regels = String(text || '').split('\n')
-  for (const r of regels) {
-    const m = /^\s*(?:(?:Image|Video|Illustration|Animation)\s+)?Credits?\s*(?:(?:&|and)\s*(Copyright|Licen[sc]e))?\s*:\s*(.+)$/i.exec(r)
-    if (m) {
-      const naam = m[2].replace(/\s+/g, ' ').trim().slice(0, 200)
-      return { credit: naam, copyright: m[1] && /copyright/i.test(m[1]) ? naam : null }
+// De credit van een APOD. Op science.nasa.gov staat die niet altijd als
+// "Image Credit & Copyright: Naam" op één regel; label en namen kunnen in
+// aparte elementen staan, in een element met "credit" in de class, of in
+// JSON-LD. We proberen het in die volgorde, en in de HTML alleen binnen
+// <article>/<main> (zo telt een "Image Credit: NASA" in een teaser onderaan
+// niet mee). Geen credit gevonden → null, en dan toont de site "Publiek
+// domein · NASA".
+const LABEL = /^\s*(?:(?:Image|Video|Illustration|Animation|Photo)\s+)?Credits?(?:\s*(?:&|and)\s*(?:Copyright|Licen[sc]e))?\s*:?\s*/i
+const isLabelRegel = r => LABEL.test(r) && !r.replace(LABEL, '').trim()
+
+function schoonNamen(t) {
+  const n = String(t || '')
+    .replace(LABEL, '')
+    .replace(/\s+([,;])/g, '$1')
+    .replace(/\s+/g, ' ')
+    .replace(/^[\s:;,–—-]+|[\s;,–—-]+$/g, '')
+    .trim()
+  return n && n.length <= 200 && !/^(nasa science|credits?)$/i.test(n) ? n : null
+}
+
+function creditUitJsonLd(html) {
+  for (const m of String(html || '').matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)) {
+    let data
+    try { data = JSON.parse(m[1]) } catch { continue }
+    const stapel = [data]
+    while (stapel.length) {
+      const o = stapel.pop()
+      if (!o || typeof o !== 'object') continue
+      if (Array.isArray(o)) { stapel.push(...o); continue }
+      for (const k of ['creditText', 'copyrightHolder']) {
+        const v = o[k]
+        const naam = typeof v === 'string' ? v : Array.isArray(v) ? v.map(x => x?.name || x).filter(x => typeof x === 'string').join(', ') : v?.name
+        const n = schoonNamen(decodeEntities(naam || ''))
+        if (n) return n
+      }
+      for (const v of Object.values(o)) if (v && typeof v === 'object') stapel.push(v)
     }
   }
-  return { credit: null, copyright: null }
+  return null
+}
+
+export function inhoudVan(html) {
+  const h = String(html || '')
+  const m = /<article[\s>][\s\S]*?<\/article>/i.exec(h) || /<main[\s>][\s\S]*?<\/main>/i.exec(h)
+  return m ? m[0] : h
+}
+
+function creditUitTekst(text) {
+  const regels = String(text || '').split('\n').map(r => r.trim())
+  for (let i = 0; i < regels.length; i++) {
+    const r = regels[i]
+    if (!LABEL.test(r) || !/credit/i.test(r)) continue
+    if (isLabelRegel(r)) {
+      // Label op een eigen regel ("Image Credit & Copyright"): de namen staan
+      // op de volgende niet-lege regel.
+      const volgende = regels.slice(i + 1).find(x => x)
+      if (volgende && !LABEL.test(volgende)) { const n = schoonNamen(volgende); if (n) return n }
+      continue
+    }
+    if (/:/.test(r)) { const n = schoonNamen(r); if (n) return n }
+  }
+  return null
+}
+
+function creditUitClass(html) {
+  for (const m of String(html || '').matchAll(/<(\w+)[^>]*class=["'][^"']*credit[^"']*["'][^>]*>([\s\S]*?)<\/\1>/gi)) {
+    const t = htmlToText(m[2]).replace(/\n+/g, ' ')
+    const n = schoonNamen(t)
+    if (n) return n
+  }
+  return null
+}
+
+// { credit, copyright }: copyright is de credit zelf (de site toont dan
+// "© …"); alleen zonder credit blijft het veld weg.
+export function vindCredit(feedTekst, artikelHtml = '') {
+  const inhoud = inhoudVan(artikelHtml)
+  const credit = creditUitJsonLd(artikelHtml)
+    || creditUitTekst(feedTekst)
+    || creditUitClass(inhoud)
+    || creditUitTekst(htmlToText(inhoud))
+  return { credit, copyright: credit }
 }
 
 // Datum van de APOD zoals NASA hem dateert: in Amerikaanse oostkusttijd.
@@ -110,7 +179,16 @@ export function apodDatum(time) {
 }
 
 const isAfgekapt = s => /(\[…\]|\[\.\.\.\]|…|\.\.\.)\s*$/.test(s)
-const zonderCredit = s => s.split('\n').filter(r => !/^\s*(?:(?:Image|Video|Illustration|Animation)\s+)?Credits?\b.*:/i.test(r)).join(' ').replace(/\s+/g, ' ').trim()
+function zonderCredit(s) {
+  const regels = s.split('\n')
+  const uit = []
+  for (let i = 0; i < regels.length; i++) {
+    const r = regels[i].trim()
+    if (LABEL.test(r) && /credit/i.test(r)) { if (isLabelRegel(r)) i++; continue }
+    uit.push(r)
+  }
+  return uit.join(' ').replace(/\s+/g, ' ').trim()
+}
 
 // Feed-item + HTML van de artikelpagina → APOD-object in de oude vorm.
 // Gooit een fout als er geen bruikbare APOD in zit (geen titel of datum):
@@ -127,7 +205,7 @@ export function bouwApod(item, artikelHtml) {
     explanation = lang
   }
 
-  const { copyright } = vindCredit(feedTekst + '\n' + htmlToText(html))
+  const { copyright } = vindCredit(feedTekst, html)
   const beeld = geldigBeeld(meta(html, 'og:image') || meta(html, 'twitter:image'))
 
   const uit = {
