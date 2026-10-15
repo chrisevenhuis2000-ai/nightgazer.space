@@ -154,15 +154,23 @@ async function enrichWithClaude(mission, ll2Data) {
   const body = JSON.stringify({
     model:      'claude-sonnet-4-6',
     max_tokens: 600,
-    system:     'Je bent redacteur van Nightgazer.space. Schrijf in het Nederlands, journalistieke stijl. Antwoord UITSLUITEND als geldig JSON zonder markdown of uitleg.',
+    system: [
+      'Je bent redacteur van Nightgazer.space. Schrijf in het Nederlands, journalistieke stijl.',
+      'Gebruik uitsluitend de gegevens die hieronder worden aangeleverd. Voeg geen feiten, aantallen, namen of doelen toe die daar niet in staan.',
+      'Verander het type missie niet. Een lancering van satellieten blijft een lancering, een ruimtesonde blijft een sonde, een bemande vlucht blijft een bemande vlucht. De huidige omschrijving geeft het type aan.',
+      'Kun je een veld niet invullen op basis van de gegevens, geef dan een lege string ("") of een lege lijst.',
+      'Antwoord UITSLUITEND als geldig JSON zonder markdown of uitleg.',
+    ].join(' '),
     messages: [{
       role:    'user',
       content: `Missie: ${mission.name}
+Soort: ${mission.soort === 'missie' ? 'missie met een operationele fase' : 'lancering (levert een nuttige lading af)'}
+Huidige omschrijving (bepaalt het type, niet veranderen): ${mission.objective || '(geen)'}
 Agentschap: ${mission.agency}
 Voertuig: ${ll2Data.vehicle || mission.vehicle}
 Lanceerdatum: ${ll2Data.launchDate || mission.launched}
 Baan/bestemming: ${ll2Data.orbit || mission.body}
-Beschrijving (EN): ${ll2Data.description || '(geen beschrijving beschikbaar)'}
+Beschrijving uit Launch Library 2 (EN): ${ll2Data.description}
 
 Geef JSON met precies deze velden:
 {
@@ -191,7 +199,13 @@ Geef JSON met precies deze velden:
       res.on('end', () => {
         try {
           const parsed  = JSON.parse(data)
-          const content = parsed.content?.[0]?.text || ''
+          // Alleen een gewoon afgerond antwoord telt: een weigering of een
+          // afgekapt antwoord ('refusal', 'max_tokens') schrijft niets weg.
+          if (parsed.stop_reason !== 'end_turn') {
+            reject(new Error(`Claude stopte met '${parsed.stop_reason || parsed.error?.type || 'onbekend'}'`))
+            return
+          }
+          const content = parsed.content?.find?.(b => b.type === 'text')?.text || ''
           const jsonMatch = content.match(/\{[\s\S]*\}/)
           if (!jsonMatch) { reject(new Error('Claude gaf geen JSON')); return }
           resolve(JSON.parse(jsonMatch[0]))
@@ -203,6 +217,24 @@ Geef JSON met precies deze velden:
     req.end()
   })
 }
+
+// Wat de verrijking mag wegschrijven: alleen niet-lege tekst binnen een
+// redelijke lengte, en tags als korte strings. Al het andere valt weg, zodat
+// een half of vreemd antwoord nooit een goed veld overschrijft.
+function cleanEnrichment(e) {
+  if (!e || typeof e !== 'object') return null
+  const text = (v, max) => (typeof v === 'string' && v.trim() && v.trim().length <= max ? v.trim() : null)
+  return {
+    objective:   text(e.objective, 160),
+    description: text(e.description, 900),
+    highlight:   text(e.highlight, 100),
+    relatedTags: Array.isArray(e.relatedTags)
+      ? e.relatedTags.filter(t => typeof t === 'string' && t.trim() && t.length <= 40).map(t => t.trim().toLowerCase())
+      : [],
+  }
+}
+
+const hasDescription = d => typeof d === 'string' && d.trim().length > 0
 
 // ── Missie matchen ────────────────────────────────────────────────────────────
 // Streng. Een LL2-id hoort bij precies één lancering, dus:
@@ -361,19 +393,21 @@ async function main() {
     const daysSince  = lastClaude ? (Date.now() - lastClaude.getTime()) / 86400000 : Infinity
     const needsClaude = autoUpdated.includes(mission.id) || daysSince > 30
 
-    if (needsClaude && ll2Data.description) {
+    // Geen LL2-beschrijving → geen verrijking: anders schrijft Claude op
+    // basis van niets.
+    if (needsClaude && hasDescription(ll2Data.description)) {
       try {
         console.log(`  🤖 Claude verrijking voor ${mission.name}...`)
         await sleep(1000)
-        const enriched = await enrichWithClaude(mission, ll2Data)
+        const enriched = cleanEnrichment(await enrichWithClaude(mission, ll2Data))
         if (enriched) {
           if (enriched.objective)    mission.objective    = enriched.objective
           if (enriched.description)  mission.description  = enriched.description
           if (enriched.highlight)    mission.highlight    = enriched.highlight
-          if (enriched.relatedTags)  {
+          if (enriched.relatedTags.length) {
             // Union van bestaande + nieuwe tags
             const existing = new Set(mission.relatedTags || [])
-            for (const t of enriched.relatedTags) existing.add(t.toLowerCase())
+            for (const t of enriched.relatedTags) existing.add(t)
             mission.relatedTags = [...existing]
           }
           mission._lastClaudeUpdate = new Date().toISOString()
@@ -488,15 +522,15 @@ async function main() {
     let relatedTags = [slugify(launchName), slugify(agencyName), slugify(orbit)]
 
     // Claude verrijking voor nieuwe missie
-    if (ANTHROPIC_KEY && ll2Data.description) {
+    if (ANTHROPIC_KEY && hasDescription(ll2Data.description)) {
       try {
         await sleep(1000)
-        const enriched = await enrichWithClaude({ name: launchName, agency: agencyName, vehicle: ll2Data.vehicle, body: orbit, launched: formatDutch(ll2Data.launchDate) }, ll2Data)
+        const enriched = cleanEnrichment(await enrichWithClaude({ name: launchName, agency: agencyName, vehicle: ll2Data.vehicle, body: orbit, launched: formatDutch(ll2Data.launchDate), soort, objective }, ll2Data))
         if (enriched) {
           objective   = enriched.objective   || objective
           description = enriched.description || description
           highlight   = enriched.highlight   || highlight
-          relatedTags = enriched.relatedTags || relatedTags
+          relatedTags = enriched.relatedTags.length ? enriched.relatedTags : relatedTags
           console.log(`     ✅ Claude verrijking geslaagd`)
         }
       } catch (err) {
@@ -552,7 +586,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment }
 
 if (require.main === module) {
   main().catch(err => {
