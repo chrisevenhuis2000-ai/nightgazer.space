@@ -4,3 +4,13 @@ lib/missions-generated.ts
 
 # lokale QA-tooling (niet voor productie)
 .qa/
+
+# build-output (Cloudflare Pages bouwt zelf)
+.next/
+out/
+*.tsbuildinfo
+
+# gegenereerd door prebuild (generate-index + kopie van content/articles)
+public/content/
+public/rss.xml
+public/sitemap.xml

@@ -1,174 +1,67 @@
 # 🔭 Nightgazer.space
 
-> Astronomie voor iedereen — van beginners tot professionals, in Nederlands én Engels.
+> Astronomie voor iedereen: Nederlandstalig ruimtevaartnieuws op drie leesniveaus, naast live waarneemtools.
 
-Het Nederlandse astronomie-platform met AI-aangedreven uitleg op jouw niveau.
+Live: https://nightgazer.space
 
-## ✨ Features
+## Wat het doet
 
-- **AI Niveau-Toggle** — elk artikel herschreven door Claude voor Beginner / Amateur / Pro
-- **Live NASA APOD** — dagelijkse astronomische foto automatisch in de hero
-- **Live ISS Tracker** — realtime positie van het internationale ruimtestation
-- **Auto-publicatie** — GitHub Actions haalt dagelijks nieuws op van NASA, ESA en SpaceflightNow
-- **Meertalig** — Nederlands + Engels
-- **AdSense ready** — geoptimaliseerd voor monetisatie
+- **Dagelijks nieuws, automatisch.** GitHub Actions haalt elke ochtend RSS op (NASA, ESA, JPL, SpaceflightNow, SpaceNews, Planetary Society). Claude herschrijft de artikelen in het Nederlands op drie niveaus: Beginner, Amateur en Pro.
+- **Live waarneemtools.** ISS-tracker, lanceringen en missies, donkere-hemelkaart, noorderlichtalert, NASA APOD en een dagelijkse quiz.
+- **Pushmeldingen** voor heldere nachten, noorderlicht, ISS-overkomsten en lanceringen.
+- **AdSense** met GDPR-toestemming.
 
----
+## Stack
 
-## 🚀 Lokaal starten
+- Next.js 14 (App Router), React 18, TypeScript, Tailwind v3 met CSS-variabelen
+- `output: 'export'`: een volledig statische site zonder server-runtime. Alle live data wordt client-side opgehaald.
+- Hosting op **Cloudflare Pages**, gebouwd via de git-koppeling.
+- **Cloudflare Worker** (`cf-worker/`) als proxy voor API-sleutels, plus de cron voor pushmeldingen.
 
-### 1. Vereisten
-- Node.js 18+
-- Een gratis [Anthropic API key](https://console.anthropic.com/)
-- (Optioneel) Gratis [NASA API key](https://api.nasa.gov/)
-
-### 2. Installeren
+## Lokaal starten
 
 ```bash
 git clone https://github.com/chrisevenhuis2000-ai/nightgazer.space
-cd cosmosnl
+cd nightgazer.space
 npm install
+cp .env.example .env.local   # vul je keys in
+npm run dev                  # draait eerst prebuild (index, rss, sitemap)
 ```
 
-### 3. Environment variabelen instellen
-
-```bash
-cp .env.example .env.local
-# Vul je API keys in .env.local
-```
-
-### 4. Dev server starten
-
-```bash
-npm run dev
-# Open http://localhost:3000
-```
-
----
-
-## 📁 Projectstructuur
+## Projectstructuur
 
 ```
-cosmosnl/
-├── app/                        # Next.js App Router
-│   ├── layout.tsx              # Root layout (fonts, metadata)
-│   ├── page.tsx                # Homepage
-│   ├── nieuws/[slug]/          # Artikel pagina (met niveau-toggle)
-│   ├── sterrenkijken/          # Sterrenkijken sectie
-│   ├── missies/                # Ruimtemissies sectie
-│   ├── educatie/               # Educatie sectie
-│   ├── tools/herschrijver/     # Standalone AI Herschrijver tool
-│   └── api/
-│       ├── apod/               # NASA APOD proxy (gecacht)
-│       ├── iss/                # ISS positie proxy
-│       ├── rewrite/            # Claude AI rewrite endpoint (streaming)
-│       └── articles/           # Artikelen API
-│
-├── components/
-│   ├── layout/                 # Header, Footer, TopBar
-│   ├── article/                # ArticleCard, ArticleGrid, LevelToggle
-│   ├── widgets/                # ISSTracker, APODWidget, NewsletterForm
-│   └── ui/                     # Button, Badge, Skeleton, etc.
-│
-├── lib/
-│   └── articles.ts             # Markdown artikel loader
-│
-├── types/
-│   └── index.ts                # TypeScript types + LEVELS/CATEGORIES config
-│
-├── content/
-│   └── articles/               # Markdown bestanden (auto-gegenereerd + handmatig)
-│       └── *.md
-│
-├── scripts/
-│   └── fetch-articles.js       # Auto-fetch script (RSS → Claude → Markdown)
-│
-├── .github/
-│   └── workflows/
-│       └── fetch-articles.yml  # Dagelijkse GitHub Action
-│
-├── .env.example                # Environment variabelen template
-├── next.config.js
-├── tailwind.config.js
-└── tsconfig.json
+app/                    Next.js routes
+  page.tsx              homepage
+  nieuws/               overzicht, [slug], onderwerp/[category]
+  missies/              overzicht + [slug]
+  sterrenkijken/        donkere-hemelkaart, aurora-alert
+  educatie/  tools/herschrijver/  en/  over/  contact/  privacy/
+  staging/              redesign in aanbouw (noindex, robots: Disallow)
+  components/           SiteNav, SiteFooter, AdUnit, CookieBanner, Search…
+lib/                    data en logica (iss, aurora, sky-chart, missions, push, ics…)
+content/articles/       markdown-artikelen (door de bot geschreven)
+content/missions.json   missiedata (door de bot bijgewerkt)
+scripts/                fetch-articles, backfill-images, update-missions, generate-*
+cf-worker/              Cloudflare Worker: proxy-routes + push-cron
+PRODUCT.md / DESIGN.md  productbrief en designsysteem van de redesign
 ```
 
----
+## Automatisering
 
-## 🤖 Automatisch artikelen ophalen
+| Workflow | Wanneer | Wat |
+|---|---|---|
+| `fetch-articles.yml` | dagelijks 07:00 UTC | RSS → Claude → `content/articles/`, daarna image-backfill |
+| `update-missions.yml` | dagelijks 08:00 UTC | missiedata bijwerken → `content/missions.json` |
+| `deploy.yml` | elke push naar main | Cloudflare Worker deployen |
+| `setup-push.yml` | eenmalig | KV-namespace + VAPID-sleutels voor push |
+| `backfill-images-once.yml` | handmatig | afbeeldingen opnieuw ophalen |
 
-```bash
-# Handmatig uitvoeren
-ANTHROPIC_API_KEY=sk-... npm run fetch-articles
+De site zelf wordt bij elke push door Cloudflare Pages gebouwd. `npm run build` draait via `prebuild` eerst `generate-missions-module`, `generate-index`, `generate-rss` en `generate-sitemap`, en kopieert daarna de artikelen naar `public/content/`. Die bestanden zijn gegenereerd en staan daarom niet in git.
 
-# Of stel GitHub Secrets in voor de dagelijkse Action:
-# ANTHROPIC_API_KEY = jouw Anthropic key
-```
+**GitHub-secrets:** `ANTHROPIC_API_KEY`, `CLOUDFLARE_API_TOKEN`, optioneel `DEPLOY_HOOK_URL`
+**Worker-secrets:** `NASA_API_KEY`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`
 
-De script haalt artikelen op van:
-- 🚀 **NASA Breaking News** RSS
-- 🛸 **SpaceflightNow** RSS
-- 🌍 **ESA Space Science** RSS
+## Worker-routes
 
-Elk artikel wordt automatisch vertaald naar het Nederlands door Claude.
-
----
-
-## 🌐 Deployen
-
-### Cloudflare Pages (aanbevolen — gratis)
-
-```bash
-# 1. Push naar GitHub
-git push origin main
-
-# 2. Verbind repo in Cloudflare Pages dashboard
-# 3. Build command: npm run build
-# 4. Output dir: .next
-# 5. Voeg environment variabelen toe in Cloudflare dashboard
-```
-
-### Vercel (alternatief)
-
-```bash
-npx vercel --prod
-# Vercel detecteert Next.js automatisch
-```
-
----
-
-## 💰 AdSense instellen
-
-1. Vraag AdSense aan op [adsense.google.com](https://adsense.google.com) (vereist ~20 artikelen)
-2. Voeg je Publisher ID toe aan `.env.local`:
-   ```
-   NEXT_PUBLIC_ADSENSE_ID=ca-pub-xxxxxxxxxxxxxxxxx
-   ```
-3. AdSense componenten zijn al klaar in `components/ui/AdSense.tsx`
-
----
-
-## 📊 Verdienmodel
-
-| Bron | Geschat bij 10k bezoekers/maand |
-|------|----------------------------------|
-| Google AdSense | €30–80 |
-| Telescoop affiliates (bol.com) | €20–60 |
-| Sterrenkijken apps affiliates | €10–30 |
-| **Totaal** | **€60–170/maand** |
-
----
-
-## 🛠 Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS
-- **AI**: Claude claude-sonnet-4-20250514 (Anthropic)
-- **Content**: Markdown + gray-matter
-- **Automatisering**: GitHub Actions + RSS Parser
-- **APIs**: NASA APOD, wheretheiss.at, JPL Horizons
-- **Hosting**: Cloudflare Pages (gratis) of Vercel
-
----
-
-*Gebouwd met ❤️ voor de Nederlandse astronomiegemeenschap*
+`/apod`, `/image-search`, `/image-proxy`, `/weather`, `/space-weather`, `/launches`, `/push/*`, `POST /` (Anthropic-proxy voor de herschrijver). De cron draait elke 15 minuten voor de pushmeldingen.
