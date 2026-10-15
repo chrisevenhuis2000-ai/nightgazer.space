@@ -453,22 +453,18 @@ def truepeak_limit(x, ceiling_db=-1.5, release_ms=80.0, look_ms=1.5):
     return x * g[:, None]
 
 
-def build():
-    space_drone = orbit_drone()
-    stems = {
-        "ruimte-drones": city_glitter() + planet_drone() + galaxy_pad() + star_cloud(),
-        "archiefgeluiden": archive_layer(),
-        "impacts": impact(),
-        "akkoord": chord(),
-    }
-    # Loop seam: in the last 20 ms everything except the orbit drone fades to zero, so 10.0 s → 0.0 s
-    # joins drone to drone. The drone itself completes whole cycles in 10 s (sample N == sample 0).
+def finish(stems, loop_bed=None, loop_stem=None):
+    """The shared master chain for every soundtrack (the default and the variants in scripts/variants/):
+    loop seam, DC removal, loudness to −14 LUFS under a −1.5 dBTP true-peak ceiling."""
+    # Loop seam: in the last 20 ms every stem fades to zero. An optional loop bed (added after the
+    # seam) carries 10.0 s → 0.0 s on its own; it must complete whole cycles in 10 s.
     k = int(0.020 * SR)
     seam = np.ones(N)
     seam[-k:] = 0.5 + 0.5 * np.cos(np.linspace(0, np.pi, k))
     for name in stems:
         stems[name] = stems[name] * seam[:, None]
-    stems["ruimte-drones"] = stems["ruimte-drones"] + space_drone
+    if loop_bed is not None:
+        stems[loop_stem] = stems[loop_stem] + loop_bed
     mix = sum(stems.values())
     mix = mix - mix.mean(axis=0)                             # no DC offset
     meter = pyln.Meter(SR)
@@ -479,20 +475,31 @@ def build():
     return stems, truepeak_limit(mix * gain), gain
 
 
+def build():
+    """The default soundtrack ("huidig")."""
+    space_drone = orbit_drone()
+    stems = {
+        "ruimte-drones": city_glitter() + planet_drone() + galaxy_pad() + star_cloud(),
+        "archiefgeluiden": archive_layer(),
+        "impacts": impact(),
+        "akkoord": chord(),
+    }
+    return finish(stems, space_drone, "ruimte-drones")
+
+
 def write(path, x, subtype="PCM_24"):
     sf.write(path, x.astype(np.float64), SR, subtype=subtype)
 
 
-if __name__ == "__main__":
-    OUT.mkdir(parents=True, exist_ok=True)
-    stems, master, gain = build()
+def write_outputs(stems, master, gain, outdir, master_name):
+    outdir.mkdir(parents=True, exist_ok=True)
     for name, x in stems.items():
         # same master gain, before the limiter (24-bit: float WAVs carry a timestamped PEAK chunk,
         # which would break bit-identical output)
         stem = (x - x.mean(axis=0)) * gain
         assert np.abs(stem).max() < 1.0, f"stem {name} would clip"
-        write(OUT / f"stem-{name}.wav", stem)
-    write(OUT / "nightgazer-social-v2-master.wav", master)
+        write(outdir / f"stem-{name}.wav", stem)
+    write(outdir / master_name, master)
     meter = pyln.Meter(SR)
     mix = sum(stems.values()) * gain
     pre = 20 * np.log10(np.abs(mix).max())
@@ -500,3 +507,28 @@ if __name__ == "__main__":
     gr = 20 * np.log10(np.max(blk(mix) / np.maximum(blk(master), 1e-12)))
     print(f"master gain {20*np.log10(gain):+.2f} dB · integrated {meter.integrated_loudness(master):.2f} LUFS"
           f" · pre-limiter peak {pre:+.2f} dBFS · max gain reduction {gr:.2f} dB")
+
+
+# Variants: modules in scripts/variants/ that only build stems; the engine, cue grid and master chain are shared.
+VARIANTS = ("orgel", "puls", "sonificatie")
+
+
+def master_path(variant):
+    if variant == "huidig":
+        return OUT / "nightgazer-social-v2-master.wav"
+    return Path("out/varianten/audio") / variant / f"{variant}-master.wav"
+
+
+if __name__ == "__main__":
+    import argparse
+    import importlib
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--variant", default="huidig", choices=("huidig",) + VARIANTS)
+    variant = ap.parse_args().variant
+    if variant == "huidig":
+        result = build()
+    else:
+        mod = importlib.import_module(f"variants.{variant}")
+        result = finish(*mod.stems())
+    mp = master_path(variant)
+    write_outputs(*result, mp.parent, mp.name)

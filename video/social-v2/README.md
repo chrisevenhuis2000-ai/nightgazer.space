@@ -44,4 +44,6 @@ ffmpeg -ss 0 -i out/nightgazer-social-v2.mp4 -frames:v 1 out/cover.png
 python3 scripts/audio-verify.py out/nightgazer-social-v2.mp4
 ```
 
+**Geluidsvarianten** (ter vergelijking; de standaard blijft `scripts/sound.py`): `bash scripts/varianten.sh` bouwt de vier soundtracks, zet ze onder hetzelfde beeld in `out/varianten/` en maakt `vergelijking.mp4`. Zie `AUDIO.md` → "Varianten".
+
 `out/` staat in `.gitignore`: de MP4's, de cover en de audiobestanden worden niet gecommit.

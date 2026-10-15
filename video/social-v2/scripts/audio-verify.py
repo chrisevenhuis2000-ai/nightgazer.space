@@ -1,9 +1,10 @@
 """Measures the NightGazer social v2 soundtrack: format, loudness, true peak, mono, DC, seams,
 text-moment levels, sync against the cue grid, and a spectrogram with the cues drawn on.
 
-    python3 scripts/audio-verify.py [path/to/file.wav|.mp4 ...]
+    python3 scripts/audio-verify.py [--variant huidig|orgel|puls|sonificatie] [path/to/file.mp4 ...]
 
-Prints a report (also used for AUDIO.md) and writes out/audio/spectrogram.png.
+Prints a report (also used for AUDIO.md) and writes spectrogram.png next to the variant's master.
+With an MP4 given, loudness is also measured on it and sync is measured on its decoded audio.
 """
 import hashlib
 import json
@@ -20,10 +21,10 @@ import numpy as np
 import soundfile as sf
 
 sys.path.insert(0, str(Path(__file__).parent))
-from sound import CUES, SPF, SR, N, S as CUE_SAMPLES, archive_events, place, impact_burst  # noqa: E402
+from sound import CUES, SPF, SR, N, S as CUE_SAMPLES, VARIANTS, archive_events, impact_burst, master_path, place  # noqa: E402
 
-OUT = Path("out/audio")
-MASTER = OUT / "nightgazer-social-v2-master.wav"
+# The four main cues every soundtrack must hit within ±1 frame.
+MAIN_CUES = ("cut", "open", "plate", "logo")
 
 # Where each cue lives in the picture: (file, selector or constant, "start" | "end" of the tween).
 # The verifier reads the time from the composition itself, so a picture edit that is not followed by
@@ -32,6 +33,7 @@ PICTURE = {
     "lock":    ("compositions/plate.html",  "#plate-cross-ring", "end"),    # the ring is fixed when the tween ends
     "wipe":    ("compositions/titles.html", "#titles-wipe",      "start"),
     "cut":     ("compositions/stage.html",  "CUT_PLANET",        "const"),
+    "open":    ("compositions/stage.html",  "DOLLY",             "const"),
     "promise": ("compositions/titles.html", "#titles-promise",   "start"),
     "readout": ("compositions/plate.html",  "#plate-m74",        "start"),
     "plate":   ("compositions/stage.html",  "PLATE",             "const"),
@@ -58,6 +60,7 @@ TRANSIENTS = [
     ("lock",     "kruisje vergrendelt: tik",          "archiefgeluiden"),
     ("wipe",     "hook weg: emulsie-ritsel",          "archiefgeluiden"),
     ("cut",      "match-cut: impact",                 "impacts"),
+    ("open",     "M74 gaat open: pad-zwelling (geen klap)", "ruimte-drones"),
     ("promise",  "tekst 2: glas-accent",              "archiefgeluiden"),
     ("readout",  "M74-uitlezing: tik",                "archiefgeluiden"),
     ("plate",    "glasplaat: glas op glas",           "archiefgeluiden"),
@@ -98,7 +101,24 @@ def k_weighted_short_term(x, win=0.4, hop=0.1):
     return np.array(times), v
 
 
-def main(extra):
+def decode(path):
+    """The audio of an MP4 as float64 stereo, exactly as a player decodes it."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-map", "0:a:0", "-f", "f32le", "-ac", "2",
+                          "-ar", str(SR), "-"], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, np.float32).reshape(-1, 2).astype(np.float64)
+
+
+def main(variant, extra):
+    MASTER = master_path(variant)
+    OUT = MASTER.parent
+    if variant == "huidig":
+        transients = TRANSIENTS
+        grid = None
+    else:
+        import importlib
+        mod = importlib.import_module(f"variants.{variant}")
+        transients = [(k, label, None) for k, label in mod.TRANSIENTS]
+        grid = getattr(mod, "BPM", None)
     x, sr = sf.read(MASTER, dtype="float64", always_2d=True)
     info = sf.info(MASTER)
     rep = {"format": f"{info.samplerate} Hz · {info.subtype} · {info.channels} ch · {info.frames} samples",
@@ -136,32 +156,42 @@ def main(extra):
     def mx(a, b): return float(mom[(tt >= a) & (tt < b)].max())
     rep["momentary_LUFS"] = {
         "hook 0.0–1.43 (tekst)": round(mx(0.0, 1.43), 1),
-        "impact 1.6–2.2": round(mx(1.6, 2.2), 1),
+        "match-cut 1.6–2.2": round(mx(1.6, 2.2), 1),
         "tekst 2 2.27–3.8": round(mx(2.27, 3.8), 1),
         "push-in 4.2–7.2": round(mx(4.2, 7.2), 1),
         "eindkaart 8.4–10 (tekst)": round(mx(8.4, 10.0), 1),
         "max overall": round(float(mom.max()), 1),
     }
+    texts = [mx(0.0, 1.43), mx(2.27, 3.8), mx(8.4, 10.0)]
+    rep["tekst_niet_het_drukst"] = bool(max(texts) < float(mom.max()) - 0.05)
 
     # Sync: (a) onsets in the mix; (b) sample-exact start of each cue in its stem
     mono1 = 0.5 * (L + R)
+    # sync is measured on what a viewer hears: the decoded MP4 audio when one is given
+    sync_src = decode(extra[0])[:N] if extra else x
+    rep["sync_measured_on"] = Path(extra[0]).name if extra else MASTER.name
+    sync_mono = 0.5 * (sync_src[:, 0] + sync_src[:, 1])
     hop = 64
-    env = librosa.onset.onset_strength(y=mono1.astype(np.float32), sr=SR, hop_length=hop, n_fft=1024)
+    env = librosa.onset.onset_strength(y=sync_mono.astype(np.float32), sr=SR, hop_length=hop, n_fft=1024)
     onsets = librosa.onset.onset_detect(onset_envelope=env, sr=SR, hop_length=hop, units="samples", backtrack=False,
                                         pre_max=8, post_max=8, pre_avg=40, post_avg=40, delta=0.07, wait=8)
     # (b) dry placement, from the real bursts: each cue's sound alone, placed as the synthesis places it
-    bursts = dict(archive_events())
-    bursts["cut"] = impact_burst()
+    bursts = {}
+    if variant == "huidig":
+        bursts = dict(archive_events())
+        bursts["cut"] = impact_burst()
     import sound
     bursts["lightbox"] = sound.counter_tick(0.6) * 0.8
     rows = []
-    for key, label, stem in TRANSIENTS:
+    for key, label, stem in transients:
         exp = CUES[key] * SPF
         pic = picture_time(*PICTURE[key])
         pic_frame = round(pic * 30, 3)
-        buf = np.zeros(N)
-        place(buf, bursts[key], CUE_SAMPLES[key])
-        first = int(np.argmax(np.abs(buf) > 0))
+        first = None
+        if key in bursts:
+            buf = np.zeros(N)
+            place(buf, bursts[key], CUE_SAMPLES[key])
+            first = int(np.argmax(np.abs(buf) > 0))
         # (a) mix: strongest onset within ±1 frame of the cue, and how strong it is against the median onset
         lo, hi = exp - SPF, exp + SPF
         cand = onsets[(onsets >= lo) & (onsets <= hi)]
@@ -181,21 +211,28 @@ def main(extra):
                      "droog_eerste_sample": first,
                      # bursts start AT the cue sample with a ≥2 ms fade-in, so sample 0 of the burst is 0.0
                      # and the first non-zero sample is cue+1
-                     "sample_exact": 0 <= first - exp <= 1,
+                     "sample_exact": None if first is None else 0 <= first - exp <= 1,
+                     "hoofdcue": key in MAIN_CUES,
                      "ok": near is not None and strength >= 2.0 and abs(pic_frame - CUES[key]) < 0.02})
     rep["sync"] = rows
     rep["sync_all_ok"] = all(r["ok"] for r in rows)
+    rep["main_cues_ok"] = all(r["ok"] for r in rows if r["cue"] in MAIN_CUES)
 
     # Spectrogram with the cues
     S = librosa.amplitude_to_db(np.abs(librosa.stft(mono1.astype(np.float32), n_fft=4096, hop_length=256)), ref=np.max)
     fig, ax = plt.subplots(figsize=(16, 7), dpi=110)
     img = librosa.display.specshow(S, sr=SR, hop_length=256, x_axis="time", y_axis="log", ax=ax, cmap="magma", vmin=-90, vmax=0)
-    marks = [(k, f) for k, f in sorted(CUES.items(), key=lambda kv: kv[1]) if k not in ("start", "end", "promise_out")]
+    if grid:   # rhythmic variant: its beat grid as faint lines (16ths are 0.1 s = 3 frames at 150 BPM)
+        for b in np.arange(0, 10.0, 60 / grid):
+            ax.axvline(b, color="#EEF2FB", lw=0.4, alpha=0.25)
+    keep = {k for k, _, _ in transients} | set(MAIN_CUES)
+    marks = [(k, f) for k, f in sorted(CUES.items(), key=lambda kv: kv[1])
+             if k not in ("start", "end", "promise_out") and (variant == "huidig" or k in keep)]
     for i, (key, frame) in enumerate(marks):
         tsec = frame * SPF / SR
-        ax.axvline(tsec, color="#3DCFDF", lw=1.0, alpha=0.9)
+        ax.axvline(tsec, color="#3DCFDF", lw=1.6 if key in MAIN_CUES else 0.9, alpha=0.9)
         ax.text(tsec + 0.03, 15000 if i % 2 == 0 else 9000, f"{key}\n{tsec:.3f}s", color="#EEF2FB", fontsize=8, va="top")
-    ax.set_title("NightGazer social v2 — mix (mono sum), cue-momenten als verticale lijnen")
+    ax.set_title(f"NightGazer social v2 — variant '{variant}' — mix (mono), cues als verticale lijnen (dik = hoofdcue)")
     fig.colorbar(img, ax=ax, format="%+2.0f dB")
     fig.tight_layout()
     fig.savefig(OUT / "spectrogram.png")
@@ -204,4 +241,9 @@ def main(extra):
 
 if __name__ == "__main__":
     import librosa.display  # noqa: F401
-    main(sys.argv[1:])
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--variant", default="huidig", choices=("huidig",) + VARIANTS)
+    ap.add_argument("mp4", nargs="*")
+    a = ap.parse_args()
+    main(a.variant, a.mp4)

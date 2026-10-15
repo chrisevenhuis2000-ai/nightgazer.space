@@ -127,3 +127,102 @@ python3 scripts/audio-verify.py out/nightgazer-social-v2.mp4
 - **Luisteren:** ik kan niet luisteren, en de review-agent ook niet. Klankkwaliteit, smaak en of het "premium" klinkt, zijn beoordeeld via metingen, het spectrogram en de code, niet met oren.
 - **Telefoonspeakers:** niet gemeten op een echt toestel. De lage lagen hebben wel harmonischen boven 100 Hz (zie het spectrogram), zodat ze daar waarneembaar zijn.
 - **Bitrate:** ffmpeg meet gemiddeld 264 kbps in plaats van 320 kbps (zie boven).
+
+---
+
+# Varianten (ter vergelijking, keuze open)
+
+De soundtrack hierboven ("huidig") blijft de standaard totdat er gekozen is. Er zijn drie alternatieven onder exact hetzelfde beeld. Alle drie volgen dezelfde regels: procedureel gesynthetiseerd, vaste seeds, geen samples en geen AI-modellen. Er zijn ook geen NASA-sonificaties of -opnames gebruikt.
+
+**Opbouw:** `scripts/sound.py` blijft de engine. Daarin staan de DSP-kit, het cue-grid, de archiefgeluiden en de gedeelde masterketen `finish()` (naad, DC, −14 LUFS, true-peak-limiter op −1,5 dBTP). Een variant is een module in `scripts/variants/` die alleen stems levert (`stems()`) en zijn sync-cues opgeeft (`TRANSIENTS`). De verifier is voor alle vier dezelfde: `scripts/audio-verify.py --variant <naam>`.
+
+```bash
+# in video/social-v2/, na de HyperFrames-render (out/hf-render.mp4)
+python3 scripts/variants/extract_sonification_data.py   # alleen nodig als het beeld verandert (schrijft sonificatie-data.json)
+bash scripts/varianten.sh    # 4 masters → 4 MP4's → verify.json + spectrogram per variant → vergelijking.mp4
+```
+
+## 1 · "Orgel van de kosmos" (`variants/orgel.py`)
+Een additief pijporgel met de registers 16', 8', 8'-fluit, 4', 2' en een mixtuur. Elke pijp is een harmonische reeks met ±0,5 cent ontstemming, en elke aanzet heeft een "chiff" (de ademruis van een aansprekende pijp). De galm is kathedraallang (5,5 s). Eén progressie in D loopt de hele 10 s door:
+
+| Tijd (s) | Akkoord | Registers | Beeld |
+|---|---|---|---|
+| 0–1,6 | Dsus2 (D3 A3 E4, pedaal D2) | 8'-fluit + 4' | aarde, hook |
+| **1,6** | **B♭** (pedaal B♭1) | 16' 8' 4' | match-cut |
+| 2,9 | Gm/B♭ | 16' 8'-fluit 4' | tekst 2 (zwelkast terug) |
+| **4,2** | **C** (pedaal C2) | + 2' | M74 |
+| 5,7 | G (pedaal G1) | + mixtuur, zwelkast naar max (6,9 s) | push-in |
+| **7,2** | **Asus4** (spanning) | terug naar 16' 8'-fluit 4' | glasplaat (+ glas) |
+| **8,4** | **D add9** (oplossing) | 16' 8' 4' | logo (+ sluiter) |
+
+De zwelkast (niveau en helderheid samen) is één curve. Op 1,6, 4,2 en 8,4 zit een stap van 10 ms: die geeft het accent op de cue zonder klik.
+
+## 2 · "Puls van het observatorium" (`variants/puls.py`)
+**Tempo: 150 BPM, constant.** Een zestiende is precies 0,1 s, dus 3 frames of 4800 samples. Elke cue op een veelvoud van 3 frames ligt daardoor exact op het grid, en een tempo-ramp is niet nodig. Een maat (4/4) duurt 1,6 s.
+
+| Cue | Tijd (s) | Grid (maat.tel.16e) | 16e # | Afwijking grid |
+|---|---|---|---|---|
+| Kruisje | 1,0 | 1.3.3 | 10 | 0 |
+| **Match-cut** | **1,6** | **2.1.1** (downbeat) | 16 | 0 |
+| Tekst 2 | 2,2667 | ≈ 2.2.3 | ≈ 22,7 | 1 frame (geen grid-cue) |
+| **M74** | **4,2** | **3.3.3** (8e vóór tel 4: de groove "valt in") | 42 | 0 |
+| Uitlezing | 4,9 | 4.1.2 | 49 | 0 |
+| **Glasplaat** | **7,2** | **5.3.1** | 72 | 0 |
+| Stempel | 8,1 | 6.1.2 | 81 | 0 |
+| **Logo** | **8,4** | **6.2.1** | 84 | 0 |
+
+- **Percussie:** geen drumkit, maar instrumentgeluiden. Escapement-tikken (de teller-tik uit de engine), een stappenmotor van een telescoop (een korte, gestemde zoem) en een zachte koepel-"thock" op de tel, met harmonischen voor de telefoon.
+- **Opbouw per stuk:**
+  - hook: 8e-tikken en een stationair draaiende koepelmotor;
+  - 1,6–4,2: bas op 8en, motor op 2 en 4;
+  - 4,2–7,2: volle 16en;
+  - 7,2–8,4: break, met alleen kwarttikken boven een aangehouden A (Asus4);
+  - 8,4: sonic logo met akkoord.
+- **Bas:** D → B♭ → C → G → Asus4 → D, zaagtand door een low-pass met een korte filterblip per noot.
+- **Motief / sonic logo: A–D–E … F♯.**
+  - 1,6: laag en onopgelost, eindigt op E.
+  - 4,2: een octaaf hoger, draait naar G (sus).
+  - 8,4: compleet, landt op F♯, de terts van D.
+
+## 3 · "Het instrument antwoordt" (`variants/sonificatie.py`)
+Het geluid komt uit de data van het beeld zelf. `extract_sonification_data.py` leest die eenmalig uit en zet ze in `sonificatie-data.json` (116 kB, in git), zodat de synthese geen texturen of render nodig heeft. Alle toonhoogtes worden gekwantiseerd naar **D-majeur pentatonisch** (D E F♯ A B).
+
+| Laag | Data (bron) | Stuurt |
+|---|---|---|
+| Stadslichten 0–1,6 s | NASA Black Marble 2016 (`bm-europe.jpg`): een scan west→oost over 52,09° N (de breedtegraad van Utrecht, band ±0,3°), van 5° W tot 11,2° O. De speelkop is lon(t) = −5° + 10,12°·t, dus **Utrecht passeert op precies 1,0 s**, het moment dat het kruisje vergrendelt. | Elke stad (lokaal maximum van de radiantie) wordt een ping. Radiantie → toonhoogte (D5–D7) en niveau. Noord/zuid in de band → panning. Gemiddelde radiantie → dichtheid van een fijne korrel-ruis en het niveau van een lage D/A-bedding. De zee is stil (0,02), de Randstad het luidst (0,41). |
+| Match-cut 1,6 s | Het verlichte deel van het cut-frame (2,1 %) | De helderheid van een aangeslagen lage D: donker, omdat het frame bijna zwart is |
+| Planeet 1,6–5,4 s | De gerenderde film, frames 48–150: het verlichte deel van het beeld (luma > 0,25), oplopend van 2 % naar 56 % | De cutoff van een D/A-drone: 160 + 3400 Hz × verlicht deel. De terminator opent het filter |
+| M74 4,2–7,2 s | De gerenderde film, frames 126–216: per frame 48 punten (vaste seed) in een ring rond de kern van de spiraal. **De dolly is de speelkop:** omdat de camera induwt, schuift de ring door de spiraal | Heldere punten (luma > 0,55) worden korrels, maximaal 4 per frame. Luma → toonhoogte en niveau. Blauw−rood → octaaf (de blauwste punten, jonge sterren, een octaaf hoger). x → panning. Afstand tot de kern → korrelduur. Gemiddelde ringhelderheid → niveau van een gloed-pad. Op 4,2 slaan de 5 helderste punten samen aan |
+| Glasplaat 7,2 s | – | De data stopt. De laatste toonhoogtes blijven zacht hangen als cluster (+ glas) |
+| Logo 8,4 s | – | Sluiter. De cluster glijdt in 120 ms naar de dichtstbijzijnde akkoordtonen van D add9: het instrument "antwoordt" in één toonsoort |
+
+**Eerlijkheidsnoot:** tot ≈ 5,0 s staat de verlichte planeetrand nog in de ring rond de M74-kern. Die korrels komen dus deels van de planeet, niet van de galaxy. Dat is wat er in beeld staat, en het is niet weggepoetst.
+
+## Metingen per variant
+
+Gemeten op de MP4 (`out/varianten/<n>-<naam>.mp4`, AAC 320 kbps ingesteld, 48 kHz). Loudness en true peak komen uit ffmpeg loudnorm. De sync is gemeten met onset-detectie op de gedecodeerde MP4-audio, waarbij de cue-tijden uit de composities zelf worden gelezen.
+
+| | 0 · huidig | 1 · orgel | 2 · puls | 3 · sonificatie |
+|---|---|---|---|---|
+| Integrated (MP4) | −14,23 LUFS | −13,93 LUFS | −14,52 LUFS | −14,13 LUFS |
+| True peak (MP4) | −1,50 dBTP | −1,50 dBTP | −1,46 dBTP | −1,49 dBTP |
+| LRA | 2,6 LU | 6,3 LU | 4,6 LU | 2,7 LU |
+| Mono: correlatie / verlies | 0,98 / 0,09 LU | 0,87 / 0,36 LU | 0,98 / 0,03 LU | 0,87 / 0,36 LU |
+| Max. hook / tekst 2 / eindkaart | −12,4 / −13,6 / −13,1 | −16,7 / −16,3 / −13,8 | −17,9 / −13,5 / −12,3 | −16,6 / −13,7 / −16,9 |
+| Luidste moment | −9,6 (match-cut) | −9,6 (push-in) | −9,4 (push-in) | −8,2 (push-in) |
+| Sync 1,6 match-cut | +4,0 ms (0,12 fr) | +2,7 ms (0,08 fr) | +2,7 ms (0,08 fr) | +4,0 ms (0,12 fr) |
+| Sync 4,2 M74 | −12,0 ms (0,36 fr) | +24,0 ms (0,72 fr) | +4,0 ms (0,12 fr) | +14,7 ms (0,44 fr) |
+| Sync 7,2 glasplaat | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) |
+| Sync 8,4 logo | +4,0 ms (0,12 fr) | +5,3 ms (0,16 fr) | +5,3 ms (0,16 fr) | +6,7 ms (0,20 fr) |
+| Onset-sterkte hoofdcues | 3,7–5,9× | 2,7–5,8× | 12–23× | 3,2–6,5× |
+
+- **Alle vier:** de hoofdcues vallen binnen ±1 frame; geen tekstmoment is het drukst; DC < 7·10⁻⁵; de limiter grijpt maximaal 1,6 dB in.
+- **Determinisme:** twee runs geven bit-identieke masters. SHA-256:
+  - huidig `47932b72…`
+  - orgel `e6455711…`
+  - puls `fb17a341…`
+  - sonificatie `add03fdd…`
+- **Videostream:** identiek in alle vier de MP4's.
+- **Huidig op 4,2 s:** er staat geen klap. De onset die de detector vindt (−12 ms) is het begin van de sterrenwolk en de pad-zwelling.
+- **Orgel op 4,2 s:** +24 ms, de traagste aanzet. Een pijp spreekt in ongeveer 60 ms aan; de chiff haalt het binnen een frame.
+- **LRA orgel 6,3 LU:** groter dan de rest, en dat is bewust. De zwelkast bouwt van zacht naar vol, en daarin zit het concept.
