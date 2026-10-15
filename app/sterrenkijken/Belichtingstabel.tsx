@@ -1,7 +1,7 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer sterrenkijken — /staging/sterrenkijken
+   NightGazer sterrenkijken — /sterrenkijken
 
    Compositie: de belichtingstabel. Zeven nachten als rijen, de factoren als
    kolommen; de beste nacht krijgt de chinagraph-ring. Je leest wánneer je
@@ -12,7 +12,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { SiteFooter } from '../../components/SiteFooter'
+import { SiteFooter } from '../components/SiteFooter'
 import { PROXY } from '@/lib/home-content'
 import {
   type Location, type WeatherData,
@@ -32,19 +32,20 @@ interface Night {
   score: number
   label: string
 }
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
-} from '../shared'
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel,
+} from '@/app/_plate/shared'
 
 import IssOverkomsten from './IssOverkomsten'
 import Meldingen from './Meldingen'
 import Noorderlicht from './Noorderlicht'
 import ObjectVanDeNacht from './ObjectVanDeNacht'
 import Hemelagenda from './Hemelagenda'
+import Maankalender from './Maankalender'
 import { haalKp, laatstGemeten } from '@/lib/aurora'
 
-const DarkSkyMap = dynamic(() => import('../../sterrenkijken/DarkSkyMap'), {
+const DarkSkyMap = dynamic(() => import('./DarkSkyMap'), {
   ssr: false,
   loading: () => <div className="pl-skel" style={{ position: 'absolute', inset: 0 }} />,
 })
@@ -191,7 +192,7 @@ function LocationBar({ location, onPick }: { location: Location; onPick: (l: Loc
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
-export default function SterrenkijkenStaging() {
+export default function Belichtingstabel() {
   const [location, setLocation] = useState<Location>({ lat: 52.3676, lon: 4.9041, name: 'Amsterdam' })
   const [week, setWeek] = useState<Night[]>([])
   const [tonight, setTonight] = useState<WeatherData | null>(null)
@@ -311,7 +312,6 @@ export default function SterrenkijkenStaging() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <StagingBanner />
       <PlateHead total={DARK_SPOTS.length} edition={editionLabel()} current="sterrenkijken" totalLabel="donkere plekken" />
       <LocationBar location={location} onPick={pickLocation} />
 
@@ -495,11 +495,6 @@ export default function SterrenkijkenStaging() {
               <h2 id="pl-where" className="pl-h2">Waar is het donker?</h2>
               <span className="pl-label">Bortle-schaal · lager is donkerder</span>
             </div>
-            <Link href="/sterrenkijken" className="pl-read">
-              <span>Volledige kaart</span>
-              <span className="pl-read__rule" aria-hidden="true" />
-              <Ico.arrow />
-            </Link>
           </div>
 
           <div className="pl-where">
@@ -598,6 +593,17 @@ export default function SterrenkijkenStaging() {
           </div>
         </section>
 
+        {/* ══ Maankalender ══ */}
+        <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-moon">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-moon" className="pl-h2">De maan deze maand</h2>
+              <span className="pl-label">Fase om 20:00</span>
+            </div>
+          </div>
+          <Maankalender />
+        </section>
+
         {/* ══ Meteorenzwermen ══ */}
         <section className="pl-wrap" aria-labelledby="pl-showers">
           <div className="pl-band">
@@ -645,7 +651,7 @@ export default function SterrenkijkenStaging() {
         </section>
 
         <div className="pl-wrap">
-          <AdPlate />
+          <AdPlate slot="6261315300" />
         </div>
       </main>
 

@@ -32,12 +32,12 @@ npm run dev                  # draait eerst prebuild (index, rss, sitemap)
 
 ```
 app/                    Next.js routes
-  page.tsx              homepage
-  nieuws/               overzicht, [slug], onderwerp/[category]
-  missies/              overzicht + [slug]
-  sterrenkijken/        donkere-hemelkaart, aurora-alert
+  page.tsx, HomePage    homepage (plaatarchief)
+  _plate/               gedeelde chrome en plate.css van het designsysteem
+  nieuws/               ladenbank, [slug] (artikel), onderwerp/[category]
+  missies/              lanceermanifest + [slug]
+  sterrenkijken/        belichtingstabel, kaart, ISS, noorderlicht, maankalender
   educatie/  tools/herschrijver/  en/  over/  contact/  privacy/
-  staging/              redesign in aanbouw (noindex, robots: Disallow)
   components/           SiteNav, SiteFooter, AdUnit, CookieBanner, Search…
 lib/                    data en logica (iss, aurora, sky-chart, missions, push, ics…)
 content/articles/       markdown-artikelen (door de bot geschreven)

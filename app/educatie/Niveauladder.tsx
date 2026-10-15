@@ -1,7 +1,7 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer educatie — /staging/educatie
+   NightGazer educatie — /educatie
 
    Compositie: de niveauladder. Het leesniveau is de pagina, niet een knopje
    erin: één keuze bovenaan herschrijft alle zes onderwerpen tegelijk, zodat
@@ -11,13 +11,13 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
-import { SiteFooter } from '../../components/SiteFooter'
+import { SiteFooter } from '../components/SiteFooter'
 import { LEVELS, TOPIC_DETAILS, TOPICS, CONCEPTS, FAQS } from '@/lib/education-data'
 import { DAILY_QUESTIONS } from '@/lib/home-content'
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel, Ladder,
-} from '../shared'
+  archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder,
+} from '@/app/_plate/shared'
 
 type Level = 'beg' | 'ama' | 'pro'
 const LEVEL_KEYS: Level[] = ['beg', 'ama', 'pro']
@@ -254,7 +254,7 @@ function Lesson({ topic, level, no, swapKey, index, done, onDone }: {
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
-export default function EducatieStaging() {
+export default function Niveauladder() {
   const [level, setLevel] = useState<Level>('beg')
   const [swapKey, setSwapKey] = useState(0)
   const [restored, setRestored] = useState(false)
@@ -303,7 +303,6 @@ export default function EducatieStaging() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <StagingBanner />
       <PlateHead total={TOPICS.length} edition={editionLabel()} current="educatie" totalLabel="onderwerpen" />
       <LadderBar level={level} onPick={pick} />
 
@@ -388,7 +387,7 @@ export default function EducatieStaging() {
               <h2 id="pl-verder" className="pl-h2">Verder lezen</h2>
               <span className="pl-label">Artikelen bij deze onderwerpen</span>
             </div>
-            <Link href="/staging/nieuws" className="pl-read">
+            <Link href="/nieuws/" className="pl-read">
               <span>Het hele archief</span>
               <span className="pl-read__rule" aria-hidden="true" />
               <Ico.arrow />
@@ -432,9 +431,6 @@ export default function EducatieStaging() {
           </div>
         </section>
 
-        <div className="pl-wrap">
-          <AdPlate />
-        </div>
       </main>
 
       <SiteFooter cols={FOOTER_COLS} note="Bronnen per onderwerp staan in de zijkolom" />

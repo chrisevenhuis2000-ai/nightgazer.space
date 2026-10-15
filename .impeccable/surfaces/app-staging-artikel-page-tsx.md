@@ -1,8 +1,8 @@
 ---
 version: 1
 slug: "app-staging-artikel-page-tsx"
-primary_target: "app/staging/artikel/page.tsx"
-related_targets: ["app/staging/artikel/ArtikelStaging.tsx","lib/article-data.ts"]
+primary_target: "app/nieuws/[slug]/page.tsx"
+related_targets: ["app/nieuws/[slug]/ArtikelPlaat.tsx","lib/article-data.ts"]
 ---
 
 Scope: de artikelpagina, /staging/artikel?slug=…, zesde surface. Visitor mode: Read.

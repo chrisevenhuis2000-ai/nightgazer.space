@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer — /staging homepage rework
+   NightGazer — the plate archive (all six surfaces)
    World: the photographic glass-plate archive, rendered in the existing
    NightGazer palette (#1A1A2E / #185FA5 / #378ADD).
 
@@ -292,49 +292,6 @@ a:hover .pl-emulsion > img,
   filter: grayscale(0.18) contrast(1.02) brightness(0.98) saturate(1.05);
   transform: scale(1.022);
 }
-
-/* ══ Staging banner ══════════════════════════════════════════════════════ */
-
-.pl-staging {
-  position: relative;
-  z-index: 40;
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(224,104,90,0.16) 0 10px,
-      transparent 10px 20px),
-    var(--pl-plate-2);
-  border-bottom: 1px solid var(--pl-rule);
-}
-.pl-staging__in {
-  max-width: var(--pl-max);
-  margin: 0 auto;
-  padding: 9px var(--pl-gut);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.pl-staging__stamp {
-  border: 1px solid var(--pl-warn);
-  color: var(--pl-warn);
-  padding: 3px 9px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  transform: rotate(-1.2deg);
-  flex-shrink: 0;
-}
-.pl-staging__note { color: var(--pl-ink-2); font-size: 0.8125rem; }
-.pl-staging__link {
-  margin-left: auto;
-  border-bottom: 1px solid var(--pl-rule);
-  color: var(--pl-stamp);
-  font-size: 0.8125rem;
-  padding-bottom: 1px;
-  transition: border-color 200ms var(--pl-ease);
-}
-.pl-staging__link:hover { border-color: var(--pl-act); color: var(--pl-act); }
 
 /* ══ Header ══════════════════════════════════════════════════════════════ */
 
@@ -1299,7 +1256,6 @@ a:hover .pl-emulsion > img,
     padding: 16px 0 0;
     gap: 26px;
   }
-  .pl-staging__link { margin-left: 0; }
 }
 
 @media (max-width: 620px) {
@@ -1317,7 +1273,7 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   De ladenbank — /staging/nieuws
+   De ladenbank — /nieuws
    Het archief is een kast: onderwerpen zijn laden in een plakkende rail,
    en de gekozen lade vult het blad ernaast.
    ══════════════════════════════════════════════════════════════════════════ */
@@ -1363,17 +1319,20 @@ a:hover .pl-emulsion > img,
   position: relative;
   transition: color 180ms var(--pl-ease), background 180ms var(--pl-ease);
 }
+/* `.pl button { font: inherit }` out-specifies .pl-drawer, which made button
+   drawers 15px and link drawers 13px side by side. Restate the size here. */
+.pl button.pl-drawer { font-size: 0.8125rem; font-weight: 500; }
 .pl-drawer:last-child { border-bottom: 0; }
 .pl-drawer:hover { color: var(--pl-act); background: var(--pl-plate-2); }
 
 /* De open lade schuift half uit de kast: een 2px greep aan de linkerrand
    en een gelichte ondergrond. Geen kleurbadge — een positie. */
-.pl-drawer[aria-current="true"] {
+.pl-drawer:is([aria-current="true"], [aria-current="page"]) {
   color: var(--pl-ink);
   background: var(--pl-plate-lift);
   padding-left: 24px;
 }
-.pl-drawer[aria-current="true"]::before {
+.pl-drawer:is([aria-current="true"], [aria-current="page"])::before {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
@@ -1388,7 +1347,7 @@ a:hover .pl-emulsion > img,
   min-width: 3.2ch;
   text-align: right;
 }
-.pl-drawer[aria-current="true"] .pl-drawer__n { color: var(--pl-act); }
+.pl-drawer:is([aria-current="true"], [aria-current="page"]) .pl-drawer__n { color: var(--pl-act); }
 .pl-drawer:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* Niveau-laden dragen hun ladder als markering */
@@ -1496,8 +1455,8 @@ a:hover .pl-emulsion > img,
     border-right: 1px solid var(--pl-rule-soft);
     white-space: nowrap;
   }
-  .pl-drawer[aria-current="true"] { padding-left: 18px; }
-  .pl-drawer[aria-current="true"]::before { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; }
+  .pl-drawer:is([aria-current="true"], [aria-current="page"]) { padding-left: 18px; }
+  .pl-drawer:is([aria-current="true"], [aria-current="page"])::before { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; }
   .pl-entry { grid-template-columns: 116px minmax(0, 1fr); gap: 16px; }
   .pl-entry__no { display: none; }
 
@@ -1517,7 +1476,7 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   De belichtingstabel — /staging/sterrenkijken
+   De belichtingstabel — /sterrenkijken
    Lees de beste nacht van de tabel af, zoals uit een ephemeris.
    ══════════════════════════════════════════════════════════════════════════ */
 
@@ -1782,7 +1741,7 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   De startbaanstrook — /staging/missies
+   De startbaanstrook — /missies
    Cadans is het verhaal: waar de merktekens opeenhopen zie je het ritme
    van een lanceerjaar dat een lijst nooit kan tonen.
    ══════════════════════════════════════════════════════════════════════════ */
@@ -2034,7 +1993,7 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   De niveauladder — /staging/educatie
+   De niveauladder — /educatie
    Het leesniveau is de pagina, niet een knopje erin: één keuze bovenaan
    herschrijft alle zes onderwerpen tegelijk.
    ══════════════════════════════════════════════════════════════════════════ */
@@ -2199,7 +2158,11 @@ a:hover .pl-emulsion > img,
   gap: 6px;
   margin-top: 6px;
 }
-.pl-terms button {
+.pl-terms button,
+.pl-terms > a,
+.pl-terms > span {
+  display: inline-flex;
+  align-items: center;
   min-height: 30px;
   padding: 0 11px;
   background: none;
@@ -2210,6 +2173,7 @@ a:hover .pl-emulsion > img,
   cursor: pointer;
   transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease), background 180ms var(--pl-ease);
 }
+.pl-terms > a:hover,
 .pl-terms button:hover { color: var(--pl-act); border-color: var(--pl-act); }
 .pl-terms button[aria-pressed="true"] {
   color: var(--pl-act);
@@ -2306,7 +2270,7 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   De ontwikkelstrook — /staging/artikel
+   De ontwikkelstrook — /nieuws/[slug]
    Het artikel ontwikkelt zich als een plaat in de donkere kamer: het
    leesniveau is de belichting, en elke alinea komt tevoorschijn zodra zijn
    herschrijving binnen is.
@@ -2394,6 +2358,20 @@ a:hover .pl-emulsion > img,
   border: 1px solid var(--pl-rule);
 }
 .pl-read-main { background: var(--pl-plate); padding: clamp(22px, 3vw, 40px); min-width: 0; }
+/* Gerelateerde missie in de kantlijn: één plaat, dezelfde statusmarkering
+   als de missierail op de voorpagina. */
+.pl-mission {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+}
+.pl-mission .pl-h3 { transition: color 180ms var(--pl-ease); }
+.pl-mission:hover .pl-h3,
+.pl-mission:focus-visible .pl-h3 { color: var(--pl-act); }
+
 .pl-read-side {
   background: var(--pl-ground);
   padding: clamp(20px, 2.4vw, 28px);
@@ -3639,4 +3617,78 @@ a:hover .pl-emulsion > img,
   .pl-meldk { padding: 18px; }
   .pl-meldk__drempel { padding-left: 0; }
   .pl-meldk__voet .pl-btn { width: 100%; }
+}
+
+/* ══ Maankalender — de maand als contactvel ═══════════════════════════════
+   Nieuwe en volle maan zijn een markering met een woord, geen kleurvlak:
+   een 1px kader in de twee semantische kleuren (donker = goed, vol = slecht
+   voor deep-sky). Vandaag draagt chinagraph via .pl-live. */
+.pl-moon__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-moon__month {
+  display: inline-flex;
+  align-items: center;
+  min-width: 150px;
+  justify-content: center;
+  padding: 0 14px;
+  border-right: 1px solid var(--pl-rule);
+  color: var(--pl-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.pl-moon__next { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; }
+.pl-moon__next div { display: grid; gap: 4px; }
+.pl-moon__next dd { margin: 0; color: var(--pl-ink); font-size: 0.875rem; }
+.pl-moon__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--pl-rule-soft);
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-moon__dow {
+  background: var(--pl-plate);
+  padding: 10px 0 8px;
+  text-align: center;
+}
+.pl-moon__cell {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+  min-height: 72px;
+  padding: 8px 2px;
+  background: var(--pl-plate);
+}
+.pl-moon__cell[data-empty="1"] { background: var(--pl-ground); }
+.pl-moon__cell[data-mark="nieuw"] { box-shadow: inset 0 0 0 1px var(--pl-good); }
+.pl-moon__cell[data-mark="vol"]   { box-shadow: inset 0 0 0 1px var(--pl-warn); }
+.pl-moon__cell[aria-current="date"] { background: var(--pl-plate-lift); }
+.pl-moon__dark { fill: var(--pl-ground); stroke: var(--pl-rule); stroke-width: 1; }
+.pl-moon__lit  { fill: var(--pl-ink-2); }
+.pl-moon__d { font-size: 0.75rem; color: var(--pl-ink-3); }
+/* .pl-moon__d staat ná .pl-live en zou de chinagraph van vandaag eten. */
+.pl-moon__d.pl-live { color: var(--pl-mark); font-weight: 600; }
+.pl-moon__w {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pl-ink-2);
+}
+.pl-moon__foot { padding: 14px 20px 18px; max-width: 68ch; }
+
+@media (max-width: 620px) {
+  .pl-moon__cell { min-height: 58px; }
+  .pl-moon__w { display: none; }
 }

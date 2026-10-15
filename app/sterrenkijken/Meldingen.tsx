@@ -19,7 +19,7 @@ import {
 } from '@/lib/push'
 import { haalTle, vindPassages, helderheid } from '@/lib/iss'
 import { compass, KOMPAS_VOLUIT } from '@/lib/sky-chart'
-import { Ico } from '../Instruments'
+import { Ico } from '@/app/_plate/Instruments'
 
 const KEUZE_KEY = 'nightgazer_meldingen'
 

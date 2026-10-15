@@ -1,6 +1,5 @@
 // ── Gedeelde educatie-inhoud ───────────────────────────────────────────────
-// Uit app/educatie/EducatieClient.tsx getrokken zodat de live pagina en de
-// /staging-rework uit één bron lezen. Zes onderwerpen, elk met uitleg op
+// Bron voor app/educatie/Niveauladder.tsx. Zes onderwerpen, elk met uitleg op
 // drie niveaus, kernfeiten, bronnen en begrippen.
 
 export const LEVELS = [
@@ -8,13 +7,6 @@ export const LEVELS = [
   { key: 'ama', label: 'Amateur',   color: '#3ddf90', border: 'rgba(61,223,144,0.4)', bg: 'rgba(61,223,144,0.1)', desc: 'Je kent de basisconcepten. We duiken dieper in met getallen en terminologie.' },
   { key: 'pro', label: 'Pro',       color: '#3dcfdf', border: 'rgba(61,207,223,0.4)', bg: 'rgba(61,207,223,0.1)', desc: 'Wetenschappelijk niveau. Formules, peer-reviewed bronnen, vakjargon.' },
 ]
-
-export const DEMO_CONCEPT = {
-  title: 'Wat is een zwart gat?',
-  beg: 'Een zwart gat is een plek in de ruimte waar de zwaartekracht zo sterk is dat zelfs licht er niet meer uit kan ontsnappen. Het ontstaat als een enorme ster aan het einde van zijn leven instort. De grens waarbij er geen terugkeer meer mogelijk is heet de "eventhorizon". Alles wat daarin valt, verdwijnt voor altijd.',
-  ama: 'Een zwart gat is een regio in de ruimtetijd met een dusdanig sterke zwaartekrachtspotentiaal dat de ontsnappingssnelheid groter is dan c (lichtsnelheid). Stellaire zwarte gaten ontstaan na de gravitationele collaps van sterren > ~20 M☉. De Schwarzschild-straal Rs = 2GM/c² bepaalt de grootte van de eventhorizon. Supermassieve zwarte gaten (10⁶–10¹⁰ M☉) bevinden zich in de kernen van vrijwel alle grote sterrenstelsels.',
-  pro: 'Een Kerr–Newman zwart gat wordt volledig beschreven door drie parameters: massa M, impulsmoment J en lading Q. De ergosphere buiten de Kerr-horizont maakt Penrose-processen mogelijk (energieonttrekking via frame-dragging). Hawking-straling (T_H = ℏc³/8πGMk_B) voorspelt zwarte-gatverdam­ping op tijdschalen τ ∝ M³. Bij SGR A* (M ≈ 4×10⁶ M☉) bevestigt het EHT-beeld de schaduwritmiek binnen GR-voorspellingen.',
-}
 
 export const TOPIC_DETAILS: Record<string, {
   featuredConcept: string
@@ -235,12 +227,3 @@ export const FAQS = [
   { q: 'Kan ik van niveau wisselen in artikelen?',    a: 'Ja — elke artikel pagina heeft een Beginner / Amateur / Pro knop. Onze AI herschrijft het artikel direct voor jouw niveau.' },
   { q: 'Zijn er Nederlandse bronnen voor meer info?', a: 'Wij zijn het grootste Nederlandse astronomie-platform. Daarnaast zijn NOVA Astronomie en Sterrewacht Leiden uitstekende bronnen.' },
 ]
-
-export const TOPIC_TAGS: Record<string, string[]> = {
-  zonnestelsel:    ['zonnestelsel', 'maan', 'mars', 'venus', 'jupiter', 'planeet'],
-  sterren:         ['ster', 'supernova', 'neutron', 'zwart gat', 'black hole'],
-  sterrenstelsels: ['sterrenstelsel', 'melkweg', 'galaxy', 'quasar'],
-  kosmologie:      ['kosmologie', 'oerknal', 'donkere', 'heelal', 'cosmology'],
-  exoplaneten:     ['exoplaneet', 'exoplanet', 'biosignaat', 'bewoonbaar'],
-  ruimtevaart:     ['lancering', 'raket', 'nasa', 'esa', 'astronaut', 'missie'],
-}

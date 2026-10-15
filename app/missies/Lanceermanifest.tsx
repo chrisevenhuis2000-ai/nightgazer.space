@@ -1,7 +1,7 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   NightGazer lanceermanifest — /staging/missies
+   NightGazer lanceermanifest — /missies
 
    Compositie: de startbaanstrook. Een tijdas over de resterende maanden,
    elke lancering een merkteken. Waar de tekens opeenhopen zie je de cadans
@@ -11,17 +11,17 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import Link from 'next/link'
-import { SiteFooter } from '../../components/SiteFooter'
+import { SiteFooter } from '../components/SiteFooter'
 import { MISSIONS, type MissionDetail } from '@/lib/missions-data'
 import {
   buildSchedule, monthWindows, assignLanes, agencyCounts, destinationGroup,
   type ScheduledLaunch, type MonthWindow,
 } from '@/lib/mission-schedule'
-import { Ico, Tip } from '../Instruments'
+import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, StagingBanner, PlateHead, AdPlate, editionLabel,
+  archivo, FOOTER_COLS, PlateHead, editionLabel,
   useMissionImages, img,
-} from '../shared'
+} from '@/app/_plate/shared'
 
 const DAYFMT: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }
 
@@ -301,7 +301,7 @@ function UpNext({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; 
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
-export default function MissiesStaging() {
+export default function Lanceermanifest() {
   const [today, setToday] = useState<Date | null>(null)
   const [windowKey, setWindowKey] = useState<string | null>(null)
   const [agency, setAgency] = useState<string | null>(null)
@@ -355,6 +355,25 @@ export default function MissiesStaging() {
   }, [upcoming, windows, windowKey])
 
   const active = useMemo(() => MISSIONS.filter(m => m.status === 'actief'), [])
+
+  /* Het register: alles wat niet meer in het manifest staat en ook niet
+     vliegt. Zonder dit zijn hun detailpagina's wees — niets op deze pagina
+     linkt er dan naartoe. 'Datum voorbij' zegt niet 'gevlogen': de bot ziet
+     alleen aankomende lanceringen, dus of een vlucht echt ging weet de data
+     niet. Datum voorbij of status 'voltooid'
+     eerst, nieuwste bovenaan; missies zonder bruikbare datum daarna. */
+  const archive = useMemo(() => {
+    if (!schedule) return { flownList: [] as ScheduledLaunch[], undated: [] as MissionDetail[] }
+    const upcomingIds = new Set(schedule.upcoming.map(l => l.mission.id))
+    const keep = (m: MissionDetail) =>
+      m.status !== 'actief' && (m.status === 'voltooid' || !upcomingIds.has(m.id)) &&
+      (!agency || m.agency === agency)
+    return {
+      flownList: schedule.past.filter(l => keep(l.mission)),
+      undated: schedule.undated.filter(keep),
+    }
+  }, [schedule, agency])
+  const archiveCount = archive.flownList.length + archive.undated.length
   const activeShown = useMemo(
     () => agency ? active.filter(m => m.agency === agency) : active,
     [active, agency]
@@ -380,7 +399,6 @@ export default function MissiesStaging() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <StagingBanner />
       <PlateHead total={MISSIONS.length} edition={editionLabel()} current="missies" totalLabel="missies" />
 
       {/* Agentschapsfilter in de sleuf waar de andere surfaces hun snelbalk hebben */}
@@ -607,9 +625,59 @@ export default function MissiesStaging() {
           )}
         </section>
 
-        <div className="pl-wrap">
-          <AdPlate />
-        </div>
+        {/* ══ Register: gevlogen en afgerond ══ */}
+        {archiveCount > 0 && (
+          <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-register">
+            <div className="pl-band">
+              <div className="pl-band__t">
+                <h2 id="pl-register" className="pl-h2">Uit het manifest</h2>
+                <span className="pl-label">Datum voorbij of afgerond</span>
+              </div>
+              <p className="pl-label pl-num">{archiveCount}</p>
+            </div>
+
+            <div className="pl-flights">
+              {archive.flownList.map(l => (
+                <Link key={l.mission.id} href={`/missies/${l.mission.id}`} className="pl-flight">
+                  <span>
+                    <span className="pl-flight__d" style={{ color: 'var(--pl-ink-2)' }}>
+                      {l.precision === 'dag'
+                        ? l.date.toLocaleDateString('nl-NL', DAYFMT)
+                        : l.date.toLocaleDateString('nl-NL', { month: 'short', year: 'numeric' })}
+                    </span>
+                    <span className="pl-flight__in">
+                      {l.mission.status === 'voltooid' ? 'afgerond' : 'datum voorbij'}
+                    </span>
+                  </span>
+                  <span style={{ minWidth: 0 }}>
+                    <span className="pl-flight__t" style={{ display: 'block' }}>{l.mission.name}</span>
+                    <span className="pl-meta" style={{ marginTop: 6 }}>
+                      <span>{shortAgency(l.mission.agency)}</span>
+                    </span>
+                  </span>
+                  <span className="pl-flight__meta">{l.mission.vehicle || '—'}</span>
+                  <span className="pl-flight__dest">{destinationGroup(l.mission.body)}</span>
+                </Link>
+              ))}
+              {archive.undated.map(m => (
+                <Link key={m.id} href={`/missies/${m.id}`} className="pl-flight">
+                  <span>
+                    <span className="pl-flight__d" style={{ color: 'var(--pl-ink-3)' }}>—</span>
+                    <span className="pl-flight__in">geen datum</span>
+                  </span>
+                  <span style={{ minWidth: 0 }}>
+                    <span className="pl-flight__t" style={{ display: 'block' }}>{m.name}</span>
+                    <span className="pl-meta" style={{ marginTop: 6 }}>
+                      <span>{shortAgency(m.agency)}</span>
+                    </span>
+                  </span>
+                  <span className="pl-flight__meta">{m.vehicle || '—'}</span>
+                  <span className="pl-flight__dest">{destinationGroup(m.body)}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
 
       <SiteFooter

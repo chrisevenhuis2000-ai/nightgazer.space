@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
-import SterrenkijkenClient from './SterrenkijkenClient'
+import Belichtingstabel from './Belichtingstabel'
 
 export const metadata: Metadata = {
   title:       'Sterrenkijken',
-  description: 'Vind de donkerste plekken in Nederland, bekijk live hemelcondities en plan je sterrenkijkavond met onze interactieve kaart.',
+  description: 'Kan ik vannacht kijken? Zeven nachten bewolking, maan en wind in één tabel, donkere plekken in Nederland, ISS-overkomsten, noorderlicht en de maankalender.',
+  alternates:  { canonical: '/sterrenkijken/' },
   openGraph: {
     title:       'Sterrenkijken — NightGazer',
-    description: 'Interactieve dark-sky kaart, weersverwachting en tips voor de beste sterrenkijkplekken in Nederland.',
+    description: 'Plan je kijkavond: de beste nacht van de week, donkere plekken, ISS-overkomsten en de maan.',
   },
 }
 
 export default function Page() {
-  return <SterrenkijkenClient />
+  return <Belichtingstabel />
 }

@@ -1,8 +1,8 @@
 ---
 version: 1
 slug: "app-staging-sterrenkijken-page-tsx"
-primary_target: "app/staging/sterrenkijken/page.tsx"
-related_targets: ["app/staging/sterrenkijken/SterrenkijkenStaging.tsx","lib/sky-data.ts"]
+primary_target: "app/sterrenkijken/page.tsx"
+related_targets: ["app/sterrenkijken/Belichtingstabel.tsx","lib/sky-data.ts"]
 ---
 
 Scope: de sterrenkijkpagina, /staging/sterrenkijken, ter beoordeling naast de andere twee staging-surfaces. Visitor mode: Operate.

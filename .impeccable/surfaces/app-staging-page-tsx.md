@@ -1,8 +1,8 @@
 ---
 version: 1
 slug: "app-staging-page-tsx"
-primary_target: "app/staging/page.tsx"
-related_targets: ["app/staging/StagingHome.tsx","app/staging/Instruments.tsx","app/staging/staging.css"]
+primary_target: "app/page.tsx"
+related_targets: ["app/HomePage.tsx","app/_plate/Instruments.tsx","app/_plate/plate.css"]
 ---
 
 Scope: the NightGazer homepage rework, built at /staging for review before it replaces app/page.tsx. Visitor mode: Operate.

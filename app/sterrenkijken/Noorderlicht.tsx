@@ -19,7 +19,7 @@ import {
   type KpEntry, type Toon,
 } from '@/lib/aurora'
 import { darkWindow } from '@/lib/sky-chart'
-import { Ico } from '../Instruments'
+import { Ico } from '@/app/_plate/Instruments'
 
 const MELD_KEY = 'nightgazer_poollicht_melding'
 /* Elk kwartier opnieuw kijken. NOAA vernieuwt per drie uur, dus vaker

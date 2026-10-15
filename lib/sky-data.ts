@@ -1,6 +1,6 @@
 // ── Gedeelde sterrenkijk-data en rekenlogica ───────────────────────────────
-// Uit app/sterrenkijken/SterrenkijkenClient.tsx getrokken zodat de live
-// pagina en de /staging-rework uit één bron lezen.
+// Bron voor app/sterrenkijken/Belichtingstabel.tsx en de homepage-
+// instrumenten: locaties, donkere plekken, zwermen, score en maanfase.
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
@@ -66,14 +66,6 @@ export function showerWindow(s: Shower, year = SHOWER_YEAR): { start: Date; end:
   const start = new Date(year, s.month - 1, s.day, vroeg ? 20 : 22, 0, 0)
   return { start, end: new Date(start.getTime() + (vroeg ? 3 : 4) * 3600_000) }
 }
-
-export const SEASONS = [
-  { name: 'Melkweg Seizoen',         icon: '🌌', months: [3,4,5,6,7,8,9,10], color: '#c080ff', targets: 'Galactische kern, Sagittarius sterrenwolk, Rho Ophiuchi',          tip: 'Beste na middernacht bij nieuwe maan. Ga naar Lauwersmeer of Terschelling.' },
-  { name: 'Nevelseizoen — Winter',   icon: '✨', months: [11,12,1,2,3],      color: '#ff8a60', targets: 'Orionnevel (M42), Paardekopnevel, Rosette-nevel, Krab-nevel (M1)',  tip: 'Orionnevel is prachtig door telescoop! Kijk richting het zuiden na 21:00.' },
-  { name: 'Nevelseizoen — Zomer',    icon: '🔴', months: [5,6,7,8,9],        color: '#d4a84b', targets: 'Sluiernevel, NGC 7000, Lagune-nevel (M8), Ring-nevel (M57)',         tip: 'Ring-nevel (M57) in Lier is compact maar helder — prachtig door telescoop!' },
-  { name: 'Sterrenstelsel Seizoen',  icon: '🔭', months: [3,4,5],            color: '#7aadff', targets: 'M31 Andromeda, M51 Draaikolk, M81/M82 Bode, M104 Sombrero',        tip: 'Andromedanevel is nog zichtbaar in het westen in maart.' },
-  { name: 'Bolvormige Sterrenhopen', icon: '⭐', months: [5,6,7,8,9],        color: '#3ddf90', targets: 'M13 Hercules, M5 Slang, M22 Schutter, M92 Hercules',               tip: 'M13 is een must! Zichtbaar met verrekijker als wazig vlekje.' },
-]
 
 export const SKY_OBJECTS = [
   { obj: 'Jupiter',          where: 'Hoog in het zuiden, in Gemini',              mag: '–2.3', icon: '♃', tip: 'Perfect voor je telescoop! Probeer de Galileïsche manen.',                                 months: [11,12,1,2,3,4,5] },

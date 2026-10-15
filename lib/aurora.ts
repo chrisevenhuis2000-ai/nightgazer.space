@@ -1,7 +1,8 @@
 // ── Noorderlicht: Kp ophalen en vertalen naar een oordeel ──────────────────
 //
-// Rechtstreeks bij NOAA, niet via de eigen proxy. Die proxy geeft al sinds
-// het formaat van NOAA veranderde `kp: null` terug voor alles, en NOAA stuurt
+// Rechtstreeks bij NOAA, niet via de eigen proxy. De proxy-route
+// /space-weather gaf na NOAA's formaatwissel (sept. 2026) `kp: null`; dat is
+// in cf-worker/worker.js gerepareerd (83193c0, gedeployd 26-09). NOAA stuurt
 // zelf `access-control-allow-origin: *`, dus de tussenstap levert hier niets
 // op behalve een extra plek waar het stuk kan.
 //
