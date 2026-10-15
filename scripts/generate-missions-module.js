@@ -18,7 +18,7 @@ const { missions, _meta } = JSON.parse(raw)
 
 // Strip internal fields (_ll2Id etc.) that are not part of MissionDetail
 const clean = missions.map(m => {
-  const { _ll2Id, _lastClaudeUpdate, ...rest } = m
+  const { _ll2Id, _lastClaudeUpdate, _previousMisses, ...rest } = m
   return rest
 })
 

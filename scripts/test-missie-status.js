@@ -51,7 +51,8 @@ const upcoming = JSON.parse(upText), previous = JSON.parse(prevText)
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'missie-status-'))
 const files = { missions: path.join(tmp, 'missions.json'), up: path.join(tmp, 'up.json'), prev: path.join(tmp, 'prev.json') }
-fs.copyFileSync(path.join(__dirname, '..', 'content', 'missions.json'), files.missions)
+// Vaste snapshot, zie test-missie-koppeling.js.
+fs.copyFileSync(path.join(FIX, 'missions.json'), files.missions)
 fs.writeFileSync(files.up, upText)
 fs.writeFileSync(files.prev, prevText)
 
@@ -87,14 +88,23 @@ for (const l of [...upcoming.results, ...previous.results]) {
 
 // Vastgelopen missie die ook niet in previous staat: waarschuwen, niets doen.
 const notFound = before.filter(m => m.status === 'gepland' && m._ll2Id && !touched.has(m.id) &&
-  !previous.results.some(l => l.id === m._ll2Id) && warnings.some(w => w.includes(m._ll2Id) && w.includes('niet in upcoming of previous')))
+  !previous.results.some(l => l.id === m._ll2Id) && warnings.some(w => w.includes(m._ll2Id) && w.includes('niet gevonden in LL2 previous')))
 ok(notFound.length > 0, 'vastgelopen missie zonder previous-record geeft een waarschuwing')
-ok(warnings.some(w => w.includes('/launches/previous/ heeft meer dan')), 'waarschuwing bij een tweede pagina van previous')
+ok(stdout.includes('de rest volgt bij een volgende run'), 'melding bij een tweede pagina van previous')
 
-// Niets anders verandert.
+// Niets anders verandert, behalve de missertelling van vastgelopen missies
+// die de previous-pagina dekte maar niet bevatte (zie test-missie-venster.js).
+const missed = new Set(notFound.map(m => m.id))
 for (const m of before) {
   if (touched.has(m.id)) continue
-  eq(JSON.stringify(byId.get(m.id)), JSON.stringify(m), `${m.id} is onverwacht veranderd`)
+  const now = byId.get(m.id)
+  if (missed.has(m.id)) {
+    eq(now._previousMisses, (m._previousMisses || 0) + 1, `${m.id}: misser geteld`)
+    const { _previousMisses, ...rest } = now
+    eq(JSON.stringify(rest), JSON.stringify(m), `${m.id} is verder onveranderd`)
+    continue
+  }
+  eq(JSON.stringify(now), JSON.stringify(m), `${m.id} is onverwacht veranderd`)
 }
 
 console.log(`✅ ${checks} statuscontroles geslaagd (${warnings.length} waarschuwingen)`)

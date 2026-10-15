@@ -236,6 +236,11 @@ function cleanEnrichment(e) {
 
 const hasDescription = d => typeof d === 'string' && d.trim().length > 0
 
+// /launches/previous/ vanaf 'since', oudste eerst — zie 'Vastgelopen gepland'.
+function previousUrl(since) {
+  return `https://ll.thespacedevs.com/2.3.0/launches/previous/?format=json&limit=100&ordering=net&net__gte=${since}`
+}
+
 // ── Missie matchen ────────────────────────────────────────────────────────────
 // Streng. Een LL2-id hoort bij precies één lancering, dus:
 //   1. dezelfde _ll2Id → koppelen;
@@ -347,6 +352,9 @@ async function main() {
       ll2Status:   ll2Launch.status?.name || null,
     }
 
+    // Weer in upcoming (verschoven lancering): de missertelling geldt niet meer.
+    if (mission._previousMisses) { delete mission._previousMisses; changed = true }
+
     // Sla _ll2Id op voor snelle toekomstige matching
     if (mission._ll2Id !== ll2Launch.id) {
       mission._ll2Id = ll2Launch.id
@@ -426,6 +434,17 @@ async function main() {
   // _ll2Id, een verstreken datum en geen plek meer in upcoming wordt één
   // keer /previous/ gelezen (samen met upcoming twee requests per run, ruim
   // binnen de LL2-limiet). Koppelen gebeurt hier alleen op _ll2Id.
+  //
+  // Oudste eerst (ordering=net): past niet alles op één pagina van 100, dan
+  // lost deze run de oudste op en schuift het venster bij de volgende run
+  // vanzelf door. Met de nieuwste eerst vielen juist de oudste er steeds af.
+  //
+  // Een lancering die LL2 nooit meer teruggeeft (geschrapt, nieuwe id) mag
+  // het venster niet vastpinnen: elke run waarin de pagina haar datum wél
+  // dekte maar haar niet bevatte, telt als misser in _previousMisses. Na
+  // MAX_PREVIOUS_MISSES telt ze niet meer mee voor net__gte en vraagt een
+  // ::warning:: om handmatig nakijken.
+  const MAX_PREVIOUS_MISSES = 3
   const now = Date.now()
   const inUpcoming = new Set(ll2Launches.map(l => l.id))
   const stale = missions.filter(m => {
@@ -433,34 +452,49 @@ async function main() {
     const d = parseDutch(m.launched)
     return d && d.getTime() < now
   })
-  if (stale.length) {
-    const oldest = new Date(Math.min(...stale.map(m => parseDutch(m.launched).getTime())) - 7 * 86400 * 1000)
+  const parked = stale.filter(m => (m._previousMisses || 0) >= MAX_PREVIOUS_MISSES)
+  const inWindow = stale.filter(m => (m._previousMisses || 0) < MAX_PREVIOUS_MISSES)
+  for (const m of parked) {
+    warn(`${m.name} (${m._ll2Id}): ${m._previousMisses}× niet gevonden in LL2 previous, telt niet meer mee voor het zoekvenster — handmatig nakijken (geschrapt of nieuwe LL2-id?)`)
+  }
+  if (inWindow.length) {
+    const oldest = new Date(Math.min(...inWindow.map(m => parseDutch(m.launched).getTime())) - 7 * 86400 * 1000)
     const since = oldest.toISOString().slice(0, 10)
+    console.log(`📡 LL2 previous (${inWindow.length} missies met verstreken datum, sinds ${since}, oudste eerst)`)
     let previous = null
     try {
       if (LL2_PREVIOUS_FIXTURE) {
         previous = JSON.parse(fs.readFileSync(LL2_PREVIOUS_FIXTURE, 'utf-8'))
       } else if (!LL2_FIXTURE) {
-        console.log(`📡 LL2 previous ophalen (${stale.length} missies met verstreken datum, sinds ${since})...`)
         await sleep(1000)
-        previous = await fetchJSON(
-          `https://ll.thespacedevs.com/2.3.0/launches/previous/?format=json&limit=100&ordering=-net&net__gte=${since}`
-        )
+        previous = await fetchJSON(previousUrl(since))
       }
     } catch (err) {
       console.warn(`⚠️  LL2 previous niet bereikbaar: ${err.message} — statussen blijven staan`)
     }
     if (previous) {
+      const results = previous.results || []
+      // Tot waar heeft deze pagina echt gezocht? Zonder vervolgpagina: alles
+      // sinds 'since'. Met vervolgpagina: tot de laatste lancering erop.
+      const lastNet = Math.max(...results.map(l => new Date(l.net || l.window_start || 0).getTime()).filter(t => !isNaN(t)), 0)
+      const coveredUntil = previous.next ? lastNet : Infinity
       if (previous.next) {
-        warn(`/launches/previous/ heeft meer dan ${(previous.results || []).length} lanceringen sinds ${since}; alleen de eerste pagina gelezen (geen extra request vanwege de LL2-limiet)`)
+        console.log(`   meer dan ${results.length} lanceringen sinds ${since}; deze run dekt t/m ${new Date(lastNet).toISOString().slice(0, 10)}, de rest volgt bij een volgende run`)
       }
-      const byId = new Map((previous.results || []).map(l => [l.id, l]))
+      const byId = new Map(results.map(l => [l.id, l]))
+      // Ook geparkeerde missies mogen gevonden worden als ze toevallig op de pagina staan.
       for (const mission of stale) {
         const l = byId.get(mission._ll2Id)
         if (!l) {
-          warn(`${mission.name} (${mission._ll2Id}): datum ${mission.launched} is voorbij, maar de lancering staat niet in upcoming of previous — status blijft '${mission.status}'`)
+          if (!inWindow.includes(mission)) continue
+          const d = parseDutch(mission.launched).getTime()
+          if (d > coveredUntil) continue   // niet gezocht, dus ook geen misser
+          mission._previousMisses = (mission._previousMisses || 0) + 1
+          changed = true
+          warn(`${mission.name} (${mission._ll2Id}): datum ${mission.launched} is voorbij, maar niet gevonden in LL2 previous (${mission._previousMisses}/${MAX_PREVIOUS_MISSES}) — status blijft '${mission.status}'`)
           continue
         }
+        if (mission._previousMisses) { delete mission._previousMisses; changed = true }
         const newStatus = mapLL2Status(l.status?.name, mission.soort)
         if (newStatus !== mission.status) {
           console.log(`  ✏️  ${mission.name}: status ${mission.status} → ${newStatus} (LL2 previous: ${l.status?.name})`)
@@ -586,7 +620,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, previousUrl }
 
 if (require.main === module) {
   main().catch(err => {
