@@ -51,8 +51,8 @@ PRODUCT.md / DESIGN.md  productbrief en designsysteem van de redesign
 
 | Workflow | Wanneer | Wat |
 |---|---|---|
-| `fetch-articles.yml` | dagelijks 07:00 UTC | RSS → Claude → `content/articles/`, daarna image-backfill |
-| `update-missions.yml` | dagelijks 08:00 UTC | missiedata bijwerken → `content/missions.json` |
+| `fetch-articles.yml` | dagelijks 07:17 UTC | RSS → Claude → `content/articles/`, daarna image-backfill |
+| `update-missions.yml` | dagelijks 07:43 UTC | missiedata bijwerken → `content/missions.json` |
 | `deploy.yml` | elke push naar main | Cloudflare Worker deployen |
 | `setup-push.yml` | eenmalig | KV-namespace + VAPID-sleutels voor push |
 | `backfill-images-once.yml` | handmatig | afbeeldingen opnieuw ophalen |

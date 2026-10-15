@@ -2,8 +2,9 @@ name: 🚀 Missiedata bijwerken
 
 on:
   schedule:
-    # 08:00 UTC dagelijks — na fetch-articles (07:00 UTC)
-    - cron: '0 8 * * *'
+    # 07:43 UTC dagelijks — na fetch-articles (07:17 UTC). Niet op het hele
+    # uur: GitHub vertraagt geplande runs op :00 het sterkst.
+    - cron: '43 7 * * *'
   workflow_dispatch:
 
 jobs:
