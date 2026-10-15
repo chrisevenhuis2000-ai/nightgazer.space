@@ -28,7 +28,7 @@ const { startMock } = require('./__fixtures__/ll2-mock.js')
 const { startClaudeMock } = require('./__fixtures__/claude-mock.js')
 
 const SCRIPT = process.env.MISSIE_SCRIPT || path.join(__dirname, 'update-missions.js')
-const { highlightVoorStatus, launchDetailedUrl } = require(SCRIPT)
+const { highlightVoorStatus, launchDetailedUrl, datumTekst } = require(SCRIPT)
 
 let checks = 0
 const ok = (cond, msg) => { assert.ok(cond, msg); checks++ }
@@ -46,6 +46,18 @@ eq(highlightVoorStatus('actief', v), 'Gelanceerd op 12 apr 2026 — missie in be
 eq(highlightVoorStatus('gepland', v), 'Lancering gepland: 12 apr 2026', 'sjabloon gepland (de bestaande vorm)')
 eq(highlightVoorStatus('voltooid', { datum: '12 apr 2026' }), 'Gelanceerd op 12 apr 2026', 'voltooid zonder voertuig')
 eq(highlightVoorStatus('mislukt', { datum: '12 apr 2026', voertuig: '' }), 'Lancering mislukt op 12 apr 2026', 'mislukt zonder voertuig')
+// Gepland: de datum zo hard als LL2 hem kent (net_precision).
+const gepland = precisie => highlightVoorStatus('gepland', { datum: '31 dec 2026', voertuig: 'Falcon 9', precisie })
+eq(gepland('Year'), 'Lancering gepland: 2026', 'gepland, precisie Year → alleen het jaar')
+eq(gepland('Fiscal Year'), 'Lancering gepland: 2026', 'gepland, precisie Fiscal Year → alleen het jaar')
+eq(gepland('Year Half 2'), 'Lancering gepland: 2e helft 2026', 'gepland, Year Half 2')
+eq(gepland('Quarter 4'), 'Lancering gepland: Q4 2026', 'gepland, Quarter 4')
+eq(gepland('Month'), 'Lancering gepland: december 2026', 'gepland, Month → maand')
+eq(gepland('Day'), 'Lancering gepland: 31 dec 2026', 'gepland, Day → de datum')
+eq(gepland('Minute'), 'Lancering gepland: 31 dec 2026', 'gepland, Minute → de datum')
+eq(gepland(undefined), 'Lancering gepland: 31 dec 2026', 'gepland, geen precisie → de datum')
+eq(highlightVoorStatus('voltooid', { datum: '31 dec 2026', voertuig: 'Falcon 9', precisie: 'Year' }), 'Gelanceerd op 31 dec 2026 met Falcon 9', 'voltooid negeert de precisie')
+eq(datumTekst('IFT-7 · Mrt 2026', 'Year'), 'IFT-7 · Mrt 2026', 'geen gewone datum → ongemoeid')
 const du = new URL(launchDetailedUrl('abc-123'))
 eq([du.pathname, du.searchParams.get('id'), du.searchParams.get('mode')], ['/2.3.0/launches/', 'abc-123', 'detailed'], 'detailed-URL: één id, mode=detailed')
 
@@ -174,9 +186,16 @@ async function run(tmp, ll2, claude, key = 'test-sleutel') {
     { ...mission('d-lanc-mislukt', 'lancering', '5 mei 2026'), status: 'mislukt', vehicle: 'Electron', highlight: 'Details volgen later.' },
     { ...mission('d-missie', 'missie', '14 apr 2026'), status: 'actief', highlight: 'Lancering gepland voor 14 april 2026', _herverrijk: true },
     { ...mission('d-missie-tekst', 'missie', '1 jan 2020'), status: 'actief', highlight: 'Eigen tekst van een missie' },
+    { ...mission('d-lanc-jaar', 'lancering', '31 dec 2027'), highlight: 'Lancering gepland: 31 dec 2027' },
   ]
-  const dUp = { results: [launch('nieuw-lanc', 'Go for Launch', morgenIso, 'Falcon 9')] }
+  const dUp = { results: [
+    launch('nieuw-lanc', 'Go for Launch', morgenIso, 'Falcon 9'),
+    { ...launch('d-lanc-jaar', 'To Be Determined', '2027-12-31T00:00:00Z', 'Falcon 9'), net_precision: { name: 'Year', abbrev: 'Y' } },
+    { ...launch('nieuw-kwartaal', 'To Be Determined', '2027-12-31T00:00:00Z', 'Falcon 9'), net_precision: { name: 'Quarter 4', abbrev: 'Q4' } },
+  ] }
   dUp.results[0].mission.name = 'Nieuw Lanc'
+  dUp.results[2].mission.name = 'Nieuw Kwartaal'
+  dUp.results[2].window_start = new Date(Date.now() + 100 * DAY).toISOString()
   const dPool = [launch('d-missie', 'Launch Successful', '2026-04-14T10:00:00Z', 'Falcon 9')]
   const ll2D = await startMock(dPool)
   const tmpD = setup(dMissies, dUp)
@@ -188,12 +207,16 @@ async function run(tmp, ll2, claude, key = 'test-sleutel') {
   eq(md.get('nieuw-lanc').highlight, `Lancering gepland: ${fmt(morgenIso)}`, 'D: nieuwe lancering → sjabloon wint van Claude\'s highlight')
   eq(md.get('nieuw-lanc').description, 'Verrijkte beschrijving van Nieuw Lanc.', 'D: nieuwe lancering → wel Claude-beschrijving')
   eq(md.get('d-missie-tekst').highlight, 'Eigen tekst van een missie', 'D: missie houdt zijn eigen highlight')
+  eq(md.get('d-lanc-jaar').launchPrecision, 'Year', 'D: bestaande missie krijgt de precisie uit LL2')
+  eq(md.get('d-lanc-jaar').highlight, 'Lancering gepland: 2027', 'D: precisie Year → "Lancering gepland: 2027"')
+  eq(md.get('nieuw-kwartaal').launchPrecision, 'Quarter 4', 'D: nieuwe missie krijgt de precisie')
+  ok(/^Lancering gepland: Q4 \d{4}$/.test(md.get('nieuw-kwartaal').highlight), 'D: nieuwe missie, Quarter 4 → "Lancering gepland: Q4 …"')
   eq(md.get('d-missie').highlight, 'Gelanceerd op 14 apr 2026 — missie in bedrijf', 'D: _herverrijk → sjabloon actief')
   eq(md.get('d-missie').description, 'Verrijkte beschrijving van d-missie.', 'D: _herverrijk → Claude-tekst uit de detailed-data')
   eq(md.get('d-missie')._herverrijk, undefined, 'D: _herverrijk-vlag weg')
   ok(claude.state.prompts['d-missie'].includes('Status: gelanceerd op 14 apr 2026; de missie is in bedrijf'), 'D: Claude krijgt de status mee (actief)')
   ok(claude.state.prompts['Nieuw Lanc'].includes('Status: nog niet gelanceerd; gepland voor'), 'D: Claude krijgt de status mee (gepland)')
-  eq(d1.calls, ['Nieuw Lanc', 'd-missie'], 'D run 1: Claude voor de nieuwe lancering (bij aanmaak) en d-missie (_herverrijk)')
+  eq(d1.calls, ['Nieuw Kwartaal', 'Nieuw Lanc', 'd-missie'], 'D run 1: Claude voor de nieuwe lanceringen (bij aanmaak) en d-missie (_herverrijk)')
   eq(d1.detailed.map(u => u.searchParams.get('id')), ['00000000-d-missie'], 'D run 1: precies één detailed-request, voor d-missie')
 
   const voorD = fs.readFileSync(tmpD.missions, 'utf-8')
