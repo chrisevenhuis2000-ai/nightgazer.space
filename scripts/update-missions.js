@@ -1,5 +1,5 @@
 // scripts/update-missions.js
-// Haalt dagelijks missiedata op via Launch Library 2 + SpaceX API
+// Haalt dagelijks missiedata op via Launch Library 2
 // en verrijkt met Claude voor Nederlandse tekstvelden.
 // Merge-regels: API-data wint voor status/datum/vehicle/pad;
 //               handmatig gecureerde velden (icon, gradients, facts) worden NOOIT overschreven.
@@ -261,18 +261,38 @@ function cleanEnrichment(e) {
 
 const hasDescription = d => typeof d === 'string' && d.trim().length > 0
 
-// Highlight bij een statuswijziging: vast sjabloon, geen Claude. Datum en
-// voertuig komen uit de missie zelf (na het bijwerken uit LL2).
-function highlightVoorStatus(status, { datum, voertuig } = {}) {
+// Een geplande datum zo hard als LL2 hem kent. LL2 geeft een venster als
+// de laatste dag ervan ('ergens in 2026' → 31 dec 2026), en zegt erbij hoe
+// precies dat is (net_precision). Zonder precisie, of met een dag of
+// scherper: de datum zoals hij is.
+const MAANDEN_VOL = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+function datumTekst(datum, precisie) {
+  const d = parseDutch(datum)
+  const p = (precisie || '').toLowerCase()
+  if (!d || !p) return datum
+  const jaar = d.getUTCFullYear()
+  if (p === 'month' || p === 'week') return `${MAANDEN_VOL[d.getUTCMonth()]} ${jaar}`
+  const q = /^quarter (\d)$/.exec(p)
+  if (q) return `Q${q[1]} ${jaar}`
+  const h = /^year half (\d)$/.exec(p)
+  if (h) return `${h[1]}e helft ${jaar}`
+  if (p === 'year' || p === 'fiscal year') return String(jaar)
+  return datum
+}
+
+// Highlight bij een statuswijziging: vast sjabloon, geen Claude. Datum,
+// voertuig en precisie komen uit de missie zelf (na het bijwerken uit LL2).
+// Alleen 'gepland' gebruikt de precisie: na de lancering is de datum echt.
+function highlightVoorStatus(status, { datum, voertuig, precisie } = {}) {
   const d = datum || 'onbekende datum'
   switch (status) {
     case 'voltooid': return voertuig ? `Gelanceerd op ${d} met ${voertuig}` : `Gelanceerd op ${d}`
     case 'mislukt':  return voertuig ? `Lancering mislukt op ${d} (${voertuig})` : `Lancering mislukt op ${d}`
     case 'actief':   return `Gelanceerd op ${d} — missie in bedrijf`
-    default:         return `Lancering gepland: ${d}`
+    default:         return `Lancering gepland: ${datum ? datumTekst(datum, precisie) : d}`
   }
 }
-const highlightVoorMissie = m => highlightVoorStatus(m.status, { datum: m.launched, voertuig: m.vehicle })
+const highlightVoorMissie = m => highlightVoorStatus(m.status, { datum: m.launched, voertuig: m.vehicle, precisie: m.launchPrecision })
 
 // De velden die het script uit een LL2-lancering leest (mode=normal of
 // mode=detailed; mode=list heeft geen mission-blok).
@@ -477,17 +497,7 @@ async function main() {
     ll2Launches = ll2.results || []
     console.log(`   ${ll2Launches.length} aankomende lanceringen gevonden\n`)
   } catch (err) {
-    console.warn(`⚠️  LL2 niet bereikbaar: ${err.message} — verder met SpaceX API`)
-  }
-
-  // ── Haal SpaceX op (aanvullend) ───────────────────────────────────────────
-  let spaceXLaunches = []
-  if (!LL2_FIXTURE) try {
-    console.log('📡 SpaceX API ophalen...')
-    spaceXLaunches = await fetchJSON('https://api.spacexdata.com/v4/launches/upcoming')
-    console.log(`   ${spaceXLaunches.length} SpaceX-lanceringen gevonden\n`)
-  } catch (err) {
-    console.warn(`⚠️  SpaceX API niet bereikbaar: ${err.message}`)
+    console.warn(`⚠️  LL2 niet bereikbaar: ${err.message} — deze run zonder upcoming-data`)
   }
 
   // ── Bestaande missies bijwerken ───────────────────────────────────────────
@@ -524,6 +534,12 @@ async function main() {
         mission.launched = dutchDate
         changed = true
       }
+    }
+
+    // Precisie van de datum (bij een bestaande missie werd die nooit bijgewerkt)
+    if (ll2Data.netPrecision && mission.launchPrecision !== ll2Data.netPrecision) {
+      mission.launchPrecision = ll2Data.netPrecision
+      changed = true
     }
 
     // Vehicle + launchSite (API wint als gevuld)
@@ -615,6 +631,11 @@ async function main() {
         mission.launched = date
         changed = true
       }
+      const precisie = l.net_precision?.name || l.net_precision?.abbrev || null
+      if (precisie && precisie !== mission.launchPrecision) {
+        mission.launchPrecision = precisie
+        changed = true
+      }
       if (!statusGewijzigd) continue
       mission.highlight = highlightVoorMissie(mission)
 
@@ -684,7 +705,7 @@ async function main() {
     const objective   = `${launchName} — ${agencyName} missie naar ${orbit}.`
     const description = `${launchName} is een geplande missie van ${agencyName} naar ${orbit}.`
     const status      = mapLL2Status(ll2Launch.status?.name, soort)
-    const highlight   = highlightVoorStatus(status, { datum: formatDutch(ll2Data.launchDate), voertuig: ll2Data.vehicle })
+    const highlight   = highlightVoorStatus(status, { datum: formatDutch(ll2Data.launchDate), voertuig: ll2Data.vehicle, precisie: ll2Data.netPrecision })
     const relatedTags = [slugify(launchName), slugify(agencyName), slugify(orbit)]
 
     const newMission = {
@@ -761,7 +782,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl, statusVoorPrompt }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, datumTekst, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl, statusVoorPrompt }
 
 if (require.main === module) {
   main().catch(err => {

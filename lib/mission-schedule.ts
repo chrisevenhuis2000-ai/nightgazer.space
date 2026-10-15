@@ -64,9 +64,12 @@ export type LaunchPrecision = 'dag' | 'maand' | 'jaar'
 export function mapPrecision(raw: string | undefined): LaunchPrecision | null {
   if (!raw) return null
   const v = raw.toLowerCase()
-  if (v === 'minute' || v === 'hour' || v === 'day') return 'dag'
+  // LL2's namen: 'Second', 'Minute', 'Hour', 'Morning', 'Afternoon', 'Day',
+  // 'Week', 'Month', 'Quarter 1'–'Quarter 4', 'Year Half 1'/'Year Half 2',
+  // 'Year', 'Fiscal Year'. Kwartaal en halfjaar zijn grover dan een maand.
+  if (['second', 'minute', 'hour', 'morning', 'afternoon', 'day'].includes(v)) return 'dag'
   if (v === 'week' || v === 'month') return 'maand'
-  if (v === 'quarter' || v === 'year') return 'jaar'
+  if (v.startsWith('quarter') || v.startsWith('year half') || v === 'year' || v === 'fiscal year') return 'jaar'
   return null
 }
 
