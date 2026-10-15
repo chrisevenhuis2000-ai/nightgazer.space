@@ -1,0 +1,816 @@
+{
+  "_toelichting": "Nagebouwde Launch Library 2-response (/2.3.0/launches/upcoming/) voor scripts/test-missie-koppeling.js. LL2 was vanuit de bouwomgeving niet bereikbaar, dus dit is geen opgeslagen echte response. Alleen de velden die update-missions.js leest zijn aanwezig. Per lancering staat in _herkomst wat echt is en wat nagebouwd; _verwacht is wat de test controleert. __TOEKOMST_nnD__ wordt door de test vervangen door een datum nnn dagen na nu.",
+  "count": 23,
+  "results": [
+    {
+      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
+      "name": "Falcon 9 | R1",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-08-15T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "NASA"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "R1",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van voyager1 in b7f33a6; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "voyager1"
+      }
+    },
+    {
+      "id": "a67b40f9-cfcc-4614-a355-a156280b4bb3",
+      "name": "Vulcan VC4L | Long March 12A Flight 2",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Vulcan VC4L"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 41"
+      },
+      "mission": {
+        "name": "Long March 12A Flight 2",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van flight-12 in 65ad5c0; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "flight-12"
+      }
+    },
+    {
+      "id": "7bdc412b-c965-4517-a131-f57a01189803",
+      "name": "Ariane 64 | Amazon Leo (LE-03)",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Arianespace"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Ariane 64"
+        }
+      },
+      "pad": {
+        "name": "Ariane Launch Area 4"
+      },
+      "mission": {
+        "name": "Amazon Leo (LE-03)",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van amazon-leo-le-02 in 65ad5c0; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "amazon-leo-le-02"
+      }
+    },
+    {
+      "id": "9e24bef7-c44b-4fdc-ba52-68545ce9457e",
+      "name": "Electron | StriX Launch 10",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Rocket Lab"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Electron"
+        }
+      },
+      "pad": {
+        "name": "Unknown Pad"
+      },
+      "mission": {
+        "name": "StriX Launch 10",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van strix-launch-9 in 65ad5c0; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "strix-launch-9"
+      }
+    },
+    {
+      "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
+      "name": "Falcon 9 | Transporter 16 (Dedicated SSO Rideshare)",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-10-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "Transporter 16 (Dedicated SSO Rideshare)",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van transporter-17-dedicated-sso-rideshare in 65ad5c0; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "transporter-17-dedicated-sso-rideshare"
+      }
+    },
+    {
+      "id": "71ed4649-8d71-42e8-8548-d42ffa2c5a6e",
+      "name": "Falcon 9 | SDA Tranche 1 Transport Layer B",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "SDA Tranche 1 Transport Layer B",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van sda-tranche-1-transport-layer-a in 65ad5c0; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "sda-tranche-1-transport-layer-a"
+      }
+    },
+    {
+      "id": "6bfe08b4-a35d-4297-8de7-dec0eb678eb6",
+      "name": "Falcon 9 | Starlink Group 17-23",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-04-28T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "Starlink Group 17-23",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van starlink-group-17-21 in 54eca0c; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "starlink-group-17-21"
+      }
+    },
+    {
+      "id": "875ba957-be5f-42bd-8a6e-ed98254f572a",
+      "name": "Firefly Alpha Block 2 | VICTUS HAZE Firefly",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-09-30T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Rocket Lab"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Firefly Alpha Block 2"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 2W"
+      },
+      "mission": {
+        "name": "VICTUS HAZE Firefly",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van victus-haze-puma in f95caa2; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "victus-haze-puma"
+      }
+    },
+    {
+      "id": "57280454-470e-4c5d-8de1-1bbd0ea41b49",
+      "name": "Electron | The Lightning God Defends (iQPS Launch 8)",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Rocket Lab"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Electron"
+        }
+      },
+      "pad": {
+        "name": "Unknown Pad"
+      },
+      "mission": {
+        "name": "The Lightning God Defends (iQPS Launch 8)",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van the-grain-goddess-provides-iqps-launch-7 in f95caa2; naam echt (bestaat als eigen missie)",
+      "_verwacht": {
+        "nietKoppelenAan": "the-grain-goddess-provides-iqps-launch-7",
+        "koppelenAan": "the-lightning-god-defends-iqps-launch-8"
+      }
+    },
+    {
+      "id": "e61d353c-db55-4a57-8184-0fab187231e6",
+      "name": "Falcon 9 | 9 x Globalstar-2",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 40"
+      },
+      "mission": {
+        "name": "9 x Globalstar-2",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van 9-x-globalstar-3 in 92ce5d3; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "9-x-globalstar-3"
+      }
+    },
+    {
+      "id": "56a85c82-ea71-449b-828c-b583f6f4a18b",
+      "name": "Falcon 9 | BlueBird Block 2 #4",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-07-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 40"
+      },
+      "mission": {
+        "name": "BlueBird Block 2 #4",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van bluebird-block-2-3 in 0132ebf; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "bluebird-block-2-3"
+      }
+    },
+    {
+      "id": "5d4099bf-a0be-4f54-b236-b6ab3aed4146",
+      "name": "Falcon 9 | NROL-174",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-06-18T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "NROL-174",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van nrol-172 in aa8e0de; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "nrol-172"
+      }
+    },
+    {
+      "id": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
+      "name": "Falcon 9 | Rivada 11",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "Rivada 11",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van rivada-10 in d7cd716; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "rivada-10"
+      }
+    },
+    {
+      "id": "428edcbe-bbd7-4475-8eb1-3dd90b39ad75",
+      "name": "Falcon 9 | Telesat Lightspeed 2",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Unknown Pad"
+      },
+      "mission": {
+        "name": "Telesat Lightspeed 2",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van telesat-lightspeed-1 in 5f5c95e; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "telesat-lightspeed-1"
+      }
+    },
+    {
+      "id": "0196fba7-dd6c-4ba0-bf71-e1460930ffde",
+      "name": "Electron | HASTE | Leidos-4",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Rocket Lab"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Electron"
+        }
+      },
+      "pad": {
+        "name": "Rocket Lab Launch Complex 2 (Launch Area 0 C)"
+      },
+      "mission": {
+        "name": "HASTE | Leidos-4",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van haste-leidos-3 in 6e5882c; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "haste-leidos-3"
+      }
+    },
+    {
+      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
+      "name": "Falcon Heavy | NROL-97",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-10-31T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon Heavy"
+        }
+      },
+      "pad": {
+        "name": "Launch Complex 39A"
+      },
+      "mission": {
+        "name": "NROL-97",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van nrol-95 in feb0681; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "nrol-95"
+      }
+    },
+    {
+      "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
+      "name": "Falcon 9 | USSF-xxx (\"R-4\")",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-10-15T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "USSF-xxx (\"R-4\")",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "id, datum, voertuig en pad uit de vervuilde snapshot van ussf-xxx-r-3 in e5a1747; naam nagebouwd: de echte LL2-naam staat niet in de geschiedenis",
+      "_verwacht": {
+        "nietKoppelenAan": "ussf-xxx-r-3"
+      }
+    },
+    {
+      "id": "9642cfef-4687-495a-af2e-2ac81fa1e12a",
+      "name": "Falcon 9 | KOMPSAT-7A",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-12-02T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Unknown Pad"
+      },
+      "mission": {
+        "name": "KOMPSAT-7A",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "eigen _ll2Id van kompsat-7a, met een verschoven datum",
+      "_verwacht": {
+        "koppelenAan": "kompsat-7a",
+        "launched": "2 dec 2026"
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-europa000001",
+      "name": "Falcon Heavy | Europa Clipper",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "__TOEKOMST_60D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon Heavy"
+        }
+      },
+      "pad": {
+        "name": "LC-39A"
+      },
+      "mission": {
+        "name": "Europa Clipper",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "verzonnen: exacte naam van een actieve missie, lancering in de toekomst",
+      "_verwacht": {
+        "nietKoppelenAan": "europa-clipper",
+        "waarschuwing": true
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-smile0000001",
+      "name": "Vega-C | ESA SMILE",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "__TOEKOMST_30D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Arianespace"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Vega-C"
+        }
+      },
+      "pad": {
+        "name": "ELV, Kourou"
+      },
+      "mission": {
+        "name": "ESA SMILE",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "verzonnen: exacte naam van een geplande missie zonder _ll2Id",
+      "_verwacht": {
+        "koppelenAan": "smile"
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-starlink17211",
+      "name": "Falcon 9 | Starlink Group 17-21",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "__TOEKOMST_30D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "SLC-40"
+      },
+      "mission": {
+        "name": "Starlink Group 17-21",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "verzonnen: exacte naam van een missie die al aan een andere LL2-id hangt",
+      "_verwacht": {
+        "nietKoppelenAan": "starlink-group-17-21",
+        "waarschuwing": true,
+        "nietToevoegen": true
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-voyager00001",
+      "name": "Falcon 9 | Voyager",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "2026-08-15T12:00:00.000Z",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "SpaceX"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Falcon 9"
+        }
+      },
+      "pad": {
+        "name": "Space Launch Complex 4E"
+      },
+      "mission": {
+        "name": "Voyager",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "verzonnen: deelstring van een vrije, actieve missie, datum voorbij (de actief-regel geldt dan niet; alleen exacte matching houdt hem tegen)",
+      "_verwacht": {
+        "nietKoppelenAan": "voyager1"
+      }
+    },
+    {
+      "id": "00000000-test-0000-0000-nieuw0000001",
+      "name": "Electron | Testvlucht Nieuwe Missie",
+      "url": "",
+      "status": {
+        "name": "Go for Launch"
+      },
+      "window_start": "__TOEKOMST_30D__",
+      "net_precision": {
+        "name": "Day"
+      },
+      "launch_service_provider": {
+        "name": "Rocket Lab"
+      },
+      "rocket": {
+        "configuration": {
+          "name": "Electron"
+        }
+      },
+      "pad": {
+        "name": "LC-1A"
+      },
+      "mission": {
+        "name": "Testvlucht Nieuwe Missie",
+        "description": "Reconstructed test launch.",
+        "orbit": {
+          "name": "Low Earth Orbit"
+        },
+        "agencies": []
+      },
+      "_herkomst": "verzonnen: echt nieuwe lancering",
+      "_verwacht": {
+        "toevoegen": "testvlucht-nieuwe-missie"
+      }
+    }
+  ]
+}
