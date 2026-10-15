@@ -8,7 +8,10 @@ const fs      = require('fs')
 const path    = require('path')
 const https   = require('https')
 
-const MISSIONS_PATH = path.join(process.cwd(), 'content', 'missions.json')
+// MISSIONS_PATH en LL2_FIXTURE zijn er voor de lokale test
+// (scripts/test-missie-koppeling.js); de workflow zet ze niet.
+const MISSIONS_PATH = process.env.MISSIONS_PATH || path.join(process.cwd(), 'content', 'missions.json')
+const LL2_FIXTURE   = process.env.LL2_FIXTURE || null
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
 
 const MONTHS_NL = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec']
@@ -57,18 +60,19 @@ function normalize(str) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '')
 }
 
-function fuzzyMatch(a, b) {
-  const na = normalize(a), nb = normalize(b)
-  if (na === nb) return true
-  if (na.includes(nb) || nb.includes(na)) return true
-  // Eenvoudige overlap-score
-  const shorter = na.length < nb.length ? na : nb
-  const longer  = na.length < nb.length ? nb : na
-  let matches = 0
-  for (let i = 0; i < shorter.length - 2; i++) {
-    if (longer.includes(shorter.slice(i, i + 3))) matches++
-  }
-  return matches / (shorter.length - 2) > 0.6
+function launchName(ll2Launch) {
+  return ll2Launch.mission?.name || ll2Launch.name || ''
+}
+
+function isFuture(ll2Launch, now) {
+  const t = new Date(ll2Launch.window_start || ll2Launch.net || '').getTime()
+  return !isNaN(t) && t > now
+}
+
+// Twijfelgevallen gaan als annotatie naar de Actions-output, zodat ze in de
+// run-samenvatting zichtbaar zijn in plaats van stil gekoppeld te worden.
+function warn(msg) {
+  console.log(`::warning title=Missie niet gekoppeld::${msg.replace(/\r?\n/g, ' ')}`)
 }
 
 function mapLL2Status(ll2StatusName) {
@@ -171,14 +175,60 @@ Geef JSON met precies deze velden:
 }
 
 // ── Missie matchen ────────────────────────────────────────────────────────────
-function matchMission(missions, ll2Launch) {
-  // 1. Directe LL2 ID match
+// Streng. Een LL2-id hoort bij precies één lancering, dus:
+//   1. dezelfde _ll2Id → koppelen;
+//   2. exact dezelfde genormaliseerde naam → alleen koppelen als die missie
+//      nog aan geen enkele lancering hangt, en nooit een lopende of
+//      afgeronde missie aan een lancering die nog moet komen.
+// Geen deelstrings en geen trigram-overlap meer: daarmee werd "Starlink
+// Group 17-22" over 17-21 heen gelegd en een geheime Falcon 9 over Voyager 1.
+// Bij twijfel: niet koppelen, wel waarschuwen.
+function matchMission(missions, ll2Launch, now = Date.now()) {
   const byId = missions.find(m => m._ll2Id === ll2Launch.id)
   if (byId) return byId
 
-  // 2. Fuzzy naam match
-  const launchName = ll2Launch.mission?.name || ll2Launch.name || ''
-  return missions.find(m => fuzzyMatch(m.name, launchName)) || null
+  const name = launchName(ll2Launch)
+  const key  = normalize(name)
+  if (!key) return null
+
+  const same = missions.filter(m => normalize(m.name) === key)
+  if (same.length === 0) return null
+  if (same.length > 1) {
+    warn(`${name} (${ll2Launch.id}): naam past op meerdere missies (${same.map(m => m.id).join(', ')})`)
+    return null
+  }
+
+  const mission = same[0]
+  if (mission._ll2Id) {
+    warn(`${name} (${ll2Launch.id}): naam gelijk aan ${mission.id}, maar die hangt al aan LL2 ${mission._ll2Id}`)
+    return null
+  }
+  if ((mission.status === 'actief' || mission.status === 'voltooid') && isFuture(ll2Launch, now)) {
+    warn(`${name} (${ll2Launch.id}): ${mission.id} is '${mission.status}', de lancering ligt in de toekomst`)
+    return null
+  }
+  return mission
+}
+
+// Mag deze LL2-lancering als nieuwe missie worden toegevoegd? Alleen als
+// geen bestaande missie dezelfde id of exact dezelfde naam heeft, en de
+// afgeleide id nog vrij is. Een exacte naamgenoot is óf hierboven gekoppeld,
+// óf daar al als twijfelgeval gemeld.
+function isNewLaunch(missions, ll2Launch) {
+  if (missions.some(m => m._ll2Id === ll2Launch.id)) return false
+  const name = launchName(ll2Launch)
+  const key  = normalize(name)
+  if (!key) {
+    warn(`LL2 ${ll2Launch.id}: lancering zonder naam overgeslagen`)
+    return false
+  }
+  if (missions.some(m => normalize(m.name) === key)) return false
+  const id = slugify(name)
+  if (missions.some(m => m.id === id)) {
+    warn(`${name} (${ll2Launch.id}): missie-id '${id}' bestaat al voor een andere lancering`)
+    return false
+  }
+  return true
 }
 
 // ── Hoofdlogica ───────────────────────────────────────────────────────────────
@@ -195,9 +245,11 @@ async function main() {
   let ll2Launches = []
   try {
     console.log('📡 Launch Library 2 ophalen...')
-    const ll2 = await fetchJSON(
-      'https://ll.thespacedevs.com/2.3.0/launches/upcoming/?format=json&limit=100&ordering=window_start'
-    )
+    const ll2 = LL2_FIXTURE
+      ? JSON.parse(fs.readFileSync(LL2_FIXTURE, 'utf-8'))
+      : await fetchJSON(
+        'https://ll.thespacedevs.com/2.3.0/launches/upcoming/?format=json&limit=100&ordering=window_start'
+      )
     ll2Launches = ll2.results || []
     console.log(`   ${ll2Launches.length} aankomende lanceringen gevonden\n`)
   } catch (err) {
@@ -206,7 +258,7 @@ async function main() {
 
   // ── Haal SpaceX op (aanvullend) ───────────────────────────────────────────
   let spaceXLaunches = []
-  try {
+  if (!LL2_FIXTURE) try {
     console.log('📡 SpaceX API ophalen...')
     spaceXLaunches = await fetchJSON('https://api.spacexdata.com/v4/launches/upcoming')
     console.log(`   ${spaceXLaunches.length} SpaceX-lanceringen gevonden\n`)
@@ -306,14 +358,10 @@ async function main() {
 
   // ── Nieuwe missies detecteren ─────────────────────────────────────────────
   const now180 = Date.now() + 180 * 86400 * 1000
-  const existingIds  = new Set(missions.map(m => m._ll2Id).filter(Boolean))
-  const existingNames = missions.map(m => normalize(m.name))
-
   for (const ll2Launch of ll2Launches) {
-    // Al bekend?
-    if (existingIds.has(ll2Launch.id)) continue
+    // Al bekend, exacte naamgenoot of bezette id? Dan niet toevoegen.
+    if (!isNewLaunch(missions, ll2Launch)) continue
     const launchName = ll2Launch.mission?.name || ll2Launch.name || ''
-    if (existingNames.some(n => fuzzyMatch(n, launchName))) continue
 
     // Filters
     const agencyName = ll2Launch.launch_service_provider?.name || ''
@@ -408,7 +456,11 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-main().catch(err => {
-  console.error('❌ Fout:', err.message)
-  process.exit(1)
-})
+module.exports = { matchMission, isNewLaunch, normalize, slugify }
+
+if (require.main === module) {
+  main().catch(err => {
+    console.error('❌ Fout:', err.message)
+    process.exit(1)
+  })
+}
