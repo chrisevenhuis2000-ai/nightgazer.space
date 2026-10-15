@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        /* The lightbox: the archive's own ground, seen once the plate is lifted out (7.2 s). */
+        #stage-lightbox { position: absolute; inset: 0; background: #0E1022; }
+        #stage-lightbox i {
+          position: absolute; inset: 0; display: block;
+          background: radial-gradient(62% 46% at 50% 46%, rgba(24,95,165,0.42), rgba(24,95,165,0.10) 70%, rgba(24,95,165,0) 100%);
+        }
+        /* Everything seen through the plate lives in #stage-plate, so the plate can be lifted as one object. */
+        #stage-plate { position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 44%; background: #05060d; }
+        #stage-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+                    /* silver-gelatin grade, as .pl-emulsion in plate.css: grey the colour, lift contrast */
+                    filter: grayscale(0.5) contrast(1.2) brightness(0.97) saturate(0.95); }
+        /* ...then pull what colour is left toward the brand blue */
+        #stage-grade { position: absolute; inset: 0; mix-blend-mode: color;
+                       background: linear-gradient(200deg, rgba(24,95,165,0.55), rgba(24,95,165,0.38)); }
+        #stage-vignette { position: absolute; inset: 0;
+                          background: radial-gradient(120% 80% at 50% 45%, rgba(5,6,13,0) 55%, rgba(5,6,13,0.78) 100%); }
+        /* emulsion grain over everything; also breaks up banding after social compression */
+        #stage-grain { position: absolute; inset: -64px; mix-blend-mode: overlay; opacity: 0.24; }
+        #stage-dim { position: absolute; inset: 0; background: #05060d; opacity: 0; }
+      </style>
+
+      <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+        <div id="stage-lightbox"><i></i></div>
+        <div id="stage-plate">
+          <canvas id="stage-gl" width="1080" height="1920"></canvas>
+          <div id="stage-grade"></div>
+          <div id="stage-vignette"></div>
+          <div id="stage-dim"></div>
+          <div id="stage-grain" data-layout-allow-overflow></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // The plate is lifted out of the frame onto the lightbox (7.2 s), and dims under the sign-off (8.4 s).
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#stage-plate", { scale: 1, y: 0 }, { scale: 0.78, y: -40, duration: 1.0, ease: "expo.inOut" }, 7.2);
+          tl.fromTo("#stage-dim", { opacity: 0 }, { opacity: 0.6, duration: 0.6, ease: "power2.out" }, 8.4);
+          tl.set({}, {}, 10);
+          window.__timelines["stage"] = tl;
+        })();
+      </script>
+
+      <script type="module">
+        import * as THREE from "three";
+        import { starfield, planet, nightEarth, photoLayers, grainTile, orbitLook, ease, lerp, clamp01 } from "./assets/space.js";
+
+        const W = 1080, H = 1920;
+        const CUT_PLANET = 1.6;   // match cut: Earth's horizon becomes the planet's limb
+        const DOLLY = 4.2;        // the camera climbs over the planet, into the galaxy
+        const PLATE = 7.2;        // the view is lifted out as a plate
+
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("stage-gl"), antialias: true, preserveDrawingBuffer: true });
+        renderer.setSize(W, H, false);
+        renderer.setPixelRatio(1);
+        renderer.setClearColor(0x05060d, 1);
+        renderer.autoClear = false;
+
+        const loader = new THREE.TextureLoader();
+        const tex = (f) => { const t = loader.load("assets/tex/" + f); t.anisotropy = 8; t.generateMipmaps = true; return t; };
+
+        // ── Shot 1: the Earth at night (NASA Black Marble 2016) ──
+        const earthScene = new THREE.Scene();
+        const earth = nightEarth({ globalTex: tex("bm-global.jpg"), patchTex: tex("bm-europe.jpg"),
+                                   sunDir: new THREE.Vector3(-1, 0.25, -0.55) });
+        earth.rotation.set(0.908, -1.658, 0); // lon 5° E, lat 52° N faces +z
+        earthScene.add(earth, starfield({ seed: 11 }));
+        earth.updateMatrixWorld(true);
+
+        function latLon(lat, lon) {
+          const u = (lon + 180) / 360, v = (lat + 90) / 180;
+          const phi = u * Math.PI * 2, th = (1 - v) * Math.PI;
+          return new THREE.Vector3(-Math.cos(phi) * Math.sin(th), Math.cos(th), Math.sin(phi) * Math.sin(th))
+            .applyMatrix4(earth.matrixWorld).normalize();
+        }
+
+        // ── Shots 2–3: procedural planet in front of the Phantom Galaxy (ESA/Webb) ──
+        const deepScene = new THREE.Scene();
+        const M74_VIEW = 22.5;   // camera z at which the three layers line up exactly
+        const m74 = photoLayers({ back: tex("m74-back.jpg"), mid: tex("m74-mid.jpg"), stars: tex("m74-stars.png"),
+                                  feather: tex("m74-feather.png"), aspect: 5047 / 3136, height: 20, viewZ: M74_VIEW });
+        deepScene.add(m74, starfield({ seed: 23 }));
+        const planetScene = new THREE.Scene();
+        // Lit from behind and above: the camera arrives on the night side with a lit limb, as on the Earth.
+        const giant = planet({ seed: 3, sunDir: new THREE.Vector3(-0.95, 0.42, -0.18) });
+        planetScene.add(giant);
+
+        const cam = new THREE.PerspectiveCamera(40, W / H, 0.005, 600);
+        const deepCam = new THREE.PerspectiveCamera(40, W / H, 0.01, 600);
+
+        // One orbit geometry shared by the last Earth frame and the first planet frame:
+        // the planet's limb lands exactly where the Earth's horizon was.
+        const GROUND = latLon(37.5, 3.0);
+        const CUT = { alt: 0.62, pitch: 56, roll: 0.05, yaw: -4 };
+        const UTRECHT = latLon(52.09, 5.12);
+
+        function renderEarth(t) {
+          const k = ease.sine(clamp01(t / CUT_PLANET));
+          // Over Europe at night, the Low Countries low in frame: a slow push toward the horizon.
+          orbitLook(cam, GROUND, lerp(0.74, CUT.alt, k), lerp(58, CUT.pitch, k), lerp(0.08, CUT.roll, k), 40, lerp(2, CUT.yaw, k));
+          // Pin the readout to the roof it names: project Utrecht to the screen for the plate's leader line.
+          const p = UTRECHT.clone().project(cam);
+          window.__ngRoof = { x: (p.x * 0.5 + 0.5) * W, y: (0.5 - p.y * 0.5) * H };
+          window.dispatchEvent(new CustomEvent("ng-roof", { detail: window.__ngRoof }));
+          renderer.clear();
+          renderer.render(earthScene, cam);
+        }
+
+        function renderDeep(t) {
+          // Galaxy camera: far, then a long dolly in (parallax between the three photo layers).
+          // Wide (the whole spiral on black) to tight: a push-in with lateral drift for parallax.
+          const k = clamp01((t - DOLLY) / (PLATE + 0.6 - DOLLY));
+          const e = ease.inOut(k) * 0.7 + k * 0.3;
+          // Aim at the galaxy core (measured at 43.6 % / 50.8 % of the frame), not the image centre;
+          // look a little below it, so the spiral sits in the upper-middle and the readout below it.
+          const cx = (0.436 - 0.5) * 20 * (5047 / 3136), cy = -(0.508 - 0.5) * 20;
+          deepCam.position.set(cx + lerp(1.8, -0.9, e), cy + lerp(-0.6, 0.7, e), lerp(M74_VIEW, -44, e));
+          deepCam.up.set(Math.sin(lerp(-0.06, 0.05, e)), 1, 0);
+          deepCam.lookAt(cx + lerp(0.6, -0.4, e), cy - lerp(3.2, 0.4, e), -70);
+          deepCam.updateMatrixWorld();
+          // Before the climb the galaxy sits faint behind the planet; it comes up as the planet clears.
+          m74.userData.setOpacity(lerp(0.0, 1.0, ease.sine(clamp01((t - DOLLY + 0.3) / 1.4))));
+          renderer.render(deepScene, deepCam);
+        }
+
+        function renderPlanet(t) {
+          const k = clamp01((t - CUT_PLANET) / (DOLLY - CUT_PLANET));
+          const d = clamp01((t - DOLLY) / 1.4);
+          // Same orbit geometry as the Earth's last frame, so the limb lands where the horizon was;
+          // then the camera rises and turns to show the terminator, then climbs over the limb.
+          // Drift toward the lit side, so the terminator crosses the frame while the text holds.
+          const n = GROUND.clone().lerp(new THREE.Vector3(-0.5, 0.1, 1).normalize(), ease.sine(k)).normalize();
+          const alt = lerp(CUT.alt, 1.25, ease.out(k)) + d * 1.4;
+          // Keep the limb at the same height in frame while climbing: pitch = horizon dip + a fixed offset.
+          const dip = (h) => (Math.acos(1 / (1 + h)) * 180) / Math.PI;
+          const offset = CUT.pitch - dip(CUT.alt);
+          const pitch = dip(alt) + offset - 30 * ease.inOut(d);
+          orbitLook(cam, n, alt, pitch, lerp(CUT.roll, -0.05, ease.sine(k)), 40, lerp(CUT.yaw, -10, ease.sine(k)));
+          renderer.clearDepth();
+          renderer.render(planetScene, cam);
+        }
+
+        const grain = document.getElementById("stage-grain");
+        function renderAt(t) {
+          if (t < CUT_PLANET) {
+            renderEarth(t);
+          } else {
+            renderer.clear();
+            renderDeep(t);
+            if (t < DOLLY + 1.4) renderPlanet(t);
+          }
+          grain.style.backgroundImage = `url(${grainTile(7000 + Math.round(t * 30))})`;
+        }
+
+        window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+        THREE.DefaultLoadingManager.onLoad = () => renderAt(window.__hfThreeTime || 0);
+        renderAt(window.__hfThreeTime || 0);
+      </script>
+    </template>
+  </body>
+</html>

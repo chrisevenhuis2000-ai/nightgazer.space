@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        .pl-lab { font: 600 28px/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pl-ink-3); white-space: nowrap; }
+        .pl-num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+        /* Furniture of the plate while we look through it (0–7.2 s). */
+        #plate-through { position: absolute; inset: 0; }
+        #plate-topscrim { position: absolute; left: 0; right: 0; top: 0; height: 230px;
+                          background: linear-gradient(rgba(5,6,13,0.9), rgba(5,6,13,0.75) 60%, rgba(5,6,13,0)); }
+        #plate-ruler { position: absolute; left: 100px; right: 100px; top: 40px; height: 18px;
+                       background: repeating-linear-gradient(90deg, rgba(24,95,165,0.95) 0 1px, transparent 1px 12px); }
+        .plate-reg { position: absolute; width: 28px; height: 28px; border: 1px solid rgba(181,212,244,0.55); }
+        #plate-reg-tl { left: 40px; top: 40px; border-right: 0; border-bottom: 0; }
+        #plate-reg-br { right: 40px; bottom: 40px; border-left: 0; border-top: 0; }
+        #plate-head { position: absolute; left: 100px; right: 100px; top: 112px; display: flex; justify-content: space-between; align-items: baseline; }
+        #plate-head b { font: 500 34px/1 var(--mono); color: var(--pl-stamp); margin-left: 14px; }
+
+        /* Readouts printed over the image, each on its own dark field. */
+        .plate-read { position: absolute; display: flex; flex-direction: column; gap: 12px;
+                      padding: 18px 22px 20px; background: rgba(5,6,13,0.9); }
+        .plate-read .v { font: 500 52px/1 var(--mono); }
+        #plate-roof { left: 78px; top: 1200px; }
+        #plate-roofmark { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+        #plate-roof .v { color: var(--pl-mark); }           /* illustrative coordinates: chinagraph */
+        #plate-m74 { left: 78px; top: 1250px; }
+        #plate-m74 .v { color: var(--pl-ink); }             /* a published fact, not a live value: ink */
+        #plate-credit { position: absolute; left: 140px; right: 140px; top: 1452px;
+                        font: 500 22px/1.32 var(--sans); color: var(--pl-ink-2); text-align: center;
+                        background: rgba(5,6,13,0.9); padding: 10px 14px; }
+
+        /* The plate on the lightbox (from 7.2 s): its edge, marks and envelope fields. */
+        #plate-lifted { position: absolute; left: 119px; top: 145px; width: 842px; height: 1498px; }
+        #plate-edge { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+        .lift-reg { position: absolute; width: 34px; height: 34px; border: 1px solid rgba(181,212,244,0.6); }
+        #lift-reg-tl { left: 14px; top: 10px; border-right: 0; border-bottom: 0; }
+        #lift-ruler-l { position: absolute; left: -30px; top: 60px; bottom: 60px; width: 16px;
+                        background: repeating-linear-gradient(0deg, rgba(24,95,165,0.95) 0 1px, transparent 1px 12px); }
+        #lift-ruler-b { position: absolute; left: 60px; right: 60px; bottom: -30px; height: 16px;
+                        background: repeating-linear-gradient(90deg, rgba(24,95,165,0.95) 0 1px, transparent 1px 12px); }
+        #lift-reg-br { right: 14px; bottom: 14px; border-left: 0; border-top: 0; }
+        #plate-env { position: absolute; left: 0; right: 0; top: -58px; display: flex; justify-content: space-between; align-items: baseline; }
+        #plate-env b { font: 500 32px/1 var(--mono); color: var(--pl-stamp); margin-left: 12px; display: inline-block; transform-origin: left center; }
+      </style>
+
+      <div id="root" data-composition-id="plate" data-width="1080" data-height="1920">
+        <div id="plate-through">
+          <div id="plate-topscrim"></div>
+          <div id="plate-ruler"></div>
+          <div id="plate-reg-tl" class="plate-reg"></div>
+          <div id="plate-reg-br" class="plate-reg"></div>
+          <div id="plate-head">
+            <span class="pl-lab">Plaat <b>NG-0001</b></span>
+            <span class="pl-lab">Belicht <span class="pl-num">15.10.2026</span></span>
+          </div>
+        </div>
+
+        <svg id="plate-roofmark" viewBox="0 0 1080 1920" aria-hidden="true">
+          <line id="plate-leader" x1="0" y1="0" x2="0" y2="0" stroke="#378ADD" stroke-width="1.5" />
+          <g id="plate-cross" fill="none" stroke="#378ADD" stroke-width="1.5">
+            <circle r="14" /><line x1="-26" y1="0" x2="-8" y2="0" /><line x1="8" y1="0" x2="26" y2="0" />
+            <line x1="0" y1="-26" x2="0" y2="-8" /><line x1="0" y1="8" x2="0" y2="26" />
+          </g>
+        </svg>
+        <div id="plate-roof" class="plate-read">
+          <span class="pl-lab">Jouw dak · voorbeeld</span>
+          <span class="v pl-num">52,1° N  5,2° O</span>
+        </div>
+
+        <div id="plate-m74" class="plate-read">
+          <span class="pl-lab">M74 · Vissen</span>
+          <span class="v pl-num">±32 mln lichtjaar</span>
+        </div>
+        <p id="plate-credit">M74: ESA/Webb, NASA &amp; CSA, J. Lee and the PHANGS-JWST Team; ESA/Hubble &amp; NASA, R. Chandar · Aarde: NASA Earth Observatory</p>
+
+        <div id="plate-lifted">
+          <svg id="plate-edge" viewBox="0 0 842 1498" preserveAspectRatio="none" aria-hidden="true">
+            <rect id="plate-edge-rect" x="0.5" y="0.5" width="841" height="1497" fill="none" stroke="#B5D4F4" stroke-opacity="0.6" stroke-width="1" />
+            <rect id="plate-edge-glass" x="-5.5" y="-5.5" width="853" height="1509" fill="none" stroke="#B5D4F4" stroke-opacity="0.22" stroke-width="1" />
+          </svg>
+          <div id="lift-ruler-l"></div>
+          <div id="lift-ruler-b"></div>
+          <div id="lift-reg-tl" class="lift-reg"></div>
+          <div id="lift-reg-br" class="lift-reg"></div>
+          <div id="plate-env">
+            <span class="pl-lab">Plaat <b id="plate-stamp">NG-0001</b></span>
+            <span class="pl-lab">Belicht <span class="pl-num">15.10.2026</span></span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // Readout over the Earth (0–1.6): on from frame 0, gone at the match cut.
+          tl.set(["#plate-roof", "#plate-roofmark"], { opacity: 1 }, 0);
+          tl.set(["#plate-roof", "#plate-roofmark"], { opacity: 0 }, 1.6);
+          // Galaxy readout + mandatory visible credit, from the moment M74 is in view.
+          tl.fromTo("#plate-m74", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 4.9);
+          tl.to("#plate-m74", { opacity: 0, duration: 0.3, ease: "power1.in" }, 7.05);
+          tl.fromTo("#plate-credit", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 4.6);
+          // Through-the-plate furniture hands over to the lifted plate's own edge and marks.
+          tl.to("#plate-through", { opacity: 0, duration: 0.4, ease: "power1.in" }, 7.2);
+          tl.fromTo("#plate-edge-rect", { strokeDasharray: 4676, strokeDashoffset: 4676 },
+                    { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 7.5);
+          tl.fromTo(["#plate-edge-glass", "#lift-ruler-l", "#lift-ruler-b"], { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "expo.out" }, 7.8);
+          tl.fromTo([".lift-reg", "#plate-env"], { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "expo.out", stagger: 0.08 }, 7.9);
+          tl.fromTo("#plate-stamp", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 8.1);
+          tl.set({}, {}, 10);
+          window.__timelines["plate"] = tl;
+
+          // The roof readout points at the roof it names: the stage publishes Utrecht's screen position.
+          const leader = document.getElementById("plate-leader");
+          const cross = document.getElementById("plate-cross");
+          const box = document.getElementById("plate-roof");
+          function pin(p) {
+            if (!p) return;
+            const ax = box.offsetLeft + box.offsetWidth, ay = box.offsetTop;
+            leader.setAttribute("x1", ax); leader.setAttribute("y1", ay);
+            const dx = p.x - ax, dy = p.y - ay, L = Math.hypot(dx, dy) || 1;
+            leader.setAttribute("x2", p.x - (dx / L) * 30); leader.setAttribute("y2", p.y - (dy / L) * 30);
+            cross.setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);
+          }
+          window.addEventListener("ng-roof", (e) => pin(e.detail));
+          pin(window.__ngRoof);
+        })();
+      </script>
+    </template>
+  </body>
+</html>
