@@ -34,11 +34,12 @@ export const NAV: { href: string; label: string; key: string }[] = [
 export const ROWS_PER_PAGE = 20
 
 /* Ordered by how much the archive actually holds, so the strip is a real
-   index rather than a wish list. 'Zonnestelsel' is gone (no articles carry
-   it) and 'Educatie' and 'Kometen' are in, because they do. */
+   index rather than a wish list. 'Zonnestelsel', 'Zwarte Gaten' and
+   'Sterrenkijken' are gone (no articles carry them since the thin articles
+   were removed) and 'Educatie' and 'Kometen' are in, because they do. */
 export const TOPICS = [
   'Alles', 'Missies', 'Educatie', 'Maan', 'Mars',
-  'James Webb', 'Kosmologie', 'Kometen', 'Zwarte Gaten', 'Sterrenkijken',
+  'James Webb', 'Kosmologie', 'Kometen',
 ]
 
 /* Quick filters for the bar under the header. Each one matches on category
