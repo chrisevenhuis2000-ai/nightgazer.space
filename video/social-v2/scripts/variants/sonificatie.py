@@ -12,9 +12,10 @@ Data → sound (also in AUDIO.md):
   1.6 s     The match cut: a struck low D whose brightness is the lit fraction of the cut frame.
   1.6–5.4 s The planet: a D/A drone whose low-pass cutoff follows the measured lit fraction per frame
             (the terminator sweeping in opens the filter).
-  4.2–7.2 s M74, with the camera dolly as playhead: per frame, 48 points in a ring around the core of
-            the rendered frame; bright points become grains (luma → pitch and level, blue−red balance
-            → octave, x → pan); the mean ring brightness sets the level of a soft glow pad.
+  4.2–7.2 s M74, with the camera dolly as playhead: a fixed ring of 48 points around the core of the
+            rendered frame; a point sounds when a bright structure moves under it (luma rises past
+            0.5): luma → pitch and level, blue−red balance → octave, x → pan, angle → moment within
+            the frame; the mean ring brightness sets the level of a soft glow pad.
   7.2 s     The plate: the data stops; the last pitches it produced hang on as a quiet cluster (+ glass).
   8.4 s     The logo: shutter; the cluster glides onto D add9 and resolves.
 """
@@ -97,7 +98,7 @@ def cut_strike(lit):
     x = lp(x + hit, 400 + 6000 * float(lit[S["cut"]]) + 600)
     out = np.zeros(N)
     place(out, click_safe(x, 2, out_ms=40), S["cut"])
-    return to_stereo(out * 0.45)
+    return to_stereo(out * 0.30)
 
 
 def planet_layer(lit):
@@ -109,37 +110,41 @@ def planet_layer(lit):
 
 
 def m74_layer():
+    """Grains are event-triggered, not random: a point of the fixed ring sounds when a bright structure
+    moves under it (its luma rises past 0.5 from one frame to the next). The point's angle sets when in
+    the frame it sounds (the ring is read as a rotating scan, once per frame)."""
     r = rng(3105)
     out = np.zeros((N, 2))
     glow = np.zeros(N)
     last = []
+    prev = None
     for fr in DATA["m74"]:
         i = fr["frame"]
         pts = fr["pts"]
-        mean_l = float(np.mean([p[0] for p in pts])) if pts else 0.0
-        glow[i * 1600:(i + 1) * 1600] = mean_l
+        live = [p for p in pts if p]
+        glow[i * 1600:(i + 1) * 1600] = float(np.mean([p[0] for p in live])) if live else 0.0
         first = i == 126
-        bright = sorted(pts, key=lambda p: -p[0])
+        events = []
+        for k, p in enumerate(pts):
+            if not p:
+                continue
+            before = prev[k][0] if (prev and prev[k]) else 0.0
+            if first or (p[0] > 0.5 and before <= 0.5):
+                events.append((k, p))
         if first:
-            chosen = bright[:5]
-        else:
-            # bright points become grains; at most 4 per frame (the planet's lit limb is still in the ring
-            # until ≈ 5.0 s and would otherwise flood the cloud)
-            cand = [p for p in pts if p[0] > 0.55 and r.random() < 0.30]
-            chosen = cand[:4]
-        for j, (lu, chroma, x, rad) in enumerate(chosen):
+            events = sorted(events, key=lambda e: -e[1][0])[:5]    # the playhead touches the core: 5 brightest at once
+        for k, (lu, chroma, x, rad) in events:
             f, m = quantise((lu - 0.3) / 0.6, 74, 2)               # luma → pitch (D5..D7)
             if chroma > 0.24:
                 f *= 2                                             # bluest points (young stars) an octave up
             dur = 0.05 + 0.25 * rad                                # outer ring → longer grains
             n = np.arange(int(SR * dur)) / SR
-            g = np.sin(2 * np.pi * f * n + r.uniform(0, 2 * np.pi)) * np.hanning(len(n))
-            if first:
-                g = ping(f, 0.9, 1.0, r)                            # the playhead touches the core: a struck cluster
+            g = ping(f, 0.9, 1.0, r) if first else np.sin(2 * np.pi * f * n) * np.hanning(len(n))
             lvl = (0.16 if first else 0.30) * lu ** 1.5
-            at = i * 1600 + (0 if first else int(r.uniform(0, 1600)))
+            at = i * 1600 + (0 if first else int(k / 48 * 1600))   # angle → moment within the frame
             place(out, pan(g * lvl, 0.35 * (2 * x - 1)), at)
             last.append(m)
+        prev = pts
     # the glow pad: mean ring brightness → level (D3/A3/E4, low-passed)
     glow = np.convolve(glow, np.hanning(9601) / np.hanning(9601).sum(), "same")
     pad = saw(note_hz("D3"), 6) + 0.6 * saw(note_hz("A3"), 6) + 0.35 * saw(note_hz("E4"), 5)
@@ -150,12 +155,13 @@ def m74_layer():
 
 
 def answer(last_midis):
-    """7.2–8.4: the last data pitches hang on, quiet; 8.4: they glide onto D add9 and resolve."""
+    """7.2–8.4: the last data pitches hang on, quiet; 8.4: they glide (80 ms) onto D add9 and resolve,
+    with a firm low D/A/F# under them."""
     chord_pcs = [2, 4, 6, 9]                                       # D E F# A
     out = np.zeros((N, 2))
     s0 = S["plate"]
     n = np.arange(N - s0) / SR
-    glide = np.clip((n - (S["logo"] - s0) / SR) / 0.12, 0, 1)
+    glide = np.clip((n - (S["logo"] - s0) / SR) / 0.08, 0, 1)
     glide = glide * glide * (3 - 2 * glide)
     for k, m in enumerate(sorted(set(last_midis))):
         target = min((m + d for d in range(-6, 7) if (m + d) % 12 in chord_pcs), key=lambda z: abs(z - m))
@@ -165,12 +171,12 @@ def answer(last_midis):
         ph = 2 * np.pi * np.cumsum(f) / SR
         hold = 0.35 + 0.65 * np.clip((n - (S["logo"] - s0) / SR) / 0.07, 0, 1)
         env = np.clip(n / 0.2, 0, 1) * hold * np.exp(-np.clip(n - 1.2, 0, None) / 1.8)
-        x = (np.sin(ph) + 0.3 * np.sin(2 * ph)) * env * 0.09
+        x = (np.sin(ph) + 0.3 * np.sin(2 * ph)) * env * 0.13
         out[s0:] += pan(x, -0.3 + 0.6 * k / max(1, len(set(last_midis)) - 1))
     # the low support of the chord arrives with the logo
     n2 = np.arange(N - S["logo"]) / SR
     low = sum(np.sin(2 * np.pi * note_hz(nm) * h * n2) / h ** 1.5 for nm in ("D2", "A2", "Fs3") for h in range(1, 6))
-    low = low * np.clip(n2 / 0.02, 0, 1) * np.exp(-n2 / 1.8) * 0.08
+    low = low * np.clip(n2 / 0.02, 0, 1) * np.exp(-n2 / 1.8) * 0.15
     out[S["logo"]:] += to_stereo(lp(low, 1800))
     out *= (1 - np.clip((t - 9.45) / 0.5, 0, 1))[:, None]
     return out

@@ -38,7 +38,7 @@ def at16(k):
 
 
 def tick(level, bright=1.0):
-    x = counter_tick(level)
+    x = counter_tick(level) * 1.6
     return hp(x, 2500) if bright > 1 else x
 
 
@@ -52,11 +52,18 @@ def stepper(f0=740.0, dur=0.07, seed=0):
     return click_safe(x, 2, out_ms=10)
 
 
+THOCK = 0.7      # dome motor against the ticks (the ticks carry the pulse on a phone)
+
+
 def thock(f=62.0):
-    """The dome motor: a soft low step on the beat; harmonics (saturation) so a phone can play it."""
+    """The dome motor: a soft step on the beat. The body sits at 190 Hz with a 450 Hz knock, and only a
+    little weight below; it is saturated before it is shaped, so a phone speaker still plays the beat."""
     n = np.arange(int(SR * 0.22)) / SR
-    x = np.sin(2 * np.pi * f * n * (1 + 0.6 * np.exp(-n / 0.012))) * np.exp(-n / 0.07)
-    return click_safe(sat(x * 1.6, 2.0), 2, out_ms=20)
+    sub = np.sin(2 * np.pi * f * n * (1 + 0.6 * np.exp(-n / 0.012))) * np.exp(-n / 0.06) * 0.45
+    body = np.sin(2 * np.pi * 190 * n * (1 + 0.3 * np.exp(-n / 0.01))) * np.exp(-n / 0.05)
+    knock = np.sin(2 * np.pi * 450 * n) * np.exp(-n / 0.012) * 0.9
+    x = sat((sub + body + knock) * 1.5, 2.2)
+    return click_safe(lp(x, 2500), 2, out_ms=20) * THOCK
 
 
 def pluck(f, dur=0.35, bright=4000, decay=0.18):
@@ -124,8 +131,10 @@ def bass():
             oct_ = 2 if (i % 4 == 3 and S["open"] <= s < S["plate"]) else 1
             x = sum(np.sin(2 * np.pi * f * oct_ * h * n) / h for h in range(1, 9))
             env = np.exp(-n / (0.9 if held else 0.12)) * (0.55 if held else 1.0)
-            x = sweep_lp(x * env, 300 + 1400 * np.exp(-n / 0.03), block=48)   # filter blip per note
-            place(out, click_safe(sat(x * 0.8, 1.8), 2, out_ms=6), s)
+            # saturate first (harmonics up to ~1 kHz), then the low-pass: floor 950 Hz + a blip per note,
+            # so the bass line is still a line on a phone speaker
+            x = sweep_lp(sat(x * env * 0.9, 2.2), 950 + 1600 * np.exp(-n / 0.03), block=48)
+            place(out, click_safe(x * 0.8, 2, out_ms=6), s)
     return to_stereo(out)
 
 
@@ -139,8 +148,8 @@ def motif():
     # 1.6: low and unresolved (stops on E); 4.2: an octave up, turns to G (sus); 8.4: complete, lands on F#
     statements = [
         (S["cut"],  [(0, "A3", 0.25), (1, "D4", 0.25), (2, "E4", 0.6)], 0.35),
-        (S["open"], [(0, "A4", 0.25), (1, "D5", 0.25), (2, "E5", 0.25), (4, "G5", 0.6)], 0.30),
-        (S["logo"], MOTIF, 0.26),
+        (S["open"], [(0, "A4", 0.25), (1, "D5", 0.25), (2, "E5", 0.25), (4, "G5", 0.6)], 0.22),
+        (S["logo"], MOTIF, 0.17),
     ]
     for start, notes, lvl in statements:
         for off, nm, L in notes:
@@ -153,7 +162,7 @@ def chord_pad():
     """Asus4 under the break (tension), D add9 on the logo (resolution); soft attacks, no melody."""
     out = np.zeros((N, 2))
     for s0, s1, notes, lvl in ((S["plate"], S["logo"], ("A2", "D3", "E3", "A3"), 0.05),
-                               (S["logo"], N, ("D3", "A3", "Fs3", "E4", "A4"), 0.10)):
+                               (S["logo"], N, ("D3", "A3", "Fs3", "E4", "A4"), 0.08)):
         n = np.arange(s1 - s0) / SR
         env = np.clip(n / 0.06, 0, 1) * np.exp(-n / 1.6)
         x = sum(sum(np.sin(2 * np.pi * note_hz(nm) * h * n) / h ** 1.6 for h in range(1, 6)) for nm in notes)
@@ -168,8 +177,9 @@ def stems():
     place(arch, shutter() * 0.22, S["logo"])
     room = reverb_ir(0.5, 2025, 6000, predelay_ms=4, width=0.4)
     return {
-        "percussie": convolve(percussion(), room, 0.18),
-        "bas": bass() * 0.5,
+        # high-pass at 42 Hz: loudness normalisation stops spending headroom on sub a phone cannot play
+        "percussie": hp(convolve(percussion(), room, 0.18), 42),
+        "bas": hp(bass() * 0.38, 42),
         "motief": motif(),
         "akkoord": chord_pad() + convolve(to_stereo(arch), room, 0.22),
     }, None, None

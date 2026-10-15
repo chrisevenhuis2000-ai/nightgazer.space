@@ -163,6 +163,16 @@ def main(variant, extra):
         "max overall": round(float(mom.max()), 1),
     }
     texts = [mx(0.0, 1.43), mx(2.27, 3.8), mx(8.4, 10.0)]
+    # Phone speaker stand-in: what is left after a 200 Hz–12 kHz band-pass (a small speaker plays little below 200 Hz)
+    from scipy import signal as sig
+    sos = sig.butter(4, [200, 12000], "band", fs=SR, output="sos")
+    ph = sig.sosfilt(sos, x, axis=0)
+    tp, momp = k_weighted_short_term(ph)
+    rep["phone_band_200_12k"] = {
+        "integrated_LUFS": round(m.integrated_loudness(ph), 1),
+        "hook_max_LUFS": round(float(momp[(tp >= 0) & (tp < 1.43)].max()), 1),
+        "energy_below_80Hz_pct": round(100 * float(np.sum(sig.sosfilt(sig.butter(4, 80, "low", fs=SR, output="sos"), x, axis=0) ** 2) / np.sum(x ** 2)), 0),
+    }
     rep["tekst_niet_het_drukst"] = bool(max(texts) < float(mom.max()) - 0.05)
 
     # Sync: (a) onsets in the mix; (b) sample-exact start of each cue in its stem

@@ -62,9 +62,9 @@ SWELL = [(0.0, 0.42), (1.4, 0.46), (1.59, 0.46), (1.60, 0.70), (2.2, 0.52), (3.8
 # The steps at 1.6, 4.2 and 8.4 are the cue accents; they are smoothed over 10 ms below (no zipper, no click).
 
 
-def pipe_note(f, stops, start, end, r, release=0.35, pan=0.0):
+def pipe_note(f, stops, start, end, r, release=0.35, pan=0.0, attack=0.06, chiff=1.6):
     """One sustained organ note: every stop is a harmonic series; pipes are detuned by a fraction of a cent."""
-    att = int(0.06 * SR)
+    att = int(attack * SR)
     rel = int(release * SR)
     s0, s1 = start, min(N, end + rel)
     n = np.arange(s1 - s0) / SR
@@ -84,7 +84,7 @@ def pipe_note(f, stops, start, end, r, release=0.35, pan=0.0):
     ch = r.standard_normal(k) * np.exp(-np.arange(k) / (0.012 * SR))
     lo, hi = min(f * 2.0, 8000), min(f * 5.0, 15000)
     from sound import bp
-    ch = bp(ch, lo, hi, 2) * 1.6
+    ch = bp(ch, lo, hi, 2) * chiff
     x[:k] += ch
     x = click_safe(x * env, 2, out_ms=10)
     out = np.zeros((N, 2))
@@ -98,10 +98,13 @@ def organ():
     r = rng(1001)
     out = np.zeros((N, 2))
     for i, (s0, s1, manual, pedal, stops, lvl) in enumerate(PROGRESSION):
+        # on the cue chords the pipes speak faster and with more breath: the accent lands inside one frame
+        cue = s0 in (S["cut"], S["open"], S["logo"])
+        kw = {"attack": 0.025, "chiff": 3.2} if cue else {}
         for j, nm in enumerate(manual):
             # the organ case: ranks spread a little left/right, the low end stays central
             p = (-0.25 + 0.5 * j / max(1, len(manual) - 1)) if len(manual) > 1 else 0.0
-            out += pipe_note(note_hz(nm), stops, s0, s1, r, pan=p) * lvl / len(manual) ** 0.5
+            out += pipe_note(note_hz(nm), stops, s0, s1, r, pan=p, **kw) * lvl / len(manual) ** 0.5
         for nm in pedal:
             out += pipe_note(note_hz(nm), ("16", "8"), s0, s1, r, release=0.5) * lvl * 0.8
     tt, vv = zip(*SWELL)

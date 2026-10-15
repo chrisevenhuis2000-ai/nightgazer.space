@@ -10,8 +10,9 @@ Three data sets, each straight from the picture:
   terminator The rendered film (out/hf-render.mp4), frames 48–150: the lit fraction of the frame
              (luma > 0.25) — how far the terminator has swept across the planet.
   m74        The rendered film, frames 126–216 (the dolly into ESA/Webb M74): per frame the galaxy core
-             position and 48 seeded sample points in a ring around it (luma, blue–red balance, x).
-             The dolly is the playhead: the camera's push-in moves the ring through the spiral.
+             position and a fixed ring of 48 points around it (same angles and radii every frame) with
+             luma, blue–red balance and x. The ring does not move relative to the core, so what changes
+             under it is the camera's push-in alone: the dolly is the playhead.
 """
 import json
 import subprocess
@@ -60,19 +61,21 @@ def terminator(frames):
 
 
 def m74(frames):
-    rng = np.random.Generator(np.random.PCG64(3003))
+    """A FIXED ring of 48 points (angle, radius) around the core: the same geometry in every frame, so
+    what passes under the points changes only because the camera dollies (the dolly is the playhead)."""
     from scipy.ndimage import gaussian_filter
+    angles = np.arange(48) * 2 * np.pi / 48
+    radii = 0.08 + 0.30 * ((np.arange(48) * 7) % 48) / 47          # spread over 0.08–0.38 W, interleaved
     out = []
     for i in range(126, 217):
         y = luma(frames[i])
-        top = gaussian_filter(y[: int(H * 0.6)], 12)       # the core lies in the upper part of the frame
+        top = gaussian_filter(y[: int(H * 0.6)], 12)               # the core lies in the upper part of the frame
         cy, cx = np.unravel_index(int(np.argmax(top)), top.shape)
         pts = []
-        for _ in range(48):
-            a = rng.uniform(0, 2 * np.pi)
-            r = rng.uniform(0.06, 0.42) * W
+        for k, (a, r) in enumerate(zip(angles, radii * W)):
             px, py = int(cx + r * np.cos(a)), int(cy + r * np.sin(a))
-            if not (0 <= px < W and 0 <= py < int(H * 0.6)):   # keep clear of the readout and credit
+            if not (0 <= px < W and 0 <= py < int(H * 0.6)):        # outside, or over the readout/credit: silent
+                pts.append(None)
                 continue
             c = frames[i, py, px]
             pts.append([round(float(y[py, px]), 3), round(float(c[2] - c[0]), 3), round(px / W, 3),

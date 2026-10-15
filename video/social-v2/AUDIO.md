@@ -171,14 +171,14 @@ De zwelkast (niveau en helderheid samen) is één curve. Op 1,6, 4,2 en 8,4 zit 
 | Stempel | 8,1 | 6.1.2 | 81 | 0 |
 | **Logo** | **8,4** | **6.2.1** | 84 | 0 |
 
-- **Percussie:** geen drumkit, maar instrumentgeluiden. Escapement-tikken (de teller-tik uit de engine), een stappenmotor van een telescoop (een korte, gestemde zoem) en een zachte koepel-"thock" op de tel, met harmonischen voor de telefoon.
+- **Percussie:** geen drumkit, maar instrumentgeluiden. Escapement-tikken (de teller-tik uit de engine), een stappenmotor van een telescoop (een korte, gestemde zoem) en een koepel-"thock" op de tel. De thock heeft zijn lichaam op 190 Hz en een knock op 450 Hz; er zit maar weinig sub onder, zodat een telefoonspeaker de tel nog speelt.
 - **Opbouw per stuk:**
   - hook: 8e-tikken en een stationair draaiende koepelmotor;
   - 1,6–4,2: bas op 8en, motor op 2 en 4;
   - 4,2–7,2: volle 16en;
   - 7,2–8,4: break, met alleen kwarttikken boven een aangehouden A (Asus4);
   - 8,4: sonic logo met akkoord.
-- **Bas:** D → B♭ → C → G → Asus4 → D, zaagtand door een low-pass met een korte filterblip per noot.
+- **Bas:** D → B♭ → C → G → Asus4 → D. Eerst gesatureerd (harmonischen tot ongeveer 1 kHz), daarna een low-pass met een bodem van 950 Hz en een filterblip per noot. Bas en percussie gaan door een high-pass op 42 Hz.
 - **Motief / sonic logo: A–D–E … F♯.**
   - 1,6: laag en onopgelost, eindigt op E.
   - 4,2: een octaaf hoger, draait naar G (sus).
@@ -192,7 +192,7 @@ Het geluid komt uit de data van het beeld zelf. `extract_sonification_data.py` l
 | Stadslichten 0–1,6 s | NASA Black Marble 2016 (`bm-europe.jpg`): een scan west→oost over 52,09° N (de breedtegraad van Utrecht, band ±0,3°), van 5° W tot 11,2° O. De speelkop is lon(t) = −5° + 10,12°·t, dus **Utrecht passeert op precies 1,0 s**, het moment dat het kruisje vergrendelt. | Elke stad (lokaal maximum van de radiantie) wordt een ping. Radiantie → toonhoogte (D5–D7) en niveau. Noord/zuid in de band → panning. Gemiddelde radiantie → dichtheid van een fijne korrel-ruis en het niveau van een lage D/A-bedding. De zee is stil (0,02), de Randstad het luidst (0,41). |
 | Match-cut 1,6 s | Het verlichte deel van het cut-frame (2,1 %) | De helderheid van een aangeslagen lage D: donker, omdat het frame bijna zwart is |
 | Planeet 1,6–5,4 s | De gerenderde film, frames 48–150: het verlichte deel van het beeld (luma > 0,25), oplopend van 2 % naar 56 % | De cutoff van een D/A-drone: 160 + 3400 Hz × verlicht deel. De terminator opent het filter |
-| M74 4,2–7,2 s | De gerenderde film, frames 126–216: per frame 48 punten (vaste seed) in een ring rond de kern van de spiraal. **De dolly is de speelkop:** omdat de camera induwt, schuift de ring door de spiraal | Heldere punten (luma > 0,55) worden korrels, maximaal 4 per frame. Luma → toonhoogte en niveau. Blauw−rood → octaaf (de blauwste punten, jonge sterren, een octaaf hoger). x → panning. Afstand tot de kern → korrelduur. Gemiddelde ringhelderheid → niveau van een gloed-pad. Op 4,2 slaan de 5 helderste punten samen aan |
+| M74 4,2–7,2 s | De gerenderde film, frames 126–216: een **vaste ring** van 48 punten rond de kern van de spiraal, met in elk frame dezelfde hoeken en stralen. **De dolly is de speelkop:** de ring beweegt niet ten opzichte van de kern, dus wat er onder de punten verandert, komt alleen door het induwen van de camera | Een punt klinkt zodra er een heldere structuur onder schuift (luma stijgt van ≤ 0,5 naar > 0,5). Er is geen toevalspoort: 131 korrels in 3 s, schaars in het begin en dichter naarmate de camera de spiraal in duwt. Luma → toonhoogte en niveau. Blauw−rood → octaaf (de blauwste punten, jonge sterren, een octaaf hoger). x → panning. Hoek → moment binnen het frame (een draaiende scan). Afstand tot de kern → korrelduur. Gemiddelde ringhelderheid → niveau van een gloed-pad. Op 4,2 slaan de 5 helderste punten samen aan |
 | Glasplaat 7,2 s | – | De data stopt. De laatste toonhoogtes blijven zacht hangen als cluster (+ glas) |
 | Logo 8,4 s | – | Sluiter. De cluster glijdt in 120 ms naar de dichtstbijzijnde akkoordtonen van D add9: het instrument "antwoordt" in één toonsoort |
 
@@ -200,29 +200,68 @@ Het geluid komt uit de data van het beeld zelf. `extract_sonification_data.py` l
 
 ## Metingen per variant
 
-Gemeten op de MP4 (`out/varianten/<n>-<naam>.mp4`, AAC 320 kbps ingesteld, 48 kHz). Loudness en true peak komen uit ffmpeg loudnorm. De sync is gemeten met onset-detectie op de gedecodeerde MP4-audio, waarbij de cue-tijden uit de composities zelf worden gelezen.
+Gemeten op de MP4 (`out/varianten/<n>-<naam>.mp4`, AAC 320 kbps ingesteld, 48 kHz).
+
+- **Meters:** de tabel gebruikt ffmpeg `loudnorm`, net als `verify.json`. Ter controle geeft ffmpeg `ebur128` op alle vier de MP4's −14,0 LUFS. De twee meters wijken onderling tot 0,5 LU af; beide liggen binnen ±1.
+- **Sync:** onset-detectie op de gedecodeerde MP4-audio, met de cue-tijden gelezen uit de composities.
+- **Telefoonband:** de loudness na een band-pass van 200 Hz tot 12 kHz, als benadering van een telefoonspeaker.
 
 | | 0 · huidig | 1 · orgel | 2 · puls | 3 · sonificatie |
 |---|---|---|---|---|
-| Integrated (MP4) | −14,23 LUFS | −13,93 LUFS | −14,52 LUFS | −14,13 LUFS |
-| True peak (MP4) | −1,50 dBTP | −1,50 dBTP | −1,46 dBTP | −1,49 dBTP |
-| LRA | 2,6 LU | 6,3 LU | 4,6 LU | 2,7 LU |
-| Mono: correlatie / verlies | 0,98 / 0,09 LU | 0,87 / 0,36 LU | 0,98 / 0,03 LU | 0,87 / 0,36 LU |
-| Max. hook / tekst 2 / eindkaart | −12,4 / −13,6 / −13,1 | −16,7 / −16,3 / −13,8 | −17,9 / −13,5 / −12,3 | −16,6 / −13,7 / −16,9 |
-| Luidste moment | −9,6 (match-cut) | −9,6 (push-in) | −9,4 (push-in) | −8,2 (push-in) |
-| Sync 1,6 match-cut | +4,0 ms (0,12 fr) | +2,7 ms (0,08 fr) | +2,7 ms (0,08 fr) | +4,0 ms (0,12 fr) |
-| Sync 4,2 M74 | −12,0 ms (0,36 fr) | +24,0 ms (0,72 fr) | +4,0 ms (0,12 fr) | +14,7 ms (0,44 fr) |
+| Integrated (MP4) | −14,23 LUFS | −13,94 LUFS | −14,34 LUFS | −13,94 LUFS |
+| True peak (MP4) | −1,50 dBTP | −1,50 dBTP | −1,31 dBTP | −1,50 dBTP |
+| LRA | 2,6 LU | 6,1 LU | 3,3 LU | 1,9 LU |
+| Mono: correlatie / verlies | 0,98 / 0,09 LU | 0,87 / 0,36 LU | 0,97 / 0,06 LU | 0,85 / 0,42 LU |
+| Telefoonband: totaal / hook | −17,7 / −21,5 | −15,7 / −20,7 | −18,0 / −21,7 | −15,1 / −14,0 |
+| Energie < 80 Hz | 39 % | 20 % | 32 % | 19 % |
+| Max. hook / tekst 2 / eindkaart | −12,4 / −13,6 / −13,1 | −16,7 / −16,2 / −13,8 | −17,9 / −13,5 / −11,6 | −14,0 / −14,6 / −11,5 |
+| Luidste moment | −9,6 (match-cut) | −9,6 (push-in) | −10,5 (push-in) | −9,3 (match-cut) |
+| Sync 1,6 match-cut | +4,0 ms (0,12 fr) | +2,7 ms (0,08 fr) | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) |
+| Sync 4,2 M74 | −12,0 ms (0,36 fr) | +18,7 ms (0,56 fr) | +4,0 ms (0,12 fr) | +14,7 ms (0,44 fr) |
 | Sync 7,2 glasplaat | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) |
-| Sync 8,4 logo | +4,0 ms (0,12 fr) | +5,3 ms (0,16 fr) | +5,3 ms (0,16 fr) | +6,7 ms (0,20 fr) |
-| Onset-sterkte hoofdcues | 3,7–5,9× | 2,7–5,8× | 12–23× | 3,2–6,5× |
+| Sync 8,4 logo | +4,0 ms (0,12 fr) | +5,3 ms (0,16 fr) | +4,0 ms (0,12 fr) | +4,0 ms (0,12 fr) |
+| Onset-sterkte hoofdcues | 3,7–5,9× | 2,6–5,7× | 10–21× | 3,0–9,2× |
+| Max. gain reduction limiter | 0,8 dB | 1,0 dB | 2,7 dB | 0,7 dB |
 
-- **Alle vier:** de hoofdcues vallen binnen ±1 frame; geen tekstmoment is het drukst; DC < 7·10⁻⁵; de limiter grijpt maximaal 1,6 dB in.
+- **Alle vier:**
+  - de hoofdcues vallen binnen ±1 frame;
+  - geen tekstmoment is het drukst;
+  - geen klikken (elke burst heeft fades van minimaal 2 ms, en de stappen in de zwelkast zijn over 10 ms gladgestreken);
+  - DC < 7·10⁻⁵.
 - **Determinisme:** twee runs geven bit-identieke masters. SHA-256:
-  - huidig `47932b72…`
-  - orgel `e6455711…`
-  - puls `fb17a341…`
-  - sonificatie `add03fdd…`
+  - huidig `47932b72…` (ongewijzigd)
+  - orgel `8eab043a…`
+  - puls `65a0f852…`
+  - sonificatie `7eec2bcd…`
 - **Videostream:** identiek in alle vier de MP4's.
-- **Huidig op 4,2 s:** er staat geen klap. De onset die de detector vindt (−12 ms) is het begin van de sterrenwolk en de pad-zwelling.
-- **Orgel op 4,2 s:** +24 ms, de traagste aanzet. Een pijp spreekt in ongeveer 60 ms aan; de chiff haalt het binnen een frame.
-- **LRA orgel 6,3 LU:** groter dan de rest, en dat is bewust. De zwelkast bouwt van zacht naar vol, en daarin zit het concept.
+- **Huidig op 4,2 s:** er staat geen klap. De gevonden onset (−12 ms) is het begin van de sterrenwolk en de pad-zwelling.
+- **Orgel op 4,2 s:** +18,7 ms, de traagste aanzet. Op de cue-akkoorden spreken de pijpen sneller aan (25 ms) en met meer chiff.
+- **LRA orgel 6,1 LU:** groter dan de rest, en dat is bewust. De zwelkast bouwt van zacht naar vol.
+- **Puls:** de limiter grijpt 2,7 dB in, op de groove-transiënten (thock en tik samen). De true peak blijft −1,3 dBTP.
+
+## Onafhankelijke review van de varianten
+
+Een aparte agent die de varianten niet had gemaakt, heeft ze beoordeeld op metingen (zelf nagemeten), spectrogrammen, code en concept. **Hij kon niet luisteren, en ik ook niet.** Muzikaliteit, klankkwaliteit en de cliché-oordelen zijn afgeleid, niet gehoord.
+
+**Verwerkt:**
+
+| Bevinding | Wat ik deed |
+|---|---|
+| **Blokkerend (puls):** valt weg op een telefoonspeaker. 80 % van de energie zat onder 80 Hz; telefoonband −21,5, hook −36,5 | Thock-lichaam naar 190 Hz met knock op 450 Hz; bas eerst gesatureerd, dan low-pass met een bodem van 950 Hz; high-pass op 42 Hz; tikken luider. Nu −18,0 / −21,7 en 32 % onder 80 Hz, gelijk aan huidig |
+| Sonificatie: de M74-ring werd elk frame willekeurig opnieuw bemonsterd, met een toevalspoort, dus de dolly was niet echt de speelkop | Vaste ring (dezelfde 48 punten in elk frame). Een korrel klinkt als er een heldere structuur onder een punt schuift. De hoek bepaalt het moment binnen het frame. De documentatie is aangepast |
+| Sonificatie: de oplossing op het logo was het zwakste moment (8 dB onder de piek) | Glijden in 80 ms, cluster en lage D/A/F♯ luider, de aanslag op de cut zachter. De eindkaart ligt nu 2,2 dB onder de piek; het logo-onset is 6,4× (was 3,9×) |
+| Orgel: het onset op 4,2 was fragiel (+24 ms, 2,7×) | Snellere aanspraak met meer chiff op de cue-akkoorden: +18,7 ms, 3,1× |
+| Twee loudness-meters gaven verschillende cijfers | Hierboven benoemd |
+
+**Niet veranderd, wel benoemd:**
+- **Orgel als pastiche:** pijporgel, ruimte en de beweging ♭VI–♭VII–I (B♭ → C → D) liggen dicht bij *Interstellar*. Dat zit in het concept zelf, zoals gevraagd. Een andere progressie haalt het orgel er niet uit.
+- **Puls als tech-promo:** tik en thock op elke tel lezen in het spectrogram als een standaard groove (hi-hat en kick). Ook dat is het concept.
+- **Stille openingen:** orgel en sonificatie beginnen zacht. De sonificatie start boven zee, en die is bij de data stil. Dat kan een risico zijn voor het stoppen van de scroll.
+
+**Rangorde van de reviewer** (vóór de fixes hierboven):
+1. sonificatie: het meest eigen idee voor het merk, de beste telefoonvertaling en eerlijk in de kern;
+2. huidig: het veiligst, met de meeste cues, maar het laag is zwaar, dus een dunne hook op telefoon;
+3. orgel: de beste boog en schone cues, maar een stille hook en *Interstellar*-risico;
+4. puls: de strakste sync, maar faalde op telefoon (inmiddels opgelost) en is generiek.
+
+Zijn advies: houd huidig als standaard totdat iemand heeft geluisterd, en neem sonificatie als die muzikaal blijkt (geen "willekeurige windgong").
