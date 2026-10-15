@@ -75,11 +75,30 @@ function warn(msg) {
   console.log(`::warning title=Missie niet gekoppeld::${msg.replace(/\r?\n/g, ' ')}`)
 }
 
-function mapLL2Status(ll2StatusName) {
+// LL2-status → status op de site. Een geslaagde lancering hangt af van de
+// soort: een missie gaat haar operationele fase in ('actief'), een
+// lanceerdienstvlucht is daarmee klaar ('voltooid').
+//   Launch Successful            → actief | voltooid (naar soort)
+//   Launch Failure / Partial F.  → mislukt
+//   Launch in Flight             → actief
+//   Go, TBD, TBC, Hold, ...      → gepland
+function mapLL2Status(ll2StatusName, soort) {
   const s = (ll2StatusName || '').toLowerCase()
-  if (s.includes('success')) return 'actief'
-  if (s.includes('failure') || s.includes('partial')) return 'voltooid'
+  if (s.includes('failure')) return 'mislukt'          // ook 'Partial Failure'
+  if (s.includes('in flight')) return 'actief'
+  if (s.includes('success')) return soort === 'missie' ? 'actief' : 'voltooid'
   return 'gepland'
+}
+
+// Startwaarde voor 'soort' bij een nieuwe missie, uit LL2's mission.type.
+// Alleen wetenschap en verkenning krijgen een operationele fase; al het
+// andere (communicatie, overheid/geheim, rideshare, navigatie, test,
+// onbekend) is een lancering. Bij twijfel dus 'lancering': die belandt niet
+// in 'Wat er nu vliegt'.
+const MISSIE_TYPES = ['astrophysics', 'planetary science', 'heliophysics', 'human exploration', 'robotic exploration', 'space science']
+function soortVoorType(missionType) {
+  const t = (missionType || '').toLowerCase()
+  return MISSIE_TYPES.some(x => t.includes(x)) ? 'missie' : 'lancering'
 }
 
 function mapOrbit(orbitName) {
@@ -292,7 +311,7 @@ async function main() {
     }
 
     // Status bijwerken (API wint altijd)
-    const newStatus = mapLL2Status(ll2Data.ll2Status)
+    const newStatus = mapLL2Status(ll2Data.ll2Status, mission.soort)
     if (mission.status !== newStatus) {
       console.log(`  ✏️  ${mission.name}: status ${mission.status} → ${newStatus}`)
       mission.status = newStatus
@@ -377,6 +396,13 @@ async function main() {
     const agencyColor = AGENCY_COLORS[agencyKey] || '#8A9BC4'
     const [bgFrom, bgTo] = AGENCY_GRADIENTS[agencyKey] || AGENCY_GRADIENTS.default
     const orbit = mapOrbit(ll2Launch.mission?.orbit?.name)
+    const missionType = ll2Launch.mission?.type || ''
+    const soort = soortVoorType(missionType)
+    if (soort === 'missie') {
+      // Een nieuwe 'missie' komt in 'Wat er nu vliegt' terecht; laat iemand
+      // die indeling nalopen.
+      console.log(`::warning title=Nieuwe missie ingedeeld als 'missie'::${launchName} (${ll2Launch.id}), LL2-type '${missionType}' — controleer 'soort' in missions.json`)
+    }
 
     const ll2Data = {
       vehicle:     ll2Launch.rocket?.configuration?.name || '',
@@ -415,7 +441,8 @@ async function main() {
       name:        launchName,
       agency:      agencyName,
       agencyColor,
-      status:      'gepland',
+      status:      mapLL2Status(ll2Launch.status?.name, soort),
+      soort,
       launched:    formatDutch(ll2Data.launchDate),
       launchPrecision: ll2Data.netPrecision,
       objective,
@@ -456,7 +483,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify }
+module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType }
 
 if (require.main === module) {
   main().catch(err => {
