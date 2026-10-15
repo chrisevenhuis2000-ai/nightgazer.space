@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T09:38:21.794Z",
+    "lastUpdated": "2026-10-15T09:55:23.777Z",
     "autoUpdated": []
   },
   "missions": [
@@ -1308,7 +1308,7 @@
       "launched": "31 dec 2026",
       "objective": "Demonstratie van een volledig cryogeen vloeistofbeheersysteem in een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -1339,7 +1339,8 @@
         "rocket lab electron",
         "photon-leo"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:14:46.815Z"
+      "_lastClaudeUpdate": "2026-09-28T16:14:46.815Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "mtg-i2",
@@ -1483,7 +1484,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van 21 militaire satellieten voor een veerkrachtig, laaglatentie datanetwerk in lage aardbaan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1518,7 +1519,8 @@
         "northrop grumman",
         "militaire satellieten"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:13:24.218Z"
+      "_lastClaudeUpdate": "2026-09-28T16:13:24.218Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "sda-tranche-1-tracking-layer-c",
@@ -1531,7 +1533,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van satellieten voor wereldwijde tracking en vroegtijdige waarschuwing van hypersonische raketdreigingen.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1564,7 +1566,8 @@
         "raketdetectie",
         "rakettracering"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:14:00.579Z"
+      "_lastClaudeUpdate": "2026-09-28T16:14:00.579Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "sda-tranche-1-tracking-layer-e",
@@ -1577,7 +1580,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van satellietcluster voor wereldwijde detectie en tracking van hypersonische raketdreigingen.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1612,7 +1615,8 @@
         "defensie",
         "militaire ruimtevaart"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:14:07.842Z"
+      "_lastClaudeUpdate": "2026-09-28T16:14:07.842Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "sda-tranche-1-transport-layer-a",
@@ -1661,7 +1665,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert militaire satellieten voor het Amerikaanse PWSA Tranche 1 Transport Layer-netwerk.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1696,7 +1700,8 @@
         "space development agency",
         "us space force"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:14:15.764Z"
+      "_lastClaudeUpdate": "2026-09-28T16:14:15.764Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "sda-tranche-1-transport-layer-e",
@@ -1755,7 +1760,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van militaire satellietcluster voor wereldwijde lage-latentie dataconnectiviteit vanuit LEO.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1788,7 +1793,8 @@
         "leo-constellatie",
         "spacex falcon 9"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:14:23.945Z"
+      "_lastClaudeUpdate": "2026-09-28T16:14:23.945Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "victus-haze-puma",
@@ -1884,7 +1890,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert 24 satellieten voor de internetconstellatie van het Ierse Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1913,7 +1919,8 @@
         "internetsatellieten",
         "satellieten"
       ],
-      "_lastClaudeUpdate": "2026-10-15T08:08:44.694Z"
+      "_lastClaudeUpdate": "2026-10-15T08:08:44.694Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "rivada-11",
@@ -1926,7 +1933,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert 24 satellieten voor het breedbandinternetnetwerk van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -1957,7 +1964,8 @@
         "spacex",
         "internetsatellieten"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:15:02.802Z"
+      "_lastClaudeUpdate": "2026-09-28T16:15:02.802Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "rivada-12",
@@ -1970,7 +1978,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert 24 satellieten voor het internetconstellatie van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2003,7 +2011,8 @@
         "satellietconstellation",
         "breedband internet"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:15:10.686Z"
+      "_lastClaudeUpdate": "2026-09-28T16:15:10.686Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "rivada-7",
@@ -2016,7 +2025,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert 24 satellieten voor het internet-constellation van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2048,7 +2057,8 @@
         "rivada",
         "satellite internet"
       ],
-      "_lastClaudeUpdate": "2026-10-07T14:52:29.549Z"
+      "_lastClaudeUpdate": "2026-10-07T14:52:29.549Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "rivada-8",
@@ -2061,7 +2071,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van 24 satellieten voor het internet-constellation van Rivada Space Networks.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2092,7 +2102,8 @@
         "satellietinternet",
         "internetsatellieten"
       ],
-      "_lastClaudeUpdate": "2026-10-07T14:52:36.940Z"
+      "_lastClaudeUpdate": "2026-10-07T14:52:36.940Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "rivada-9",
@@ -2105,7 +2116,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van 24 satellieten voor het Rivada-internetconstellatie in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2135,7 +2146,8 @@
         "rivada",
         "satellieten"
       ],
-      "_lastClaudeUpdate": "2026-10-08T15:02:36.763Z"
+      "_lastClaudeUpdate": "2026-10-08T15:02:36.763Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "flight-13",
@@ -2324,7 +2336,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van geclassificeerde SDA Tranche 2 Transport Layer satellieten in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2361,7 +2373,8 @@
         "defensie",
         "satellietcommunicatie"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:15:32.635Z"
+      "_lastClaudeUpdate": "2026-09-28T16:15:32.635Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "nancy-grace-roman-space-telescope",
@@ -2506,7 +2519,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert geclassificeerde SDA Tranche 2 satellieten voor ruimtegebaseerde raketdetectie in poolbaan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2537,7 +2550,8 @@
         "polaire baan",
         "poolbaan"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:15:18.786Z"
+      "_lastClaudeUpdate": "2026-09-28T16:15:18.786Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "sda-tranche-2-tracking-layer-b",
@@ -2550,7 +2564,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert geclassificeerde SDA-satellieten voor de Tranche 2 Tracking Layer in een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2582,7 +2596,8 @@
         "space development agency",
         "defensie"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:15:25.328Z"
+      "_lastClaudeUpdate": "2026-09-28T16:15:25.328Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "metop-sg-b1",
@@ -2629,7 +2644,8 @@
         "metop-sg",
         "zonnesynchrone baan"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:13:39.975Z"
+      "_lastClaudeUpdate": "2026-09-28T16:13:39.975Z",
+      "launchPrecision": "Month"
     },
     {
       "id": "cas500-2-others",
@@ -2962,7 +2978,8 @@
         "astrolab flip",
         "maanlander"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:13:46.354Z"
+      "_lastClaudeUpdate": "2026-09-28T16:13:46.354Z",
+      "launchPrecision": "Month"
     },
     {
       "id": "curveball",
@@ -3088,7 +3105,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van maximaal 18 Lightspeed-satellieten voor het breedbandnetwerk van de Canadese operator Telesat.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3119,7 +3136,8 @@
         "spacex",
         "falcon 9"
       ],
-      "_lastClaudeUpdate": "2026-10-15T08:08:38.751Z"
+      "_lastClaudeUpdate": "2026-10-15T08:08:38.751Z",
+      "launchPrecision": "Month"
     },
     {
       "id": "galileo-l15-foc-fm28-fm31",
@@ -3177,7 +3195,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van MDA's CHORUS-constellatie met twee radarsatellieten voor aardobservatie vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3211,7 +3229,8 @@
         "sar",
         "radarconstellatie"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:50:33.311Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:33.311Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "inmarsat-7-f1-gx-7",
@@ -3224,7 +3243,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van de Inmarsat GX-7 sateliet voor wereldwijde Ka-band breedbanddiensten voor mobiele gebruikers.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3257,7 +3276,8 @@
         "airbus onesat",
         "spacex falcon 9"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:50:41.152Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:41.152Z",
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "nova-c-im-3",
@@ -3379,7 +3399,8 @@
         "leo",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:50:48.363Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:48.363Z",
+      "launchPrecision": "Day"
     },
     {
       "id": "blacksky-gen-3-5",
@@ -3436,7 +3457,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3465,7 +3486,8 @@
         "aardobservatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:50:55.772Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:55.772Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "blacksky-gen-3-7",
@@ -3478,7 +3500,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3507,7 +3529,8 @@
         "aardobservatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:51:03.506Z"
+      "_lastClaudeUpdate": "2026-10-03T12:51:03.506Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "blacksky-gen-3-8",
@@ -3520,7 +3543,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3549,7 +3572,8 @@
         "aardobservatie",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:51:11.062Z"
+      "_lastClaudeUpdate": "2026-10-03T12:51:11.062Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "blacksky-gen-3-9",
@@ -3562,7 +3586,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3592,7 +3616,8 @@
         "leo",
         "low earth orbit"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:51:18.478Z"
+      "_lastClaudeUpdate": "2026-10-03T12:51:18.478Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "nrol-95",
@@ -3690,7 +3715,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert twee geheime militaire payloads voor de US Space Force rechtstreeks naar geostationaire baan.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3721,7 +3746,8 @@
         "militaire ruimtevaart",
         "geclassificeerd"
       ],
-      "_lastClaudeUpdate": "2026-10-12T17:07:08.941Z"
+      "_lastClaudeUpdate": "2026-10-12T17:07:08.941Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "victus-surgo",
@@ -3734,7 +3760,7 @@
       "launched": "31 dec 2026",
       "objective": "Amerikaanse Space Force test snelle ruimtelevering met Impulse Space voertuigen naar GTO-baan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3766,7 +3792,8 @@
         "spacex falcon 9",
         "geosynchronous transfer orbit"
       ],
-      "_lastClaudeUpdate": "2026-09-16T12:55:29.500Z"
+      "_lastClaudeUpdate": "2026-09-16T12:55:29.500Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "ussf-75",
@@ -3779,7 +3806,7 @@
       "launched": "31 dec 2026",
       "objective": "SpaceX lanceert een geheime lading voor de Amerikaanse Space Force naar een geostationaire baan.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3808,7 +3835,8 @@
         "militair",
         "geostationaire baan"
       ],
-      "_lastClaudeUpdate": "2026-09-17T12:52:05.868Z"
+      "_lastClaudeUpdate": "2026-09-17T12:52:05.868Z",
+      "launchPrecision": "Year"
     },
     {
       "id": "bandwagon-5-dedicated-mid-inclination-rideshare",
@@ -3850,7 +3878,8 @@
         "low earth orbit",
         "nanosatellieten"
       ],
-      "_lastClaudeUpdate": "2026-09-21T14:40:01.408Z"
+      "_lastClaudeUpdate": "2026-09-21T14:40:01.408Z",
+      "launchPrecision": "Minute"
     },
     {
       "id": "ussf-153",
@@ -3906,7 +3935,7 @@
       "launched": "31 dec 2026",
       "objective": "HASTE | Leidos-3 — Rocket Lab missie naar Aardeomloopbaan.",
       "body": "Aardeomloopbaan",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3931,7 +3960,8 @@
       "_lastClaudeAttempt": {
         "at": "2026-10-15T08:56:34.288Z",
         "reden": "geen-beschrijving"
-      }
+      },
+      "launchPrecision": "Year"
     },
     {
       "id": "ussf-259",
