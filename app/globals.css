@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* ── Design tokens ───────────────────────────────────────────────────────── */
 :root {
   /* Fonts: zie body hieronder — de font-tokens staan daar, niet hier. */
