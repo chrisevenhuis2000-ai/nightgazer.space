@@ -13,7 +13,7 @@ Live: https://nightgazer.space
 
 ## Stack
 
-- Next.js 14 (App Router), React 18, TypeScript, Tailwind v3 met CSS-variabelen
+- Next.js 14 (App Router), React 18, TypeScript, gewone CSS met CSS-variabelen (`app/globals.css`, `app/_plate/plate.css`)
 - `output: 'export'`: een volledig statische site zonder server-runtime. Alle live data wordt client-side opgehaald.
 - Hosting op **Cloudflare Pages**, gebouwd via de git-koppeling.
 - **Cloudflare Worker** (`cf-worker/`) als proxy voor API-sleutels, plus de cron voor pushmeldingen.

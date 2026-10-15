@@ -32,7 +32,7 @@ Dutch-language astronomy coverage where every article exists at three reading le
 
 ## Capabilities and Constraints
 
-- Next.js 14 App Router, React 18, TypeScript, Tailwind v3 plus CSS custom properties in `app/globals.css`.
+- Next.js 14 App Router, React 18, TypeScript, gewone CSS met custom properties in `app/globals.css` en `app/_plate/plate.css` (geen Tailwind).
 - `output: 'export'` — fully static export with `trailingSlash: true`. No server runtime, no server-side data fetching, no Next `<Image>` optimisation (`images.unoptimized`). Every live value is fetched client-side.
 - Live data comes from a Cloudflare Worker proxy (`cosmosnl-proxy.chrisevenhuis2000.workers.dev`) for APOD and NASA image search, and directly from `api.wheretheiss.at` for ISS position. All can fail; every widget needs a real loading and failure state.
 - Article data: `public/content/articles-index.json`, 839 articles at time of writing, categories `missies, educatie, mars, kosmologie, james-webb, zwarte-gaten, maan, kometen, sterrenkijken`. Many articles have no image, so card visuals are generated deterministically from the slug.
