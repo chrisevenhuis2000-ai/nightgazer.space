@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T08:56:34.294Z",
+    "lastUpdated": "2026-10-15T09:35:40.896Z",
     "autoUpdated": []
   },
   "missions": [
@@ -1350,13 +1350,13 @@
       "status": "actief",
       "soort": "missie",
       "launched": "27 aug 2026",
-      "objective": "MTG-I2 is de derde Meteosat Third Generation satelliet voor geavanceerde weersvoorspellingen vanuit een geostationaire baan.",
+      "objective": "MTG-I2 is de derde Meteosat Third Generation satelliet voor geavanceerde weersvoorspellingen.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland voor 27 augustus 2026 met Ariane 62",
+      "highlight": "Gelanceerd op 27 aug 2026 — missie in bedrijf",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "MTG-I2 is de derde satelliet binnen de nieuwe generatie weersatellieten van EUMETSAT, de Europese organisatie voor meteorologische satellieten. De lancering staat gepland voor augustus 2026 aan boord van een Ariane 62-raket vanaf het Europese ruimtevaartcentrum in Kourou, Frans-Guyana. De satelliet zal vanuit een geostationaire baan op circa 36.000 kilometer hoogte continue beelden en data leveren ter ondersteuning van nauwkeurigere weersvoorspellingen en klimaatmonitoring. MTG-I2 maakt deel uit van een bredere vloot die EUMETSAT voor de komende decennia voorbereidt op de groeiende behoefte aan betrouwbare meteorologische informatie boven Europa en Afrika.",
+      "description": "MTG-I2 is de derde satelliet binnen de Meteosat Third Generation-reeks van EUMETSAT, bedoeld voor geavanceerde weersvoorspellingen vanuit een geostationaire baan. De lancering is gepland voor 27 augustus 2026 met een Ariane 62-raket, uitgevoerd door Arianespace. Vanuit zijn geostationaire positie zal de satelliet bijdragen aan nauwkeurigere en snellere weersdata voor Europa en omliggende regio's.",
       "vehicle": "Ariane 62",
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
@@ -1385,10 +1385,10 @@
         "ariane 62",
         "meteosat third generation",
         "meteorologie",
-        "klimaatmonitoring"
+        "klimaatmonitoring",
+        "mtg"
       ],
-      "_lastClaudeUpdate": "2026-08-28T19:45:06.460Z",
-      "_herverrijk": true
+      "_lastClaudeUpdate": "2026-10-15T09:35:13.698Z"
     },
     {
       "id": "transporter-17-dedicated-sso-rideshare",
@@ -2371,13 +2371,13 @@
       "status": "actief",
       "soort": "missie",
       "launched": "30 aug 2026",
-      "objective": "NASA's infrarood-ruimtetelescoop onderzoekt donkere energie en exoplaneten vanuit het L2-punt.",
+      "objective": "Infraroodtelescoop onderzoekt donkere energie, ruimtestructuur en exoplaneten vanuit het L2-punt.",
       "body": "L2-punt",
-      "highlight": "Lancering gepland voor 30 augustus 2026 aan boord van SpaceX Falcon Heavy.",
+      "highlight": "Gelanceerd op 30 aug 2026 — missie in bedrijf",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "De Nancy Grace Roman Space Telescope is een krachtige NASA-infraroodtelescoop met een primaire spiegel van 2,4 meter en twee wetenschappelijke instrumenten. Het Wide-Field Instrument biedt een gezichtsveld dat honderd keer groter is dan Hubble's camera's, met een resolutie van 300,8 megapixel. De telescoop gaat op zoek naar exoplaneten via gravitationele microlenzen en brengt de expansiegeschiedenis van het heelal in kaart om meer te leren over donkere energie en de kromming van de ruimtetijd. SpaceX lanceert het observatorium in augustus 2026 met een Falcon Heavy-raket naar het L2-punt.",
+      "description": "De Nancy Grace Roman Space Telescope is een NASA-infraroodtelescoop met een primaire spiegel met een beeldveld van 2,4 meter en twee wetenschappelijke instrumenten. Het Wide-Field Instrument (WFI) is een 300,8-megapixelcamera die zichtbaar en nabij-infrarood licht vastlegt over een beeldveld dat honderd keer groter is dan de camera's van de Hubble-telescoop. Het Coronagraphic Instrument (CGI) maakt gebruik van innovatieve sterrenlichtonderdrukkingstechnologie om planeten en andere objecten in hoog contrast te bestuderen. De telescoop heeft als doelen het opsporen van exoplaneten via gravitationele microlenzing en het onderzoeken van donkere energie, de consistentie van de algemene relativiteitstheorie en de kromming van de ruimtetijd.",
       "vehicle": "Falcon Heavy",
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
@@ -2402,8 +2402,7 @@
         "l2-punt",
         "infrarood"
       ],
-      "_lastClaudeUpdate": "2026-08-29T13:27:45.169Z",
-      "_herverrijk": true
+      "_lastClaudeUpdate": "2026-10-15T09:35:23.203Z"
     },
     {
       "id": "o3b-mpower-11-13",
@@ -2724,11 +2723,11 @@
       "launched": "1 okt 2026",
       "objective": "Crew Dragon transporteert astronauten naar het ISS als onderdeel van NASA's Commercial Crew Program.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering op 1 oktober 2026 om 15:10 UTC.",
+      "highlight": "Gelanceerd op 1 okt 2026 — missie in bedrijf",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX Crew-13 is de dertiende operationele bemande vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie wordt uitgevoerd in samenwerking met NASA als onderdeel van het Commercial Crew Program, dat commerciële partners inzet voor routinematig astronauentransport. De Falcon 9-raket brengt de capsule vanuit het Kennedy Space Center in een lage aardbaan, waarna aanmering met het ISS plaatsvindt. Crew-13 onderstreept de volwassenheid van de samenwerking tussen NASA en SpaceX voor duurzame bemanningsrotaties.",
+      "description": "SpaceX Crew-13 is de dertiende operationele bemande vlucht van een Crew Dragon-ruimtevaartuig naar het Internationaal Ruimtestation. De missie maakt deel uit van NASA's Commercial Crew Program, waarmee de Amerikaanse ruimtevaartorganisatie betrouwbare en regelmatige bemanningswissels op het ISS waarborgt. De lancering staat gepland voor 1 oktober 2026 met een Falcon 9-raket als draagraket. Met Crew-13 zet SpaceX zijn bewezen rol als vaste partner van NASA voor bemande ruimtevaart voort.",
       "vehicle": "Falcon 9",
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
@@ -2755,8 +2754,7 @@
         "falcon 9",
         "commercial crew"
       ],
-      "_lastClaudeUpdate": "2026-10-02T14:17:06.279Z",
-      "_herverrijk": true
+      "_lastClaudeUpdate": "2026-10-15T09:35:33.827Z"
     },
     {
       "id": "nrol-172",
