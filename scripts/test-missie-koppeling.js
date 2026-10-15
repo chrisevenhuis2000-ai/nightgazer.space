@@ -14,7 +14,9 @@ const { execFileSync } = require('child_process')
 
 const ROOT     = path.join(__dirname, '..')
 const FIXTURE  = path.join(__dirname, '__fixtures__', 'll2-upcoming.json')
-const MISSIONS = path.join(ROOT, 'content', 'missions.json')
+// Vaste snapshot (missions.json na #5, 64fab47), niet het levende bestand:
+// de bot past dat dagelijks aan, en dan zou deze test willekeurig breken.
+const MISSIONS = path.join(__dirname, '__fixtures__', 'missions.json')
 
 // De oude matcher, alleen als referentie: bewijst dat de fixture de bug echt
 // reproduceert. Niet gebruiken voor iets anders.
