@@ -5,7 +5,7 @@ import { SiteFooter } from '@/app/components/SiteFooter'
 
 export const metadata: Metadata = {
   title:       'Over de maker',
-  description: 'NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen. Lees waarom de site bestaat en hoe het nieuws tot stand komt.',
+  description: 'NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen.',
   alternates:  { canonical: '/over/' },
   openGraph: {
     title:       'Over de maker — NightGazer',
