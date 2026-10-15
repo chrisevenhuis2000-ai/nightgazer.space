@@ -1,14 +1,16 @@
 import Link from 'next/link'
 
+// Opmaak in app/globals.css (.fout-*): Tailwind 4 genereert in dit project
+// geen utility-klassen.
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
+    <div className="fout-scherm"
          style={{ background: 'radial-gradient(ellipse at 50% 20%, #1a1c4a 0%, #0a0b1a 70%)' }}>
 
       {/* Star field decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+      <div className="fout-sterren" aria-hidden>
         {[...Array(40)].map((_, i) => (
-          <div key={i} className="absolute rounded-full bg-white"
+          <div key={i} className="fout-ster"
                style={{
                  width:  `${1 + Math.random() * 2}px`,
                  height: `${1 + Math.random() * 2}px`,
@@ -19,29 +21,28 @@ export default function NotFound() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-md">
-        <p className="font-mono text-xs tracking-widest uppercase text-[#7A86A8] mb-4">
+      <div className="fout-inhoud">
+        <p className="fout-kicker">
           Fout 404
         </p>
 
-        <h1 className="font-display text-5xl font-bold mb-4"
-            style={{ fontFamily: 'Playfair Display, serif' }}>
+        <h1 className="fout-titel" style={{ fontSize: '3rem' }}>
           Verloren in de ruimte
         </h1>
 
-        <p className="text-[#8A9CC0] mb-8 leading-relaxed">
+        <p className="fout-tekst" style={{ color: '#8A9CC0' }}>
           Deze pagina lijkt niet te bestaan — misschien is hij opgeslokt door een zwart gat.
           Ga terug naar de homepage of bekijk het laatste nieuws.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="fout-acties">
           <Link href="/"
-                className="px-6 py-3 rounded-lg font-medium text-sm transition-colors"
+                className="fout-knop"
                 style={{ background: '#252858', border: '1px solid #3a3f7a', color: '#c8d4f0' }}>
             Naar de homepage
           </Link>
           <Link href="/nieuws"
-                className="px-6 py-3 rounded-lg font-medium text-sm transition-colors"
+                className="fout-knop"
                 style={{ background: 'transparent', border: '1px solid #252858', color: '#8A9CC0' }}>
             Laatste nieuws
           </Link>

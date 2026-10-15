@@ -62,6 +62,9 @@
   }
 
   body {
+    /* Tailwind 4 draait hier zonder preflight (de @tailwind-regels genereren
+       geen reset), dus de standaardmarge van de browser moet expliciet weg. */
+    margin: 0;
     background: var(--night);
     color: var(--text-primary);
     font-family: var(--font-sans);
@@ -307,6 +310,54 @@
   .card-wrap:hover .card-thumb-inner {
     transform: scale(1.04);
   }
+
+  /* ── Foutschermen: 404 (app/not-found.tsx) en ErrorBoundary ──
+     Gewone CSS: Tailwind 4 genereert hier geen utility-klassen. */
+  .fout-scherm {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .fout-sterren { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .fout-ster    { position: absolute; border-radius: 9999px; background: #fff; }
+  .fout-inhoud  { position: relative; z-index: 10; max-width: 28rem; }
+  .fout-kicker {
+    /* De next/font-variabelen staan op <body>; --font-mono/--font-display in
+       :root kunnen ze niet zien en vallen terug op een niet-geladen naam. */
+    font-family: var(--font-jetbrains), 'Courier New', monospace;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+  }
+  .fout-titel {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .fout-tekst   { line-height: 1.625; margin: 0 0 32px; }
+  .fout-acties  { display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+  @media (min-width: 640px) { .fout-acties { flex-direction: row; } }
+  .fout-knop {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  }
+  .fout-knop--primair { background: #4f46e5; border: 0; color: #fff; }
+  .fout-knop--primair:hover { background: #6366f1; }
 }
 
 /* ── Utilities ───────────────────────────────────────────────────────────── */

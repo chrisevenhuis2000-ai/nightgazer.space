@@ -27,18 +27,20 @@ export default class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-void flex items-center justify-center px-4">
-          <div className="text-center max-w-md">
-            <div className="text-6xl mb-6">&#x2604;</div>
-            <h1 className="text-2xl font-bold text-star mb-3 font-serif">
+        // Opmaak in app/globals.css (.fout-*): Tailwind 4 genereert in dit
+        // project geen utility-klassen.
+        <div className="fout-scherm" style={{ background: '#07080d' }}>
+          <div className="fout-inhoud">
+            <div style={{ fontSize: '3.75rem', lineHeight: 1, marginBottom: 24 }} aria-hidden>&#x2604;</div>
+            <h1 className="fout-titel" style={{ fontSize: '1.5rem', color: '#dde2f0', marginBottom: 12 }}>
               Er ging iets mis
             </h1>
-            <p className="text-star/60 mb-8">
+            <p className="fout-tekst" style={{ color: 'rgba(221, 226, 240, 0.6)' }}>
               Er is een onverwachte fout opgetreden. Probeer het opnieuw of kom later terug.
             </p>
             <button
               onClick={this.reset}
-              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition-colors"
+              className="fout-knop fout-knop--primair"
             >
               Opnieuw proberen
             </button>
