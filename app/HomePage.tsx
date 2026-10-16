@@ -23,6 +23,7 @@ import {
   getLevel, topicMatches,
 } from '@/lib/home-content'
 import { leesApodCache, schrijfApodCache, isGeldigeApod } from '@/lib/apod-cache'
+import type { Startset } from '@/lib/article-index'
 import {
   Ico, Tip, useSky, skyTone, useUpcoming, type SkyState,
   SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate, NiveauPlate,
@@ -452,11 +453,13 @@ function MissionRail() {
 }
 
 /* ══ Archive ledger — the volume layer, with the light-box loupe ══════════ */
-function Archive({ articles, total, quickTag, onClearQuick }: {
+function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
   articles: Article[]
   total: number
   quickTag: string | null
   onClearQuick: () => void
+  /** Uit de build; telt zolang de volledige index nog niet binnen is. */
+  perCategorie?: Record<string, number>
 }) {
   const [filter, setFilter] = useState('Alles')
   const [shown, setShown] = useState(ROWS_PER_PAGE)
@@ -516,14 +519,20 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
     return spec ? articles.filter(a => quickMatches(a, spec)) : articles
   }, [articles, quickTag])
 
+  /* Tot de volledige index binnen is (en zonder snelfilter) komen de
+     tellingen uit de build: per categorie geteld. */
+  const uitBuild = !quickTag && perCategorie && articles.length < total
   const counts = useMemo(() => TOPICS.reduce((acc, t) => {
-    acc[t] = t === 'Alles' ? pool.length : pool.filter(a => topicMatches(a.category, t)).length
+    acc[t] = uitBuild
+      ? Object.entries(perCategorie!).reduce((n, [cat, k]) => n + (topicMatches(cat, t) ? k : 0), 0)
+      : t === 'Alles' ? pool.length : pool.filter(a => topicMatches(a.category, t)).length
     return acc
-  }, {} as Record<string, number>), [pool])
+  }, {} as Record<string, number>), [pool, uitBuild, perCategorie])
 
   const matched = useMemo(() => pool.filter(a => topicMatches(a.category, filter)), [pool, filter])
+  const aantal = uitBuild ? (counts[filter] ?? 0) : matched.length
   const rows = matched.slice(0, shown)
-  const more = shown < matched.length
+  const more = shown < aantal
 
   const pick = useCallback((t: string) => { setFilter(t); setShown(ROWS_PER_PAGE) }, [])
 
@@ -543,7 +552,7 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
           )}
         </div>
         <p className="pl-label" aria-live="polite">
-          {matched.length === total ? `${total} platen` : `${matched.length} van ${total} platen`}
+          {aantal === total ? `${total} platen` : `${aantal} van ${total} platen`}
         </p>
       </div>
 
@@ -610,13 +619,13 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
       {more && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 20, flexWrap: 'wrap' }}>
           <button className="pl-btn" onClick={() => setShown(s => s + ROWS_PER_PAGE)}>
-            Volgende {Math.min(ROWS_PER_PAGE, matched.length - shown)} platen
+            Volgende {Math.min(ROWS_PER_PAGE, aantal - shown)} platen
           </button>
           <span className="pl-label pl-num" style={{ letterSpacing: '0.1em' }}>
-            {rows.length} / {matched.length}
+            {rows.length} / {aantal}
           </span>
           <div className="pl-meter" style={{ flex: 1, minWidth: 120, color: 'var(--pl-orbit)' }} aria-hidden="true">
-            <i style={{ transform: `scaleX(${rows.length / matched.length})` }} />
+            <i style={{ transform: `scaleX(${rows.length / aantal})` }} />
           </div>
         </div>
       )}
@@ -625,15 +634,16 @@ function Archive({ articles, total, quickTag, onClearQuick }: {
 }
 
 /* ══ Page ═════════════════════════════════════════════════════════════════ */
-export default function HomePage({ initial, initialTotal = 0 }: {
-  /** Nieuwste platen uit de index, tijdens de build gelezen (app/page.tsx). */
-  initial?: Article[]
-  initialTotal?: number
+export default function HomePage({ start }: {
+  /** Nieuwste platen en tellingen uit de index, tijdens de build gelezen
+   *  (app/page.tsx, lib/article-index.ts). */
+  start?: Startset
 } = {}) {
+  const initialTotal = start?.totaal ?? 0
   const [apod, setApod] = useState<APODData | null>(null)
   const [iss, setIss] = useState<ISSData | null>(null)
   const [issFailed, setIssFailed] = useState(false)
-  const articles = useArticles(24, initial)
+  const articles = useArticles(24, start?.initial)
 
   /* APOD, cached per day */
   useEffect(() => {
@@ -744,6 +754,7 @@ export default function HomePage({ initial, initialTotal = 0 }: {
             total={total}
             quickTag={quickTag}
             onClearQuick={() => setQuickTag(null)}
+            perCategorie={start?.perCategorie}
           />
         </div>
 

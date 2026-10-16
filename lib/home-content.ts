@@ -35,16 +35,9 @@ export interface Article {
   readTime:  number
   featured:  boolean
   imageUrl?: string
-  /** ISO-tijdstip uit de index; ontbreekt bij FALLBACK_ARTICLES. */
+  /** ISO-tijdstip uit de index. */
   publishedAt?: string
 }
-
-// ── Fallback articles ──────────────────────────────────────────────────────
-export const FALLBACK_ARTICLES: Article[] = [
-  { slug: 'james-webb-k2-18b-biosignatuur', title: 'James Webb vindt mogelijke sporen van leven op K2-18b', excerpt: 'De JWST heeft dimethylsulfide gedetecteerd in de atmosfeer van K2-18b — een molecuul dat op Aarde uitsluitend door levende organismen wordt gemaakt.', category: 'James Webb', catColor: '#7aadff', bgColor: 'linear-gradient(135deg,#0a1030,#1a2860)', author: 'Redactie', date: '11 mrt 2026', readTime: 6, featured: true },
-  { slug: 'desi-donkere-energie', title: 'DESI: donkere energie verzwakt al 4,5 miljard jaar', excerpt: 'De grootste 3D kaart van het heelal toont dat de kracht van donkere energie niet constant is — een potentiële revolutie in de kosmologie.', category: 'Kosmologie', catColor: '#c080ff', bgColor: 'linear-gradient(135deg,#0f0520,#1a0a35)', author: 'Redactie', date: '9 mrt 2026', readTime: 5, featured: false },
-  { slug: 'neutronenster-uitgelegd', title: 'Wat is een neutronenster? Uitleg in 3 niveaus', excerpt: 'Van makkelijk naar technisch — ons AI-systeem legt het uit op jouw niveau.', category: 'Educatie', catColor: '#3ddf90', bgColor: 'linear-gradient(135deg,#051a10,#0a2a1a)', author: 'Redactie', date: '1 mrt 2026', readTime: 5, featured: false },
-]
 
 // ── Reading level ──────────────────────────────────────────────────────────
 export function getLevel(category: string): 'beg' | 'ama' | 'pro' {

@@ -11,7 +11,7 @@ import { Archivo } from 'next/font/google'
 import { AdUnit } from '../components/AdUnit'
 import { type FooterCol } from '../components/SiteFooter'
 import {
-  PROXY, type Article, FALLBACK_ARTICLES,
+  PROXY, type Article,
 } from '@/lib/home-content'
 import { Ico } from './Instruments'
 import './plate.css'
@@ -284,14 +284,14 @@ function imageQuery(title: string, cat: string): string {
  *  de echte nieuwste platen toont in plaats van de fallback-lijst. De volledige
  *  index komt daarna client-side. */
 export function useArticles(backfill = 24, initial?: Article[]): Article[] {
-  const [articles, setArticles] = useState<Article[]>(initial?.length ? initial : FALLBACK_ARTICLES)
+  const [articles, setArticles] = useState<Article[]>(initial ?? [])
   const fetched = useRef<Set<string>>(new Set())
 
   useEffect(() => {
     fetch('/content/articles-index.json')
       .then(r => r.json())
       .then((data: Article[]) => { if (Array.isArray(data) && data.length) setArticles(data) })
-      .catch(() => { /* the fallback list is already on screen */ })
+      .catch(() => { /* de startlijst uit de build blijft staan */ })
   }, [])
 
   useEffect(() => {
