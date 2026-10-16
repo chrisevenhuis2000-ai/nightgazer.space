@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import NieuwsArchief from './NieuwsArchief'
+import { startset } from '@/lib/article-index'
 
 export const metadata: Metadata = {
   title:       'Nieuws',
@@ -12,5 +13,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <NieuwsArchief />
+  return <NieuwsArchief start={startset()} />
 }

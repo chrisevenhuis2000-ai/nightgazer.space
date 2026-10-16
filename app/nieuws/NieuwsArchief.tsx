@@ -12,6 +12,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { type Article, getLevel, topicMatches } from '@/lib/home-content'
+import type { Startset } from '@/lib/article-index'
 import { TOPICS as TOPIC_PAGES } from '@/lib/topics'
 import { Ico } from '@/app/_plate/Instruments'
 import {
@@ -172,11 +173,16 @@ function drawerHref(d: { key: string; slug?: string }): string {
   return `/nieuws/?onderwerp=${encodeURIComponent(d.key.toLowerCase())}`
 }
 
-export default function NieuwsArchief({ initialTopic }: {
+export default function NieuwsArchief({ initialTopic, start }: {
   /** Slug uit lib/topics.ts; zet de lade al in de statische HTML open. */
   initialTopic?: string
+  /** Uit de build (lib/article-index.ts): de nieuwste artikelen voor de
+   *  statische HTML, plus tellingen tot de volledige index binnen is. */
+  start?: Startset
 } = {}) {
-  const articles = useArticles(24)
+  const articles = useArticles(24, start?.initial)
+  /* Tot de volledige index binnen is, tellen totalen en laden uit de build. */
+  const volledig = !start || articles.length >= start.totaal
 
   const [drawer, setDrawer] = useState(
     () => DRAWERS.find(d => d.slug && d.slug === initialTopic)?.key ?? 'Alles'
@@ -250,19 +256,36 @@ export default function NieuwsArchief({ initialTopic }: {
     [byLevel, drawer]
   )
 
+  /* Zonder snelfilter zijn de tellingen exact uit de build af te leiden:
+     per categorie geteld, en het niveau volgt uit de categorie. */
+  const uitBuild = !volledig && !quickTag && start
+  const telBuild = useCallback((past: (cat: string) => boolean) =>
+    Object.entries(start?.perCategorie ?? {}).reduce((n, [cat, k]) => n + (past(cat) ? k : 0), 0), [start])
+
   const drawerCounts = useMemo(() => DRAWERS.reduce((acc, d) => {
-    acc[d.key] = d.key === 'Alles' ? byLevel.length : byLevel.filter(a => topicMatches(a.category, d.key)).length
+    acc[d.key] = uitBuild
+      ? telBuild(cat => topicMatches(cat, d.key) && (level === 'alle' || getLevel(cat) === level))
+      : d.key === 'Alles' ? byLevel.length : byLevel.filter(a => topicMatches(a.category, d.key)).length
     return acc
-  }, {} as Record<string, number>), [byLevel])
+  }, {} as Record<string, number>), [byLevel, uitBuild, telBuild, level])
 
   const levelCounts = useMemo(() => LEVELS.reduce((acc, l) => {
-    acc[l.key] = l.key === 'alle' ? pool.length : pool.filter(a => getLevel(a.category) === l.key).length
+    acc[l.key] = uitBuild
+      ? telBuild(cat => l.key === 'alle' || getLevel(cat) === l.key)
+      : l.key === 'alle' ? pool.length : pool.filter(a => getLevel(a.category) === l.key).length
     return acc
-  }, {} as Record<Level, number>), [pool])
+  }, {} as Record<Level, number>), [pool, uitBuild, telBuild])
 
-  const order = useMemo(() => new Map(articles.map((a, i) => [a.slug, i])), [articles])
+  const order = useMemo(
+    () => volledig || !start
+      ? new Map(articles.map((a, i) => [a.slug, i]))
+      : new Map(Object.entries(start.posities)),
+    [articles, volledig, start]
+  )
   const rows = matched.slice(0, shown)
-  const more = shown < matched.length
+  /* Tot de volledige index binnen is, komt het aantal in de lade uit de build. */
+  const aantal = uitBuild ? (drawerCounts[drawer] ?? 0) : matched.length
+  const more = shown < aantal
 
   useEffect(() => { setShown(ROWS_PER_PAGE) }, [drawer, level, quickTag])
 
@@ -270,7 +293,7 @@ export default function NieuwsArchief({ initialTopic }: {
   const settleKey = `${drawer}|${level}|${quickTag ?? ''}|${shown}`
 
   const openDrawer = useCallback((key: string) => setDrawer(key), [])
-  const total = articles.length
+  const total = volledig || !start ? articles.length : start.totaal
   const active = DRAWERS.find(d => d.key === drawer)!
   const description = drawerDescription(drawer)
 
@@ -295,7 +318,7 @@ export default function NieuwsArchief({ initialTopic }: {
               )}
             </div>
             <p className="pl-label" aria-live="polite">
-              {matched.length === total ? `${total} platen` : `${matched.length} van ${total} platen`}
+              {aantal === total ? `${total} platen` : `${aantal} van ${total} platen`}
             </p>
           </div>
 
@@ -386,7 +409,7 @@ export default function NieuwsArchief({ initialTopic }: {
                     )}
                 </div>
                 <p className="pl-label pl-num" style={{ letterSpacing: '0.12em', whiteSpace: 'nowrap' }}>
-                  {matched.length} {matched.length === 1 ? 'plaat' : 'platen'}
+                  {aantal} {aantal === 1 ? 'plaat' : 'platen'}
                 </p>
               </header>
 
@@ -443,20 +466,20 @@ export default function NieuwsArchief({ initialTopic }: {
               {more && (
                 <footer className="pl-sheet__foot">
                   <button className="pl-btn" onClick={() => setShown(s => s + ROWS_PER_PAGE)}>
-                    Volgende {Math.min(ROWS_PER_PAGE, matched.length - shown)} platen
+                    Volgende {Math.min(ROWS_PER_PAGE, aantal - shown)} platen
                   </button>
                   <span className="pl-label pl-num" style={{ letterSpacing: '0.1em' }}>
-                    {rows.length} / {matched.length}
+                    {rows.length} / {aantal}
                   </span>
                   <div className="pl-meter" style={{ flex: 1, minWidth: 120, color: 'var(--pl-orbit)' }} aria-hidden="true">
-                    <i style={{ transform: `scaleX(${rows.length / matched.length})` }} />
+                    <i style={{ transform: `scaleX(${rows.length / aantal})` }} />
                   </div>
                 </footer>
               )}
 
               {!more && rows.length > 0 && (
                 <footer className="pl-sheet__foot">
-                  <span className="pl-label">Alle {matched.length} platen in deze lade geladen</span>
+                  <span className="pl-label">Alle {aantal} platen in deze lade geladen</span>
                 </footer>
               )}
             </div>

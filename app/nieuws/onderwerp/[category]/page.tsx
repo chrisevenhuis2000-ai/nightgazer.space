@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { TOPICS, getTopic } from '@/lib/topics'
 import { breadcrumbList, jsonLd } from '@/lib/structured-data'
 import NieuwsArchief from '../../NieuwsArchief'
+import { startset } from '@/lib/article-index'
 
 export function generateStaticParams() {
   return TOPICS.map(t => ({ category: t.slug }))
@@ -32,7 +33,7 @@ export default function TopicPage({ params }: { params: { category: string } }) 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(crumbs) }} />
-      <NieuwsArchief initialTopic={topic.slug} />
+      <NieuwsArchief initialTopic={topic.slug} start={startset(40, topic.slug)} />
     </>
   )
 }

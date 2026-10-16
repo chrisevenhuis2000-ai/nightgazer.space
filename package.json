@@ -17,7 +17,8 @@
     "test:apod": "node scripts/test-apod.js",
     "test:beeldhosts": "node scripts/test-beeldhosts.js",
     "test:nieuwsbot": "node scripts/test-nieuwsbot.js",
-    "test:verwijderd": "node scripts/test-verwijderd.js"
+    "test:verwijderd": "node scripts/test-verwijderd.js",
+    "test:statisch": "node scripts/test-nieuws-statisch.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",
