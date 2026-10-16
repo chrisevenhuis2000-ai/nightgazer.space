@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-15T13:19:09.104Z",
+    "lastUpdated": "2026-10-16T12:43:48.985Z",
     "autoUpdated": [
-      "bluebird-14-16-block-2-9-11"
+      "ussf-481"
     ]
   },
   "missions": [
@@ -3402,7 +3402,7 @@
         "low earth orbit"
       ],
       "_lastClaudeUpdate": "2026-10-03T12:50:48.363Z",
-      "launchPrecision": "Day"
+      "launchPrecision": "Hour"
     },
     {
       "id": "blacksky-gen-3-5",
@@ -4145,13 +4145,13 @@
       "name": "USSF-481",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "15 okt 2026",
       "launchPrecision": "Second",
       "objective": "Geclassificeerde lancering van een nuttige lading voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 15 okt 2026",
+      "highlight": "Gelanceerd op 15 okt 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
