@@ -67,7 +67,7 @@ export function quickMatches(a: Article, spec: { cat?: string; words?: string[] 
 export const FOOTER_COLS: FooterCol[] = [
   { title: 'Onderwerpen', links: [['James Webb', '/nieuws/onderwerp/james-webb'], ['Mars', '/nieuws/onderwerp/mars'], ['Maan', '/nieuws/onderwerp/maan'], ['Kosmologie', '/nieuws/onderwerp/kosmologie'], ['Sterrenkijken', '/sterrenkijken']] },
   { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies']] },
-  { title: 'Over ons', links: [['Redactie', '/over'], ['Contact', '/contact'], ['Privacy', '/privacy']] },
+  { title: 'Over ons', links: [['Redactie', '/over'], ['Contact', '/contact'], ['Privacy', '/privacy'], ['Voorwaarden', '/voorwaarden']] },
 ]
 
 export const LEVEL_WORD = { beg: 'Beginner', ama: 'Amateur', pro: 'Pro' } as const
