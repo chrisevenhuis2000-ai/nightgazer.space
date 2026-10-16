@@ -1,0 +1,93 @@
+<!doctype html>
+<!--
+  NightGazer — /koppel/
+  Landingsplek van de OAuth-terugkoppeling van TikTok en Instagram voor
+  nightgazer-social. De code staat in de adresbalk; deze pagina doet er
+  niets mee. Bewust een los HTML-bestand in public/ en geen Next-route: zo
+  komt er geen enkel script op (geen AdSense, geen analytics, geen Next-
+  runtime), en dus niets dat de URL leest of verstuurt.
+  Niet in de sitemap. Referrer-Policy en X-Robots-Tag staan ook in
+  public/_headers; de meta-tags hieronder zijn het vangnet.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0E1022">
+<title>Koppeling — NightGazer</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    background: #0E1022;
+    color: #EEF2FB;
+    font: 15px/1.7 Archivo, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #185FA5; color: #fff; }
+  .plate {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: #15182F;
+    border: 1px solid #272C50;
+  }
+  /* Hoekmerken: de registratiemarkeringen van een glasplaat. */
+  .plate::before, .plate::after {
+    content: '';
+    position: absolute;
+    width: 11px; height: 11px;
+    border: 1px solid #B5D4F4;
+    opacity: 0.5;
+  }
+  .plate::before { top: 7px; left: 7px; border-right: 0; border-bottom: 0; }
+  .plate::after  { bottom: 7px; right: 7px; border-left: 0; border-top: 0; }
+  .edge {
+    height: 9px;
+    background-image: repeating-linear-gradient(to right, #272C50 0 1px, transparent 1px 9px);
+  }
+  .head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    padding: 18px 28px 14px;
+    border-bottom: 1px solid #1E2240;
+  }
+  .label {
+    font-size: 0.72rem; font-weight: 600; line-height: 1;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #868EB4;
+  }
+  .stamp { color: #B5D4F4; font-family: ui-monospace, "JetBrains Mono", monospace; letter-spacing: 0.08em; }
+  .body { padding: 28px 28px 32px; }
+  .body img { display: block; height: 34px; width: auto; margin-bottom: 22px; }
+  p {
+    margin: 0;
+    font-size: clamp(1.15rem, 3.6vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+</style>
+</head>
+<body>
+<main class="plate">
+  <div class="edge" aria-hidden="true"></div>
+  <div class="head">
+    <span class="label">Koppeling</span>
+    <span class="label stamp">NG-KOPPEL</span>
+  </div>
+  <div class="body">
+    <img src="/logo-transparent.png" alt="NightGazer">
+    <p>Kopieer de volledige adresbalk en plak hem in de terminal.</p>
+  </div>
+</main>
+</body>
+</html>

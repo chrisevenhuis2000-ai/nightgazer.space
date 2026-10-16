@@ -1,0 +1,8 @@
+# Cloudflare Pages — headers per pad.
+# /koppel/ ontvangt de OAuth-code van TikTok en Instagram in de URL. Die mag
+# via geen enkele Referer-header weglekken, niet in een zoekmachine belanden
+# en niet in een cache blijven hangen.
+/koppel/*
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
