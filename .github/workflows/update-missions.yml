@@ -4,11 +4,51 @@ on:
   schedule:
     # 07:43 UTC dagelijks — na fetch-articles (07:17 UTC). Niet op het hele
     # uur: GitHub vertraagt geplande runs op :00 het sterkst.
+    # Sinds oktober 2026 start de Cloudflare Worker deze workflow om 07:43
+    # UTC zelf (cf-worker/workflows.mjs). Deze schedule blijft als vangnet.
     - cron: '43 7 * * *'
   workflow_dispatch:
+    inputs:
+      bron:
+        description: 'Wie start de run? De Worker zet hier "worker"; handmatig draait altijd.'
+        required: false
+        default: 'handmatig'
 
 jobs:
+  # Vangnet tegen dubbel werk: een geplande run (of de Worker) stopt meteen
+  # als er vandaag (UTC) al een geslaagde run van deze workflow was. Een
+  # handmatige run uit GitHub draait altijd.
+  vandaag:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    outputs:
+      al_gedaan: ${{ steps.check.outputs.al_gedaan }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRON: ${{ github.event_name == 'schedule' && 'schedule' || inputs.bron }}
+        run: |
+          if [ "$BRON" = "handmatig" ]; then
+            echo "al_gedaan=false" >> "$GITHUB_OUTPUT"
+            echo "Handmatige run: draait altijd."
+            exit 0
+          fi
+          vandaag=$(date -u +%Y-%m-%d)
+          n=$(gh api -X GET "repos/${{ github.repository }}/actions/workflows/update-missions.yml/runs" \
+                -f status=success -f created=">=${vandaag}" --jq '.total_count')
+          if [ "${n:-0}" -gt 0 ]; then
+            echo "al_gedaan=true" >> "$GITHUB_OUTPUT"
+            echo "Vandaag al ${n} geslaagde run(s); deze ($BRON) slaat over." | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "al_gedaan=false" >> "$GITHUB_OUTPUT"
+            echo "Vandaag nog geen geslaagde run; deze ($BRON) draait."
+          fi
+
   update-missions:
+    needs: vandaag
+    if: needs.vandaag.outputs.al_gedaan != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
