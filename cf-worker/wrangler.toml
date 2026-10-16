@@ -8,11 +8,14 @@ account_id = "81e3376cdf10af6f23d939f91c4d920c"
 # [env.production]
 # routes = [{ pattern = "api.nightgazer.space", custom_domain = true }]
 
-# ── Pushmeldingen ─────────────────────────────────────────────────────────
-# De cron draait ook zonder de KV hieronder: de handler stopt dan meteen.
-# Zo blijft `wrangler deploy` werken tot de rest is ingericht.
+# ── Crons ─────────────────────────────────────────────────────────────────
+# */15: pushmeldingen. Draait ook zonder de KV hieronder: de handler stopt
+# dan meteen. Zo blijft `wrangler deploy` werken tot de rest is ingericht.
+# 17 7 en 43 7 (UTC): fetch-articles en update-missions starten via de
+# GitHub API (cf-worker/workflows.mjs; secret GITHUB_DISPATCH_TOKEN). Moeten
+# precies gelijk zijn aan WORKFLOW_CRONS daar.
 [triggers]
-crons = ["*/15 * * * *"]
+crons = ["*/15 * * * *", "17 7 * * *", "43 7 * * *"]
 
 # De opslag voor pushabonnementen. Aangemaakt op 26-09-2026 via
 # .github/workflows/setup-push.yml; de VAPID-sleutels staan als secret op de

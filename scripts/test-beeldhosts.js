@@ -98,7 +98,7 @@ const ROOT = path.join(__dirname, '..')
 
   // ── 3. De route in worker.js ───────────────────────────────────────────
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'beeldhosts-worker-'))
-  for (const f of ['apod.mjs', 'beeldhosts.mjs']) fs.copyFileSync(path.join(ROOT, 'cf-worker', f), path.join(dir, f))
+  for (const f of fs.readdirSync(path.join(__dirname, '..', 'cf-worker')).filter(f => f.endsWith('.mjs'))) fs.copyFileSync(path.join(ROOT, 'cf-worker', f), path.join(dir, f))
   fs.copyFileSync(path.join(ROOT, 'cf-worker', 'worker.js'), path.join(dir, 'worker.mjs'))
   const worker = (await import(path.join(dir, 'worker.mjs'))).default
   const store = new Map(); let cacheVragen = 0

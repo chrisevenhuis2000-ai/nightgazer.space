@@ -1,5 +1,6 @@
 import { APOD_FEED, parseFeed, bouwApod, apodDatum } from './apod.mjs'
 import { magBeeld } from './beeldhosts.mjs'
+import { WORKFLOW_CRONS, startWorkflow } from './workflows.mjs'
 
 const ALLOWED_ORIGINS = [
   'https://nightgazer.space',
@@ -646,6 +647,14 @@ export default {
 
   // ── Cron: wie moet er een melding krijgen? ──────────────────────────────
   async scheduled(event, env, ctx) {
+    // 07:17 en 07:43 UTC: de GitHub-workflows starten (cf-worker/workflows.mjs).
+    // Die crons zijn alleen daarvoor; de pushmeldingen lopen op */15.
+    const workflow = WORKFLOW_CRONS[event.cron]
+    if (workflow) {
+      ctx.waitUntil(startWorkflow(env, workflow))
+      return
+    }
+
     if (!env.SUBS || !env.VAPID_PUBLIC_KEY || !env.VAPID_PRIVATE_KEY) return
 
     const nu = Date.now()
