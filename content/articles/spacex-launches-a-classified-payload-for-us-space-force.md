@@ -4,13 +4,13 @@ excerpt: "Een Falcon 9-raket van SpaceX heeft donderdagavond vanaf Vandenberg Sp
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-16T07:49:40.154Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/15/live-coverage-spacex-to-launch-classified-payload-for-u-s-space-force/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/NHQ202409270003/NHQ202409270003~medium.jpg"
+imageAlt: "SpaceX lanceert geheime lading voor de Amerikaanse Space Force"
+imageCredit: "NASA/Keegan Barber / HQ"
 ---
 
 Terwijl het trompetsignaal en het Amerikaanse volkslied over Vandenberg Space Force Base klonken, is donderdagavond een Falcon 9-raket van SpaceX gelanceerd met een geheime lading voor de United States Space Force. De missie draagt de aanduiding USSF-481.

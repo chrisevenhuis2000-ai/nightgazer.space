@@ -4,13 +4,13 @@ excerpt: "Een Falcon 9-raket van SpaceX heeft dinsdagochtend bij zonsopkomst de 
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-16T07:50:00.906Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/13/spacex-launches-nasa-science-and-cargo-to-the-international-space-station/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20240223-PH-SPX01_0001/KSC-20240223-PH-SPX01_0001~medium.jpg"
+imageAlt: "SpaceX lanceert wetenschap en vracht voor NASA naar het International Space Station"
+imageCredit: "SpaceX / KSC"
 ---
 
 Onder de zachte gloed van de opkomende zon is dinsdagochtend een Falcon 9-raket van SpaceX vertrokken vanaf lanceerplatform 40 op Cape Canaveral Space Force Station. De lancering vond plaats om 6.33 uur lokale tijd (10.33 uur UTC) en markeerde het begin van een vrachtvlucht naar het International Space Station (ISS). De missie, de 35e in het kader van NASA's Commercial Resupply Services (CRS-35), vervoert meer dan 6.300 pond (ruim 2.850 kilogram) aan wetenschappelijke apparatuur en voorraden. Donderdagochtend moet het ruimtevaartuig aanmeren aan de naar de ruimte gerichte poort van de Harmony-module.

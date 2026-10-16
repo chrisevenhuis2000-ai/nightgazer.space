@@ -4,13 +4,13 @@ excerpt: "SpaceX en NASA lanceren dinsdagochtend de CRS-35-bevoorradingsmissie n
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-16T07:50:22.698Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/13/live-coverage-nasa-spacex-to-launch-new-solar-arrays-6300-pounds-of-cargo-to-the-space-station/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20240223-PH-SPX01_0005/KSC-20240223-PH-SPX01_0005~medium.jpg"
+imageAlt: "Vooruitblik: NASA en SpaceX lanceren nieuwe zonnepanelen en ruim 2800 kilo vracht naar het ISS"
+imageCredit: "SpaceX / KSC"
 ---
 
 SpaceX en NASA maken zich op voor een nieuwe bevoorradingsvlucht naar het Internationale Ruimtestation (ISS). De lancering staat gepland voor dinsdagochtend, nog voor zonsopgang, en wordt de 35e missie van SpaceX naar het ruimtestation binnen NASA's Commercial Resupply Services-contract (CRS). Onder dat contract verzorgen commerciële bedrijven het vrachtvervoer naar het ISS. In totaal gaat er zo'n 6300 pond aan vracht mee, omgerekend ruim 2800 kilo.
