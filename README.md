@@ -51,7 +51,7 @@ PRODUCT.md / DESIGN.md  productbrief en designsysteem van de redesign
 
 | Workflow | Wanneer | Wat |
 |---|---|---|
-| `fetch-articles.yml` | dagelijks 07:17 UTC | RSS → volledige brontekst → Claude (structured output) → `content/articles/`, daarna image-backfill. Geen geldige Nederlandse herschrijving (≥ 250 woorden, vertaalde titel) = niet publiceren; de run-samenvatting meldt `Claude-aanroepen` en gepubliceerd / overgeslagen |
+| `fetch-articles.yml` | dagelijks 07:17 UTC | RSS → volledige brontekst → Claude (structured output) → `content/articles/`, daarna image-backfill. Geen geldige Nederlandse herschrijving (≥ 250 woorden, vertaalde titel) = niet publiceren. Niet relevant (evenementen, vacatures, kantoor- en financieringsnieuws, aardobservatie zonder ruimtevaart) = ook niet; zulke items staan in `content/articles/.niet-relevant.json` en worden niet opnieuw beoordeeld. De run-samenvatting meldt `Claude-aanroepen` en gepubliceerd / overgeslagen |
 | `update-missions.yml` | dagelijks 07:43 UTC | missiedata bijwerken → `content/missions.json`; highlight van een lancering altijd uit een vast sjabloon (status, datum, voertuig), van een missie bij een statuswijziging; Claude-tekst bij een nieuwe missie, en voor soort `missie` bij actief worden en elke 30 dagen. `"_herverrijk": true` op een actieve missie stuurt hem bij de volgende run opnieuw door die route. De run-samenvatting meldt `Claude-aanroepen: N` |
 | `deploy.yml` | elke push naar main | Cloudflare Worker deployen |
 | `setup-push.yml` | eenmalig | KV-namespace + VAPID-sleutels voor push |

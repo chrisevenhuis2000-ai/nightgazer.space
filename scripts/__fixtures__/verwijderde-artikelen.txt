@@ -687,3 +687,7 @@ world-cup-fever-in-guadalajara
 world-space-week-2026-celebrates-the-rocket-revolution
 xmm-newton-helps-revise-distance-to-outer-spiral-arms
 zenno-astronautics-to-relocate-to-the-united-states
+# 16 oktober 2026, niet relevant (PR feat/nieuws-relevantiefilter):
+agile-space-industries-expands-to-seattle-area-with-new-bell
+isaias-dims-the-gulf-coast
+oct-29-applying-ai-to-the-geoint-mission
