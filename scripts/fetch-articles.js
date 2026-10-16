@@ -221,6 +221,18 @@ async function main(opts = {}) {
     console.log(`::warning title=Niet gepubliceerd::${melding(titel)} — ${melding(reden)}`)
   }
 
+  // Niet-relevante items (slug → titel, reden, datum). Staat in de
+  // artikelmap, zodat de workflow hem met de artikelen meecommit; alleen
+  // .md-bestanden daar worden artikelen.
+  const nietRelevantPad = opts.nietRelevantPad || path.join(articlesDir, '.niet-relevant.json')
+  let nietRelevant = {}
+  try { nietRelevant = JSON.parse(fs.readFileSync(nietRelevantPad, 'utf-8')) || {} } catch { /* nog geen lijst */ }
+  const onthoudNietRelevant = (slug, titel, reden) => {
+    nietRelevant[slug] = { titel, reden, datum: now().toISOString().slice(0, 10) }
+    const gesorteerd = Object.fromEntries(Object.entries(nietRelevant).sort(([a], [b]) => a.localeCompare(b)))
+    fs.writeFileSync(nietRelevantPad, JSON.stringify(gesorteerd, null, 2) + '\n')
+  }
+
   if (!heeftSleutel) console.log('::warning title=Geen ANTHROPIC_API_KEY::zonder sleutel wordt er niets gepubliceerd (geen ruwe RSS-tekst meer)')
 
   for (const feed of feeds) {
@@ -247,7 +259,21 @@ async function main(opts = {}) {
         continue
       }
 
+      // Eerder als niet relevant beoordeeld: niet elke dag opnieuw laten
+      // beoordelen (kost een aanroep, en een ander oordeel zou het alsnog
+      // publiceren).
+      if (nietRelevant[slug]) {
+        console.log(`  ⏭  Eerder niet relevant: ${title} (${nietRelevant[slug].reden})`)
+        continue
+      }
+
       console.log(`  ✍  Processing: ${title}`)
+      const vooraf = N.voorfilter(title)
+      if (vooraf) {
+        sla(title, `niet relevant: ${vooraf} (geen Claude-aanroep)`)
+        onthoudNietRelevant(slug, title, vooraf)
+        continue
+      }
       if (!client) { sla(title, 'geen ANTHROPIC_API_KEY'); continue }
 
       const bron = await N.brontekst(item, feed.url, opts.fetchPagina)
@@ -261,7 +287,11 @@ async function main(opts = {}) {
         opts.extractImage ? opts.extractImage(item, title, feed.source) : extractImage(item, title, feed.source),
       ])
       if (r.aanroep) stats.aanroepen++
-      if (!r.ok) { sla(title, r.reden); continue }
+      if (!r.ok) {
+        sla(title, r.reden)
+        if (r.nietRelevant) onthoudNietRelevant(slug, title, r.reden.replace(/^niet relevant: /, ''))
+        continue
+      }
 
       const category = guessCategory(title, feed.category)
       const frontmatter = `---

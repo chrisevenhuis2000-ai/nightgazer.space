@@ -14,6 +14,11 @@
 //     stop_reason moet end_turn zijn;
 //   - uitvoer gevalideerd: Nederlands, titel vertaald, body ≥ 250 woorden,
 //     geen "appeared first on".
+//
+// En: alleen wat past bij een site voor Nederlandse sterrenkijkers en
+// ruimtevaartliefhebbers. voorfilter() slaat evenementen, vacatures,
+// kantoornieuws en financieringsrondes op de titel over (zonder aanroep);
+// Claude geeft daarna zelf een relevantie-oordeel (relevant + reden).
 // Alles hier is te testen zonder netwerk: scripts/test-nieuwsbot.js.
 
 const Anthropic = require('@anthropic-ai/sdk')
@@ -26,11 +31,13 @@ const MAX_TEKENS_BRON = 30000
 const SCHEMA = {
   type: 'object',
   properties: {
+    relevant:   { type: 'boolean', description: 'Past dit bericht bij NightGazer (astronomie en ruimtevaart voor Nederlandse sterrenkijkers)?' },
+    relevantie: { type: 'string', description: 'Eén korte zin waarom wel of niet relevant' },
     title:   { type: 'string', description: 'Nederlandse titel, vertaald (geen Engelse titel)' },
     excerpt: { type: 'string', description: 'Nederlandse samenvatting in 2-3 zinnen' },
     body:    { type: 'string', description: 'Het volledige artikel in het Nederlands, alinea’s gescheiden door een lege regel' },
   },
-  required: ['title', 'excerpt', 'body'],
+  required: ['relevant', 'relevantie', 'title', 'excerpt', 'body'],
   additionalProperties: false,
 }
 
@@ -40,7 +47,28 @@ const SYSTEM = [
   'Gebruik alleen feiten uit de brontekst. Verzin geen cijfers, namen, citaten of gebeurtenissen. Leg vaktermen kort uit als dat helpt.',
   'Laat reclame, nieuwsbriefoproepen, "The post … appeared first on …" en andere sitezinnen uit de bron weg.',
   'Schrijf alles in het Nederlands; Engelse eigennamen (missies, bedrijven, instrumenten) mogen blijven.',
+  'Beoordeel eerst of het bericht relevant is voor NightGazer: astronomie en ruimtevaart voor Nederlandse sterrenkijkers en ruimtevaartliefhebbers.',
+  'Relevant: ontdekkingen, sterrenkunde, ruimtemissies, lanceringen, ruimtevaartuigen, astronauten, ruimtetelescopen, hemelverschijnselen, ruimtevaartbeleid met gevolgen voor missies.',
+  'Niet relevant: aankondigingen van webinars, conferenties of andere evenementen; vacatures; kantoor- of vestigingsnieuws; financieringsrondes, beursnieuws en ander zuiver bedrijfsnieuws; aardobservatie over weer, orkanen, branden, overstromingen of landbouw, tenzij het over de ruimtevaart zelf gaat (een nieuwe satelliet, instrument of missie).',
+  'Niet relevant: zet relevant op false, geef de reden in relevantie en laat title, excerpt en body leeg. Relevant: zet relevant op true en schrijf het artikel.',
 ].join(' ')
+
+// ── Relevantie vóór de aanroep ────────────────────────────────────────────
+// Alleen overduidelijke gevallen op de titel; de rest beoordeelt Claude.
+const MAAND = '(?:Jan|Feb|Mar|Apr|May|June?|July?|Aug|Sept?|Oct|Nov|Dec)[a-z]*\\.?'
+const VOORFILTER = [
+  [new RegExp(`^${MAAND}\\s+\\d{1,2}(?:\\s*[-–]\\s*\\d{1,2})?\\s*:`, 'i'), 'evenementaankondiging'],
+  [/\b(webinar|livestream event|virtual event|register (now|today|here)|call for (papers|abstracts))\b/i, 'evenementaankondiging'],
+  [/\b(is hiring|now hiring|job (opening|posting)s?|careers? at)\b/i, 'vacature'],
+  [/\b(new|opens?|opening)\b[\w\s,'’-]{0,40}\b(office|headquarters|HQ)\b/i, 'kantoornieuws'],
+  [/\b(raises?|raised|secures?|closes?|closed|lands?)\b[^.]{0,40}\$\s?\d|\b(series [a-e]|seed|funding|investment) round\b/i, 'financieringsronde'],
+]
+
+/** Overduidelijk niet-relevant op de titel → reden, anders null. */
+function voorfilter(titel) {
+  for (const [re, reden] of VOORFILTER) if (re.test(String(titel || ''))) return reden
+  return null
+}
 
 // ── Tekst ─────────────────────────────────────────────────────────────────
 const ENTITEITEN = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', hellip: '…', ndash: '–', mdash: '—', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“' }
@@ -162,6 +190,11 @@ async function herschrijf(client, { titel, tekst, bron }) {
   const tekstUit = (res.content || []).filter(b => b.type === 'text').map(b => b.text).join('')
   let data
   try { data = JSON.parse(tekstUit) } catch { return { ok: false, aanroep: true, reden: 'antwoord is geen geldige JSON' } }
+  if (!data || typeof data.relevant !== 'boolean') return { ok: false, aanroep: true, reden: 'antwoord zonder relevantie-oordeel' }
+  if (!data.relevant) {
+    const waarom = String(data.relevantie || '').trim().replace(/\s+/g, ' ').slice(0, 200) || 'geen reden gegeven'
+    return { ok: false, aanroep: true, nietRelevant: true, reden: `niet relevant: ${waarom}` }
+  }
   const v = valideer(data, titel)
   if (!v.ok) return { ok: false, aanroep: true, reden: v.reden }
   return { ok: true, aanroep: true, data: { title: data.title.trim(), excerpt: data.excerpt.trim(), body: data.body.trim() } }
@@ -169,6 +202,6 @@ async function herschrijf(client, { titel, tekst, bron }) {
 
 module.exports = {
   MODEL, MIN_WOORDEN_BODY, MIN_WOORDEN_BRON, SCHEMA, SYSTEM,
-  brontekstUitHtml, schoonFeedtekst, woorden, taal, isNederlands, valideer,
+  brontekstUitHtml, schoonFeedtekst, woorden, taal, isNederlands, valideer, voorfilter,
   zelfdeBron, brontekst, maakClient, herschrijf,
 }

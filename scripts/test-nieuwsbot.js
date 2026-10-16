@@ -10,6 +10,10 @@
 //      krijgt een ::warning:: en geen bestand; de samenvatting meldt
 //      "Claude-aanroepen: N" en gepubliceerd / overgeslagen; een tweede run
 //      probeert de overgeslagen items opnieuw; zonder sleutel niets.
+//   5. Relevantie: voorfilter() op de titel (evenement, kantoor, vacature,
+//      financiering) zonder aanroep, Claude's oordeel (relevant false + reden)
+//      → niet publiceren, reden in de samenvatting, en onthouden zodat een
+//      volgende run het niet opnieuw beoordeelt.
 
 const fs = require('fs')
 const os = require('os')
@@ -36,7 +40,7 @@ const NL_ZINNEN = [
 const nlTekst = n => { const uit = []; let i = 0; while (uit.join(' ').split(/\s+/).length < n) uit.push(NL_ZINNEN[i++ % NL_ZINNEN.length]); return uit.join(' ') }
 const EN_ZIN = 'The spacecraft has sent its first measurements back to Earth this week, and according to the team they are of excellent quality and will be used for years.'
 const enTekst = n => { const uit = []; while (uit.join(' ').split(/\s+/).length < n) uit.push(EN_ZIN); return uit.join(' ') }
-const goedAntwoord = titel => ({ title: `Nederlandse titel bij ${titel.split(' ')[0]}`, excerpt: 'De sonde heeft de eerste metingen naar de aarde gestuurd. Die zijn volgens het team van goede kwaliteit.', body: nlTekst(320) })
+const goedAntwoord = titel => ({ relevant: true, relevantie: 'Gaat over een ruimtemissie.', title: `Nederlandse titel bij ${titel.split(' ')[0]}`, excerpt: 'De sonde heeft de eerste metingen naar de aarde gestuurd. Die zijn volgens het team van goede kwaliteit.', body: nlTekst(320) })
 
 // ── Nep-Claude ────────────────────────────────────────────────────────────
 // Het gedrag hangt af van een woord in de oorspronkelijke titel.
@@ -54,9 +58,11 @@ const server = http.createServer((req, res) => {
     if (/AFGEKAPT/.test(titel)) return bericht('max_tokens', JSON.stringify(goedAntwoord(titel)).slice(0, 300))
     if (/WEIGERING/.test(titel)) return bericht('refusal', '', { stop_details: { type: 'refusal', category: 'cyber' } })
     if (/KAPOTJSON/.test(titel)) return bericht('end_turn', 'Hier is het artikel: {title: ')
-    if (/ENGELS/.test(titel)) return bericht('end_turn', JSON.stringify({ title: 'The new probe sends its first data', excerpt: 'The probe has sent its first data.', body: enTekst(320) }))
+    if (/ENGELS/.test(titel)) return bericht('end_turn', JSON.stringify({ relevant: true, relevantie: 'x', title: 'The new probe sends its first data', excerpt: 'The probe has sent its first data.', body: enTekst(320) }))
     if (/KORT/.test(titel)) return bericht('end_turn', JSON.stringify({ ...goedAntwoord(titel), body: nlTekst(80) }))
     if (/SNIPPER/.test(titel)) return bericht('end_turn', JSON.stringify({ ...goedAntwoord(titel), body: nlTekst(300) + '\n\nThe post Probe launches appeared first on SpaceNews.' }))
+    if (/ORKAAN/.test(titel)) return bericht('end_turn', JSON.stringify({ relevant: false, relevantie: 'Gaat over een orkaan op aarde, niet over ruimtevaart.', title: '', excerpt: '', body: '' }))
+    if (/GEENOORDEEL/.test(titel)) { const { relevant, relevantie, ...rest } = goedAntwoord(titel); return bericht('end_turn', JSON.stringify(rest)) }
     if (/TITEL/.test(titel)) return bericht('end_turn', JSON.stringify({ ...goedAntwoord(titel), title: titel }))
     return bericht('end_turn', JSON.stringify(goedAntwoord(titel)))
   })
@@ -86,7 +92,9 @@ const server = http.createServer((req, res) => {
   eq(laatste.body.model, 'claude-opus-5-5', 'request: model')
   ok(laatste.body.max_tokens >= 8000, `request: ruime max_tokens (${laatste.body.max_tokens})`)
   eq(laatste.body.output_config?.format?.type, 'json_schema', 'request: structured output (json_schema)')
-  eq(laatste.body.output_config.format.schema.required, ['title', 'excerpt', 'body'], 'request: schema met title/excerpt/body')
+  eq(laatste.body.output_config.format.schema.required, ['relevant', 'relevantie', 'title', 'excerpt', 'body'], 'request: schema met relevantie-oordeel en title/excerpt/body')
+  eq(laatste.body.output_config.format.schema.properties.relevant.type, 'boolean', 'request: relevant is een boolean')
+  ok(/webinar/i.test(laatste.body.system) && /vacature/i.test(laatste.body.system) && /aardobservatie/i.test(laatste.body.system), 'request: relevantiecriteria in de systeemprompt')
   eq(laatste.body.fallbacks, 'default', 'request: fallbacks default')
   ok(/server-side-fallback-2026-07-01/.test(laatste.beta || ''), 'request: beta-header voor fallbacks')
   ok(laatste.body.messages[0].content.includes(tekst.slice(0, 200)), 'request: brontekst mee')
@@ -101,6 +109,8 @@ const server = http.createServer((req, res) => {
     ['TITEL probe sends data', /^titel niet vertaald$/],
     ['KAPOTJSON probe', /^antwoord is geen geldige JSON$/],
     ['WEIGERING probe', /^stop_reason refusal \(cyber\)$/],
+    ['GEENOORDEEL probe', /^antwoord zonder relevantie-oordeel$/],
+    ['Isaias ORKAAN dims the Gulf Coast', /^niet relevant: Gaat over een orkaan op aarde/],
   ]) {
     r = await geval(titel)
     ok(!r.ok && r.aanroep && verwacht.test(r.reden), `herschrijf: ${titel.split(' ')[0]} → niet publiceren (${r.reden})`)
@@ -165,6 +175,48 @@ const server = http.createServer((req, res) => {
   try { stats = await main({ ...opts, client: undefined, articlesDir: zonder, samenvattingPad: '' }) } finally { console.log = log0; if (sleutel !== undefined) process.env.ANTHROPIC_API_KEY = sleutel }
   eq([stats.gepubliceerd, fs.readdirSync(zonder).length], [0, 0], 'main zonder sleutel: niets gepubliceerd')
 
+  // ── 5. Relevantie ──────────────────────────────────────────────────────
+  for (const [titel, reden] of [
+    ['Oct. 29: Applying AI to the GEOINT Mission', 'evenementaankondiging'],
+    ['Nov. 5-6: SmallSat Europe summit', 'evenementaankondiging'],
+    ['Join our webinar on lunar logistics', 'evenementaankondiging'],
+    ['Agile Space Industries Expands to Seattle Area with New Bellevue Office', 'kantoornieuws'],
+    ['Rocket startup is hiring 200 engineers', 'vacature'],
+    ['Lunar lander startup raises $40 million', 'financieringsronde'],
+    ['Firefly closes Series C round', 'financieringsronde'],
+  ]) eq(N.voorfilter(titel), reden, `voorfilter: ${titel} → ${reden}`)
+  for (const titel of [
+    'Isaias Dims the Gulf Coast', 'SpaceX launches NASA science and cargo to the International Space Station',
+    'Mars moon lander set to launch on 19 October', 'APOD: 2026 October 16 – Chasing the International Space Station',
+    'ESA opens new ESTEC test facility', 'Webb opens a new window on exoplanet atmospheres', 'How NASA is thinking about a moon base',
+  ]) eq(N.voorfilter(titel), null, `voorfilter laat door: ${titel}`)
+
+  const rel = fs.mkdtempSync(path.join(os.tmpdir(), 'nieuwsbot-relevant-'))
+  const relItems = [item('Oct. 29: Applying AI to the GEOINT Mission'), item('Agile Space Industries Expands to Seattle Area with New Bellevue Office'), item('Isaias ORKAAN dims the Gulf Coast'), item('Probe GOED reaches orbit')]
+  const relOpts = { ...opts, articlesDir: rel, laadFeed: async f => f.source === 'SpaceNews' ? relItems.slice(0, 3) : relItems.slice(3) }
+  fs.writeFileSync(samenvatting, '')
+  const voor = aanvragen.length
+  logs.length = 0; console.log = (...a) => logs.push(a.join(' '))
+  try { stats = await main(relOpts) } finally { console.log = log0 }
+  eq(stats, { aanroepen: 2, gepubliceerd: 1, overgeslagen: 3 }, 'relevantie: evenement en kantoor zonder aanroep, orkaan na Claude-oordeel overgeslagen, ruimtenieuws gepubliceerd')
+  eq(aanvragen.length - voor, 2, 'relevantie: alleen orkaan en ruimtenieuws naar Claude')
+  eq(fs.readdirSync(rel).filter(f => f.endsWith('.md')), ['probe-goed-reaches-orbit.md'], 'relevantie: alleen het ruimtenieuws als artikel')
+  const svr = fs.readFileSync(samenvatting, 'utf-8')
+  ok(svr.includes('Oct. 29: Applying AI to the GEOINT Mission — niet relevant: evenementaankondiging (geen Claude-aanroep)'), 'relevantie: evenement met reden in de samenvatting')
+  ok(svr.includes('Agile Space Industries Expands to Seattle Area with New Bellevue Office — niet relevant: kantoornieuws'), 'relevantie: kantoornieuws met reden in de samenvatting')
+  ok(svr.includes('Isaias ORKAAN dims the Gulf Coast — niet relevant: Gaat over een orkaan op aarde'), 'relevantie: Claude-reden in de samenvatting')
+  const lijst = JSON.parse(fs.readFileSync(path.join(rel, '.niet-relevant.json'), 'utf-8'))
+  eq(Object.keys(lijst).sort(), ['agile-space-industries-expands-to-seattle-area-with-new-bell', 'isaias-orkaan-dims-the-gulf-coast', 'oct-29-applying-ai-to-the-geoint-mission'].sort(), 'relevantie: niet-relevante items onthouden')
+  eq(lijst['isaias-orkaan-dims-the-gulf-coast'].datum, '2026-10-16', 'relevantie: met datum')
+
+  // Volgende run: niet opnieuw beoordeeld, geen aanroep, geen ::warning::.
+  const voor2 = aanvragen.length
+  logs.length = 0; console.log = (...a) => logs.push(a.join(' '))
+  try { stats = await main(relOpts) } finally { console.log = log0 }
+  eq([stats, aanvragen.length - voor2], [{ aanroepen: 0, gepubliceerd: 0, overgeslagen: 0 }, 0], 'relevantie run 2: niets opnieuw beoordeeld')
+  ok(logs.filter(l => /Eerder niet relevant/.test(l)).length === 3, 'relevantie run 2: drie keer "Eerder niet relevant"')
+
+  fs.rmSync(rel, { recursive: true, force: true })
   fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(zonder, { recursive: true, force: true }); fs.rmSync(samenvatting, { force: true })
   server.close()
   console.log(`✅ ${checks} nieuwsbot-controles geslaagd`)
