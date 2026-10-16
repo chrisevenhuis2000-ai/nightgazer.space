@@ -9,7 +9,7 @@ Live: https://nightgazer.space
 - **Dagelijks nieuws, automatisch.** GitHub Actions haalt elke ochtend RSS op (NASA, ESA, JPL, SpaceflightNow, SpaceNews, Planetary Society). Claude herschrijft de artikelen in het Nederlands op drie niveaus: Beginner, Amateur en Pro.
 - **Live waarneemtools.** ISS-tracker, lanceringen en missies, donkere-hemelkaart, noorderlichtalert, NASA APOD en een dagelijkse quiz.
 - **Pushmeldingen** voor heldere nachten, noorderlicht, ISS-overkomsten en lanceringen.
-- **AdSense** met GDPR-toestemming.
+- **AdSense** met toestemming via de Google CMP (AdSense → Privacy en berichten, IAB TCF); GA4 via Consent Mode v2 en pas na toestemming geladen (`lib/adsense.ts`).
 
 ## Stack
 
@@ -38,7 +38,7 @@ app/                    Next.js routes
   missies/              lanceermanifest + [slug]
   sterrenkijken/        belichtingstabel, kaart, ISS, noorderlicht, maankalender
   educatie/  tools/herschrijver/  en/  over/  contact/  privacy/
-  components/           SiteNav, SiteFooter, AdUnit, CookieBanner, Search…
+  components/           SiteNav, SiteFooter, AdUnit, PrivacyInstellingen, Search…
 lib/                    data en logica (iss, aurora, sky-chart, missions, push, ics…)
 content/articles/       markdown-artikelen (door de bot geschreven)
 content/missions.json   missiedata (door de bot bijgewerkt)

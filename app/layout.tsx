@@ -3,8 +3,7 @@ import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import ErrorBoundary from './ErrorBoundary'
 import SearchProvider from './components/SearchProvider'
-import { CookieBanner } from './components/CookieBanner'
-import { AdSenseScript } from './components/AdSenseScript'
+import { ADSENSE_CLIENT, CONSENT_SCRIPT } from '@/lib/adsense'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,6 +44,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl">
       <head>
+        {/* Eerst Consent Mode (alles 'denied') en de brug naar de TCF-toestemming
+            van de Google CMP; daarna adsbygoogle.js, dat de CMP meebrengt.
+            Zie lib/adsense.ts. */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_SCRIPT }} />
+        <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cosmosnl-proxy.chrisevenhuis2000.workers.dev" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cosmosnl-proxy.chrisevenhuis2000.workers.dev" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -56,8 +61,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </ErrorBoundary>
         <SearchProvider />
-        <CookieBanner />
-        <AdSenseScript />
       </body>
     </html>
   )

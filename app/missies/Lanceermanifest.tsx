@@ -12,6 +12,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
+import { SLOT_MISSIES } from '@/lib/adsense'
 import { MISSIONS, type MissionDetail } from '@/lib/missions-data'
 import {
   buildSchedule, monthWindows, assignLanes, agencyCounts, destinationGroup,
@@ -19,7 +20,7 @@ import {
 } from '@/lib/mission-schedule'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, editionLabel,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel,
   useMissionImages, img,
 } from '@/app/_plate/shared'
 
@@ -684,6 +685,10 @@ export default function Lanceermanifest() {
             </div>
           </section>
         )}
+
+        <div className="pl-wrap">
+          <AdPlate slot={SLOT_MISSIES} />
+        </div>
       </main>
 
       <SiteFooter
