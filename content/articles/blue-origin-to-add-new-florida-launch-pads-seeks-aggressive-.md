@@ -4,13 +4,13 @@ excerpt: "Blue Origin gaat extra lanceerplatforms aan de Space Coast van Florida
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-17T11:37:49.205Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/16/blue-origin-to-add-new-florida-launch-pads-seeks-aggressive-increase-in-new-glenn-flight-rate/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20180220-PH_KLS03_0072/KSC-20180220-PH_KLS03_0072~medium.jpg"
+imageAlt: "Blue Origin bouwt nieuwe lanceerplatforms in Florida en wil New Glenn veel vaker laten vliegen"
+imageCredit: "NASA/Kim Shiflett / KSC"
 ---
 
 Blue Origin gaat nieuwe lanceerplatforms bouwen aan de Space Coast in Florida. Daarmee wil het ruimtevaartbedrijf van Jeff Bezos het aantal lanceringen van zijn New Glenn-raket sterk verhogen. De aankondiging komt terwijl het bedrijf nog herstelt van een catastrofale explosie tijdens een statische testontsteking in mei, een test waarbij de motoren worden ontstoken terwijl de raket aan de grond vastzit.
