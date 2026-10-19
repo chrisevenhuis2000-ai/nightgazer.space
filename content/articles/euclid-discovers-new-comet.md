@@ -4,13 +4,13 @@ excerpt: "De Europese ruimtetelescoop Euclid heeft voor het eerst een tot dan to
 category: "kometen"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-19T14:41:25.032Z"
-featured: false
+featured: "false"
 tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/PIA25783/PIA25783~medium.jpg"
+imageAlt: "Euclid ontdekt nieuwe komeet"
+imageCredit: "JPL"
 ---
 
 De Euclid-ruimtetelescoop van de Europese ruimtevaartorganisatie ESA heeft zijn eerste nieuwe komeet ontdekt. Het object dook op in beelden die tussen 16 en 24 september 2026 werden gemaakt. Euclid had eerder al kometen vastgelegd, maar dat waren steeds bekende exemplaren. Het International Astronomical Union's Minor Planet Center (MPC) bevestigde op 8 oktober dat het om een komeet gaat, die nu de aanduiding C/2026 S1 (Euclid) draagt.

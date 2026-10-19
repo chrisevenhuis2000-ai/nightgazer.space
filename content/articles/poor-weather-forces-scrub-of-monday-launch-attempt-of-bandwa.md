@@ -4,13 +4,13 @@ excerpt: "SpaceX heeft de lanceerpoging van de Bandwagon-5-missie op maandag 19 
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-19T14:41:04.443Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/18/live-coverage-spacex-to-launch-starfall-reentry-capsule-31-customer-payloads-on-bandwagon-5-rideshare-mission/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-2014-2208/KSC-2014-2208~medium.jpg"
+imageAlt: "Slecht weer dwingt SpaceX lancering van Bandwagon-5 uit te stellen, nieuwe poging op dinsdag"
+imageCredit: "KSC"
 ---
 
 SpaceX heeft de geplande lancering van de Bandwagon-5-missie op maandag 19 oktober afgeblazen. Het weer in het gebied waar de eerste trap van de raket moest landen, was te slecht. Het bedrijf mikt nu op dinsdag 20 oktober voor een nieuwe poging vanaf Space Launch Complex 40 op Cape Canaveral Space Force Station in Florida. Het lanceervenster van een uur opent om 6.30 uur plaatselijke tijd (10.30 uur UTC), nog voor zonsopkomst. Na de start vliegt de raket in zuidoostelijke richting.
