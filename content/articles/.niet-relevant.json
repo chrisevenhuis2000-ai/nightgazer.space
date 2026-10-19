@@ -4,6 +4,11 @@
     "reden": "kantoornieuws (handmatig verwijderd)",
     "datum": "2026-10-16"
   },
+  "autumn-paints-polands-bieszczady-mountains": {
+    "titel": "Autumn Paints Poland’s Bieszczady Mountains",
+    "reden": "Dit is een aardobservatiebericht over herfstkleuren en natuur in een Pools nationaal park, zonder nieuws over de satelliet, het instrument of de missie zelf.",
+    "datum": "2026-10-19"
+  },
   "isaias-dims-the-gulf-coast": {
     "titel": "Isaias Dims the Gulf Coast",
     "reden": "aardobservatie van een orkaan, geen ruimtevaart (handmatig verwijderd)",
@@ -13,5 +18,10 @@
     "titel": "Oct. 29: Applying AI to the GEOINT Mission",
     "reden": "evenementaankondiging (handmatig verwijderd)",
     "datum": "2026-10-16"
+  },
+  "oct-29-applying-aisi-to-the-geoint-mission": {
+    "titel": "Oct. 29: Applying AI/SI to the GEOINT Mission",
+    "reden": "evenementaankondiging",
+    "datum": "2026-10-19"
   }
 }
