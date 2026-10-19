@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-16T12:43:48.985Z",
+    "lastUpdated": "2026-10-19T14:58:15.499Z",
     "autoUpdated": [
-      "ussf-481"
+      "starlink-group-15-18"
     ]
   },
   "missions": [
@@ -3848,10 +3848,10 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "19 okt 2026",
+      "launched": "20 okt 2026",
       "objective": "SpaceX lanceert tientallen micro- en nanosatellieten naar een mid-inclinatiebaan in een gedeelde vlucht.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 19 okt 2026",
+      "highlight": "Lancering gepland: 20 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5067,6 +5067,44 @@
         "spacex"
       ],
       "_lastClaudeUpdate": "2026-10-15T13:19:02.301Z"
+    },
+    {
+      "id": "starlink-group-15-18",
+      "_ll2Id": "57ce0a39-d035-4f16-a418-bd6108f78199",
+      "name": "Starlink Group 15-18",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "28 okt 2026",
+      "launchPrecision": "Minute",
+      "objective": "Uitbrengen van 27 Starlink-satellieten in een lage baan om de aarde.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 28 okt 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX plant de lancering van 27 satellieten voor de Starlink-megaconstelatie aan boord van een Falcon 9-raket. De missie, aangeduid als Starlink Group 15-18, is onderdeel van het Starlink-project voor internetcommunicatie vanuit de ruimte.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "28 okt 2026",
+          "event": "Geplande lancering van Starlink Group 15-18"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "starlink",
+        "falcon 9",
+        "low earth orbit",
+        "satellieten"
+      ],
+      "_lastClaudeUpdate": "2026-10-19T14:58:10.550Z"
     }
   ]
 }
