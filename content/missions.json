@@ -1,8 +1,10 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-19T14:58:15.499Z",
+    "lastUpdated": "2026-10-20T12:58:03.548Z",
     "autoUpdated": [
-      "starlink-group-15-18"
+      "bandwagon-5-dedicated-mid-inclination-rideshare",
+      "nrol-195",
+      "starlink-group-15-21"
     ]
   },
   "missions": [
@@ -3377,7 +3379,7 @@
       "bgTo": "#080810",
       "description": "Rocket Lab zet met een Electron-raket zes nieuwe satellieten van HawkEye 360 in een lage aardbaan. Het Hawk-cluster breidt een commercieel signalintelligentienetwerk uit dat radiofrequenties wereldwijd in kaart brengt. De data helpt overheden en bedrijven bij het monitoren van lucht-, land- en zeetransport, evenals bij noodsituaties. HawkEye 360 positioneert zich als toonaangevende leverancier van civiele SIGINT-data vanuit de ruimte.",
       "vehicle": "Electron",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1061/?format=json",
@@ -3402,7 +3404,7 @@
         "low earth orbit"
       ],
       "_lastClaudeUpdate": "2026-10-03T12:50:48.363Z",
-      "launchPrecision": "Hour"
+      "launchPrecision": "Minute"
     },
     {
       "id": "blacksky-gen-3-5",
@@ -3846,12 +3848,12 @@
       "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "actief",
       "soort": "lancering",
       "launched": "20 okt 2026",
       "objective": "SpaceX lanceert tientallen micro- en nanosatellieten naar een mid-inclinatiebaan in een gedeelde vlucht.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 20 okt 2026",
+      "highlight": "Gelanceerd op 20 okt 2026 — missie in bedrijf",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3881,7 +3883,7 @@
         "nanosatellieten"
       ],
       "_lastClaudeUpdate": "2026-09-21T14:40:01.408Z",
-      "launchPrecision": "Minute"
+      "launchPrecision": "Second"
     },
     {
       "id": "ussf-153",
@@ -4188,7 +4190,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "20 okt 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's satellietinternetnetwerk.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 20 okt 2026",
@@ -5105,6 +5107,82 @@
         "satellieten"
       ],
       "_lastClaudeUpdate": "2026-10-19T14:58:10.550Z"
+    },
+    {
+      "id": "nrol-195",
+      "_ll2Id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
+      "name": "NROL-195",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "5 nov 2026",
+      "launchPrecision": "Minute",
+      "objective": "Lancering van de vijftiende groep satellieten voor een verkenningsconstellatie van de NRO.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 5 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "NROL-195 is een SpaceX-missie naar een lage aardbaan met de vijftiende batch satellieten voor een verkenningsconstellatie die SpaceX en Northrop Grumman bouwen voor het National Reconnaissance Office. De constellatie is bedoeld voor beeldvorming en andere verkenningscapaciteiten. De lancering staat gepland voor 5 november 2026 met een Falcon 9-raket.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
+      "timeline": [
+        {
+          "date": "5 nov 2026",
+          "event": "Geplande lancering van NROL-195"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "nrol-195",
+        "spacex",
+        "falcon 9",
+        "national reconnaissance office",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-20T12:57:52.244Z"
+    },
+    {
+      "id": "starlink-group-15-21",
+      "_ll2Id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
+      "name": "Starlink Group 15-21",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "10 nov 2026",
+      "launchPrecision": "Day",
+      "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 10 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX plant de lancering van 27 satellieten voor de Starlink-megaconstellatie met een Falcon 9-raket. De satellieten maken deel uit van het Starlink-project voor internetcommunicatie vanuit de ruimte.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "timeline": [
+        {
+          "date": "10 nov 2026",
+          "event": "Geplande lancering van Starlink Group 15-21"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "starlink",
+        "falcon 9",
+        "low earth orbit",
+        "satellietinternet"
+      ],
+      "_lastClaudeUpdate": "2026-10-20T12:57:57.879Z"
     }
   ]
 }
