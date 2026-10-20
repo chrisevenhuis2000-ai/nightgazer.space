@@ -4,13 +4,13 @@ excerpt: "De Japanse ruimtesonde Martian Moons eXploration (MMX) is met een H3-r
 category: "mars"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-20T12:44:42.833Z"
-featured: false
+featured: "false"
 tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/ESA_Multimedia/Images/2026/10/MMX_lifts_off_to_Mars_s_moon_Phobos"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/PIA25419/PIA25419~medium.jpg"
+imageAlt: "MMX gelanceerd naar Marsmaan Phobos"
+imageCredit: "JPL"
 ---
 
 De Martian Moons eXploration-missie, kortweg MMX, is op weg naar Mars. De ruimtesonde werd gelanceerd met een H3-raket vanaf het Tanegashima Space Center in Japan, op 20 oktober 2026 om 04:41 uur Japanse tijd. In Nederland was het toen 19 oktober, 21:41 uur. Het Japanse ruimteagentschap JAXA zond de lancering live uit; beelden tonen hoe de raket in het donker opstijgt, met een strand op de voorgrond.

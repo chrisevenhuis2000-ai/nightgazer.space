@@ -4,13 +4,13 @@ excerpt: "SpaceX lanceert vanaf Cape Canaveral de rideshare-missie Bandwagon-5 m
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-20T12:44:26.453Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/18/live-coverage-spacex-to-launch-starfall-reentry-capsule-31-customer-payloads-on-bandwagon-5-rideshare-mission/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/NHQ20260213_admin_0009/NHQ20260213_admin_0009~large.jpg"
+imageAlt: "SpaceX lanceert Starfall-terugkeercapsule en 31 klantladingen met Bandwagon-5-missie"
+imageCredit: "NASA/John Kraus / KSC"
 ---
 
 SpaceX maakt zich op voor de lancering van Bandwagon-5, een zogeheten rideshare-missie waarbij meerdere klanten een raket delen. Een Falcon 9 brengt 32 ladingen in een baan om de aarde, waaronder de onbemande terugkeercapsule Starfall van SpaceX zelf. De lancering vindt plaats vanaf Space Launch Complex 40 op Cape Canaveral Space Force Station en staat gepland voor dinsdag 20 oktober om 7.04 uur lokale tijd (13.04 uur Nederlandse tijd). Een eerdere poging op maandag 19 oktober werd afgeblazen vanwege slecht weer in het gebied waar de eerste trap wordt geborgen.
