@@ -1,11 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-20T12:58:03.548Z",
-    "autoUpdated": [
-      "bandwagon-5-dedicated-mid-inclination-rideshare",
-      "nrol-195",
-      "starlink-group-15-21"
-    ]
+    "lastUpdated": "2026-10-21T13:13:11.672Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -3370,10 +3366,10 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "21 okt 2026",
+      "launched": "22 okt 2026",
       "objective": "Lancering van 6 HawkEye 360-satellieten voor wereldwijde radiofrequentiekartering vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 21 okt 2026",
+      "highlight": "Lancering gepland: 22 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4189,11 +4185,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "20 okt 2026",
+      "launched": "21 okt 2026",
       "launchPrecision": "Second",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's satellietinternetnetwerk.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 20 okt 2026",
+      "highlight": "Lancering gepland: 21 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
