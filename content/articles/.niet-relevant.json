@@ -9,6 +9,11 @@
     "reden": "Dit is een aardobservatiebericht over herfstkleuren en natuur in een Pools nationaal park, zonder nieuws over de satelliet, het instrument of de missie zelf.",
     "datum": "2026-10-19"
   },
+  "extratropical-cyclone-whips-past-iceland": {
+    "titel": "Extratropical Cyclone Whips Past Iceland",
+    "reden": "Dit is aardobservatie over een storm boven IJsland en gaat over het weer, niet over astronomie of ruimtevaart zelf.",
+    "datum": "2026-10-21"
+  },
   "isaias-dims-the-gulf-coast": {
     "titel": "Isaias Dims the Gulf Coast",
     "reden": "aardobservatie van een orkaan, geen ruimtevaart (handmatig verwijderd)",
@@ -23,6 +28,11 @@
     "titel": "Oct. 29: Applying AI/SI to the GEOINT Mission",
     "reden": "evenementaankondiging",
     "datum": "2026-10-19"
+  },
+  "summer-of-quantum-building-momentum-for-space-based-qkd": {
+    "titel": "Summer of Quantum: Building momentum for space-based QKD",
+    "reden": "Dit is een promotioneel bedrijfsbericht van Craft Prospect over deelname aan conferenties en een eigen productaanbod, zonder concreet nieuws over een missie, lancering of ontdekking.",
+    "datum": "2026-10-21"
   },
   "the-human-fingerprint-on-earths-water-cycle": {
     "titel": "The Human Fingerprint on Earth’s Water Cycle",
