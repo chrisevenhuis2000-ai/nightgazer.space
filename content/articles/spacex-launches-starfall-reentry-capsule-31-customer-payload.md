@@ -4,13 +4,13 @@ excerpt: "SpaceX heeft met een Falcon 9 de rideshare-missie Bandwagon-5 gelancee
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-21T12:56:57.913Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/18/live-coverage-spacex-to-launch-starfall-reentry-capsule-31-customer-payloads-on-bandwagon-5-rideshare-mission/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/NHQ202409270001/NHQ202409270001~medium.jpg"
+imageAlt: "SpaceX lanceert terugkeercapsule Starfall en 31 klantvrachten met Bandwagon-5"
+imageCredit: "NASA/Keegan Barber / HQ"
 ---
 
 SpaceX heeft op dinsdag 20 oktober 2026 de rideshare-missie Bandwagon-5 gelanceerd vanaf Space Launch Complex 40 op Cape Canaveral Space Force Station in Florida. Aan boord van de Falcon 9-raket bevonden zich in totaal 32 vrachten, waaronder SpaceX' eigen onbemande terugkeercapsule Starfall. Bij een rideshare-missie delen meerdere klanten één raket om hun satellieten tegen lagere kosten in een baan te brengen. Rond 8.45 uur Amerikaanse oostkusttijd meldde SpaceX dat alle klantvrachten waren uitgezet.

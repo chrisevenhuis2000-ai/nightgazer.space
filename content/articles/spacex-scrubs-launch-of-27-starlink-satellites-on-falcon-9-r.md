@@ -4,13 +4,13 @@ excerpt: "SpaceX heeft de lancering van 27 Starlink-satellieten vanaf Vandenberg
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-21T12:56:37.863Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/20/live-coverage-spacex-to-launch-27-starlink-satellites-on-falcon-9-rocket-from-vandenberg-sfb-5/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/NHQ202409270002/NHQ202409270002~medium.jpg"
+imageAlt: "SpaceX stelt lancering van 27 Starlink-satellieten met Falcon 9 vanaf Vandenberg uit"
+imageCredit: "NASA/Keegan Barber / HQ"
 ---
 
 SpaceX heeft dinsdag de lancering van een Falcon 9-raket met 27 Starlink-satellieten afgeblazen. De raket zou die middag opstijgen vanaf Vandenberg Space Force Base in Californië, maar het bedrijf liep tegen wat een technisch probleem lijkt aan, dat niet binnen het lanceervenster kon worden opgelost.
