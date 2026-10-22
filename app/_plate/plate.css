@@ -3187,6 +3187,208 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
+   Educatie: figuren, platen, vraag van de dag
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Figuur bij een les ── */
+.pl-fig {
+  --fk: 1;
+  margin: 20px 0 22px;
+  border: 1px solid var(--pl-rule-soft);
+  background: var(--pl-ground);
+}
+.pl-fig__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 6px 6px 6px 14px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-fig__head .pl-label { line-height: 1.5; }
+.pl-fig__play {
+  min-height: var(--pl-tap);
+  padding: 0 12px;
+  background: none; border: 0;
+  color: var(--pl-act);
+  font: inherit; font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  cursor: pointer;
+}
+.pl-fig__play:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pl-fig__stage { padding: 10px 12px 4px; }
+.pl-fig__stage svg { display: block; width: 100%; height: auto; overflow: hidden; }
+
+/* SVG-tekst houdt een echte maat, wat de kolombreedte ook is (--fk). */
+.pl-fig__t {
+  fill: var(--pl-ink-3);
+  font-size: calc(10.5px * var(--fk));
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.pl-fig__orbit, .pl-fig__axis { fill: none; stroke: var(--pl-rule); stroke-width: calc(1px * var(--fk)); }
+.pl-fig__sun     { fill: var(--pl-stamp); }
+.pl-fig__halo    { fill: var(--pl-orbit); opacity: 0.16; }
+.pl-fig__flash   { fill: var(--pl-ink); }
+.pl-fig__hole    { fill: var(--pl-ground); stroke: var(--pl-stamp); stroke-width: 1.5; }
+.pl-fig__body    { fill: var(--pl-ink-2); }
+.pl-fig__body--key { fill: var(--pl-ink); }
+.pl-fig__planet  { fill: var(--pl-ground); stroke: var(--pl-rule); }
+.pl-fig__earth   { fill: var(--pl-plate-lift); stroke: var(--pl-orbit); stroke-width: 1.5; }
+.pl-fig__dmhalo  { fill: var(--pl-orbit); opacity: 0.09; }
+.pl-fig__curve   { fill: none; stroke: var(--pl-stamp); stroke-width: calc(1.6px * var(--fk)); stroke-linejoin: round; }
+.pl-fig__curve--dim { stroke: var(--pl-ink-3); stroke-dasharray: 3 4; opacity: 0.7; }
+.pl-fig__dot     { fill: var(--pl-ink); }
+.pl-fig__vec     { stroke: var(--pl-orbit); stroke-width: 1.2; }
+.pl-fig__progress { stroke: var(--pl-stamp); stroke-width: 2; }
+
+.pl-fig__read {
+  display: flex; flex-wrap: wrap; gap: 8px 26px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-fig__cell { display: inline-flex; align-items: baseline; gap: 10px; }
+.pl-fig__cell .pl-num { color: var(--pl-ink); font-size: 0.8125rem; }
+
+.pl-fig__ctrl {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px;
+  padding: 4px 14px 6px;
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-fig__ctrl input[type="range"] {
+  flex: 1 1 160px;
+  min-height: var(--pl-tap);
+  accent-color: var(--pl-act);
+  cursor: pointer;
+}
+.pl-fig__ctrl .pl-btn { margin: 6px 0; }
+.pl-fig__val { color: var(--pl-ink); font-size: 0.8125rem; min-width: 9ch; text-align: right; }
+.pl-seg--tap { margin: 6px 0; }
+.pl-seg--tap button { min-height: var(--pl-tap); padding: 0 14px; }
+
+.pl-fig figcaption {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--pl-rule-soft);
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* ── De plaat bij een les: latent tot het onderwerp af is ── */
+.pl-lplate { margin: 0; }
+.pl-lplate a { display: block; }
+.pl-lplate__img {
+  display: block;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate-2);
+}
+.pl-lplate__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.4) contrast(1.05) brightness(0.88);
+  transition: filter 1400ms var(--pl-ease-o), transform 1400ms var(--pl-ease-o);
+}
+/* Latent: een donker negatief, net herkenbaar genoeg om nieuwsgierig te maken. */
+.pl-lplate[data-dev="0"] .pl-lplate__img img {
+  filter: invert(1) grayscale(1) contrast(0.8) brightness(0.32) blur(3px);
+  transform: scale(1.04);
+}
+.pl-lplate[data-dev="1"] a:hover .pl-lplate__img img { filter: none; }
+.pl-lplate figcaption { display: flex; flex-direction: column; gap: 4px; margin-top: 9px; }
+.pl-lplate__t { color: var(--pl-ink); font-size: 0.8125rem; line-height: 1.45; }
+.pl-lplate__c { color: var(--pl-ink-3); font-size: 0.75rem; line-height: 1.5; }
+
+/* ── Toets: teller en volgende vraag ── */
+.pl-check__right { margin-left: auto; display: inline-flex; align-items: center; gap: 14px; }
+.pl-check__count { color: var(--pl-ink-3); }
+.pl-check__next { margin-top: 14px; }
+
+/* ── Vandaag: vraag van de dag, reeks, platen ── */
+.pl-today {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  margin-top: 22px;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-today__q { padding: 22px 26px 24px; min-width: 0; }
+.pl-today__q > .pl-label { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pl-today__qt {
+  margin: 12px 0 16px;
+  max-width: 44ch;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.016em;
+  text-wrap: balance;
+}
+.pl-today__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.pl-today__side {
+  display: flex; flex-direction: column; gap: 24px;
+  padding: 22px 24px;
+  border-left: 1px solid var(--pl-rule-soft);
+  background: var(--pl-ground);
+}
+.pl-today__n { display: flex; align-items: baseline; gap: 10px; margin: 8px 0 14px; }
+.pl-today__n .pl-num {
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--pl-good);
+}
+.pl-today__n .pl-num[data-zero="1"] { color: var(--pl-ink-3); }
+.pl-today__small { margin-top: 10px; color: var(--pl-ink-3); font-size: 0.75rem; line-height: 1.5; }
+
+.pl-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.pl-week span {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--pl-ink-3);
+  font-size: 0.625rem; font-weight: 600; letter-spacing: 0.12em;
+}
+.pl-week i { width: 14px; height: 14px; border: 1px solid var(--pl-rule); }
+.pl-week [data-hit="1"] i { background: var(--pl-good); border-color: var(--pl-good); }
+.pl-week [data-today="1"] { color: var(--pl-ink); }
+.pl-week [data-today="1"] i { outline: 1px solid var(--pl-stamp); outline-offset: 2px; }
+.pl-week [data-future="1"] i { border-style: dashed; }
+@media (prefers-reduced-motion: no-preference) {
+  .pl-week [data-today="1"][data-hit="1"] i { animation: pl-land 520ms var(--pl-ease-o) both; }
+}
+
+.pl-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 10px; }
+.pl-strip__cell {
+  aspect-ratio: 3 / 4;
+  min-height: var(--pl-tap);
+  padding: 0;
+  overflow: hidden;
+  background: var(--pl-plate-2);
+  border: 1px solid var(--pl-rule);
+  cursor: pointer;
+  transition: border-color 200ms var(--pl-ease);
+}
+.pl-strip__cell:hover { border-color: var(--pl-act); }
+.pl-strip__cell img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(0.4) brightness(0.9);
+  transition: filter 1400ms var(--pl-ease-o);
+}
+.pl-strip__cell[data-dev="0"] img { filter: invert(1) grayscale(1) brightness(0.28) blur(1.5px); }
+
+@media (max-width: 860px) {
+  .pl-today { grid-template-columns: minmax(0, 1fr); }
+  .pl-today__side { border-left: 0; border-top: 1px solid var(--pl-rule-soft); }
+}
+@media (max-width: 620px) {
+  .pl-today__q { padding: 18px 16px 20px; }
+  .pl-today__side { padding: 18px 16px; }
+  .pl-today__opts { grid-template-columns: minmax(0, 1fr); }
+  .pl-fig { margin-inline: -4px; }
+  .pl-fig__stage { padding: 8px 6px 2px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
    Object van de nacht, zoekkaart en hemelagenda
    ══════════════════════════════════════════════════════════════════════════ */
 

@@ -290,6 +290,33 @@ level *is* the page. One choice in a sticky bar rewrites all six topics at
 once, so a visitor reads across subjects at their own depth. The choice
 persists in `localStorage` and matches the level switch on article pages.
 
+Three additions (October 2026) keep a visitor on the page without turning it
+into a game:
+
+- **A figure per lesson** (`app/educatie/Figuren.tsx`, `.pl-fig`). One
+  explorable per topic that shows the core idea: real orbital periods, a
+  star's mass setting its life, a flat rotation curve, expansion with no
+  centre, a transit dip, Newton's cannonball. Motion here is explanation.
+  It ticks only while the figure is on screen, every figure has a pause
+  button (WCAG 2.2.2), it starts paused under reduced motion, and SVG text
+  is scaled back to real pixels with `--fk`. Below 520px a figure crops its
+  own `viewBox` so the subject stays large. Data strokes use `--pl-stamp` and
+  `--pl-orbit`, never `--pl-mark`: a simulation is not a live value.
+- **A plate per lesson** (`lib/educatie-platen.ts`, `.pl-lplate`). One
+  images.nasa.gov picture, *latent* (a dark negative) until that topic's
+  question is answered right, then it develops over 1.4s. The reward is the
+  content itself. This is the one delight-budget moment on the page.
+- **Vandaag** (`app/educatie/Vandaag.tsx`, `.pl-today`). Daily question from
+  the news, a forgiving streak (one missed day is allowed, two break it) and
+  the six-plate strip. Deliberately no points, badges, confetti or
+  leaderboard: there are no accounts, so a leaderboard would be fake, and
+  points pull attention from the subject.
+
+Questions refresh automatically: `scripts/educatie-quiz.js` writes
+`content/educatie-quiz.json` (seven checked questions per topic per ISO week,
+one per weekday, plus a daily news question). Without it the page falls back
+to the fixed questions in `lib/home-content.ts`.
+
 **`/nieuws/[slug]` — reading one plate.** Mode Read. The development strip:
 the reading level is the exposure, and each paragraph comes into focus as its
 rewrite lands. Marginalia carry the figures, facts and quote; progress fills a

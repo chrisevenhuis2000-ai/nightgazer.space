@@ -13,38 +13,25 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { LEVELS, TOPIC_DETAILS, TOPICS, CONCEPTS, FAQS } from '@/lib/education-data'
-import { DAILY_QUESTIONS } from '@/lib/home-content'
+import { vragenVoor, weekdag } from '@/lib/educatie-quiz'
+import { PLATEN, plaatUrl, plaatPagina } from '@/lib/educatie-platen'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder,
+  archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder, img,
 } from '@/app/_plate/shared'
+import { LessonFigure } from './Figuren'
+import { Vandaag } from './Vandaag'
 
 type Level = 'beg' | 'ama' | 'pro'
 const LEVEL_KEYS: Level[] = ['beg', 'ama', 'pro']
 const LEVEL_STORE = 'nightgazer_leesniveau'
 const DONE_STORE = 'nightgazer_educatie_af'
 
-/* ── Toetsvragen aan onderwerpen koppelen ────────────────────────────────
-   Er lagen vijftien vragen op drie niveaus in lib/home-content.ts, alleen
-   gebruikt door de quizwidget op de voorpagina. Op de pagina waar kennis
-   toetsen thuishoort, werd er niets mee gedaan. Elk onderwerp krijgt zijn
-   eigen vragen; geen enkele vraag wordt verzonnen. */
-const TOPIC_QUIZ: Record<string, number[]> = {
-  zonnestelsel:    [4, 12],
-  sterren:         [10, 5, 0],
-  sterrenstelsels: [3, 6],
-  kosmologie:      [1, 7, 11],
-  exoplaneten:     [2, 9],
-  ruimtevaart:     [8, 14],
-}
-
-function questionFor(topicId: string, level: Level, seed: number) {
-  const ids = TOPIC_QUIZ[topicId]
-  if (!ids?.length) return null
-  const entry = DAILY_QUESTIONS.find(q => q.id === ids[seed % ids.length])
-  if (!entry) return null
-  return { topic: entry.topic, ...entry[level] }
-}
+/* ── Toetsvragen per onderwerp ────────────────────────────────────────────
+   Elke maandag een nieuwe set van zeven vragen per onderwerp (scripts/
+   educatie-quiz.js, gecontroleerd door een tweede Claude-ronde). Elke dag van
+   de week toont een andere; "Nog een vraag" bladert verder door de set.
+   Zonder set vallen we terug op de vaste vragen uit lib/home-content.ts. */
 
 /* ── De ladder ─────────────────────────────────────────────────────────── */
 function LadderBar({ level, onPick }: { level: Level; onPick: (l: Level) => void }) {
@@ -74,10 +61,10 @@ function LadderBar({ level, onPick }: { level: Level; onPick: (l: Level) => void
 /* ── De toets onder een les ───────────────────────────────────────────────
    Lezen en dan controleren of het is blijven hangen. Zonder dit is de
    pagina een artikel, geen leerplatform. */
-function Check({ topicId, level, seed, done, onDone }: {
+function Check({ topicId, topicTitle, level, done, onDone }: {
   topicId: string
+  topicTitle: string
   level: Level
-  seed: number
   done: boolean
   onDone: (ok: boolean) => void
 }) {
@@ -86,10 +73,13 @@ function Check({ topicId, level, seed, done, onDone }: {
      terugbladeren ís het leermoment. Pas de tweede legt alles op tafel. */
   const [picked, setPicked] = useState<number | null>(null)
   const [wrongs, setWrongs] = useState<number[]>([])
-  const q = useMemo(() => questionFor(topicId, level, seed), [topicId, level, seed])
+  const [extra, setExtra] = useState(0)
+  const { vragen, weekset } = useMemo(() => vragenVoor(topicId), [topicId])
+  const idx = vragen.length ? (weekdag() + extra) % vragen.length : 0
+  const q = vragen.length ? vragen[idx][level] : null
 
-  /* Van niveau wisselen betekent een andere vraag, dus het antwoord vervalt. */
-  useEffect(() => { setPicked(null); setWrongs([]) }, [level, seed])
+  /* Van niveau of vraag wisselen betekent een ander antwoord. */
+  useEffect(() => { setPicked(null); setWrongs([]) }, [level, idx])
 
   if (!q) return null
   const right  = picked !== null && picked === q.correct
@@ -109,12 +99,19 @@ function Check({ topicId, level, seed, done, onDone }: {
       <div className="pl-check__head">
         <span className="pl-label">Controleer jezelf</span>
         <span className="pl-meta__tick" aria-hidden="true" />
-        <span className="pl-label">{q.topic}</span>
-        {done && !closed && (
-          <span className="pl-done" style={{ marginLeft: 'auto' }}>
-            <Ico.check size={13} />eerder goed
-          </span>
-        )}
+        <span className="pl-label">{topicTitle}</span>
+        <span className="pl-check__right">
+          {done && !closed && (
+            <span className="pl-done">
+              <Ico.check size={13} />eerder goed
+            </span>
+          )}
+          {weekset && (
+            <span className="pl-label pl-num pl-check__count">
+              {idx + 1}/{vragen.length} deze week
+            </span>
+          )}
+        </span>
       </div>
 
       <p className="pl-check__q">{q.q}</p>
@@ -155,17 +152,54 @@ function Check({ topicId, level, seed, done, onDone }: {
           {q.explain}
         </p>
       )}
+
+      {closed && vragen.length > 1 && (
+        <button type="button" className="pl-btn pl-check__next" onClick={() => setExtra(x => x + 1)}>
+          Nog een vraag
+          <Ico.arrow size={12} />
+        </button>
+      )}
     </div>
   )
 }
 
+/* ── De plaat bij een les ─────────────────────────────────────────────────
+   Latent tot het onderwerp af is: een donker negatief met een vage vorm.
+   Een goed antwoord ontwikkelt hem — de beloning is het beeld zelf. */
+function LessonPlate({ topicId, done }: { topicId: string; done: boolean }) {
+  const p = PLATEN[topicId]
+  const [failed, setFailed] = useState(false)
+  if (!p) return null
+  const image = (
+    <span className="pl-lplate__img">
+      {!failed && (
+        <img src={img(plaatUrl(p.nasaId), 640)} alt={done ? p.titel : ''} loading="lazy" decoding="async"
+          onError={() => setFailed(true)} />
+      )}
+    </span>
+  )
+  return (
+    <figure className="pl-lplate" data-dev={done ? '1' : '0'}>
+      {done && !failed
+        ? <a href={plaatPagina(p.nasaId)} target="_blank" rel="noopener noreferrer" aria-label={`${p.titel} — op images.nasa.gov`}>{image}</a>
+        : image}
+      <figcaption>
+        <span className="pl-label pl-num">{p.nasaId.replace(/^GSFC_20171208_Archive_/, 'GSFC ')}</span>
+        {done
+          ? <><span className="pl-lplate__t">{p.titel}{p.illustratie ? ' (illustratie)' : ''}</span><span className="pl-lplate__c">{p.credit}</span></>
+          : <span className="pl-lplate__c">Latent. Beantwoord de vraag goed om deze plaat te ontwikkelen.</span>}
+        {failed && done && <span className="pl-lplate__c">Beeld nu niet bereikbaar.</span>}
+      </figcaption>
+    </figure>
+  )
+}
+
 /* ── Eén onderwerp op het gekozen niveau ───────────────────────────────── */
-function Lesson({ topic, level, no, swapKey, index, done, onDone }: {
+function Lesson({ topic, level, no, swapKey, done, onDone }: {
   topic: (typeof TOPICS)[number]
   level: Level
   no: string
   swapKey: number
-  index: number
   done: boolean
   onDone: (ok: boolean) => void
 }) {
@@ -192,6 +226,8 @@ function Lesson({ topic, level, no, swapKey, index, done, onDone }: {
 
         {/* key op het niveau: React vervangt de knoop, zodat de overvloeiing
             opnieuw start wanneer je van trede wisselt */}
+        <LessonFigure topicId={topic.id} level={level} />
+
         <p className="pl-lesson__text" key={`${topic.id}-${level}-${swapKey}`} data-fresh="1">
           {detail[level]}
         </p>
@@ -226,10 +262,11 @@ function Lesson({ topic, level, no, swapKey, index, done, onDone }: {
           )}
         </div>
 
-        <Check topicId={topic.id} level={level} seed={index} done={done} onDone={onDone} />
+        <Check topicId={topic.id} topicTitle={topic.title} level={level} done={done} onDone={onDone} />
       </div>
 
       <aside className="pl-lesson__side">
+        <LessonPlate topicId={topic.id} done={done} />
         <div>
           <p className="pl-label" style={{ marginBottom: 12 }}>Kernfeiten</p>
           <ul className="pl-facts" style={{ listStyle: 'none', padding: 0 }}>
@@ -298,6 +335,10 @@ export default function Niveauladder() {
     try { localStorage.setItem(LEVEL_STORE, l) } catch { /* niet erg */ }
   }, [])
 
+  const jump = useCallback((id: string) => {
+    document.getElementById(`les-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
   const active = useMemo(() => LEVELS.find(l => l.key === level)!, [level])
 
   return (
@@ -327,6 +368,15 @@ export default function Niveauladder() {
             <p className="pl-label pl-num">{TOPICS.length} onderwerpen</p>
           </div>
 
+          {restored && (
+            <Vandaag
+              level={level}
+              done={done}
+              topics={TOPICS.map((t: (typeof TOPICS)[number]) => ({ id: t.id, title: t.title }))}
+              onJump={jump}
+            />
+          )}
+
           <p className="pl-levelnote" key={`note-${level}-${swapKey}`} data-fresh="1">
             {active.desc}
           </p>
@@ -347,7 +397,7 @@ export default function Niveauladder() {
                   className="pl-track__dot"
                   data-state={done[t.id] ? 'done' : 'reading'}
                   aria-label={`${t.title}${done[t.id] ? ' — afgerond' : ''}`}
-                  onClick={() => document.getElementById(`les-${t.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                  onClick={() => jump(t.id)}
                 />
               ))}
             </div>
@@ -372,7 +422,6 @@ export default function Niveauladder() {
                 level={level}
                 no={`NG-E${String(i + 1).padStart(2, '0')}`}
                 swapKey={swapKey}
-                index={i}
                 done={!!done[t.id]}
                 onDone={ok => markDone(t.id, ok)}
               />

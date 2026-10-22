@@ -1,0 +1,71 @@
+name: 🧠 Educatie-quiz verversen
+
+on:
+  # Na de nieuwsrun, zodat de vraag van de dag over het verse nieuws gaat.
+  workflow_run:
+    workflows: ['🤖 Auto-Fetch Articles']
+    types: [completed]
+  schedule:
+    # Vangnet als de nieuwsrun niet loopt. 08:11 UTC, niet op het hele uur.
+    - cron: '11 8 * * *'
+  workflow_dispatch:
+    inputs:
+      forceer:
+        description: 'Forceer: "week" (nieuwe weekset), "dag" (nieuwe vraag van de dag) of leeg'
+        required: false
+        default: ''
+
+# Twee triggers op één dag mogen niet tegelijk schrijven. Het script zelf
+# slaat over wat er vandaag al is, dus een tweede run kost niets.
+concurrency:
+  group: update-quiz
+  cancel-in-progress: false
+
+jobs:
+  quiz:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Quiz verversen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORCEER: ${{ inputs.forceer }}
+        run: |
+          case "$FORCEER" in
+            week) node scripts/educatie-quiz.js --week ;;
+            dag)  node scripts/educatie-quiz.js --dag ;;
+            *)    node scripts/educatie-quiz.js ;;
+          esac
+
+      - name: Commit bijgewerkte quiz
+        run: |
+          git config --local user.email "bot@cosmosnl.nl"
+          git config --local user.name "CosmosNL Bot"
+          git add content/educatie-quiz.json
+          if git diff --staged --quiet; then echo "Niets veranderd."; exit 0; fi
+          git commit -m "🧠 Auto-update: educatie-quiz $(date -u '+%Y-%m-%d')"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Trigger site rebuild
+        if: env.DEPLOY_HOOK_URL != ''
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.DEPLOY_HOOK_URL }}
+        run: curl -s -X POST "$DEPLOY_HOOK_URL"
+        continue-on-error: true
