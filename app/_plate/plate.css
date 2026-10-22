@@ -3357,8 +3357,8 @@ a:hover .pl-emulsion > img,
   .pl-week [data-today="1"][data-hit="1"] i { animation: pl-land 520ms var(--pl-ease-o) both; }
 }
 
-.pl-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 10px; }
-.pl-strip__cell {
+.pl-devstrip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 10px; }
+.pl-devstrip__cell {
   aspect-ratio: 3 / 4;
   min-height: var(--pl-tap);
   padding: 0;
@@ -3368,13 +3368,13 @@ a:hover .pl-emulsion > img,
   cursor: pointer;
   transition: border-color 200ms var(--pl-ease);
 }
-.pl-strip__cell:hover { border-color: var(--pl-act); }
-.pl-strip__cell img {
+.pl-devstrip__cell:hover { border-color: var(--pl-act); }
+.pl-devstrip__cell img {
   width: 100%; height: 100%; object-fit: cover;
   filter: grayscale(0.4) brightness(0.9);
   transition: filter 1400ms var(--pl-ease-o);
 }
-.pl-strip__cell[data-dev="0"] img { filter: invert(1) grayscale(1) brightness(0.28) blur(1.5px); }
+.pl-devstrip__cell[data-dev="0"] img { filter: invert(1) grayscale(1) brightness(0.28) blur(1.5px); }
 
 @media (max-width: 860px) {
   .pl-today { grid-template-columns: minmax(0, 1fr); }
