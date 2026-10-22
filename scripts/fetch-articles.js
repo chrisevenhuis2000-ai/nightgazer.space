@@ -307,7 +307,7 @@ sourceUrl: "${yaml(item.link || '')}"
 imageUrl: "${yaml(imageUrl)}"
 imageAlt: "${yaml(imageAlt)}"
 imageCredit: "${yaml(imageCredit)}"
----
+${N.structuurFrontmatter(r.data)}---
 
 ${r.data.body}
 `

@@ -15,6 +15,11 @@
 //   - uitvoer gevalideerd: Nederlands, titel vertaald, body ≥ 250 woorden,
 //     geen "appeared first on".
 //
+// Leesbaarheid (oktober 2026): het artikel komt met tussenkoppen (## …),
+// kernpunten, kerncijfers en hooguit één citaat. structuur() houdt alleen
+// over wat aantoonbaar in de tekst staat: een cijfer dat niet in de body
+// voorkomt of een citaat dat er niet letterlijk in staat, valt weg.
+//
 // En: alleen wat past bij een site voor Nederlandse sterrenkijkers en
 // ruimtevaartliefhebbers. voorfilter() slaat evenementen, vacatures,
 // kantoornieuws en financieringsrondes op de titel over (zonder aanroep);
@@ -35,9 +40,39 @@ const SCHEMA = {
     relevantie: { type: 'string', description: 'Eén korte zin waarom wel of niet relevant' },
     title:   { type: 'string', description: 'Nederlandse titel, vertaald (geen Engelse titel)' },
     excerpt: { type: 'string', description: 'Nederlandse samenvatting in 2-3 zinnen' },
-    body:    { type: 'string', description: 'Het volledige artikel in het Nederlands, alinea’s gescheiden door een lege regel' },
+    body:    { type: 'string', description: 'Het volledige artikel in het Nederlands, alinea’s gescheiden door een lege regel, met een tussenkop (## Kop) om de twee à drie alinea’s' },
+    kernpunten:  { type: 'array', items: { type: 'string' }, description: 'Precies 3 korte zinnen: de kern van het artikel voor wie alleen dit leest' },
+    kerncijfers: {
+      type: 'array',
+      description: '0 tot 3 opvallende getallen die letterlijk in het artikel staan; leeg als er geen zijn',
+      items: {
+        type: 'object',
+        properties: {
+          waarde:  { type: 'string', description: 'Het getal zoals in de tekst, kort (bijv. "1,3 mld", "16", "8 okt")' },
+          eenheid: { type: 'string', description: 'Eenheid of leeg (bijv. "km")' },
+          label:   { type: 'string', description: 'Wat het getal is, 2 tot 5 woorden' },
+        },
+        required: ['waarde', 'eenheid', 'label'],
+        additionalProperties: false,
+      },
+    },
+    citaat: {
+      description: 'De sterkste uitspraak van een persoon, letterlijk zoals hij in de body staat; null als het artikel geen citaat bevat',
+      anyOf: [
+        {
+          type: 'object',
+          properties: {
+            tekst: { type: 'string', description: 'De uitspraak, letterlijk uit de body, zonder aanhalingstekens' },
+            wie:   { type: 'string', description: 'Naam en functie, bijv. "Bruno Altieri, archiefwetenschapper Euclid"' },
+          },
+          required: ['tekst', 'wie'],
+          additionalProperties: false,
+        },
+        { type: 'null' },
+      ],
+    },
   },
-  required: ['relevant', 'relevantie', 'title', 'excerpt', 'body'],
+  required: ['relevant', 'relevantie', 'title', 'excerpt', 'body', 'kernpunten', 'kerncijfers', 'citaat'],
   additionalProperties: false,
 }
 
@@ -47,6 +82,7 @@ const SYSTEM = [
   'Gebruik alleen feiten uit de brontekst. Verzin geen cijfers, namen, citaten of gebeurtenissen. Leg vaktermen kort uit als dat helpt.',
   'Laat reclame, nieuwsbriefoproepen, "The post … appeared first on …" en andere sitezinnen uit de bron weg.',
   'Schrijf alles in het Nederlands; Engelse eigennamen (missies, bedrijven, instrumenten) mogen blijven.',
+  'Maak het artikel scanbaar: zet om de twee à drie alinea’s een korte, informatieve tussenkop op een eigen regel als "## Kop" (niet vóór de eerste alinea, geen koppen als "Inleiding" of "Conclusie"). Geef drie kernpunten, hooguit drie kerncijfers die letterlijk in je tekst staan, en hooguit één citaat dat letterlijk in je tekst staat.',
   'Beoordeel eerst of het bericht relevant is voor NightGazer: astronomie en ruimtevaart voor Nederlandse sterrenkijkers en ruimtevaartliefhebbers.',
   'Relevant: ontdekkingen, sterrenkunde, ruimtemissies, lanceringen, ruimtevaartuigen, astronauten, ruimtetelescopen, hemelverschijnselen, ruimtevaartbeleid met gevolgen voor missies.',
   'Niet relevant: aankondigingen van webinars, conferenties of andere evenementen; vacatures; kantoor- of vestigingsnieuws; financieringsrondes, beursnieuws en ander zuiver bedrijfsnieuws; aardobservatie over weer, orkanen, branden, overstromingen of landbouw, tenzij het over de ruimtevaart zelf gaat (een nieuwe satelliet, instrument of missie).',
@@ -127,6 +163,41 @@ function valideer(out, origTitel) {
   return { ok: true, reden: null }
 }
 
+// ── Structuur ─────────────────────────────────────────────────────────────
+const plat = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
+const cijfers = s => (String(s || '').match(/\d+/g) || [])
+
+/**
+ * Alleen wat aantoonbaar in de body staat. → { kernpunten, kerncijfers, citaat }
+ * Een kerncijfer moet een getal bevatten dat in de body voorkomt; een citaat
+ * moet (genormaliseerd) letterlijk in de body staan.
+ */
+function structuur(out, body) {
+  const tekst = plat(body)
+  const getallen = new Set(cijfers(String(body).replace(/(\d)[.\s](?=\d{3}\b)/g, '$1')))
+  const kernpunten = (Array.isArray(out?.kernpunten) ? out.kernpunten : [])
+    .filter(k => typeof k === 'string' && k.trim()).map(k => k.trim().replace(/\s+/g, ' ')).slice(0, 4)
+  const kerncijfers = (Array.isArray(out?.kerncijfers) ? out.kerncijfers : [])
+    .filter(k => k && typeof k.waarde === 'string' && typeof k.label === 'string' && k.waarde.trim() && k.label.trim())
+    .filter(k => { const c = cijfers(k.waarde.replace(/(\d)[.\s](?=\d{3}\b)/g, '$1')); return c.length > 0 && c.every(x => getallen.has(x)) })
+    .map(k => ({ waarde: k.waarde.trim(), eenheid: typeof k.eenheid === 'string' ? k.eenheid.trim() : '', label: k.label.trim() }))
+    .slice(0, 3)
+  const c = out?.citaat
+  const citaat = c && typeof c.tekst === 'string' && plat(c.tekst).split(' ').length >= 5 && tekst.includes(plat(c.tekst))
+    ? { tekst: c.tekst.trim().replace(/^['‘’"“”]+|['‘’"“”]+$/g, ''), wie: typeof c.wie === 'string' ? c.wie.trim() : '' }
+    : null
+  return { kernpunten, kerncijfers, citaat }
+}
+
+/** Frontmatterregels: JSON op één regel, geldige YAML én leesbaar voor lib/article-data.ts. */
+function structuurFrontmatter({ kernpunten, kerncijfers, citaat }) {
+  const regels = []
+  if (kernpunten?.length) regels.push(`kernpunten: ${JSON.stringify(kernpunten)}`)
+  if (kerncijfers?.length) regels.push(`kerncijfers: ${JSON.stringify(kerncijfers)}`)
+  if (citaat) regels.push(`citaat: ${JSON.stringify(citaat)}`)
+  return regels.map(r => r + '\n').join('')
+}
+
 // ── Brontekst ─────────────────────────────────────────────────────────────
 // Alleen artikelpagina's op de host van de feed zelf (de bestaande
 // brongrenzen); nooit een willekeurige link uit een feed.
@@ -197,11 +268,12 @@ async function herschrijf(client, { titel, tekst, bron }) {
   }
   const v = valideer(data, titel)
   if (!v.ok) return { ok: false, aanroep: true, reden: v.reden }
-  return { ok: true, aanroep: true, data: { title: data.title.trim(), excerpt: data.excerpt.trim(), body: data.body.trim() } }
+  const body = data.body.trim()
+  return { ok: true, aanroep: true, data: { title: data.title.trim(), excerpt: data.excerpt.trim(), body, ...structuur(data, body) } }
 }
 
 module.exports = {
   MODEL, MIN_WOORDEN_BODY, MIN_WOORDEN_BRON, SCHEMA, SYSTEM,
   brontekstUitHtml, schoonFeedtekst, woorden, taal, isNederlands, valideer, voorfilter,
-  zelfdeBron, brontekst, maakClient, herschrijf,
+  zelfdeBron, brontekst, maakClient, herschrijf, structuur, structuurFrontmatter,
 }

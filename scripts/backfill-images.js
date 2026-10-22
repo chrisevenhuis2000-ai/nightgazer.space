@@ -169,7 +169,8 @@ function parseFrontmatter(raw) {
 
 function rebuildFrontmatter(fm) {
   return Object.entries(fm).map(([k, v]) => {
-    if (v === '[]' || (v.startsWith('[') && v.endsWith(']'))) return `${k}: ${v}`
+    // Lijsten en JSON-objecten (kernpunten, kerncijfers, citaat) ongemoeid laten.
+    if (v === '[]' || (v.startsWith('[') && v.endsWith(']')) || (v.startsWith('{') && v.endsWith('}'))) return `${k}: ${v}`
     return `${k}: "${String(v).replace(/"/g, '\\"')}"`
   }).join('\n')
 }
