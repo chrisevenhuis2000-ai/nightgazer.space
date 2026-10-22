@@ -23,6 +23,7 @@ const pages = [
   { loc: '/over',          changefreq: 'yearly',  priority: '0.3' },
   { loc: '/contact',       changefreq: 'yearly',  priority: '0.3' },
   { loc: '/privacy',       changefreq: 'yearly',  priority: '0.2' },
+  { loc: '/voorwaarden',   changefreq: 'yearly',  priority: '0.2' },
 ]
 
 // Topic pages — dezelfde slugs als generateStaticParams in
