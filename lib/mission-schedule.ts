@@ -14,7 +14,7 @@ export const MONTH_SHORT = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'au
 
 /**
  * Leest een lanceerdatum uit het vrije tekstveld. Eén missie (Starship)
- * draagt 'IFT-7 · Mrt 2026' zonder dag; die levert bewust null op in plaats
+ * draagt 'Sinds apr 2023' zonder dag; die levert bewust null op in plaats
  * van een gegokte dag, want een verzonnen datum op een tijdas is een leugen
  * met een positie.
  */
