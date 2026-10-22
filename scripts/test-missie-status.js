@@ -13,14 +13,19 @@ const assert = require('assert/strict')
 const { execFile } = require('child_process')
 const { promisify } = require('util')
 const { startMock } = require('./__fixtures__/ll2-mock.js')
-const { mapLL2Status, soortVoorType, cleanEnrichment, parseDutch } = require('./update-missions.js')
+const { mapLL2Status, soortVoorType, cleanEnrichment, parseDutch, BOT_REGEL } = require('./update-missions.js')
 
 let checks = 0
 const ok = (cond, msg) => { assert.ok(cond, msg); checks++ }
 const eq = (a, b, msg) => { assert.deepEqual(a, b, msg); checks++ }
 // De highlight van een lancering komt elke run uit het sjabloon (status, datum,
-// voertuig); test-missie-statustekst.js test die. Hier telt de rest.
-const vgl = m => (m && m.soort === 'lancering' ? { ...m, highlight: undefined } : m)
+// voertuig); test-missie-statustekst.js test die. De tijdlijnregel van het
+// script volgt elke run de status; test-missie-tijdlijn.js test die. Hier
+// telt de rest.
+const zonderBotRegel = m => (m && m._ll2Id && Array.isArray(m.timeline)
+  ? { ...m, timeline: m.timeline.filter(e => !BOT_REGEL.test(e?.event || '')) }
+  : m)
+const vgl = m => zonderBotRegel(m && m.soort === 'lancering' ? { ...m, highlight: undefined } : m)
 
 // ── 1. Regels als losse functies ─────────────────────────────────────────
 for (const [st, soort, want] of [

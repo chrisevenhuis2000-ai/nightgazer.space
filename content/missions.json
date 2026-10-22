@@ -12,14 +12,14 @@
       "agencyColor": "#3dcfdf",
       "status": "actief",
       "soort": "missie",
-      "launched": "IFT-7 · Mrt 2026",
-      "objective": "Volledig herbruikbare super-heavy raket testen voor Maan & Mars-missies.",
+      "launched": "Sinds apr 2023",
+      "objective": "Het volledig herbruikbare raketsysteem van SpaceX, bedoeld voor vluchten naar de Maan en Mars.",
       "body": "Aardebaan",
-      "highlight": "Mechazilla-arm ving booster op bij IFT-7",
+      "highlight": "Flight 12 was in mei 2026 de eerste vlucht van Starship V3",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Starship is het volledig herbruikbare twee-traps lanceersysteem van SpaceX, ontworpen voor transport van mensen en vracht naar de Maan, Mars en verder. Met een hoogte van 121 meter is het de krachtigste raket die ooit is gebouwd. Het systeem bestaat uit de Super Heavy-booster met 33 Raptor-motoren en het Starship-bovenste gedeelte met 6 Raptor-motoren. Bij IFT-7 (maart 2026) werd de Super Heavy-booster voor de tweede keer succesvol gevangen door de zogenoemde Mechazilla-armen aan de lanceerinstallatie in Boca Chica, Texas. Starship is ook geselecteerd door NASA als Human Landing System (HLS) voor de Artemis-maanlandingen.",
+      "description": "Starship is het volledig herbruikbare tweetrapssysteem van SpaceX, bedoeld om mensen en vracht naar de Maan, Mars en verder te brengen. De Super Heavy-booster en het Starship-schip zijn samen ruim 120 meter hoog; het is de krachtigste raket die ooit is gevlogen. Sinds april 2023 test SpaceX het systeem in genummerde vluchten vanaf Starbase in Texas. Bij de vijfde vlucht, in oktober 2024, ving de lanceertoren de booster voor het eerst op met zijn twee armen, bijgenaamd Mechazilla. In mei 2026 vloog met Flight 12 de eerste Starship V3. NASA heeft een aangepaste versie van Starship gekozen als maanlander voor Artemis.",
       "vehicle": "Super Heavy + Starship (volledig stapel)",
       "launchSite": "Starbase, Boca Chica, Texas, VS",
       "duration": "Varieert per missie",
@@ -28,67 +28,231 @@
       "timeline": [
         {
           "date": "apr 2023",
-          "event": "IFT-1: eerste geïntegreerde vluchttest, explosie na scheiding"
+          "event": "IFT-1: eerste geïntegreerde testvlucht, verloren vóór de trapscheiding"
         },
         {
           "date": "nov 2023",
-          "event": "IFT-2: succesvolle scheiding booster/schip, beide verloren boven zee"
+          "event": "IFT-2: eerste trapscheiding; booster en schip daarna verloren"
         },
         {
           "date": "mrt 2024",
-          "event": "IFT-3: beide voertuigen bereiken ruimte; gecontroleerde herentry"
+          "event": "IFT-3: schip bereikt de ruimte en breekt op bij de terugkeer"
         },
         {
           "date": "jun 2024",
-          "event": "IFT-4: Starship-schip landt zacht in Indische Oceaan"
+          "event": "IFT-4: booster en schip landen gecontroleerd in zee"
         },
         {
           "date": "okt 2024",
-          "event": "IFT-5: booster gevangen door Mechazilla-armen (eerste keer)"
+          "event": "IFT-5: de lanceertoren vangt de booster voor het eerst"
         },
         {
           "date": "jan 2025",
-          "event": "IFT-6: booster wederom gevangen; schip gecontroleerd neergekomen"
+          "event": "IFT-7: eerste V2-schip; booster gevangen, schip verloren"
         },
         {
-          "date": "mrt 2026",
-          "event": "IFT-7: booster opnieuw gevangen; schip herentry geslaagd"
+          "date": "aug 2025",
+          "event": "IFT-10: schip landt na een volledige vlucht precies in de Indische Oceaan"
+        },
+        {
+          "date": "okt 2025",
+          "event": "IFT-11: laatste vlucht van V2"
+        },
+        {
+          "date": "mei 2026",
+          "event": "Flight 12: eerste vlucht van Starship V3"
+        },
+        {
+          "date": "jul 2026",
+          "event": "Flight 13: eerste echte lading, 20 Starlink V3-satellieten"
         }
       ],
       "facts": [
         {
           "label": "Hoogte (volledig)",
-          "value": "121 meter"
+          "value": "ruim 120 meter, verschilt per versie"
         },
         {
           "label": "Super Heavy motoren",
-          "value": "33 × Raptor V2"
+          "value": "33 × Raptor"
         },
         {
           "label": "Starship motoren",
           "value": "6 × Raptor (3 zeeniveau + 3 vacuüm)"
         },
         {
-          "label": "Stuwkracht (liftoff)",
-          "value": "~74,4 MN (>Apollo Saturn V × 2)"
+          "label": "Stuwkracht (liftoff, V2)",
+          "value": "~74 MN, ruim 2 × Saturn V"
         },
         {
-          "label": "Max. lading LEO",
-          "value": ">100 ton (herbruikbaar)"
+          "label": "Lading naar lage baan",
+          "value": ">100 ton (doel, herbruikbaar)"
         },
         {
           "label": "Bouwmateriaal",
-          "value": "Roestvrij staal (304L)"
+          "value": "Roestvrij staal"
         }
       ],
       "relatedTags": [
         "starship",
-        "spacex",
+        "super heavy",
         "superheavy",
-        "falcon",
-        "musk",
-        "boca chica",
-        "mechazilla"
+        "mechazilla",
+        "starbase",
+        "boca chica"
+      ],
+      "campagne": [
+        {
+          "vlucht": "IFT-1",
+          "datum": "2023-04-20",
+          "versie": "V1",
+          "booster": "verloren",
+          "schip": "verloren",
+          "noot": "Geen trapscheiding. Na ongeveer vier minuten opgeblazen boven de Golf van Mexico."
+        },
+        {
+          "vlucht": "IFT-2",
+          "datum": "2023-11-18",
+          "versie": "V1",
+          "booster": "verloren",
+          "schip": "verloren",
+          "noot": "Eerste trapscheiding gelukt. Daarna gingen beide trappen verloren."
+        },
+        {
+          "vlucht": "IFT-3",
+          "datum": "2024-03-14",
+          "versie": "V1",
+          "booster": "verloren",
+          "schip": "verloren",
+          "noot": "Het schip bereikte de ruimte en brak op bij de terugkeer. De booster ging vlak boven zee verloren."
+        },
+        {
+          "vlucht": "IFT-4",
+          "datum": "2024-06-06",
+          "versie": "V1",
+          "booster": "zee",
+          "schip": "zee",
+          "noot": "Eerste vlucht waarbij beide trappen heel bleven tot een zachte landing in zee."
+        },
+        {
+          "vlucht": "IFT-5",
+          "datum": "2024-10-13",
+          "versie": "V1",
+          "booster": "gevangen",
+          "schip": "zee",
+          "noot": "De toren ving de booster voor het eerst met zijn armen."
+        },
+        {
+          "vlucht": "IFT-6",
+          "datum": "2024-11-19",
+          "versie": "V1",
+          "booster": "zee",
+          "schip": "zee",
+          "noot": "Vangst afgebroken, de booster landde in de Golf. Het schip ontstak in de ruimte opnieuw een Raptor."
+        },
+        {
+          "vlucht": "IFT-7",
+          "datum": "2025-01-16",
+          "versie": "V2",
+          "booster": "gevangen",
+          "schip": "verloren",
+          "noot": "Eerste V2-schip. Booster gevangen, het schip ging tijdens de klim verloren."
+        },
+        {
+          "vlucht": "IFT-8",
+          "datum": "2025-03-06",
+          "versie": "V2",
+          "booster": "gevangen",
+          "schip": "verloren",
+          "noot": "Booster opnieuw gevangen. Het schip verloor motoren en ging tijdens de klim verloren."
+        },
+        {
+          "vlucht": "IFT-9",
+          "datum": "2025-05-27",
+          "versie": "V2",
+          "booster": "verloren",
+          "schip": "verloren",
+          "noot": "Eerste hergebruikte booster, verloren bij een landingstest. Het schip raakte in de ruimte uit koers en brak op bij de terugkeer."
+        },
+        {
+          "vlucht": "IFT-10",
+          "datum": "2025-08-26",
+          "versie": "V2",
+          "booster": "zee",
+          "schip": "zee",
+          "noot": "Het schip zette acht Starlink-dummies uit en landde precies in de Indische Oceaan."
+        },
+        {
+          "vlucht": "IFT-11",
+          "datum": "2025-10-13",
+          "versie": "V2",
+          "booster": "zee",
+          "schip": "zee",
+          "noot": "Laatste vlucht van V2. Beide trappen landden zoals gepland in zee."
+        },
+        {
+          "vlucht": "Flight 12",
+          "datum": "2026-05-22",
+          "versie": "V3",
+          "booster": "onbekend",
+          "schip": "onbekend",
+          "missie": "flight-12",
+          "bron": "/nieuws/faa-requires-spacex-led-mishap-investigation-before-resumpti/",
+          "noot": "Eerste vlucht van V3. Eén vacuüm-Raptor viel uit; het schip haalde toch zijn suborbitale baan. De FAA eiste daarna een ongevalsonderzoek."
+        },
+        {
+          "vlucht": "Flight 13",
+          "datum": "2026-07-24",
+          "versie": "V3",
+          "booster": "onbekend",
+          "schip": "onbekend",
+          "missie": "flight-13",
+          "noot": "Nam als eerste echte lading 20 Starlink V3-satellieten mee."
+        }
+      ],
+      "beeld": [
+        {
+          "id": "iss072e220043",
+          "src": "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg",
+          "titel": "De pluim van Starship-vlucht 6, gezien vanuit het ISS (19 november 2024)",
+          "credit": "NASA/Don Pettit",
+          "soort": "foto"
+        },
+        {
+          "id": "ACD25-0156-012",
+          "src": "https://images-assets.nasa.gov/image/ACD25-0156-012/ACD25-0156-012~large.jpg",
+          "titel": "Een schaalmodel van Super Heavy V3 in de windtunnel van NASA Ames",
+          "credit": "NASA/Brandon Torres",
+          "soort": "foto"
+        },
+        {
+          "id": "11 03 24 artemis 3 on surface",
+          "src": "https://images-assets.nasa.gov/image/11%2003%2024%20artemis%203%20on%20surface/11%2003%2024%20artemis%203%20on%20surface~medium.jpg",
+          "titel": "Starship als maanlander voor Artemis, op het maanoppervlak",
+          "credit": "SpaceX",
+          "soort": "impressie"
+        },
+        {
+          "id": "07 06 26 Artemis3_composite",
+          "src": "https://images-assets.nasa.gov/image/07%2006%2026%20Artemis3_composite/07%2006%2026%20Artemis3_composite~large.jpg",
+          "titel": "Orion en een Starship-maanlander ontmoeten elkaar voor Artemis III",
+          "credit": "SpaceX",
+          "soort": "impressie"
+        },
+        {
+          "id": "11 14 24 fuel depot",
+          "src": "https://images-assets.nasa.gov/image/11%2014%2024%20fuel%20depot/11%2014%2024%20fuel%20depot~medium.jpg",
+          "titel": "Een Starship-tankdepot: voor een maanvlucht moet het schip in een baan om de aarde bijtanken",
+          "credit": "SpaceX",
+          "soort": "impressie"
+        },
+        {
+          "id": "hls-crew-elevator-demo-20240503-dsc00030",
+          "src": "https://images-assets.nasa.gov/image/hls-crew-elevator-demo-20240503-dsc00030/hls-crew-elevator-demo-20240503-dsc00030~medium.jpg",
+          "titel": "Astronauten testen de liftkooi waarmee ze uit de Starship-maanlander afdalen",
+          "credit": "SpaceX",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -168,6 +332,36 @@
         "sls",
         "maanlanding",
         "moon"
+      ],
+      "beeld": [
+        {
+          "id": "Artemis II at the pad Moon 01292026_4",
+          "src": "https://images-assets.nasa.gov/image/Artemis%20II%20at%20the%20pad%20Moon%2001292026_4/Artemis%20II%20at%20the%20pad%20Moon%2001292026_4~large.jpg",
+          "titel": "De maan achter de volledige Artemis II-stapel op lanceerplatform 39B (januari 2026)",
+          "credit": "NASA/Sam Lott",
+          "soort": "foto"
+        },
+        {
+          "id": "SLS_MAF_20260401_ArtemisIILaunch_05",
+          "src": "https://images-assets.nasa.gov/image/SLS_MAF_20260401_ArtemisIILaunch_05/SLS_MAF_20260401_ArtemisIILaunch_05~large.jpg",
+          "titel": "De lancering van Artemis II met vier astronauten aan boord (1 april 2026)",
+          "credit": "NASA/Michael DeMocker",
+          "soort": "foto"
+        },
+        {
+          "id": "KSC-04012026-Artemis II_Launch-1",
+          "src": "https://images-assets.nasa.gov/image/KSC-04012026-Artemis%20II_Launch-1/KSC-04012026-Artemis%20II_Launch-1~large.jpg",
+          "titel": "SLS en Orion verlaten platform 39B",
+          "credit": "NASA/Brandon Hancock",
+          "soort": "foto"
+        },
+        {
+          "id": "Artemis II at the pad sunset 01282026_3",
+          "src": "https://images-assets.nasa.gov/image/Artemis%20II%20at%20the%20pad%20sunset%2001282026_3/Artemis%20II%20at%20the%20pad%20sunset%2001282026_3~large.jpg",
+          "titel": "Zonsondergang achter SLS en Orion, een paar weken voor de lancering",
+          "credit": "NASA/Sam Lott",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -251,6 +445,36 @@
         "rover",
         "ingenuity",
         "mars sample return"
+      ],
+      "beeld": [
+        {
+          "id": "PIA25965",
+          "src": "https://images-assets.nasa.gov/image/PIA25965/PIA25965~medium.jpg",
+          "titel": "Mozaïek uit 53 beelden: de westrand van de Jezero-krater (juli 2023)",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA24542",
+          "src": "https://images-assets.nasa.gov/image/PIA24542/PIA24542~medium.jpg",
+          "titel": "Perseverance maakt een selfie met helikopter Ingenuity (april 2021)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        },
+        {
+          "id": "NHQ202102190006",
+          "src": "https://images-assets.nasa.gov/image/NHQ202102190006/NHQ202102190006~medium.jpg",
+          "titel": "Perseverance hangt onder de afdaaltrap, vlak voor de landing (18 februari 2021)",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA25681",
+          "src": "https://images-assets.nasa.gov/image/PIA25681/PIA25681~medium.jpg",
+          "titel": "Perseverance kijkt neer op een van de tien monsterbuizen die het in Three Forks achterliet",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -340,6 +564,36 @@
         "infrarood",
         "exoplaneet",
         "K2-18b"
+      ],
+      "beeld": [
+        {
+          "id": "NHQ202112250009",
+          "src": "https://images-assets.nasa.gov/image/NHQ202112250009/NHQ202112250009~medium.jpg",
+          "titel": "De lancering in een infraroodopname met valse kleuren",
+          "credit": "NASA/Bill Ingalls",
+          "soort": "foto"
+        },
+        {
+          "id": "NHQ202112250015",
+          "src": "https://images-assets.nasa.gov/image/NHQ202112250015/NHQ202112250015~medium.jpg",
+          "titel": "Een Ariane 5 lanceert Webb vanuit Kourou (25 december 2021)",
+          "credit": "NASA/Bill Ingalls",
+          "soort": "foto"
+        },
+        {
+          "id": "GSFC_20171208_Archive_e000355",
+          "src": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000355/GSFC_20171208_Archive_e000355~medium.jpg",
+          "titel": "Webb van voren gezien, vanuit het raam van de cleanroom bij NASA Goddard",
+          "credit": "NASA",
+          "soort": "foto"
+        },
+        {
+          "id": "GSFC_20171208_Archive_e000495",
+          "src": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000495/GSFC_20171208_Archive_e000495~medium.jpg",
+          "titel": "Halverwege: het negende vluchtspiegelsegment is geplaatst",
+          "credit": "NASA",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -590,6 +844,29 @@
         "msl",
         "rover",
         "mount sharp"
+      ],
+      "beeld": [
+        {
+          "id": "PIA22207",
+          "src": "https://images-assets.nasa.gov/image/PIA22207/PIA22207~medium.jpg",
+          "titel": "Mount Sharp op de achtergrond van een selfie op Vera Rubin Ridge (2018)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA24543",
+          "src": "https://images-assets.nasa.gov/image/PIA24543/PIA24543~medium.jpg",
+          "titel": "Curiosity maakt een selfie voor Mont Mercou (maart 2021)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA19808",
+          "src": "https://images-assets.nasa.gov/image/PIA19808/PIA19808~medium.jpg",
+          "titel": "Curiosity van onderen gezien op de boorplek Buckskin (2015)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -677,6 +954,29 @@
         "jupiter",
         "saturnus",
         "pale blue dot"
+      ],
+      "beeld": [
+        {
+          "id": "ARC-1979-AC79-7009",
+          "src": "https://images-assets.nasa.gov/image/ARC-1979-AC79-7009/ARC-1979-AC79-7009~medium.jpg",
+          "titel": "Jupiter, een mozaïek van Voyager 1 (maart 1979)",
+          "credit": "NASA/JPL",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA21747",
+          "src": "https://images-assets.nasa.gov/image/PIA21747/PIA21747~medium.jpg",
+          "titel": "Voyager 1 vertrekt op een Titan IIIE/Centaur (5 september 1977)",
+          "credit": "NASA",
+          "soort": "foto"
+        },
+        {
+          "id": "ARC-1979-AC79-7113",
+          "src": "https://images-assets.nasa.gov/image/ARC-1979-AC79-7113/ARC-1979-AC79-7113~medium.jpg",
+          "titel": "Voyager 1 betrapt een vulkaanuitbarsting op de Jupitermaan Io (maart 1979)",
+          "credit": "NASA/JPL",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -757,6 +1057,36 @@
         "oceaan",
         "bewoonbaarheid",
         "falcon heavy"
+      ],
+      "beeld": [
+        {
+          "id": "PIA26431",
+          "src": "https://images-assets.nasa.gov/image/PIA26431/PIA26431~medium.jpg",
+          "titel": "Europa Clipper in de schaduw van Jupiter",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "impressie"
+        },
+        {
+          "id": "PIA26066",
+          "src": "https://images-assets.nasa.gov/image/PIA26066/PIA26066~medium.jpg",
+          "titel": "Europa Clipper in de cleanroom van Kennedy, bij de test van de zonnepanelen (augustus 2024)",
+          "credit": "NASA/Frank Michaux",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA26442",
+          "src": "https://images-assets.nasa.gov/image/PIA26442/PIA26442~medium.jpg",
+          "titel": "Europa Clipper als silhouet tegen Jupiter en Europa",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "impressie"
+        },
+        {
+          "id": "PIA26443",
+          "src": "https://images-assets.nasa.gov/image/PIA26443/PIA26443~medium.jpg",
+          "titel": "Een scheervlucht langs het ijsoppervlak van Europa",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "impressie"
+        }
       ]
     },
     {
@@ -779,11 +1109,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "11 apr 2026",
-          "event": "Geplande lancering van Starlink Group 17-21"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -821,11 +1151,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "14 apr 2026",
-          "event": "Geplande lancering van Starlink Group 10-24"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -865,11 +1195,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "15 apr 2026",
-          "event": "Geplande lancering van Starlink Group 17-27"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -909,11 +1239,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "18 apr 2026",
-          "event": "Geplande lancering van Starlink Group 17-22"
+          "date": "19 apr 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -951,11 +1281,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "22 apr 2026",
-          "event": "Geplande lancering van Starlink Group 17-14"
+          "date": "23 apr 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -995,11 +1325,11 @@
       "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/37/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "23 apr 2026",
-          "event": "Geplande lancering van Kakushin Rising (JAXA Rideshare)"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1038,11 +1368,11 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "28 apr 2026",
-          "event": "Geplande lancering van Amazon Leo (LE-02)"
+          "date": "30 apr 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1074,11 +1404,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 apr 2026",
-          "event": "Geplande lancering van GPS III SV10"
+          "date": "21 apr 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1116,11 +1446,11 @@
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1062/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 apr 2026",
-          "event": "Geplande lancering van ViaSat-3 F3 (ViaSat-3 Asia-Pacific)"
+          "date": "29 apr 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1160,11 +1490,11 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 mei 2026",
-          "event": "Geplande lancering van StriX Launch 9"
+          "date": "22 mei 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1196,11 +1526,11 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/8b7e748c-6ed5-4681-a898-827b4a23b8d7/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 mei 2026",
-          "event": "Geplande lancering van The Grain Goddess Provides (iQPS Launch 7)"
+          "date": "6 aug 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1232,25 +1562,24 @@
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX bereidt zich voor op de twaalfde testvlucht van het tweestapsraket Starship-systeem, gepland voor 31 mei 2026. Deze vlucht markeert een historisch moment: voor het eerst zal de nieuwe Starship V3-variant de lucht ingaan. De suborbitale testvlucht moet aanvullende data opleveren over de prestaties en betrouwbaarheid van het verbeterde voertuig. Het is een cruciale stap in SpaceX' ambitie om Starship operationeel in te zetten voor maanmissies en interplanetaire reizen.",
+      "description": "Flight 12 was de twaalfde testvlucht van Starship en de eerste met de nieuwe V3-configuratie. De vlucht ging op 22 mei 2026 op, vanaf het nieuwe Orbital Launch Pad 2 in Starbase. Tijdens de klim viel een van de drie vacuüm-Raptors uit; de overige motoren brandden langer en het schip haalde toch zijn suborbitale baan. Daarna eiste de FAA een door SpaceX geleid ongevalsonderzoek voordat Starship weer mocht vliegen.",
       "vehicle": "Starship",
       "launchSite": "Orbital Launch Pad 2",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 mei 2026",
-          "event": "Geplande lancering van Flight 12"
+          "date": "22 mei 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
       "relatedTags": [
-        "SpaceX",
-        "Starship",
-        "Starship V3",
-        "Testvlucht",
-        "Suborbital"
+        "starship",
+        "starship v3",
+        "flight 12",
+        "super heavy"
       ]
     },
     {
@@ -1273,11 +1602,11 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 mei 2026",
-          "event": "Geplande lancering van Amazon Leo (LE-03)"
+          "date": "17 jun 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1317,10 +1646,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/599ba2df-7483-4b2f-a083-2b5ddc06e069/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "25 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van LOXSAT 1"
         }
       ],
@@ -1362,11 +1691,11 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/232/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van MTG-I2"
+          "date": "27 aug 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1412,11 +1741,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van Transporter 17 (Dedicated SSO Rideshare)"
+          "date": "7 jul 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1448,11 +1777,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/0f6780cf-edae-4d7c-99d6-ce7de784d140/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van MRV-1"
+          "date": "21 jul 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1493,10 +1822,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van SDA Tranche 1 Tracking Layer A"
         }
       ],
@@ -1542,10 +1871,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van SDA Tranche 1 Tracking Layer C"
         }
       ],
@@ -1589,10 +1918,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van SDA Tranche 1 Tracking Layer E"
         }
       ],
@@ -1638,11 +1967,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van SDA Tranche 1 Transport Layer A"
+          "date": "10 okt 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1674,10 +2003,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van SDA Tranche 1 Transport Layer D"
         }
       ],
@@ -1723,11 +2052,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van SDA Tranche 1 Transport Layer E"
+          "date": "16 jul 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1769,10 +2098,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van SDA Tranche 1 Transport Layer F"
         }
       ],
@@ -1816,11 +2145,11 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/04154b70-045b-4e3a-bb5a-e5436091ba37/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van VICTUS HAZE Puma"
+          "date": "19 jun 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1858,11 +2187,11 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/204/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van 9 x Globalstar-3"
+          "date": "16 aug 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -1899,10 +2228,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 10"
         }
       ],
@@ -1942,10 +2271,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 11"
         }
       ],
@@ -1987,10 +2316,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 12"
         }
       ],
@@ -2034,10 +2363,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 7"
         }
       ],
@@ -2080,10 +2409,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 8"
         }
       ],
@@ -2125,10 +2454,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 9"
         }
       ],
@@ -2164,32 +2493,23 @@
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert op 24 juli 2026 de dertiende testvlucht uit van het tweestapsraket Starship, tevens de tweede vlucht van de V3-variant. Voor het eerst draagt Starship een payload mee de ruimte in: twintig V3 Starlink-satellieten die hun zonnepanelen en antennes ontvouwen en via krachtige lasers verbinding proberen te maken met grondstations in Zuid-Afrika en het bestaande Starlink-netwerk. Zes van de satellieten zijn uitgerust met camera's die Starships hitteschild in beeld brengen om nieuwe inspectiemethoden te testen voor toekomstige terugkeer naar de lanceerlocatie. Meerdere tegels zijn wit geschilderd om ontbrekende tegels te simuleren en als referentiepunten te dienen voor de beeldanalyse.",
+      "description": "Flight 13 was de dertiende testvlucht van Starship en de tweede met de V3-configuratie. Voor het eerst nam Starship een echte lading mee: twintig Starlink V3-satellieten, die hun zonnepanelen en antennes moesten uitvouwen en via lasers verbinding moesten maken met grondstations in Zuid-Afrika en het bestaande Starlink-netwerk. Zes satellieten droegen camera's om het hitteschild van Starship te fotograferen; een aantal tegels was wit geverfd als meetpunt voor die beelden.",
       "vehicle": "Starship",
       "launchSite": "Orbital Launch Pad 2",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van Flight 13"
+          "date": "24 jul 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
       "relatedTags": [
-        "SpaceX",
-        "Starship",
-        "Starship V3",
-        "Testvlucht",
-        "Suborbitaal",
-        "spacex",
         "starship",
         "starship v3",
-        "testvlucht",
-        "suborbital",
-        "herbruikbare raket",
-        "suborbitaal",
+        "flight 13",
         "starlink",
         "hitteschild"
       ],
@@ -2215,11 +2535,11 @@
       "launchSite": "Rocket Lab Launch Complex 1B",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 jul 2026",
-          "event": "Geplande lancering van StriX Launch 10"
+          "date": "26 jun 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2259,10 +2579,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/44/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "15 aug 2026",
+          "date": "31 dec 2026",
           "event": "Geplande lancering van Aspera"
         }
       ],
@@ -2303,11 +2623,11 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1071/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 aug 2026",
-          "event": "Geplande lancering van StriX Launch 11"
+          "date": "2 sep 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2345,10 +2665,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 aug 2026",
+          "date": "2026",
           "event": "Geplande lancering van SDA Tranche 2 Transport Layer A"
         }
       ],
@@ -2396,11 +2716,11 @@
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/521f3a1c-f977-4306-9b7f-495858719adf/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "28 sep 2026",
-          "event": "Geplande lancering van Nancy Grace Roman Space Telescope"
+          "date": "30 aug 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2418,7 +2738,23 @@
         "nancy grace roman space telescope",
         "falcon heavy"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:38:05.688Z"
+      "_lastClaudeUpdate": "2026-10-15T09:38:05.688Z",
+      "beeld": [
+        {
+          "id": "NHQ20260830_admin_0001",
+          "src": "https://images-assets.nasa.gov/image/NHQ20260830_admin_0001/NHQ20260830_admin_0001~large.jpg",
+          "titel": "Falcon Heavy met Roman schuift tijdens de lancering voor de zon langs (30 augustus 2026)",
+          "credit": "NASA/John Kraus",
+          "soort": "foto"
+        },
+        {
+          "id": "NHQ20260830_admin_0005",
+          "src": "https://images-assets.nasa.gov/image/NHQ20260830_admin_0005/NHQ20260830_admin_0005~large.jpg",
+          "titel": "Falcon Heavy lanceert Roman vanaf Launch Complex 39A bij Kennedy",
+          "credit": "NASA/John Kraus",
+          "soort": "foto"
+        }
+      ]
     },
     {
       "id": "o3b-mpower-11-13",
@@ -2440,11 +2776,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/203/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 sep 2026",
-          "event": "Geplande lancering van O3b mPower 11-13"
+          "date": "13 sep 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2485,10 +2821,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/9bfa0324-db74-444f-8dc3-1c7d373ca659/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 sep 2026",
+          "date": "31 dec 2026",
           "event": "Geplande lancering van 5x Astranis MicroGEO"
         }
       ],
@@ -2528,10 +2864,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 sep 2026",
+          "date": "2026",
           "event": "Geplande lancering van SDA Tranche 2 Tracking Layer A"
         }
       ],
@@ -2573,10 +2909,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 sep 2026",
+          "date": "2026",
           "event": "Geplande lancering van SDA Tranche 2 Tracking Layer B"
         }
       ],
@@ -2619,10 +2955,10 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/22e117bf-041c-49d5-9d09-7b180036e143/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "6 okt 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van Metop-SG B1"
         }
       ],
@@ -2667,11 +3003,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/05530ccb-7184-41e7-b2e5-c090b61e0e3a/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 mei 2026",
-          "event": "Geplande lancering van CAS500-2 & Others"
+          "date": "3 mei 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2709,11 +3045,11 @@
       "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/4e074623-426a-4ab2-8729-a85200684bef/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "22 apr 2026",
-          "event": "Geplande lancering van Bubbles"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2751,11 +3087,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/16/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 sep 2026",
-          "event": "Geplande lancering van Crew-13"
+          "date": "1 okt 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2795,11 +3131,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "12 mei 2026",
-          "event": "Geplande lancering van NROL-172"
+          "date": "11 mei 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2837,11 +3173,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/c3f48f48-0e0a-4bca-917e-de494cfca35b/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van BlueBird Block 2 #3"
+          "date": "17 jun 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2879,11 +3215,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/ce3db8f7-ba9b-4a2a-953c-c6c6ee926541/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 jun 2026",
-          "event": "Geplande lancering van Sirius SXM-11"
+          "date": "29 jun 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -2919,7 +3255,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/41/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "30 nov 2026",
@@ -2958,10 +3294,10 @@
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1069/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "30 nov 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van Griffin Mission One"
         }
       ],
@@ -3001,11 +3337,11 @@
       "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/e6cefffc-19a6-4a4b-a7f0-ebe907d5a6aa/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "11 jun 2026",
-          "event": "Geplande lancering van Curveball"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3035,11 +3371,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/74bf8472-9ba1-42d6-9245-b014f8e91de9/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "21 jun 2026",
-          "event": "Geplande lancering van Project Starfall Demonstration Mission"
+          "date": "23 jun 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3069,7 +3405,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/387aadc6-68ca-4090-9be7-d57603ad7c79/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "31 dec 2026",
@@ -3114,10 +3450,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van Telesat Lightspeed 1"
         }
       ],
@@ -3159,7 +3495,7 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/27/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "31 dec 2026",
@@ -3204,10 +3540,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van CHORUS"
         }
       ],
@@ -3252,10 +3588,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/01ca3653-126a-4c01-94fb-a9467b39cdac/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van Inmarsat-7 F1 (GX-7)"
         }
       ],
@@ -3299,7 +3635,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1067/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "31 dec 2026",
@@ -3344,7 +3680,7 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/b78857c4-3b8d-4462-929e-bc76f39c0e6d/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "31 dec 2026",
@@ -3378,10 +3714,10 @@
       "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1061/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "22 okt 2026",
           "event": "Geplande lancering van 6x HawkEye 360"
         }
       ],
@@ -3422,11 +3758,11 @@
       "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1064/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
-          "event": "Geplande lancering van BlackSky Gen-3 5"
+          "date": "11 sep 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3466,10 +3802,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/548df42c-ae26-4cc9-921a-f0042941911a/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van BlackSky Gen-3 6"
         }
       ],
@@ -3509,10 +3845,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/5aa3575e-f3ff-48ec-969f-e7e4c669f866/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van BlackSky Gen-3 7"
         }
       ],
@@ -3552,10 +3888,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/280fba47-8e6e-4a4f-8bdd-b9687d99a9c5/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van BlackSky Gen-3 8"
         }
       ],
@@ -3595,10 +3931,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/54e907ad-f988-488b-ab35-cd86f63edf8d/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van BlackSky Gen-3 9"
         }
       ],
@@ -3639,11 +3975,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "30 jul 2026",
-          "event": "Geplande lancering van NROL-95"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3681,11 +4017,11 @@
       "launchSite": "Rocket Lab Launch Complex 1B",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 aug 2026",
-          "event": "Geplande lancering van The Lightning God Defends (iQPS Launch 8)"
+          "date": "20 aug 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3724,10 +4060,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van USSF-31"
         }
       ],
@@ -3769,10 +4105,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/fc1bd321-e502-4d0f-81f4-1926dece81c6/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van VICTUS SURGO"
         }
       ],
@@ -3815,10 +4151,10 @@
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van USSF-75"
         }
       ],
@@ -3858,11 +4194,11 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 okt 2026",
-          "event": "Geplande lancering van Bandwagon 5 (Dedicated Mid-Inclination Rideshare)"
+          "date": "20 okt 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3901,11 +4237,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "10 sep 2026",
-          "event": "Geplande lancering van USSF-153"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -3944,10 +4280,10 @@
       "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/04522dea-1450-48f5-bc9d-2d7f1e637f9b/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van HASTE | Leidos-3"
         }
       ],
@@ -3983,11 +4319,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "16 sep 2026",
-          "event": "Geplande lancering van USSF-259"
+          "date": "17 sep 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4028,11 +4364,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "27 sep 2026",
-          "event": "Geplande lancering van USSF-xxx (\"R-3\")"
+          "date": "26 sep 2026",
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4072,7 +4408,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "4 nov 2026",
@@ -4115,7 +4451,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "10 nov 2026",
@@ -4158,11 +4494,11 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1041/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "15 okt 2026",
-          "event": "Geplande lancering van USSF-481"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4198,10 +4534,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "20 okt 2026",
+          "date": "21 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-15"
         }
       ],
@@ -4236,7 +4572,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "24 okt 2026",
@@ -4275,7 +4611,7 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1058/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "23 nov 2026",
@@ -4313,10 +4649,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van SDA Tranche 2 Transport Layer D"
         }
       ],
@@ -4351,10 +4687,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1056/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van SDA Tranche 2 Transport Layer E"
         }
       ],
@@ -4379,31 +4715,29 @@
       "soort": "lancering",
       "launched": "31 dec 2026",
       "launchPrecision": "Quarter 4",
-      "objective": "Vijftiende testvlucht van het Starship-raketsysteem, voor het eerst in de V3-configuratie.",
+      "objective": "Vijftiende testvlucht van Starship, de vierde in de V3-configuratie.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "SpaceX voert de vijftiende testvlucht uit van het tweefasige Starship-raketsysteem. Het is tevens de vierde vlucht met de Starship V3-configuratie, een belangrijke stap in de verdere ontwikkeling van het grootste raket ter wereld. De vlucht heeft als doel een nuttige lading af te leveren in een lage aardbaan. Met elke testvlucht bouwt SpaceX voort op eerder vergaarde data om het systeem verder te verfijnen.",
+      "description": "SpaceX plant de vijftiende testvlucht van Starship, de vierde met de V3-configuratie. Het doel is een nuttige lading in een lage baan om de aarde te brengen. De datum ligt nog niet vast: Launch Library noemt alleen het vierde kwartaal van 2026.",
       "vehicle": "Starship",
       "launchSite": "Orbital Launch Pad 2",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van Flight 15"
         }
       ],
       "facts": [],
       "relatedTags": [
-        "spacex",
         "starship",
-        "testvlucht",
-        "low earth orbit",
-        "starship v3"
+        "starship v3",
+        "flight 15"
       ],
       "_lastClaudeUpdate": "2026-10-15T08:39:02.155Z"
     },
@@ -4428,10 +4762,10 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/204/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2e helft 2026",
           "event": "Geplande lancering van Globalstar 2-R Mission 2 (x 9)"
         }
       ],
@@ -4467,10 +4801,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1092/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van iQPS Launch 11"
         }
       ],
@@ -4505,10 +4839,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 1"
         }
       ],
@@ -4544,10 +4878,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 2"
         }
       ],
@@ -4584,10 +4918,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 3"
         }
       ],
@@ -4623,10 +4957,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 4"
         }
       ],
@@ -4662,10 +4996,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 5"
         }
       ],
@@ -4701,10 +5035,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/1076/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Rivada 6"
         }
       ],
@@ -4740,10 +5074,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Telesat Lightspeed 2"
         }
       ],
@@ -4779,10 +5113,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Telesat Lightspeed 3"
         }
       ],
@@ -4817,10 +5151,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Telesat Lightspeed 4"
         }
       ],
@@ -4856,10 +5190,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Telesat Lightspeed 5"
         }
       ],
@@ -4894,10 +5228,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Telesat Lightspeed 6"
         }
       ],
@@ -4932,10 +5266,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/208/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van Telesat Lightspeed 7"
         }
       ],
@@ -4971,10 +5305,10 @@
       "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/0196fba7-dd6c-4ba0-bf71-e1460930ffde/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van HASTE | Leidos-4"
         }
       ],
@@ -5010,10 +5344,10 @@
       "launchSite": "Rocket Lab Launch Complex 2 (Launch Area 0 C)",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/71489c66-8ecd-4610-9847-3620a543fd75/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "2026",
           "event": "Geplande lancering van HASTE | Leidos-5"
         }
       ],
@@ -5049,10 +5383,10 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/launches/11b218b1-5e40-4b9d-854e-50320299239d/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van BlueBird 14-16 (Block 2 #9-11)"
         }
       ],
@@ -5087,7 +5421,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "28 okt 2026",
@@ -5125,7 +5459,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/181/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "5 nov 2026",
@@ -5163,7 +5497,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "https://ll.thespacedevs.com/2.3.0/agencies/121/?format=json",
+      "missionUrl": "",
       "timeline": [
         {
           "date": "10 nov 2026",

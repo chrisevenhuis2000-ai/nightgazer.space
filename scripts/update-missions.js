@@ -307,9 +307,48 @@ function ll2DataVan(l) {
     netPrecision: l.net_precision?.name || l.net_precision?.abbrev || null,
     description: l.mission?.description || null,
     orbit:       mapOrbit(l.mission?.orbit?.name),
-    missionUrl:  l.mission?.agencies?.[0]?.url || null,
+    missionUrl:  webUrl(l) || null,
     ll2Status:   l.status?.name || null,
   }
+}
+
+// Een link die een bezoeker kan openen. LL2's `url`-velden wijzen naar de
+// API zelf (…/agencies/121/?format=json); die stonden als "Officiële pagina"
+// op 102 missiepagina's en toonden de bezoeker een scherm vol JSON.
+function isWebUrl(u) {
+  if (typeof u !== 'string' || !/^https?:\/\//i.test(u)) return false
+  return !/thespacedevs\.com|[?&]format=json/i.test(u)
+}
+function webUrl(l) {
+  const kandidaten = [
+    ...(l.mission?.info_urls || []).map(x => x?.url),
+    l.mission?.agencies?.[0]?.info_url,
+    l.mission?.agencies?.[0]?.wiki_url,
+    l.launch_service_provider?.info_url,
+  ]
+  return kandidaten.find(isWebUrl) || ''
+}
+
+// De ene tijdlijnregel die het script zelf schrijft ("Geplande lancering
+// van …") volgt de status. Zonder dit bleef "Geplande lancering" met de
+// oude datum staan op een vlucht die allang was opgegaan. Handmatige
+// regels blijven onaangeroerd.
+const BOT_REGEL = /^(Geplande lancering van |Gelanceerd$|Lancering mislukt$)/
+function tijdlijnRegel(m) {
+  switch (m.status) {
+    case 'voltooid':
+    case 'actief':  return { date: m.launched, event: 'Gelanceerd' }
+    case 'mislukt': return { date: m.launched, event: 'Lancering mislukt' }
+    default:        return { date: datumTekst(m.launched, m.launchPrecision), event: `Geplande lancering van ${m.name}` }
+  }
+}
+function syncTijdlijn(m) {
+  const i = (m.timeline || []).findIndex(e => BOT_REGEL.test(e?.event || ''))
+  if (i < 0) return false
+  const regel = tijdlijnRegel(m)
+  if (m.timeline[i].date === regel.date && m.timeline[i].event === regel.event) return false
+  m.timeline[i] = regel
+  return true
 }
 
 // Eén lancering volledig (met missiebeschrijving) opvragen, voor een missie
@@ -729,7 +768,7 @@ async function main() {
       launchSite:  ll2Data.launchSite,
       duration:    'Onbekend',
       distanceKm:  'Onbekend',
-      missionUrl:  ll2Launch.mission?.agencies?.[0]?.url || ll2Launch.url || '',
+      missionUrl:  webUrl(ll2Launch),
       timeline: [
         { date: formatDutch(ll2Data.launchDate), event: `Geplande lancering van ${launchName}` },
       ],
@@ -760,6 +799,16 @@ async function main() {
     }
   }
 
+  // ── Tijdlijn volgt de status ─────────────────────────────────────────────
+  // Alleen missies die het script beheert (met _ll2Id).
+  for (const mission of missions) {
+    if (!mission._ll2Id) continue
+    if (syncTijdlijn(mission)) {
+      console.log(`  ✏️  ${mission.name}: tijdlijn → ${mission.timeline.find(e => BOT_REGEL.test(e.event)).event}`)
+      changed = true
+    }
+  }
+
   // ── Run-samenvatting ──────────────────────────────────────────────────────
   const samenvatting = `Claude-aanroepen: ${claudeAanroepen}`
   console.log(`\n${samenvatting}`)
@@ -782,7 +831,7 @@ async function main() {
   console.log(`\n✅ missions.json opgeslagen (${missions.length} missies, ${autoUpdated.length} bijgewerkt)`)
 }
 
-module.exports = { matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, datumTekst, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl, statusVoorPrompt }
+module.exports = { isWebUrl, webUrl, syncTijdlijn, BOT_REGEL, matchMission, isNewLaunch, normalize, slugify, mapLL2Status, soortVoorType, parseDutch, cleanEnrichment, launchesByIdUrls, claudeReden, datumTekst, highlightVoorStatus, highlightVoorMissie, launchDetailedUrl, statusVoorPrompt }
 
 if (require.main === module) {
   main().catch(err => {

@@ -217,7 +217,7 @@ track and thumb (WebKit and `scrollbar-color`), focus ring
 
 ## Surfaces
 
-Six surfaces exist in this world. They share `app/_plate/shared.tsx`: the
+Seven surfaces exist in this world. They share `app/_plate/shared.tsx`: the
 plate header, the quick bar, the advertising field (`AdPlate`, which takes
 each page's own AdSense slot and renders nothing without one), the `Ladder`
 mark, `plateNo`/`img`, and `useArticles`. Anything used by more than one goes
@@ -252,6 +252,38 @@ voorbij", never "gevlogen", unless the status says more: the bot reads
 "mislukt" in `--pl-warn`. Whether a success makes something `actief` is the
 mission's `soort`, not its name: only a `missie` has an operational phase
 and appears under "Wat er nu vliegt".
+
+**`/missies/[slug]` — one plate from the manifest.** Mode Read. All 114
+mission pages share one file, `app/missies/[slug]/MissionDetailClient.tsx`,
+and until October 2026 it was the last page outside this world: its own
+header with a dead mobile menu, Playfair, emoji, a page-wide star canvas and
+`auto-fill` grids that left a rule-coloured filler cell beside the last item.
+It now uses the shared chrome. The head is a plate with envelope fields
+underneath; the description and the timeline read in `.pl-read-grid`, facts
+in the margin. A field the data does not know (`Onbekend`, empty facts, a
+Launch Library API address posing as "Officiële pagina") is not rendered:
+an empty box reads as a fault. Envelope fields use `auto-fit`, never
+`auto-fill`, so empty tracks collapse.
+
+Every mission page carries pictures, and says where they come from. The
+first image is the head's ground, the second is Fig. 1 in the reading column
+after the lead paragraph, the rest form a numbered image plate (`.pl-mgal`).
+Each figure has a Dutch caption, a credit and a link to its NASA source.
+Curated sets live in `beeld` in `missions.json` (images.nasa.gov, handmade);
+a mission without its own set borrows one from a mission with the same
+vehicle and says "niet van deze vlucht zelf"; the rest get live mood images
+from the NASA image search, headed "Sfeerbeeld". An artist's concept is
+labelled "Impressie".
+
+A mission with a test campaign (`campagne` in `missions.json`, Starship only)
+leads with **the test log**: two lanes, booster and ship, one column per
+flight, version boundaries ruled. Outcome is a mark like status: filled
+`--pl-good` came back to the tower, open `--pl-good` landed controlled at sea,
+filled `--pl-warn` was lost, dashed `--pl-ink-3` is not in the data yet. A
+flight number missing between the log and the next planned flight is named
+under the log rather than skipped. Beside the lanes sits the next flight
+with the same vehicle; only a real day becomes a countdown (`.pl-live`), a
+quarter stays a quarter.
 
 **`/educatie` — learning.** Mode Read. The level ladder: the reading
 level *is* the page. One choice in a sticky bar rewrites all six topics at
@@ -291,6 +323,18 @@ Two behaviour rules the missions surface adds:
 > axis, and hovering a mark lights its flight. The three dated flights lead
 > the page, so they take part too — without them the link pointed at nothing,
 > since the ledger rows are the ones with no fixed date and therefore no mark.
+
+Two behaviour rules the mission plate adds:
+
+> **A lane answers its row.** Hovering a flight row lights its column in the
+> lanes and the reverse, the same contract as the strip and the list on
+> `/missies`. It is set by a mouse only (`pointerType === 'mouse'`): on touch a
+> hover sticks after a tap. On a narrow screen the lanes scroll and open at
+> the newest flight, with the lane labels pinned.
+
+> **"Onbekend" is not an outcome.** The test log says "nog niet ingevuld" for
+> a flight whose result is not in the data. It never infers success from a
+> status of `voltooid`, which for a launch only means it went up.
 
 One behaviour rule the stargazing surface adds:
 

@@ -3702,3 +3702,297 @@ a:hover .pl-emulsion > img,
   text-decoration-thickness: 1px;
 }
 .pl .pl-voorw__a:hover { text-decoration-thickness: 2px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   De missieplaat — /missies/[slug]
+   Eén plaat uit het manifest. Een missie met een testcampagne (Starship)
+   krijgt het testlogboek: twee banen, booster en schip, één kolom per vlucht.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-mhead {
+  position: relative;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  overflow: hidden;
+}
+.pl-mhead__ground { position: absolute; inset: 0; z-index: 0; }
+.pl-mhead__ground .pl-emulsion { width: 100%; height: 100%; }
+.pl-mhead__ground .pl-emulsion > img { opacity: 0.3; }
+.pl-mhead__ground::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,16,34,0.5) 0%, rgba(14,16,34,0.9) 100%);
+}
+.pl-mhead > *:not(.pl-mhead__ground) { position: relative; z-index: 1; }
+.pl-mhead__in {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding: clamp(18px, 2.6vw, 34px) clamp(18px, 2.6vw, 34px) clamp(26px, 3.4vw, 44px);
+}
+.pl-mhead__in .pl-h1 { max-width: 20ch; }
+.pl-mhead__obj {
+  color: var(--pl-ink-2);
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+
+.pl-crumb {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: var(--pl-tap);
+  margin-bottom: -4px;
+  color: var(--pl-ink-3);
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: color 180ms var(--pl-ease), transform 160ms var(--pl-ease-o);
+}
+.pl-crumb__arrow { display: inline-flex; transform: scaleX(-1); }
+@media (hover: hover) and (pointer: fine) {
+  .pl-crumb:hover { color: var(--pl-act); }
+}
+
+/* Envelopvelden onder de titel. auto-fit, geen auto-fill: lege sporen
+   vallen weg, zodat er nooit een vulvak naast de laatste cel staat. */
+.pl-mspec {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  margin: 0;
+  border-top: 1px solid var(--pl-rule);
+  background: rgba(14,16,34,0.55);
+}
+.pl-mspec > div {
+  padding: 16px clamp(16px, 2vw, 22px);
+  box-shadow: inset -1px 0 0 var(--pl-rule-soft), inset 0 -1px 0 var(--pl-rule-soft);
+  min-width: 0;
+}
+.pl-mspec dt { margin-bottom: 8px; }
+.pl-mspec dd { margin: 0; font-size: 0.875rem; color: var(--pl-ink); line-height: 1.45; overflow-wrap: anywhere; }
+
+/* Eén kolom als er geen kantlijn is: geen lege zijbalk. */
+.pl-read-grid--solo { grid-template-columns: minmax(0, 1fr); }
+
+/* Tijdlijn als gelinieerd register, geen gloeiende stippen. */
+.pl-mtime {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--pl-rule-soft);
+  max-width: 68ch;
+}
+.pl-mtime li {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-mtime__d { font-size: 0.8125rem; color: var(--pl-ink-3); }
+.pl-mtime__e { font-size: 0.9375rem; color: var(--pl-ink); line-height: 1.5; }
+
+.pl-mfacts { display: grid; gap: 0; margin: 0; }
+.pl-mfacts > div { padding: 12px 0; border-top: 1px solid var(--pl-rule-soft); }
+.pl-mfacts > div:first-child { border-top: 0; padding-top: 0; }
+.pl-mfacts dt { margin-bottom: 7px; }
+.pl-mfacts dd { margin: 0; font-size: 0.875rem; color: var(--pl-ink); line-height: 1.45; }
+
+/* ── Uitkomst van een trap: een markering, zoals status overal ── */
+.pl-out {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--pl-ink-2);
+  white-space: nowrap;
+}
+.pl-out i { width: 9px; height: 9px; display: block; border: 1px solid currentColor; flex-shrink: 0; }
+.pl-out[data-o="gevangen"] { color: var(--pl-good); }
+.pl-out[data-o="gevangen"] i { background: currentColor; }
+.pl-out[data-o="zee"] { color: var(--pl-good); }
+.pl-out[data-o="verloren"] { color: var(--pl-warn); }
+.pl-out[data-o="verloren"] i { background: currentColor; }
+.pl-out[data-o="onbekend"] { color: var(--pl-ink-3); }
+.pl-out[data-o="onbekend"] i { border-style: dashed; }
+
+/* ── Het logboek: banen links, volgende vlucht rechts ── */
+.pl-log {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+  gap: 1px;
+  background: var(--pl-rule);
+  border: 1px solid var(--pl-rule);
+  margin-bottom: 22px;
+}
+.pl-lanes-wrap { background: var(--pl-plate); overflow-x: auto; overflow-y: hidden; min-width: 0; contain: paint; }
+.pl-lanes {
+  display: grid;
+  grid-template-columns: 92px repeat(var(--n), minmax(34px, 1fr));
+  min-width: calc(92px + var(--n) * 34px);
+  padding: 18px clamp(14px, 2vw, 22px) 20px 0;
+}
+.pl-lanes__row { display: contents; }
+.pl-lanes__lab {
+  padding-left: clamp(14px, 2vw, 22px);
+  align-self: stretch;
+  display: flex; align-items: center;
+  letter-spacing: 0.14em;
+  /* Blijft staan als de banen schuiven, anders weet je niet welke baan
+     welke trap is. */
+  position: sticky; left: 0; z-index: 1;
+  background: var(--pl-plate);
+}
+.pl-lanes__ver {
+  height: 18px;
+  padding-left: 6px;
+  letter-spacing: 0.16em;
+  color: var(--pl-stamp);
+}
+.pl-lanes__ver[data-start="1"],
+.pl-lanes__head[data-start="1"],
+.pl-lanes__cell[data-start="1"] { box-shadow: inset 1px 0 0 var(--pl-rule); }
+.pl-lanes__head {
+  height: 26px;
+  display: grid; place-items: center;
+  font-size: 0.75rem;
+  color: var(--pl-ink-3);
+  transition: color 160ms var(--pl-ease);
+}
+.pl-lanes__cell {
+  height: 44px;
+  display: grid; place-items: center;
+  border-top: 1px solid var(--pl-rule-soft);
+  transition: background 160ms var(--pl-ease);
+}
+.pl-lanes__cell .pl-out i { width: 13px; height: 13px; }
+.pl-lanes__head[data-hot="1"] { color: var(--pl-act); }
+.pl-lanes__cell[data-hot="1"] { background: var(--pl-plate-2); }
+
+.pl-next {
+  background: var(--pl-plate);
+  padding: 18px clamp(16px, 2vw, 22px);
+  display: flex; flex-direction: column; gap: 10px;
+  justify-content: center;
+  min-height: 132px;
+  transition: background 200ms var(--pl-ease), transform 160ms var(--pl-ease-o);
+}
+.pl-next.pl-skel { min-height: 132px; }
+.pl-next__t { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.018em; transition: color 180ms var(--pl-ease); }
+.pl-next__when { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; font-size: 1.25rem; font-weight: 600; }
+@media (hover: hover) and (pointer: fine) {
+  a.pl-next:hover { background: var(--pl-plate-2); }
+  a.pl-next:hover .pl-next__t { color: var(--pl-act); }
+}
+
+/* ── Rijen van het logboek: nieuwste boven ── */
+.pl-logrows {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+}
+.pl-logrows thead th {
+  text-align: left;
+  padding: 14px 20px 12px;
+  border-bottom: 1px solid var(--pl-rule);
+  font-weight: 600;
+}
+.pl-logrows tbody tr { border-bottom: 1px solid var(--pl-rule-soft); transition: background 160ms var(--pl-ease); }
+.pl-logrows tbody tr:last-child { border-bottom: 0; }
+.pl-logrows tbody tr[data-hot="1"] { background: var(--pl-plate-2); }
+.pl-logrows th[scope="row"], .pl-logrows td { padding: 16px 20px; vertical-align: top; text-align: left; font-weight: 400; }
+.pl-logrows th[scope="row"] { width: 170px; }
+.pl-logrows__d { white-space: nowrap; }
+.pl-logrows td:nth-child(2), .pl-logrows td:nth-child(3) { width: 130px; padding-top: 19px; }
+.pl-logrows__v { display: block; font-size: 1rem; font-weight: 700; letter-spacing: -0.018em; }
+.pl-logrows__d { display: block; margin-top: 4px; font-size: 0.75rem; color: var(--pl-ink-3); }
+.pl-logrows__links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 4px; }
+.pl-logrows__k { display: none; }
+/* De contactstrip vult de breedte: met vijf platen bleef er rechts een vak
+   van de lijnkleur over. */
+.pl-mdetail .pl-contact a { flex: 1 0 clamp(168px, 20vw, 210px); }
+
+/* Drukfeedback: de tik is aangekomen. Klein genoeg voor iets dat je vaak
+   aanraakt, en zonder beweging bij prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .pl-press { transition: color 200ms var(--pl-ease), background 200ms var(--pl-ease), transform 160ms var(--pl-ease-o); }
+  .pl-press:active { transform: scale(0.97); }
+  .pl-mdetail .pl-contact a { transition: background 220ms var(--pl-ease), transform 160ms var(--pl-ease-o); }
+  .pl-mdetail .pl-flight:active { background: var(--pl-plate-lift); }
+}
+
+@media (max-width: 1080px) {
+  .pl-log { grid-template-columns: minmax(0, 1fr); }
+  .pl-next { min-height: 0; }
+}
+@media (max-width: 860px) {
+  /* De rijen worden kaarten: vlucht en uitkomsten boven, de noot eronder. */
+  .pl-logrows, .pl-logrows tbody { display: block; }
+  /* Op smal scherm dragen de cellen hun eigen kop (.pl-logrows__k). */
+  .pl-logrows thead { display: none; }
+  .pl-logrows tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 6px 16px;
+    padding: 14px 16px;
+  }
+  .pl-logrows th[scope="row"], .pl-logrows td { padding: 0; width: auto !important; }
+  .pl-logrows td:nth-child(2), .pl-logrows td:nth-child(3) { padding-top: 3px; }
+  .pl-logrows td:nth-child(4) { grid-column: 1 / -1; padding-top: 6px; }
+  .pl-logrows__k { display: block; margin-bottom: 7px; font-size: 0.625rem; }
+  .pl-mtime li { grid-template-columns: 86px minmax(0, 1fr); gap: 12px; }
+}
+@media (max-width: 480px) {
+  .pl-logrows tbody tr { grid-template-columns: minmax(0, 1fr) auto; }
+  .pl-logrows td:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .pl-logrows td:nth-child(3) { grid-column: 2; grid-row: 2; padding-top: 0; }
+}
+
+/* ── Beeld op de missieplaat ─────────────────────────────────────────────
+   Een missiepagina was een muur tekst. Eén figuur in de leestekst, de rest
+   als beeldplaat eronder; elk beeld met nummer, onderschrift en credit, en
+   een impressie zegt dat het een impressie is. */
+.pl-mfig { display: grid; gap: 10px; min-width: 0; align-content: start; }
+.pl-mfig__img {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+.pl-mfig__img .pl-emulsion { position: absolute; inset: 0; }
+/* Dezelfde sluier als .pl-lede__fig: een witte cleanroom mag niet knallen. */
+.pl-mfig__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(14,16,34,0.38) 0%, rgba(14,16,34,0.04) 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+.pl-mfig figcaption { display: grid; gap: 4px; }
+.pl-mfig__t {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--pl-ink-2);
+  max-width: 62ch;
+}
+.pl-mfig__c { font-size: 0.72rem; color: var(--pl-ink-3); }
+.pl-mfig a.pl-mfig__img:focus-visible { outline: 2px solid var(--pl-act); outline-offset: 3px; }
+
+/* Twee klassen: `.pl figure { margin: 0 }` eet anders de marge op. */
+.pl-read-main .pl-mfig--read { margin: 30px 0 8px; }
+.pl-mfig--read .pl-mfig__img { aspect-ratio: 16 / 9; max-height: 420px; }
+
+.pl-mgal {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 28px) clamp(14px, 1.8vw, 22px);
+}
+.pl-mgal > * { grid-column: span 6; }
+@media (min-width: 561px) {
+  .pl-mgal > * { grid-column: span 3; }
+  .pl-mgal[data-n="1"] > * { grid-column: span 6; }
+  .pl-mgal[data-n="1"] .pl-mfig__img { aspect-ratio: 21 / 9; }
+}
+@media (min-width: 861px) {
+  .pl-mgal[data-n="3"] > *,
+  .pl-mgal[data-n="6"] > *,
+  .pl-mgal[data-n="5"] > :nth-child(n+3) { grid-column: span 2; }
+}
