@@ -340,6 +340,52 @@ a:hover .pl-emulsion > img,
 .pl-prov__tick { width: 1px; height: 12px; background: var(--pl-rule); }
 .pl-prov__n { min-width: 3.4ch; display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
 
+/* Bewaar: a site may no longer bookmark itself, so this points the visitor
+   at the route their own device offers (Bewaar.tsx). */
+.pl-keep { position: relative; display: flex; }
+.pl .pl-keep__btn {
+  width: var(--pl-tap); height: var(--pl-tap);
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: 1px solid var(--pl-rule);
+  color: var(--pl-ink-2);
+  cursor: pointer;
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl .pl-keep__btn:hover,
+.pl .pl-keep__btn[aria-expanded="true"] { color: var(--pl-act); border-color: color-mix(in srgb, var(--pl-act) 42%, transparent); }
+.pl-keep__pop {
+  position: absolute; top: calc(100% + 12px); right: 0; z-index: 31;
+  width: 292px;
+  max-width: calc(100vw - 2 * var(--pl-gut));
+  padding: 14px 16px 16px;
+  background: var(--pl-ground);
+  border: 1px solid var(--pl-rule);
+  box-shadow: 0 10px 28px rgba(6,8,20,0.62);
+  color: var(--pl-ink-2);
+  font-size: 0.84rem; line-height: 1.6;
+  text-wrap: pretty;
+}
+.pl-keep__pop b { color: var(--pl-ink); font-weight: 600; }
+.pl-keep__head { display: flex; align-items: center; justify-content: space-between; margin: -4px -8px 8px 0; }
+.pl .pl-keep__x {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: 0; color: var(--pl-ink-3); cursor: pointer;
+}
+.pl .pl-keep__x:hover { color: var(--pl-act); }
+.pl .pl-keep__keys { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--pl-ink-3); }
+.pl-keep__keys kbd {
+  min-width: 38px; height: 34px; padding: 0 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--pl-rule); border-bottom-width: 2px;
+  background: var(--pl-plate);
+  color: var(--pl-ink);
+  font-family: var(--font-jetbrains), ui-monospace, monospace; font-size: 0.86rem; font-weight: 500;
+}
+.pl-keep__ico { display: inline-flex; align-items: center; gap: 4px; color: var(--pl-ink); font-weight: 600; vertical-align: -2px; }
+.pl .pl-keep__alt { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--pl-rule-soft); }
+.pl-keep__go { width: 100%; margin-top: 12px; }
+
 .pl-burger {
   display: none;
   width: var(--pl-tap); height: var(--pl-tap);
@@ -1216,6 +1262,8 @@ a:hover .pl-emulsion > img,
      screen readers keep the readout. */
   .pl-hotspot__tip { display: none; }
   .pl-burger        { display: flex; }
+  .pl-keep          { margin-left: auto; }
+  .pl-keep + .pl-burger { margin-left: 0; }
   .pl-row {
     grid-template-columns: 62px minmax(0, 1fr);
     gap: 14px;
