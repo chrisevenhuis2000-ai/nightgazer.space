@@ -20,7 +20,9 @@
     "nieuws-structuur": "node scripts/nieuws-structuur.js",
     "test:verwijderd": "node scripts/test-verwijderd.js",
     "test:statisch": "node scripts/test-nieuws-statisch.js",
-    "test:workflowstart": "node scripts/test-workflow-start.js"
+    "test:workflowstart": "node scripts/test-workflow-start.js",
+    "update-quiz": "node scripts/educatie-quiz.js",
+    "test:quiz": "node scripts/test-educatie-quiz.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",
