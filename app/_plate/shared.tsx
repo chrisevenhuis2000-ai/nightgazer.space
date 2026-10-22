@@ -67,7 +67,7 @@ export function quickMatches(a: Article, spec: { cat?: string; words?: string[] 
 
 export const FOOTER_COLS: FooterCol[] = [
   { title: 'Onderwerpen', links: [['James Webb', '/nieuws/onderwerp/james-webb'], ['Mars', '/nieuws/onderwerp/mars'], ['Maan', '/nieuws/onderwerp/maan'], ['Kosmologie', '/nieuws/onderwerp/kosmologie'], ['Sterrenkijken', '/sterrenkijken']] },
-  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies']] },
+  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies'], ['Uitrusting', '/sterrenkijken/uitrusting']] },
   { title: 'Over ons', links: [['Redactie', '/over'], ['Contact', '/contact'], ['Privacy', '/privacy'], ['Voorwaarden', '/voorwaarden']] },
 ]
 
@@ -430,4 +430,23 @@ export function useMissionGallery(
   }, [m, count])
 
   return found
+}
+
+/* ══ Verwijzing naar de uitrusting ════════════════════════════════════════
+   Eén blok, gedeeld door /sterrenkijken en /educatie, dat naar de pagina met
+   aanraders wijst. Het blok zelf bevat geen winkellinks. */
+export function UitrustingVerwijzing({ tekst }: { tekst: string }) {
+  return (
+    <div className="pl-plate pl-uitr-ref">
+      <div>
+        <span className="pl-label">Uitrusting</span>
+        <p className="pl-body">{tekst}</p>
+      </div>
+      <Link href="/sterrenkijken/uitrusting/" className="pl-read">
+        <span>Wat heb je nodig?</span>
+        <span className="pl-read__rule" aria-hidden="true" />
+        <Ico.arrow />
+      </Link>
+    </div>
+  )
 }

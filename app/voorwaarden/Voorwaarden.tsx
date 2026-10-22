@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel } from '@/app/_plate/shared'
 
-const BIJGEWERKT = '16 oktober 2026'
+const BIJGEWERKT = '22 oktober 2026'
 
 const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
   {
@@ -47,6 +47,15 @@ const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
       De site toont advertenties van Google AdSense. Zie het{' '}
       <Link href="/privacy/" className="pl-voorw__a">privacybeleid</Link> voor wat dat betekent voor
       je gegevens.
+    </>,
+  },
+  {
+    kop: 'Affiliate-links',
+    tekst: <>
+      Op de pagina{' '}
+      <Link href="/sterrenkijken/uitrusting/" className="pl-voorw__a">Uitrusting</Link> staan links naar
+      Bol en Amazon.nl. Koop je iets via zo&apos;n link, dan krijgt NightGazer een kleine commissie van
+      de winkel. Jij betaalt niets extra en de aanbevelingen hangen niet af van de commissie.
     </>,
   },
   {

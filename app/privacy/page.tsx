@@ -43,6 +43,7 @@ export default function PrivacyPage() {
             </p>
             <ul style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 2, paddingLeft: 20 }}>
               <li><strong style={{ color: '#c8d0e0' }}>Google AdSense</strong> — voor het tonen van advertenties. Google kan cookies plaatsen en gebruiksgegevens verzamelen voor gepersonaliseerde advertenties. Alleen actief na uw toestemming. Zie het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>privacybeleid van Google</a>.</li>
+              <li><strong style={{ color: '#c8d0e0' }}>Bol en Amazon.nl</strong> — de winkellinks op de pagina Uitrusting zijn affiliate-links. NightGazer plaatst zelf geen cookies voor deze links; klik je erop, dan kan de winkel op zijn eigen site cookies plaatsen om je aankoop aan NightGazer toe te schrijven. Daarop is het privacybeleid van die winkel van toepassing.</li>
               <li><strong style={{ color: '#c8d0e0' }}>Google Analytics (GA4)</strong> — voor anonieme bezoekersstatistieken. Alleen actief na uw toestemming.</li>
               <li><strong style={{ color: '#c8d0e0' }}>NASA Open APIs</strong> — voor dagelijkse astronomie-foto&apos;s en afbeeldingen (geen tracking)</li>
               <li><strong style={{ color: '#c8d0e0' }}>Cloudflare</strong> — voor beeldproxy en CDN-diensten; eigen privacybeleid van toepassing</li>
