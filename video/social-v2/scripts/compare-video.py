@@ -21,6 +21,7 @@ W, H = 1080, 1920
 GROUND, INK, MUTED, HAIR = "#0E1022", "#EEF2FB", "#8A93AD", "#2A3050"
 
 ENTRIES = [
+    ("elevenlabs",  "★", "ElevenLabs (standaard)",     "ElevenLabs Music + de archiefgeluiden"),
     ("huidig",      "0", "Huidig",                     "Het plaatarchief laat de ruimte horen"),
     ("orgel",       "1", "Orgel van de kosmos",        "Groot, warm, filmisch"),
     ("puls",        "2", "Puls van het observatorium", "Ritmisch, 150 BPM, sonic logo"),
