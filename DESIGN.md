@@ -265,6 +265,16 @@ Launch Library API address posing as "Officiële pagina") is not rendered:
 an empty box reads as a fault. Envelope fields use `auto-fit`, never
 `auto-fill`, so empty tracks collapse.
 
+Every mission page carries pictures, and says where they come from. The
+first image is the head's ground, the second is Fig. 1 in the reading column
+after the lead paragraph, the rest form a numbered image plate (`.pl-mgal`).
+Each figure has a Dutch caption, a credit and a link to its NASA source.
+Curated sets live in `beeld` in `missions.json` (images.nasa.gov, handmade);
+a mission without its own set borrows one from a mission with the same
+vehicle and says "niet van deze vlucht zelf"; the rest get live mood images
+from the NASA image search, headed "Sfeerbeeld". An artist's concept is
+labelled "Impressie".
+
 A mission with a test campaign (`campagne` in `missions.json`, Starship only)
 leads with **the test log**: two lanes, booster and ship, one column per
 flight, version boundaries ruled. Outcome is a mark like status: filled

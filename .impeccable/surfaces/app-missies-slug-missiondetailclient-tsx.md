@@ -26,3 +26,16 @@ Skills: impeccable (audit, wereld), taste (inventaris, idee, één levend ding: 
 Gemeten na de bouw (dev-server, 1440 en 390 px): geen horizontale scroll, 0 elementen buiten `.pl-live` in `#378ADD`, 0 afgeronde hoeken, alleen Archivo en JetBrains Mono, geen lege secties.
 
 Open: uitkomst van Flight 12 en 13 per trap staat nog niet in de data ("nog niet ingevuld"); Flight 14 ontbreekt in Launch Library-data.
+
+## Beeld (2026-10-22)
+
+Crix: "veel tekst, geen plaatjes". Each mission page now carries figures:
+the first image is the hero ground, the second sits in the reading column
+after the lead paragraph (Fig. 1), the rest form a numbered image plate
+(`.pl-mgal`) below "Over". Every figure has a number, a Dutch caption and a
+credit, and links to its NASA source page. Provenance is always stated:
+own images (`beeld` in missions.json, curated from images.nasa.gov),
+borrowed from a mission with the same vehicle ("Uit het Starship-programma",
+"niet van deze vlucht zelf"), or live mood images from the NASA image
+search ("Sfeerbeeld", "niet van deze vlucht"). An artist's concept says
+"Impressie".

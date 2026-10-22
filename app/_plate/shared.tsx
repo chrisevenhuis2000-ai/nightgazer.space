@@ -390,3 +390,41 @@ export function useMissionImages(
 
   return images
 }
+
+export type Sfeerbeeld = { url: string; credit: string }
+
+/** Meerdere beelden voor één missie zonder eigen gecureerde set. Na elkaar
+ *  gevraagd, met de eerder gevonden adressen als `exclude`, zodat dezelfde
+ *  foto niet twee keer op de pagina staat. Het zijn sfeerbeelden bij het
+ *  voertuig of de bestemming, niet van deze vlucht: de pagina zegt dat ook. */
+export function useMissionGallery(
+  m: { id: string; vehicle?: string; agency: string; body: string } | null,
+  count = 4,
+): Sfeerbeeld[] {
+  const [found, setFound] = useState<Sfeerbeeld[]>([])
+
+  useEffect(() => {
+    setFound([])
+    if (!m) return
+    let stop = false
+    const hash = m.id.split('').reduce((a, c) => (a * 31 + c.charCodeAt(0)) & 0xffff, 0)
+    const q = missionQuery(m.vehicle ?? '', m.agency, m.body)
+    ;(async () => {
+      const seen: Sfeerbeeld[] = []
+      for (let i = 0; i < count && !stop; i++) {
+        const exclude = seen.map(s => s.url).join(',')
+        try {
+          const res = await fetch(`${PROXY}/image-search?q=${encodeURIComponent(q)}&page=${((hash + i) % 5) + 1}&hash=${hash + i * 7}&exclude=${encodeURIComponent(exclude)}`)
+          if (!res.ok) break
+          const data = await res.json()
+          if (!data?.url || seen.some(s => s.url === data.url)) continue
+          seen.push({ url: data.url, credit: data.credit || 'NASA' })
+          if (!stop) setFound([...seen])
+        } catch { break }
+      }
+    })()
+    return () => { stop = true }
+  }, [m, count])
+
+  return found
+}

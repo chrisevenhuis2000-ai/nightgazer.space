@@ -3944,3 +3944,55 @@ a:hover .pl-emulsion > img,
   .pl-logrows td:nth-child(2) { grid-column: 2; grid-row: 1; }
   .pl-logrows td:nth-child(3) { grid-column: 2; grid-row: 2; padding-top: 0; }
 }
+
+/* ── Beeld op de missieplaat ─────────────────────────────────────────────
+   Een missiepagina was een muur tekst. Eén figuur in de leestekst, de rest
+   als beeldplaat eronder; elk beeld met nummer, onderschrift en credit, en
+   een impressie zegt dat het een impressie is. */
+.pl-mfig { display: grid; gap: 10px; min-width: 0; align-content: start; }
+.pl-mfig__img {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+.pl-mfig__img .pl-emulsion { position: absolute; inset: 0; }
+/* Dezelfde sluier als .pl-lede__fig: een witte cleanroom mag niet knallen. */
+.pl-mfig__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(14,16,34,0.38) 0%, rgba(14,16,34,0.04) 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+.pl-mfig figcaption { display: grid; gap: 4px; }
+.pl-mfig__t {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--pl-ink-2);
+  max-width: 62ch;
+}
+.pl-mfig__c { font-size: 0.72rem; color: var(--pl-ink-3); }
+.pl-mfig a.pl-mfig__img:focus-visible { outline: 2px solid var(--pl-act); outline-offset: 3px; }
+
+/* Twee klassen: `.pl figure { margin: 0 }` eet anders de marge op. */
+.pl-read-main .pl-mfig--read { margin: 30px 0 8px; }
+.pl-mfig--read .pl-mfig__img { aspect-ratio: 16 / 9; max-height: 420px; }
+
+.pl-mgal {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 28px) clamp(14px, 1.8vw, 22px);
+}
+.pl-mgal > * { grid-column: span 6; }
+@media (min-width: 561px) {
+  .pl-mgal > * { grid-column: span 3; }
+  .pl-mgal[data-n="1"] > * { grid-column: span 6; }
+  .pl-mgal[data-n="1"] .pl-mfig__img { aspect-ratio: 21 / 9; }
+}
+@media (min-width: 861px) {
+  .pl-mgal[data-n="3"] > *,
+  .pl-mgal[data-n="6"] > *,
+  .pl-mgal[data-n="5"] > :nth-child(n+3) { grid-column: span 2; }
+}

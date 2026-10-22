@@ -15,7 +15,7 @@ import Link from 'next/link'
 import { SiteFooter } from '@/app/components/SiteFooter'
 import {
   getMissionBySlug, MISSIONS, MISSIONS_LAST_UPDATED,
-  type MissionDetail, type CampagneVlucht, type TrapUitkomst,
+  type MissionDetail, type CampagneVlucht, type TrapUitkomst, type MissieBeeld,
 } from '@/lib/missions-data'
 import {
   buildSchedule, parseLaunchDate, destinationGroup, mapPrecision, inferPrecision,
@@ -24,7 +24,7 @@ import {
 import { type Article } from '@/lib/home-content'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, useMissionImages, img,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, useMissionGallery, img,
 } from '@/app/_plate/shared'
 
 /* ── Wat de data echt weet ─────────────────────────────────────────────── */
@@ -354,16 +354,67 @@ function Testlogboek({ mission, vlucht }: { mission: MissionDetail; vlucht: Camp
   )
 }
 
+/* ══ Beeld ════════════════════════════════════════════════════════════════
+   Drie soorten herkomst, en de pagina zegt welke: eigen beelden van deze
+   missie, beelden uit hetzelfde programma (een Starship-vlucht zonder eigen
+   set leent die van Starship), of sfeerbeeld bij het voertuig uit de
+   NASA-beeldbank. Een impressie heet ook zo. */
+type Herkomst = 'eigen' | 'programma' | 'sfeer'
+type Plaat = { src: string; titel: string; credit: string; soort: MissieBeeld['soort']; href?: string }
+
+function fromBeeld(b: MissieBeeld): Plaat {
+  return { ...b, href: `https://images.nasa.gov/details/${encodeURIComponent(b.id)}` }
+}
+
+function Figuur({ f, n, className = '', w = 900 }: { f: Plaat; n: number; className?: string; w?: number }) {
+  const [broken, setBroken] = useState(false)
+  /* Valt een beeld weg, dan blijft de emulsiegrond staan: een gat in de
+     beeldplaat zou de rest verschuiven. */
+  const pic = (
+    <span className="pl-emulsion">
+      {broken
+        ? <span className="pl-noimg" />
+        : <img src={img(f.src, w)} alt={f.titel} loading="lazy" onError={() => setBroken(true)} />}
+    </span>
+  )
+  return (
+    <figure className={`pl-mfig ${className}`}>
+      {f.href
+        ? (
+          <a href={f.href} target="_blank" rel="noopener noreferrer" className="pl-mfig__img">
+            {pic}
+            <span className="sr-only"> (bron bij NASA, opent in een nieuw tabblad)</span>
+          </a>
+        )
+        : <span className="pl-mfig__img">{pic}</span>}
+      <figcaption>
+        <span className="pl-label pl-num">Fig. {n}{f.soort === 'impressie' ? ' · Impressie' : ''}</span>
+        {f.titel && <span className="pl-mfig__t">{f.titel}</span>}
+        <span className="pl-mfig__c">Beeld: {f.credit}</span>
+      </figcaption>
+    </figure>
+  )
+}
+
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
 export default function MissionDetailClient({ slug }: { slug: string }) {
   const mission = getMissionBySlug(slug)
   const related = useRelated(mission)
 
-  const imgItems = useMemo(
-    () => (mission ? [{ id: mission.id, vehicle: mission.vehicle, agency: mission.agency, body: mission.body }] : []),
-    [mission]
+  /* Eigen beeld, anders dat van een missie met hetzelfde voertuig, anders
+     sfeerbeeld uit de beeldbank. Alleen de laatste wordt live opgehaald. */
+  const curated = useMemo((): { herkomst: Herkomst; van?: MissionDetail; platen: Plaat[] } | null => {
+    if (!mission) return null
+    if (mission.beeld?.length) return { herkomst: 'eigen', platen: mission.beeld.map(fromBeeld) }
+    const van = MISSIONS.find(m => m.id !== mission.id && m.beeld?.length && vehicleKey(m) === vehicleKey(mission))
+    if (van?.beeld) return { herkomst: 'programma', van, platen: van.beeld.map(fromBeeld) }
+    return null
+  }, [mission])
+  const sfeerVraag = useMemo(
+    () => (mission && !curated ? { id: mission.id, vehicle: mission.vehicle, agency: mission.agency, body: mission.body } : null),
+    [mission, curated]
   )
-  const images = useMissionImages(imgItems, 1)
+  const sfeer = useMissionGallery(sfeerVraag, 4)
   const [broken, setBroken] = useState(false)
 
   /* Missies met hetzelfde voertuig eerst, op afstand in tijd; daarna missies
@@ -415,7 +466,18 @@ export default function MissionDetailClient({ slug }: { slug: string }) {
   const facts = mission.facts.filter(f => known(f.value))
   const site = isWebUrl(mission.missionUrl) ? mission.missionUrl : null
   const hasSide = facts.length > 0 || !!site
-  const image = images[mission.id]
+  const herkomst: Herkomst = curated?.herkomst ?? 'sfeer'
+  const sfeerTitel = known(mission.vehicle) ? `Sfeerbeeld bij de ${mission.vehicle}` : 'Sfeerbeeld'
+  const platen: Plaat[] = curated?.platen
+    ?? sfeer.map(s => ({ src: s.url, titel: sfeerTitel, credit: s.credit, soort: 'foto' as const }))
+  /* Het eerste beeld is gedimd de grond van de kop en staat daarna scherp
+     als Fig. 1 in de leestekst; de rest vormt de beeldplaat. */
+  const image = platen[0]?.src
+  const leesPlaat = platen[0]
+  const band = platen.slice(1, 7)
+  const bandKop = herkomst === 'eigen' ? 'In beeld'
+    : herkomst === 'programma' ? `Uit het ${curated?.van?.name.replace(/^SpaceX /, '') ?? ''}-programma`
+    : 'Sfeerbeeld'
   const sameVehicle = others.length > 0 && vehicleKey(others[0]) === vehicleKey(mission)
   const updated = new Date(MISSIONS_LAST_UPDATED).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
 
@@ -499,6 +561,8 @@ export default function MissionDetailClient({ slug }: { slug: string }) {
             <div className="pl-read-main">
               <p className="pl-para pl-para--lead" style={{ marginTop: 0 }}>{mission.description}</p>
 
+              {leesPlaat && <Figuur f={leesPlaat} n={1} className="pl-mfig--read" w={1200} />}
+
               {!campagne && mission.timeline.length > 0 && (
                 <ol className="pl-mtime" aria-label="Tijdlijn">
                   {mission.timeline.map((e, i) => (
@@ -538,6 +602,21 @@ export default function MissionDetailClient({ slug }: { slug: string }) {
             )}
           </div>
         </section>
+
+        {/* ══ Beeldplaat ══ */}
+        {band.length > 0 && (
+          <section className="pl-wrap" aria-labelledby="pl-beeld">
+            <div className="pl-band">
+              <h2 id="pl-beeld" className="pl-h2" style={{ fontSize: 'clamp(1.2rem,1.8vw,1.5rem)' }}>{bandKop}</h2>
+              <p className="pl-label">
+                {herkomst === 'sfeer' ? 'NASA-beeldbank · niet van deze vlucht' : herkomst === 'programma' ? 'NASA-beeldbank · niet van deze vlucht zelf' : 'NASA-beeldbank'}
+              </p>
+            </div>
+            <div className="pl-mgal" data-n={band.length}>
+              {band.map((f, i) => <Figuur key={f.src} f={f} n={i + 2} />)}
+            </div>
+          </section>
+        )}
 
         <div className="pl-wrap">
           <AdPlate slot="7516342216" />

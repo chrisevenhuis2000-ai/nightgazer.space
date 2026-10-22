@@ -209,6 +209,50 @@
           "missie": "flight-13",
           "noot": "Nam als eerste echte lading 20 Starlink V3-satellieten mee."
         }
+      ],
+      "beeld": [
+        {
+          "id": "iss072e220043",
+          "src": "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg",
+          "titel": "De pluim van Starship-vlucht 6, gezien vanuit het ISS (19 november 2024)",
+          "credit": "NASA/Don Pettit",
+          "soort": "foto"
+        },
+        {
+          "id": "ACD25-0156-012",
+          "src": "https://images-assets.nasa.gov/image/ACD25-0156-012/ACD25-0156-012~large.jpg",
+          "titel": "Een schaalmodel van Super Heavy V3 in de windtunnel van NASA Ames",
+          "credit": "NASA/Brandon Torres",
+          "soort": "foto"
+        },
+        {
+          "id": "11 03 24 artemis 3 on surface",
+          "src": "https://images-assets.nasa.gov/image/11%2003%2024%20artemis%203%20on%20surface/11%2003%2024%20artemis%203%20on%20surface~medium.jpg",
+          "titel": "Starship als maanlander voor Artemis, op het maanoppervlak",
+          "credit": "SpaceX",
+          "soort": "impressie"
+        },
+        {
+          "id": "07 06 26 Artemis3_composite",
+          "src": "https://images-assets.nasa.gov/image/07%2006%2026%20Artemis3_composite/07%2006%2026%20Artemis3_composite~large.jpg",
+          "titel": "Orion en een Starship-maanlander ontmoeten elkaar voor Artemis III",
+          "credit": "SpaceX",
+          "soort": "impressie"
+        },
+        {
+          "id": "11 14 24 fuel depot",
+          "src": "https://images-assets.nasa.gov/image/11%2014%2024%20fuel%20depot/11%2014%2024%20fuel%20depot~medium.jpg",
+          "titel": "Een Starship-tankdepot: voor een maanvlucht moet het schip in een baan om de aarde bijtanken",
+          "credit": "SpaceX",
+          "soort": "impressie"
+        },
+        {
+          "id": "hls-crew-elevator-demo-20240503-dsc00030",
+          "src": "https://images-assets.nasa.gov/image/hls-crew-elevator-demo-20240503-dsc00030/hls-crew-elevator-demo-20240503-dsc00030~medium.jpg",
+          "titel": "Astronauten testen de liftkooi waarmee ze uit de Starship-maanlander afdalen",
+          "credit": "SpaceX",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -288,6 +332,36 @@
         "sls",
         "maanlanding",
         "moon"
+      ],
+      "beeld": [
+        {
+          "id": "Artemis II at the pad Moon 01292026_4",
+          "src": "https://images-assets.nasa.gov/image/Artemis%20II%20at%20the%20pad%20Moon%2001292026_4/Artemis%20II%20at%20the%20pad%20Moon%2001292026_4~large.jpg",
+          "titel": "De maan achter de volledige Artemis II-stapel op lanceerplatform 39B (januari 2026)",
+          "credit": "NASA/Sam Lott",
+          "soort": "foto"
+        },
+        {
+          "id": "SLS_MAF_20260401_ArtemisIILaunch_05",
+          "src": "https://images-assets.nasa.gov/image/SLS_MAF_20260401_ArtemisIILaunch_05/SLS_MAF_20260401_ArtemisIILaunch_05~large.jpg",
+          "titel": "De lancering van Artemis II met vier astronauten aan boord (1 april 2026)",
+          "credit": "NASA/Michael DeMocker",
+          "soort": "foto"
+        },
+        {
+          "id": "KSC-04012026-Artemis II_Launch-1",
+          "src": "https://images-assets.nasa.gov/image/KSC-04012026-Artemis%20II_Launch-1/KSC-04012026-Artemis%20II_Launch-1~large.jpg",
+          "titel": "SLS en Orion verlaten platform 39B",
+          "credit": "NASA/Brandon Hancock",
+          "soort": "foto"
+        },
+        {
+          "id": "Artemis II at the pad sunset 01282026_3",
+          "src": "https://images-assets.nasa.gov/image/Artemis%20II%20at%20the%20pad%20sunset%2001282026_3/Artemis%20II%20at%20the%20pad%20sunset%2001282026_3~large.jpg",
+          "titel": "Zonsondergang achter SLS en Orion, een paar weken voor de lancering",
+          "credit": "NASA/Sam Lott",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -371,6 +445,36 @@
         "rover",
         "ingenuity",
         "mars sample return"
+      ],
+      "beeld": [
+        {
+          "id": "PIA25965",
+          "src": "https://images-assets.nasa.gov/image/PIA25965/PIA25965~medium.jpg",
+          "titel": "Mozaïek uit 53 beelden: de westrand van de Jezero-krater (juli 2023)",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA24542",
+          "src": "https://images-assets.nasa.gov/image/PIA24542/PIA24542~medium.jpg",
+          "titel": "Perseverance maakt een selfie met helikopter Ingenuity (april 2021)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        },
+        {
+          "id": "NHQ202102190006",
+          "src": "https://images-assets.nasa.gov/image/NHQ202102190006/NHQ202102190006~medium.jpg",
+          "titel": "Perseverance hangt onder de afdaaltrap, vlak voor de landing (18 februari 2021)",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA25681",
+          "src": "https://images-assets.nasa.gov/image/PIA25681/PIA25681~medium.jpg",
+          "titel": "Perseverance kijkt neer op een van de tien monsterbuizen die het in Three Forks achterliet",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -460,6 +564,36 @@
         "infrarood",
         "exoplaneet",
         "K2-18b"
+      ],
+      "beeld": [
+        {
+          "id": "NHQ202112250009",
+          "src": "https://images-assets.nasa.gov/image/NHQ202112250009/NHQ202112250009~medium.jpg",
+          "titel": "De lancering in een infraroodopname met valse kleuren",
+          "credit": "NASA/Bill Ingalls",
+          "soort": "foto"
+        },
+        {
+          "id": "NHQ202112250015",
+          "src": "https://images-assets.nasa.gov/image/NHQ202112250015/NHQ202112250015~medium.jpg",
+          "titel": "Een Ariane 5 lanceert Webb vanuit Kourou (25 december 2021)",
+          "credit": "NASA/Bill Ingalls",
+          "soort": "foto"
+        },
+        {
+          "id": "GSFC_20171208_Archive_e000355",
+          "src": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000355/GSFC_20171208_Archive_e000355~medium.jpg",
+          "titel": "Webb van voren gezien, vanuit het raam van de cleanroom bij NASA Goddard",
+          "credit": "NASA",
+          "soort": "foto"
+        },
+        {
+          "id": "GSFC_20171208_Archive_e000495",
+          "src": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000495/GSFC_20171208_Archive_e000495~medium.jpg",
+          "titel": "Halverwege: het negende vluchtspiegelsegment is geplaatst",
+          "credit": "NASA",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -710,6 +844,29 @@
         "msl",
         "rover",
         "mount sharp"
+      ],
+      "beeld": [
+        {
+          "id": "PIA22207",
+          "src": "https://images-assets.nasa.gov/image/PIA22207/PIA22207~medium.jpg",
+          "titel": "Mount Sharp op de achtergrond van een selfie op Vera Rubin Ridge (2018)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA24543",
+          "src": "https://images-assets.nasa.gov/image/PIA24543/PIA24543~medium.jpg",
+          "titel": "Curiosity maakt een selfie voor Mont Mercou (maart 2021)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA19808",
+          "src": "https://images-assets.nasa.gov/image/PIA19808/PIA19808~medium.jpg",
+          "titel": "Curiosity van onderen gezien op de boorplek Buckskin (2015)",
+          "credit": "NASA/JPL-Caltech/MSSS",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -797,6 +954,29 @@
         "jupiter",
         "saturnus",
         "pale blue dot"
+      ],
+      "beeld": [
+        {
+          "id": "ARC-1979-AC79-7009",
+          "src": "https://images-assets.nasa.gov/image/ARC-1979-AC79-7009/ARC-1979-AC79-7009~medium.jpg",
+          "titel": "Jupiter, een mozaïek van Voyager 1 (maart 1979)",
+          "credit": "NASA/JPL",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA21747",
+          "src": "https://images-assets.nasa.gov/image/PIA21747/PIA21747~medium.jpg",
+          "titel": "Voyager 1 vertrekt op een Titan IIIE/Centaur (5 september 1977)",
+          "credit": "NASA",
+          "soort": "foto"
+        },
+        {
+          "id": "ARC-1979-AC79-7113",
+          "src": "https://images-assets.nasa.gov/image/ARC-1979-AC79-7113/ARC-1979-AC79-7113~medium.jpg",
+          "titel": "Voyager 1 betrapt een vulkaanuitbarsting op de Jupitermaan Io (maart 1979)",
+          "credit": "NASA/JPL",
+          "soort": "foto"
+        }
       ]
     },
     {
@@ -877,6 +1057,36 @@
         "oceaan",
         "bewoonbaarheid",
         "falcon heavy"
+      ],
+      "beeld": [
+        {
+          "id": "PIA26431",
+          "src": "https://images-assets.nasa.gov/image/PIA26431/PIA26431~medium.jpg",
+          "titel": "Europa Clipper in de schaduw van Jupiter",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "impressie"
+        },
+        {
+          "id": "PIA26066",
+          "src": "https://images-assets.nasa.gov/image/PIA26066/PIA26066~medium.jpg",
+          "titel": "Europa Clipper in de cleanroom van Kennedy, bij de test van de zonnepanelen (augustus 2024)",
+          "credit": "NASA/Frank Michaux",
+          "soort": "foto"
+        },
+        {
+          "id": "PIA26442",
+          "src": "https://images-assets.nasa.gov/image/PIA26442/PIA26442~medium.jpg",
+          "titel": "Europa Clipper als silhouet tegen Jupiter en Europa",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "impressie"
+        },
+        {
+          "id": "PIA26443",
+          "src": "https://images-assets.nasa.gov/image/PIA26443/PIA26443~medium.jpg",
+          "titel": "Een scheervlucht langs het ijsoppervlak van Europa",
+          "credit": "NASA/JPL-Caltech",
+          "soort": "impressie"
+        }
       ]
     },
     {
@@ -2528,7 +2738,23 @@
         "nancy grace roman space telescope",
         "falcon heavy"
       ],
-      "_lastClaudeUpdate": "2026-10-15T09:38:05.688Z"
+      "_lastClaudeUpdate": "2026-10-15T09:38:05.688Z",
+      "beeld": [
+        {
+          "id": "NHQ20260830_admin_0001",
+          "src": "https://images-assets.nasa.gov/image/NHQ20260830_admin_0001/NHQ20260830_admin_0001~large.jpg",
+          "titel": "Falcon Heavy met Roman schuift tijdens de lancering voor de zon langs (30 augustus 2026)",
+          "credit": "NASA/John Kraus",
+          "soort": "foto"
+        },
+        {
+          "id": "NHQ20260830_admin_0005",
+          "src": "https://images-assets.nasa.gov/image/NHQ20260830_admin_0005/NHQ20260830_admin_0005~large.jpg",
+          "titel": "Falcon Heavy lanceert Roman vanaf Launch Complex 39A bij Kennedy",
+          "credit": "NASA/John Kraus",
+          "soort": "foto"
+        }
+      ]
     },
     {
       "id": "o3b-mpower-11-13",

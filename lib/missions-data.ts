@@ -36,6 +36,20 @@ export interface CampagneVlucht {
   bron?:   string
 }
 
+/**
+ * Een gecureerde foto of impressie uit de NASA-beeldbank (images.nasa.gov).
+ * `id` is de nasa_id: daaruit volgt de bronpagina met licentie en credit.
+ * Handmatig veld; het script raakt het niet aan.
+ */
+export interface MissieBeeld {
+  id:     string
+  src:    string
+  titel:  string
+  credit: string
+  /** 'impressie' voor een artist's concept: dat staat er dan ook bij */
+  soort:  'foto' | 'impressie'
+}
+
 export interface MissionDetail {
   id:          string
   name:        string
@@ -67,6 +81,7 @@ export interface MissionDetail {
   facts:        { label: string; value: string }[]
   relatedTags:  string[]
   campagne?:    CampagneVlucht[]
+  beeld?:       MissieBeeld[]
 }
 
 // MISSIONS en MISSIONS_LAST_UPDATED worden gegenereerd door scripts/generate-missions-module.js
