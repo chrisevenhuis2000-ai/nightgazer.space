@@ -11,11 +11,16 @@ sourceUrl: "https://science.nasa.gov/earth/earth-observatory/spring-rains-satura
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/spring-rains-saturate-michigan/michiganflooding764_oli2_20260411_th.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Spring Rains Saturate Michigan"
 imageCredit: "NASA"
+kernpunten: ["Michigan kampt met uitzonderlijk veel lenteregens, ver boven het seizoensgemiddelde.","Rivieren zijn buiten hun oevers getreden en wegen en bruggen staan onder water.","Satellieten leveren essentiële data voor het monitoren en voorspellen van extreem weer."]
 ---
 
 De Amerikaanse staat Michigan wordt momenteel geteisterd door uitzonderlijk veel lenteregens, die hebben geleid tot wijdverspreide overstromingen en schade aan de infrastructuur. De neerslaghoeveelheden liggen ver boven het seizoensgemiddelde, waardoor rivieren zijn buiten hun oevers getreden.
 
+## Rivieren kunnen water niet verwerken
+
 De overvloedige regenval heeft tot problemen geleid in verschillende delen van Michigan. Rivieren en beken kunnen de grote hoeveelheden water niet meer verwerken, wat heeft geresulteerd in overstroming van wegen, bruggen en andere infrastructurele voorzieningen. Lokale autoriteiten waarschuwen inwoners voor gevaarlijke situaties.
+
+## Satellieten volgen extreem weer
 
 Hoewel dit artikel zich richt op weerkundige gebeurtenissen op aarde, benadrukken dergelijke extreme weersomstandigheden het belang van klimaatonderzoek vanuit de ruimte. Satellieten spelen een cruciale rol bij het monitoren van neerslagpatronen en het voorspellen van extreme weersituaties zoals de huidige overstromingen in Michigan.
 

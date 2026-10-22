@@ -11,11 +11,14 @@ sourceUrl: "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourci
 imageUrl: "https://images-assets.nasa.gov/image/art002e013365/art002e013365~large.jpg"
 imageAlt: "NASA Artemis II Human Research Data Methodology Challenge"
 imageCredit: "NASA"
+kernpunten: ["NASA's Human Research Program lanceert een uitdaging om de gezondheid en prestaties van astronauten in de ruimte te beschermen.","Het onderzoek combineert faciliteiten op aarde, het ISS en analoge omgevingen om de gezondheid tijdens diep-ruimtemissies te monitoren.","Artemis II dient als testcase en moet real-time data opleveren die ook de basis legt voor bemande missies naar Mars."]
 ---
 
 NASA's Human Research Program (HRP) heeft een belangrijke uitdaging gelanceerd gericht op het ontwikkelen van geavanceerde methoden om de gezondheid en prestaties van astronauten in de ruimte te beschermen. Dit initiatief komt voort uit NASA's ambitieuze plannen voor langdurige missies op het maanoppervlak en toekomstige bemande verkenning van Mars.
 
 Het onderzoeksprogramma maakt gebruik van een combinatie van faciliteiten op aarde, het Internationaal Ruimtestation ISS en analoge omgevingen om de menselijke gezondheid tijdens diep-ruimtemissies nauwkeurig te monitoren. Deze veelzijdige benadering stelt wetenschappers in staat om een compleet beeld te krijgen van de uitdagingen waarmee astronauten worden geconfronteerd tijdens langdurige ruimtereizen.
+
+## Artemis II als testcase
 
 De Artemis II-missie speelt een cruciale rol als testcase voor deze nieuwe onderzoeksmethoden. Als de eerste bemande missie in het kader van het Artemis-programma biedt deze vlucht een unieke kans om real-time data te verzamelen over de effecten van diep-ruimtereizen op het menselijk lichaam.
 

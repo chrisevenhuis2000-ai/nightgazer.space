@@ -11,11 +11,14 @@ sourceUrl: "https://www.nasa.gov/technology/nasa-fosters-development-of-lunar-re
 imageUrl: "https://images-assets.nasa.gov/image/art002e009287/art002e009287~large.jpg"
 imageAlt: "NASA Fosters Development of Lunar Resource-Seeking Technologies"
 imageCredit: "NASA"
+kernpunten: ["NASA ontwikkelt samen met de industrie technologie om waterstof en helium-3 uit maanregoliet te winnen.","Lokale hulpbronnen zoals waterijs en mineralen maken ruimtemissies goedkoper en minder complex.","Zo worden zelfredzame bases op de Maan en Mars mogelijk."]
 ---
 
 NASA werkt samen met de industrie aan de ontwikkeling van baanbrekende technologieën die het mogelijk maken om waardevolle hulpbronnen direct uit de maanbodem te winnen. Deze innovatieve benadering, bekend als in-situ resource utilization (ISRU), richt zich op het extraheren van essentiële materialen zoals waterstof en helium-3 uit het maanregoliet - de losse gesteentelaag die het maanoppervlak bedekt.
 
 De technologie belooft een revolutie teweeg te brengen in de manier waarop toekomstige ruimtemissies worden uitgevoerd. In plaats van alle benodigde materialen vanaf de Aarde mee te nemen - wat extreem kostbaar en logistiek complex is - kunnen astronauten straks gebruikmaken van wat de Maan zelf te bieden heeft. Naast waterstof en helium-3 kunnen ook waterijs en verschillende mineralen ter plaatse gewonnen worden.
+
+## Cruciaal voor langdurige missies
 
 Deze ontwikkeling is cruciaal voor NASA's ambitieuze plannen voor langdurige missies naar zowel de Maan als Mars. Het vermogen om lokale hulpbronnen te benutten vermindert niet alleen de kosten en complexiteit van ruimtereizen aanzienlijk, maar maakt ook zelfredzame bases op andere hemellichamen mogelijk. Waterstof kan bijvoorbeeld gebruikt worden als raketbrandstof, terwijl waterijs essentieel is voor drinkwater en zuurstofproductie.
 

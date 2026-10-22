@@ -11,11 +11,15 @@ sourceUrl: "https://spaceflightnow.com/2026/05/12/spacex-targets-may-19-for-debu
 imageUrl: "https://images-assets.nasa.gov/image/SLS_KSC_Artemis II Rollout 1172026_3/SLS_KSC_Artemis II Rollout 1172026_3~large.jpg"
 imageAlt: "SpaceX plant lancering Starship Versie 3 vanaf nieuw lanceerplatform op 19 mei"
 imageCredit: "NASA/Sam Lott / MSFC"
+kernpunten: ["SpaceX mikt op 19 mei voor de eerste lancering van Starship Versie 3 vanaf Launch Pad 2.","De testvlucht evalueert verbeteringen aan het voertuig en de lanceerinfrastructuur.","Het is een stap richting NASA's Artemis 3-missie, gepland voor 2027, om astronauten naar de maan te brengen."]
+kerncijfers: [{"waarde":"19 mei","eenheid":"","label":"Streefdatum eerste lancering Versie 3"},{"waarde":"2027","eenheid":"","label":"Geplande Artemis 3-missie"}]
 ---
 
 SpaceX heeft 19 mei aangekondigd als streefdatum voor de eerste lancering van Starship Versie 3 vanaf het gloednieuwe Launch Pad 2. Deze mijlpaal markeert een belangrijke stap voorwaarts in het Starship-ontwikkelingsprogramma van het ruimtevaartbedrijf van Elon Musk.
 
 De aanstaande testvlucht zal een uitgebreide reeks verbeteringen evalueren die zijn aangebracht aan zowel het Starship-voertuig als de ondersteunende lanceerinfrastructuur. Deze modificaties zijn cruciaal voor SpaceX om zich voor te bereiden op hun rol in NASA's ambitieuze Artemis 3-missie, die gepland staat voor 2027 en astronauten terug naar het maanoppervlak moet brengen.
+
+## Nieuw Launch Pad 2 in Starbase
 
 Het nieuwe Launch Pad 2 vertegenwoordigt een significante uitbreiding van SpaceX's lanceercapaciteiten in Starbase, Texas. De faciliteit is ontworpen om de toenemende frequentie van Starship-missies te ondersteunen en biedt verbeterde operationele flexibiliteit voor het bedrijf.
 

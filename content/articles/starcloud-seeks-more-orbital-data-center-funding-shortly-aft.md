@@ -11,11 +11,15 @@ sourceUrl: "https://spacenews.com/starcloud-seeks-more-orbital-data-center-fundi
 imageUrl: "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Philip-ODC-SN-scaled.png"
 imageAlt: "Starcloud seeks more orbital data center funding shortly after unicorn status"
 imageCredit: "SpaceNews"
+kernpunten: ["Starcloud zoekt minimaal 200 miljoen dollar aan nieuwe investeringen.","De waardering van het twee jaar oude bedrijf kan verdubbelen naar ongeveer 2,2 miljard dollar.","Het geld moet de technologische ontwikkeling versnellen en mogelijk de eerste operationele tests mogelijk maken."]
+kerncijfers: [{"waarde":"200 mln","eenheid":"dollar","label":"Gezochte nieuwe financiering"},{"waarde":"2,2 mld","eenheid":"dollar","label":"Mogelijke nieuwe waardering"},{"waarde":"2","eenheid":"jaar","label":"Leeftijd van het bedrijf"}]
 ---
 
 Starcloud, een ambitieus ruimtevaartbedrijf dat zich richt op het ontwikkelen van datacenters in de ruimte, is op zoek naar nieuwe investeringen ter waarde van minimaal 200 miljoen dollar. Dit blijkt uit informatie van een bron dicht bij de onderhandelingen. De financieringsronde zou de waardering van het pas twee jaar oude bedrijf kunnen verdubbelen naar ongeveer 2,2 miljard dollar.
 
 Het bedrijf heeft recent de zogenaamde 'unicorn-status' behaald, een term die wordt gebruikt voor startups met een waardering van meer dan een miljard dollar. Deze mijlpaal onderstreept het groeiende vertrouwen van investeerders in het concept van orbitale datacenters, ondanks de technische uitdagingen die gepaard gaan met het opereren van computerinfrastructuur in de ruimte.
+
+## Voordelen en uitdagingen van orbitale datacenters
 
 Orbitale datacenters bieden potentiële voordelen zoals lagere energiekosten door het gebruik van zonne-energie, natuurlijke koeling in de ruimte, en verbeterde latentie voor bepaalde toepassingen. Echter, de technologie staat nog in de kinderschoenen en vereist aanzienlijke investeringen in onderzoek en ontwikkeling om commercieel levensvatbaar te worden.
 

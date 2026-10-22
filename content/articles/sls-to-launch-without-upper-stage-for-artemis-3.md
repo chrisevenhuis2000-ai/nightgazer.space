@@ -11,11 +11,14 @@ sourceUrl: "https://spacenews.com/sls-to-launch-without-upper-stage-for-artemis-
 imageUrl: "https://spacenews.com/wp-content/uploads/2026/05/KSC-20250430-PH-ILW01_0024-large.jpg"
 imageAlt: "SLS to launch without upper stage for Artemis 3"
 imageCredit: "SpaceNews"
+kernpunten: ["NASA lanceert de SLS tijdens Artemis 3 zonder bovenste raketverdieping.","Dit hoort bij bredere wijzigingen in het Artemis-programma en een herziening van de missieplannen.","NASA maakt de komende maanden meer details bekend over tijdlijn en uitvoering."]
 ---
 
 NASA heeft aangekondigd dat het Space Launch System (SLS) tijdens de Artemis 3-missie zal worden gelanceerd zonder een bovenste raketverdieping. Deze beslissing komt voort uit de herziening van de missieplannen die het Amerikaanse ruimteagentschap momenteel doorvoert.
 
 De aanpassing van het SLS-ontwerp voor Artemis 3 vormt onderdeel van bredere wijzigingen in het Artemis-programma. NASA werkt aan nieuwe strategieën om astronauten veilig naar de maan te brengen en weer terug naar de aarde, waarbij de technische uitdagingen en tijdsplanning opnieuw worden geëvalueerd.
+
+## De rol van de SLS-raket
 
 Het Space Launch System is de krachtigste raket die NASA ooit heeft gebouwd en vormt de ruggengraat van het Artemis-programma. De raket is ontworpen om astronauten en materiaal naar de maan te transporteren als onderdeel van NASA's ambitie om voor het eerst sinds de Apollo-missies weer mensen op het maanoppervlak te laten landen.
 

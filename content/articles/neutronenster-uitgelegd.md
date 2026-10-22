@@ -10,6 +10,8 @@ tags: ["neutronenster", "educatie", "uitleg"]
 imageUrl: "https://images-assets.nasa.gov/image/PIA22569/PIA22569~medium.jpg"
 imageAlt: "Wat is een neutronenster? Uitleg in 3 niveaus"
 imageCredit: "JPL"
+kernpunten: ["Een neutronenster is wat overblijft na een supernova: klein als een stad, maar zwaarder dan 1,5 zon.","Pulsars zijn snel draaiende neutronensterren die radiobundels uitzenden als kosmische vuurtorens.","Neutronensterren dienen als laboratorium voor exotische materie en de oorsprong van goud en platina."]
+kerncijfers: [{"waarde":"20","eenheid":"km","label":"doorsnede van een neutronenster"},{"waarde":"1,5","eenheid":"keer de zon","label":"minimale massa"}]
 ---
 
 # Wat is een neutronenster? Uitleg in 3 niveaus

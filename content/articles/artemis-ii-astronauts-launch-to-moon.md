@@ -11,11 +11,15 @@ sourceUrl: "https://www.nasa.gov/image-article/artemis-ii-astronauts-launch-to-m
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/04/55182924516-9d78d1e3ef-o.jpg"
 imageAlt: "Artemis II-astronauten vertrekken naar de Maan"
 imageCredit: "NASA"
+kernpunten: ["Artemis II is op 1 april 2026 succesvol gelanceerd met de SLS-raket en het Orion-ruimtevaartuig.","Vier astronauten maken de eerste bemande maanvlucht sinds het Apollo-programma.","De vlucht duurt ongeveer 10 dagen en bereidt Artemis III voor, waarbij astronauten op de Maan landen."]
+kerncijfers: [{"waarde":"1 april 2026","eenheid":"","label":"Datum van de lancering"},{"waarde":"10","eenheid":"dagen","label":"Duur van de missie"}]
 ---
 
 Op 1 april 2026 is NASA's langverwachte Artemis II-missie van start gegaan, waarbij de krachtige Space Launch System-raket en het Orion-ruimtevaartuig succesvol zijn opgestegen. Deze historische lancering markeert een belangrijke mijlpaal in de terugkeer van de mensheid naar de Maan.
 
 Aan boord van het Orion-ruimtevaartuig bevinden zich vier astronauten die de eerste bemande maanvlucht sinds het Apollo-programma gaan uitvoeren. Het internationale team bestaat uit NASA-astronauten Reid Wiseman, Victor Glover en Christina Koch, samen met Jeremy Hansen van het Canadese ruimteagentschap CSA.
+
+## Tien dagen rond de Maan
 
 De missie zal ongeveer 10 dagen duren, waarbij de astronauten een baan rond de Maan zullen vliegen voordat ze terugkeren naar de Aarde. Deze vlucht dient als cruciale voorbereiding op de Artemis III-missie, waarbij astronauten daadwerkelijk op het maanoppervlak zullen landen.
 

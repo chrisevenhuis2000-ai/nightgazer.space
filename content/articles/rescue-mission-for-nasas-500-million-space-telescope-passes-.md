@@ -11,11 +11,17 @@ sourceUrl: "https://spaceflightnow.com/2026/05/08/rescue-mission-for-nasas-500-m
 imageUrl: "https://images-assets.nasa.gov/image/KSC-08pd1848/KSC-08pd1848~medium.jpg"
 imageAlt: "Reddingsmissie voor NASA's 500 miljoen dollar kostende ruimtetelescoop doorstaat belangrijke testfase"
 imageCredit: "KSC"
+kernpunten: ["Katalyst Space Technologies heeft een belangrijke testmijlpaal bereikt met het Link-ruimtevaartuig.","De reddingsmissie moet in juni 2026 starten, met een lancering via de Pegasus XL-raket vanaf een vliegtuig.","NASA gaf Katalyst in september 2025 een contract van 30 miljoen dollar voor het redden van een telescoop van 500 miljoen dollar."]
+kerncijfers: [{"waarde":"500 mln","eenheid":"dollar","label":"Waarde van de ruimtetelescoop"},{"waarde":"30 mln","eenheid":"dollar","label":"NASA-contract voor Katalyst"},{"waarde":"juni 2026","eenheid":"","label":"Geplande start van de missie"}]
 ---
 
 Het Amerikaanse ruimtevaartbedrijf Katalyst Space Technologies heeft een belangrijke testmijlpaal bereikt in de ontwikkeling van hun Link-ruimtevaartuig. Dit spacecraft is ontworpen voor een complexe reddingsmissie die in juni 2026 van start moet gaan.
 
+## Lancering met Pegasus XL-raket
+
 De Link zal gelanceerd worden met behulp van Northrop Grumman's Pegasus XL-raket, een uniek lanceersysteem dat vanaf een vliegtuig wordt afgevuurd. Deze luchtgelanceerde raket biedt meer flexibiliteit in timing en weersomstandigheden vergeleken met traditionele grondlanceringen.
+
+## NASA-contract van 30 miljoen dollar
 
 NASA heeft het vertrouwen in deze missie onderstreept door Katalyst in september 2025 een aanzienlijk contract van 30 miljoen dollar toe te kennen. Hoewel de details van de te redden ruimtetelescoop niet werden vrijgegeven, gaat het om een instrument ter waarde van 500 miljoen dollar, wat de kritieke aard van deze operatie benadrukt.
 

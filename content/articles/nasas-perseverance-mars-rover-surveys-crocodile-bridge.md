@@ -11,11 +11,15 @@ sourceUrl: "https://science.nasa.gov/photojournal/nasas-perseverance-mars-rover-
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26699/PIA26699.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "NASA’s Perseverance Mars Rover Surveys ‘Crocodile Bridge’"
 imageCredit: "NASA"
+kernpunten: ["Perseverance maakte met Mastcam-Z een 360-graden panorama van 'Crocodile Bridge' op de rand van de Jezero-krater.","Het panorama telt 980 beelden, waarvan 971 op 18 december 2025 (sol 1.717) zijn genomen.","De geologische formaties geven inzicht in de geschiedenis van Mars en helpen bij beslissingen over toekomstige verkenning."]
+kerncijfers: [{"waarde":"980","eenheid":"","label":"beelden in het panorama"},{"waarde":"971","eenheid":"","label":"beelden op 18 december 2025"},{"waarde":"1.717e","eenheid":"sol","label":"Martiaanse dag van de missie"}]
 ---
 
 NASA's Perseverance Mars-rover heeft met zijn geavanceerde Mastcam-Z camerasysteem een spectaculair 360-graden panorama vastgelegd van een gebied dat door wetenschappers 'Crocodile Bridge' is gedoopt. Dit gebied bevindt zich op de rand van de Jezero-krater, waar de rover momenteel zijn onderzoeksmissie voortzet.
 
 Het indrukwekkende panorama bestaat uit maar liefst 980 individuele beelden, waarvan er 971 werden genomen op 18 december 2025, wat overeenkomt met de 1.717e Martiaanse dag (sol) van de missie. De overige negen beelden werden op een ander moment toegevoegd om het complete panorama te voltooien.
+
+## Waarom 'Crocodile Bridge'?
 
 De naam 'Crocodile Bridge' werd gekozen vanwege de karakteristieke vormgeving van het rotsachtige terrein in dit gebied van de Jezero-krater. Deze geologische formaties bieden waardevolle inzichten in de geschiedenis van Mars en de processen die miljarden jaren geleden hebben plaatsgevonden.
 

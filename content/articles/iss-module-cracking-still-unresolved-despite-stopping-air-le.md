@@ -11,11 +11,14 @@ sourceUrl: "https://spacenews.com/iss-module-cracking-still-unresolved-despite-s
 imageUrl: "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/05/iss.jpg"
 imageAlt: "ISS module cracking still unresolved despite stopping air leaks"
 imageCredit: "SpaceNews"
+kernpunten: ["De luchtlekken in een Russische module van het ISS zijn gestopt.","Experts weten nog steeds niet hoe de scheuren zijn ontstaan.","Het begrijpen van de oorzaak blijft cruciaal voor de toekomstige veiligheid van het station."]
 ---
 
 Het Internationaal Ruimtestation (ISS) heeft de afgelopen tijd te kampen gehad met luchtlekken in een Russisch compartiment, maar ondanks het feit dat deze lekken inmiddels zijn gestopt, blijft de oorzaak een mysterie voor ruimte-ingenieurs.
 
 De scheuren bevonden zich in een van de Russische modules van het ruimtestation en zorgden voor zorgen over de structurele integriteit en veiligheid van de bemanning. Hoewel de directe bedreiging nu is weggenomen doordat de luchtlekken zijn opgehouden, worstelen experts nog altijd met de vraag hoe deze scheuren precisa zijn ontstaan.
+
+## Uitdagingen door veroudering van het ISS
 
 Dit probleem benadrukt de uitdagingen waarmee ruimtevaartagentschappen worden geconfronteerd bij het onderhouden van complexe ruimtestructuren die al jaren in de baan om de aarde draaien. Het ISS, dat sinds meer dan twee decennia operationeel is, ondervindt steeds vaker de gevolgen van veroudering.
 

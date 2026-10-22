@@ -11,11 +11,15 @@ sourceUrl: "https://spacenews.com/moog-technology-keeps-artemis-ii-astronauts-sa
 imageUrl: "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/08/moog_square.png"
 imageAlt: "Moog Technology Keeps Artemis II Astronauts Safe During Historic Lunar Mission"
 imageCredit: "SpaceNews"
+kernpunten: ["Moog Inc. levert precisie-bewegings- en vloeistofcontrolesystemen voor NASA's Artemis II-missie.","De systemen sturen onderdelen van het ruimtevaartuig aan, van navigatie tot levensondersteuning.","Artemis II is de eerste bemande vlucht rond de maan sinds 1972 en legt de basis voor toekomstige maanlandingen."]
+kerncijfers: [{"waarde":"1972","eenheid":"","label":"Laatste bemande maanvlucht eerder"}]
 ---
 
 Het Amerikaanse technologiebedrijf Moog Inc. speelt een cruciale rol in NASA's Artemis II-missie, de eerste bemande vlucht rond de maan sinds het Apollo-programma. Het bedrijf uit East Aurora, New York, levert geavanceerde precisie-bewegings- en vloeistofcontrolesystemen die essentieel zijn voor de veiligheid van de astronauten.
 
 Moog, wereldwijd bekend om hun hoogwaardige motion control en vloeistofcontrolesystemen, heeft jarenlang gewerkt aan de ontwikkeling van deze kritieke technologieën voor het Artemis-programma. Hun systemen zorgen voor nauwkeurige besturing van verschillende onderdelen van het ruimtevaartuig, van navigatie tot levensondersteunende systemen.
+
+## Mijlpaal voor bemande ruimtevaart
 
 De Artemis II-missie markeert een belangrijke mijlpaal in de menselijke ruimtevaart, waarbij voor het eerst sinds 1972 weer astronauten rond de maan zullen vliegen. Deze missie vormt de basis voor toekomstige maanlandingen en uiteindelijk de vestiging van een permanente menselijke aanwezigheid op de maan.
 

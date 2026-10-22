@@ -11,11 +11,15 @@ sourceUrl: "https://www.nasa.gov/general/nasas-spacex-34th-commercial-resupply-m
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/05/nasa-spacex-crs-34-mission-overview.png"
 imageAlt: "NASA’s SpaceX 34th Commercial Resupply Mission Overview"
 imageCredit: "NASA"
+kernpunten: ["NASA en SpaceX plannen medio mei de 34e commerciële bevoorradingsmissie naar het ISS.","Een Dragon-capsule brengt ongeveer 3000 kilogram aan benodigdheden mee, gelanceerd met een Falcon 9 vanaf Cape Canaveral.","Dragon koppelt automatisch aan de voorwaartse poort van het ruimtestation, inmiddels een routinehandeling."]
+kerncijfers: [{"waarde":"34e","eenheid":"","label":"commerciële bevoorradingsmissie naar ISS"},{"waarde":"3000","eenheid":"kg","label":"lading in Dragon-capsule"},{"waarde":"40","eenheid":"","label":"Launch Complex voor lancering"}]
 ---
 
 NASA en SpaceX bereiden zich voor op de 34e commerciële bevoorradingsmissie naar het International Space Station (ISS), met een geplande lancering medio mei. De missie zal cruciale wetenschappelijke experimenten, voorraden en apparatuur naar het ruimtestation brengen.
 
 De SpaceX Dragon-capsule wordt geladen met ongeveer 3000 kilogram aan benodigdheden en zal opstijgen aan boord van een Falcon 9-raket vanaf Launch Complex 40 op Cape Canaveral Space Force Station in Florida. Deze reguliere bevoorradingsmissies zijn essentieel voor het ondersteunen van de bemanning en het wetenschappelijk onderzoek op het ISS.
+
+## Automatisch aankoppelen aan het ISS
 
 Na aankomst bij het orbitale complex zal Dragon automatisch aankoppelen aan de voorwaartse poort van het ruimtestation. Deze autonome aankooplingsprocedure is inmiddels een routinehandeling geworden voor SpaceX, die al tientallen succesvolle missies naar het ISS heeft uitgevoerd.
 

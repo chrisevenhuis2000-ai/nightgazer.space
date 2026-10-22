@@ -11,11 +11,14 @@ sourceUrl: "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-rebe
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/03/rebekah-tolatovicz.jpg"
 imageAlt: "I Am Artemis: Rebekah Tolatovicz"
 imageCredit: "NASA"
+kernpunten: ["Rebekah Tolatovicz bouwde als hoofdmechanicien bij Lockheed Martin met eigen handen mee aan alle Orion-ruimtevaartuigen in Kennedy Space Center.","Ze is verantwoordelijk voor de bouw, integratie en het testen van de voertuigen voor NASA's Artemis-programma.","Orion moet astronauten veilig naar de maan en terug brengen, als basis voor toekomstige verkenning van Mars."]
 ---
 
 In NASA's Kennedy Space Center in Florida staat een vloot van Orion-ruimtevaartuigen in ontwikkeling, en Rebekah Tolatovicz heeft met haar eigen handen aan elk van deze voertuigen meegebouwd. Als hoofdmechanicien bij hoofdaannemer Lockheed Martin is zij verantwoordelijk voor de bouw, integratie en het testen van de ruimtevaartuigen die onderdeel zijn van NASA's ambitieuze Artemis-programma.
 
 Tolatovicz behoort tot het team van duizenden ingenieurs en technici die dag en nacht werken aan het realiseren van NASA's droom om astronauten terug naar de maan te brengen. Het Orion-ruimtevaartuig vormt het hart van deze missie en moet de bemanning veilig naar de maan en weer terug naar de aarde transporteren. Haar expertise als mechanisch technicus is cruciaal voor het waarborgen van de veiligheid en betrouwbaarheid van deze complexe voertuigen.
+
+## Precisiewerk onder extreme omstandigheden
 
 Het Artemis-programma staat voor een van de meest uitdagende technische ondernemingen van onze tijd. Elke component van het Orion-ruimtevaartuig moet perfect functioneren om het leven van astronauten te beschermen tijdens hun reis door de ruimte. Tolatovicz en haar collega's werken met de precisie van horlogemakers aan systemen die moeten presteren onder de meest extreme omstandigheden.
 

@@ -11,11 +11,14 @@ sourceUrl: "https://spacenews.com/national-geospatial-intelligence-agency-to-ope
 imageUrl: "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/MH2605035527-scaled.jpg"
 imageAlt: "National Geospatial-Intelligence Agency to open programs to more vendors"
 imageCredit: "SpaceNews"
+kernpunten: ["De NGA heeft een nieuw Rapid Capabilities Office opgericht om commerciële technologie sneller te gebruiken.","Meer commerciële leveranciers krijgen toegang tot NGA-programma's, die vooral voor gevestigde defensieleveranciers bedoeld waren.","Het past in een bredere trend van samenwerking tussen Amerikaanse overheidsinstanties en commerciële ruimtevaartbedrijven."]
 ---
 
 Het Amerikaanse National Geospatial-Intelligence Agency (NGA) zet een belangrijke stap richting meer openheid voor commerciële ruimtevaartbedrijven. De inlichtingendienst, die zich specialiseert in geospatiale intelligentie en satellietbeeldanalyse, heeft een nieuw Rapid Capabilities Office opgericht om de adoptie van commerciële technologie te versnellen.
 
 Deze nieuwe aanpak moet ervoor zorgen dat meer commerciële leveranciers toegang krijgen tot NGA-programma's. Tot nu toe waren veel overheidscontracten voornamelijk weggelegd voor gevestigde defensieleveranciers, maar de groeiende commerciële ruimtevaartsector biedt steeds meer innovatieve oplossingen die interessant zijn voor inlichtingendiensten.
+
+## Versneller voor nieuwe technologie
 
 Het Rapid Capabilities Office moet fungeren als een soort versneller voor de integratie van nieuwe technologieën. Door bureaucratische processen te stroomlijnen en de toegang voor kleinere bedrijven te vergemakkelijken, hoopt NGA sneller te kunnen profiteren van de innovaties in de commerciële ruimtevaartindustrie.
 

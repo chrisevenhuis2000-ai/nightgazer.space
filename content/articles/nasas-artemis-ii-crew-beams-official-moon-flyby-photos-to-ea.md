@@ -11,11 +11,15 @@ sourceUrl: "https://www.nasa.gov/news-release/nasas-artemis-ii-crew-beams-offici
 imageUrl: "https://images-assets.nasa.gov/image/art002e009571/art002e009571~large.jpg"
 imageAlt: "NASA’s Artemis II Crew Beams Official Moon Flyby Photos to Earth"
 imageCredit: "NASA"
+kernpunten: ["NASA heeft de eerste officiële foto's van de Artemis II-bemanning vrijgegeven.","De beelden zijn gemaakt tijdens een zeven uur durende scheervlucht langs de achterzijde van de maan.","De missie bereidt toekomstige bemande maanlandingen voor."]
+kerncijfers: [{"waarde":"6 apr","eenheid":"","label":"datum van de opnamen"}]
 ---
 
 NASA heeft dinsdag de eerste officiële foto's vrijgegeven die door de Artemis II-bemanning zijn gemaakt tijdens hun historische maanvlucht. De astronauten legden deze unieke beelden vast op 6 april tijdens een zeven uur durende scheervlucht langs de achterzijde van de maan, wat de terugkeer van de mensheid naar de maan markeert.
 
 De foto's tonen gebieden van de maan die nog nooit eerder door menselijke ogen zijn aanschouwd. Bijzonder opvallend is de opname van een zeldzame zonsverduistering zoals die vanuit de ruimte wordt waargenomen - een fenomeen dat slechts weinig mensen ooit hebben kunnen vastleggen.
+
+## Voorbereiding op maanlandingen
 
 De Artemis II-missie vormt een cruciaal onderdeel van NASA's ambitieuze programma om astronauten terug te brengen naar het maanoppervlak. Deze testvlucht dient als belangrijke voorbereiding voor toekomstige bemande maanlandingen en biedt wetenschappers waardevolle nieuwe inzichten in de samenstelling en het oppervlak van onze natuurlijke satelliet.
 

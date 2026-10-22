@@ -11,11 +11,14 @@ sourceUrl: "https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-dani
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/05/ceb-4607b.jpg"
 imageAlt: "I Am Artemis: Daniel Stubbs"
 imageCredit: "NASA"
+kernpunten: ["Bij maanlandingen werken de motoren stof op, waardoor een wolk ontstaat die het zicht van astronauten kan belemmeren.","Maanstof is extreem fijn en elektrisch geladen, en hecht zich vast aan apparatuur en ruimtepakken.","NASA-ingenieur Daniel Stubbs en zijn team werken aan oplossingen voor de Artemis-landingen."]
 ---
 
 Als je ooit door een wolk van stof en vuil hebt gereden die tijdelijk je zicht belemmerde, dan heb je een gedeeltelijk beeld gekregen van een potentieel probleem waarmee NASA's bemande landingssystemen voor Artemis worden geconfronteerd wanneer ze op de Maan landen.
 
 Daniel Stubbs, een luchtvaartingenieur bij NASA, houdt zich bezig met dit uitdagende aspect van de Artemis-missies. Het maanstof, ook wel regoliet genoemd, kan tijdens de landing worden opgewerveld door de motoren van het landingsvaartuig, waardoor een dichte stofwolk ontstaat die het zicht van de astronauten kan belemmeren.
+
+## Een probleem sinds Apollo
 
 Dit probleem is niet nieuw voor NASA. Al tijdens de Apollo-missies hadden astronauten te maken met vergelijkbare uitdagingen. Het maanstof heeft echter bijzondere eigenschappen die het extra problematisch maken: de deeltjes zijn extreem fijn, elektrisch geladen en kunnen zich vasthechten aan apparatuur en ruimtepakken.
 

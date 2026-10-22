@@ -11,11 +11,15 @@ sourceUrl: "https://spacenews.com/nasa-selects-four-companies-for-initial-moon-b
 imageUrl: "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/bluemoon-astrolab.jpeg"
 imageAlt: "NASA selects four companies for initial moon base awards"
 imageCredit: "SpaceNews"
+kernpunten: ["NASA heeft vier bedrijven geselecteerd voor de eerste contracten voor een toekomstige maanbasis.","De bedrijven ontwerpen en bouwen apparatuur zoals geavanceerde landers en onbemande drones.","De maanbasis hoort bij Artemis en moet dienen als opstap naar Mars en andere bestemmingen."]
+kerncijfers: [{"waarde":"26 mei","eenheid":"","label":"datum van de aankondiging"}]
 ---
 
 NASA heeft een belangrijke mijlpaal bereikt in haar ambitieuze plannen voor een permanente aanwezigheid op de maan. Op 26 mei kondigde het ruimtevaartbureau de selectie aan van vier bedrijven die de eerste contracten hebben gekregen voor de ontwikkeling van een toekomstige maanbasis.
 
 De geselecteerde bedrijven zullen zich richten op het ontwerpen en bouwen van essentiële apparatuur voor maanoperaties, waaronder geavanceerde landers en onbemande drones. Deze technologieën vormen de ruggengraat van NASA's langetermijnvisie om een duurzame onderzoeksbasis op het maanoppervlak te vestigen.
+
+## Onderdeel van het Artemis-programma
 
 Deze contracten maken deel uit van NASA's bredere Artemis-programma, dat tot doel heeft astronauten terug te brengen naar de maan en uiteindelijk een permanente basis te bouwen. De maanbasis zal dienen als stepping stone voor toekomstige missies naar Mars en andere bestemmingen in ons zonnestelsel.
 

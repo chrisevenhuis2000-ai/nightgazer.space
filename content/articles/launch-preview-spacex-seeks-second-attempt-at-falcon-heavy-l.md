@@ -11,11 +11,15 @@ sourceUrl: "https://spaceflightnow.com/2026/04/28/live-coverage-spacex-seeks-sec
 imageUrl: "https://images-assets.nasa.gov/image/KSC-20180206-PH_KLS02_0204/KSC-20180206-PH_KLS02_0204~medium.jpg"
 imageAlt: "Lancering preview: SpaceX probeert tweede poging voor Falcon Heavy-lancering na weerscrub op maandag"
 imageCredit: "NASA/Kim Shiflett / KSC"
+kernpunten: ["SpaceX doet vandaag een nieuwe poging om de Falcon Heavy te lanceren na een weerscrub op maandag.","De raket moet de satelliet ViaSat-3 F3 in een geosynchrone transferbaan brengen.","De twee zijboosters proberen na de lancering terug te keren naar de aarde voor hergebruik."]
+kerncijfers: [{"waarde":"16:13","eenheid":"uur","label":"Lanceertijd Nederlandse tijd"},{"waarde":"85","eenheid":"minuten","label":"Lengte lanceervenster"},{"waarde":"3","eenheid":"","label":"Falcon 9 boosters gekoppeld"}]
 ---
 
 SpaceX staat klaar voor een nieuwe poging om de krachtige Falcon Heavy raket te lanceren, nadat de eerste poging op maandag werd afgeblazen vanwege ongunstige weersomstandigheden. De ruimtevaartmaatschappij van Elon Musk hoopt vandaag wel van start te kunnen gaan met deze belangrijke commerciële missie.
 
 De lancering staat gepland voor 16:13 Nederlandse tijd (10:13 EDT) vanaf lanceerplatform 39A bij NASA's Kennedy Space Center in Florida. SpaceX heeft een lanceervenster van 85 minuten tot hun beschikking om de raket succesvol de lucht in te krijgen.
+
+## Doel van de missie
 
 Het hoofddoel van deze missie is het plaatsen van de ViaSat-3 F3 satelliet in een geosynchrone transferbaan. Deze geavanceerde communicatiesatelliet zal uiteindelijk worden gepositioneerd in een geosynchrone baan rond de aarde, waar het internetdiensten en communicatie zal verzorgen voor gebruikers over een groot geografisch gebied.
 

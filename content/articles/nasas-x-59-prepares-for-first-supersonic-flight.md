@@ -11,11 +11,15 @@ sourceUrl: "https://www.nasa.gov/centers-and-facilities/armstrong/nasas-x-59-pre
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/05/afrc2026-0115-42.jpg"
 imageAlt: "NASA’s X-59 Prepares for First Supersonic Flight"
 imageCredit: "NASA"
+kernpunten: ["De X-59 begint een nieuwe serie testvluchten, met voor het eerst een vlucht sneller dan het geluid.","Het vliegtuig is ontworpen om de knal bij het doorbreken van de geluidsbarrière sterk te verminderen.","Slaagt de test, dan kan dat de weg vrijmaken voor nieuwe supersonische passagiersvliegtuigen."]
+citaat: {"tekst":"Wat er nu komt is de eerste keer dat dit unieke vliegtuig zijn volledige potentieel gaat tonen","wie":"NASA-officials"}
 ---
 
 NASA's revolutionaire X-59 quiet supersonic research aircraft bereidt zich voor op enkele van zijn meest betekenisvolle vluchten tot nu toe. Het experimentele vliegtuig staat op het punt om een nieuwe serie testvluchten te beginnen, waaronder voor het eerst een vlucht sneller dan de geluidssnelheid en andere missiekritieke doelstellingen.
 
 De X-59 is speciaal ontworpen om de kenmerkende knal die ontstaat bij het doorbreken van de geluidsbarrière aanzienlijk te verminderen. Dit unieke vliegtuig maakt deel uit van NASA's QueSST (Quiet SuperSonic Technology) missie, die tot doel heeft om stille supersonische vluchten boven land mogelijk te maken voor commerciële luchtvaart.
+
+## Testvluchten leveren geluidsdata op
 
 'Wat er nu komt is de eerste keer dat dit unieke vliegtuig zijn volledige potentieel gaat tonen', aldus NASA-officials. De komende testvluchten zijn cruciaal voor het verzamelen van data over de geluidsniveaus die het toestel produceert bij supersonische snelheden.
 

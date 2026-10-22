@@ -11,11 +11,16 @@ sourceUrl: "https://science.nasa.gov/earth/earth-observatory/snow-in-the-shadow-
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/snow-in-the-shadow-of-the-andes/patagoniasnow_tmo_20260403_th.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Snow in the Shadow of the Andes"
 imageCredit: "NASA"
+kernpunten: ["Een vroege herfststorm bedekte de hogere toppen van de Andes in zuidelijk Argentinië met sneeuw.","Satellietbeelden tonen een scherp contrast tussen witte bergtoppen en groene valleien.","De sneeuw smelt naar verwachting snel, maar geeft inzicht in seizoensgebonden weerspatronen."]
 ---
 
 De Andes gebergteketen in zuidelijk Argentinië kreeg onlangs een onverwacht bezoek van Jack Frost, toen een vroege herfststorm voor een spectaculaire sneeuwbedekking zorgde op de hogere bergtoppen. Hoewel het officieel nog vroeg in het herfstseizoen is op het zuidelijk halfrond, brachten koude luchtmassa's genoeg precipitatie om de berghellingen in een wit landschap te veranderen.
 
+## Contrast tussen bergtop en vallei
+
 De sneeuwval, vastgelegd door satellietbeelden, toont een dramatisch contrast tussen de besneeuwde bergtoppen en de relatief groene valleien eronder. Deze hoogteverschillen creëren natuurlijke klimaatzones waarbij lagere gebieden nog steeds genieten van mildere temperaturen, terwijl de bergpieken al de eerste tekenen van de naderende winter ervaren.
+
+## Sneeuw smelt waarschijnlijk snel
 
 Hoewel het een prachtig gezicht biedt, is deze sneeuwbedekking naar verwachting van korte duur. Het gematigde klimaat van de regio en de toenemende zonkracht zorgen ervoor dat veel van deze sneeuw al snel zal wegsmelten. Voor klimatologen en meteorologen biedt dit fenomeen echter waardevolle inzichten in de seizoensgebonden weerspatronen van de Andesregio.
 

@@ -11,15 +11,21 @@ sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-18-sonified
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/svs/a030000/a031000/a031007/STScI-H-M16_1x-1920x1080-00001_print.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 October 18 – Sonified: Eagle Nebula Pillars"
 imageCredit: "NASA"
+kernpunten: ["De APOD van 18 oktober 2026 toont een sonificatie van de Arendnevel (M16), waarbij beeldinformatie in geluid is omgezet.","De zuilen van gas en stof liggen op zo'n 6500 lichtjaar afstand en worden door straling en sterrenwind afgebroken.","De sonificatie gebruikt een beeld van Hubble en Chandra, waarbij een lijn over het beeld loopt en de verticale positie de toonhoogte bepaalt."]
+kerncijfers: [{"waarde":"6500","eenheid":"lichtjaar","label":"Afstand tot de Arendnevel"},{"waarde":"18 okt","eenheid":"","label":"Datum van de APOD"}]
 ---
 
 Heb je de Arendnevel weleens met je oren beleefd? Die vraag stelt de Astronomy Picture of the Day (APOD) van NASA op 18 oktober 2026. Het onderwerp is een sonificatie van de beroemde nevel M16. Bij een sonificatie worden gegevens of beeldinformatie omgezet in geluid. Zo kun je een astronomisch beeld ook beluisteren.
 
 De Arendnevel is vooral bekend om wat ze het oog te bieden heeft. Diep in donkere, hoog oprijzende structuren ontstaan heldere, jonge sterren. Die zuilen van koud gas en stof zijn lichtjaren lang. Ze liggen op zo'n 6500 lichtjaar afstand, in de richting van het sterrenbeeld Slang (Serpens).
 
+## Zuilen die verdwijnen
+
 De kosmische pilaren worden voortdurend gevormd en afgebroken. Dat gebeurt door het energierijke ultraviolette licht en de krachtige winden van de zware sterren in de sterrenhoop van M16. Daardoor zijn de zuilen uiteindelijk gedoemd te verdwijnen. Het beeldhouwen door straling en sterrenwind is een proces dat zich over lange tijd voltrekt in stervormingsgebieden.
 
 Volgens de toelichting bij de APOD is het onrustige gebied waarin in M16 sterren ontstaan waarschijnlijk vergelijkbaar met de omgeving waarin onze eigen zon is gevormd. Wie naar de Arendnevel kijkt, ziet dus mogelijk een beeld van hoe ons zonnestelsel ooit begon.
+
+## Hubble en Chandra achter het geluid
 
 De sonificatie is gebaseerd op een samengesteld beeld van twee ruimtetelescopen. De Hubble-ruimtetelescoop levert de opnamen in zichtbaar licht. De Chandra X-ray Observatory voegt daar röntgenstraling aan toe. Samen laten ze spectaculaire details van het stervormingsgebied zien.
 

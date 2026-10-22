@@ -11,11 +11,15 @@ sourceUrl: "https://science.nasa.gov/earth/earth-observatory/wave-of-dust-rolls-
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/wave-of-dust-rolls-through-texas/texasdust_amo_20260315_th.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Stofgolf rolt over Texas"
 imageCredit: "NASA"
+kernpunten: ["Een krachtig koufront joeg een muur van stof en zand als een bruine golf over de hoogvlaktes van Texas.","De winden pikten losse deeltjes van de droge grond op en vormden een scherpe lijn van opwaaiend materiaal.","Zulke stofstormen komen vaker voor in droge gebieden en helpen bij het begrijpen van weer op Mars."]
+kerncijfers: [{"waarde":"80","eenheid":"km/u","label":"windsnelheid, vaak meer dan"}]
 ---
 
 Een krachtig koufront heeft afgelopen dagen gezorgd voor een spectaculair natuurverschijnsel in Texas. Het front stuwde een massieve muur van stof en zand op die als een bruine golf over de hoogvlaktes rolde en tijdelijk het zicht drastisch verminderde.
 
 De stofstorm ontstond toen het koufront krachtige winden veroorzaakte die losse deeltjes van de droge grond oppikten. Deze winden, die vaak met snelheden van meer dan 80 kilometer per uur kunnen blazen, creëerden een scherp gedefinieerde lijn van opwaaiend materiaal dat zich over grote afstanden voortzette.
+
+## Haboobs in droge gebieden
 
 Dergelijke stofstormen, in het Engels 'haboobs' genoemd, komen regelmatig voor in droge gebieden zoals het zuidwesten van de Verenigde Staten. Ze ontstaan vooral tijdens seizoensovergangen wanneer temperatuurverschillen tussen luchtmassa's groot zijn. Voor de lokale bevolking betekenen deze verschijnselen vaak verminderd zicht en tijdelijke verstoring van het dagelijks leven.
 

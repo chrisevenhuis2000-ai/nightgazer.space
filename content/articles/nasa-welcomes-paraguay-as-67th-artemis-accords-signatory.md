@@ -11,11 +11,16 @@ sourceUrl: "https://www.nasa.gov/organizations/oiir/artemis-accords/nasa-welcome
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/05/artemis-accords-paraguay-67-050726.jpg"
 imageAlt: "NASA Welcomes Paraguay as 67th Artemis Accords Signatory"
 imageCredit: "NASA"
+kernpunten: ["Paraguay heeft in Asunción de Artemis Akkoorden ondertekend.","Het land is de 67e ondertekenaar van de akkoorden.","De akkoorden vormen een kader voor vreedzame samenwerking bij ruimteverkenning, ook voor het Artemis-programma."]
+kerncijfers: [{"waarde":"67e","eenheid":"","label":"ondertekenaar van de akkoorden"},{"waarde":"2020","eenheid":"","label":"jaar waarin de principes werden opgesteld"}]
+citaat: {"tekst":"Vandaag ben ik er trots op om Paraguay te verwelkomen als de 67e ondertekenaar van de Artemis Akkoorden","wie":"Jared Isaacman, NASA-administrator"}
 ---
 
 De Republiek Paraguay heeft donderdag tijdens een ceremonie in Asunción de Artemis Akkoorden ondertekend, waarmee het land de nieuwste natie wordt die zich committeert aan de gedeelde principes voor civiele ruimteverkenning.
 
 'Vandaag ben ik er trots op om Paraguay te verwelkomen als de 67e ondertekenaar van de Artemis Akkoorden,' aldus NASA-administrator Jared Isaacman. 'Ze sluiten zich aan bij een steeds groter wordende coalitie van landen die samenwerken aan vreedzame ruimteverkenning.'
+
+## Waar de akkoorden voor staan
 
 De Artemis Akkoorden zijn een reeks principes die in 2020 werden opgesteld om internationale samenwerking bij toekomstige ruimtemissies te bevorderen. De akkoorden richten zich op vreedzame verkenning, transparantie in activiteiten, interoperabiliteit tussen systemen en het beschermen van historische landingsplaatsen op hemellichamen.
 

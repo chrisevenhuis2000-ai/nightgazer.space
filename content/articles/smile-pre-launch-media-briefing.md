@@ -11,11 +11,14 @@ sourceUrl: "https://www.esa.int/ESA_Multimedia/Videos/2026/03/Smile_pre-launch_m
 imageUrl: "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/03/smile_pre-launch_media_briefing/27171623-2-eng-GB/Smile_pre-launch_media_briefing_pillars.jpg"
 imageAlt: "Smile pre-launch mediabriefing: gezamenlijke ESA-Chinese missie klaar voor lancering"
 imageCredit: "ESA"
+kernpunten: ["ESA en de Chinese Academie van Wetenschappen lanceren samen de Smile-missie met een Vega-C raket vanaf Frans-Guyana.","Smile bestudeert de wisselwerking tussen de zonnewind en het magnetisch veld van de aarde, wat cruciaal is voor het begrijpen van ruimteweer.","Real-time observaties van de magnetosfeer moeten helpen geomagnetische stormen beter te voorspellen en satellieten en astronauten te beschermen."]
 ---
 
 De Europese ruimtevaartorganisatie ESA heeft een uitgebreide mediabriefing gehouden over de naderende lancering van de Smile-missie (Solar wind Magnetosphere Ionosphere Link Explorer). Deze bijzondere samenwerking tussen ESA en de Chinese Academie van Wetenschappen staat op het punt gelanceerd te worden vanaf Europa's ruimtehaven in Frans-Guyana.
 
 De Smile-satelliet zal worden gelanceerd met behulp van een Vega-C raket en heeft als hoofddoel het bestuderen van de complexe wisselwerking tussen de zonnewind en het magnetisch veld van onze planeet. Deze interactie is cruciaal voor het begrijpen van ruimteweer en de effecten daarvan op satellietcommunicatie en technologische systemen op aarde.
+
+## Technische details en samenwerking
 
 Tijdens de mediabriefing werden belangrijke technische details en wetenschappelijke doelstellingen van de missie toegelicht. De samenwerking tussen Europa en China op dit gebied markeert een belangrijke mijlpaal in de internationale ruimtevaart en wetenschappelijke onderzoekssamenwerkingen.
 

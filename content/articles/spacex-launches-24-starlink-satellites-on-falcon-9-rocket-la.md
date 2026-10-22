@@ -11,11 +11,15 @@ sourceUrl: "https://spaceflightnow.com/2026/05/20/live-coverage-spacex-to-launch
 imageUrl: "https://images-assets.nasa.gov/image/NHQ202409270003/NHQ202409270003~medium.jpg"
 imageAlt: "SpaceX lanceert 24 Starlink-satellieten met Falcon 9-raket vanaf Vandenberg"
 imageCredit: "NASA/Keegan Barber / HQ"
+kernpunten: ["SpaceX lanceerde vannacht 24 Starlink-satellieten met een Falcon 9 vanaf Vandenberg in Californië.","Het was de 45e Starlink-missie van SpaceX dit jaar.","De satellieten breiden de constellatie in een lage baan uit om internet te bieden, vooral in afgelegen gebieden."]
+kerncijfers: [{"waarde":"24","eenheid":"satellieten","label":"Gelanceerde Starlink-satellieten"},{"waarde":"45e","eenheid":"","label":"Starlink-missie dit jaar"},{"waarde":"04:46","eenheid":"","label":"Lanceertijd Nederlandse tijd"}]
 ---
 
 SpaceX heeft vannacht 24 nieuwe Starlink-satellieten gelanceerd vanaf pad 4E van Vandenberg Space Force Base in Californië. De Falcon 9-raket steeg om 04:46 Nederlandse tijd op, wat overeenkomt met 19:46 lokale tijd aan de Amerikaanse westkust.
 
 Deze lancering markeert de 45e Starlink-missie van SpaceX dit jaar, een indrukwekkend tempo dat het bedrijf van Elon Musk aanhoudt om zijn mondiale internetconstellatie uit te breiden. De 24 breedbandinternetssatellieten worden toegevoegd aan de bestaande vloot in een lage baan om de aarde.
+
+## Internet voor afgelegen gebieden
 
 De Starlink-constellatie is bedoeld om hogesnelheidsinternet te bieden aan gebruikers wereldwijd, met name in afgelegen gebieden waar traditionele internetinfrastructuur beperkt is. SpaceX blijft het tempo van lanceringen hoog houden om de dekking en capaciteit van het netwerk te vergroten.
 

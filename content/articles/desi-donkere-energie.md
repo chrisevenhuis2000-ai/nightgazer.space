@@ -10,6 +10,8 @@ tags: ["donkere energie", "DESI", "kosmologie", "heelal"]
 imageUrl: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001206/GSFC_20171208_Archive_e001206~medium.jpg"
 imageAlt: "DESI: donkere energie verzwakt al 4,5 miljard jaar"
 imageCredit: "GSFC"
+kernpunten: ["DESI heeft de grootste 3D-kaart van het heelal gemaakt en bracht in drie jaar meer dan 40 miljoen sterrenstelsels in kaart.","Donkere energie lijkt niet constant: ongeveer 4,5 miljard jaar geleden was die zwakker dan nu, wat Einsteins kosmologische constante uitdaagt.","De zekerheid is 3,9 sigma, net onder de 5 sigma-standaard; DESI en Euclid moeten uitsluitsel geven."]
+kerncijfers: [{"waarde":"40 miljoen","eenheid":"sterrenstelsels","label":"In kaart gebracht in drie jaar"},{"waarde":"4,5 miljard","eenheid":"jaar","label":"Zwakkere donkere energie geleden"},{"waarde":"3,9","eenheid":"sigma","label":"Statistische zekerheid"}]
 ---
 
 # DESI: donkere energie verzwakt al 4,5 miljard jaar

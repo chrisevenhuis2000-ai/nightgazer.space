@@ -11,11 +11,15 @@ sourceUrl: "https://spacenews.com/northern-norway-is-ready-to-launch-eu-space-re
 imageUrl: "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/11/%C2%A9-Copyright-Andoya-Spaceport_Launch-Pad-A.jpg"
 imageAlt: "Northern Norway is ready to launch. EU Space Regulation — and its new Arctic policy – is not."
 imageCredit: "SpaceNews"
+kernpunten: ["De Europese Commissie herziet haar Arctische strategie en verwacht de nieuwe beleidsverklaring in de komende herfst.","Noord-Noorwegen positioneert zich als veelbelovende regio voor ruimtevaart, onder meer voor satellietlanceringen.","Er lijkt een kloof te bestaan tussen die ambities en de huidige EU-regelgeving voor de ruimtesector."]
+kerncijfers: [{"waarde":"2021","eenheid":"","label":"Jaar van het laatste Arctisch beleid"}]
 ---
 
 De Europese Commissie werkt momenteel aan een herziening van haar Arctische strategie, waarbij een nieuwe beleidsverklaring wordt verwacht in de komende herfst. In tegenstelling tot het meest recente beleid uit 2021, zal de nieuwe versie naar verwachting meer nadruk leggen op verschillende aspecten van de Arctische ontwikkeling.
 
 Noord-Noorwegen positioneert zich ondertussen als een veelbelovende regio voor ruimtevaartactiviteiten. De geografische ligging van dit gebied biedt unieke voordelen voor satellietlanceringen en andere ruimteoperaties, waardoor het steeds meer aandacht trekt van de internationale ruimtevaartgemeenschap.
+
+## Kloof tussen ambitie en regelgeving
 
 Er lijkt echter een discrepantie te bestaan tussen de ambities van Noord-Noorwegen en de huidige EU-regelgeving voor de ruimtesector. Deze kloof roept vragen op over de afstemming tussen regionale ontwikkelingen en Europees beleid op het gebied van ruimtevaart.
 
