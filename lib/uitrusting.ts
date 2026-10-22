@@ -4,8 +4,10 @@
    vervangen nooit meer is dan één regel plakken. Een winkel zonder link
    krijgt geen knop; een product zonder enige link toont alleen de uitleg.
 
-   TIJDELIJK: de links hieronder zijn gewone zoeklinks. Vervang ze door de
-   partnerlinks uit het Bol Partnerprogramma en Amazon.nl Associates. */
+   Bol: partnerlinks via partner.bol.com met de site-ID van NightGazer, naar
+   de zoekresultaten voor het product. Een link uit de linkgenerator van Bol
+   (naar een productpagina) mag er direct voor in de plaats.
+   Amazon.nl: nog gewone zoeklinks, tot er een tracking-ID is. */
 
 export type Winkel = 'bol' | 'amazon'
 
@@ -59,7 +61,13 @@ export const KOPBEELD = {
   credit: 'NASA/Bill Ingalls · 2021',
 }
 
-const bol    = (q: string) => `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(q)}`
+const BOL_SITE_ID = '1552276'
+const bol = (q: string) => {
+  const doel = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(q)}`
+  return `https://partner.bol.com/click/click?p=2&t=url&s=${BOL_SITE_ID}&f=TXL`
+    + `&url=${encodeURIComponent(doel)}&name=${encodeURIComponent(q)}`
+}
+// TIJDELIJK: gewone zoeklink, nog zonder tracking-ID.
 const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}`
 
 export const GROEPEN: Groep[] = [
