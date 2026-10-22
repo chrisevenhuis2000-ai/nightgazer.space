@@ -19,6 +19,7 @@ const pages = [
   { loc: '/nieuws',        changefreq: 'daily',   priority: '0.9' },
   { loc: '/missies',       changefreq: 'weekly',  priority: '0.8' },
   { loc: '/sterrenkijken', changefreq: 'weekly',  priority: '0.7' },
+  { loc: '/sterrenkijken/uitrusting', changefreq: 'monthly', priority: '0.5' },
   { loc: '/educatie',      changefreq: 'monthly', priority: '0.6' },
   { loc: '/over',          changefreq: 'yearly',  priority: '0.3' },
   { loc: '/contact',       changefreq: 'yearly',  priority: '0.3' },

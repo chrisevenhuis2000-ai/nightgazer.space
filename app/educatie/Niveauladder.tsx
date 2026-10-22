@@ -17,7 +17,7 @@ import { vragenVoor, weekdag } from '@/lib/educatie-quiz'
 import { PLATEN, plaatUrl, plaatPagina } from '@/lib/educatie-platen'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder, img,
+  archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder, img, UitrustingVerwijzing,
 } from '@/app/_plate/shared'
 import { LessonFigure } from './Figuren'
 import { Vandaag } from './Vandaag'
@@ -457,6 +457,10 @@ export default function Niveauladder() {
             ))}
           </div>
         </section>
+
+        <div className="pl-wrap">
+          <UitrustingVerwijzing tekst="Zelf de maan, Jupiter of de Andromedanevel zien? Dit heb je nodig om te beginnen." />
+        </div>
 
         {/* ══ Vragen ══ */}
         <section className="pl-wrap" aria-labelledby="pl-vragen">

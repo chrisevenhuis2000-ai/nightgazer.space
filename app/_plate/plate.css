@@ -4408,3 +4408,53 @@ a:hover .pl-emulsion > img,
   .pl-mgal[data-n="6"] > *,
   .pl-mgal[data-n="5"] > :nth-child(n+3) { grid-column: span 2; }
 }
+
+/* ══ Uitrusting — /sterrenkijken/uitrusting ═════════════════════════════════
+   Aanraders als genummerde velden, zoals de voorwaarden. De winkelknoppen
+   zijn gewone .pl-btn: een affiliate-link is een actie, geen advertentie-
+   kleur. De melding over commissie staat boven het eerste product. */
+
+.pl-uitr__intro {
+  padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 36px);
+  display: grid;
+  gap: 18px;
+}
+.pl-uitr__intro > .pl-body { color: var(--pl-ink); }
+.pl-uitr__melding {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--pl-rule-soft);
+  max-width: 68ch;
+}
+.pl-uitr__gintro { padding: 20px clamp(20px, 3vw, 36px) 4px; }
+.pl-uitr__list { list-style: none; margin: 0; padding: 0; }
+.pl-uitr__item {
+  display: grid;
+  grid-template-columns: 3.2em minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 8px 12px;
+  padding: 20px clamp(20px, 3vw, 36px);
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-uitr__list .pl-uitr__item:first-child { border-top: 0; }
+.pl-uitr__item > .pl-label { padding-top: 0.42em; }
+.pl-uitr__tekst { display: grid; gap: 6px; justify-items: start; }
+.pl-uitr__winkels { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.pl-uitr__winkels .pl-btn { padding: 0 16px; }
+
+@media (max-width: 700px) {
+  .pl-uitr__item { grid-template-columns: 3.2em minmax(0, 1fr); }
+  .pl-uitr__winkels { grid-column: 2; justify-content: flex-start; }
+}
+
+/* Verwijzing naar de uitrusting vanaf /sterrenkijken en /educatie. */
+.pl-uitr-ref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  padding: clamp(18px, 2.6vw, 26px) clamp(20px, 3vw, 36px);
+}
+.pl-uitr-ref > div { display: grid; gap: 6px; }

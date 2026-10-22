@@ -431,3 +431,22 @@ export function useMissionGallery(
 
   return found
 }
+
+/* ══ Verwijzing naar de uitrusting ════════════════════════════════════════
+   Eén blok, gedeeld door /sterrenkijken en /educatie, dat naar de pagina met
+   aanraders wijst. Het blok zelf bevat geen winkellinks. */
+export function UitrustingVerwijzing({ tekst }: { tekst: string }) {
+  return (
+    <div className="pl-plate pl-uitr-ref">
+      <div>
+        <span className="pl-label">Uitrusting</span>
+        <p className="pl-body">{tekst}</p>
+      </div>
+      <Link href="/sterrenkijken/uitrusting/" className="pl-read">
+        <span>Wat heb je nodig?</span>
+        <span className="pl-read__rule" aria-hidden="true" />
+        <Ico.arrow />
+      </Link>
+    </div>
+  )
+}

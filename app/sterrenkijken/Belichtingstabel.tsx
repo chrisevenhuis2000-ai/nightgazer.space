@@ -34,7 +34,7 @@ interface Night {
 }
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, UitrustingVerwijzing,
 } from '@/app/_plate/shared'
 
 import IssOverkomsten from './IssOverkomsten'
@@ -649,6 +649,10 @@ export default function Belichtingstabel() {
 
           <Hemelagenda />
         </section>
+
+        <div className="pl-wrap">
+          <UitrustingVerwijzing tekst="Een heldere nacht gevonden? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
+        </div>
 
         <div className="pl-wrap">
           <AdPlate slot="6261315300" />
