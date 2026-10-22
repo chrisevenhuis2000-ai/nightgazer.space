@@ -7,7 +7,7 @@
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
-import { Archivo } from 'next/font/google'
+import localFont from 'next/font/local'
 import { AdUnit } from '../components/AdUnit'
 import { type FooterCol } from '../components/SiteFooter'
 import {
@@ -17,9 +17,10 @@ import { Ico } from './Instruments'
 import { Bewaar } from './Bewaar'
 import './plate.css'
 
-export const archivo = Archivo({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+/* Uit de repo, niet van Google bij elke build: zie app/layout.tsx. */
+export const archivo = localFont({
+  src: '../fonts/archivo-latin.woff2',
+  weight: '400 800',
   variable: '--font-archivo',
   display: 'swap',
 })

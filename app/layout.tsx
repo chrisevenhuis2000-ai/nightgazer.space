@@ -1,28 +1,33 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import ErrorBoundary from './ErrorBoundary'
 import SearchProvider from './components/SearchProvider'
 import { CookieBanner } from './components/CookieBanner'
 import { AdSenseScript } from './components/AdSenseScript'
 
-const inter = Inter({
-  subsets: ['latin'],
+/* Lettertypen staan in de repo (app/fonts, latin-subset, variabel, OFL)
+   in plaats van next/font/google: dat haalde ze bij elke build op bij
+   Google en brak de Cloudflare-build als Google een font-URL zonder
+   extensie teruggaf. */
+const inter = localFont({
+  src: './fonts/inter-latin.woff2',
+  weight: '100 900',
   variable: '--font-inter',
   display: 'swap',
 })
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['700', '800'],
-  style: ['normal'],
+const playfair = localFont({
+  src: './fonts/playfair-display-latin.woff2',
+  weight: '700 800',
+  style: 'normal',
   variable: '--font-playfair',
   display: 'swap',
 })
 
-const jetbrains = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+const jetbrains = localFont({
+  src: './fonts/jetbrains-mono-latin.woff2',
+  weight: '400 500',
   variable: '--font-jetbrains',
   display: 'swap',
 })
