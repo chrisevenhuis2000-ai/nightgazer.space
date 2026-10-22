@@ -42,9 +42,9 @@ export default function PrivacyPage() {
               NightGazer maakt gebruik van de volgende externe diensten:
             </p>
             <ul style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 2, paddingLeft: 20 }}>
-              <li><strong style={{ color: '#c8d0e0' }}>Google AdSense</strong> — voor het tonen van advertenties. Google kan cookies plaatsen en gebruiksgegevens verzamelen voor gepersonaliseerde advertenties. Alleen actief na uw toestemming. Zie het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>privacybeleid van Google</a>.</li>
+              <li><strong style={{ color: '#c8d0e0' }}>Google AdSense</strong> — voor het tonen van advertenties. Zonder uw toestemming toont Google alleen niet-gepersonaliseerde of beperkte advertenties; cookies voor gepersonaliseerde advertenties worden pas geplaatst na uw toestemming. Zie het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>privacybeleid van Google</a>.</li>
               <li><strong style={{ color: '#c8d0e0' }}>Bol en Amazon.nl</strong> — de winkellinks op de pagina Uitrusting zijn affiliate-links. NightGazer plaatst zelf geen cookies voor deze links; klik je erop, dan kan de winkel op zijn eigen site cookies plaatsen om je aankoop aan NightGazer toe te schrijven. Daarop is het privacybeleid van die winkel van toepassing.</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Google Analytics (GA4)</strong> — voor anonieme bezoekersstatistieken. Alleen actief na uw toestemming.</li>
+              <li><strong style={{ color: '#c8d0e0' }}>Google Analytics (GA4)</strong> — voor anonieme bezoekersstatistieken. Analytische cookies worden pas geplaatst na uw toestemming; zonder toestemming stuurt Google Analytics alleen cookieloze, geanonimiseerde signalen (Consent Mode).</li>
               <li><strong style={{ color: '#c8d0e0' }}>NASA Open APIs</strong> — voor dagelijkse astronomie-foto&apos;s en afbeeldingen (geen tracking)</li>
               <li><strong style={{ color: '#c8d0e0' }}>Cloudflare</strong> — voor beeldproxy en CDN-diensten; eigen privacybeleid van toepassing</li>
               <li><strong style={{ color: '#c8d0e0' }}>wheretheiss.at</strong> — voor live ISS-positiedata (geen tracking)</li>
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
           <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
             <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Cookies</h2>
             <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              NightGazer gebruikt functionele cookies (zoals het opslaan van uw quizantwoorden en cookievoorkeur). Na uw uitdrukkelijke toestemming worden ook analytische cookies (Google Analytics) en advertentiecookies (Google AdSense) ingeschakeld. U kunt uw voorkeur op elk moment aanpassen via de cookiebanner onderaan de pagina.
+              NightGazer gebruikt functionele opslag (zoals uw quizantwoorden). Toestemming voor analytische cookies (Google Analytics) en advertentiecookies (Google AdSense) vragen we via het toestemmingsvenster van Google, een door Google gecertificeerd toestemmingsplatform volgens het IAB-TCF. U kunt uw keuze op elk moment wijzigen via ‘Cookie-instellingen’ onderaan elke pagina.
             </p>
           </section>
 
