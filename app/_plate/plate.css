@@ -4410,42 +4410,179 @@ a:hover .pl-emulsion > img,
 }
 
 /* ══ Uitrusting — /sterrenkijken/uitrusting ═════════════════════════════════
-   Aanraders als genummerde velden, zoals de voorwaarden. De winkelknoppen
-   zijn gewone .pl-btn: een affiliate-link is een actie, geen advertentie-
-   kleur. De melding over commissie staat boven het eerste product. */
+   Drie soorten beeld met elk een taak: een NASA-plaat per stap (wat je ziet),
+   het lichtvangst-diagram (openingen op schaal) en een optisch schema per
+   kijker (waar het licht heen gaat). Winkelknoppen zijn gewone .pl-btn: een
+   affiliate-link is een actie, geen advertentiekleur. */
 
-.pl-uitr__intro {
-  padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 36px);
-  display: grid;
-  gap: 18px;
+/* ── Kop: de Perseïde als grond, titel en stappen erop gedrukt ── */
+.pl-uhero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--pl-rule);
+  background: var(--pl-plate);
+  isolation: isolate;
 }
-.pl-uitr__intro > .pl-body { color: var(--pl-ink); }
-.pl-uitr__melding {
+.pl-uhero__ground { position: absolute; inset: 0; z-index: -1; }
+.pl-uhero__ground .pl-emulsion { width: 100%; height: 100%; background: var(--pl-plate); }
+.pl-uhero__ground .pl-emulsion > img { opacity: 0.55; object-position: 50% 30%; }
+.pl-uhero__ground::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(14,16,34,0.94) 0%, rgba(14,16,34,0.72) 46%, rgba(14,16,34,0.18) 100%),
+    linear-gradient(0deg, rgba(14,16,34,0.96) 0%, rgba(14,16,34,0) 46%);
+}
+.pl-uhero__in {
   display: grid;
-  gap: 8px;
-  padding-top: 16px;
-  border-top: 1px solid var(--pl-rule-soft);
+  gap: clamp(18px, 2.4vw, 26px);
+  padding: clamp(40px, 7vw, 96px) clamp(20px, 4vw, 56px) clamp(24px, 3vw, 36px);
+}
+.pl-uhero .pl-h1 { max-width: 15ch; }
+.pl-uhero__lede {
+  color: var(--pl-ink);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.6;
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+.pl-uhero__melding {
+  display: flex; gap: 6px 14px; flex-wrap: wrap; align-items: baseline;
   max-width: 68ch;
+  color: var(--pl-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.6;
 }
-.pl-uitr__gintro { padding: 20px clamp(20px, 3vw, 36px) 4px; }
-.pl-uitr__list { list-style: none; margin: 0; padding: 0; }
-.pl-uitr__item {
+.pl-uhero__credit {
+  position: absolute; right: 14px; bottom: 12px;
+  max-width: 46ch;
+  font-size: 0.6875rem; line-height: 1.4; text-align: right;
+  color: var(--pl-ink-3);
+}
+
+/* Stappen: vier velden op de plaat, elk een sprong naar zijn stap. */
+.pl-ustappen {
   display: grid;
-  grid-template-columns: 3.2em minmax(0, 1fr) auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--pl-rule);
+  background: rgba(14,16,34,0.62);
+  margin-top: clamp(6px, 1.4vw, 14px);
+}
+.pl-ustappen__a {
+  display: grid; gap: 9px; align-content: start;
+  min-height: var(--pl-tap);
+  padding: 16px 18px 18px;
+  border-left: 1px solid var(--pl-rule);
+  transition: background 220ms var(--pl-ease);
+}
+.pl-ustappen__a:first-child { border-left: 0; }
+.pl-ustappen__a:hover { background: rgba(31,35,64,0.72); }
+.pl-ustappen__t {
+  font-size: 1.02rem; font-weight: 700; letter-spacing: -0.018em; line-height: 1.2;
+  color: var(--pl-ink);
+  transition: color 180ms var(--pl-ease);
+}
+.pl-ustappen__a:hover .pl-ustappen__t { color: var(--pl-act); }
+
+/* ── Lichtvangst: cirkels op schaal, onderkant op één lijn ── */
+.pl-licht { --k: 0.62px; }
+.pl-licht__rij {
+  list-style: none; margin: 0;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 18px;
+  padding: clamp(26px, 3.4vw, 40px) clamp(20px, 3vw, 44px) 18px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+.pl-licht__item { min-width: 0; }
+.pl-licht__item, .pl-licht__a {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center;
+}
+.pl-licht__cirkel {
+  display: block;
+  width: calc(var(--mm) * var(--k));
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--pl-stamp);
+  background: radial-gradient(circle, color-mix(in srgb, var(--pl-orbit) 34%, transparent) 0%, color-mix(in srgb, var(--pl-orbit) 12%, transparent) 72%);
+  margin-bottom: 4px;
+  transition: border-color 220ms var(--pl-ease), background 220ms var(--pl-ease);
+}
+.pl-licht__cirkel--oog { width: 6px; background: var(--pl-stamp); border: 0; }
+.pl-licht__naam { font-size: 0.8125rem; font-weight: 700; color: var(--pl-ink); line-height: 1.2; transition: color 180ms var(--pl-ease); }
+.pl-licht__x { font-size: 0.75rem; color: var(--pl-ink-3); white-space: nowrap; }
+.pl-licht__a:hover .pl-licht__naam { color: var(--pl-act); }
+.pl-licht__a:hover .pl-licht__cirkel { border-color: var(--pl-act); }
+.pl-licht__voet { padding: 16px clamp(20px, 3vw, 44px) 20px; max-width: 80ch; }
+
+/* ── Een stap: de plaat naast de kaarten, wisselend van kant ── */
+.pl-ustap { scroll-margin-top: 84px; }
+.pl-ustap__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(18px, 2.6vw, 34px);
   align-items: start;
-  gap: 8px 12px;
-  padding: 20px clamp(20px, 3vw, 36px);
+}
+.pl-ustap__grid[data-kant="r"] { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.pl-ustap__grid[data-kant="r"] .pl-ustap__fig { order: 2; }
+.pl-ustap__fig { position: sticky; top: 84px; display: grid; gap: 10px; }
+.pl-ustap__img { display: block; border: 1px solid var(--pl-rule); }
+.pl-ustap__img .pl-emulsion { aspect-ratio: 4 / 5; }
+.pl-ustap__fig figcaption { display: grid; gap: 5px; }
+.pl-ustap__t { font-size: 0.875rem; line-height: 1.5; color: var(--pl-ink-2); max-width: 52ch; }
+.pl-ustap__c { font-size: 0.75rem; color: var(--pl-ink-3); }
+.pl-ustap__kolom { display: grid; gap: 16px; }
+.pl-ustap__intro {
+  color: var(--pl-ink);
+  font-size: clamp(1rem, 1.2vw, 1.0625rem);
+  line-height: 1.6;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.pl-ukaarten { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.pl-ukaart {
+  display: grid; gap: 12px;
+  padding: 20px clamp(18px, 2.4vw, 26px) 20px;
+  background: var(--pl-plate);
+  border: 1px solid var(--pl-rule);
+  scroll-margin-top: 84px;
+}
+.pl-ukaart:target { border-color: var(--pl-act); }
+.pl-uitr__schema {
+  display: block;
+  width: 100%; max-width: 360px; height: auto;
+  padding: 6px 0 14px;
+  box-sizing: content-box;
+  border-bottom: 1px solid var(--pl-rule-soft);
+  overflow: visible;
+}
+.pl-ukaart__kop { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; }
+.pl-ukaart__specs {
+  display: flex; flex-wrap: wrap; gap: 14px 28px;
+  margin: 0;
+  padding-top: 12px;
   border-top: 1px solid var(--pl-rule-soft);
 }
-.pl-uitr__list .pl-uitr__item:first-child { border-top: 0; }
-.pl-uitr__item > .pl-label { padding-top: 0.42em; }
-.pl-uitr__tekst { display: grid; gap: 6px; justify-items: start; }
-.pl-uitr__winkels { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-.pl-uitr__winkels .pl-btn { padding: 0 16px; }
+.pl-ukaart__specs dd { margin: 0; font-size: 1rem; font-weight: 600; color: var(--pl-ink); }
+.pl-ukaart__winkels { display: flex; gap: 10px; flex-wrap: wrap; }
+.pl-ukaart__winkels .pl-btn { padding: 0 18px; }
 
-@media (max-width: 700px) {
-  .pl-uitr__item { grid-template-columns: 3.2em minmax(0, 1fr); }
-  .pl-uitr__winkels { grid-column: 2; justify-content: flex-start; }
+@media (max-width: 900px) {
+  .pl-ustappen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pl-ustappen__a:nth-child(3) { border-left: 0; }
+  .pl-ustappen__a:nth-child(n+3) { border-top: 1px solid var(--pl-rule); }
+  .pl-ustap__grid,
+  .pl-ustap__grid[data-kant="r"] { grid-template-columns: minmax(0, 1fr); }
+  .pl-ustap__grid[data-kant="r"] .pl-ustap__fig { order: 0; }
+  .pl-ustap__fig { position: static; }
+  .pl-ustap__img .pl-emulsion { aspect-ratio: 16 / 9; }
+  .pl-uhero__credit { position: static; padding: 0 clamp(20px, 4vw, 56px) 16px; text-align: left; }
+}
+@media (max-width: 620px) {
+  .pl-licht { --k: 0.4px; }
+  .pl-licht__rij { flex-wrap: wrap; justify-content: flex-start; gap: 22px 20px; }
+  .pl-ukaart__winkels .pl-btn { flex: 1; }
 }
 
 /* Verwijzing naar de uitrusting vanaf /sterrenkijken en /educatie. */
