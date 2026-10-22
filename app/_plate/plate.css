@@ -2366,6 +2366,17 @@ a:hover .pl-emulsion > img,
   top: 124px;
   min-width: 0;
 }
+/* Artikel: de kantlijn loopt de hele plaat mee (anders bleef onder een
+   korte kantlijn een vlak in de lijnkleur over); alleen de inhoud plakt. */
+.pl-read-side--rail { align-self: stretch; position: static; display: block; padding: 0; }
+.pl-read-side__in {
+  padding: clamp(20px, 2.4vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  position: sticky;
+  top: 124px;
+}
 
 .pl-read-main h1 {
   font-size: clamp(1.75rem, 3.4vw, 2.85rem);
@@ -2402,16 +2413,19 @@ a:hover .pl-emulsion > img,
    Latent: de tekst staat er al maar is nog niet scherp. Ontwikkeld: hij
    staat. Mislukt: hij zegt dat hij mislukt is, in plaats van eeuwig te
    blijven gloeien. */
-.pl-para {
+/* .pl-read-main erbij: `.pl p { margin: 0 }` won het anders, en dan
+   plakten alle alinea's zonder witregel tegen elkaar. */
+.pl-read-main .pl-para {
   font-size: 1.0625rem;
-  line-height: 1.8;
+  line-height: 1.75;
   color: var(--pl-ink-2);
-  max-width: 68ch;
-  margin-top: 20px;
+  max-width: 66ch;
+  margin-top: 1.15em;
   text-wrap: pretty;
   position: relative;
 }
-.pl-para--lead {
+.pl-read-main .pl-para--lead {
+  margin-top: 28px;
   font-size: 1.1875rem;
   line-height: 1.72;
   color: var(--pl-ink);
@@ -2489,6 +2503,9 @@ a:hover .pl-emulsion > img,
 /* ── Contactstrip met verwante platen ── */
 .pl-contact {
   display: flex;
+  /* Met minder dan een volle strip bleef rechts een vlak in de lijnkleur over. */
+  width: fit-content;
+  max-width: 100%;
   gap: 1px;
   overflow-x: auto;
   background: var(--pl-rule);
@@ -2524,7 +2541,8 @@ a:hover .pl-emulsion > img,
 /* ── Responsief ── */
 @media (max-width: 1080px) {
   .pl-read-grid { grid-template-columns: minmax(0, 1fr); }
-  .pl-read-side {
+  .pl-read-side,
+  .pl-read-side__in {
     position: static;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
@@ -2543,8 +2561,135 @@ a:hover .pl-emulsion > img,
 }
 
 @media (max-width: 620px) {
-  .pl-para { font-size: 1rem; line-height: 1.75; }
-  .pl-para--lead { font-size: 1.0625rem; }
+  .pl-read-main .pl-para { font-size: 1rem; line-height: 1.72; }
+  .pl-read-main .pl-para--lead { font-size: 1.0625rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Een artikel dat je kunt scannen
+   Kernpunten bovenaan, tussenkoppen elke twee à drie alinea's, kerncijfers
+   als meetstrook en één citaat in de tekst zelf: de lezer ziet in vijf
+   seconden waar het over gaat en waar hij is.
+   ══════════════════════════════════════════════════════════════════════════ */
+.pl-read-main .pl-read-fig--wide { margin-top: 26px; }
+.pl-read-fig--wide .pl-emulsion { aspect-ratio: 16 / 9; max-height: 440px; }
+
+/* In het kort: een envelopveld, geen kaart. */
+.pl-kort {
+  margin-top: 30px;
+  max-width: 66ch;
+  border-top: 1px solid var(--pl-rule);
+  border-bottom: 1px solid var(--pl-rule);
+  padding: 18px 0 20px;
+}
+.pl-kort ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+.pl-kort li {
+  display: grid;
+  grid-template-columns: 6px minmax(0, 1fr);
+  gap: 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--pl-ink);
+  text-wrap: pretty;
+}
+.pl-kort li::before {
+  content: '';
+  width: 6px; height: 6px;
+  margin-top: 0.55em;
+  background: var(--pl-stamp);
+}
+
+/* Tussenkop: ruimte erboven, dichter op zijn eigen tekst. */
+.pl-read-main .pl-tkop {
+  max-width: 66ch;
+  margin-top: 2.6rem;
+  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.018em;
+  color: var(--pl-ink);
+  text-wrap: balance;
+  scroll-margin-top: 140px;
+}
+.pl-read-main .pl-tkop + .pl-para { margin-top: 0.7em; }
+
+/* Kerncijfers: dezelfde meetwaarden als in de kantlijn, nu in de tekst. */
+.pl-read-main .pl-cijfers {
+  margin: 2.2rem 0 0;
+  max-width: 66ch;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr));
+  border-top: 1px solid var(--pl-rule);
+  border-bottom: 1px solid var(--pl-rule);
+}
+.pl-cijfers[data-n="1"] { --n: 1; }
+.pl-cijfers[data-n="2"] { --n: 2; }
+.pl-cijfers > div { padding: 16px 18px 16px 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 6px; }
+.pl-cijfers > div + div { padding-left: 18px; border-left: 1px solid var(--pl-rule-soft); }
+.pl-cijfers dd { margin: 0; }
+.pl-cijfers__v {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pl-ink);
+}
+.pl-cijfers__u { font-size: 0.85rem; color: var(--pl-ink-3); }
+
+/* Citaat: groot, met een stempellijn ervoor; geen aanhalingstekens als
+   decoratie. */
+.pl-read-main .pl-pull {
+  margin: 2.4rem 0 0;
+  max-width: 58ch;
+  padding-left: 22px;
+  border-left: 2px solid var(--pl-stamp);
+}
+.pl-pull blockquote {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--pl-ink);
+  text-wrap: pretty;
+}
+.pl-pull blockquote::before { content: '\201C'; }
+.pl-pull blockquote::after  { content: '\201D'; }
+.pl-pull figcaption {
+  margin-top: 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+}
+
+/* Inhoudsopgave in de kantlijn, met de sectie die je nu leest. */
+.pl-toc ol { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 2px; }
+.pl-toc a {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  padding: 7px 0 7px 12px;
+  border-left: 1px solid var(--pl-rule);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--pl-ink-2);
+  transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
+}
+.pl-toc a .pl-num { font-size: 0.72rem; color: var(--pl-ink-3); padding-top: 2px; }
+.pl-toc a:hover { color: var(--pl-act); }
+.pl-toc a[aria-current="location"] { color: var(--pl-ink); border-left-color: var(--pl-act); }
+
+@media (max-width: 1080px) {
+  .pl-toc,
+  .pl-read-side--toc { display: none; }
+}
+@media (max-width: 560px) {
+  .pl-read-main .pl-cijfers { grid-template-columns: minmax(0, 1fr); }
+  .pl-cijfers > div { flex-direction: row-reverse; justify-content: space-between; align-items: baseline; padding: 12px 0; }
+  .pl-cijfers > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--pl-rule-soft); }
+  .pl-cijfers__v { font-size: 1.25rem; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

@@ -15,11 +15,11 @@
    op. Herschrijven, verrijking en verwante platen blijven client-side.
    ══════════════════════════════════════════════════════════════════════════ */
 
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
+import { Fragment, useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '@/app/components/SiteFooter'
 import { LEVELS, type ReadingLevel } from '@/types'
-import { type ArticleData, type Enrichment, PROXY, IMG, parseMarkdown } from '@/lib/article-data'
+import { type ArticleData, type Enrichment, type Kerncijfer, PROXY, IMG, parseMarkdown } from '@/lib/article-data'
 import { type Article } from '@/lib/home-content'
 import { MISSIONS } from '@/lib/missions-data'
 import { TOPICS } from '@/lib/topics'
@@ -114,6 +114,30 @@ function Para({ text, state, lead }: { text: string; state: ParaState; lead: boo
         </span>
       )}
     </p>
+  )
+}
+
+/* ── Kerncijfers: drie waarden als een strook meetwaarden in de tekst ── */
+function Cijfers({ items }: { items: Kerncijfer[] }) {
+  return (
+    <dl className="pl-cijfers" data-n={items.length}>
+      {items.map(k => (
+        <div key={k.label}>
+          <dt className="pl-label">{k.label}</dt>
+          <dd><span className="pl-cijfers__v">{k.waarde}</span>{k.eenheid && <span className="pl-cijfers__u"> {k.eenheid}</span>}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+/* ── Citaat: alleen een uitspraak die letterlijk in het artikel staat ── */
+function Citaat({ tekst, wie }: { tekst: string; wie: string }) {
+  return (
+    <figure className="pl-pull">
+      <blockquote>{tekst}</blockquote>
+      {wie && <figcaption>{wie}</figcaption>}
+    </figure>
   )
 }
 
@@ -273,9 +297,10 @@ export default function ArtikelPlaat({ slug, initial = null }: {
     setBusy(false)
   }, [article])
 
-  /* Kerncijfers en kernfeiten in de kantlijn */
+  /* Kerncijfers en kernfeiten in de kantlijn — alleen voor oudere artikelen
+     zonder eigen kernpunten; nieuwe artikelen brengen ze statisch mee. */
   useEffect(() => {
-    if (!article) return
+    if (!article || article.kernpunten.length > 0) return
     let alive = true
     fetch(PROXY, {
       method: 'POST',
@@ -305,6 +330,39 @@ ${article.rawBody.slice(0, 2500)}` }],
   const mission = useMemo(() => {
     const id = CATEGORY_TO_MISSION[article?.category?.toLowerCase() ?? '']
     return id ? MISSIONS.find(m => m.id === id) ?? null : null
+  }, [article])
+
+  const structured = !!article && article.kernpunten.length > 0
+  const headings = useMemo(
+    () => (article?.blocks ?? []).filter((b): b is Extract<typeof b, { t: 'h' }> => b.t === 'h'),
+    [article],
+  )
+
+  /* Welke sectie leest de lezer nu? Voor de inhoudsopgave in de kantlijn. */
+  const [current, setCurrent] = useState('')
+  useEffect(() => {
+    if (!headings.length) return
+    const els = headings.map(h => document.getElementById(h.id)).filter((e): e is HTMLElement => !!e)
+    const onScroll = () => {
+      let id = ''
+      for (const el of els) if (el.getBoundingClientRect().top < window.innerHeight * 0.35) id = el.id
+      setCurrent(id)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [headings])
+
+  /* Waar komen cijfers en citaat in de tekst? Cijfers na de eerste sectie,
+     het citaat bij de volgende tussenkop, zodat elke overgang er hooguit
+     één krijgt. Zonder koppen: na alinea 2 en 4. */
+  const slots = useMemo(() => {
+    const b = article?.blocks ?? []
+    const hs = b.map((x, i) => x.t === 'h' ? i : -1).filter(i => i >= 0)
+    const cijfers = hs.length ? hs[0] : Math.min(2, b.length)
+    let citaat = hs.length > 2 ? hs[1] : hs.length > 1 ? hs[hs.length - 1] : Math.min(4, b.length)
+    if (citaat === cijfers) citaat = b.length
+    return { cijfers, citaat }
   }, [article])
 
   const developing = useMemo(() => states.filter(s => s === 'latent').length, [states])
@@ -383,12 +441,21 @@ ${article.rawBody.slice(0, 2500)}` }],
                 <h1>{article.title}</h1>
 
                 {imageUrl && (
-                  <figure className="pl-read-fig">
+                  <figure className={`pl-read-fig${structured ? ' pl-read-fig--wide' : ''}`}>
                     <div className="pl-emulsion">
-                      <img src={IMG(imageUrl, 1200)} alt="" />
+                      <img src={IMG(imageUrl, 1200)} alt={article.imageAlt && article.imageAlt !== article.title ? article.imageAlt : ''} />
                     </div>
                     {imageCredit && <figcaption>Beeld · {imageCredit}</figcaption>}
                   </figure>
+                )}
+
+                {structured && (
+                  <section className="pl-kort" aria-labelledby="pl-kort">
+                    <h2 id="pl-kort" className="pl-label">In het kort</h2>
+                    <ul>
+                      {article.kernpunten.map(k => <li key={k}>{k}</li>)}
+                    </ul>
+                  </section>
                 )}
 
                 {developing > 0 && (
@@ -398,9 +465,18 @@ ${article.rawBody.slice(0, 2500)}` }],
                   </p>
                 )}
 
-                {texts.map((t, i) => (
-                  <Para key={`${level}-${i}`} text={t} state={states[i] ?? 'developed'} lead={i === 0} />
-                ))}
+                <div className="pl-prose">
+                  {article.blocks.map((b, n) => (
+                    <Fragment key={b.t === 'h' ? b.id : `${level}-${b.i}`}>
+                      {n === slots.cijfers && article.kerncijfers.length > 0 && <Cijfers items={article.kerncijfers} />}
+                      {n === slots.citaat && article.citaat && <Citaat {...article.citaat} />}
+                      {b.t === 'h'
+                        ? <h2 id={b.id} className="pl-tkop">{b.text}</h2>
+                        : <Para text={texts[b.i] ?? ''} state={states[b.i] ?? 'developed'} lead={b.i === 0} />}
+                    </Fragment>
+                  ))}
+                  {slots.citaat >= article.blocks.length && article.citaat && <Citaat {...article.citaat} />}
+                </div>
 
                 {failed > 0 && developing === 0 && (
                   <p className="pl-fail" style={{ marginTop: 24 }}>
@@ -432,7 +508,8 @@ ${article.rawBody.slice(0, 2500)}` }],
                 )}
               </article>
 
-              <aside className="pl-read-side">
+              <aside className={`pl-read-side pl-read-side--rail${structured && !mission ? ' pl-read-side--toc' : ''}`}>
+               <div className="pl-read-side__in">
                 {mission && (
                   <Link href={`/missies/${mission.id}/`} className="pl-mission pl-lift">
                     <span className="pl-label">Gerelateerde missie</span>
@@ -451,6 +528,23 @@ ${article.rawBody.slice(0, 2500)}` }],
                   </Link>
                 )}
 
+                {structured ? (
+                  headings.length > 1 && (
+                    <nav className="pl-toc" aria-label="Op deze pagina">
+                      <p className="pl-label">Op deze pagina</p>
+                      <ol>
+                        {headings.map((h, i) => (
+                          <li key={h.id}>
+                            <a href={`#${h.id}`} aria-current={current === h.id ? 'location' : undefined}>
+                              <span className="pl-num">{String(i + 1).padStart(2, '0')}</span>
+                              {h.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ol>
+                    </nav>
+                  )
+                ) : (<>
                 <Tip label={
                   <>
                     <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>Waar komt dit vandaan?</span>
@@ -499,6 +593,8 @@ ${article.rawBody.slice(0, 2500)}` }],
                     )}
                   </>
                 )}
+                </>)}
+               </div>
               </aside>
             </div>
           )}
