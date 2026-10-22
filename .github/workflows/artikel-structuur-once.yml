@@ -1,0 +1,60 @@
+name: 📰 Artikelstructuur (eenmalig)
+
+# Geeft bestaande artikelen tussenkoppen, kernpunten, kerncijfers en een
+# citaat (scripts/nieuws-structuur.js). Alinea's zelf veranderen niet.
+# Artikelen met structuur worden overgeslagen, dus opnieuw draaien kan.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Hoeveel artikelen (leeg = alle)'
+        required: false
+        default: ''
+
+concurrency:
+  group: artikel-structuur
+  cancel-in-progress: false
+
+jobs:
+  structuur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Structuur toevoegen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          if [ -n "$LIMIT" ]; then
+            node scripts/nieuws-structuur.js --limit "$LIMIT"
+          else
+            node scripts/nieuws-structuur.js
+          fi
+
+      - name: Commit bijgewerkte artikelen
+        if: always()
+        run: |
+          git config --local user.email "bot@cosmosnl.nl"
+          git config --local user.name "CosmosNL Bot"
+          git add content/articles/
+          git diff --staged --quiet || git commit -m "📰 Artikelstructuur: tussenkoppen, kernpunten en kerncijfers"
+          git pull --rebase
+          git push

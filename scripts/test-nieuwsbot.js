@@ -40,7 +40,15 @@ const NL_ZINNEN = [
 const nlTekst = n => { const uit = []; let i = 0; while (uit.join(' ').split(/\s+/).length < n) uit.push(NL_ZINNEN[i++ % NL_ZINNEN.length]); return uit.join(' ') }
 const EN_ZIN = 'The spacecraft has sent its first measurements back to Earth this week, and according to the team they are of excellent quality and will be used for years.'
 const enTekst = n => { const uit = []; while (uit.join(' ').split(/\s+/).length < n) uit.push(EN_ZIN); return uit.join(' ') }
-const goedAntwoord = titel => ({ relevant: true, relevantie: 'Gaat over een ruimtemissie.', title: `Nederlandse titel bij ${titel.split(' ')[0]}`, excerpt: 'De sonde heeft de eerste metingen naar de aarde gestuurd. Die zijn volgens het team van goede kwaliteit.', body: nlTekst(320) })
+const CIJFERZIN = 'De sonde vloog op 1.200 kilometer hoogte over de evenaar en maakte daarbij 16 opnamen van het ijs.'
+const goedAntwoord = titel => ({
+  relevant: true, relevantie: 'Gaat over een ruimtemissie.', title: `Nederlandse titel bij ${titel.split(' ')[0]}`,
+  excerpt: 'De sonde heeft de eerste metingen naar de aarde gestuurd. Die zijn volgens het team van goede kwaliteit.',
+  body: `${nlTekst(170)}\n\n## Ijs rond de evenaar\n\n${CIJFERZIN} ${nlTekst(150)}`,
+  kernpunten: ['De sonde stuurde de eerste metingen.', 'De gegevens zijn van goede kwaliteit.', 'Het ijs wordt in kaart gebracht.'],
+  kerncijfers: [{ waarde: '1.200', eenheid: 'km', label: 'Hoogte' }, { waarde: '42', eenheid: '', label: 'Verzonnen getal' }, { waarde: '16', eenheid: '', label: 'Opnamen' }],
+  citaat: { tekst: NL_ZINNEN[5], wie: 'De projectleider' },
+})
 
 // ── Nep-Claude ────────────────────────────────────────────────────────────
 // Het gedrag hangt af van een woord in de oorspronkelijke titel.
@@ -92,7 +100,13 @@ const server = http.createServer((req, res) => {
   eq(laatste.body.model, 'claude-opus-5-5', 'request: model')
   ok(laatste.body.max_tokens >= 8000, `request: ruime max_tokens (${laatste.body.max_tokens})`)
   eq(laatste.body.output_config?.format?.type, 'json_schema', 'request: structured output (json_schema)')
-  eq(laatste.body.output_config.format.schema.required, ['relevant', 'relevantie', 'title', 'excerpt', 'body'], 'request: schema met relevantie-oordeel en title/excerpt/body')
+  eq(laatste.body.output_config.format.schema.required, ['relevant', 'relevantie', 'title', 'excerpt', 'body', 'kernpunten', 'kerncijfers', 'citaat'], 'request: schema met relevantie-oordeel, title/excerpt/body en structuur')
+  ok(/## Kop/.test(laatste.body.system) && /kernpunten/i.test(laatste.body.system), 'request: tussenkoppen en kernpunten in de systeemprompt')
+  eq(r.data.kerncijfers.map(k => k.waarde), ['1.200', '16'], 'herschrijf: verzonnen kerncijfer (42) valt weg')
+  eq(r.data.citaat?.wie, 'De projectleider', 'herschrijf: citaat dat in de body staat blijft')
+  eq(r.data.kernpunten.length, 3, 'herschrijf: drie kernpunten')
+  eq(N.structuur({ citaat: { tekst: 'Dit heeft niemand ooit zo gezegd in dit stuk', wie: 'x' } }, r.data.body).citaat, null, 'structuur: verzonnen citaat valt weg')
+  eq(N.structuur({ kerncijfers: [{ waarde: '1,2 mld', eenheid: 'km', label: 'x' }] }, 'Op 1,2 miljard km afstand.').kerncijfers.length, 1, 'structuur: kommagetal uit de tekst blijft')
   eq(laatste.body.output_config.format.schema.properties.relevant.type, 'boolean', 'request: relevant is een boolean')
   ok(/webinar/i.test(laatste.body.system) && /vacature/i.test(laatste.body.system) && /aardobservatie/i.test(laatste.body.system), 'request: relevantiecriteria in de systeemprompt')
   eq(laatste.body.fallbacks, 'default', 'request: fallbacks default')
@@ -152,6 +166,9 @@ const server = http.createServer((req, res) => {
   ok(md.includes('author: "Redactie NightGazer"') && !md.includes('CosmosNL'), 'main: auteur Redactie NightGazer')
   ok(md.includes('sourceUrl: "https://spacenews.com/probe-goed-sends-first-data/"') && md.includes('source: "SpaceNews"'), 'main: bron + link in de frontmatter')
   ok(N.woorden(md.split('---')[2]) >= 250 && !/appeared first on/.test(md), 'main: body ≥ 250 woorden, geen snipper-zin')
+  ok(/^kernpunten: \["De sonde stuurde/m.test(md) && /^kerncijfers: \[\{"waarde":"1.200"/m.test(md) && /^citaat: \{"tekst":/m.test(md), 'main: kernpunten, kerncijfers en citaat als JSON in de frontmatter')
+  ok(/\n## Ijs rond de evenaar\n/.test(md), 'main: tussenkop in de body')
+  eq(require('gray-matter')(md).data.kerncijfers[1].label, 'Opnamen', 'main: frontmatter is geldige YAML')
   ok(logs.some(l => l.startsWith('::warning title=Niet gepubliceerd::AFGEKAPT probe — stop_reason max_tokens')), 'main: ::warning:: voor het afgekapte item')
   const sv = fs.readFileSync(samenvatting, 'utf-8')
   ok(sv.includes('Claude-aanroepen: 2') && sv.includes('Gepubliceerd: 1 / overgeslagen: 1') && sv.includes('AFGEKAPT probe — stop_reason max_tokens'), 'main: run-samenvatting met aanroepen en gepubliceerd / overgeslagen')

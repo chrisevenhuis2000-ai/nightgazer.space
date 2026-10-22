@@ -16,7 +16,8 @@
     "test:missies": "node scripts/test-missie-koppeling.js && node scripts/test-missie-status.js && node scripts/test-missie-vastgelopen.js && node scripts/test-missie-verrijking.js && node scripts/test-missie-statustekst.js && node scripts/test-missie-verrijking-mutaties.js && node scripts/test-missie-tijdlijn.js",
     "test:apod": "node scripts/test-apod.js",
     "test:beeldhosts": "node scripts/test-beeldhosts.js",
-    "test:nieuwsbot": "node scripts/test-nieuwsbot.js",
+    "test:nieuwsbot": "node scripts/test-nieuwsbot.js && node scripts/test-nieuws-structuur.js",
+    "nieuws-structuur": "node scripts/nieuws-structuur.js",
     "test:verwijderd": "node scripts/test-verwijderd.js",
     "test:statisch": "node scripts/test-nieuws-statisch.js",
     "test:workflowstart": "node scripts/test-workflow-start.js"
