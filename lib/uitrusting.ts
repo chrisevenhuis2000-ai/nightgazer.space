@@ -7,7 +7,7 @@
    Bol: partnerlinks via partner.bol.com met de site-ID van NightGazer, naar
    de zoekresultaten voor het product. Een link uit de linkgenerator van Bol
    (naar een productpagina) mag er direct voor in de plaats.
-   Amazon.nl: nog gewone zoeklinks, tot er een tracking-ID is. */
+   Amazon.nl: zoeklinks met de tracking-ID van NightGazer (Associates). */
 
 export type Winkel = 'bol' | 'amazon'
 
@@ -67,8 +67,8 @@ const bol = (q: string) => {
   return `https://partner.bol.com/click/click?p=2&t=url&s=${BOL_SITE_ID}&f=TXL`
     + `&url=${encodeURIComponent(doel)}&name=${encodeURIComponent(q)}`
 }
-// TIJDELIJK: gewone zoeklink, nog zonder tracking-ID.
-const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}`
+const AMAZON_TAG = 'nightgazerspa-21'
+const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`
 
 export const GROEPEN: Groep[] = [
   {
