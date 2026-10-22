@@ -14,6 +14,7 @@ import {
   PROXY, type Article,
 } from '@/lib/home-content'
 import { Ico } from './Instruments'
+import { Bewaar } from './Bewaar'
 import './plate.css'
 
 export const archivo = Archivo({
@@ -132,6 +133,8 @@ export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
             <span className="pl-prov__tick" aria-hidden="true" />
             <span className="pl-num"><span className="pl-prov__n">{total}</span> {totalLabel}</span>
           </div>
+
+          <Bewaar />
 
           <button
             className="pl-burger"

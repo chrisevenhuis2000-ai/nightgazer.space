@@ -49,6 +49,12 @@ export const Ico = {
   check: (p: { size?: number }) => (
     <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><path d="M3.2 8.4l3.1 3.1 6.5-6.9" /></svg>
   ),
+  bookmark: (p: { size?: number }) => (
+    <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><path d="M4 1.9h8v12.2l-4-3.1-4 3.1Z" /></svg>
+  ),
+  share: (p: { size?: number }) => (
+    <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><path d="M5.4 6.2H3.6v7.9h8.8V6.2h-1.8M8 1.6v8.2M5.4 4.1 8 1.6l2.6 2.5" /></svg>
+  ),
   cross: (p: { size?: number }) => (
     <svg width={p.size ?? 13} height={p.size ?? 13} viewBox="0 0 16 16" aria-hidden="true" {...S}><path d="M4 4l8 8M12 4l-8 8" /></svg>
   ),
