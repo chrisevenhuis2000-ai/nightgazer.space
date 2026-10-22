@@ -14,6 +14,11 @@
     "reden": "Dit is aardobservatie over een storm boven IJsland en gaat over het weer, niet over astronomie of ruimtevaart zelf.",
     "datum": "2026-10-21"
   },
+  "global-satcom-services-revenues-to-reach-145-billion-by-2035": {
+    "titel": "Global Satcom Services Revenues to Reach $145 Billion by 2035",
+    "reden": "Dit is een persbericht over een marktrapport met omzetprognoses voor satellietdiensten, en dus zuiver bedrijfs- en marktnieuws zonder astronomische of missie-inhoud.",
+    "datum": "2026-10-22"
+  },
   "isaias-dims-the-gulf-coast": {
     "titel": "Isaias Dims the Gulf Coast",
     "reden": "aardobservatie van een orkaan, geen ruimtevaart (handmatig verwijderd)",
@@ -33,6 +38,11 @@
     "titel": "Summer of Quantum: Building momentum for space-based QKD",
     "reden": "Dit is een promotioneel bedrijfsbericht van Craft Prospect over deelname aan conferenties en een eigen productaanbod, zonder concreet nieuws over een missie, lancering of ontdekking.",
     "datum": "2026-10-21"
+  },
+  "technomile-recognized-as-a-2026-inc-power-partner-award-winn": {
+    "titel": "TechnoMile Recognized as a 2026 Inc. Power Partner Award Winner",
+    "reden": "Dit is zuiver bedrijfsnieuws over een prijs voor een softwarebedrijf voor overheidscontracten, zonder verband met astronomie of ruimtevaart.",
+    "datum": "2026-10-22"
   },
   "the-human-fingerprint-on-earths-water-cycle": {
     "titel": "The Human Fingerprint on Earth’s Water Cycle",
