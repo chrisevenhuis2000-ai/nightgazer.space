@@ -145,12 +145,12 @@ export function Vandaag({ level, done, topics, onJump }: {
 
         <div>
           <p className="pl-label">Jouw platen <span className="pl-num">{ontwikkeld}/{topics.length}</span></p>
-          <div className="pl-strip">
+          <div className="pl-devstrip">
             {topics.map(t => {
               const p = PLATEN[t.id]
               const dev = !!done[t.id]
               return (
-                <button key={t.id} type="button" className="pl-strip__cell" data-dev={dev ? '1' : '0'}
+                <button key={t.id} type="button" className="pl-devstrip__cell" data-dev={dev ? '1' : '0'}
                   onClick={() => onJump(t.id)}
                   aria-label={`${t.title}: ${dev ? 'ontwikkeld' : 'nog latent'} — ga naar de les`}>
                   {p && <img src={img(plaatUrl(p.nasaId, 'thumb'), 160)} alt="" loading="lazy" decoding="async"
