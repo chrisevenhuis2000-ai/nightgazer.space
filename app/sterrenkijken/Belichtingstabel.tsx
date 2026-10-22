@@ -384,6 +384,12 @@ export default function Belichtingstabel() {
                         </div>
                       ))}
                     </dl>
+
+                    <Link href="/sterrenkijken/uitrusting/" className="pl-read pl-verdict__uitr">
+                      <span>Heldere nacht? Dit heb je nodig</span>
+                      <span className="pl-read__rule" aria-hidden="true" />
+                      <Ico.arrow />
+                    </Link>
                   </>
                 )}
               </div>

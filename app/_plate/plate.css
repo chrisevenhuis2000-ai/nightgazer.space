@@ -4595,3 +4595,6 @@ a:hover .pl-emulsion > img,
   padding: clamp(18px, 2.6vw, 26px) clamp(20px, 3vw, 36px);
 }
 .pl-uitr-ref > div { display: grid; gap: 6px; }
+
+/* Link naar de uitrusting onder het oordeel van vannacht. */
+.pl-verdict__uitr { margin-top: auto; padding-top: 4px; }

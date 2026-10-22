@@ -25,7 +25,7 @@ import { MISSIONS } from '@/lib/missions-data'
 import { TOPICS } from '@/lib/topics'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo, UitrustingVerwijzing,
 } from '@/app/_plate/shared'
 
 const ORDER: ReadingLevel[] = ['original', 'beginner', 'amateur', 'pro']
@@ -599,6 +599,13 @@ ${article.rawBody.slice(0, 2500)}` }],
             </div>
           )}
         </div>
+
+        {/* ══ Uitrusting, alleen bij onderwerpen die je zelf kunt zien ══ */}
+        {['sterrenkijken', 'kometen'].includes(article?.category?.toLowerCase() ?? '') && (
+          <div className="pl-wrap">
+            <UitrustingVerwijzing tekst="Zelf naar buiten? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
+          </div>
+        )}
 
         {/* ══ Contactstrip ══ */}
         {related.length > 0 && (
