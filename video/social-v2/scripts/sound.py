@@ -493,10 +493,15 @@ def write(path, x, subtype="PCM_24"):
 
 def write_outputs(stems, master, gain, outdir, master_name):
     outdir.mkdir(parents=True, exist_ok=True)
-    for name, x in stems.items():
-        # same master gain, before the limiter (24-bit: float WAVs carry a timestamped PEAK chunk,
-        # which would break bit-identical output)
-        stem = (x - x.mean(axis=0)) * gain
+    # same master gain, before the limiter (24-bit: float WAVs carry a timestamped PEAK chunk,
+    # which would break bit-identical output). A stem that would clip (a generated music file with a high
+    # crest factor) lowers all stems by the same trim, so they still sum to the master shape.
+    out_stems = {name: (x - x.mean(axis=0)) * gain for name, x in stems.items()}
+    trim = min(1.0, 0.98 / max(np.abs(x).max() for x in out_stems.values()))
+    if trim < 1.0:
+        print(f"stems trimmed by {20*np.log10(trim):.2f} dB (a stem would clip at the master gain)")
+    for name, stem in out_stems.items():
+        stem = stem * trim if trim < 1.0 else stem
         assert np.abs(stem).max() < 1.0, f"stem {name} would clip"
         write(outdir / f"stem-{name}.wav", stem)
     write(outdir / master_name, master)
@@ -510,11 +515,13 @@ def write_outputs(stems, master, gain, outdir, master_name):
 
 
 # Variants: modules in scripts/variants/ that only build stems; the engine, cue grid and master chain are shared.
-VARIANTS = ("orgel", "puls", "sonificatie")
+# The default soundtrack is the ElevenLabs music (chosen 2026-10-22); "huidig" is the earlier synthesized one.
+VARIANTS = ("elevenlabs", "orgel", "puls", "sonificatie")
+DEFAULT = "elevenlabs"
 
 
 def master_path(variant):
-    if variant == "huidig":
+    if variant == DEFAULT:
         return OUT / "nightgazer-social-v2-master.wav"
     return Path("out/varianten/audio") / variant / f"{variant}-master.wav"
 
@@ -523,7 +530,7 @@ if __name__ == "__main__":
     import argparse
     import importlib
     ap = argparse.ArgumentParser()
-    ap.add_argument("--variant", default="huidig", choices=("huidig",) + VARIANTS)
+    ap.add_argument("--variant", default=DEFAULT, choices=("huidig",) + VARIANTS)
     variant = ap.parse_args().variant
     if variant == "huidig":
         result = build()

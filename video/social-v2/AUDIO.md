@@ -1,5 +1,34 @@
 # Sounddesign — NightGazer social v2
 
+## Standaard: ElevenLabs-muziek + archiefgeluiden (gekozen op 22-10-2026)
+
+**Regel voor alle Nightgazer-video's:** de muziek komt volledig uit ElevenLabs. Geluiden uit de template (de archiefgeluiden en de impact uit `scripts/sound.py`) mogen hergebruikt worden.
+
+- **Muziek:** ElevenLabs Music v2.5 (`eleven_music_v2_5`), instrumentaal, 10 s. Uit vier takes is take 3 gekozen (generation `d8hT3B1DcAwA89RuzgDw`, flow `dIbS0KHEBuiOYtuwxtwS`). Prompt:
+  > Instrumental cinematic ambient electronica in D major, about 10 seconds. Opens with a soft breathing synth drone and faint high shimmer, a deep muted hit at 1.6 seconds, then a warm pad that slowly swells with a gentle pulsing arpeggio from 4.2 seconds, building tension on a suspended chord around 7 seconds, and resolving on a bright, open D major add9 chord at 8.4 seconds that rings out cleanly to the end. Spacious, wondrous, modern and clean production, no drums kit, no vocals.
+- **In git:** `assets/audio/elevenlabs-music.flac` (de MP3 van ElevenLabs, 48 kHz, verliesvrij als FLAC opgeslagen; SHA-256 `2b60168c…`). De build heeft dus geen netwerk en geen credits nodig.
+- **Mix (`scripts/variants/elevenlabs.py`):** de muziek wordt op exact 10,0 s gezet (fades 2 ms / 20 ms), smaller gemaakt (zijsignaal −4,4 dB en mono onder 150 Hz; de take zelf heeft een mono-correlatie van ≈ 0,3) en op −18 LUFS gezet. Daarover liggen de archiefgeluiden (tik, ritsel, glas, lichtbak, stempel, sluiter) en de impact op −4,4 dB, sample-exact op het cue-grid. Daarna volgt de gedeelde masterketen `finish()`.
+- **Bouwen:** `python3 scripts/sound.py` maakt nu deze standaard (`out/audio/nightgazer-social-v2-master.wav`). De eerdere gesynthetiseerde soundtrack hieronder heet "huidig" en blijft te bouwen met `--variant huidig` (bit-identiek, `47932b72…`).
+
+**Metingen** (`scripts/audio-verify.py`, master-WAV):
+
+| Meting | Waarde |
+|---|---|
+| Integrated | −14,0 LUFS (ebur128) / −14,6 (loudnorm) |
+| True peak | −1,5 dBTP; limiter grijpt maximaal 0,66 dB in |
+| LRA | 7,6 LU |
+| Mono | correlatie 0,70 (per 100 ms min. 0,10); verlies 0,79 LU |
+| Telefoonband (200 Hz–12 kHz) | −14,5 LUFS; 9 % energie onder 80 Hz |
+| Momentaan max. hook / tekst 2 / push-in / eindkaart | −23,3 / −12,5 / −11,6 / −24,7 LUFS |
+| Sync match-cut / glasplaat / logo | +4,0 / +2,7 / +2,7 ms (alle drie sample-exact, binnen ±1 frame) |
+| Determinisme | twee runs bit-identiek, SHA-256 master `e8d1e592…` |
+
+**Let op:** de take zwelt pas vanaf ≈ 0,2 s aan en klinkt vanaf ≈ 7 s af. De hook (0–1,4 s) en de eindkaart zijn daardoor stil (−23 en −25 LUFS momentaan); alleen de tik op 1,0 s en de sluiter op 8,4 s dragen daar. ElevenLabs volgt de tijden uit de prompt maar losjes, dus de accenten op de cues komen van de archiefgeluiden, niet van de muziek.
+
+---
+
+# Eerdere soundtrack "huidig" (gesynthetiseerd, nu `--variant huidig`)
+
 **Klankconcept:** "het plaatarchief laat de ruimte horen". Twee lagen ontmoeten elkaar:
 - **de ruimte:** ademende drones, ijle glinstering en een korrelige sterrenwolk;
 - **het archief:** een tik van een mono-teller, emulsie-ritsel, glas op glas, het aanslaan van de lichtbak, een stempel en een sluiterklik.
@@ -130,9 +159,9 @@ python3 scripts/audio-verify.py out/nightgazer-social-v2.mp4
 
 ---
 
-# Varianten (ter vergelijking, keuze open)
+# Varianten (ter vergelijking)
 
-De soundtrack hierboven ("huidig") blijft de standaard totdat er gekozen is. Er zijn drie alternatieven onder exact hetzelfde beeld. Alle drie volgen dezelfde regels: procedureel gesynthetiseerd, vaste seeds, geen samples en geen AI-modellen. Er zijn ook geen NASA-sonificaties of -opnames gebruikt.
+De keuze is gemaakt: de standaard is de ElevenLabs-muziek (zie boven). Dit gedeelte beschrijft de drie alternatieven onder exact hetzelfde beeld. Alle drie volgen dezelfde regels: procedureel gesynthetiseerd, vaste seeds, geen samples en geen AI-modellen. Er zijn ook geen NASA-sonificaties of -opnames gebruikt.
 
 **Opbouw:** `scripts/sound.py` blijft de engine. Daarin staan de DSP-kit, het cue-grid, de archiefgeluiden en de gedeelde masterketen `finish()` (naad, DC, −14 LUFS, true-peak-limiter op −1,5 dBTP). Een variant is een module in `scripts/variants/` die alleen stems levert (`stems()`) en zijn sync-cues opgeeft (`TRANSIENTS`). De verifier is voor alle vier dezelfde: `scripts/audio-verify.py --variant <naam>`.
 

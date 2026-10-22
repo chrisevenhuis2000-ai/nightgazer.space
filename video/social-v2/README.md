@@ -1,6 +1,6 @@
 # NightGazer social v2 — "Vanaf je eigen dak"
 
-De eerste social post van nightgazer.space. 1080 × 1920 (9:16), 30 fps, precies 10,0 s. Er is een eigen soundtrack (zie `AUDIO.md`) en een stille versie. Concept C: de camera vertrekt boven je eigen dak en reist de diepte in. Het plaatarchief vangt alles op één glasplaat.
+De eerste social post van nightgazer.space. 1080 × 1920 (9:16), 30 fps, precies 10,0 s. Er is een soundtrack met muziek uit ElevenLabs en de eigen archiefgeluiden (zie `AUDIO.md`) en een stille versie. Concept C: de camera vertrekt boven je eigen dak en reist de diepte in. Het plaatarchief vangt alles op één glasplaat.
 
 ## Beat-grid (frame-exact; de soundtrack volgt dit raster, zie `AUDIO.md`)
 
@@ -24,7 +24,7 @@ De eerste social post van nightgazer.space. 1080 × 1920 (9:16), 30 fps, precies
 - `compositions/stage.html`: de Three.js-wereld (aarde, planeet, M74 in 2.5D, sterren), de grade, de grain en de lichtbak.
 - `compositions/plate.html`: het plaatkader, de uitlezingen, de leiderlijn naar Utrecht en de beeldcredit.
 - `compositions/titles.html`: de drie tekstmomenten.
-- `scripts/sound.py`: de soundtrack (stems + master, 48 kHz/24-bit); `scripts/audio-verify.py` meet hem.
+- `scripts/sound.py`: de soundtrack-engine (stems + master, 48 kHz/24-bit). De standaard is `scripts/variants/elevenlabs.py`: de ElevenLabs-muziek uit `assets/audio/elevenlabs-music.flac` met de archiefgeluiden erover. `scripts/audio-verify.py` meet hem.
 - `assets/space.js`: procedurele bouwstenen (sterrenveld, planeet, nachtaarde, fotolagen, grain, camerahulpjes). Alles is een functie van tijd en seed; er zitten geen `Date`, `requestAnimationFrame` of `Math.random` in.
 
 ## Bronnen en render
@@ -44,6 +44,6 @@ ffmpeg -ss 0 -i out/nightgazer-social-v2.mp4 -frames:v 1 out/cover.png
 python3 scripts/audio-verify.py out/nightgazer-social-v2.mp4
 ```
 
-**Geluidsvarianten** (ter vergelijking; de standaard blijft `scripts/sound.py`): `bash scripts/varianten.sh` bouwt de vier soundtracks, zet ze onder hetzelfde beeld in `out/varianten/` en maakt `vergelijking.mp4`. Zie `AUDIO.md` → "Varianten".
+**Geluidsvarianten** (ter vergelijking; de standaard is de ElevenLabs-muziek): `bash scripts/varianten.sh` bouwt de standaard en de vier gesynthetiseerde soundtracks, zet ze onder hetzelfde beeld in `out/varianten/` en maakt `vergelijking.mp4`. Zie `AUDIO.md` → "Varianten".
 
 `out/` staat in `.gitignore`: de MP4's, de cover en de audiobestanden worden niet gecommit.

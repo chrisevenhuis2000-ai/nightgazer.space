@@ -1,7 +1,7 @@
 """Measures the NightGazer social v2 soundtrack: format, loudness, true peak, mono, DC, seams,
 text-moment levels, sync against the cue grid, and a spectrogram with the cues drawn on.
 
-    python3 scripts/audio-verify.py [--variant huidig|orgel|puls|sonificatie] [path/to/file.mp4 ...]
+    python3 scripts/audio-verify.py [--variant elevenlabs|huidig|orgel|puls|sonificatie] [path/to/file.mp4 ...]
 
 Prints a report (also used for AUDIO.md) and writes spectrogram.png next to the variant's master.
 With an MP4 given, loudness is also measured on it and sync is measured on its decoded audio.
@@ -21,7 +21,7 @@ import numpy as np
 import soundfile as sf
 
 sys.path.insert(0, str(Path(__file__).parent))
-from sound import CUES, SPF, SR, N, S as CUE_SAMPLES, VARIANTS, archive_events, impact_burst, master_path, place  # noqa: E402
+from sound import CUES, DEFAULT, SPF, SR, N, S as CUE_SAMPLES, VARIANTS, archive_events, impact_burst, master_path, place  # noqa: E402
 
 # The four main cues every soundtrack must hit within ±1 frame.
 MAIN_CUES = ("cut", "open", "plate", "logo")
@@ -187,7 +187,7 @@ def main(variant, extra):
                                         pre_max=8, post_max=8, pre_avg=40, post_avg=40, delta=0.07, wait=8)
     # (b) dry placement, from the real bursts: each cue's sound alone, placed as the synthesis places it
     bursts = {}
-    if variant == "huidig":
+    if variant in ("huidig", "elevenlabs"):     # both use the engine's archive sounds and impact
         bursts = dict(archive_events())
         bursts["cut"] = impact_burst()
     import sound
@@ -253,7 +253,7 @@ if __name__ == "__main__":
     import librosa.display  # noqa: F401
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--variant", default="huidig", choices=("huidig",) + VARIANTS)
+    ap.add_argument("--variant", default=DEFAULT, choices=("huidig",) + VARIANTS)
     ap.add_argument("mp4", nargs="*")
     a = ap.parse_args()
     main(a.variant, a.mp4)
