@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-21T13:13:11.672Z",
+    "lastUpdated": "2026-10-22T13:11:44.610Z",
     "autoUpdated": []
   },
   "missions": [
@@ -1822,7 +1822,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "Q4 2026",
@@ -1871,7 +1871,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "Q4 2026",
@@ -1918,7 +1918,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "Q4 2026",
@@ -2003,7 +2003,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "Q4 2026",
@@ -2098,7 +2098,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "Q4 2026",
@@ -2228,7 +2228,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -2271,7 +2271,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -2316,7 +2316,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -2363,7 +2363,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -2409,7 +2409,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -2454,7 +2454,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -2665,7 +2665,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "2026",
@@ -2864,7 +2864,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "2026",
@@ -2909,7 +2909,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "2026",
@@ -3294,7 +3294,7 @@
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://voyagertechnologies.com/",
       "timeline": [
         {
           "date": "december 2026",
@@ -3450,7 +3450,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "december 2026",
@@ -3702,10 +3702,10 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "22 okt 2026",
+      "launched": "23 okt 2026",
       "objective": "Lancering van 6 HawkEye 360-satellieten voor wereldwijde radiofrequentiekartering vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 22 okt 2026",
+      "highlight": "Lancering gepland: 23 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3714,10 +3714,10 @@
       "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.he360.com/",
       "timeline": [
         {
-          "date": "22 okt 2026",
+          "date": "23 okt 2026",
           "event": "Geplande lancering van 6x HawkEye 360"
         }
       ],
@@ -4060,7 +4060,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
           "date": "2026",
@@ -4151,7 +4151,7 @@
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
           "date": "2026",
@@ -4408,7 +4408,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
           "date": "4 nov 2026",
@@ -4451,7 +4451,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
           "date": "10 nov 2026",
@@ -4521,11 +4521,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "21 okt 2026",
+      "launched": "22 okt 2026",
       "launchPrecision": "Second",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's satellietinternetnetwerk.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 21 okt 2026",
+      "highlight": "Lancering gepland: 22 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4534,10 +4534,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "21 okt 2026",
+          "date": "22 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-15"
         }
       ],
@@ -4559,11 +4559,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "24 okt 2026",
+      "launched": "26 okt 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's internetsatellietsysteem.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 24 okt 2026",
+      "highlight": "Lancering gepland: 26 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4572,10 +4572,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "24 okt 2026",
+          "date": "26 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-16"
         }
       ],
@@ -4611,7 +4611,7 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://leo.amazon.com/",
       "timeline": [
         {
           "date": "23 nov 2026",
@@ -4649,7 +4649,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "december 2026",
@@ -4687,7 +4687,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
           "date": "december 2026",
@@ -4726,7 +4726,7 @@
       "launchSite": "Orbital Launch Pad 2",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
           "date": "Q4 2026",
@@ -4762,7 +4762,7 @@
       "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://en.wikipedia.org/wiki/Globalstar",
       "timeline": [
         {
           "date": "2e helft 2026",
@@ -4801,7 +4801,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
           "date": "2026",
@@ -4839,7 +4839,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -4878,7 +4878,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -4918,7 +4918,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -4957,7 +4957,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -4996,7 +4996,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5035,7 +5035,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://rivadaspace.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5074,7 +5074,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5113,7 +5113,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5151,7 +5151,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5190,7 +5190,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5228,7 +5228,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5266,7 +5266,7 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.telesat.com/",
       "timeline": [
         {
           "date": "2026",
@@ -5408,11 +5408,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "28 okt 2026",
+      "launched": "29 okt 2026",
       "launchPrecision": "Minute",
       "objective": "Uitbrengen van 27 Starlink-satellieten in een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 28 okt 2026",
+      "highlight": "Lancering gepland: 29 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5421,10 +5421,10 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "28 okt 2026",
+          "date": "29 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-18"
         }
       ],
@@ -5459,7 +5459,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.nro.gov/",
       "timeline": [
         {
           "date": "5 nov 2026",
@@ -5497,7 +5497,7 @@
       "launchSite": "Space Launch Complex 4E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
           "date": "10 nov 2026",
