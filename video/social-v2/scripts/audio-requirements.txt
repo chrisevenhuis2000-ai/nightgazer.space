@@ -1,0 +1,7 @@
+# Exact versions used for the committed soundtrack (bit-identical output was verified with these).
+numpy==2.5.4
+scipy==1.18.1
+soundfile==0.14.0
+pyloudnorm==0.2.0
+librosa==1.0.0
+matplotlib==3.11.2

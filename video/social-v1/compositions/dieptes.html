@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+      </style>
+      <div id="root" data-composition-id="dieptes" data-width="1080" data-height="1920">
+        <div id="depth-sheet" class="sheet">
+          <span class="ng-label">Kernfusie · op jouw niveau</span>
+          <div id="depth-row">
+            <span id="depth-ladder"><i id="depth-s1"></i><i id="depth-s2"></i><i id="depth-s3"></i></span>
+            <span id="depth-level">
+              <span id="depth-beg" class="depth-name display">Beginner</span>
+              <span id="depth-pro" class="depth-name display">Pro</span>
+            </span>
+          </div>
+          <div id="depth-rule"></div>
+          <div id="depth-body">
+            <p id="depth-f1" class="depth-frag">“…waterstofatomen samen tot helium.”</p>
+            <p id="depth-f2" class="depth-frag">“…levert ~85% van de zonne-energie.”</p>
+          </div>
+          <span id="depth-note" class="ng-label ng-label--stamp">Voorbeeld · uit /educatie</span>
+        </div>
+      </div>
+      <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        // Beginner developed by 0.15, held to 1.17. Pro developed by 1.37, held to the cut at 2.4.
+        tl.set("#depth-s1", { className: "on" }, 0);
+        tl.set("#depth-beg", { opacity: 1 }, 0);
+        NG.develop(tl, "#depth-f1", 0, 0.15);
+        tl.to(["#depth-f1", "#depth-beg"], { opacity: 0, duration: 0.08, ease: "none" }, 1.17);
+        tl.set(["#depth-s2", "#depth-s3"], { className: "on" }, 1.25);
+        tl.set("#depth-pro", { opacity: 1 }, 1.25);
+        NG.develop(tl, "#depth-f2", 1.25, 0.12);
+        window.__timelines["dieptes"] = tl;
+      })();
+      </script>
+    </template>
+  </body>
+</html>

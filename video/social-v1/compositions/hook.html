@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+      </style>
+      <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+        <div id="hook-sheet" class="sheet">
+          <h1 id="hook-q" class="display">Kun je vannacht iets zien?</h1>
+          <div id="hook-cell" class="cell">
+            <span class="cell-lab"><i id="hook-dot" class="dot"><i id="hook-halo" class="halo"></i></i><span class="ng-label">Vannacht</span><span class="ng-label ng-label--stamp">Voorbeeld</span></span>
+            <span id="hook-score" class="val"><span>7</span><span class="unit">/10</span></span>
+            <span class="bortle"><span class="ng-label">Bortle</span><span class="blocks"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span><span class="val">4</span></span>
+            <span class="readout"><i id="hook-sweep" data-layout-allow-overflow></i></span>
+          </div>
+        </div>
+        <i id="hook-wipe" class="wipe"></i>
+      </div>
+      <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        // Frame 0 is the thumbnail: complete and readable. Only live parts move.
+        NG.breathe(tl, "#hook-dot", "#hook-halo", 0, 1.4);
+        tl.fromTo("#hook-sweep", { xPercent: -100 }, { xPercent: 295, duration: 1.4, ease: "power2.inOut" }, 0);
+        // Question held still 0–1.2, then a hairline sweeps it away; the cell goes out on an exposure fade.
+        tl.set("#hook-wipe", { opacity: 1 }, 1.2);
+        tl.fromTo("#hook-wipe", { x: 0 }, { x: 880, duration: 0.28, ease: "power2.in", immediateRender: false }, 1.2);
+        tl.fromTo("#hook-q", { clipPath: "inset(-10% -5% -10% 0%)" },
+                  { clipPath: "inset(-10% -5% -10% 105%)", duration: 0.28, ease: "power2.in", immediateRender: false }, 1.2);
+        tl.set("#hook-wipe", { opacity: 0 }, 1.48);
+        tl.to("#hook-cell", { opacity: 0, duration: 0.2, ease: "power1.in" }, 1.3);
+        window.__timelines["hook"] = tl;
+      })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+      </style>
+      <div id="root" data-composition-id="instrument" data-width="1080" data-height="1920">
+        <div id="instr-sheet" class="sheet">
+          <div id="instr-head"><span class="ng-label ng-label--stamp">Illustratieve waarden</span></div>
+          <div id="instr-iss" class="cell">
+            <span class="cell-lab"><i id="instr-dot1" class="dot"><i id="instr-halo1" class="halo"></i></i><span class="ng-label">ISS · positie</span></span>
+            <span class="val instr-val"><span id="instr-lat">51.62°</span> <span id="instr-lon">4.18°</span></span>
+            <span class="readout"><i id="instr-sweep" data-layout-allow-overflow></i></span>
+          </div>
+          <div id="instr-launch" class="cell">
+            <span class="cell-lab"><span class="ng-label">Volgende lancering</span></span>
+            <span class="val instr-val">T–<span id="instr-count">2d 14:37:09</span></span>
+          </div>
+          <div id="instr-sky" class="cell">
+            <span class="cell-lab"><i id="instr-dot2" class="dot"><i id="instr-halo2" class="halo"></i></i><span class="ng-label">Vannacht</span></span>
+            <span id="instr-sky-val" class="val instr-val"><span>7</span><span class="unit">/10</span></span>
+            <span class="bortle"><span class="ng-label">Bortle</span><span class="blocks"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span><span class="val">4</span></span>
+          </div>
+        </div>
+      </div>
+      <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        // Three-step cascade, settled by 0.5; then only live values move.
+        ["#instr-iss", "#instr-launch", "#instr-sky"].forEach((sel, i) => {
+          tl.fromTo(sel, { clipPath: "inset(0 100% 0 0)" },
+                    { clipPath: "inset(0 0% 0 0)", duration: 0.2, ease: "power3.out" }, i * 0.15);
+        });
+        tl.fromTo("#instr-head", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: NG.ease }, 0);
+        const LIVE = 0.5, END = 2.85;
+        const lat = document.getElementById("instr-lat"), lon = document.getElementById("instr-lon");
+        NG.ticker(tl, LIVE, END - LIVE, (p) => {
+          lat.textContent = (51.62 + 0.17 * p).toFixed(2) + "°";
+          lon.textContent = (4.18 + 0.88 * p).toFixed(2) + "°";
+        });
+        const count = document.getElementById("instr-count");
+        const startS = ((2 * 24 + 14) * 60 + 37) * 60 + 9;
+        const fmt = (s) => {
+          const d = Math.floor(s / 86400), h = Math.floor(s / 3600) % 24, m = Math.floor(s / 60) % 60, x = s % 60;
+          return d + "d " + String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") + ":" + String(x).padStart(2, "0");
+        };
+        NG.ticker(tl, LIVE, END - LIVE, (p) => { count.textContent = fmt(startS - Math.floor(p * (END - LIVE))); });
+        NG.breathe(tl, "#instr-dot1", "#instr-halo1", LIVE, 2.3);
+        NG.breathe(tl, "#instr-dot2", "#instr-halo2", LIVE, 2.3);
+        tl.fromTo("#instr-sweep", { xPercent: -100 }, { xPercent: 295, duration: 1.15, ease: "power2.inOut", repeat: 1, immediateRender: false }, LIVE);
+        window.__timelines["instrument"] = tl;
+      })();
+      </script>
+    </template>
+  </body>
+</html>
