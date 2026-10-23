@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-10-23",
+      "slug": "stars-brewing-in-a-nebulous-cauldron",
+      "titel": "Sterren in een kolkende nevelketel: Webb kijkt in N159",
+      "beg": {
+        "q": "Waarom licht het gas in een stervormingsgebied als N159 op als een heldere nevel?",
+        "options": [
+          "Het ultraviolette licht van hete, zware sterren maakt het gas energierijk, waardoor het gaat gloeien",
+          "Het gas is zelf zo heet dat het van binnenuit brandt, zoals een vuur",
+          "Het gas weerkaatst het licht van de Melkweg als een spiegel",
+          "Het gas wordt verlicht door de zon van ons eigen zonnestelsel"
+        ],
+        "correct": 0,
+        "explain": "Zware, hete sterren zenden veel ultraviolette straling uit. Die straling geeft het omringende waterstofgas energie, waardoor het gaat oplichten. Zulke gloeiende gaswolken noemen astronomen emissienevels."
+      },
+      "ama": {
+        "q": "Wat gebeurt er met het waterstofgas in een H II-gebied zoals N159 onder invloed van zware sterren?",
+        "options": [
+          "Het wordt door kernfusie omgezet in zwaardere elementen",
+          "Het koelt af tot moleculair waterstof door de straling",
+          "Het wordt geïoniseerd door ultraviolette straling en gaat daardoor oplichten",
+          "Het condenseert tot vloeibaar waterstof door de sterrenwinden"
+        ],
+        "correct": 2,
+        "explain": "In een H II-gebied is het waterstof geïoniseerd: ultraviolette fotonen van zware sterren slaan elektronen los van de atomen. Als elektronen en protonen zich weer verbinden, zenden ze licht uit, waardoor de emissienevel zichtbaar wordt. De H II staat voor geïoniseerd waterstof."
+      },
+      "pro": {
+        "q": "Waarom is de lage metalliciteit van de Grote Magelhaense Wolk nuttig voor onderzoek naar stervorming in N159?",
+        "options": [
+          "Zware elementen ontbreken er volledig, waardoor alleen waterstofsterren kunnen ontstaan",
+          "De omstandigheden lijken daardoor meer op die in het vroege heelal, toen er nog weinig zware elementen waren",
+          "Stof is bij lage metalliciteit afwezig, waardoor ultraviolette straling ongehinderd het hele stelsel vult",
+          "Lage metalliciteit zorgt ervoor dat gaswolken sneller afkoelen dan in de Melkweg, waardoor sterren groter worden dan 150 zonsmassa"
+        ],
+        "correct": 1,
+        "explain": "Metalliciteit is het aandeel elementen zwaarder dan waterstof en helium. Die elementen zijn in de loop van de tijd door eerdere sterren gevormd, dus in het vroege heelal waren ze schaars. De Grote Magelhaense Wolk heeft er minder dan de Melkweg, maar niet nul, en vormt daardoor een nabije proeftuin voor vroege stervorming."
+      }
+    },
+    {
       "datum": "2026-10-22",
       "slug": "apod-2026-october-21-new-ghosts-revealed-in-cassiopeia",
       "titel": "Nieuwe 'spoken' ontdekt in Cassiopeia",
@@ -1512,5 +1550,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-22T09:47:03.098Z"
+  "bijgewerkt": "2026-10-23T12:45:26.958Z"
 }
