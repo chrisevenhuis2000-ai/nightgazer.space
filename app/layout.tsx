@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type:     'website',
     images:   [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer — Astronomie voor Iedereen' }],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: { card: 'summary_large_image', site: '@nightgazerspace' },
   other:   { 'google-adsense-account': ADSENSE_CLIENT },
 }
 
