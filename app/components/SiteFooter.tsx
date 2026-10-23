@@ -24,6 +24,7 @@ const DEFAULT_COLS: FooterCol[] = [
 
 // Alleen accounts die echt bestaan. Komt er een nieuw account bij (bijv. X), voeg dan hier een regel toe.
 const SOCIALS = [
+  { href: 'https://x.com/nightgazerspace', label: 'NightGazer op X', icon: <svg viewBox="0 0 16 16" fill="currentColor" width="13" height="13"><path d="M12.6 1h2.4l-5.2 6 6.2 8H12l-3.7-4.9L3.8 15H1.4l5.5-6.3L.8 1H5l3.4 4.5L12.6 1z" /></svg> },
   { href: 'https://www.instagram.com/nightgazer.space/', label: 'NightGazer op Instagram',  icon: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2" width="13" height="13"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" /><circle cx="8" cy="8" r="3" /><circle cx="11.5" cy="4.5" r="0.7" fill="currentColor" stroke="none" /></svg> },
 ]
 
