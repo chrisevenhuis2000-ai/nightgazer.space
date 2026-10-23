@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { CookieInstellingen } from './CookieInstellingen'
 
 export interface FooterCol {
   title: string
@@ -158,6 +159,7 @@ export function SiteFooter({ cols = DEFAULT_COLS, tagline = DEFAULT_TAGLINE, not
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '0.06em', color: '#7A86A8' }}>© {new Date().getFullYear()} NightGazer · nightgazer.space</span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }}>{note}</span>
+            <CookieInstellingen style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             {BADGES.map(([label, icon]) => (
