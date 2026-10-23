@@ -95,14 +95,16 @@ jobs:
         continue-on-error: true
 
       - name: Post new articles to X
-        # Wacht per artikel tot Cloudflare Pages het serveert, plaatst het dan
-        # op X en houdt bij wat al geplaatst is in content/x-geplaatst.json.
+        # Plaatst elk nieuw artikel op X en houdt bij wat al geplaatst is in
+        # content/x-geplaatst.json. Standaard zonder link (zie X_MET_LINK).
         # Zonder de X_*-secrets slaat deze stap zichzelf over.
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          # '1' zet de artikellink in de post: $0,20 per post in plaats van $0,015.
+          X_MET_LINK: ${{ vars.X_MET_LINK }}
         run: node scripts/post-naar-x.js
         continue-on-error: true
 

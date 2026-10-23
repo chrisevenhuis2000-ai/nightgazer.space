@@ -15,6 +15,9 @@
  *   X_MAX_PER_RUN   hoeveel posts per run, standaard 5
  *   X_DRY_RUN=1     alleen tonen wat er geplaatst zou worden
  *   X_WACHT_MIN     hoe lang wachten tot het artikel live staat, standaard 20
+ *   X_MET_LINK=1    zet de link naar het artikel in de post. Kost $0,20 per
+ *                   post in plaats van $0,015 (X API, 2026), daarom standaard uit;
+ *                   zonder link verwijst de post naar de link in de bio.
  */
 
 const fs     = require('fs')
@@ -30,6 +33,7 @@ const TWEET_URL    = 'https://api.x.com/2/tweets'
 // X telt elke link als 23 tekens, ongeacht de lengte.
 const LINK_LENGTE = 23
 const MAX_TEKENS  = 280
+const BIO_REGEL   = 'Lees verder via de link in onze bio.'
 
 // ── OAuth 1.0a ──────────────────────────────────────────────────────────────
 
@@ -74,13 +78,17 @@ function inkorten(s, max) {
   return kort.replace(/\s+\S*$/, '').replace(/[\s,;:–-]+$/, '') + '…'
 }
 
-/** Titel, een stuk van de samenvatting en de link, binnen 280 tekens. */
-function postTekst({ title, excerpt, url }) {
-  const ruimte = MAX_TEKENS - LINK_LENGTE - 4 // twee keer "\n\n"
+/**
+ * Titel, een stuk van de samenvatting en de link (of de verwijzing naar de
+ * bio), binnen 280 tekens.
+ */
+function postTekst({ title, excerpt, url }, { metLink = true } = {}) {
+  const slot = metLink ? url : BIO_REGEL
+  const ruimte = MAX_TEKENS - (metLink ? LINK_LENGTE : tekens(BIO_REGEL)) - 4 // twee keer "\n\n"
   const kop = inkorten(title.trim(), ruimte)
   const rest = ruimte - tekens(kop) - 2
   const samenvatting = excerpt && rest > 40 ? inkorten(excerpt.trim(), rest) : ''
-  return [kop, samenvatting, url].filter(Boolean).join('\n\n')
+  return [kop, samenvatting, slot].filter(Boolean).join('\n\n')
 }
 
 // ── Artikelen ───────────────────────────────────────────────────────────────
@@ -155,6 +163,7 @@ async function main() {
   const dryRun   = process.env.X_DRY_RUN === '1'
   const maxPosts = Number(process.env.X_MAX_PER_RUN || 5)
   const wachtMin = Number(process.env.X_WACHT_MIN || 20)
+  const metLink  = process.env.X_MET_LINK === '1'
 
   if (!dryRun && Object.values(keys).some(v => !v)) {
     console.log('X-sleutels ontbreken; niets geplaatst.')
@@ -192,12 +201,13 @@ async function main() {
 
   let fouten = 0
   for (const a of nieuw.slice(0, maxPosts)) {
-    const tekst = postTekst(a)
+    const tekst = postTekst(a, { metLink })
     if (dryRun) {
       console.log(`--- ${a.slug}\n${tekst}\n`)
       continue
     }
-    if (!(await wachtTotLive(a.url, wachtMin))) {
+    // Alleen met link: anders toont X geen kaart voor een pagina die er nog niet is.
+    if (metLink && !(await wachtTotLive(a.url, wachtMin))) {
       // De deploy is kennelijk nog niet klaar; de rest wacht op de volgende run.
       console.log(`${a.slug} staat na ${wachtMin} min nog niet live; volgende run opnieuw.`)
       break

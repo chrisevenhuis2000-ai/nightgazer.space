@@ -27,4 +27,9 @@ const zonderLink = lang.replace(url, '')
 assert.ok([...zonderLink].length + 23 <= 280, `te lang: ${[...zonderLink].length + 23}`)
 assert.ok(lang.includes('…\n\n'), 'samenvatting ingekort met …')
 
+const bio = postTekst({ title: 'Titel', excerpt: 'woord '.repeat(100), url }, { metLink: false })
+assert.ok(!bio.includes('http'), 'zonder link geen URL')
+assert.ok(bio.endsWith('Lees verder via de link in onze bio.'))
+assert.ok([...bio].length <= 280, `te lang: ${[...bio].length}`)
+
 console.log('post-naar-x: alle tests geslaagd')
