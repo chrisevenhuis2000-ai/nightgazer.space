@@ -94,29 +94,6 @@ jobs:
           git push
         continue-on-error: true
 
-      - name: Post new articles to X
-        # Plaatst elk nieuw artikel op X en houdt bij wat al geplaatst is in
-        # content/x-geplaatst.json. Standaard zonder link (zie X_MET_LINK).
-        # Zonder de X_*-secrets slaat deze stap zichzelf over.
-        env:
-          X_API_KEY: ${{ secrets.X_API_KEY }}
-          X_API_SECRET: ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
-          # '1' zet de artikellink in de post: $0,20 per post in plaats van $0,015.
-          X_MET_LINK: ${{ vars.X_MET_LINK }}
-        run: node scripts/post-naar-x.js
-        continue-on-error: true
-
-      - name: Commit X ledger
-        run: |
-          git config --local user.email "bot@cosmosnl.nl"
-          git config --local user.name "CosmosNL Bot"
-          git add content/x-geplaatst.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "🐦 X: geplaatste artikelen bijgewerkt $(date '+%Y-%m-%d')"
-          git pull --rebase --quiet && git push
-        continue-on-error: true
-
       - name: Trigger Vercel/Cloudflare deployment
         # Uncomment and add your deploy hook URL as a secret
         # run: curl -X POST "${{ secrets.DEPLOY_HOOK_URL }}"
