@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-22T13:11:44.610Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-10-23T12:52:08.866Z",
+    "autoUpdated": [
+      "6x-hawkeye-360"
+    ]
   },
   "missions": [
     {
@@ -3700,12 +3702,12 @@
       "name": "6x HawkEye 360",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "23 okt 2026",
       "objective": "Lancering van 6 HawkEye 360-satellieten voor wereldwijde radiofrequentiekartering vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 23 okt 2026",
+      "highlight": "Gelanceerd op 23 okt 2026 met Electron",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3718,7 +3720,7 @@
       "timeline": [
         {
           "date": "23 okt 2026",
-          "event": "Geplande lancering van 6x HawkEye 360"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4395,11 +4397,11 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "4 nov 2026",
+      "launched": "3 nov 2026",
       "launchPrecision": "Day",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 4 nov 2026",
+      "highlight": "Lancering gepland: 3 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4411,7 +4413,7 @@
       "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
-          "date": "4 nov 2026",
+          "date": "3 nov 2026",
           "event": "Geplande lancering van The Sea God Surveys (iQPS Launch 9)"
         }
       ],
@@ -4521,11 +4523,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "22 okt 2026",
+      "launched": "23 okt 2026",
       "launchPrecision": "Second",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's satellietinternetnetwerk.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 22 okt 2026",
+      "highlight": "Lancering gepland: 23 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4537,7 +4539,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "22 okt 2026",
+          "date": "23 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-15"
         }
       ],
@@ -5484,11 +5486,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "10 nov 2026",
-      "launchPrecision": "Day",
+      "launched": "5 nov 2026",
+      "launchPrecision": "Minute",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 10 nov 2026",
+      "highlight": "Lancering gepland: 5 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5500,7 +5502,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "10 nov 2026",
+          "date": "5 nov 2026",
           "event": "Geplande lancering van Starlink Group 15-21"
         }
       ],
