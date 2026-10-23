@@ -4,7 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import ArtikelPlaat from './ArtikelPlaat'
 import { getAllSlugs } from './generateParams'
-import { parseMarkdown, type ArticleData } from '@/lib/article-data'
+import { parseMarkdown, IMG, type ArticleData } from '@/lib/article-data'
 import { articleCrumbs, breadcrumbList, newsArticle, jsonLd } from '@/lib/structured-data'
 
 export function generateStaticParams() {
@@ -61,7 +61,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       ...(publishedAt ? { publishedTime: publishedAt } : {}),
       section: article.category,
       ...(article.tags.length ? { tags: article.tags } : {}),
-      ...(article.imageUrl ? { images: [{ url: article.imageUrl, alt: article.title }] } : {}),
+      // Via onze eigen beeldproxy, op 1200 px: zo haalt X (en elk ander
+      // platform) de linkkaart-afbeelding binnen, ook bij bronnen die
+      // hotlinken weigeren of te grote bestanden leveren. Zonder eigen beeld
+      // het algemene NightGazer-beeld, anders heeft de kaart er geen.
+      images: article.imageUrl
+        ? [{ url: IMG(article.imageUrl, 1200), alt: article.title }]
+        : [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer — Astronomie voor Iedereen' }],
     },
   }
 }
