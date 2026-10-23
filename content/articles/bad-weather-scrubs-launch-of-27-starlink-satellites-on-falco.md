@@ -4,13 +4,13 @@ excerpt: "Voor de derde dag op rij heeft SpaceX de lancering van 27 Starlink-sat
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-23T12:38:21.017Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/20/live-coverage-spacex-to-launch-27-starlink-satellites-on-falcon-9-rocket-from-vandenberg-sfb-5/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20211027-PH-SPX02_0003/KSC-20211027-PH-SPX02_0003~medium.jpg"
+imageAlt: "Slecht weer stelt lancering van 27 Starlink-satellieten met Falcon 9 vanaf Vandenberg opnieuw uit"
+imageCredit: "SpaceX / KSC"
 kernpunten: ["SpaceX blies de lancering van 27 Starlink-satellieten vanaf Vandenberg voor de derde dag op rij af, nu door slecht weer.","Booster B1063 maakt bij de volgende poging zijn 36e vlucht en moet landen op het droneschip A Shortfall of Gravitas.","Starlink telt meer dan 11.100 satellieten in een lage baan en SpaceX rekent op Starship voor verdere groei."]
 kerncijfers: [{"waarde":"36e","eenheid":"","label":"vlucht van booster B1063"},{"waarde":"11.100","eenheid":"satellieten","label":"Starlink-satellieten in baan"},{"waarde":"1,6 miljoen","eenheid":"","label":"nieuwe klanten derde kwartaal"}]
 citaat: {"tekst":"We verwachten dat de communicatiemarkt veel verder zal groeien dan alleen de menselijke communicatie waaraan we traditioneel denken","wie":"Gwynne Shotwell, president en COO van SpaceX"}
