@@ -3,8 +3,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import ErrorBoundary from './ErrorBoundary'
 import SearchProvider from './components/SearchProvider'
-import { CookieBanner } from './components/CookieBanner'
-import { AdSenseScript } from './components/AdSenseScript'
+import { AdSenseScript, ADSENSE_CLIENT } from './components/AdSenseScript'
 
 /* Lettertypen staan in de repo (app/fonts, latin-subset, variabel, OFL)
    in plaats van next/font/google: dat haalde ze bij elke build op bij
@@ -44,6 +43,7 @@ export const metadata: Metadata = {
     images:   [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer — Astronomie voor Iedereen' }],
   },
   twitter: { card: 'summary_large_image' },
+  other:   { 'google-adsense-account': ADSENSE_CLIENT },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -61,7 +61,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </ErrorBoundary>
         <SearchProvider />
-        <CookieBanner />
         <AdSenseScript />
       </body>
     </html>

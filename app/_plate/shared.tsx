@@ -224,11 +224,6 @@ export function AdPlate({ slot }: { slot?: string }) {
 }
 
 function AdField({ slot }: { slot: string }) {
-  const [consented, setConsented] = useState<boolean | null>(null)
-  useEffect(() => {
-    try { setConsented(localStorage.getItem('nightgazer_consent') === 'all') } catch { setConsented(false) }
-  }, [])
-
   return (
     <aside className="pl-ad" aria-label="Advertentie">
       <div className="pl-ad__head">
@@ -239,11 +234,6 @@ function AdField({ slot }: { slot: string }) {
       </div>
       <div className="pl-ad__body">
         <AdUnit slot={slot} style={{ width: '100%' }} />
-        {consented === false && (
-          <p className="pl-label" style={{ letterSpacing: '0.1em', textAlign: 'center', lineHeight: 1.7 }}>
-            Gereserveerde ruimte — de advertentie verschijnt hier<br />zodra cookies zijn geaccepteerd.
-          </p>
-        )}
       </div>
     </aside>
   )
