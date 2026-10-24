@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-23T12:52:08.866Z",
+    "lastUpdated": "2026-10-24T12:13:10.101Z",
     "autoUpdated": [
-      "6x-hawkeye-360"
+      "starlink-group-15-15"
     ]
   },
   "missions": [
@@ -4521,13 +4521,13 @@
       "name": "Starlink Group 15-15",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "23 okt 2026",
       "launchPrecision": "Second",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's satellietinternetnetwerk.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 23 okt 2026",
+      "highlight": "Gelanceerd op 23 okt 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4540,7 +4540,7 @@
       "timeline": [
         {
           "date": "23 okt 2026",
-          "event": "Geplande lancering van Starlink Group 15-15"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4561,11 +4561,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "26 okt 2026",
+      "launched": "27 okt 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's internetsatellietsysteem.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 26 okt 2026",
+      "highlight": "Lancering gepland: 27 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4577,7 +4577,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "26 okt 2026",
+          "date": "27 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-16"
         }
       ],
@@ -5410,11 +5410,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "29 okt 2026",
+      "launched": "30 okt 2026",
       "launchPrecision": "Minute",
       "objective": "Uitbrengen van 27 Starlink-satellieten in een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 29 okt 2026",
+      "highlight": "Lancering gepland: 30 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5426,7 +5426,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "29 okt 2026",
+          "date": "30 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-18"
         }
       ],
