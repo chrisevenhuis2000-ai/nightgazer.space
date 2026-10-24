@@ -4,13 +4,13 @@ excerpt: "Bij de vierde poging is SpaceX erin geslaagd de Starlink 15-15-missie 
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-24T12:01:36.220Z"
-featured: false
+featured: "false"
 tags: []
 source: "SpaceflightNow"
 sourceUrl: "https://spaceflightnow.com/2026/10/20/live-coverage-spacex-to-launch-27-starlink-satellites-on-falcon-9-rocket-from-vandenberg-sfb-5/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/jsc2024e050142/jsc2024e050142~medium.jpg"
+imageAlt: "SpaceX lanceert Starlink 15-15 na drie afgebroken pogingen"
+imageCredit: "JSC"
 kernpunten: ["SpaceX lanceerde Starlink 15-15 op 23 oktober na drie afgebroken pogingen door techniek en weer.","Booster B1063 maakte zijn 36e vlucht en landde op het droneschip A Shortfall of Gravitas.","Er draaien nu meer dan 11.100 Starlink-satellieten en de volgende Starship-vlucht staat gepland voor november."]
 kerncijfers: [{"waarde":"36e","eenheid":"","label":"vlucht van booster B1063"},{"waarde":"673e","eenheid":"","label":"landing Falcon-booster"},{"waarde":"11.100","eenheid":"satellieten","label":"Starlink in lage baan"}]
 citaat: {"tekst":"De Starship-raket zelf zal extra capaciteit bieden in alle markten en nieuwe verkoop mogelijk maken in gebieden met veel vraag","wie":"Gwynne Shotwell, president en COO van SpaceX"}
