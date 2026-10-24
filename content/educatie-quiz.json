@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-10-24",
+      "slug": "apod-2026-october-23-andromeda-in-southern-spring",
+      "titel": "Andromeda in de zuidelijke lente",
+      "beg": {
+        "q": "Waarom lijkt de Andromedanevel met het blote oog maar een klein, zwak vlekje, terwijl hij op lang belichte foto's veel groter is?",
+        "options": [
+          "Een camera maakt het stelsel groter doordat de lens de afstand tot Andromeda verkleint",
+          "De zwakke buitendelen van het stelsel zijn te lichtzwak voor het oog, maar komen met gevoelige camera's en lange belichting wel tevoorschijn",
+          "Alleen de buitenrand van het stelsel straalt licht uit, en dat zie je alleen op foto's",
+          "Het stelsel wordt groter doordat het tijdens de belichting door de ruimte naar de aarde toe beweegt"
+        ],
+        "correct": 1,
+        "explain": "Een camera kan met een lange belichting licht urenlang verzamelen, terwijl ons oog dat niet kan. Daardoor worden ook de heel zwakke buitendelen zichtbaar. Het stelsel beslaat zo bijna zes volle manen aan de hemel."
+      },
+      "ama": {
+        "q": "Waarom worden bij het fotograferen van Andromeda veel opnamen gestapeld en wordt de camera meegevoerd met de draaiing van de hemel?",
+        "options": [
+          "Stapelen maakt het stelsel fysiek groter, tracking maakt het stelsel helderder",
+          "Stapelen verlaagt de ruis zodat zwakke details zichtbaar worden, tracking houdt sterren scherp tijdens lange belichting",
+          "Stapelen corrigeert de dopplerverschuiving van het stelsel, tracking corrigeert de kromming van de lens",
+          "Stapelen voorkomt dat de aarde draait, tracking zorgt voor een helderdere voorgrond"
+        ],
+        "correct": 1,
+        "explain": "Door veel opnamen te combineren middelt de willekeurige ruis weg, terwijl het echte signaal van zwakke details blijft. De aarde draait, dus zonder meebewegen worden sterren bij lange belichting streepjes. Voor het landschap is een aparte opname nodig, omdat dat niet meebeweegt met de sterren."
+      },
+      "pro": {
+        "q": "Waarom verbetert het stapelen van N gelijke opnamen de signaal-ruisverhouding van zwakke details van Andromeda?",
+        "options": [
+          "Het signaal telt lineair op en de willekeurige ruis ongeveer met √N, dus de verhouding verbetert met een factor √N",
+          "Het signaal groeit ongeveer met N en de ruis blijft constant, dus de verhouding verbetert met een factor N",
+          "Signaal en ruis nemen beide met N toe, zodat de verhouding gelijk blijft maar het beeld helderder wordt",
+          "Het signaal groeit met N² en de ruis met N, dus de verhouding verbetert met een factor N"
+        ],
+        "correct": 0,
+        "explain": "Het signaal van een object is in elke opname hetzelfde en telt lineair op (∝ N). Onafhankelijke, willekeurige ruis telt kwadratisch op en groeit dus met √N. Daardoor verbetert de signaal-ruisverhouding met √N; vier keer zoveel opnamen geeft dus twee keer zo'n goede verhouding."
+      }
+    },
+    {
       "datum": "2026-10-23",
       "slug": "stars-brewing-in-a-nebulous-cauldron",
       "titel": "Sterren in een kolkende nevelketel: Webb kijkt in N159",
@@ -1550,5 +1588,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-23T12:45:26.958Z"
+  "bijgewerkt": "2026-10-24T12:08:44.358Z"
 }
