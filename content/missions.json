@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-24T12:13:10.101Z",
+    "lastUpdated": "2026-10-25T12:45:52.797Z",
     "autoUpdated": [
-      "starlink-group-15-15"
+      "sda-tranche-1-tracking-layer-d"
     ]
   },
   "missions": [
@@ -1911,19 +1911,19 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van satellietcluster voor wereldwijde detectie en tracking van hypersonische raketdreigingen.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: Q4 2026",
+      "highlight": "Lancering gepland: 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "De SDA Tranche 1 Tracking Layer E-missie is een van vijf geplande lanceringen door de Amerikaanse Space Development Agency voor de Proliferated Warfighter Space Architecture. Het constellation biedt wereldwijde waarschuwings- en trackingcapaciteiten tegen geavanceerde raketdreigingen, waaronder hypersonische wapensystemen. SpaceX voert de lancering uit met een Falcon 9-raket vanuit een polaire baan. De missie maakt deel uit van een breder programma van de U.S. Space Force om militaire ruimteinfrastructuur te moderniseren.",
-      "vehicle": "Falcon 9",
-      "launchSite": "Space Launch Complex 4E",
+      "vehicle": "Vulcan",
+      "launchSite": "Space Launch Complex 3E",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://www.sda.mil/",
       "timeline": [
         {
-          "date": "Q4 2026",
+          "date": "2026",
           "event": "Geplande lancering van SDA Tranche 1 Tracking Layer E"
         }
       ],
@@ -1947,7 +1947,7 @@
         "militaire ruimtevaart"
       ],
       "_lastClaudeUpdate": "2026-09-28T16:14:07.842Z",
-      "launchPrecision": "Quarter 4"
+      "launchPrecision": "Year"
     },
     {
       "id": "sda-tranche-1-transport-layer-a",
@@ -5515,6 +5515,44 @@
         "satellietinternet"
       ],
       "_lastClaudeUpdate": "2026-10-20T12:57:57.879Z"
+    },
+    {
+      "id": "sda-tranche-1-tracking-layer-d",
+      "_ll2Id": "a9ee8337-127d-4f17-9e3a-a07999f80099",
+      "name": "SDA Tranche 1 Tracking Layer D",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "launchPrecision": "Quarter 4",
+      "objective": "Lancering van satellieten voor wereldwijde detectie en tracking van geavanceerde raketdreigingen.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: Q4 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SDA Tranche 1 Tracking Layer D is een van vijf missies van de Space Development Agency van de Amerikaanse Space Force voor de Proliferated Warfighter Space Architecture (PWSA). De satellietconstellatie moet wereldwijd geavanceerde raketdreigingen, waaronder hypersonische raketsystemen, signaleren, volgen en aanwijzen. SpaceX voert de lancering uit met een Falcon 9 naar een polaire baan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.sda.mil/",
+      "timeline": [
+        {
+          "date": "Q4 2026",
+          "event": "Geplande lancering van SDA Tranche 1 Tracking Layer D"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "space development agency",
+        "pwsa",
+        "polar orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-25T12:45:46.996Z"
     }
   ]
 }
