@@ -1366,6 +1366,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-10-26",
+      "slug": "astranis-upgrades-falcon-9-launch-contract-to-dedicated-miss",
+      "titel": "Astranis koopt complete Falcon 9-lancering voor alle zes Block 4-satellieten",
+      "beg": {
+        "q": "Waarom lijkt een satelliet in de geostationaire baan vanaf de grond stil aan de hemel te staan?",
+        "options": [
+          "Hij staat helemaal stil in de ruimte, los van de aarde",
+          "Hij draait veel sneller rond dan de aarde, waardoor je hem niet meer ziet bewegen",
+          "Hij hangt vast aan een onzichtbare kabel naar de grond",
+          "Hij draait even snel om de aarde als de aarde om haar as draait"
+        ],
+        "correct": 3,
+        "explain": "Een geostationaire satelliet doet er precies één aardrotatie over om één rondje te maken, dus blijft hij boven hetzelfde punt. Daarom kunnen schotelantennes op de grond blijven wijzen zonder te hoeven draaien."
+      },
+      "ama": {
+        "q": "Wat moet een satelliet in de geostationaire baan overeenkomen met de aarde om boven hetzelfde punt op de evenaar te blijven?",
+        "options": [
+          "Zijn hoogte moet gelijk zijn aan die van het ISS, ongeveer 400 km",
+          "Zijn baan moet over de polen lopen",
+          "Zijn omlooptijd moet precies 12 uur zijn",
+          "Zijn omlooptijd moet gelijk zijn aan de rotatieperiode van de aarde, ongeveer 24 uur"
+        ],
+        "correct": 3,
+        "explain": "De satelliet moet in ongeveer 24 uur (een siderische dag van 23 uur en 56 minuten) één baan afleggen, in een cirkelbaan boven de evenaar. Dat gebeurt op ongeveer 36.000 km hoogte; het ISS draait op ongeveer 400 km veel sneller rond."
+      },
+      "pro": {
+        "q": "Welke relatie bepaalt de straal van de geostationaire baan, met T gelijk aan de siderische rotatieperiode van de aarde?",
+        "options": [
+          "r³ = G·M·T²/(4π²), dus r ≈ 42.164 km vanaf het middelpunt van de aarde",
+          "r² = G·M·T/(2π), dus r ≈ 7000 km",
+          "r³ = G·M·T/(2π), dus r ≈ 384.000 km",
+          "r = R_aarde + 400 km, bepaald door de atmosferische weerstand"
+        ],
+        "correct": 0,
+        "explain": "Gelijkstellen van de zwaartekracht aan de middelpuntzoekende kracht geeft de derde wet van Kepler: r³ = GMT²/4π². Met T ≈ 86.164 s komt dat uit op ongeveer 42.164 km vanaf het aardmiddelpunt, ongeveer 35.786 km boven de evenaar."
+      }
+    },
+    {
       "datum": "2026-10-24",
       "slug": "apod-2026-october-23-andromeda-in-southern-spring",
       "titel": "Andromeda in de zuidelijke lente",
@@ -1480,5 +1518,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-26T14:20:05.358Z"
+  "bijgewerkt": "2026-10-26T15:08:31.296Z"
 }
