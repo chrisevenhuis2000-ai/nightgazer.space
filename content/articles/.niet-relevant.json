@@ -24,6 +24,11 @@
     "reden": "Dit is een persbericht over een marktrapport met omzetprognoses voor satellietdiensten, en dus zuiver bedrijfs- en marktnieuws zonder astronomische of missie-inhoud.",
     "datum": "2026-10-22"
   },
+  "hunting-red-leaves-with-satellites": {
+    "titel": "Hunting Red Leaves with Satellites",
+    "reden": "Dit is aardobservatie over herfstkleuren en vegetatie met bestaande satellieten (PACE, Landsat 9), zonder nieuws over de ruimtevaart of een nieuwe missie zelf.",
+    "datum": "2026-10-26"
+  },
   "isaias-dims-the-gulf-coast": {
     "titel": "Isaias Dims the Gulf Coast",
     "reden": "aardobservatie van een orkaan, geen ruimtevaart (handmatig verwijderd)",
@@ -33,6 +38,11 @@
     "titel": "NASA Invites Media to 2026 von Braun Space Exploration Symposium",
     "reden": "Dit is een media-uitnodiging voor een symposium, een evenementaankondiging zonder nieuwe ontdekking of missienieuws.",
     "datum": "2026-10-23"
+  },
+  "nasa-usda-sign-agreement-advancing-earth-science-agriculture": {
+    "titel": "NASA, USDA Sign Agreement Advancing Earth Science, Agriculture",
+    "reden": "Het gaat om een samenwerkingsakkoord over aardobservatie ten behoeve van landbouw, zonder nieuwe satelliet, instrument of missie.",
+    "datum": "2026-10-26"
   },
   "nov-5-satellite-mission-management-at-the-edge": {
     "titel": "Nov. 5: Satellite Mission Management at the Edge",
