@@ -1,4 +1,9 @@
 {
+  "a-81-reaches-south-georgia": {
+    "titel": "A-81 Reaches South Georgia",
+    "reden": "Dit is aardobservatie over het afdrijven van een Antarctische ijsberg en gaat niet over sterrenkunde of de ruimtevaart zelf.",
+    "datum": "2026-10-27"
+  },
   "agile-space-industries-expands-to-seattle-area-with-new-bell": {
     "titel": "Agile Space Industries Expands to Seattle Area with New Bellevue Office",
     "reden": "kantoornieuws (handmatig verwijderd)",
@@ -19,10 +24,20 @@
     "reden": "Dit is aardobservatie over een storm boven IJsland en gaat over het weer, niet over astronomie of ruimtevaart zelf.",
     "datum": "2026-10-21"
   },
+  "flexell-space-establishes-french-subsidiary-to-strengthen-eu": {
+    "titel": "Flexell Space Establishes French Subsidiary to Strengthen European Presence",
+    "reden": "Dit is zuiver bedrijfsnieuws over de oprichting van een Franse dochteronderneming en vestigingsnieuws, zonder ontdekking, missie of lancering.",
+    "datum": "2026-10-27"
+  },
   "global-satcom-services-revenues-to-reach-145-billion-by-2035": {
     "titel": "Global Satcom Services Revenues to Reach $145 Billion by 2035",
     "reden": "Dit is een persbericht over een marktrapport met omzetprognoses voor satellietdiensten, en dus zuiver bedrijfs- en marktnieuws zonder astronomische of missie-inhoud.",
     "datum": "2026-10-22"
+  },
+  "how-a-johnson-mentor-shapes-the-next-generation-of-nasa-tale": {
+    "titel": "How a Johnson Mentor Shapes the Next Generation of NASA Talent",
+    "reden": "Dit is een personeels- en stageverhaal over mentorschap bij NASA rond National Mentoring Day, zonder nieuws over missies, ontdekkingen of ruimtevaartontwikkelingen.",
+    "datum": "2026-10-27"
   },
   "hunting-red-leaves-with-satellites": {
     "titel": "Hunting Red Leaves with Satellites",
