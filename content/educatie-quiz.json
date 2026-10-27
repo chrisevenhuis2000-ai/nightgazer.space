@@ -1366,6 +1366,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-10-27",
+      "slug": "astranis-upgrades-falcon-9-launch-contract-to-dedicated-miss",
+      "titel": "Astranis koopt complete Falcon 9-lancering voor alle zes Block 4-satellieten",
+      "beg": {
+        "q": "Waarom lijkt een satelliet in de geostationaire baan vanaf de grond stil aan de hemel te staan?",
+        "options": [
+          "Hij staat helemaal stil in de ruimte, terwijl de aarde eronder doordraait",
+          "Hij wordt vastgehouden door een straal vanaf een grondstation",
+          "Hij hangt precies tussen de aarde en de maan, waar de zwaartekracht wegvalt",
+          "Hij draait even snel om de aarde als de aarde om haar as draait"
+        ],
+        "correct": 3,
+        "explain": "Omdat de satelliet in dezelfde tijd één rondje om de aarde maakt als de aarde om haar as draait, blijft hij boven hetzelfde punt. Een geostationaire satelliet staat dus niet stil, maar beweegt precies mee met de draaiing van de aarde."
+      },
+      "ama": {
+        "q": "Hoe lang duurt een omloop in de geostationaire baan, en op welke hoogte boven de evenaar ligt die baan ongeveer?",
+        "options": [
+          "Ongeveer 90 minuten, op circa 400 km hoogte",
+          "Ongeveer 24 uur, op circa 2000 km hoogte",
+          "Ongeveer 24 uur (één sterrendag), op circa 36.000 km hoogte",
+          "Ongeveer 12 uur, op circa 20.000 km hoogte"
+        ],
+        "correct": 2,
+        "explain": "Een satelliet moet de omloopstijd van de aarde om haar as (een sterrendag van ongeveer 23 uur en 56 minuten) evenaren, en dat kan alleen op ongeveer 35.786 km boven de evenaar. De baan van 90 minuten op 400 km hoort bij het ISS, die van 12 uur op 20.000 km bij GPS-satellieten."
+      },
+      "pro": {
+        "q": "Welke combinatie bepaalt de straal van de geostationaire baan, met omlooptijd gelijk aan de siderische rotatieperiode van de aarde?",
+        "options": [
+          "Derde wet van Kepler: r³ = GM·T²/(4π²), met T ≈ 86164 s, geeft r ≈ 42.164 km vanaf het middelpunt",
+          "Het punt waar de zwaartekracht van aarde en maan elkaar opheffen (Lagrangepunt L1)",
+          "De formule voor de ontsnappingssnelheid, v = √(2GM/r), met v gelijk aan de rotatiesnelheid van de aarde",
+          "De Roche-limiet van de aarde, waarbinnen een satelliet door getijdenkrachten uit elkaar zou vallen"
+        ],
+        "correct": 0,
+        "explain": "Door de zwaartekracht gelijk te stellen aan de middelpuntzoekende kracht volgt r³ = GM·T²/(4π²). Met T ≈ 86164 s komt dat uit op ongeveer 42.164 km vanaf het middelpunt van de aarde, dus circa 35.786 km boven de evenaar na aftrek van de aardstraal."
+      }
+    },
+    {
       "datum": "2026-10-26",
       "slug": "astranis-upgrades-falcon-9-launch-contract-to-dedicated-miss",
       "titel": "Astranis koopt complete Falcon 9-lancering voor alle zes Block 4-satellieten",
@@ -1518,5 +1556,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-26T15:08:31.296Z"
+  "bijgewerkt": "2026-10-27T13:17:04.018Z"
 }
