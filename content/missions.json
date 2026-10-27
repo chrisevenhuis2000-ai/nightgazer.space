@@ -1,8 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-25T12:45:52.797Z",
+    "lastUpdated": "2026-10-27T13:33:48.965Z",
     "autoUpdated": [
-      "sda-tranche-1-tracking-layer-d"
+      "starlink-group-15-16",
+      "ussf-432"
     ]
   },
   "missions": [
@@ -4559,13 +4560,13 @@
       "name": "Starlink Group 15-16",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "27 okt 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan voor SpaceX's internetsatellietsysteem.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 27 okt 2026",
+      "highlight": "Gelanceerd op 27 okt 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4578,7 +4579,7 @@
       "timeline": [
         {
           "date": "27 okt 2026",
-          "event": "Geplande lancering van Starlink Group 15-16"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -5448,11 +5449,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "5 nov 2026",
-      "launchPrecision": "Minute",
+      "launched": "30 nov 2026",
+      "launchPrecision": "Month",
       "objective": "Lancering van de vijftiende groep satellieten voor een verkenningsconstellatie van de NRO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 5 nov 2026",
+      "highlight": "Lancering gepland: november 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5464,7 +5465,7 @@
       "missionUrl": "https://www.nro.gov/",
       "timeline": [
         {
-          "date": "5 nov 2026",
+          "date": "november 2026",
           "event": "Geplande lancering van NROL-195"
         }
       ],
@@ -5553,6 +5554,44 @@
         "polar orbit"
       ],
       "_lastClaudeUpdate": "2026-10-25T12:45:46.996Z"
+    },
+    {
+      "id": "ussf-432",
+      "_ll2Id": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
+      "name": "USSF-432",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "2 nov 2026",
+      "launchPrecision": "Minute",
+      "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 2 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-432 is een geclassificeerde missie van SpaceX voor de United States Space Force, uitgevoerd met een Falcon 9-raket naar een lage aardbaan. Op basis van de locaties van de valzones van de rakettrappen lijkt het mogelijk om een batch geclassificeerde LEO-satellieten op het Starshield-satellietplatform van SpaceX te gaan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spaceforce.mil/",
+      "timeline": [
+        {
+          "date": "2 nov 2026",
+          "event": "Geplande lancering van USSF-432"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "ussf",
+        "starshield",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-10-27T13:33:43.397Z"
     }
   ]
 }
