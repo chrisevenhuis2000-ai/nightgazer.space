@@ -122,6 +122,7 @@ const articles = files.map(file => {
     readTime:    parseInt(fm.readTime) || 3,
     featured:    fm.featured === 'true',
     imageUrl:    fm.imageUrl || '',
+    source:      fm.source || '',          // de bron (NASA, ESA, …): de X-tab van het socialpaneel noemt hem
     publishedAt: fm.publishedAt || '2026-01-01T00:00:00.000Z',
   }
 }).sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
