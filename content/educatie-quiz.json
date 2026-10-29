@@ -1366,6 +1366,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-10-29",
+      "slug": "apod-29-october-2026-the-horns-of-venus",
+      "titel": "De hoorns van Venus",
+      "beg": {
+        "q": "Waarom zie je bij Venus rond de donkere kant nog een dun lichtend randje, terwijl een nieuwe maan helemaal donker is?",
+        "options": [
+          "Venus geeft zelf licht zoals een ster",
+          "Venus is bedekt met ijs dat het zonlicht terugkaatst naar de aarde",
+          "De aarde werpt een schaduw op Venus waardoor er een rand ontstaat",
+          "Venus heeft een dikke atmosfeer die zonlicht rond de rand verstrooit"
+        ],
+        "correct": 3,
+        "explain": "De dikke dampkring van Venus buigt en verstrooit het zonlicht dat van achteren komt, zodat een gloeiende rand zichtbaar wordt. De maan heeft vrijwel geen atmosfeer, dus daar gebeurt dit niet."
+      },
+      "ama": {
+        "q": "Waarom kan de verlichte sikkel van Venus bij een stand vrijwel voor de zon groter zijn dan 180 graden?",
+        "options": [
+          "De zon staat dan schuin ten opzichte van het baanvlak van Venus",
+          "Venus draait zo langzaam dat de nachtzijde nog warm gloeit",
+          "Venus is dan dichter bij de aarde dan de maan ooit komt",
+          "De atmosfeer van Venus breekt en verstrooit het zonlicht rond de nachtzijde"
+        ],
+        "correct": 3,
+        "explain": "Zonlicht wordt in de dikke atmosfeer gebroken en verstrooid, waardoor ook een deel van de nachtzijde oplicht en de boog verder reikt dan een halve cirkel. De maan heeft geen noemenswaardige atmosfeer en laat dit effect dus niet zien."
+      },
+      "pro": {
+        "q": "Welk fysisch proces zorgt ervoor dat Venus vlak bij de benedenconjunctie een lichtboog van meer dan 180 graden toont?",
+        "options": [
+          "Thermische straling van het hete oppervlak aan de nachtzijde",
+          "Refractie en verstrooiing van zonlicht in de dichte atmosfeer van Venus (forward scattering)",
+          "Aardschijn: zonlicht dat eerst door de aarde wordt teruggekaatst naar Venus",
+          "Synchrotronstraling uit het magnetische veld van Venus"
+        ],
+        "correct": 1,
+        "explain": "Bij bijna-benedenconjunctie valt zonlicht van achteren op de planeet en wordt in de dikke atmosfeer gebroken en voorwaarts verstrooid. Zo wordt een ring zichtbaar die de geometrische sikkel overschrijdt. Venus heeft bovendien geen significant intrinsiek magnetisch veld."
+      }
+    },
+    {
       "datum": "2026-10-27",
       "slug": "astranis-upgrades-falcon-9-launch-contract-to-dedicated-miss",
       "titel": "Astranis koopt complete Falcon 9-lancering voor alle zes Block 4-satellieten",
@@ -1556,5 +1594,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-27T13:17:04.018Z"
+  "bijgewerkt": "2026-10-29T14:25:51.462Z"
 }
