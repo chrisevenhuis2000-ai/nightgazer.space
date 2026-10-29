@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-27T13:33:48.965Z",
+    "lastUpdated": "2026-10-29T14:39:02.123Z",
     "autoUpdated": [
-      "starlink-group-15-16",
-      "ussf-432"
+      "ussf-xxx-r-5",
+      "oneweb-21"
     ]
   },
   "missions": [
@@ -2947,13 +2947,13 @@
       "status": "gepland",
       "soort": "missie",
       "launched": "31 dec 2026",
-      "objective": "Lancering van de tweede Metop-SG B-weersatelliet voor verbeterde weersvoorspellingen vanuit poolbaan.",
+      "objective": "Lancering van de tweede Metop-SG B-weersatelliet van EUMETSAT in een zonsynchrone baan.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Gepland voor lancering op 30 november 2026 met Ariane 62.",
+      "highlight": "Gepland voor 31 december 2026 met Ariane 62",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "Metop-SG B1 is de tweede satelliet binnen EUMETSATs tweede generatie Metop-weersatellieten en wordt gelanceerd met een Ariane 62-raket. De missie volgt op de A-serie van Metop-SG en richt zich op nauwkeurigere metingen van de atmosfeer vanuit een zonnesynchrone baan. De gegevens die de satelliet verzamelt, zijn cruciaal voor weermodellen en klimaatonderzoek wereldwijd. Arianespace verzorgt de lancering, gepland voor eind november 2026.",
+      "description": "Metop-SG B1 is de tweede van de tweede generatie Metop-weersatellieten van EUMETSAT. De lancering staat gepland voor 31 december 2026 met een Ariane 62-raket van Arianespace. De satelliet wordt in een zonsynchrone baan geplaatst.",
       "vehicle": "Ariane 62",
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
@@ -2981,9 +2981,10 @@
         "zonsynchrone baan",
         "klimaatmonitoring",
         "metop-sg",
-        "zonnesynchrone baan"
+        "zonnesynchrone baan",
+        "arianespace"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:13:39.975Z",
+      "_lastClaudeUpdate": "2026-10-29T14:38:41.831Z",
       "launchPrecision": "Month"
     },
     {
@@ -3286,13 +3287,13 @@
       "status": "gepland",
       "soort": "missie",
       "launched": "31 dec 2026",
-      "objective": "Demonstratievlucht van de Astrobotic Griffin-lander richting de maan met de FLIP-rover van Astrolab.",
+      "objective": "Demonstratievlucht van de Astrobotic Griffin-lander met de FLIP-rover van Astrolab naar de maan.",
       "body": "Maan",
-      "highlight": "FLIP-rover van Astrolab vervangt geannuleerde NASA VIPER-payload.",
+      "highlight": "Gepland voor 31 december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "Griffin Mission One is een demonstratievlucht van de Astrobotic Griffin-lander, oorspronkelijk ontwikkeld voor de NASA VIPER-missie die werd geannuleerd. Na het wegvallen van de VIPER-rover neemt de FLIP-rover van Astrolab de vrijgekomen plek op de lander over. De Falcon Heavy van SpaceX zal het ruimtevaartuig in 2026 naar de maan lanceren. De missie moet de motoren en systemen van de Griffin-lander valideren voor toekomstige maanmissies.",
+      "description": "Griffin Mission One is een demonstratievlucht van de Astrobotic Griffin-lander en diens motoren. De missie was oorspronkelijk gecontracteerd voor de NASA VIPER-missie, maar die payload-slot is nu ingevuld door de FLIP (FLEX Lunar Innovation Platform) maanrover van Astrolab. De lancering staat gepland voor eind december 2026 met een Falcon Heavy.",
       "vehicle": "Falcon Heavy",
       "launchSite": "Launch Complex 39A",
       "duration": "Onbekend",
@@ -3315,9 +3316,10 @@
         "flip-rover",
         "griffin-lander",
         "astrolab flip",
-        "maanlander"
+        "maanlander",
+        "astrolab"
       ],
-      "_lastClaudeUpdate": "2026-09-28T16:13:46.354Z",
+      "_lastClaudeUpdate": "2026-10-29T14:38:46.081Z",
       "launchPrecision": "Month"
     },
     {
@@ -4398,11 +4400,11 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "3 nov 2026",
-      "launchPrecision": "Day",
+      "launched": "2 nov 2026",
+      "launchPrecision": "Hour",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 3 nov 2026",
+      "highlight": "Lancering gepland: 2 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4414,7 +4416,7 @@
       "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
-          "date": "3 nov 2026",
+          "date": "2 nov 2026",
           "event": "Geplande lancering van The Sea God Surveys (iQPS Launch 9)"
         }
       ],
@@ -4716,11 +4718,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "31 dec 2026",
-      "launchPrecision": "Quarter 4",
+      "launched": "30 nov 2026",
+      "launchPrecision": "Month",
       "objective": "Vijftiende testvlucht van Starship, de vierde in de V3-configuratie.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: Q4 2026",
+      "highlight": "Lancering gepland: november 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4732,7 +4734,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "Q4 2026",
+          "date": "november 2026",
           "event": "Geplande lancering van Flight 15"
         }
       ],
@@ -5411,11 +5413,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 okt 2026",
+      "launched": "31 okt 2026",
       "launchPrecision": "Minute",
       "objective": "Uitbrengen van 27 Starlink-satellieten in een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 30 okt 2026",
+      "highlight": "Lancering gepland: 31 okt 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5427,7 +5429,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "30 okt 2026",
+          "date": "31 okt 2026",
           "event": "Geplande lancering van Starlink Group 15-18"
         }
       ],
@@ -5487,11 +5489,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "5 nov 2026",
+      "launched": "6 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 5 nov 2026",
+      "highlight": "Lancering gepland: 6 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5503,7 +5505,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "5 nov 2026",
+          "date": "6 nov 2026",
           "event": "Geplande lancering van Starlink Group 15-21"
         }
       ],
@@ -5563,11 +5565,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "2 nov 2026",
+      "launched": "3 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 2 nov 2026",
+      "highlight": "Lancering gepland: 3 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5579,7 +5581,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "2 nov 2026",
+          "date": "3 nov 2026",
           "event": "Geplande lancering van USSF-432"
         }
       ],
@@ -5592,6 +5594,82 @@
         "low earth orbit"
       ],
       "_lastClaudeUpdate": "2026-10-27T13:33:43.397Z"
+    },
+    {
+      "id": "ussf-xxx-r-5",
+      "_ll2Id": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+      "name": "USSF-xxx (\"R-5\")",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "10 nov 2026",
+      "launchPrecision": "Minute",
+      "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 10 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-xxx ('R-5') is een geclassificeerde missie voor de United States Space Force, uitgevoerd door SpaceX met een Falcon 9-raket. De bestemming is een lage aardbaan. Op basis van de locaties van de neervallende rakettrappen komen de dropzones exact overeen met eerdere Starlink Group 15-lanceringen, wat wijst op een mogelijke batch geclassificeerde LEO-satellieten op basis van SpaceX's Starshield-satellietbus.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spaceforce.mil/",
+      "timeline": [
+        {
+          "date": "10 nov 2026",
+          "event": "Geplande lancering van USSF-xxx (\"R-5\")"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "ussf",
+        "low earth orbit",
+        "starshield"
+      ],
+      "_lastClaudeUpdate": "2026-10-29T14:38:50.735Z"
+    },
+    {
+      "id": "oneweb-21",
+      "_ll2Id": "b0dc988c-ea4a-423f-81b6-6b0fbe7cc17c",
+      "name": "OneWeb 21",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 nov 2026",
+      "launchPrecision": "Month",
+      "objective": "32 OneWeb-satellieten in een polaire baan brengen voor wereldwijde breedbandinternettoegang.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: november 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "OneWeb 21 is een SpaceX-vlucht met een Falcon 9-raket die 32 satellieten naar een polaire baan zal brengen. De satellieten maken deel uit van de OneWeb-constellatie, die bestaat uit circa 648 microsatellieten van elk ongeveer 150 kg, actief in de Ku-band vanuit een lage aardbaan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.oneweb.net/",
+      "timeline": [
+        {
+          "date": "november 2026",
+          "event": "Geplande lancering van OneWeb 21"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "oneweb",
+        "spacex",
+        "falcon 9",
+        "ku-band",
+        "polaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-10-29T14:38:56.830Z"
     }
   ]
 }
