@@ -1366,6 +1366,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-10-30",
+      "slug": "novembers-night-sky-notes-light-day-away",
+      "titel": "Hemelnotities november: Voyager 1 bijna één lichtdag ver",
+      "beg": {
+        "q": "Wat is een lichtdag, de afstand die Voyager 1 bijna heeft bereikt?",
+        "options": [
+          "De afstand die licht in één dag aflegt",
+          "De afstand die Voyager 1 in één dag aflegt",
+          "De afstand van de aarde tot de zon",
+          "De afstand waarover de zon één dag lang zichtbaar is"
+        ],
+        "correct": 0,
+        "explain": "Een lichtdag is de afstand die licht in één dag aflegt, net zoals een lichtjaar de afstand is die licht in een jaar aflegt. Het is dus een maat voor afstand en geen tijdsduur."
+      },
+      "ama": {
+        "q": "Ongeveer hoeveel kilometer legt licht in één dag af, de afstand die Voyager 1 in november 2026 passeert?",
+        "options": [
+          "Ongeveer 150 miljoen kilometer",
+          "Ongeveer 26 miljard kilometer",
+          "Ongeveer 300.000 kilometer",
+          "Ongeveer 9,5 biljoen kilometer"
+        ],
+        "correct": 1,
+        "explain": "Licht legt zo'n 300.000 km per seconde af. Maal 86.400 seconden per dag geeft ongeveer 26 miljard kilometer, wat overeenkomt met de 16,1 miljard mijl uit het artikel. Dat is bijna 175 keer de afstand aarde-zon."
+      },
+      "pro": {
+        "q": "Welke berekening geeft de afstand van één lichtdag?",
+        "options": [
+          "c × 86.400 s, ongeveer 2,6·10^13 m",
+          "c × 31,6·10^6 s, ongeveer 9,5·10^15 m",
+          "c × 86.400 s, ongeveer 2,6·10^10 m",
+          "c × 3600 s, ongeveer 1,1·10^12 m"
+        ],
+        "correct": 0,
+        "explain": "Met c ≈ 3,0·10^8 m/s en 86.400 s per dag is de afstand ongeveer 2,6·10^13 m, oftewel 26 miljard km. Dat komt overeen met circa 173 AU. De andere opties zijn een uur, een verkeerde macht van tien, of een lichtjaar."
+      }
+    },
+    {
       "datum": "2026-10-29",
       "slug": "apod-29-october-2026-the-horns-of-venus",
       "titel": "De hoorns van Venus",
@@ -1594,5 +1632,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-29T14:25:51.462Z"
+  "bijgewerkt": "2026-10-30T15:00:36.295Z"
 }
