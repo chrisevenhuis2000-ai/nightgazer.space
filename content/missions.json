@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-30T14:30:30.539Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-10-31T13:52:08.524Z",
+    "autoUpdated": [
+      "starlink-group-15-18"
+    ]
   },
   "missions": [
     {
@@ -5408,13 +5410,13 @@
       "name": "Starlink Group 15-18",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "31 okt 2026",
       "launchPrecision": "Second",
       "objective": "Uitbrengen van 27 Starlink-satellieten in een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 31 okt 2026",
+      "highlight": "Gelanceerd op 31 okt 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5427,7 +5429,7 @@
       "timeline": [
         {
           "date": "31 okt 2026",
-          "event": "Geplande lancering van Starlink Group 15-18"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
