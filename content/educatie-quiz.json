@@ -1366,6 +1366,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-01",
+      "slug": "apod-2026-november-1-colors-of-the-moon",
+      "titel": "De kleuren van de Maan",
+      "beg": {
+        "q": "Waarom lijkt de Maan soms rood of geel als hij vlak boven de horizon staat?",
+        "options": [
+          "De Maan verandert van kleur omdat hij zelf licht uitstraalt dat per nacht verschilt",
+          "De schaduw van de aarde valt dan over de Maan heen",
+          "De Maan wordt dichtbij de horizon echt heter en gaat daardoor rood gloeien",
+          "Het maanlicht legt een lange weg door de lucht af en een deel van het blauwe licht wordt onderweg weggestrooid"
+        ],
+        "correct": 3,
+        "explain": "Bij de horizon gaat het licht door veel meer lucht dan hoger aan de hemel. Blauw licht wordt het sterkst weggestrooid, dus de warme kleuren blijven over. Hetzelfde effect maakt zonsondergangen rood."
+      },
+      "ama": {
+        "q": "Welke combinatie verklaart het best waarom de volle maan dicht bij de horizon geel of rood oogt?",
+        "options": [
+          "De Maan weerkaatst bij lage standen meer infrarood licht uit de aardatmosfeer",
+          "Zonlicht wordt bij de horizon door de ozonlaag omgezet in rood licht",
+          "Het licht passeert een dikkere laag atmosfeer, waarbij blauw licht sterker wordt weggestrooid dan rood",
+          "Het maanoppervlak is roder aan de kant die naar de horizon wijst"
+        ],
+        "correct": 2,
+        "explain": "Het maanlicht legt bij de horizon een veel langere weg door de atmosfeer af, waarbij blauw sterker wordt verstrooid dan rood. Buiten de atmosfeer is de Maan eigenlijk grijs met een bruinige zweem."
+      },
+      "pro": {
+        "q": "Welk verschijnsel verklaart de roodachtige kleur van de Maan tijdens een totale maansverduistering?",
+        "options": [
+          "Fluorescentie van maangesteente onder invloed van zonnewind",
+          "Diffractie van zonlicht aan de rand van de aardschijf die alleen rood licht doorlaat",
+          "Refractie van zonlicht door de aardatmosfeer, waarbij Rayleigh-verstrooiing blauw licht grotendeels verwijdert en rood naar de umbra buigt",
+          "Thermische straling van het maanoppervlak dat door de schaduw van de aarde is opgewarmd"
+        ],
+        "correct": 2,
+        "explain": "Zonlicht wordt in de aardatmosfeer gebroken en bereikt zo de umbra. Rayleigh-verstrooiing, die sterk van de golflengte afhangt (ongeveer 1/λ⁴), haalt vooral het blauwe licht eruit, waardoor rood overblijft. Dezelfde fysica kleurt zonsondergangen rood."
+      }
+    },
+    {
       "datum": "2026-10-30",
       "slug": "novembers-night-sky-notes-light-day-away",
       "titel": "Hemelnotities november: Voyager 1 bijna één lichtdag ver",
@@ -1632,5 +1670,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-10-30T15:00:36.295Z"
+  "bijgewerkt": "2026-11-01T15:01:54.041Z"
 }
