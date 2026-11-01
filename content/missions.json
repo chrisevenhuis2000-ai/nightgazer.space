@@ -1,9 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-31T13:52:08.524Z",
-    "autoUpdated": [
-      "starlink-group-15-18"
-    ]
+    "lastUpdated": "2026-11-01T14:29:50.972Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -4400,7 +4398,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "2 nov 2026",
-      "launchPrecision": "Hour",
+      "launchPrecision": "Minute",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 2 nov 2026",
