@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-01T14:29:50.972Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-11-02T17:25:27.341Z",
+    "autoUpdated": [
+      "the-sea-god-surveys-iqps-launch-9"
+    ]
   },
   "missions": [
     {
@@ -4395,26 +4397,26 @@
       "name": "The Sea God Surveys (iQPS Launch 9)",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "actief",
       "soort": "lancering",
       "launched": "2 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 2 nov 2026",
+      "highlight": "Gelanceerd op 2 nov 2026 — missie in bedrijf",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
       "description": "Rocket Lab voert met de Electron-raket de negende lancering uit voor het Japanse bedrijf iQPS, dat gespecialiseerd is in aardobservatie vanuit de ruimte. De missie draagt de naam 'The Sea God Surveys' en brengt een synthetische apertuurradar (SAR) satelliet in een lage aardbaan. SAR-technologie maakt het mogelijk om de aarde onafhankelijk van weersomstandigheden en daglicht te fotograferen. De satelliet versterkt het groeiende constellatienetwerk van iQPS voor commerciële beelddiensten.",
       "vehicle": "Electron",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
           "date": "2 nov 2026",
-          "event": "Geplande lancering van The Sea God Surveys (iQPS Launch 9)"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4440,11 +4442,11 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "10 nov 2026",
+      "launched": "14 nov 2026",
       "launchPrecision": "Day",
       "objective": "Lancering van een synthetische apertuurradar-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 10 nov 2026",
+      "highlight": "Lancering gepland: 14 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4456,7 +4458,7 @@
       "missionUrl": "https://i-qps.net/en/",
       "timeline": [
         {
-          "date": "10 nov 2026",
+          "date": "14 nov 2026",
           "event": "Geplande lancering van The Mountain God Rises (iQPS Launch 10)"
         }
       ],
@@ -5486,11 +5488,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "6 nov 2026",
-      "launchPrecision": "Minute",
+      "launched": "30 nov 2026",
+      "launchPrecision": "Month",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 6 nov 2026",
+      "highlight": "Lancering gepland: november 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5502,7 +5504,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "6 nov 2026",
+          "date": "november 2026",
           "event": "Geplande lancering van Starlink Group 15-21"
         }
       ],
@@ -5562,11 +5564,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "3 nov 2026",
+      "launched": "4 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 3 nov 2026",
+      "highlight": "Lancering gepland: 4 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5578,7 +5580,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "3 nov 2026",
+          "date": "4 nov 2026",
           "event": "Geplande lancering van USSF-432"
         }
       ],
@@ -5600,11 +5602,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "10 nov 2026",
+      "launched": "9 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 10 nov 2026",
+      "highlight": "Lancering gepland: 9 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5616,7 +5618,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "10 nov 2026",
+          "date": "9 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-5\")"
         }
       ],
