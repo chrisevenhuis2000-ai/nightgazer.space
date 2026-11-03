@@ -1,8 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-02T17:25:27.341Z",
+    "lastUpdated": "2026-11-03T15:28:11.802Z",
     "autoUpdated": [
-      "the-sea-god-surveys-iqps-launch-9"
+      "the-sea-god-surveys-iqps-launch-9",
+      "ussf-xxx-r-6"
     ]
   },
   "missions": [
@@ -4397,13 +4398,13 @@
       "name": "The Sea God Surveys (iQPS Launch 9)",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "actief",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "2 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse beeldbedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Gelanceerd op 2 nov 2026 — missie in bedrijf",
+      "highlight": "Gelanceerd op 2 nov 2026 met Electron",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -5564,11 +5565,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "4 nov 2026",
+      "launched": "7 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 4 nov 2026",
+      "highlight": "Lancering gepland: 7 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5580,7 +5581,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "4 nov 2026",
+          "date": "7 nov 2026",
           "event": "Geplande lancering van USSF-432"
         }
       ],
@@ -5602,11 +5603,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "9 nov 2026",
+      "launched": "10 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 9 nov 2026",
+      "highlight": "Lancering gepland: 10 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5618,7 +5619,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "9 nov 2026",
+          "date": "10 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-5\")"
         }
       ],
@@ -5669,6 +5670,44 @@
         "polaire baan"
       ],
       "_lastClaudeUpdate": "2026-10-29T14:38:56.830Z"
+    },
+    {
+      "id": "ussf-xxx-r-6",
+      "_ll2Id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
+      "name": "USSF-xxx (\"R-6\")",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "13 nov 2026",
+      "launchPrecision": "Minute",
+      "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 13 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-xxx, ook bekend als 'R-6', is een geclassificeerde SpaceX-missie voor de United States Space Force. De Falcon 9-raket brengt een nuttige lading naar Low Earth Orbit. Op basis van de locaties van de dalzones van de rakettrappen vertoont de vluchtroute grote overeenkomst met eerdere Starlink Group 15-lanceringen, mogelijk wijzend op een serie geclassificeerde LEO-satellieten op het Starshield-satellietplatform van SpaceX.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spaceforce.mil/",
+      "timeline": [
+        {
+          "date": "13 nov 2026",
+          "event": "Geplande lancering van USSF-xxx (\"R-6\")"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "ussf",
+        "spacex",
+        "falcon 9",
+        "low earth orbit",
+        "starshield"
+      ],
+      "_lastClaudeUpdate": "2026-11-03T15:28:05.574Z"
     }
   ]
 }
