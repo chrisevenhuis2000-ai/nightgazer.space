@@ -4,13 +4,13 @@ excerpt: "Vijfenzestig jaar geleden richtte NASA in Houston een centrum op dat h
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-11-03T15:07:24.108Z"
-featured: false
+featured: "false"
 tags: []
 source: "NASA"
 sourceUrl: "https://www.nasa.gov/centers-and-facilities/johnson/happy-65-years-nasas-johnson-space-center-then-and-now/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/10/s63-11625.jpg"
+imageAlt: "65 jaar Johnson Space Center: NASA's thuisbasis van de bemande ruimtevaart toen en nu"
+imageCredit: "NASA"
 kernpunten: ["NASA's Johnson Space Center in Houston, opgericht op 1 november 1961, bestaat 65 jaar.","Het centrum speelde een sleutelrol van Mercury en Apollo via de spaceshuttle tot het ISS en Artemis.","Mission Control in Houston leidt sinds Gemini IV in 1965 alle bemande vluchten van NASA."]
 kerncijfers: [{"waarde":"135","eenheid":"","label":"shuttlemissies getraind in Building 9"},{"waarde":"13","eenheid":"","label":"gehuurde gebouwen bij start"}]
 ---
