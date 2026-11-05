@@ -41,8 +41,9 @@ eq(ond.map(t => t.id), ['zonnestelsel', 'sterren', 'sterrenstelsels', 'kosmologi
 ok(ond.every(t => t.beg && t.ama && t.pro), 'onderwerpen: uitleg op drie niveaus aanwezig')
 
 // ── main met een nep-client ───────────────────────────────────────────────
-function nepClient({ afkeurenVoor = [], kapot = [], ronde = 'a' } = {}) {
+function nepClient({ afkeurenVoor = [], kapot = [], ronde = 'a', dagAfkeuren = 0 } = {}) {
   const calls = []
+  let dagChecks = 0
   return {
     calls,
     beta: { messages: { create: async req => {
@@ -52,7 +53,8 @@ function nepClient({ afkeurenVoor = [], kapot = [], ronde = 'a' } = {}) {
       let out
       if (props.oordelen) {
         const n = (user.match(/^Vraag \d+$/gm) || []).length
-        const afkeur = afkeurenVoor.some(id => user.includes(id))
+        const dagAf = user.includes('Bronartikel') && dagChecks++ < dagAfkeuren
+        const afkeur = dagAf || afkeurenVoor.some(id => user.includes(id))
         out = { oordelen: Array.from({ length: n }, (_, i) => ({ nr: i + 1, klopt: !(afkeur || (i === 0 && !user.includes('Bronartikel'))), reden: 'test' })) }
       } else if (props.slug) {
         out = { slug: 'komeet-nieuws', vraag: vraag('Waarom krijgt een komeet een staart') }
@@ -103,6 +105,23 @@ function nepClient({ afkeurenVoor = [], kapot = [], ronde = 'a' } = {}) {
   eq(q3.onderwerpen.exoplaneten, q1.onderwerpen.exoplaneten, 'main: volledig afgekeurde set vervangt niets')
   eq(q3.onderwerpen.sterren.week, '2026-W44', 'main: geslaagde onderwerpen zijn vernieuwd')
   ok(c3.calls.some(c => c.messages[0].content.includes('Herhaal deze vragen van vorige week niet')), 'main: vorige vragen gaan mee om herhaling te voorkomen')
+
+  // Dagvraag eerst afgekeurd: een nieuwe poging met de reden erbij.
+  const dag2 = new Date('2026-10-28T08:00:00Z')
+  fs.writeFileSync(path.join(art, 'komeet-nieuws.md'), `---\ntitle: "Komeet krijgt staart"\npublishedAt: "2026-10-27T07:00:00Z"\n---\n\n${body}\n`)
+  const c4 = nepClient({ dagAfkeuren: 1, ronde: 'c' })
+  const s4 = await Q.main({ client: c4, nu: dag2, file, dir: art })
+  eq(s4.dagvraag, 'komeet-nieuws', 'dagvraag: tweede poging na afkeur slaagt')
+  ok(c4.calls.some(c => c.messages[0].content.includes('Eerdere pogingen vandaag zijn afgekeurd')), 'dagvraag: afkeurreden gaat mee in de nieuwe poging')
+
+  // Alle pogingen afgekeurd: geen storing, dus geen rode run.
+  const dag3 = new Date('2026-10-29T08:00:00Z')
+  const c5 = nepClient({ dagAfkeuren: 99 })
+  const s5 = await Q.main({ client: c5, nu: dag3, file, dir: art })
+  eq(s5.dagvraag, null, 'dagvraag: niets als alle pogingen afgekeurd zijn')
+  eq(c5.calls.filter(c => c.output_config.format.schema.properties.slug).length, Q.POGINGEN_DAG, 'dagvraag: precies POGINGEN_DAG pogingen')
+  eq(s5.storingen, 0, 'dagvraag: afkeur telt niet als storing')
+  eq(s3.storingen, 1, 'main: API-storing telt wel als storing')
 
   console.log(`✓ ${checks} checks geslaagd`)
 })().catch(e => { console.error(e); process.exit(1) })
