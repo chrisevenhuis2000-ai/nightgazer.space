@@ -1546,6 +1546,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-05",
+      "slug": "detumbler-airbus-passive-spin-stabilization-solution",
+      "titel": "Detumbler van Airbus moet tollende dode satellieten afremmen",
+      "beg": {
+        "q": "Hoe remt de Detumbler van Airbus een tollende dode satelliet af, zonder dat er stroom of een boordcomputer nodig is?",
+        "options": [
+          "Met een zeil dat de druk van zonlicht gebruikt om de draaiing te stoppen",
+          "Met een zware tolwiel dat draait en de satelliet zo stilzet",
+          "Met kleine raketmotoren die de satelliet tegendraaiend duwen",
+          "Met een magneet die op het aardmagnetisch veld gericht blijft, waardoor stromen in het metaal de draaiing afremmen"
+        ],
+        "correct": 3,
+        "explain": "In de Detumbler zit een magneet die zich op het aardmagnetisch veld blijft richten. Draait de satelliet, dan ontstaan er elektrische stromen in het metaal die de beweging tegenwerken en omzetten in warmte. Dit principe heet een inductierem en werkt zonder energiebron."
+      },
+      "ama": {
+        "q": "In welke vorm gaat de bewegingsenergie van een tollende satelliet over wanneer de Detumbler hem afremt?",
+        "options": [
+          "Warmte, door wervelstromen in de geleidende behuizing",
+          "Een hogere baanenergie, waardoor de satelliet hoger komt te staan",
+          "Licht, doordat de rotor gaat gloeien en fotonen uitzendt",
+          "Elektrische energie die in een accu wordt opgeslagen"
+        ],
+        "correct": 0,
+        "explain": "De draaiende behuizing beweegt door het magnetisch veld van de rotor, waardoor wervelstromen ontstaan. Die stromen verwarmen door weerstand het metaal, waardoor de rotatie-energie als warmte verdwijnt. Het apparaat heeft daarom geen elektriciteit nodig, en de rotatie neemt exponentieel af."
+      },
+      "pro": {
+        "q": "Waarom is de Detumbler met permanente magneten veel effectiever dan de natuurlijke wervelstromen in de metalen structuur van een dode satelliet?",
+        "options": [
+          "Het remkoppel is evenredig met het veld B in plaats van met B², en B is in een lage baan klein",
+          "Het remkoppel is onafhankelijk van het aardmagnetisch veld, omdat de magneten zelf het veld leveren",
+          "Het remkoppel werkt in tegengestelde richting aan de zonnedruk, waardoor alle verstoringen wegvallen",
+          "Het remkoppel is evenredig met B³ en groeit dus sterk naarmate de satelliet langzamer draait"
+        ],
+        "correct": 0,
+        "explain": "Bij natuurlijke wervelstromen is het koppel evenredig met B², en omdat het aardmagnetisch veld zwak is (in de orde van tientallen microtesla) is dat effect miniem. Met permanente magneten is het koppel evenredig met B zelf, wat bij een kleine B veel meer oplevert. Daardoor is het apparaat volgens Airbus vele ordes van grootte effectiever."
+      }
+    },
+    {
       "datum": "2026-11-02",
       "slug": "apod-2026-november-1-colors-of-the-moon",
       "titel": "De kleuren van de Maan",
@@ -1888,5 +1926,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-11-02T17:12:56.584Z"
+  "bijgewerkt": "2026-11-05T15:35:28.825Z"
 }
