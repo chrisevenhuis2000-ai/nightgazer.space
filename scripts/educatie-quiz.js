@@ -34,6 +34,7 @@ const PER_WEEK = 7          // één vraag per dag van de week
 const MIN_PER_WEEK = 5      // minder dan dit: oude set blijft staan
 const VRAAG_MAAKT = 9       // ruim vragen, want de controle gooit er soms uit
 const DAGVRAGEN_BEWAARD = 14
+const POGINGEN_DAG = 3     // de controle keurt soms af; dan nog een keer
 const NIVEAUS = ['beg', 'ama', 'pro']
 
 // ── Onderwerpen uit lib/education-data.ts ─────────────────────────────────
@@ -254,22 +255,43 @@ function recenteArtikelen(dir, nu, dagen = 3, max = 6) {
     .slice(0, max)
 }
 
-async function maakDagvraag(client, artikelen) {
+/** Een vraag die door de kwaliteitspoort valt. Dat is geen storing: de
+ *  poort doet zijn werk, dus de run hoeft er niet rood van te worden. */
+class Afgekeurd extends Error {}
+
+async function maakDagvraagPoging(client, artikelen, eerder = []) {
   const user = [
     'Hieronder staan de nieuwste artikelen van de site. Kies het artikel waar de leukste leerzame vraag over te maken is.',
     'Schrijf daarover één quizvraag op drie niveaus. Het juiste antwoord moet in het artikel staan of er rechtstreeks uit volgen; de uitleg mag één gevestigd achtergrondfeit toevoegen.',
     'Vraag naar het idee of de natuurkunde achter het nieuws, niet naar een datum of een naam die je alleen weet als je het artikel uit je hoofd kent.',
+    eerder.length ? `Eerdere pogingen vandaag zijn afgekeurd. Maak een andere vraag en vermijd deze fouten:\n${eerder.map(r => `- ${r}`).join('\n')}` : '',
     '',
     ...artikelen.map(a => `### slug: ${a.slug}\nTitel: ${a.titel}\n${a.body.slice(0, 5000)}`),
   ].join('\n')
   const out = await vraagClaude(client, { model: MODEL_MAAK, system: SYSTEM_MAAK, user, schema: DAG_SCHEMA })
   const art = artikelen.find(a => a.slug === out.slug)
-  if (!art) throw new Error(`onbekend artikel '${out.slug}'`)
+  if (!art) throw new Afgekeurd(`onbekend artikel '${out.slug}'`)
   const v = schoonVraag(out.vraag)
-  if (!v) throw new Error('vraag haalt de mechanische controle niet')
+  if (!v) throw new Afgekeurd('vraag haalt de mechanische controle niet')
   const { goed, afgekeurd } = await controleer(client, [v], `Bronartikel "${art.titel}":\n${art.body.slice(0, 5000)}`)
-  if (!goed.length) throw new Error(`afgekeurd: ${afgekeurd[0]?.reden}`)
+  if (!goed.length) throw new Afgekeurd(`afgekeurd: ${afgekeurd[0]?.reden}`)
   return { slug: art.slug, titel: art.titel, ...goed[0] }
+}
+
+/** Probeert een paar keer, want de controle keurt soms een vraag af. Een
+ *  storing (API, netwerk) gaat meteen door: die herhaalt de SDK al. */
+async function maakDagvraag(client, artikelen) {
+  const redenen = []
+  for (let i = 0; i < POGINGEN_DAG; i++) {
+    try {
+      return await maakDagvraagPoging(client, artikelen, redenen)
+    } catch (e) {
+      if (!(e instanceof Afgekeurd)) throw e
+      redenen.push(String(e.message).slice(0, 300))
+      console.log(`  ✗ dagvraag poging ${i + 1}: ${redenen.at(-1)}`)
+    }
+  }
+  throw new Afgekeurd(`${POGINGEN_DAG} pogingen afgekeurd; laatste: ${redenen.at(-1)}`)
 }
 
 // ── Hoofdprogramma ────────────────────────────────────────────────────────
@@ -286,7 +308,7 @@ async function main({
   quiz.dagvragen ||= []
   const week = isoWeek(nu)
   const vandaag = dagStr(nu)
-  const stats = { week, vernieuwd: [], behouden: [], dagvraag: null, fouten: [] }
+  const stats = { week, vernieuwd: [], behouden: [], dagvraag: null, fouten: [], storingen: 0 }
 
   for (const t of onderwerpen(edu)) {
     const huidig = quiz.onderwerpen[t.id]
@@ -295,12 +317,13 @@ async function main({
       const r = await maakWeekset(client, t, (huidig?.vragen || []).map(v => v.beg.q))
       console.log(`${t.id}: ${r.gemaakt} gemaakt, ${r.schoon} door de vormcontrole, ${r.vragen.length} goedgekeurd`)
       for (const a of r.afgekeurd) console.log(`  ✗ ${a.q} — ${a.reden}`)
-      if (r.vragen.length < MIN_PER_WEEK) throw new Error(`maar ${r.vragen.length} goedgekeurde vragen`)
+      if (r.vragen.length < MIN_PER_WEEK) throw new Afgekeurd(`maar ${r.vragen.length} goedgekeurde vragen`)
       quiz.onderwerpen[t.id] = { week, vragen: r.vragen.map((v, i) => ({ id: `${week}-${t.id}-${i + 1}`, ...v })) }
       stats.vernieuwd.push(t.id)
     } catch (e) {
       stats.behouden.push(t.id)
       stats.fouten.push(`${t.id}: ${e.message}`)
+      if (!(e instanceof Afgekeurd)) stats.storingen++
       console.log(`::warning title=Quiz ${t.id} niet vernieuwd::${String(e.message).slice(0, 200)} — vorige set blijft staan`)
     }
   }
@@ -317,6 +340,7 @@ async function main({
         console.log(`Vraag van de dag (${vandaag}): ${d.beg.q} — uit ${d.slug}`)
       } catch (e) {
         stats.fouten.push(`dagvraag: ${e.message}`)
+        if (!(e instanceof Afgekeurd)) stats.storingen++
         console.log(`::warning title=Geen vraag van de dag::${String(e.message).slice(0, 200)}`)
       }
     }
@@ -328,7 +352,7 @@ async function main({
   return stats
 }
 
-module.exports = { isoWeek, schoonNiveau, schoonVraag, schud, onderwerpen, recenteArtikelen, controleer, main, PER_WEEK, MIN_PER_WEEK }
+module.exports = { isoWeek, schoonNiveau, schoonVraag, schud, onderwerpen, recenteArtikelen, controleer, main, POGINGEN_DAG, PER_WEEK, MIN_PER_WEEK }
 
 if (require.main === module) {
   if (!process.env.ANTHROPIC_API_KEY) { console.error('ANTHROPIC_API_KEY ontbreekt'); process.exit(1) }
@@ -338,7 +362,9 @@ if (require.main === module) {
     dryRun: process.argv.includes('--dry-run'),
   }).then(s => {
     console.log(`Week ${s.week}: vernieuwd ${s.vernieuwd.join(', ') || '—'}; behouden ${s.behouden.join(', ') || '—'}; dagvraag ${s.dagvraag || '—'}`)
-    // Alles mislukt (bijv. de API is onbereikbaar): de run wordt rood, zodat het opvalt.
-    if (s.fouten.length && !s.vernieuwd.length && !s.dagvraag) process.exit(1)
+    // Alles mislukt door een storing (bijv. de API is onbereikbaar): de run
+    // wordt rood, zodat het opvalt. Alleen afgekeurde vragen zijn geen storing:
+    // dan blijft de vorige vraag staan en is de run groen met een waarschuwing.
+    if (s.storingen && !s.vernieuwd.length && !s.dagvraag) process.exit(1)
   }).catch(e => { console.error(e); process.exit(1) })
 }
