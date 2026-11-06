@@ -492,7 +492,15 @@ ${article.rawBody.slice(0, 2500)}` }],
                     <a href={article.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>
                       {article.source || new URL(article.sourceUrl).hostname}
                     </a>
-                    . Deze Nederlandse versie is met AI-ondersteuning geschreven op basis van het oorspronkelijke artikel.
+                    {article.tipSource && article.tipUrl && (
+                      <>
+                        {' '}(getipt via{' '}
+                        <a href={article.tipUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>
+                          {article.tipSource}
+                        </a>)
+                      </>
+                    )}
+                    . NightGazer schreef dit artikel met AI-ondersteuning vanuit de oorspronkelijke bron, met eigen duiding.
                   </p>
                 )}
 

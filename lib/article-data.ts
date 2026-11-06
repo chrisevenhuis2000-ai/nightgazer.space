@@ -20,6 +20,9 @@ export interface ArticleData {
   /** Oorspronkelijke bron (frontmatter `source`/`sourceUrl`), onderaan getoond. */
   source:      string
   sourceUrl:   string
+  /** Nieuwssite die de tip gaf (frontmatter `tipSource`/`tipUrl`); geen bron. */
+  tipSource:   string
+  tipUrl:      string
   imageAlt:    string
   /** De leesvolgorde: alinea's (index in `paragraphs`) en tussenkoppen. */
   blocks:      Block[]
@@ -141,6 +144,8 @@ export function parseMarkdown(raw: string, slug: string): ArticleData {
     rawBody:     body,
     source:      fm.source || '',
     sourceUrl:   /^https?:\/\//.test(fm.sourceUrl || '') ? fm.sourceUrl : '',
+    tipSource:   fm.tipSource || '',
+    tipUrl:      /^https?:\/\//.test(fm.tipUrl || '') ? fm.tipUrl : '',
     imageAlt:    fm.imageAlt    || '',
     kernpunten:  json<unknown[]>(fm.kernpunten, []).filter((x): x is string => typeof x === 'string' && !!x.trim()).slice(0, 4),
     kerncijfers: json<Partial<Kerncijfer>[]>(fm.kerncijfers, [])

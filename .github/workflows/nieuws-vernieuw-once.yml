@@ -1,0 +1,106 @@
+name: 📰 Nieuws vernieuwen (eenmalig)
+
+# Schrijft elk bestaand artikel opnieuw volgens de werkwijze van de nieuwsbot
+# sinds november 2026 (scripts/nieuws-vernieuw.js). Werkt op de branch
+# nieuws-vernieuwd, niet op main: na de ronde komt er een PR om na te kijken.
+# Werkt in porties en pusht na elke portie; vernieuwde artikelen worden
+# overgeslagen, dus een afgebroken run gaat bij opnieuw starten verder.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Hoeveel artikelen in totaal (leeg = alle)'
+        required: false
+        default: ''
+      slug:
+        description: 'Alleen dit artikel (slug, optioneel)'
+        required: false
+        default: ''
+
+concurrency:
+  group: nieuws-vernieuw
+  cancel-in-progress: false
+
+env:
+  BRANCH: nieuws-vernieuwd
+  PORTIE: '40'
+
+jobs:
+  vernieuw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Branch nieuws-vernieuwd (met de nieuwste main)
+        run: |
+          git config --local user.email "bot@cosmosnl.nl"
+          git config --local user.name "CosmosNL Bot"
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null; then
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            git merge --no-edit origin/main
+          else
+            git checkout -B "$BRANCH" origin/main
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Artikelen vernieuwen (in porties)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIMIT: ${{ inputs.limit }}
+          SLUG: ${{ inputs.slug }}
+          VERNIEUW_OVER_PAD: ${{ runner.temp }}/over.txt
+        run: |
+          commit() {
+            git add content/articles/ scripts/__fixtures__/verwijderde-artikelen.txt
+            [ -f public/_redirects ] && git add public/_redirects
+            git diff --staged --quiet || git commit -q -m "📰 Nieuws vernieuwd: $1"
+            git push -q -u origin "$BRANCH"
+          }
+          if [ -n "$SLUG" ]; then
+            node scripts/nieuws-vernieuw.js --slug "$SLUG"
+            commit "$SLUG"
+            exit 0
+          fi
+          rest="${LIMIT:-0}"
+          ronde=0
+          vorige=999999
+          while :; do
+            ronde=$((ronde + 1))
+            n="$PORTIE"
+            if [ "$rest" -gt 0 ] && [ "$rest" -lt "$n" ]; then n="$rest"; fi
+            node scripts/nieuws-vernieuw.js --limit "$n"
+            commit "portie $ronde"
+            over="$(cat "$VERNIEUW_OVER_PAD")"
+            echo "Nog open: $over"
+            if [ "$over" = "0" ]; then break; fi
+            # Geen voortgang (alleen fouten): stoppen in plaats van rondjes draaien.
+            if [ "$over" -ge "$vorige" ]; then echo "::warning::Geen voortgang meer, gestopt met $over open"; break; fi
+            vorige="$over"
+            if [ "$rest" -gt 0 ]; then rest=$((rest - n)); [ "$rest" -le 0 ] && break; fi
+          done
+
+      - name: Vrije beelden zoeken voor artikelen zonder beeld
+        if: ${{ inputs.slug == '' }}
+        continue-on-error: true
+        run: |
+          node scripts/backfill-images.js
+          git add content/articles/
+          git diff --staged --quiet || git commit -q -m "🖼️ Vrije beelden voor vernieuwde artikelen"
+          git push -q -u origin "$BRANCH"
