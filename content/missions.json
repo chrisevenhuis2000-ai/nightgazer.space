@@ -1,10 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-03T15:28:11.802Z",
-    "autoUpdated": [
-      "the-sea-god-surveys-iqps-launch-9",
-      "ussf-xxx-r-6"
-    ]
+    "lastUpdated": "2026-11-06T15:22:47.627Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -3535,7 +3532,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van MDA's CHORUS-constellatie met twee radarsatellieten voor aardobservatie vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: Q4 2026",
+      "highlight": "Lancering gepland: december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3547,7 +3544,7 @@
       "missionUrl": "",
       "timeline": [
         {
-          "date": "Q4 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van CHORUS"
         }
       ],
@@ -3570,7 +3567,7 @@
         "radarconstellatie"
       ],
       "_lastClaudeUpdate": "2026-10-03T12:50:33.311Z",
-      "launchPrecision": "Quarter 4"
+      "launchPrecision": "Month"
     },
     {
       "id": "inmarsat-7-f1-gx-7",
@@ -3797,7 +3794,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3809,7 +3806,7 @@
       "missionUrl": "",
       "timeline": [
         {
-          "date": "2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van BlackSky Gen-3 6"
         }
       ],
@@ -3827,7 +3824,7 @@
         "low earth orbit"
       ],
       "_lastClaudeUpdate": "2026-10-03T12:50:55.772Z",
-      "launchPrecision": "Year"
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "blacksky-gen-3-7",
@@ -3840,7 +3837,7 @@
       "launched": "31 dec 2026",
       "objective": "Lancering van BlackSky Gen-3 aardobservatiesatellieten naar een lage baan om de aarde.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 2026",
+      "highlight": "Lancering gepland: Q4 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3852,7 +3849,7 @@
       "missionUrl": "",
       "timeline": [
         {
-          "date": "2026",
+          "date": "Q4 2026",
           "event": "Geplande lancering van BlackSky Gen-3 7"
         }
       ],
@@ -3870,7 +3867,7 @@
         "low earth orbit"
       ],
       "_lastClaudeUpdate": "2026-10-03T12:51:03.506Z",
-      "launchPrecision": "Year"
+      "launchPrecision": "Quarter 4"
     },
     {
       "id": "blacksky-gen-3-8",
@@ -4443,7 +4440,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "14 nov 2026",
-      "launchPrecision": "Day",
+      "launchPrecision": "Minute",
       "objective": "Lancering van een synthetische apertuurradar-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 14 nov 2026",
@@ -4717,11 +4714,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 nov 2026",
-      "launchPrecision": "Month",
+      "launched": "13 nov 2026",
+      "launchPrecision": "Day",
       "objective": "Vijftiende testvlucht van Starship, de vierde in de V3-configuratie.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: november 2026",
+      "highlight": "Lancering gepland: 13 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4733,7 +4730,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "november 2026",
+          "date": "13 nov 2026",
           "event": "Geplande lancering van Flight 15"
         }
       ],
@@ -4754,10 +4751,10 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "31 dec 2026",
-      "launchPrecision": "Year Half 2",
+      "launchPrecision": "Month",
       "objective": "Negen Globalstar 2de-generatie satellieten lanceren naar een baan op 1410 km hoogte.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 2e helft 2026",
+      "highlight": "Lancering gepland: december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4769,7 +4766,7 @@
       "missionUrl": "https://en.wikipedia.org/wiki/Globalstar",
       "timeline": [
         {
-          "date": "2e helft 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van Globalstar 2-R Mission 2 (x 9)"
         }
       ],
@@ -5565,7 +5562,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "7 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 7 nov 2026",
