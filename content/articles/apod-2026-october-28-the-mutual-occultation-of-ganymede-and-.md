@@ -1,6 +1,6 @@
 ---
-title: "Ganymedes schuift voor Io: zeldzame onderlinge bedekking van Jupitermanen"
-excerpt: "Op 20 oktober 2026 schoof Jupitermaan Ganymedes kortstondig voor zijn zustermaan Io langs. Michael Wong legde deze zeldzame onderlinge bedekking vast op video. Zulke gebeurtenissen zijn alleen zichtbaar rond de equinox van Jupiter, die eens in de zes jaar plaatsvindt."
+title: "Ganymedes schuift voor Io langs: zeldzame manenbedekking bij Jupiter vastgelegd"
+excerpt: "Op 20 oktober 2026 schoof Jupitermaan Ganymedes kortstondig voor zijn zustermaan Io langs. Michael Wong legde dat vast op video, en NASA koos de beelden op 28 oktober als Astronomy Picture of the Day. Zulke onderlinge bedekkingen zijn alleen rond Jupiters equinox te zien, eens in de zes jaar."
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-28T14:01:34.483Z"
@@ -9,24 +9,35 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-28-the-mutual-occultation-of-ganymede-and-io/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/occultation.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "APOD: 2026 October 28 – The Mutual Occultation of Ganymede and Io"
+imageAlt: "Ganymedes schuift voor Io langs: zeldzame manenbedekking bij Jupiter vastgelegd"
 imageCredit: "NASA"
-kernpunten: ["Op 20 oktober 2026 schoof Ganymedes kortstondig voor Io langs, vastgelegd op video door Michael Wong.","Onderlinge bedekkingen van Galileïsche manen zijn alleen zichtbaar rond Jupiters equinox, eens in de zes jaar.","Ganymedes wierp tegelijk een schaduw op Jupiter, waar een denkbeeldige bewoner een zonsverduistering zou zien."]
-kerncijfers: [{"waarde":"115","eenheid":"","label":"ontdekte manen van Jupiter"},{"waarde":"293","eenheid":"","label":"manen van Saturnus"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Ganymedes schoof op 20 oktober 2026 voor Io langs, vastgelegd op video door Michael Wong en gekozen als NASA's Astronomy Picture of the Day.","Onderlinge bedekkingen van de Galileïsche manen zijn alleen eens in de zes jaar te zien, rond Jupiters equinox.","Ganymedes wierp tegelijk zijn schaduw op Jupiter, wat daar in feite een zonsverduistering betekent."]
+kerncijfers: [{"waarde":"115","eenheid":"manen","label":"Bekende manen van Jupiter"},{"waarde":"293","eenheid":"manen","label":"Bekende manen van Saturnus"}]
 ---
 
-Jupiter is allesbehalve eenzaam. Tot nu toe zijn er maar liefst 115 manen ontdekt die rond de reuzenplaneet draaien. Alleen Saturnus heeft er meer: 293. Twee van de bekendste Jupitermanen, Ganymedes en Io, kwamen op 20 oktober 2026 aan de hemel bij elkaar. Die ontmoeting is vastgelegd op een video van Michael Wong, die op 28 oktober werd gekozen als Astronomy Picture of the Day (APOD) van NASA.
+Twee van de beroemdste manen in ons zonnestelsel stonden op 20 oktober 2026 even precies achter elkaar. Ganymedes, de grootste maan van Jupiter, schoof voor Io langs en onttrok die tijdelijk aan het zicht. Michael Wong legde het moment vast op video. NASA koos de beelden op 28 oktober als Astronomy Picture of the Day (APOD), de dagelijkse astronomiefoto die het ruimteagentschap online zet.
 
-Op de beelden is te zien hoe Ganymedes kortstondig voor Io langs schuift en zijn zustermaan aan het zicht onttrekt. Beide manen behoren tot de Galileïsche manen: de vier grootste manen van Jupiter, die in 1610 door Galileo Galilei werden ontdekt.
+Ganymedes en Io behoren tot de Galileïsche manen. Dat zijn de vier grootste manen van Jupiter, die Galileo Galilei in 1610 ontdekte. Het zijn slechts enkele leden van een groot gezelschap: rond de reuzenplaneet zijn tot nu toe 115 manen gevonden. Alleen Saturnus heeft er meer, met 293.
 
-## Wat is een onderlinge bedekking?
+## Manen die elkaar bedekken
 
-Wanneer een hemellichaam voor een ander langs beweegt en het geheel of gedeeltelijk afdekt, spreken astronomen van een bedekking of occultatie. Gebeurt dat tussen twee manen van dezelfde planeet, dan heet dat een onderlinge bedekking, in het Engels een mutual occultation.
+Als een hemellichaam voor een ander langs beweegt en het geheel of gedeeltelijk afdekt, heet dat een bedekking of occultatie. Gebeurt dat tussen twee manen van dezelfde planeet, dan spreken sterrenkundigen van een onderlinge bedekking, in het Engels een mutual occultation.
 
-Dit soort bedekkingen tussen de Galileïsche manen zijn zeldzaam om waar te nemen. Ze kunnen alleen plaatsvinden als we vanaf de aarde precies op de zijkant van de baanvlakken van de manen kijken. Dat gebeurt eens in de zes jaar, wanneer Jupiter zijn equinox bereikt. Rond dat moment lijkt de planeet vanaf de aarde gezien minder 'gekanteld', waardoor de manen in onze gezichtslijn voor elkaar langs kunnen schuiven.
+Bij de Galileïsche manen zijn zulke gebeurtenissen zeldzaam. Ze zijn alleen te zien als de aarde precies op de zijkant van de baanvlakken van de manen kijkt. Dat is eens in de zes jaar het geval, wanneer Jupiter zijn equinox bereikt: het moment waarop de planeet vanaf de aarde gezien het minst gekanteld lijkt. Alleen dan liggen de banen van de manen zo in onze gezichtslijn dat ze voor elkaar langs kunnen schuiven. Buiten die periode lijken ze vanaf de aarde steeds net boven of onder elkaar te passeren.
 
-## Een schaduw op Jupiter
+## Een zonsverduistering op Jupiter
 
-De video laat nog een tweede verschijnsel zien. Ganymedes werpt namelijk ook zijn schaduw op de rechterkant van Jupiter. Wie zich in die schaduw zou bevinden, zou een zonsverduistering beleven. Op de gasreus zelf leeft uiteraard niemand, maar een denkbeeldige Jupiterbewoner zou de zon daar tijdelijk achter Ganymedes zien verdwijnen.
+De video toont nog een tweede schouwspel. Ganymedes werpt zijn schaduw op de rechterkant van Jupiter, zichtbaar als een donkere vlek op de wolkenlagen van de gasreus. Op die plek is het in feite een zonsverduistering: vanuit de schaduw zou de zon tijdelijk achter Ganymedes verdwijnen. Op Jupiter zelf staat uiteraard niemand om dat te beleven, want de planeet heeft geen vast oppervlak en is onbewoonbaar.
 
-Voor sterrenkijkers met een telescoop zijn zulke schaduwovergangen en bedekkingen een mooie gelegenheid om de dynamiek van het Jupiterstelsel met eigen ogen te volgen. Omdat de onderlinge bedekkingen alleen rond Jupiters equinox optreden, is het zaak om in zo'n periode de planeet goed in de gaten te houden.
+Zo vatten de beelden in een paar momenten samen hoe druk en beweeglijk het Jupiterstelsel is: manen die om elkaar heen draaien, elkaar verbergen en hun schaduw op de planeet werpen.
+
+## Zien vanuit Nederland
+
+De Galileïsche manen zijn met een verrekijker al als lichtpuntjes naast Jupiter te zien. Om bedekkingen en schaduwovergangen te volgen is een telescoop nodig; dan is ook het zwarte schaduwvlekje op de planeetschijf waar te nemen. Omdat onderlinge bedekkingen alleen in de periode rond Jupiters equinox optreden, loont het om de planeet in die tijd regelmatig op te zoeken en voorspellingen van zulke gebeurtenissen in astronomische jaarboeken of planetariumsoftware te raadplegen.
+
+## Wat betekent dit?
+
+Onderlinge bedekkingen zijn meer dan een mooi plaatje. Het precieze moment en verloop waarop een maan een andere afdekt, verraadt veel over de banen van de manen. Dit soort waarnemingen, ook van amateurs, helpt sterrenkundigen al lange tijd om de bewegingen in het Jupiterstelsel nauwkeurig vast te leggen. Dat is extra relevant nu ruimtesondes als ESA's Juice en NASA's Europa Clipper op weg zijn naar Jupiter en zijn ijsmanen.
+
+Voor sterrenkijkers is het vooral een herinnering dat ook met bescheiden middelen spectaculaire dynamiek te zien is. Wat Galileo ruim vier eeuwen geleden als eerste zag, valt vandaag vanuit de eigen achtertuin te volgen, mits het weer meezit en je op het juiste moment kijkt.

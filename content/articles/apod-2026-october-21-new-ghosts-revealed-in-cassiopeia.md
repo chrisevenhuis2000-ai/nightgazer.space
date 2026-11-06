@@ -1,6 +1,6 @@
 ---
-title: "Nieuwe 'spoken' ontdekt in Cassiopeia"
-excerpt: "Na 100 uur belichten met een speciaal zuurstoffilter hebben amateurastronomen drie zwakke, blauw oplichtende nevels vastgelegd in het sterrenbeeld Cassiopeia. Ze liggen vlak bij de bekende Spoken van Cassiopeia, IC 59 en IC 63. Waar het geïoniseerde zuurstof vandaan komt, is nog een raadsel."
+title: "Drie nieuwe 'spoken' ontdekt bij de bekende W van Cassiopeia"
+excerpt: "Een opname met 100 uur belichtingstijd toont drie onbekende, blauw gloeiende nevels naast de bekende Spoken van Cassiopeia. NASA koos de foto als Astronomy Picture of the Day op 21 oktober 2026. Waar de nevels vandaan komen, is nog onduidelijk."
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-21T12:56:12.556Z"
@@ -9,28 +9,37 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-21-new-ghosts-revealed-in-cassiopeia/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/IC63.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "APOD: 2026 October 21 – New Ghosts Revealed in Cassiopeia"
+imageAlt: "Drie nieuwe 'spoken' ontdekt bij de bekende W van Cassiopeia"
 imageCredit: "NASA"
-kernpunten: ["Op een nieuwe opname van Cassiopeia zijn drie voorheen onbekende, zwakke blauwe nevels ontdekt naast IC 59 en IC 63.","De blauwe kleur wijst op geïoniseerd zuurstof, dat zichtbaar werd dankzij 100 uur belichting en een zuurstoffilter.","Een boegschok van γ Cassiopeiae of een planetaire nevel kan het verklaren, maar de herkomst blijft een raadsel."]
-kerncijfers: [{"waarde":"100","eenheid":"uur","label":"waarnemingstijd voor de opname"},{"waarde":"3","eenheid":"","label":"nieuw ontdekte nevels"},{"waarde":"21 okt 2026","eenheid":"","label":"APOD-publicatie door NASA"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Op een opname van Cassiopeia zijn drie onbekende, blauw gloeiende nevels ontdekt naast de bekende Spoken IC 59 en IC 63.","Daarvoor waren 100 uur waarnemingstijd en een filter nodig dat alleen zuurstoflicht doorlaat.","Mogelijke verklaringen zijn een boegschok van gamma Cassiopeiae en een planetaire nevel, maar de herkomst is nog onzeker."]
+kerncijfers: [{"waarde":"100","eenheid":"uur","label":"totale waarnemingstijd"},{"waarde":"3","eenheid":"","label":"nieuw ontdekte nevels"},{"waarde":"21 oktober 2026","eenheid":"","label":"verkozen tot APOD"}]
 ---
 
-Het sterrenbeeld Cassiopeia, de bekende W aan de noordelijke hemel, blijkt meer geheimen te herbergen dan gedacht. Op een nieuwe opname, gekozen als Astronomy Picture of the Day (APOD) van NASA op 21 oktober 2026, zijn drie voorheen onbekende, zwakke nevels te zien. Ze verschijnen als blauwe 'spoken' naast twee al lang bekende nevels in dezelfde regio.
+Wie op een heldere avond naar het noorden kijkt, ziet al snel de karakteristieke W van Cassiopeia. Het is een van de bekendste sterrenbeelden van de noordelijke hemel. Toch blijkt deze vertrouwde hoek van de hemel nog verrassingen te bevatten. Op een nieuwe opname zijn drie zwakke nevels te zien die tot nu toe niemand had opgemerkt. NASA koos de foto op 21 oktober 2026 als Astronomy Picture of the Day (APOD).
 
-Voor de opname was maar liefst 100 uur aan waarnemingstijd nodig, in combinatie met een speciaal filter dat alleen het licht van zuurstof doorlaat. De foto is gemaakt door Louis Leroux-Géré, Thibault Rouillée, Vincent Martin en Cédric de Decker van Starfront Observatories. Juist dat zuurstoffilter maakte het mogelijk om de uiterst zwakke structuren boven het achtergrondlicht uit te tillen.
+De nieuwe objecten verschijnen als blauwe 'spoken' naast twee nevels die astronomen al lang kennen. Om ze zichtbaar te maken was een flinke inspanning nodig: in totaal 100 uur waarnemingstijd. Daarbij werd een speciaal filter gebruikt dat alleen het licht van zuurstof doorlaat.
 
-## De oorspronkelijke Spoken van Cassiopeia
+## Geduld en het juiste filter
 
-De bekende bewoners van dit hemelgebied zijn IC 59 en IC 63, de oorspronkelijke 'Spoken van Cassiopeia'. Ze bevinden zich in de buurt van γ Cassiopeiae (gamma Cassiopeiae), een meervoudig stersysteem dat de middelste ster van de W vormt. Het energierijke licht van dit systeem brengt het waterstofgas in IC 59 en IC 63 aan het gloeien, wat hen hun rode kleur geeft. Daarnaast weerkaatst en verstrooit het stof in deze nevels een deel van het blauwwitte sterlicht.
+De opname is gemaakt door Louis Leroux-Géré, Thibault Rouillée, Vincent Martin en Cédric de Decker van Starfront Observatories. Het zuurstoffilter was daarbij doorslaggevend. Doordat het al het andere licht tegenhoudt, kwamen de uiterst zwakke structuren boven het achtergrondlicht uit. Met een gewone kleurenopname waren ze waarschijnlijk onzichtbaar gebleven.
 
-De drie nieuw ontdekte objecten, voorlopig simpelweg Object 1, 2 en 3 genoemd, zien er heel anders uit. Ze stralen blauw, een teken van geïoniseerd zuurstof: zuurstofatomen waarvan elektronen zijn losgeslagen. Dat roept direct de vraag op wat die ionisatie veroorzaakt.
+De twee bekende buren van de nieuwe objecten zijn IC 59 en IC 63, de oorspronkelijke Spoken van Cassiopeia. Ze liggen dicht bij gamma Cassiopeiae, een meervoudig stersysteem dat de middelste ster van de W vormt. De energierijke straling van dit systeem laat het waterstofgas in beide nevels rood gloeien. Daarnaast weerkaatst en verstrooit het stof in de nevels een deel van het blauwwitte sterlicht.
 
-## Mogelijke verklaringen voor de blauwe gloed
+## Blauw in plaats van rood
 
-Een mogelijke verklaring ligt bij γ Cassiopeiae zelf. Terwijl dit stersysteem door het interstellaire gas en stof beweegt, kan het materiaal voor zich uit opstuwen, vergelijkbaar met de boeggolf van een snel varende boot. Zo'n boegschok, waarbij gas wordt samengedrukt en verhit, zou Object 3 kunnen verklaren: het zou dan gaan om samengeperst en opgewarmd zuurstofgas.
+De drie nieuwkomers, voorlopig gewoon Object 1, 2 en 3 genoemd, zien er heel anders uit. Ze gloeien blauw, een teken van geïoniseerd zuurstof. Dat zijn zuurstofatomen waarvan elektronen zijn losgeslagen. Daarvoor is veel energie nodig, en de vraag is waar die vandaan komt.
 
-Voor Object 1 is een andere verklaring denkbaar. Het zou een planetaire nevel kunnen zijn: een schil van gas die een stervende ster aan het eind van zijn leven heeft afgestoten. Daarvoor moet echter wel een witte dwerg, het hete restant van zo'n ster, in het centrum worden gevonden. Zolang die niet is aangetoond, blijft het een hypothese.
+Voor Object 3 wijzen de onderzoekers naar gamma Cassiopeiae zelf. Terwijl dit stersysteem door het interstellaire gas en stof beweegt, kan het materiaal voor zich uit duwen, net als de boeggolf van een snel varende boot. In zo'n boegschok wordt het gas samengedrukt en verhit. Object 3 zou dan bestaan uit samengeperst en opgewarmd zuurstofgas.
 
-## Een raadsel dat nog openligt
+Voor Object 1 is een andere verklaring mogelijk: een planetaire nevel. Ondanks de naam heeft zo'n nevel niets met planeten te maken. Het is een schil van gas die een stervende ster aan het eind van zijn leven heeft afgestoten. Dan moet er wel een witte dwerg in het centrum staan, het hete restant van die ster. Zolang die niet is gevonden, blijft het een hypothese. Voor Object 2 is nog geen verklaring gegeven.
 
-Voorlopig blijft de herkomst van deze kosmische verschijningen een raadsel dat nog opgelost moet worden. De opname laat in elk geval zien hoeveel er met geduld, lange belichtingstijden en de juiste filters nog te ontdekken valt, zelfs in een sterrenbeeld dat iedere sterrenkijker in Nederland het hele jaar door boven de horizon kan vinden.
+## Zien vanuit Nederland
+
+Cassiopeia staat vanuit Nederland het hele jaar boven de horizon en is met het blote oog gemakkelijk te vinden. Gamma Cassiopeiae, de middelste ster van de W, is zonder hulpmiddelen te zien. De nevels zelf zijn echter te zwak om visueel waar te nemen. Zelfs de bekende IC 59 en IC 63 vragen om lange belichtingen met een camera. De drie nieuwe objecten zijn alleen met extreem lange opnamen en speciale filters vast te leggen.
+
+## Wat betekent dit?
+
+De ontdekking laat zien dat er zelfs in een veelbestudeerd stukje hemel nog onbekende structuren te vinden zijn. Ze werden niet ontdekt met een grote ruimtetelescoop, maar door geduldig te belichten met smalbandfilters, een techniek die ook veel gevorderde amateurastronomen gebruiken. De komende tijd zullen vervolgwaarnemingen moeten uitwijzen wat de drie objecten werkelijk zijn. Een belangrijke stap is de zoektocht naar een witte dwerg in het hart van Object 1.
+
+Voor sterrenkijkers in Nederland is het een mooie herinnering dat het bekende sterrenbeeld boven hun hoofd nog geheimen herbergt. Het laat ook zien wat astrofotografie met lange belichtingstijden aan nieuwe kennis kan opleveren.

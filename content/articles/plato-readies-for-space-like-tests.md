@@ -1,28 +1,43 @@
 ---
-title: "Plato bereidt zich voor op ruimte-achtige tests"
-excerpt: "De Europese exoplaneetmissie Plato ondergaat momenteel cruciale tests in ESA's Large Space Simulator om de extreme omstandigheden van de ruimte na te bootsen. De satelliet met 26 ultragevoelige camera's wordt voorbereid op zijn lancering in januari 2027."
+title: "Plato ingesloten in Europese ruimtesimulator voor laatste zware tests"
+excerpt: "ESA's planetenjager Plato staat sinds februari in de Large Space Simulator in Noordwijk, waar hij wordt blootgesteld aan het vacuüm en de kou van de ruimte. Een nieuwe foto toont de 26 camera's waarmee de telescoop straks meer dan 150.000 sterren tegelijk in de gaten houdt. De lancering met een Ariane 6 staat gepland voor januari 2027."
 category: "educatie"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-03-16T08:07:38.424Z"
-featured: "false"
+featured: false
 tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/ESA_Multimedia/Images/2026/03/Plato_readies_for_space-like_tests"
 imageUrl: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/03/plato_readies_for_space-like_tests/27151050-1-eng-GB/Plato_readies_for_space-like_tests_pillars.jpg"
-imageAlt: "Plato bereidt zich voor op ruimte-achtige tests"
+imageAlt: "Plato ingesloten in Europese ruimtesimulator voor laatste zware tests"
 imageCredit: "ESA"
-kernpunten: ["ESA's Plato-missie wordt in de Large Space Simulator getest onder ruimte-achtige omstandigheden.","Plato gebruikt 26 camera's om meer dan 150.000 heldere sterren tegelijk te monitoren op zoek naar aardse planeten.","De lancering met een Ariane 6 is gepland voor januari 2027."]
-kerncijfers: [{"waarde":"26","eenheid":"","label":"ultragevoelige camera's op Plato"},{"waarde":"150.000","eenheid":"sterren","label":"tegelijk gemonitord door Plato"},{"waarde":"januari 2027","eenheid":"","label":"geplande lancering"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["ESA's ruimtetelescoop Plato ondergaat in de Large Space Simulator tests onder ruimteachtige omstandigheden.","Met 26 camera's gaat Plato meer dan 150.000 heldere sterren tegelijk volgen op zoek naar aardachtige planeten.","De lancering met een Ariane 6 staat gepland voor januari 2027."]
+kerncijfers: [{"waarde":"26","eenheid":"","label":"camera's aan boord"},{"waarde":"150.000","eenheid":"sterren","label":"tegelijk gevolgde sterren"},{"waarde":"15","eenheid":"m","label":"hoogte testkamer LSS"}]
 ---
 
-De Plato-missie van de Europese Ruimtevaartorganisatie ESA, die op zoek gaat naar aardachtige exoplaneten, bevindt zich momenteel in de Large Space Simulator (LSS) van ESA's Test Centre voor een reeks essentiële tests onder ruimte-achtige omstandigheden.
+De Europese ruimtetelescoop Plato, die moet uitzoeken hoe vaak planeten zoals de aarde voorkomen rond sterren zoals de zon, maakt de laatste grote stap voor zijn vertrek. Het ruimtevaartuig staat opgesloten in de Large Space Simulator (LSS) van het testcentrum van ESA, waar het onder omstandigheden die sterk lijken op die in de ruimte zijn werk moet laten zien.
 
-Ingenieurs plaatsten Plato op 18 februari in de LSS, en sinds begin maart ondervindt het ruimtevaartuig de extreme temperaturen en het vacuüm van de ruimte. De foto toont de satelliet in het midden van de simulator, vlak voordat de kamer hermetisch werd afgesloten. De opname werd gemaakt vanaf de bovenste opening van de LSS en geeft een direct zicht op Plato's 26 ultragevoelige camera's.
+Technici plaatsten Plato op 18 februari in de testkamer. Sinds begin maart wordt de satelliet blootgesteld aan extreme temperaturen en een vrijwel volledig vacuüm. Een foto die ESA vlak voor het dichtschroeven van de kamer maakte, laat de satelliet zien vanaf de bovenopening van de simulator: onderin een zwarte cilinder staat het ruimtevaartuig met zijn zwarte panelen en goudkleurige oppervlakken.
 
-## Camera's op zoek naar aardse planeten
+## Zesentwintig ogen op de sterren
 
-Deze speciale 'ogen' zal de missie gebruiken om tegelijkertijd meer dan 150.000 heldere sterren te monitoren, op zoek naar aardse planeten die om zonachtige sterren draaien. De missie zal naar verwachting eind dit jaar klaar zijn voor lancering, met een geplande start aan boord van een Ariane 6 raket in januari 2027.
+Opvallend op de foto zijn de blauw glanzende lenzen van de 26 uiterst gevoelige camera's. Ze staan op een getrapt platform met vijf treden: vier rijen van zes camera's en een bovenste rij met twee. Samen vormen ze de ogen van de missie, waarmee Plato straks meer dan 150.000 heldere sterren tegelijk volgt.
 
-## Europa's grootste cryovacuümkamer
+Het doel is het vinden van rotsachtige, aardachtige planeten die rond zonachtige sterren draaien. Zulke planeten verraden zich doordat ze bij het passeren van hun ster een klein deel van het sterlicht tegenhouden. Door heel veel sterren langdurig en nauwkeurig in de gaten te houden, kan Plato die minieme dipjes in helderheid opvangen.
 
-Voordat een ruimtevaartuig gelanceerd wordt, is het cruciaal om alle functionaliteiten te testen in een ruimte-achtige omgeving. De LSS biedt precies dat. Deze cilindrische container van 15 meter hoog en 10 meter breed is Europa's grootste cryovacuümkamer. Uitgerust met een krachtige pomp bereikt de ruimte een druk die een miljard keer lager is dan de atmosferische druk op zeeniveau, terwijl vloeibare stikstof die rond de behuizing circuleert de extreme lage temperaturen van de ruimte nabootst.
+## De grootste vacuümkamer van Europa
+
+Voordat een ruimtevaartuig de lucht in gaat, moet worden gecontroleerd of alle onderdelen werken zoals bedoeld in de omgeving waarin ze straks hun werk doen. Daarvoor is de LSS gebouwd. Het is een cilindervormige kamer van 15 meter hoog en 10 meter breed en daarmee de grootste cryovacuümkamer van Europa. Een cryovacuümkamer combineert extreme kou met een luchtledige ruimte.
+
+Krachtige pompen brengen de druk in de kamer naar een niveau dat een miljard keer lager ligt dan de luchtdruk op zeeniveau. Rond de wand circuleert vloeibare stikstof, waarmee de bittere kou van de ruimte wordt nagebootst. Zo kunnen ingenieurs zien hoe Plato reageert op de omstandigheden die hij na de lancering zal tegenkomen.
+
+## Lancering in januari 2027
+
+Als de tests goed verlopen, moet de missie aan het eind van dit jaar klaar zijn voor vertrek. Arianespace plant de lancering met een Ariane 6-raket voor januari 2027.
+
+## Wat betekent dit?
+
+Plato is een van de belangrijkste Europese wetenschapsmissies van de komende jaren. Waar eerdere planetenjagers zoals NASA's Kepler en TESS duizenden exoplaneten vonden, ligt bij Plato de nadruk op planeten die op de aarde lijken en om sterren draaien die op de zon lijken. Juist die combinatie is moeilijk te vinden en essentieel voor de vraag hoe uniek ons eigen zonnestelsel is.
+
+Voor Nederland is de missie extra dichtbij: het testcentrum van ESA staat in Noordwijk, bij ESTEC. De tests in de LSS zijn een van de laatste horden voordat Plato naar de lanceerplaats in Frans-Guyana kan. Na de lancering zal de telescoop jarenlang data verzamelen, waarna sterrenkundigen het geduldige werk beginnen van het bevestigen en karakteriseren van nieuwe werelden.

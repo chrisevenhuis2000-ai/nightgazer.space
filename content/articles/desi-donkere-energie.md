@@ -2,7 +2,7 @@
 title: "DESI: donkere energie verzwakt al 4,5 miljard jaar"
 excerpt: "De grootste 3D kaart van het heelal toont dat de kracht van donkere energie niet constant is — een potentiële revolutie in de kosmologie."
 category: "kosmologie"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-03-09T10:00:00.000Z"
 readTime: "5"
 featured: "false"

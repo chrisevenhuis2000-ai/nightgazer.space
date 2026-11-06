@@ -1,6 +1,6 @@
 ---
-title: "Komeet PanSTARRS en een regenboogkleurige meteoor"
-excerpt: "De Astronomy Picture of the Day van 3 november 2026 toont komeet C/2025 R3 (PanSTARRS) samen met een kleurrijke meteoor boven het Franse Hautacam. De meteoor komt vrijwel zeker niet van deze komeet. Deze maand bereiken bovendien drie opvallende meteorenzwermen hun hoogtepunt."
+title: "Meteoor lijkt uit komeet PanSTARRS te schieten, maar schijn bedriegt"
+excerpt: "NASA's Astronomy Picture of the Day van 3 november toont een kleurrijke meteoor die uit komeet C/2025 R3 (PanSTARRS) lijkt te komen. In werkelijkheid is het een toevallige samenstand: de komeet staat veel verder weg. De foto is ook een herinnering dat november drie mooie meteorenzwermen brengt."
 category: "kometen"
 author: "Redactie NightGazer"
 publishedAt: "2026-11-03T15:06:44.599Z"
@@ -9,27 +9,35 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-3-comet-panstarrs-and-rainbow-meteor/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/CometMeteor_Metais_1934.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "APOD: 2026 November 3 – Comet PanSTARRs and Rainbow Meteor"
+imageAlt: "Meteoor lijkt uit komeet PanSTARRS te schieten, maar schijn bedriegt"
 imageCredit: "NASA"
-kernpunten: ["Een foto toont komeet C/2025 R3 (PanSTARRS) samen met een kleurrijke meteoor, maar de twee hebben vrijwel zeker niets met elkaar te maken.","De komeet werd in april vanaf Hautacam in Frankrijk gefotografeerd met een blauwe ionenstaart en een stofstaart.","In november pieken de Zuidelijke en Noordelijke Tauriden en de Leoniden."]
+vernieuwd: "2026-11-06"
+kernpunten: ["Op NASA's foto van de dag lijkt een meteoor uit komeet C/2025 R3 (PanSTARRS) te komen, maar dat is toeval van perspectief.","Veel meteoren stammen van kometen, maar één losse meteoor aan een specifieke komeet koppelen is lastig.","In november pieken drie meteorenzwermen: de Zuidelijke en Noordelijke Tauriden en de Leoniden."]
+kerncijfers: [{"waarde":"3 november 2026","eenheid":"","label":"Astronomy Picture of the Day"}]
 ---
 
-Op een opvallende foto die NASA koos als Astronomy Picture of the Day van 3 november 2026 lijkt een meteoor rechtstreeks uit een komeet te komen. Toch is dat vrijwel zeker niet het geval. De komeet op de foto staat veel verder weg dan de meteoor die door het beeld schiet. De opname werd gemaakt door Eddy Metais.
+Het lijkt alsof een komeet een vallende ster afvuurt, maar de werkelijkheid is minder spectaculair en wetenschappelijk juist interessanter. NASA koos voor de Astronomy Picture of the Day van 3 november 2026 een opname van fotograaf Eddy Metais. Daarop schiet een kleurrijke meteoor door het beeld, vlak naast komeet C/2025 R3 (PanSTARRS). Dat de twee elkaar raken, is gezichtsbedrog: de komeet staat veel verder weg dan de meteoor in onze dampkring.
 
-De komeet in kwestie is C/2025 R3 (PanSTARRS). Hij werd in april vastgelegd vanaf Hautacam in Frankrijk, toen deze 'reusachtige ruimte-ijsberg' indrukwekkende staarten liet zien: een blauwe ionenstaart en een stofstaart. De ionenstaart bestaat uit elektrisch geladen gasdeeltjes die door de zonnewind van de komeet worden weggeblazen, terwijl de stofstaart bestaat uit kleine stofdeeltjes die de komeet verliest.
+De foto werd in april gemaakt vanaf Hautacam in de Franse Pyreneeën. In die periode liet de komeet, door NASA omschreven als een 'reusachtige ruimte-ijsberg', twee duidelijke staarten zien. De blauwe ionenstaart bestaat uit elektrisch geladen gasdeeltjes die door de zonnewind, de stroom deeltjes die de zon voortdurend uitstoot, van de komeet worden weggeblazen. Daarnaast is een stofstaart zichtbaar, opgebouwd uit kleine stofdeeltjes die de komeet onderweg verliest.
 
-## Lastig om meteoren aan kometen te koppelen
+## Toeval van perspectief
 
-Veel meteoren zijn wel degelijk afkomstig van kometen. Maar er hebben de laatste tijd duizenden kometen het binnenste deel van het zonnestelsel bezocht, en het is daardoor lastig om een meteoor aan een specifieke komeet te koppelen. Dat de meteoor en de komeet op deze foto samen in beeld staan, is dus vooral een fraai toeval van perspectief.
+Helemaal uit de lucht gegrepen is het verband tussen kometen en meteoren niet. Veel meteoren zijn juist afkomstig van kometen: het zijn restanten van het puin dat zij langs hun baan achterlaten. Toch is het lastig om één losse meteoor aan een bepaalde komeet te koppelen. Er hebben de laatste tijd duizenden kometen het binnenste deel van het zonnestelsel bezocht, zodat er talloze mogelijke bronnen zijn. Dat meteoor en komeet hier samen in beeld staan, is dus vooral een fraaie samenloop van perspectief.
 
-Meteoren ontstaan meestal wanneer rotsachtig puin ter grootte van zandkorrels de dampkring van de aarde binnendringt. Het lichtspoor op de voorgrond van deze foto valt op door zijn kleuren, die volgens de toelichting kunnen wijzen op een ingewikkelde samenstelling van het binnendringende deeltje.
+Meteoren ontstaan meestal wanneer rotsachtig puin ter grootte van zandkorrels met hoge snelheid de aardse dampkring binnendringt en daarbij opgloeit. Het lichtspoor op deze opname valt op door zijn verschillende kleuren. Volgens de toelichting kan dat wijzen op een ingewikkelde samenstelling van het deeltje dat verbrandde.
 
-## Drie meteorenzwermen in november
+## November: maand van de vallende sterren
 
-Voor sterrenkijkers is november een interessante maand: er bereiken drie opvallende meteorenzwermen hun hoogtepunt. In de komende dagen pieken de Zuidelijke Tauriden, terwijl de Noordelijke Tauriden ongeveer een week later hun maximum bereiken. Beide zwermen zijn afkomstig van komeet 2P/Encke. Een meteorenzwerm ontstaat wanneer de aarde door een spoor van puin trekt dat een komeet in zijn baan heeft achtergelaten.
+De foto komt op een passend moment, want in november bereiken drie opvallende meteorenzwermen hun hoogtepunt. Een meteorenzwerm ontstaat wanneer de aarde door een spoor van puin trekt dat een komeet in zijn baan heeft achtergelaten. In de komende dagen pieken de Zuidelijke Tauriden, ongeveer een week later gevolgd door de Noordelijke Tauriden. Beide zwermen danken hun bestaan aan komeet 2P/Encke.
 
-De bekendste zwerm van november is echter de Leoniden. Deze meteoren zijn afkomstig van komeet 55P/Tempel-Tuttle en bereiken over ongeveer twee weken hun hoogtepunt. Wie deze maand een heldere nacht treft, heeft dus een goede kans om zelf vallende sterren te zien.
+De bekendste zwerm van de maand zijn de Leoniden, afkomstig van komeet 55P/Tempel-Tuttle. Zij bereiken over ongeveer twee weken hun hoogtepunt. Wie deze maand een heldere nacht treft, maakt dus een goede kans om zelf vallende sterren te zien.
 
-## Over de opname
+## Zien vanuit Nederland
 
-De Astronomy Picture of the Day is een dienst van ASD bij NASA/GSFC, NASA Science Activation en Michigan Technological University. De samenstellers en redacteuren zijn Robert Nemiroff, Jerry Bonnell, Cecilia Chirenti en Keighley Rockcliffe.
+Voor meteoren is geen telescoop of verrekijker nodig: het blote oog volstaat. Zoek een donkere plek, ver weg van straatverlichting, en geef je ogen een kwartier of langer om aan het donker te wennen. De Tauriden staan bekend als een rustige zwerm met relatief weinig, maar soms heldere meteoren. De Leoniden lijken te komen uit het sterrenbeeld Leeuw, dat in de loop van de nacht boven de oostelijke horizon klimt. Een wolkenloze nacht is in een Nederlandse november geen vanzelfsprekendheid, dus houd de weersverwachting in de gaten.
+
+## Wat betekent dit?
+
+De opname laat mooi zien hoe kometen en meteoren met elkaar verbonden zijn, ook al is het verband op deze specifieke foto slechts schijn. Kometen zijn brokken ijs en stof uit de koude buitendelen van het zonnestelsel; elke keer dat ze dicht bij de zon komen, verliezen ze materiaal. Jaar na jaar kruist de aarde die puinsporen, waardoor dezelfde meteorenzwermen telkens rond dezelfde data terugkeren.
+
+Voor sterrenkijkers in Nederland is dat goed nieuws: je hoeft geen zeldzame komeet af te wachten om de erfenis van kometen met eigen ogen te zien. Elke vallende ster tijdens de Tauriden of Leoniden is letterlijk een stukje komeet dat in onze atmosfeer verdampt.

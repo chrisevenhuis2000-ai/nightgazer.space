@@ -1,37 +1,44 @@
 ---
-title: "Euclid ontdekt nieuwe komeet"
-excerpt: "De Europese ruimtetelescoop Euclid heeft voor het eerst een tot dan toe onbekende komeet ontdekt, op beelden die tussen 16 en 24 september 2026 zijn gemaakt. Het object, inmiddels bekend als C/2026 S1 (Euclid), staat zo'n 1,3 miljard kilometer van de aarde en beweegt in een baan hoog boven het vlak van de planeten."
+title: "Euclid ontdekt voor het eerst een nieuwe komeet"
+excerpt: "De Europese ruimtetelescoop Euclid heeft zijn eerste onbekende komeet gevonden, terwijl hij daar helemaal niet voor gebouwd is. De komeet, C/2026 S1 (Euclid), staat zo'n 1,3 miljard kilometer van de aarde en beschrijft een baan die ver boven het vlak van de planeten loopt."
 category: "kometen"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-19T14:41:25.032Z"
-featured: "false"
+featured: false
 tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet"
 imageUrl: "https://images-assets.nasa.gov/image/PIA25783/PIA25783~medium.jpg"
-imageAlt: "Euclid ontdekt nieuwe komeet"
+imageAlt: "Euclid ontdekt voor het eerst een nieuwe komeet"
 imageCredit: "JPL"
-kernpunten: ["De Europese ruimtetelescoop Euclid heeft voor het eerst een onbekende komeet ontdekt: C/2026 S1 (Euclid).", "Promovendus Mikko Pöntinen vond hem met eigen software die bewegende objecten in Euclid-beelden opspoort.", "De komeet staat zo'n 1,3 miljard kilometer van de aarde, hoog boven het vlak van de planeten."]
-kerncijfers: [{"waarde": "1,3 mld", "eenheid": "km", "label": "Afstand tot de aarde"}, {"waarde": "16", "eenheid": "", "label": "Belichtingen met de komeet"}, {"waarde": "8 okt", "eenheid": "", "label": "Bevestigd door het MPC"}]
-citaat: {"tekst": "Er worden maar heel weinig kometen door Euclid verwacht, dus het was een gelukkig toeval.", "wie": "Bruno Altieri, archiefwetenschapper Euclid"}
+vernieuwd: "2026-11-06"
+kernpunten: ["ESA-ruimtetelescoop Euclid heeft zijn eerste nieuwe komeet ontdekt, C/2026 S1 (Euclid), ook al is hij niet voor zulk werk gebouwd.","De komeet staat zo'n 1,3 miljard kilometer van de aarde, hoog boven het vlak van de planeten, in een baan van duizenden jaren.","De vondst was een test voor de samenwerking met ESA's toekomstige missie Comet Interceptor."]
+kerncijfers: [{"waarde":"1,3 miljard","eenheid":"km","label":"afstand tot de aarde"},{"waarde":"8 oktober","eenheid":"","label":"bevestiging door MPC"}]
+citaat: {"tekst":"Er worden maar heel weinig kometen door Euclid verwacht, dus het was een gelukkig toeval","wie":"Bruno Altieri, archiefwetenschapper Euclid"}
 ---
 
-De Euclid-ruimtetelescoop van de Europese ruimtevaartorganisatie ESA heeft zijn eerste nieuwe komeet ontdekt. Het object dook op in beelden die tussen 16 en 24 september 2026 werden gemaakt. Euclid had eerder al kometen vastgelegd, maar dat waren steeds bekende exemplaren. Het International Astronomical Union's Minor Planet Center (MPC) bevestigde op 8 oktober dat het om een komeet gaat, die nu de aanduiding C/2026 S1 (Euclid) draagt.
+Euclid, de ruimtetelescoop van ESA die het donkere heelal in kaart brengt, heeft onverwacht een nieuwe komeet ontdekt. Het object verscheen op opnamen van 16 tot 24 september 2026. Op 8 oktober bevestigde het Minor Planet Center van de Internationale Astronomische Unie dat het echt om een komeet gaat. Hij heeft de officiële aanduiding C/2026 S1 (Euclid) gekregen. Euclid had al eerder kometen gefotografeerd, maar dat waren steeds bekende objecten. Dit is de eerste die de telescoop zelf heeft ontdekt.
 
-De ontdekking is opmerkelijk, omdat Euclid helemaal niet gebouwd is om snel bewegende objecten in het zonnestelsel te volgen. De telescoop maakt juist diepe, stabiele opnamen van verre sterrenstelsels. Het doel van de missie is de verborgen invloed van donkere materie en donkere energie op het zichtbare heelal bloot te leggen. In zes jaar tijd brengt Euclid de vormen en bewegingen van miljarden sterrenstelsels tot op 10 miljard lichtjaar afstand in kaart.
+De vondst is opvallend, want Euclid is niet ontworpen om snel bewegende objecten in ons zonnestelsel te volgen. De telescoop maakt lange, stabiele opnamen van verre sterrenstelsels. Zo willen astronomen zien hoe donkere materie en donkere energie het zichtbare heelal beïnvloeden. In zes jaar brengt Euclid de vormen en bewegingen van miljarden sterrenstelsels in kaart, tot op 10 miljard lichtjaar afstand.
 
-## Een streep over vijf beeldreeksen
+## Software vindt een verdacht streepje
 
-De komeet werd gevonden door Mikko Pöntinen, promovendus aan de Universiteit van Helsinki, samen met de werkgroep voor zonnestelselobjecten van het Euclid Consortium. Pöntinen ontwikkelde software die bewegende objecten in Euclid-beelden opspoort. 'Ik was enthousiast toen mijn software een streep signaleerde die over meerdere beelden was uitgesmeerd, het gevolg van een snel bewegend object', vertelt hij. Door de positie te voorspellen vond hij het object terug in in totaal vijf beeldreeksen. 'Nadere inspectie liet zien dat er een wazige wolk omheen hing, een aanwijzing voor een actief object zoals een komeet dat stof en gas uitstoot.' De komeet werd vastgelegd in het zogeheten Euclid Deep Field North, in vijf verschillende gezichtsvelden met elk twee tot vier opnamen, goed voor in totaal zestien belichtingen.
+De ontdekker is Mikko Pöntinen, promovendus aan de Universiteit van Helsinki. Hij werkt samen met de werkgroep voor zonnestelselobjecten van het Euclid Consortium. Pöntinen schreef software die in Euclid-beelden zoekt naar objecten die bewegen. 'Ik was enthousiast toen mijn software een streep signaleerde die over meerdere beelden was uitgesmeerd, het gevolg van een snel bewegend object', vertelt hij. Hij voorspelde waar het object daarna moest staan en vond het zo terug in vijf beeldreeksen. Rond het object bleek een wazige wolk te hangen: een teken dat het stof en gas uitstoot, zoals een komeet doet.
 
-Omdat vergelijking met catalogi van bekende kometen en planetoïden geen overeenkomst opleverde, meldde Pöntinen de waarnemingen bij het MPC. Dat centrum fungeert als wereldwijd verzamelpunt voor waarnemingen van kometen en planetoïden: het bevestigt nieuwe ontdekkingen, berekent banen en kent officiële namen toe. Door de melding konden astronomen op aarde aanvullende waarnemingen doen.
+De komeet stond in het Euclid Deep Field North, een gebied dat Euclid extra diep bekijkt. Het object werd vastgelegd in vijf verschillende beeldvelden, met elk twee tot vier opnamen. Samen zijn dat zestien belichtingen. De komeet kwam niet voor in catalogi van bekende kometen en planetoïden. Daarom meldde Pöntinen zijn waarnemingen bij het Minor Planet Center. Dat centrum verzamelt wereldwijd waarnemingen van kleine hemellichamen, bevestigt ontdekkingen, berekent banen en kent officiële namen toe. Na de melding konden ook telescopen op aarde de komeet waarnemen.
 
-## Hoog boven het zonnestelsel
+## Een baan hoog boven de planeten
 
-C/2026 S1 (Euclid) staat op ongeveer 1,3 miljard kilometer van de aarde, vergelijkbaar met de afstand van de zon tot ergens tussen de banen van Jupiter en Saturnus. De komeet bevindt zich echter niet in het vlak van de planeten, maar staat vanuit de zon gezien 'recht omhoog'. Hij beschrijft een boog over het zonnestelsel in een baan die duizenden jaren in beslag neemt. De precieze omlooptijd wordt verfijnd zodra er meer gegevens zijn.
+C/2026 S1 (Euclid) staat op ongeveer 1,3 miljard kilometer van de aarde. Dat is ongeveer de afstand van de zon tot een punt tussen de banen van Jupiter en Saturnus. De komeet bevindt zich echter niet in het vlak waarin de planeten bewegen. Vanuit de zon gezien staat hij als het ware 'recht omhoog'. Hij beschrijft een grote boog over het zonnestelsel, in een baan die duizenden jaren duurt. De precieze omlooptijd volgt wanneer er meer metingen zijn.
 
-## Een gelukkig toeval
+Dat juist Euclid deze komeet vond, is extra toevallig. De telescoop kijkt bewust niet naar de band aan de hemel langs het vlak van het zonnestelsel. Daar zitten veel planetoïden en kometen, maar ook stof dat een storende gloed geeft. Daarnaast werkt Euclid volgens een 'step-and-stare'-methode: hij richt zich op een stukje hemel, maakt opnamen en gaat dan verder. Meestal komt hij niet op dezelfde plek terug. Toch is het nuttig om zonnestelselobjecten te herkennen. Zo kan alles in beeld goed worden benoemd en kunnen sporen van kometen als ruis uit de beelden worden gehaald.
 
-Dat Euclid deze komeet vond, is extra bijzonder. De telescoop mijdt bewust de band aan de hemel langs het vlak van het zonnestelsel, waar veel planetoïden en kometen voorkomen, om storende gloed van stof te vermijden. Bovendien bezoekt Euclid met zijn 'step-and-stare'-strategie elk stukje hemel doorgaans maar één keer, zodat een komeet niet zomaar opnieuw kan worden bekeken. Toch is het volgen van zonnestelselobjecten belangrijk: zo kunnen alle objecten in beeld correct worden geïdentificeerd en kan storende 'ruis', zoals komeetsporen, uit de beelden worden verwijderd.
+## Proef voor Comet Interceptor
 
-'Er worden maar heel weinig kometen door Euclid verwacht, dus het was een gelukkig toeval', zegt Euclid-archiefwetenschapper Bruno Altieri. De snelle ontdekking toont aan dat Euclid nieuwe kometen kan vinden terwijl ze nog relatief ver van de zon staan, wat in de toekomst een doelwit kan opleveren voor ESA's missie Comet Interceptor. 'Deze komeet is geen geschikte kandidaat voor Comet Interceptor, maar het ontdekkings- en meldproces geeft ons een echte testcase voor de samenwerking tussen beide missieteams', zegt Euclid-projectwetenschapper Valeria Pettorino.
+'Er worden maar heel weinig kometen door Euclid verwacht, dus het was een gelukkig toeval', zegt Euclid-archiefwetenschapper Bruno Altieri. De ontdekking laat wel zien dat Euclid kometen kan vinden terwijl ze nog vrij ver van de zon staan. Dat kan in de toekomst een doelwit opleveren voor ESA's missie Comet Interceptor. Volgens projectwetenschapper Valeria Pettorino is deze komeet daar zelf niet geschikt voor. Wel was het ontdekken en melden een echte test voor de samenwerking tussen de twee missieteams.
+
+## Wat betekent dit?
+
+De vondst laat zien dat grote kaarten van de hemel, gemaakt voor een heel ander doel, ook nieuwe ontdekkingen dichter bij huis kunnen opleveren. Kometen met lange omlooptijden komen uit de buitenste delen van het zonnestelsel. Ze zijn nog vrijwel onveranderd sinds het ontstaan van de planeten en zijn daarom waardevol voor onderzoek. Hoe eerder zo'n komeet wordt gevonden, hoe meer tijd er is om hem te bestuderen.
+
+Voor Europa telt vooral de koppeling met Comet Interceptor. Die ESA-missie wacht in de ruimte op een geschikte, liefst nog nooit bezochte komeet om erlangs te vliegen. Een telescoop als Euclid die vroeg nieuwe kometen kan opsporen, kan zo'n doelwit helpen vinden. Dit eerste geval was vooral een generale repetitie voor die samenwerking.

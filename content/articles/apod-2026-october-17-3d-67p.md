@@ -1,6 +1,6 @@
 ---
-title: "Komeet 67P in 3D: zweef langs de dubbele kern van Tsjoerjoemov-Gerasimenko"
-excerpt: "NASA's Astronomy Picture of the Day toont een driedimensionaal beeld van de kern van komeet 67P/Tsjoerjoemov-Gerasimenko. Het stereobeeld werd samengesteld uit twee opnamen van de OSIRIS-camera aan boord van ESA's ruimtesonde Rosetta, gemaakt op 25 juli 2015."
+title: "Zweef in 3D langs komeet 67P met beelden van Rosetta"
+excerpt: "Een nieuw stereobeeld, uitgelicht als Astronomy Picture of the Day van 17 oktober 2026, laat de komeet Tsjoerjoemov-Gerasimenko in drie dimensies zien. Het is gemaakt uit twee opnamen die de Europese sonde Rosetta in juli 2015 maakte, toen de komeet volop gas en stof uitstootte."
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-17T11:37:09.371Z"
@@ -9,26 +9,35 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/anaglyph-NAC_2015-07-25T06.28.48.742Z_lamy.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "APOD: 2026 October 17 – 3D 67P"
+imageAlt: "Zweef in 3D langs komeet 67P met beelden van Rosetta"
 imageCredit: "NASA"
-kernpunten: ["De APOD van 17 oktober 2026 toont komeet 67P als rood-blauw 3D-beeld voor wie een bijpassende bril heeft.","Het anaglief combineert twee OSIRIS-opnamen van Rosetta uit juli 2015 en laat de tweelobbige kern met actieve jets zien.","Rosetta eindigde de missie in september 2016 met een gecontroleerde botsing op de komeet."]
-kerncijfers: [{"waarde":"184","eenheid":"km","label":"afstand tot de komeet"},{"waarde":"4","eenheid":"km","label":"diameter grootste lob"},{"waarde":"1400","eenheid":"","label":"stereo-anaglyfen in catalogus"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["NASA's Astronomy Picture of the Day van 17 oktober 2026 toont komeet 67P in 3D, te bekijken met een rood-blauwe bril.","Het stereobeeld is gemaakt uit twee opnamen van Rosetta's OSIRIS-camera van 25 juli 2015, toen de komeet vlak bij de zon volop jets uitstootte.","Philippe Lamy en zijn team maakten een online catalogus met bijna 1400 3D-beelden uit het Rosetta-archief."]
+kerncijfers: [{"waarde":"184","eenheid":"km","label":"afstand bij de opname"},{"waarde":"4","eenheid":"km","label":"diameter grootste lob"},{"waarde":"bijna 1400","eenheid":"","label":"stereobeelden in catalogus"}]
 ---
 
-Wie een rood-blauwe 3D-bril bij de hand heeft, kan dankzij de Astronomy Picture of the Day (APOD) van 17 oktober 2026 als het ware naast de grillige kern van komeet 67P zweven. Deze komeet, voluit Tsjoerjoemov-Gerasimenko genoemd, werd jarenlang van dichtbij bestudeerd door de Europese ruimtesonde Rosetta.
+Wie nog ergens een ouderwetse rood-blauwe 3D-bril heeft liggen, kan die nu goed gebruiken. De Astronomy Picture of the Day (APOD) van NASA van 17 oktober 2026 toont komeet 67P/Tsjoerjoemov-Gerasimenko in drie dimensies. Met zo'n bril op lijkt het alsof je vlak naast de grillige komeetkern door de ruimte zweeft. Het beeldmateriaal komt van de Europese ruimtesonde Rosetta, die de komeet jarenlang van dichtbij volgde.
 
-## Hoe een stereo-anaglief werkt
+De opname is gemaakt met de smalhoekcamera van OSIRIS, het camerasysteem aan boord van Rosetta. Op 25 juli 2015 legde de sonde de komeet vast vanaf een afstand van 184 kilometer. Twee van die foto's, genomen vanuit een net iets ander standpunt, vormen samen het 3D-beeld.
 
-Het beeld is een zogeheten stereo-anaglief: een afbeelding die is opgebouwd uit twee foto's die vanuit een iets ander gezichtspunt zijn gemaakt. De ene opname wordt in rood weergegeven, de andere in blauw. Met een bril met een rood en een blauw glaasje ziet elk oog een ander beeld, waardoor de hersenen er een driedimensionaal geheel van maken. Voor dit anaglief zijn twee opnamen gecombineerd van de smalhoekcamera van OSIRIS, het camerasysteem van Rosetta. De foto's werden op 25 juli 2015 gemaakt vanaf een afstand van 184 kilometer.
+## Twee ogen, twee beelden
 
-Op het beeld is goed te zien hoe bijzonder de vorm van de komeetkern is. Het kleine hemellichaam bestaat uit twee lobben: de grootste heeft een diameter van ongeveer 4 kilometer, de kleinere meet zo'n 2,5 kilometer. Beide delen zijn met elkaar verbonden door een smalle 'nek', wat de komeet zijn karakteristieke, enigszins badeendachtige vorm geeft.
+Technisch gaat het om een zogeheten stereo-anaglief. Dat is een afbeelding waarin twee foto's over elkaar heen zijn gelegd: de ene in rood, de andere in blauw. Het rode glaasje van de bril laat het ene beeld door, het blauwe het andere. Zo krijgt elk oog een eigen versie te zien, net zoals onze ogen in het dagelijks leven de wereld vanuit twee iets verschillende posities bekijken. De hersenen voegen die twee beelden samen tot een ruimtelijk geheel.
 
-## Actieve jets rond de zon
+Juist bij een object als 67P komt dat effect goed tot zijn recht. De komeetkern is allesbehalve rond. Hij bestaat uit twee lobben: de grootste is ongeveer 4 kilometer in doorsnee, de kleinste zo'n 2,5 kilometer. Een smalle 'nek' verbindt beide delen, waardoor de komeet de bekende vorm heeft die vaak met een badeendje wordt vergeleken. In 3D wordt pas echt duidelijk hoe diep die insnoering is en hoe ruw het landschap eromheen.
 
-De opnamen werden gemaakt in de periode dat de komeet zijn kleinste afstand tot de zon naderde. Daardoor was het oppervlak zeer actief: op het beeld zijn talrijke jets te zien, stromen van gas en stof die vanaf het oppervlak de ruimte in spuiten. Dergelijke activiteit ontstaat doordat de zon het ijs in de komeet verwarmt, waardoor het overgaat in gas en stofdeeltjes meesleurt.
+## Een komeet in volle actie
 
-De missie van Rosetta bij komeet 67P kwam in september 2016 ten einde. De ruimtesonde kreeg toen opdracht om een gecontroleerde botsing met het oppervlak van de komeet uit te voeren, waarmee een einde kwam aan een van de meest gedetailleerde studies van een komeet ooit.
+De opnamen dateren uit de periode waarin 67P zijn kleinste afstand tot de zon naderde, het zogeheten perihelium. Op dat moment was de komeet bijzonder actief. Op het beeld zijn talrijke jets te zien: smalle stromen van gas en stof die vanaf het oppervlak de ruimte in spuiten. Die ontstaan doordat het zonlicht het ijs in de komeet opwarmt. Het ijs gaat direct over in gas en sleurt daarbij stofdeeltjes mee. Dat proces is ook de bron van de karakteristieke staart en nevelige wolk, de coma, die kometen zo herkenbaar maken.
 
-## Catalogus met bijna 1400 beelden
+Rosetta bleef tot september 2016 bij de komeet. Daarna liet ESA de sonde een gecontroleerde botsing met het komeetoppervlak uitvoeren. Daarmee kwam een einde aan een van de meest gedetailleerde komeetstudies ooit.
 
-Het stereobeeld is samengesteld door Philippe Lamy en zijn team, op basis van gegevens van ESA, Rosetta, het Max-Planck-Institut für Sonnensystemforschung (MPS) en OSIRIS. Liefhebbers doen er goed aan hun 3D-bril nog even op te houden: er bestaat een online catalogus met bijna 1400 stereo-anaglyfen die zijn gemaakt uit beeldmateriaal van Rosetta.
+## Bijna 1400 beelden om te ontdekken
+
+Het 3D-beeld is samengesteld door Philippe Lamy en zijn team, op basis van gegevens van ESA, Rosetta, het Max-Planck-Institut für Sonnensystemforschung (MPS) en OSIRIS. Wie de smaak te pakken heeft, kan nog lang vooruit: er bestaat een online catalogus met bijna 1400 stereo-anaglyfen die uit Rosetta-beelden zijn gemaakt.
+
+## Wat betekent dit?
+
+Rosetta was een van de meest ambitieuze missies uit de geschiedenis van ESA. Het was de eerste sonde die in een baan om een komeet draaide en haar mee begeleidde langs de zon, terwijl landertje Philae als eerste ooit op een komeetkern landde. Bijna tien jaar na het einde van de missie blijkt het enorme archief nog altijd nieuwe toepassingen te krijgen. Stereobeelden zoals deze zijn niet alleen fraai, ze helpen ook om de vorm en het reliëf van het oppervlak beter te begrijpen.
+
+Kometen gelden als overblijfselen uit de begintijd van het zonnestelsel, en 67P is daarvan een van de best bestudeerde voorbeelden. Voor Europa en voor Nederland, waar ESA's technische hart ESTEC in Noordwijk staat, is Rosetta een blijvend visitekaartje. Met missies als Comet Interceptor in voorbereiding krijgt dat Europese komeetonderzoek bovendien een vervolg.

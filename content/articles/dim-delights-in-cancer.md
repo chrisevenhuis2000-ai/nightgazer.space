@@ -1,28 +1,49 @@
 ---
-title: "Zwakke schatten in het sterrenbeeld Kreeft"
-excerpt: "Het sterrenbeeld Kreeft is weliswaar zwak zichtbaar, maar herbergt enkele fascinerende hemellichamen. De Bijenkorfnevel behoort tot de mooiste sterrenhopen aan onze hemel, terwijl de exoplaneet 55 Cancri e een van de best bestudeerde planeten buiten ons zonnestelsel is."
+title: "Kreeft: een onopvallend sterrenbeeld met de Bijenkorf en een gloeiend hete exoplaneet"
+excerpt: "Het sterrenbeeld Kreeft is lastig te vinden, maar herbergt een van de mooiste sterrenhopen aan de hemel: de Bijenkorf, ook bekend als M44. In hetzelfde sterrenbeeld draait de superaarde 55 Cancri e, die de naam Janssen kreeg naar een van de eerste telescoopbouwers."
 category: "missies"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-03-18T07:50:44.402Z"
-featured: "false"
+featured: false
 tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/solar-system/skywatching/night-sky-network/dim-delights-in-cancer/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/astro/exo-explore/2023/09/M44_Hot_Jupiter.tiff/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "Zwakke schatten in het sterrenbeeld Kreeft"
+imageAlt: "Kreeft: een onopvallend sterrenbeeld met de Bijenkorf en een gloeiend hete exoplaneet"
 imageCredit: "NASA"
-kernpunten: ["Kreeft heeft geen heldere sterren, maar wel bijzondere objecten.","De Bijenkorfnevel (M44) is met het blote oog zichtbaar als een wazige vlek.","De exoplaneet 55 Cancri e is een super-Aarde met oppervlaktetemperaturen boven 2000 graden Celsius."]
-kerncijfers: [{"waarde":"2000","eenheid":"graden Celsius","label":"Temperatuur op 55 Cancri e"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Het zwakke sterrenbeeld Kreeft ligt tussen de Tweelingen en de Leeuw en bevat de Bijenkorf (M44), een open sterrenhoop die prachtig is in een verrekijker.","In Kreeft draait de superaarde 55 Cancri e, ook wel Janssen genoemd, in slechts 18 uur rond zijn ster.","Janssen was de eerste exoplaneet waarvan de atmosfeer met succes werd onderzocht, onder meer met Hubble en Spitzer."]
+kerncijfers: [{"waarde":"41","eenheid":"lichtjaar","label":"afstand tot 55 Cancri"},{"waarde":"18","eenheid":"uur","label":"omlooptijd van Janssen"},{"waarde":"8","eenheid":"aardmassa's","label":"massa van Janssen"}]
 ---
 
-Het sterrenbeeld Kreeft (Cancer) staat niet bekend om zijn heldere sterren, maar dat maakt dit bescheiden sterrenbeeld zeker niet minder interessant. Tussen de opvallendere buursterrenbeelden Tweelingen en Leeuw verscholen, bevat Kreeft enkele van de meest bijzondere objecten aan onze nachtelijke hemel.
+Wie op een heldere avond tussen de Tweelingen en de Leeuw zoekt, vindt daar een van de zwakste sterrenbeelden van de dierenriem: Kreeft. Laat je daardoor niet afschrikken. In dit bescheiden stukje hemel liggen namelijk een van de fraaiste sterrenhopen die je met een gewone verrekijker kunt bekijken, en een exoplaneet die sterrenkundigen al jaren intensief bestuderen. Daarop wijst NASA in een bijgewerkte waarneemtip van het Night Sky Network.
 
-## De Bijenkorfnevel met het blote oog
+De sterren van Kreeft zijn zo zwak dat ze vanuit gebieden met matige lichtvervuiling nauwelijks te zien zijn. Het advies is daarom: gebruik de heldere buren als wegwijzer. Zoek eerst de Tweelingen en de Leeuw en richt je blik dan op het donkere gebied ertussen. Lukt het niet meteen, dan is dat volkomen normaal.
 
-Het absolute hoogtepunt van Kreeft is ongetwijfeld de Bijenkorfnevel, ook wel bekend als Messier 44 of Praesepe. Deze prachtige open sterrenhoop is een van de dichtstbijzijnde sterrenclusters bij de Aarde en is zelfs met het blote oog zichtbaar als een zwakke, wazige vlek. Met een verrekijker of kleine telescoop ontvouwt zich een spectaculair gezicht van tientallen sterren die samen een kosmische bijenkorf vormen.
+## De Bijenkorf: een sterrenhoop voor de verrekijker
 
-## Super-Aarde 55 Cancri e
+Het bekendste object in Kreeft is de Bijenkorf, een grote open sterrenhoop. Een open sterrenhoop is een losse groep jonge sterren die rond dezelfde tijd uit dezelfde gaswolk zijn ontstaan. De Bijenkorf beslaat aan de hemel een gebied dat drie keer zo groot is als de volle maan.
 
-Naast deze visuele pracht herbergt Kreeft ook wetenschappelijk uiterst interessante objecten. De ster 55 Cancri staat centraal in intensief onderzoek vanwege zijn planeetenstelsel, met name de exoplaneet 55 Cancri e. Deze 'super-Aarde' is bijna twee keer zo groot als onze eigen planeet en cirkelt extreem dicht rond zijn moederster, wat resulteert in oppervlaktetemperaturen van meer dan 2000 graden Celsius.
+Onder een goede, donkere hemel is de sterrenhoop met het blote oog te zien als een zwak, wazig vlekje. Met een verrekijker of een telescoop met een breed beeldveld valt dat vlekje uiteen in tientallen sterretjes, en dan wordt het pas echt spectaculair. Omdat sterrenkundigen de Bijenkorf al in de oudheid opmerkten, heeft de hoop veel namen gekregen: Praesepe, Nubilum, M44, de Geest en Jishi qi. Of je er werkelijk een zwerm zoemende bijen in ziet, mag je zelf bepalen; de sterrenhoop prikkelt de verbeelding van waarnemers al duizenden jaren.
 
-Hoewel Kreeft misschien niet de meest opvallende verschijning aan de hemel is, bewijst dit sterrenbeeld dat astronomische schatten vaak verborgen liggen in de meest onverwachte hoeken van ons universum. Voor sterrenliefhebbers is het zoeken naar Kreeft tussen Tweelingen en Leeuw een mooie oefening in nauwkeurig waarnemen.
+## Janssen, een superaarde met een jaar van 18 uur
+
+In hetzelfde sterrenbeeld staat 55 Cancri, een dubbelster op ongeveer 41 lichtjaar afstand. Onder een uitzonderlijk donkere hemel is hij met het blote oog nog net te zien. Rond de grootste van de twee sterren draaien minstens vijf planeten. De bekendste daarvan is 55 Cancri e, die officieel de naam Janssen kreeg, naar een van de eerste telescoopmakers.
+
+Janssen is een zogeheten superaarde: een rotsachtige planeet die groter is dan de aarde, in dit geval met 8 keer de massa van onze planeet. De planeet draait in slechts 18 uur rond zijn ster, waarmee hij een van de kortste jaren heeft van alle bekende planeten. Het oppervlak bestaat waarschijnlijk uit gloeiend heet gesteente.
+
+Janssen schreef ook geschiedenis als de eerste exoplaneet waarvan de atmosfeer met succes werd onderzocht. Volgens NASA bevestigden de ruimtetelescopen Hubble en de inmiddels uitgeschakelde Spitzer een dampkring van helium en waterstof, met sporen van waterstofcyanide. Een plek waar leven voor de hand ligt, is het dus niet.
+
+## Wiebelen en overgangen
+
+De planeet werd in 2004 ontdekt met de wiebelmethode: sterrenkundigen zien dan dat een ster een klein beetje heen en weer beweegt door de zwaartekracht van een planeet eromheen. In 2011 bevestigde de transitmethode de omlooptijd. Daarbij meten onderzoekers het kleine dipje in helderheid wanneer een planeet voor zijn ster langs schuift.
+
+## Zien vanuit Nederland
+
+Kreeft staat in de late winter en het voorjaar 's avonds goed aan de hemel. Zoek een plek zo ver mogelijk van stadslicht, laat je ogen een tijdje aan het donker wennen en volg de Tweelingen en de Leeuw naar het zwakke gebied ertussen. Een gewone verrekijker is genoeg om van de Bijenkorf te genieten. De ster 55 Cancri zelf is vanuit Nederland alleen onder een echt donkere hemel te zien, bijvoorbeeld in een van de Nederlandse Dark Sky Parks.
+
+## Wat betekent dit?
+
+De tip laat zien hoe dicht de amateursterrenkunde en het modernste onderzoek bij elkaar liggen. In een sterrenbeeld dat je met een verrekijker afspeurt, ligt een planeet waarvan ruimtetelescopen de dampkring hebben bestudeerd. Exoplaneetonderzoek is inmiddels uitgegroeid tot een van de belangrijkste takken van de sterrenkunde, met telescopen als James Webb die dit soort werelden nog nauwkeuriger onderzoeken.
+
+Voor Nederlanders zit er bovendien een leuk detail in. De naamgever van de planeet wordt doorgaans geïdentificeerd als Zacharias Janssen, een brillenmaker uit Middelburg die in verband wordt gebracht met de vroegste kijkers en microscopen. Wie de Bijenkorf door een verrekijker bekijkt, gebruikt dus een instrument dat zijn wortels deels in de Nederlandse geschiedenis heeft.

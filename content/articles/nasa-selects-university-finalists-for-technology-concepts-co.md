@@ -1,28 +1,46 @@
 ---
-title: "NASA selecteert universiteitsteams voor innovatieve ruimtevaarttechnologie wedstrijd"
-excerpt: "NASA heeft 14 universiteitsteams uit de Verenigde Staten geselecteerd als finalisten voor de RASC-AL wedstrijd van 2026. De studenten moeten innovatieve concepten ontwerpen die het menselijk leven en werken op de Maan, Mars en daarbuiten kunnen bevorderen."
+title: "NASA kiest veertien universiteitsteams als finalist voor ontwerpwedstrijd voor maan- en Marsmissies"
+excerpt: "NASA heeft veertien Amerikaanse universiteitsteams geselecteerd als finalist van de RASC-AL-wedstrijd van 2026. Studenten bedenken daarin concepten voor onder meer energievoorziening op de maan, het terughalen van maanmonsters en navigatie op Mars. Begin juni presenteren de teams hun werk aan NASA-experts in Florida."
 category: "missies"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-03-21T07:31:22.228Z"
-featured: "false"
+featured: false
 tags: []
 source: "NASA"
 sourceUrl: "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/nasa-selects-university-finalists-for-technology-concepts-competition/"
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/03/2026-rasc-al-graphic-thumbnail-1536x1536-1.png"
-imageAlt: "NASA selecteert universiteitsteams voor innovatieve ruimtevaarttechnologie wedstrijd"
+imageAlt: "NASA kiest veertien universiteitsteams als finalist voor ontwerpwedstrijd voor maan- en Marsmissies"
 imageCredit: "NASA"
-kernpunten: ["NASA selecteert veertien universiteitsteams als finalisten voor de RASC-AL wedstrijd van 2026.","Studenten ontwikkelen concepten voor leven en werken op de Maan, Mars en andere hemellichamen.","De finalisten presenteren hun ideeën aan NASA-experts en industriespecialisten."]
-kerncijfers: [{"waarde":"2026","eenheid":"","label":"Jaar van de wedstrijd"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["NASA heeft veertien Amerikaanse universiteitsteams geselecteerd als finalist van de RASC-AL-wedstrijd van 2026.","De studenten ontwerpen concepten voor onder meer stroomvoorziening op de maan, maanmonsters terughalen en navigatie op Mars.","Vanaf 2 juni presenteren de teams hun werk aan NASA en de industrie tijdens een forum in Cocoa Beach, Florida."]
+kerncijfers: [{"waarde":"2 juni","eenheid":"","label":"start finale in Florida"}]
+citaat: {"tekst":"De sterkste teams toonden niet alleen creativiteit, maar ook de gedisciplineerde analyse en systeemtechniek die nodig zijn om geloofwaardige oplossingen te ontwikkelen voor de uitdagingen in ruimteverkenning waar de organisatie voor staat","wie":"Daniel Mazanek, programmasponsor RASC-AL en senior ruimtesysteemingenieur bij NASA Langley"}
 ---
 
-NASA heeft veertien universiteitsteams uit heel Amerika geselecteerd als finalisten voor de Revolutionary Aerospace Systems Concepts – Academic Linkage (RASC-AL) wedstrijd van 2026. Deze prestigieuze NASA-competitie daagt studenten uit om baanbrekende concepten te ontwikkelen die het menselijk leven en werken op de Maan, Mars en andere hemellichamen kunnen ondersteunen.
+Hoe voorzie je een basis op de maan van stroom? Hoe weet een astronaut op Mars precies waar hij is, zonder gps? En hoe haal je maanstenen efficiënt naar de aarde? Met dat soort vragen gaan studenten aan de slag in de RASC-AL-wedstrijd van NASA. De ruimtevaartorganisatie heeft nu veertien universiteitsteams uit de Verenigde Staten geselecteerd als finalist voor de editie van 2026.
 
-## Brug naar de ruimtevaartindustrie
+RASC-AL staat voor Revolutionary Aerospace Systems Concepts – Academic Linkage. De wedstrijd daagt studenten uit om vernieuwende concepten te ontwerpen die menselijk leven en werken op de maan, Mars en verder mogelijk moeten maken. Tegelijk moet de competitie de banden tussen universiteiten en de ruimtevaartsector versterken en een nieuwe generatie ingenieurs klaarstomen voor NASA's verkenningsplannen op de lange termijn.
 
-De RASC-AL wedstrijd vormt een belangrijke brug tussen de academische wereld en de ruimtevaartindustrie. Door studenten uit te dagen om innovatieve oplossingen te bedenken voor complexe ruimtevaartuitdagingen, bevordert NASA de ontwikkeling van nieuwe technologieën en stimuleert het de volgende generatie ruimtevaartingenieurs en wetenschappers.
+## Vier thema's rond Artemis en Mars
 
-De geselecteerde teams zullen hun concepten verder uitwerken en presenteren aan een panel van NASA-experts en industriespecialisten. Deze competitie heeft in het verleden geleid tot doorbraken in ruimtevaarttechnologie en heeft veel studenten geïnspireerd om carrières na te streven in de ruimtevaart- en technologiesector.
+De teams konden kiezen uit vier missiethema's. Het eerste gaat over communicatie, positiebepaling, navigatie en tijdsbepaling op het oppervlak van Mars, in vaktermen afgekort tot CPNT. Op aarde regelen satellietsystemen dat grotendeels voor ons, maar op Mars bestaat zo'n infrastructuur nog niet. Het tweede thema draait om stroomvoorziening op de maan en het beheren en verdelen van die energie (PMAD). Het derde thema betreft concepten om maanmonsters naar de aarde terug te brengen, en het vierde gaat over technologiedemonstraties op de maan die gebruikmaken van gedeelde infrastructuur.
 
-## Groeiend belang voor Maan en Mars
+Volgens NASA sluiten al deze onderwerpen aan bij technologie die nodig is voor het Artemis-programma, waarmee de VS mensen terug naar de maan willen brengen, en bij latere bemande missies naar Mars.
 
-Met de groeiende focus op bemande missies naar de Maan en uiteindelijk naar Mars, worden dit soort initiatieven steeds belangrijker voor het ontwikkelen van de technologieën die nodig zijn voor langdurige menselijke aanwezigheid in de ruimte.
+## Beoordeeld door experts
+
+Elk team leverde een eerste voorstel in de vorm van een technisch paper en een video van twee minuten. Een panel van deskundigen van NASA en uit de ruimtevaartindustrie beoordeelde de inzendingen. Daniel Mazanek, programmasponsor en senior ruimtesysteemingenieur bij NASA's Langley Research Center in Virginia, was onder de indruk. "De sterkste teams toonden niet alleen creativiteit, maar ook de gedisciplineerde analyse en systeemtechniek die nodig zijn om geloofwaardige oplossingen te ontwikkelen voor de uitdagingen in ruimteverkenning waar de organisatie voor staat", aldus Mazanek.
+
+Christopher Jones, eveneens programmasponsor en hoofdtechnoloog van het directoraat Systems Analysis and Concepts bij Langley, benadrukt dat de studenten met dezelfde technische en operationele vragen worstelen als de mensen die aan Artemis werken, van infrastructuur op het oppervlak tot mobiliteit en het gebruik van lokale grondstoffen. Volgens hem helpen de concepten NASA om breder na te denken bij het plannen van toekomstige missies.
+
+## Finale in Florida
+
+De finalisten werken hun idee nu uit tot een uitgebreid technisch paper en een mondelinge presentatie. Vanaf 2 juni presenteren ze hun werk tijdens het RASC-AL Forum in Cocoa Beach, Florida, aan NASA-leidinggevenden, mensen uit de industrie en de andere teams. De best presterende teams worden daar onderscheiden op technische kwaliteit, innovatie en presentatie.
+
+De wedstrijd wordt georganiseerd door het National Institute of Aerospace en gesponsord door meerdere NASA-onderdelen, waaronder het Space Technology Mission Directorate. Het NASA Tournament Lab, onderdeel van het programma voor prijzen, uitdagingen en crowdsourcing, beheert de competitie.
+
+## Wat betekent dit?
+
+Wedstrijden als RASC-AL leveren geen kant-en-klare ruimtevaartuigen op, maar ze zijn wel een kweekvijver voor ideeën en talent. NASA gebruikt ze om onbevangen naar lastige problemen te laten kijken, zoals betrouwbare stroom tijdens de lange maannacht of navigatie op een planeet zonder satellietnetwerk. Dat zijn precies de vraagstukken die opgelost moeten worden voordat een permanente aanwezigheid op de maan en later op Mars realistisch wordt.
+
+De competitie staat alleen open voor Amerikaanse universiteiten, maar de thema's zijn ook in Europa actueel. ESA levert via de European Service Module een belangrijke bijdrage aan het Orion-ruimteschip van Artemis, en ook Europese universiteiten en bedrijven werken aan technologie voor maanverkenning. Wat studenten nu bedenken, kan over enkele jaren terugkomen in de echte missieplanning.

@@ -1,28 +1,49 @@
 ---
-title: "SpaceX lanceert Zuid-Koreaanse aardobservatiesatelliet samen met 44 andere ladingen tijdens middernachtmissie"
-excerpt: "SpaceX heeft succesvol de CAS500-2 missie gelanceerd vanaf Vandenberg Space Force Base. De Zuid-Koreaanse aardobservatiesatelliet CAS500 en 44 andere ladingen werden om middernacht lokale tijd aan boord van een Falcon 9 raket de ruimte ingeschoten."
+title: "Zuid-Koreaanse satelliet CAS500-2 na bijna vier jaar vertraging klaar voor lancering met Falcon 9"
+excerpt: "De Zuid-Koreaanse aardobservatiesatelliet CAS500-2 staat klaar voor lancering met een Falcon 9 van SpaceX vanaf Vandenberg in Californië. De satelliet had eigenlijk in 2022 met een Russische raket moeten vertrekken, maar de oorlog in Oekraïne gooide roet in het eten. Eenmaal in een baan op zo'n 498 kilometer hoogte gaat hij samenwerken met zijn tweelingbroer CAS500-1."
 category: "missies"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-05-03T08:45:11.928Z"
-featured: "false"
+featured: false
 tags: []
-source: "SpaceflightNow"
-sourceUrl: "https://spaceflightnow.com/2026/05/02/live-coverage-spacex-to-launch-south-korean-earth-observation-satellite-44-more-payloads-on-overnight-falcon-9-rideshare-mission/"
+source: "koreajoongangdaily.joins.com"
+sourceUrl: "https://koreajoongangdaily.joins.com/news/2026-05-02/business/tech/Koreas-Earth-observation-satellite-CAS5002-to-launch-following-nearly-4year-delay/2583221"
+tipSource: "SpaceflightNow"
+tipUrl: "https://spaceflightnow.com/2026/05/02/live-coverage-spacex-to-launch-south-korean-earth-observation-satellite-44-more-payloads-on-overnight-falcon-9-rideshare-mission/"
 imageUrl: "https://images-assets.nasa.gov/image/KSC-20240223-PH-SPX01_0004/KSC-20240223-PH-SPX01_0004~medium.jpg"
-imageAlt: "SpaceX lanceert Zuid-Koreaanse aardobservatiesatelliet samen met 44 andere ladingen tijdens middernachtmissie"
+imageAlt: "Zuid-Koreaanse satelliet CAS500-2 na bijna vier jaar vertraging klaar voor lancering met Falcon 9"
 imageCredit: "SpaceX / KSC"
-kernpunten: ["SpaceX lanceerde om middernacht Pacific Daylight Time een Falcon 9 met de CAS500-2 missie vanaf Vandenberg.","De Zuid-Koreaanse aardobservatiesatelliet CAS500 van Korea Aerospace Industries is de hoofdlading en komt een uur na de lancering als eerste vrij.","De raket draagt ook 44 andere ladingen, waardoor kleinere organisaties de lanceerkosten delen."]
-kerncijfers: [{"waarde":"44","eenheid":"","label":"andere ladingen aan boord"},{"waarde":"09:00","eenheid":"uur","label":"lancering in Nederlandse tijd"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["De Zuid-Koreaanse aardobservatiesatelliet CAS500-2 wordt gelanceerd met een Falcon 9 vanaf Vandenberg in Californië.","De missie liep bijna vier jaar vertraging op doordat een Russische lancering door de oorlog in Oekraïne niet doorging.","Na een testfase van vier maanden gaat de satelliet samen met CAS500-1 het aardoppervlak in beeld brengen."]
+kerncijfers: [{"waarde":"498","eenheid":"km","label":"hoogte van de baan"},{"waarde":"534","eenheid":"kg","label":"massa van CAS500-2"},{"waarde":"0,5","eenheid":"m","label":"resolutie zwart-witbeelden"}]
 ---
 
-SpaceX heeft vannacht een nieuwe mijlpaal bereikt met de succesvolle lancering van de CAS500-2 missie. Om precies middernacht Pacific Daylight Time (09:00 Nederlandse tijd) steeg de Falcon 9 raket op vanaf lanceerplatform 4E van de Vandenberg Space Force Base in Californië.
+Na bijna vier jaar vertraging staat de Zuid-Koreaanse aardobservatiesatelliet CAS500-2 eindelijk klaar voor vertrek. De satelliet gaat zondag om 15.59 uur de ruimte in vanaf Vandenberg Space Force Base in Californië, aan boord van een Falcon 9-raket van SpaceX. Daarmee komt een einde aan een opvallende reeks tegenslagen voor een missie die oorspronkelijk al in 2022 had moeten vliegen.
 
-## Zuid-Koreaanse satelliet als hoofdlading
+Volgens bouwer Korea Aerospace Industries (KAI) heeft de satelliet zo'n dertig dagen aan voorbereidingen op de lanceerbasis achter de rug. In die periode zijn alle systemen gecontroleerd en is de satelliet van brandstof voorzien. Nu wacht hij alleen nog op de lancering zelf.
 
-De hoofdlading van deze zogenoemde 'rideshare' missie is de Compact Advanced Satellite 500 (CAS500) van Korea Aerospace Industries. Deze geavanceerde aardobservatiesatelliet zal ongeveer een uur na de lancering als eerste worden vrijgegeven in zijn baan om de aarde. De CAS500 is ontworpen voor hoogwaardige aardobservatie en zal bijdragen aan verschillende wetenschappelijke en commerciële toepassingen.
+## Eerste contact via Spitsbergen
 
-Naast de Zuid-Koreaanse hoofdsatelliet vervoert de Falcon 9 nog 44 andere ladingen, waaronder verschillende kleine satellieten en onderzoeksprojecten van internationale klanten. Deze rideshare-aanpak stelt kleinere organisaties en landen in staat om kosteneffectief toegang te krijgen tot de ruimte door de lanceringkosten te delen.
+Ongeveer zestig minuten na de start komt CAS500-2 los van de raket. Een kwartier later volgt het eerste contact met de aarde, via een grondstation op Svalbard (Spitsbergen) in Noorwegen. Zulke stations hoog in het noorden zijn populair bij satellietoperators, omdat satellieten in een baan over de polen er bij vrijwel elke omloop overheen komen.
 
-## SpaceX zet lanceerschema voort
+De satelliet gaat draaien op een hoogte van ongeveer 498 kilometer. Eerst volgt een testfase van vier maanden, waarin de systemen en instrumenten worden ingeregeld. Daarna moet CAS500-2 in de tweede helft van dit jaar volledig operationeel worden, samen met zijn voorganger CAS500-1.
 
-De missie onderstreept opnieuw SpaceX's dominante positie in de commerciële ruimtevaart en hun vermogen om meerdere ladingen tegelijkertijd efficiënt naar verschillende banen te brengen. Met deze lancering zet het bedrijf hun indrukwekkende lanceerschema van 2024 voort.
+## Scherpe blik op het aardoppervlak
+
+CAS500 staat voor Compact Advanced Satellite 500. Het is een Zuid-Koreaans programma voor middelgrote aardobservatiesatellieten. Het doel is een gestandaardiseerd platform van de 500-kilogramklasse te ontwikkelen: een soort basismodel dat voor verschillende missies kan worden hergebruikt. Daarnaast moet de technologie overgedragen worden aan het Koreaanse bedrijfsleven.
+
+CAS500-2 weegt 534 kilogram. In zwart-witbeelden kan de satelliet voorwerpen van 0,5 meter onderscheiden, in kleurenbeelden is dat 2 meter. Die resolutie geeft aan hoe klein de details zijn die op de foto's nog los van elkaar te zien zijn.
+
+De satelliet is zelfstandig ontwikkeld door KAI, dat daarbij voortbouwde op eerdere samenwerking met het Korea Aerospace Research Institute, het Koreaanse ruimtevaartonderzoeksinstituut. Sinds 2018 is KAI de hoofdontwikkelaar.
+
+## Oorlog gooide roet in het eten
+
+De weg naar de lanceerbasis was lang. CAS500-2 zou oorspronkelijk in de tweede helft van 2022 met een Russische raket worden gelanceerd. Door de oorlog tussen Rusland en Oekraïne ging dat niet door en moest er een alternatief worden gezocht. Ook daarna liep het niet vlekkeloos: SpaceX wijzigde de plannen om de satelliet samen met een andere satelliet te lanceren, waardoor CAS500-2 nu een eigen lancering krijgt.
+
+Het gevolg is een opmerkelijke volgorde: CAS500-2 vertrekt pas na CAS500-3. Die laatste werd in november vorig jaar al gelanceerd met Nuri, de raket die Zuid-Korea zelf heeft ontwikkeld.
+
+## Wat betekent dit?
+
+De lancering laat zien hoe sterk de oorlog in Oekraïne de internationale ruimtevaart heeft opgeschud. Veel landen en bedrijven die op Russische raketten rekenden, moesten na 2022 uitwijken. Een groot deel van die vracht kwam bij SpaceX terecht. Ook Europa voelde dat: Europese missies stapten destijds noodgedwongen over op andere raketten, omdat de Sojoez niet langer beschikbaar was.
+
+Tegelijk is CAS500-2 een stap in de groeiende ambitie van Zuid-Korea als ruimtevaartland. Met een eigen standaardplatform voor satellieten en een eigen lanceerraket bouwt het land in hoog tempo een zelfstandige ruimtevaartsector op. De beelden van CAS500-2 en zijn broers gaan Korea onder meer helpen om het eigen grondgebied nauwkeurig in kaart te brengen.

@@ -1,28 +1,39 @@
 ---
-title: "Zonsverduistering vanuit de ruimte: uniek uitzicht voor Artemis II-astronauten"
-excerpt: "De Artemis II-astronauten waren op 6 april 2026 getuige van een spectaculaire zonsverduistering tijdens hun maanvlucht. Vanuit hun unieke positie in de ruimte konden zij deze bijzondere gebeurtenis waarnemen die vanaf de aarde niet zichtbaar was."
+title: "Artemis II legt zonsverduistering vast die alleen de bemanning kon zien"
+excerpt: "Een camera op de zonnepanelen van het Orion-ruimtevaartuig heeft op 6 april 2026 de Maan gefotografeerd als zwart silhouet tegen de stralende corona van de Zon. Alleen de vier Artemis II-astronauten konden deze verduistering met eigen ogen zien, dankzij hun positie tussen de Aarde en de Maan."
 category: "missies"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-04-09T08:18:58.056Z"
 featured: false
 tags: []
 source: "NASA"
 sourceUrl: "https://www.nasa.gov/image-article/solar-eclipse-of-the-heart/"
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/04/art002e009573orig.jpg"
-imageAlt: "Solar Eclipse of the Heart"
+imageAlt: "Artemis II legt zonsverduistering vast die alleen de bemanning kon zien"
 imageCredit: "NASA"
-kernpunten: ["Een camera op de zonnepanelen van Orion legde op 6 april 2026 de Maan in silhouet tegen de corona van de Zon vast.","Alleen de Artemis II-astronauten konden deze zonsverduistering zien, vanuit hun positie tussen de Aarde en de Maan.","De foto is gemaakt tijdens de maanvorbijvlucht en de beelden leveren ook waardevolle wetenschappelijke data op."]
-kerncijfers: [{"waarde":"6 apr 2026","eenheid":"","label":"Datum van de zonsverduistering"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Een camera op de zonnepanelen van Orion fotografeerde op 6 april 2026 een zonsverduistering met de corona rond de Maan.","Alleen de Artemis II-astronauten konden de verduistering zien, omdat Zon en Maan vanuit hun positie tussen Aarde en Maan op één lijn stonden.","De beelden leveren volgens NASA ook wetenschappelijke gegevens op over de wisselwerking tussen Zon, Maan en ruimtevaartuig."]
+kerncijfers: [{"waarde":"6 april 2026","eenheid":"","label":"datum van de verduistering"}]
 ---
 
-Een adembenemend beeld van de Maan, door de Zon verlicht tijdens een zonsverduistering op 6 april 2026, werd vastgelegd door een van de camera's op de zonnepanelen van het Orion-ruimtevaartuig. Deze unieke opname toont de Maan in silhouet tegen de stralende corona van de Zon.
+Tijdens hun vlucht langs de Maan hebben de astronauten van Artemis II een hemelverschijnsel gezien dat voor niemand op aarde zichtbaar was: een zonsverduistering, waarbij de Maan precies voor de Zon schoof. Een van de camera's op de zonnepanelen van het Orion-ruimtevaartuig legde het moment vast op 6 april 2026. De foto toont de Maan als donkere schijf, omringd door de gloeiende corona van de Zon.
 
-## Exclusief uitzicht voor de astronauten
+De corona is de uiterst ijle, hete buitenste laag van de zonneatmosfeer. Normaal gesproken verdwijnt dat zwakke licht volledig in de felle schittering van de Zon zelf. Alleen wanneer de zonneschijf helemaal wordt afgedekt, zoals bij een totale zonsverduistering, wordt de corona als een stralenkrans zichtbaar.
 
-Tijdens hun historische maanvlucht kregen de Artemis II-astronauten een voorrecht dat geen enkele aardbewoner kon delen: zij waren de enigen die getuige konden zijn van deze bijzondere zonsverduistering. Hun unieke positie in de ruimte, tussen de Aarde en de Maan, bood hen dit exclusieve uitzicht op het kosmische schouwspel.
+## Een verduistering voor vier toeschouwers
 
-De foto werd gemaakt tijdens de maanvorbijvlucht van de Artemis II-missie, waarbij het ruimtevaartuig Orion de Maan passeerde als onderdeel van de voorbereidingen op toekomstige maanlandingen. Deze missie markeert een belangrijke stap in NASA's ambitieuze plannen om astronauten terug te brengen naar het maanoppervlak.
+Dat deze verduistering exclusief was voor de bemanning, heeft alles te maken met perspectief. Een zonsverduistering ontstaat wanneer Zon, Maan en waarnemer precies op één lijn liggen. Vanaf de aarde was dat op dat moment niet het geval, maar vanuit Orion, dat zich in de ruimte tussen de Aarde en de Maan bevond, schoof de Maan wel voor de Zon. Daarmee waren de Artemis II-astronauten de enigen die dit kosmische schouwspel konden aanschouwen.
 
-## Wetenschappelijke waarde van de beelden
+De opname werd gemaakt tijdens de scheervlucht langs de Maan, het hoogtepunt van de missie. Orion vloog daarbij om de Maan heen zonder te landen. De vlucht dient als generale repetitie voor toekomstige maanlandingen: NASA wil met het Artemis-programma weer astronauten op het maanoppervlak zetten, en Artemis II is daarin de eerste vlucht met mensen aan boord.
 
-De beelden van deze ruimte-zonsverduistering bieden niet alleen een spectaculair gezicht, maar ook waardevolle wetenschappelijke data over de wisselwerking tussen de Zon, de Maan en het Orion-ruimtevaartuig tijdens deze complexe missie.
+## Meer dan een mooi plaatje
+
+Volgens NASA is de foto niet alleen spectaculair om te zien. De beelden leveren ook wetenschappelijk bruikbare gegevens op over de wisselwerking tussen de Zon, de Maan en het ruimtevaartuig tijdens deze complexe missie. Zo zeggen ze iets over hoe Orion en zijn systemen zich gedragen wanneer de Maan het zonlicht tijdelijk wegneemt.
+
+Opvallend is ook waar de camera zat: op de zonnepanelen van het ruimtevaartuig. Die camera's zijn bedoeld om de buitenkant van Orion in de gaten te houden, maar blijken ook uitstekend geschikt om bijzondere momenten tijdens de reis vast te leggen.
+
+## Wat betekent dit?
+
+De foto is een symbolisch moment in de terugkeer van de mens naar de Maan. Sinds het Apollo-tijdperk zijn er geen astronauten meer zo ver van de aarde geweest. Na de onbemande proefvlucht van Artemis I laat Artemis II zien dat Orion met een bemanning rond de Maan kan vliegen. De volgende stap in het programma is een daadwerkelijke landing op het maanoppervlak.
+
+Voor Europa heeft het beeld een extra laagje. Orion wordt aangedreven door de European Service Module van ESA, die onder meer voor stroom, voortstuwing en lucht en water aan boord zorgt. De zonnepanelen waarop de camera zat, maken deel uit van die Europese module, waaraan ook Nederlandse industrie heeft bijgedragen. Een stukje Europese techniek heeft zo letterlijk vooraan gezeten bij deze uitzonderlijke verduistering.
