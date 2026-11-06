@@ -1,6 +1,6 @@
 ---
-title: "Hemelnotities november: Voyager 1 bijna één lichtdag ver"
-excerpt: "Bijna vijftig jaar na de lancering nadert Voyager 1 een bijzondere mijlpaal. Op 18 november 2026 staat de sonde één lichtdag van de zon, ongeveer 16,1 miljard mijl ver. NASA blikt terug op de Grand Tour van beide Voyagers en op de beroemde Golden Record."
+title: "Voyager 1 bereikt in november 2026 de grens van één lichtdag"
+excerpt: "Op 18 november 2026, 49 jaar na de lancering, komt NASA's Voyager 1 voor het eerst op één lichtdag afstand van de zon. Licht, en dus ook een radiosignaal, doet er dan een volle dag over om de sonde te bereiken. De mijlpaal is een mooi moment om terug te blikken op een van de succesvolste ruimtemissies ooit."
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-30T14:07:18.530Z"
@@ -9,24 +9,35 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26353/PIA26353.tif/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "November’s Night Sky Notes: Light-Day Away"
+imageAlt: "Voyager 1 bereikt in november 2026 de grens van één lichtdag"
 imageCredit: "NASA"
-kernpunten: ["Voyager 1 en 2 werden in 1977 gelanceerd en benutten een planetenstand die eens in de 175 jaar voorkomt.","Elke sonde draagt de Golden Record met begroetingen, muziek en beelden van de aarde.","Op 18 november 2026 bereikt Voyager 1 een afstand van één lichtdag tot de zon."]
-kerncijfers: [{"waarde":"25,80 miljard","eenheid":"km","label":"Gemeten afstand Voyager 1"},{"waarde":"18 november 2026","eenheid":"","label":"Voyager 1 op één lichtdag"},{"waarde":"175","eenheid":"jaar","label":"Interval zeldzame planetenstand"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Voyager 1 komt op 18 november 2026 voor het eerst op één lichtdag afstand van de zon.","De sonde werd in 1977 gelanceerd en stak in 2012 als eerste de heliopauze over, de grens met de interstellaire ruimte.","Beide Voyagers dragen de Golden Record mee, een gouden plaat met groeten, muziek en beelden van de aarde."]
+kerncijfers: [{"waarde":"18 november 2026","eenheid":"","label":"Voyager 1 op lichtdag"},{"waarde":"25,80 miljard","eenheid":"km","label":"gemeten afstand Voyager 1"},{"waarde":"55","eenheid":"talen","label":"begroetingen op Golden Record"}]
 ---
 
-In 1977 lanceerde NASA de tweelingsondes Voyager 1 en Voyager 2. De timing was geen toeval. De vier grootste planeten van ons zonnestelsel, Jupiter, Saturnus, Uranus en Neptunus, stonden in een gunstige stand die maar eens in de 175 jaar voorkomt. Dankzij die stand konden de sondes van planeet naar planeet reizen en gebruikmaken van zogeheten gravity assists: zwaartekrachtslingers waarbij de zwaartekracht van een planeet een ruimtevaartuig versnelt en een nieuwe richting op stuurt.
+Een radiosignaal van de aarde doet er straks een volle dag over om Voyager 1 te bereiken. Volgens NASA passeert de ruimtesonde op 18 november 2026 de grens van één lichtdag, op zo'n 16,1 miljard mijl van de zon. Daarmee wordt Voyager 1, 49 jaar na de lancering, het eerste door mensen gebouwde object dat zo ver van huis is gekomen.
 
-Met samen zes van die slingers leverde deze Grand Tour van dichtbij beelden op van de gas- en ijsreuzen en van verschillende manen. Bij Saturnus gingen de twee sondes in de jaren tachtig elk hun eigen weg. Voyager 2 reisde door naar Uranus en Neptunus. Voyager 1 maakte nog één groepsportret van het zonnestelsel, waarop Mercurius en Mars ontbreken. Daarbij hoorde ook een laatste opname van de 'pale blue dot', het lichtblauwe stipje dat onze thuisplaneet is. De Voyagers maakten de weg vrij voor ambitieuze orbitermissies als Galileo naar Jupiter en Cassini naar Saturnus. Beide sondes sturen nog altijd waardevolle wetenschappelijke gegevens terug uit de verste uithoeken van het zonnestelsel.
+Een lichtdag is, net als het bekendere lichtjaar, geen tijdsduur maar een afstand: de afstand die licht in één dag aflegt. Ter vergelijking: zonlicht bereikt de aarde in ruim acht minuten. Op het moment dat NASA zijn bericht publiceerde, volgde de antenne van het Deep Space Network in het Australische Canberra Voyager 1 op een afstand van 25,80 miljard kilometer.
 
-## Een gouden plaat aan boord
+## Een grand tour langs de reuzenplaneten
 
-Aan boord van elke sonde zit de Golden Record. Dat is een grammofoonplaat van 12 inch met gesproken begroetingen in 55 talen, 27 muziekstukken, 116 afbeeldingen en andere geluiden van de aarde. Een van de begroetingen luidt: "Hello from the children of planet Earth." Een beschermende hoes omgeeft elke plaat. Daarop staan gravures die de positie van onze zon aangeven ten opzichte van 14 pulsars, samen met instructies om de plaat af te spelen.
+De tweelingsondes Voyager 1 en 2 werden in 1977 gelanceerd. Ze profiteerden van een bijzondere stand van de vier grootste planeten, Jupiter, Saturnus, Uranus en Neptunus, die maar eens in de 175 jaar voorkomt. Met in totaal zes zwaartekrachtslingers, waarbij een sonde vaart en richting meekrijgt door langs een planeet te scheren, konden de twee ruimtevaartuigen de gas- en ijsreuzen en een aantal van hun manen van dichtbij fotograferen.
 
-Om de gecodeerde informatie te beschermen tegen ruimtestraling gebruikten de ontwerpers verschillende metalen. De plaat zelf is van koper met een laag goud, de hoes is van aluminium. Op de hoes is via galvanisatie bovendien een ultrazuiver monster van de isotoop uranium-238 aangebracht. Die isotoop heeft een halveringstijd van 4,468 miljard jaar.
+Bij Saturnus gingen de wegen in de jaren tachtig uiteen. Voyager 2 vloog door naar Uranus en Neptunus, terwijl Voyager 1 nog één groepsportret van het zonnestelsel maakte, zonder Mercurius en Mars. Daarop staat ook de beroemde 'pale blue dot': de aarde als een nietig lichtblauw stipje in de ruimte.
 
-## Voorbij de heliopauze
+## Een gouden plaat voor buitenaardse luisteraars
 
-Voyager 1 en 2 staken in augustus 2012 en november 2018 de heliopauze over. Dat is de grens waar de zonnewind, de stroom deeltjes die de zon uitstoot, overgaat in het interstellaire medium tussen de sterren. Via NASA's Deep Space Network houdt de aarde contact met beide sondes en volgt ze hun reis. Toen het artikel verscheen, mat de antenne in Canberra de afstand van Voyager 1 op 25,80 miljard kilometer, ruim 16 miljard mijl.
+Beide sondes hebben een bijzondere boodschap aan boord: de Golden Record. Dit is een grammofoonplaat van 12 inch met gesproken begroetingen in 55 talen, 27 muziekstukken, 116 afbeeldingen en andere geluiden van de aarde. De plaat is gemaakt van koper met een laag goud, en zit in een aluminium hoes. Daarop staan gravures die de positie van onze zon ten opzichte van 14 pulsars aangeven, plus instructies om de plaat af te spelen. Pulsars zijn snel ronddraaiende neutronensterren die als kosmische vuurtorens regelmatige pulsen uitzenden.
 
-Op 18 november 2026, 49 jaar na de lancering, passeert Voyager 1 de grens van één lichtdag. Dat is de afstand die licht in één dag aflegt, zo'n 16,1 miljard mijl van de zon. Een lichtminuut of lichtjaar is dus een maat voor afstand, geen tijdsduur. Sterrenkijkers kennen het lichtjaar van objecten buiten ons zonnestelsel. Met deze mijlpaal maakt Voyager 1 voelbaar hoe enorm zelfs de afstanden binnen en net buiten ons eigen zonnestelsel zijn.
+De hoes is bovendien voorzien van een uiterst zuiver laagje uranium-238. Deze isotoop heeft een halveringstijd van 4,468 miljard jaar. Door te meten hoeveel ervan vervallen is, zou een eventuele vinder kunnen afleiden hoe lang de plaat al onderweg is.
+
+## Voorbij de invloed van de zon
+
+In augustus 2012 stak Voyager 1 als eerste de heliopauze over, de grens waar de zonnewind, de stroom geladen deeltjes van de zon, overgaat in het interstellaire medium tussen de sterren. Voyager 2 volgde in november 2018. Sindsdien meten beide sondes omstandigheden die geen ander ruimtevaartuig ooit rechtstreeks heeft kunnen onderzoeken. Via het Deep Space Network blijft de aarde met beide sondes in contact.
+
+## Wat betekent dit?
+
+De lichtdaggrens is vooral een symbolische mijlpaal, maar wel een veelzeggende. Hij laat zien hoe ongelooflijk groot de ruimte is: zelfs na bijna een halve eeuw onafgebroken reizen is Voyager 1 pas één lichtdag ver, terwijl de dichtstbijzijnde ster op ruim vier lichtjaar staat. Het maakt de afstanden waar sterrenkijkers dagelijks mee werken, van lichtminuten binnen het zonnestelsel tot lichtjaren naar de sterren, ineens tastbaar.
+
+Tegelijk is de missie een eerbetoon aan techniek uit de jaren zeventig die nog altijd werkt. De sondes hebben steeds minder energie, en NASA schakelt al jaren instrumenten uit om ze zo lang mogelijk in leven te houden. Ooit zal het contact verloren gaan, maar de Golden Records reizen dan nog miljoenen jaren verder als stille boodschappers van de aarde.
