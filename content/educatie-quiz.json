@@ -1546,6 +1546,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-06",
+      "slug": "apod-2026-november-6-a-farewell-to-swift",
+      "titel": "Afscheid van Swift: NASA-telescoop voor explosies in het heelal verbrandt boven Indonesië",
+      "beg": {
+        "q": "Waarom zakte de Swift-satelliet na een periode van veel zonneactiviteit sneller naar de aarde?",
+        "options": [
+          "De zwaartekracht van de aarde wordt sterker als de zon actiever is",
+          "Zonnestraling duwt de satelliet naar beneden, zoals wind een zeil duwt",
+          "De bovenste laag van de dampkring zet uit, waardoor de satelliet meer luchtweerstand krijgt",
+          "De zon trekt met haar zwaartekracht de satelliet naar zich toe"
+        ],
+        "correct": 2,
+        "explain": "Extra zonne-energie verwarmt de bovenste atmosfeer, die daardoor uitzet. Een satelliet in een lage baan vliegt dan door dunne lucht die hem afremt, waardoor hij langzaam daalt. Zo krijgt ook het ISS regelmatig een duwtje omhoog."
+      },
+      "ama": {
+        "q": "Welk effect van het zonnemaximum versnelde het baanverval van Swift in een lage baan om de aarde?",
+        "options": [
+          "Een verzwakking van het aardmagnetisch veld waardoor de baan instabiel wordt",
+          "Uitzetting van de bovenste atmosfeer, waardoor de luchtweerstand op hoogte toeneemt",
+          "Een sterkere zonnewind die de satelliet direct afremt via het aardmagnetisch veld",
+          "Een toename van de massa van de aarde door instromend zonnemateriaal"
+        ],
+        "correct": 1,
+        "explain": "Bij een zonnemaximum neemt de extreem-ultraviolette straling toe, wat de thermosfeer verwarmt en laat uitzetten. De luchtdichtheid op satellietbaanhoogte stijgt, waardoor de weerstand groter wordt en de satelliet energie verliest. Hij zakt dan naar dichtere lagen, waar de weerstand nog verder toeneemt."
+      },
+      "pro": {
+        "q": "Via welk mechanisme leidt een zonnemaximum tot sneller baanverval van een satelliet in een lage aardbaan?",
+        "options": [
+          "Het quadrupoolmoment van de aarde neemt toe tijdens zonneactiviteit, waardoor de baan sneller precesseert",
+          "Geïnduceerde wervelstromen in de romp veroorzaken een remkracht die kwadratisch met de zonnewindsnelheid toeneemt",
+          "Toegenomen stralingsdruk van fotonen op het zonnepaneel remt de baanbeweging af, evenredig met het paneeloppervlak",
+          "Verhoogde EUV-instraling verwarmt de thermosfeer, waardoor de dichtheid ρ op baanhoogte stijgt en de weerstandskracht F = ½ρv²C_dA toeneemt"
+        ],
+        "correct": 3,
+        "explain": "De extra EUV-straling verwarmt de thermosfeer, die uitzet, zodat de dichtheid op een vaste hoogte toeneemt. De weerstandskracht is evenredig met die dichtheid, dus de baanenergie neemt sneller af en de baan krimpt. Omdat de dichtheid exponentieel met de hoogte daalt, versnelt het verval naarmate de satelliet lager komt."
+      }
+    },
+    {
       "datum": "2026-11-05",
       "titel": "Detumbler van Airbus moet tollende dode satellieten afremmen",
       "beg": {
@@ -1925,5 +1963,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-11-05T15:35:28.825Z"
+  "bijgewerkt": "2026-11-06T15:09:59.783Z"
 }
