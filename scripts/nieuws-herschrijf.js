@@ -310,10 +310,15 @@ const isVrijeBron = url => /(^|\.)(nasa\.gov|esa\.int)$/.test(hostVan(url))
  * Zoek bij een tip de oorspronkelijke bron. → { ok, url, naam, tekst, woorden } of { ok: false, reden }
  * Haalt de tippagina op, dan hooguit vier links eruit, de beste eerst.
  */
-async function primaireBron(tipUrl, fetchPagina = haalPagina) {
+async function primaireBron(tipUrl, fetchPagina = haalPagina, reserveHtml = '') {
+  // reserveHtml: de HTML van het feeditem. Sommige nieuwssites (SpaceflightNow)
+  // weigeren de bot (HTTP 403), maar hun feed bevat het hele artikel met links.
   let html
-  try { html = await fetchPagina(tipUrl) } catch (e) { return { ok: false, reden: `tippagina niet bereikbaar (${String(e.message || e).slice(0, 80)})` } }
-  const links = primaireLinks(html, tipUrl).slice(0, 4)
+  try { html = await fetchPagina(tipUrl) } catch (e) {
+    if (!reserveHtml) return { ok: false, reden: `tippagina niet bereikbaar (${String(e.message || e).slice(0, 80)})` }
+    html = reserveHtml
+  }
+  const links = [...new Set([...primaireLinks(html, tipUrl), ...(reserveHtml && html !== reserveHtml ? primaireLinks(reserveHtml, tipUrl) : [])])].slice(0, 4)
   if (!links.length) return { ok: false, reden: 'geen oorspronkelijke bron gevonden in de tip' }
   for (const url of links) {
     let tekst = ''
