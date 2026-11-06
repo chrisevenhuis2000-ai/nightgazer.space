@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; background: #05060d; }
+        #stage-view { position: absolute; inset: 0; overflow: hidden; background: #05060d; }
+        #stage-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+                    /* silver-gelatin grade, as social-v2: grey the colour, lift contrast */
+                    filter: grayscale(0.5) contrast(1.2) brightness(0.97) saturate(0.95); }
+        /* ...then pull what colour is left toward the brand blue */
+        #stage-grade { position: absolute; inset: 0; mix-blend-mode: color;
+                       background: linear-gradient(200deg, rgba(24,95,165,0.55), rgba(24,95,165,0.38)); }
+        #stage-vignette { position: absolute; inset: 0;
+                          background: radial-gradient(90% 95% at 55% 50%, rgba(5,6,13,0) 55%, rgba(5,6,13,0.8) 100%); }
+        /* The brand ground the galaxy sinks into (21 s): the archive's lightbox blue, no frame around it. */
+        #stage-ground { position: absolute; inset: 0; opacity: 0; background: #0E1022; }
+        #stage-ground i { position: absolute; inset: 0; display: block;
+                          background: radial-gradient(48% 62% at 50% 48%, rgba(24,95,165,0.46), rgba(24,95,165,0.10) 70%, rgba(24,95,165,0) 100%); }
+        #stage-dim { position: absolute; inset: 0; background: #05060d; opacity: 0; }
+        /* emulsion grain over everything; also breaks up banding after YouTube compression */
+        #stage-grain { position: absolute; inset: -64px; mix-blend-mode: overlay; opacity: 0.22; }
+      </style>
+
+      <div id="root" data-composition-id="stage" data-width="1920" data-height="1080">
+        <div id="stage-view">
+          <canvas id="stage-gl" width="1920" height="1080"></canvas>
+          <div id="stage-grade"></div>
+          <div id="stage-vignette"></div>
+          <div id="stage-ground"><i></i></div>
+          <div id="stage-dim"></div>
+          <div id="stage-grain" data-layout-allow-overflow></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // 21.0: the galaxy sinks into the brand ground (partly: it stays faintly visible behind the plea).
+          // 25.5: the ground deepens under the sign-off. Still from 27.5.
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#stage-ground", { opacity: 0 }, { opacity: 0.62, duration: 0.9, ease: "power2.out" }, 21.0);
+          tl.to("#stage-ground", { opacity: 0.82, duration: 1.2, ease: "power2.out" }, 25.5);
+          tl.fromTo("#stage-dim", { opacity: 0 }, { opacity: 0.25, duration: 1.2, ease: "power2.out" }, 25.5);
+          tl.set({}, {}, 32);
+          window.__timelines["stage"] = tl;
+        })();
+      </script>
+
+      <script type="module">
+        import * as THREE from "three";
+        import { starfield, planet, nightEarth, photoLayers, grainTile, orbitLook, ease, lerp, clamp01 } from "./assets/space.js";
+
+        const W = 1920, H = 1080, FOV = 34;
+        const CUT_PLANET = 4.0;   // match cut: Earth's horizon becomes the planet's limb
+        const DOLLY = 13.5;       // the camera climbs over the planet, into the galaxy
+        const PLEA = 21.0;        // the galaxy falls back into the brand ground
+        const STILL = 27.5;       // everything still from here (end card)
+
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("stage-gl"), antialias: true, preserveDrawingBuffer: true });
+        renderer.setSize(W, H, false);
+        renderer.setPixelRatio(1);
+        renderer.setClearColor(0x05060d, 1);
+        renderer.autoClear = false;
+
+        const loader = new THREE.TextureLoader();
+        const tex = (f) => { const t = loader.load("assets/tex/" + f); t.anisotropy = 8; t.generateMipmaps = true; return t; };
+
+        // ── Shot 1: the Earth at night (NASA Black Marble 2016) ──
+        const earthScene = new THREE.Scene();
+        const earth = nightEarth({ globalTex: tex("bm-global.jpg"), patchTex: tex("bm-europe.jpg"),
+                                   sunDir: new THREE.Vector3(-1, 0.25, -0.55) });
+        earth.rotation.set(0.908, -1.658, 0); // lon 5° E, lat 52° N faces +z
+        earthScene.add(earth, starfield({ seed: 11 }));
+        earth.updateMatrixWorld(true);
+
+        function latLon(lat, lon) {
+          const u = (lon + 180) / 360, v = (lat + 90) / 180;
+          const phi = u * Math.PI * 2, th = (1 - v) * Math.PI;
+          return new THREE.Vector3(-Math.cos(phi) * Math.sin(th), Math.cos(th), Math.sin(phi) * Math.sin(th))
+            .applyMatrix4(earth.matrixWorld).normalize();
+        }
+
+        // ── Shots 2–4: procedural planet in front of the Phantom Galaxy (ESA/Webb) ──
+        const deepScene = new THREE.Scene();
+        const M74_VIEW = 22.5;   // camera z at which the three layers line up exactly
+        const m74 = photoLayers({ back: tex("m74-back.jpg"), mid: tex("m74-mid.jpg"), stars: tex("m74-stars.png"),
+                                  feather: tex("m74-feather.png"), aspect: 5047 / 3136, height: 20, viewZ: M74_VIEW });
+        deepScene.add(m74, starfield({ seed: 23 }));
+        const planetScene = new THREE.Scene();
+        const giant = planet({ seed: 3, radius: 1.018, sunDir: new THREE.Vector3(-0.95, 0.42, -0.18) });
+        planetScene.add(giant);
+
+        const cam = new THREE.PerspectiveCamera(FOV, W / H, 0.005, 600);
+        const deepCam = new THREE.PerspectiveCamera(FOV, W / H, 0.01, 600);
+
+        // One orbit geometry shared by the last Earth frame and the first planet frame.
+        // Landscape: the ground point sits west of the Low Countries, so the lights land right of centre
+        // and the left third stays dark for the titles.
+        const GROUND = latLon(36.0, -1.5);
+        const CUT = { alt: 0.58, pitch: 50, roll: 0.04, yaw: -14 };
+
+        function renderEarth(t) {
+          const k = ease.sine(clamp01(t / CUT_PLANET));
+          orbitLook(cam, GROUND, lerp(0.70, CUT.alt, k), lerp(52, CUT.pitch, k), lerp(0.07, CUT.roll, k), FOV, lerp(-8, CUT.yaw, k));
+          renderer.clear();
+          renderer.render(earthScene, cam);
+        }
+
+        // Galaxy camera: wide to close (13.5–21.5), then it eases back to rest and stops at STILL.
+        const cx = (0.436 - 0.5) * 20 * (5047 / 3136), cy = -(0.508 - 0.5) * 20;
+        function deepPose(t) {
+          const k = clamp01((t - DOLLY) / (PLEA + 0.5 - DOLLY));
+          const e = ease.inOut(k) * 0.6 + k * 0.4;
+          const b = ease.sine(clamp01((Math.min(t, STILL) - PLEA) / (STILL - PLEA)));   // fall back
+          const z = lerp(M74_VIEW, -40, e);
+          // Until the plea the galaxy sits in the right half (the titles own the left); then it centres behind the plea.
+          const side = lerp(13, 6.5, e);
+          return {
+            x: cx - side * (1 - b),
+            y: cy + lerp(-0.4, 0.4, e) * (1 - b),
+            z: lerp(z, 4, b),
+            roll: lerp(-0.05, 0.04, e) * (1 - b),
+            lx: cx - (side + lerp(0.8, -0.4, e)) * (1 - b),
+            ly: cy + lerp(-0.6, 0.2, e) * (1 - b),
+          };
+        }
+        function renderDeep(t) {
+          const p = deepPose(t);
+          deepCam.position.set(p.x, p.y, p.z);
+          deepCam.up.set(Math.sin(p.roll), 1, 0);
+          deepCam.lookAt(p.lx, p.ly, -70);
+          deepCam.updateMatrixWorld();
+          m74.userData.setOpacity(lerp(0.0, 1.0, ease.sine(clamp01((t - DOLLY + 0.3) / 1.6))));
+          renderer.render(deepScene, deepCam);
+        }
+
+        function renderPlanet(t) {
+          const k = clamp01((t - CUT_PLANET) / (DOLLY - CUT_PLANET));
+          const d = clamp01((t - DOLLY) / 1.5);
+          // Same orbit geometry as the Earth's last frame; then a slow rise while the terminator
+          // drifts across the frame under the titles, then a climb over the limb.
+          const n = GROUND.clone().lerp(new THREE.Vector3(-0.5, 0.1, 1).normalize(), ease.sine(k)).normalize();
+          const alt = lerp(CUT.alt, 1.25, ease.sine(k)) + d * 1.4;
+          const dip = (h) => (Math.acos(1 / (1 + h)) * 180) / Math.PI;
+          const offset = CUT.pitch - dip(CUT.alt);
+          const pitch = dip(alt) + offset - 30 * ease.inOut(d);
+          orbitLook(cam, n, alt, pitch, lerp(CUT.roll, -0.04, ease.sine(k)), FOV, lerp(CUT.yaw, -22, ease.sine(k)));
+          renderer.clearDepth();
+          renderer.render(planetScene, cam);
+        }
+
+        const grain = document.getElementById("stage-grain");
+        function renderAt(t) {
+          if (t < CUT_PLANET) {
+            renderEarth(t);
+          } else {
+            renderer.clear();
+            renderDeep(t);
+            if (t < DOLLY + 1.5) renderPlanet(t);
+          }
+          // grain keeps moving (film never freezes completely), but on a fixed seed per frame
+          grain.style.backgroundImage = `url(${grainTile(9000 + Math.round(t * 30))})`;
+        }
+
+        window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+        THREE.DefaultLoadingManager.onLoad = () => renderAt(window.__hfThreeTime || 0);
+        renderAt(window.__hfThreeTime || 0);
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        /* A quiet dark field on the left: the text always sits on calm ground. */
+        #titles-scrim { position: absolute; left: 0; top: 0; bottom: 0; width: 1180px;
+                        background: linear-gradient(90deg, rgba(5,6,13,0.82) 0%, rgba(5,6,13,0.62) 52%, rgba(5,6,13,0) 100%); }
+        .t-block { position: absolute; left: 150px; width: 1400px; }
+        .t-line { font: 800 104px/1.0 var(--sans); letter-spacing: -0.035em; color: var(--pl-ink); }
+        .t-line span { display: block; padding-right: 0.06em; white-space: nowrap; }
+        .t-sub { margin-top: 36px; font: 500 38px/1.3 var(--sans); letter-spacing: -0.005em; color: var(--pl-ink-2); white-space: nowrap; }
+        .t-kicker { margin-bottom: 30px; }
+        #titles-wipe { position: absolute; left: 150px; top: 380px; width: 1px; height: 240px; background: var(--pl-stamp); opacity: 0; }
+
+        /* 1 — hook */
+        #t-hook { top: 392px; }
+        /* 2 — what NightGazer does */
+        #t-what { top: 196px; }
+        #t-rows { position: absolute; left: 150px; top: 500px; width: 980px; }
+        .t-row { position: relative; padding: 30px 0 30px 0; border-top: 1px solid var(--pl-rule); display: flex; align-items: baseline; gap: 40px; }
+        .t-row:last-child { border-bottom: 1px solid var(--pl-rule); }
+        .t-row .ng-label { width: 190px; flex: none; color: var(--pl-stamp); }
+        .t-row p { white-space: nowrap; font: 600 44px/1.15 var(--sans); letter-spacing: -0.015em; color: var(--pl-ink); }
+        /* 3 — independent */
+        #t-indie { top: 330px; }
+        /* 4 — the plea (centred, on the brand ground) */
+        #t-plea { position: absolute; left: 0; right: 0; top: 330px; text-align: center; }
+        #t-plea .t-line { font-size: 120px; }
+        #t-plea .t-sub { margin: 40px auto 0; max-width: none; }
+
+        /* 5 — sign-off */
+        #titles-end { position: absolute; inset: 0; }
+        #titles-logo { position: absolute; left: 710px; top: 300px; width: 500px; height: 100px; }   /* native size */
+        #titles-domain { position: absolute; left: 0; right: 0; top: 452px; text-align: center;
+                         font: 800 96px/1 var(--sans); letter-spacing: -0.035em; color: var(--pl-ink); }
+        #titles-cta { position: absolute; left: 50%; top: 640px; transform: translateX(-50%);
+                      height: 116px; padding: 0 60px; display: flex; align-items: center; gap: 24px; white-space: nowrap;
+                      background: var(--pl-act); color: var(--pl-act-ink); font: 700 48px/1 var(--sans); letter-spacing: -0.01em; }
+        #titles-cta svg { width: 44px; height: 26px; display: block; }
+        #titles-kofi { position: absolute; left: 0; right: 0; top: 800px; text-align: center; font-size: 30px; color: var(--pl-ink-2); }
+
+        /* Image credits (CC BY 4.0 asks for a visible credit). */
+        .t-credit { position: absolute; right: 64px; bottom: 44px; font: 500 17px/1 var(--sans); letter-spacing: 0.02em; color: var(--pl-ink-3); white-space: nowrap; }
+      </style>
+
+      <div id="root" data-composition-id="titles" data-width="1920" data-height="1080">
+        <div id="titles-scrim"></div>
+
+        <h1 id="t-hook" class="t-block t-line"><span>Elke nacht gebeurt er</span><span>iets boven je dak.</span></h1>
+        <i id="titles-wipe"></i>
+
+        <div id="t-what" class="t-block">
+          <p class="ng-label ng-label--stamp t-kicker" id="t-what-kick">NightGazer.space</p>
+          <h2 class="t-line" id="t-what-h"><span>Wat je vannacht ziet.</span></h2>
+        </div>
+        <div id="t-rows">
+          <div class="t-row" id="t-row1"><span class="ng-label">Vannacht</span><p>Wat er boven jouw dak te zien is</p></div>
+          <div class="t-row" id="t-row2"><span class="ng-label">Nieuws</span><p>Ruimtenieuws in gewoon Nederlands</p></div>
+          <div class="t-row" id="t-row3"><span class="ng-label">Leren</span><p>Lessen, quizzen en een telescoopgids</p></div>
+        </div>
+
+        <div id="t-indie" class="t-block">
+          <h2 class="t-line"><span id="t-indie-1">Onafhankelijk.</span><span id="t-indie-2">Zonder betaalmuur.</span></h2>
+          <p class="t-sub" id="t-indie-sub">Gemaakt in Nederland, voor iedereen die omhoog kijkt.</p>
+        </div>
+
+        <div id="t-plea">
+          <h2 class="t-line"><span>Help de sterren</span><span>gratis te houden.</span></h2>
+          <p class="t-sub" id="t-plea-sub">Met een koffie houd je NightGazer draaiende.</p>
+        </div>
+
+        <div id="titles-end">
+          <img id="titles-logo" src="../assets/brand/logo-transparent.png" alt="NightGazer.space" width="500" height="100" />
+          <p id="titles-domain">nightgazer.space</p>
+          <div id="titles-cta">
+            <span>Trakteer op een koffie</span>
+            <svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 H31 M23 2.5 L31 10 L23 17.5" fill="none" stroke="#06131A" stroke-width="2.5"/></svg>
+          </div>
+          <p id="titles-kofi" class="ng-num">ko-fi.com/nightgazerspace</p>
+        </div>
+
+        <p class="t-credit" id="credit-earth">Aarde: NASA Earth Observatory (Black Marble 2016)</p>
+        <p class="t-credit" id="credit-m74">M74: ESA/Webb, NASA &amp; CSA, J. Lee and the PHANGS-JWST Team; ESA/Hubble &amp; NASA, R. Chandar</p>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const reveal = (sel, at, dur = 0.26) =>
+            tl.fromTo(sel, { clipPath: "inset(-10% 105% -10% 0%)" }, { clipPath: "inset(-10% -5% -10% 0%)", duration: dur, ease: "power3.out" }, at);
+          const fadeOut = (sel, at, dur = 0.24) =>
+            tl.to(sel, { opacity: 0, filter: "blur(6px)", duration: dur, ease: "power1.in" }, at);
+          const rise = (sel, at, dur = 0.5) =>
+            tl.fromTo(sel, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: dur, ease: "expo.out" }, at);
+
+          // Start states for everything that is not on the poster frame.
+          gsap.set(["#t-what", "#t-rows", "#t-indie", "#t-plea", "#titles-end", "#credit-m74"], { opacity: 0 });
+
+          // 1 — Hook. Complete in frame 0 (the poster), still until 3.6, then swept off by a hairline before the cut.
+          tl.set("#titles-wipe", { opacity: 1 }, 3.6);
+          tl.fromTo("#titles-wipe", { x: 0 }, { x: 1000, duration: 0.2, ease: "power2.in", immediateRender: false }, 3.6);
+          tl.fromTo("#t-hook", { clipPath: "inset(-10% -5% -10% 0%)" },
+                    { clipPath: "inset(-10% -5% -10% 105%)", duration: 0.2, ease: "power2.in", immediateRender: false }, 3.6);
+          tl.set("#titles-wipe", { opacity: 0 }, 3.8);
+
+          // 2 — What it does: heading at 4.6, three rows on the beat (6.2 / 7.4 / 8.6), all out before the 13.5 drop.
+          tl.set(["#t-what", "#t-rows"], { opacity: 1 }, 4.5);
+          tl.fromTo("#t-what-kick", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.6);
+          reveal("#t-what-h", 4.7, 0.3);
+          ["#t-row1", "#t-row2", "#t-row3"].forEach((s, i) => {
+            tl.fromTo(s, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 6.2 + i * 1.2);
+          });
+          fadeOut(["#t-what", "#t-rows"], 12.7, 0.3);
+
+          // 3 — Independent: two beats and a line. Out before 21.
+          tl.set("#t-indie", { opacity: 1 }, 14.1);
+          reveal("#t-indie-1", 14.2);
+          reveal("#t-indie-2", 15.4);
+          rise("#t-indie-sub", 17.4, 0.6);
+          fadeOut("#t-indie", 20.4, 0.3);
+          tl.to("#titles-scrim", { opacity: 0, duration: 0.6, ease: "power1.in" }, 20.4);
+
+          // 4 — The plea, centred on the brand ground.
+          tl.set("#t-plea", { opacity: 1 }, 21.0);
+          tl.fromTo("#t-plea .t-line", { opacity: 0, y: 26, filter: "blur(8px)" },
+                    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 21.1);
+          rise("#t-plea-sub", 22.6, 0.6);
+          fadeOut("#t-plea", 24.9, 0.3);
+
+          // 5 — Sign-off. Settled by 27.5, then completely still to 32.
+          tl.set("#titles-end", { opacity: 1 }, 25.5);
+          tl.fromTo("#titles-logo", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 25.5);
+          tl.fromTo("#titles-domain", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 25.7);
+          tl.fromTo("#titles-cta", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.36, ease: "power3.inOut" }, 26.1);
+          tl.fromTo("#titles-kofi", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 26.6);
+
+          // Credits: each shown while its image is on screen (Earth 0–4; M74 from 13.5 to the end).
+          tl.to("#credit-earth", { opacity: 0, duration: 0.2 }, 3.8);
+          tl.to("#credit-m74", { opacity: 1, duration: 0.6 }, 14.0);
+
+          tl.set({}, {}, 32);
+          window.__timelines["titles"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

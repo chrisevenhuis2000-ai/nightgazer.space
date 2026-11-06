@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>NightGazer — Ko-fi intro</title>
+    <script type="importmap">
+      { "imports": { "three": "./assets/vendor/three.module.js" } }
+    </script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/plate.css" />
+    <style>
+      /* Archivo + JetBrains Mono, shipped locally (SIL OFL, assets/fonts/). */
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("assets/fonts/archivo-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("assets/fonts/archivo-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("assets/fonts/archivo-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("assets/fonts/archivo-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("assets/fonts/archivo-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("assets/fonts/archivo-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("assets/fonts/archivo-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("assets/fonts/archivo-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("assets/fonts/archivo-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("assets/fonts/archivo-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("assets/fonts/jetbrains-mono-greek-400-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("assets/fonts/jetbrains-mono-greek-500-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #05060d; }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #05060d;
+        font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+      }
+      #root > div[data-composition-src] { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <!--
+      NightGazer Ko-fi intro — "Help de sterren gratis te houden". 1920x1080, 30 fps, 32.0 s.
+      Cuts and hits (the music cues in scripts/cues.json follow this grid):
+        0.00  Europe at night (NASA Black Marble), hook on the poster frame
+        4.00  match cut: Earth's horizon becomes the limb of a (procedural) giant planet   [hit]
+        4.60  "Wat je vannacht ziet." + three things NightGazer does (6.2 / 7.4 / 8.6)
+       13.50  the camera climbs over the limb into M74 (ESA/Webb)                           [hit, drop]
+       14.20  "Onafhankelijk. Zonder betaalmuur."
+       21.00  the galaxy falls back into the brand-blue ground: "Help de sterren gratis te houden." [hit]
+       25.50  logo, nightgazer.space, "Trakteer op een koffie"                               [hit]
+       27.50–32.00  completely still (end card)
+      No plate frame, no plate number, no "Illustratie" label.
+    -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="32" data-width="1920" data-height="1080">
+      <div id="el-stage" class="clip" data-composition-id="stage" data-composition-src="compositions/stage.html"
+        data-start="0" data-duration="32" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <!-- Soundtrack: ACE-Step music mixed by nightgazer-social audio engine 7 (profile "film"), see AUDIO.md. -->
+      <audio id="soundtrack" src="out/audio/kofi-intro-master.wav"
+        data-start="0" data-duration="32" data-track-index="3" data-volume="1"></audio>
+      <div id="el-titles" class="clip" data-composition-id="titles" data-composition-src="compositions/titles.html"
+        data-start="0" data-duration="32" data-track-index="2" data-width="1920" data-height="1080"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

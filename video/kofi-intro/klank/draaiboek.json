@@ -1,0 +1,28 @@
+{
+  "duur": 32,
+  "fps": 30,
+  "frames": 960,
+  "tekstvensters": [[0, 108], [138, 384], [426, 621], [633, 756], [765, 960]],
+  "cues": {
+    "start": 0,
+    "plaat0": 1,
+    "tekst1": 120,
+    "tekst2": 405,
+    "tekst3": 630,
+    "afsluiting": 765,
+    "logo": 768,
+    "stil": 825,
+    "eind": 960
+  },
+  "klank": {
+    "plaat": "KOFI-INTRO",
+    "pijler": "vannacht",
+    "muziek": "MUZIEK_PAD",
+    "script": [
+      { "beeld": "haak: Europa bij nacht, elke nacht gebeurt er iets boven je dak", "camera": "" },
+      { "beeld": "de horizon van de aarde wordt de rand van een planeet", "camera": "snelle wissel" },
+      { "beeld": "de camera klimt over de rand, de hele melkweg M74 komt op", "camera": "wijd, van ver" },
+      { "beeld": "de melkweg zakt weg in het merkblauw: help de sterren gratis te houden", "camera": "rustig terug" }
+    ]
+  }
+}
