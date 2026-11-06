@@ -207,7 +207,11 @@ async function main() {
     let imageUrl    = null
     let imageCredit = fm.source || 'Bron'
 
-    if (sourceUrl) {
+    // Alleen van een vrije bron (NASA, ESA): beelden van nieuwssites of
+    // bedrijven nemen we niet over.
+    let vrij = false
+    try { vrij = /(^|\.)(nasa\.gov|esa\.int)$/.test(new URL(sourceUrl).hostname) } catch { /* geen geldige URL */ }
+    if (sourceUrl && vrij) {
       const rawOg = await fetchOgImage(sourceUrl)
       imageUrl = (rawOg && isValidImageUrl(rawOg)) ? rawOg : null
       if (imageUrl) {

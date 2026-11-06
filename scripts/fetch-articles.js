@@ -19,6 +19,14 @@
  *   - ESA News:        https://www.esa.int/rssfeed/Our_Activities/Space_Science
  *
  * Images: extracted from RSS enclosure/media tags, with NASA Images API fallback.
+ *
+ * Tipfeeds (soort: 'tip'; sinds november 2026): SpaceNews, SpaceflightNow en
+ * The Planetary Society zijn auteursrechtelijk beschermde journalistiek. Hun
+ * tekst en beelden publiceren we niet. Hun artikel is een tip: de bot zoekt de
+ * oorspronkelijke bron waar het naar linkt (N.primaireBron) en schrijft vanuit
+ * die bron een eigen artikel. Geen oorspronkelijke bron = niet publiceren.
+ * Beelden komen dan alleen van een vrije bron (NASA, ESA) of later uit
+ * backfill-images.js.
  */
 
 const fs      = require('fs')
@@ -37,6 +45,7 @@ const FEEDS = [
   {
     url:      'https://spaceflightnow.com/feed/',
     source:   'SpaceflightNow',
+    soort:    'tip', // alleen aanleiding; zie primaireBron()
     category: 'missies',
   },
   {
@@ -52,11 +61,13 @@ const FEEDS = [
   {
     url:      'https://www.planetary.org/rss/feed',
     source:   'The Planetary Society',
+    soort:    'tip', // alleen aanleiding; zie primaireBron()
     category: 'educatie',
   },
   {
     url:      'https://spacenews.com/feed/',
     source:   'SpaceNews',
+    soort:    'tip', // alleen aanleiding; zie primaireBron()
     category: 'missies',
   },
 ]
@@ -186,6 +197,15 @@ async function extractImage(item, title, source) {
   return { imageUrl: '', imageAlt: '', imageCredit: '' }
 }
 
+/** Beeld bij een oorspronkelijke bron: alleen het og:image van een vrije bron (NASA, ESA). */
+async function beeldVanBron(url, title, naam) {
+  if (!N.isVrijeBron(url)) return { imageUrl: '', imageAlt: '', imageCredit: '' }
+  const og = await fetchOgImage(url)
+  return og && isValidImageUrl(og) && N.isVrijBeeld(og)
+    ? { imageUrl: og, imageAlt: title, imageCredit: naam }
+    : { imageUrl: '', imageAlt: '', imageCredit: '' }
+}
+
 const yaml = s => String(s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r?\n/g, ' ')
 const melding = s => String(s).replace(/\r?\n/g, ' ').replace(/::/g, ': :')
 
@@ -276,15 +296,27 @@ async function main(opts = {}) {
       }
       if (!client) { sla(title, 'geen ANTHROPIC_API_KEY'); continue }
 
-      const bron = await N.brontekst(item, feed.url, opts.fetchPagina)
+      const isTip = feed.soort === 'tip'
+      let bron, bronNaam = feed.source, bronUrl = item.link || ''
+      if (isTip) {
+        const p = await N.primaireBron(item.link, opts.fetchPagina)
+        if (!p.ok) { sla(title, `tip zonder oorspronkelijke bron: ${p.reden} (geen Claude-aanroep)`); continue }
+        bron = p; bronNaam = p.naam; bronUrl = p.url
+      } else {
+        bron = await N.brontekst(item, feed.url, opts.fetchPagina)
+      }
       if (bron.woorden < N.MIN_WOORDEN_BRON) {
         sla(title, `brontekst te kort (${bron.woorden} woorden, minimaal ${N.MIN_WOORDEN_BRON}; geen Claude-aanroep)`)
         continue
       }
 
+      // Beeld: bij een tip nooit uit de tipfeed, alleen van een vrije bron.
+      const beeld = isTip
+        ? (opts.beeldVanBron ? opts.beeldVanBron(bronUrl, title, bronNaam) : beeldVanBron(bronUrl, title, bronNaam))
+        : (opts.extractImage ? opts.extractImage(item, title, feed.source) : extractImage(item, title, feed.source))
       const [r, { imageUrl, imageAlt, imageCredit }] = await Promise.all([
-        N.herschrijf(client, { titel: title, tekst: bron.tekst, bron: feed.source }),
-        opts.extractImage ? opts.extractImage(item, title, feed.source) : extractImage(item, title, feed.source),
+        N.herschrijf(client, { titel: title, tekst: bron.tekst, bron: bronNaam, bronUrl, tip: isTip ? { bron: feed.source, titel: title } : null }),
+        beeld,
       ])
       if (r.aanroep) stats.aanroepen++
       if (!r.ok) {
@@ -302,9 +334,9 @@ author: "Redactie NightGazer"
 publishedAt: "${now().toISOString()}"
 featured: false
 tags: []
-source: "${yaml(feed.source)}"
-sourceUrl: "${yaml(item.link || '')}"
-imageUrl: "${yaml(imageUrl)}"
+source: "${yaml(bronNaam)}"
+sourceUrl: "${yaml(bronUrl)}"
+${isTip ? `tipSource: "${yaml(feed.source)}"\ntipUrl: "${yaml(item.link || '')}"\n` : ''}imageUrl: "${yaml(imageUrl)}"
 imageAlt: "${yaml(imageAlt)}"
 imageCredit: "${yaml(imageCredit)}"
 ${N.structuurFrontmatter(r.data)}---

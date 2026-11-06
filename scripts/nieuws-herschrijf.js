@@ -78,8 +78,12 @@ const SCHEMA = {
 
 const SYSTEM = [
   'Je bent redacteur van NightGazer, een Nederlandstalige astronomie- en ruimtevaartsite.',
-  'Je krijgt een Engelstalig nieuwsartikel. Schrijf het als volwaardig Nederlands nieuwsartikel: vertaal de titel, schrijf een samenvatting van 2-3 zinnen en een artikel van 300 tot 600 woorden in 4 tot 7 alinea’s, in heldere journalistieke stijl.',
-  'Gebruik alleen feiten uit de brontekst. Verzin geen cijfers, namen, citaten of gebeurtenissen. Leg vaktermen kort uit als dat helpt.',
+  'Je krijgt de tekst van een oorspronkelijke bron: een persbericht of bericht van een ruimtevaartorganisatie, overheid of bedrijf. Schrijf daaruit een eigen Nederlands nieuwsartikel: een Nederlandse titel, een samenvatting van 2-3 zinnen en een artikel van 350 tot 650 woorden in heldere journalistieke stijl.',
+  'Vertaal niet zin voor zin. Kies een eigen opbouw en invalshoek, begin met wat voor een Nederlandse lezer het belangrijkst is, en leg vaktermen kort uit.',
+  'Gebruik voor het nieuws zelf alleen feiten uit de brontekst. Verzin geen cijfers, namen, data, citaten of gebeurtenissen.',
+  'Sluit altijd af met een eigen sectie "## Wat betekent dit?" van één of twee alinea’s: waarom dit ertoe doet, hoe het past in het grotere verhaal (eerdere missies, wat er nu volgt) en, alleen als dat echt zo is, wat het betekent voor Europa, Nederland of sterrenkijkers hier. Gebruik daarvoor alleen algemeen bekende achtergrond, zonder nieuwe cijfers of uitspraken.',
+  'Is wat het artikel beschrijft vanuit Nederland met het blote oog, een verrekijker of een kleine telescoop te zien (een komeet, een planeet, een verduistering, de ISS), zet dan vóór "Wat betekent dit?" een korte sectie "## Zien vanuit Nederland". Anders niet.',
+  'Krijg je ook een aanleiding van een andere nieuwssite: die is alleen een tip over wat er speelt. Neem daar geen zinnen, formuleringen of opbouw uit over; schrijf vanuit de oorspronkelijke bron.',
   'Laat reclame, nieuwsbriefoproepen, "The post … appeared first on …" en andere sitezinnen uit de bron weg.',
   'Schrijf alles in het Nederlands; Engelse eigennamen (missies, bedrijven, instrumenten) mogen blijven.',
   'Maak het artikel scanbaar: zet om de twee à drie alinea’s een korte, informatieve tussenkop op een eigen regel als "## Kop" (niet vóór de eerste alinea, geen koppen als "Inleiding" of "Conclusie"). Geef drie kernpunten, hooguit drie kerncijfers die letterlijk in je tekst staan, en hooguit één citaat dat letterlijk in je tekst staat.',
@@ -142,6 +146,8 @@ function taal(s) {
   return { nl, en, totaal: w.length }
 }
 const isNederlands = s => { const t = taal(s); return t.totaal > 0 && t.nl >= 3 * Math.max(t.en, 1) && t.nl / t.totaal >= 0.1 }
+/** De eigen duiding die elk artikel moet hebben. */
+const DUIDING = /^## Wat betekent dit\??\s*$/m
 const normaal = s => String(s || '').toLowerCase().replace(/[^a-z0-9à-ÿ]+/g, ' ').trim()
 
 /**
@@ -157,6 +163,7 @@ function valideer(out, origTitel) {
   if (n < MIN_WOORDEN_BODY) return { ok: false, reden: `body te kort (${n} woorden, minimaal ${MIN_WOORDEN_BODY})` }
   if (!isNederlands(out.body)) { const t = taal(out.body); return { ok: false, reden: `body is niet Nederlands (nl ${t.nl} / en ${t.en} stopwoorden)` } }
   if (!isNederlands(out.excerpt) && taal(out.excerpt).en > 0) return { ok: false, reden: 'samenvatting is niet Nederlands' }
+  if (!DUIDING.test(out.body)) return { ok: false, reden: 'sectie "Wat betekent dit?" ontbreekt' }
   if (normaal(out.title) === normaal(origTitel)) return { ok: false, reden: 'titel niet vertaald' }
   const tt = taal(out.title)
   if (tt.en > tt.nl) return { ok: false, reden: 'titel is Engels' }
@@ -225,6 +232,98 @@ async function brontekst(item, feedUrl, fetchPagina = haalPagina) {
   return { tekst: beste.slice(0, MAX_TEKENS_BRON), woorden: woorden(beste), uitPagina: beste === pagina && !!pagina }
 }
 
+// ── Oorspronkelijke bron bij een tip ─────────────────────────────────────
+// Sommige feeds (SpaceNews, SpaceflightNow, The Planetary Society) zijn
+// commerciële of auteursrechtelijk beschermde journalistiek. Hun tekst en
+// beelden publiceren we niet, ook niet herschreven. Hun artikel is alleen een
+// tip: we zoeken de oorspronkelijke bron waar het naar linkt (persbericht van
+// het agentschap, de overheid of het bedrijf) en schrijven vanuit die bron.
+// Geen bruikbare oorspronkelijke bron = niet publiceren.
+
+/** Hosts die zelf nieuws maken: nooit een oorspronkelijke bron. */
+const NIEUWSSITES = [
+  'spacenews.com', 'spaceflightnow.com', 'planetary.org', 'space.com', 'spacepolicyonline.com', 'nasaspaceflight.com',
+  'arstechnica.com', 'theverge.com', 'reuters.com', 'bloomberg.com', 'cnbc.com', 'cnn.com', 'bbc.com', 'bbc.co.uk',
+  'nytimes.com', 'washingtonpost.com', 'wsj.com', 'theguardian.com', 'apnews.com', 'spaceref.com', 'universetoday.com',
+  'phys.org', 'sciencealert.com', 'gizmodo.com', 'techcrunch.com', 'payloadspace.com', 'europeanspaceflight.com',
+  'x.com', 'twitter.com', 'facebook.com', 'linkedin.com', 'youtube.com', 'youtu.be', 'instagram.com', 'threads.net',
+  'bsky.app', 'reddit.com', 'wikipedia.org', 'google.com', 'apple.com', 'amazon.com', 'wp.com', 'wordpress.com',
+  'gravatar.com', 'feedburner.com', 'doubleclick.net', 'eventbrite.com',
+]
+/** Persberichtendiensten: wel een oorspronkelijke bron. */
+const PERSDIENSTEN = ['prnewswire.com', 'businesswire.com', 'globenewswire.com', 'accesswire.com']
+/** Officiële bronnen eerst. */
+const OFFICIEEL = /(^|\.)(nasa\.gov|esa\.int|jaxa\.jp|isro\.gov\.in|cnsa\.gov\.cn|canada\.ca|asc-csa\.gc\.ca|faa\.gov|noaa\.gov|spaceforce\.mil|sda\.mil|af\.mil|defense\.gov|whitehouse\.gov|congress\.gov|europa\.eu|eumetsat\.int|dlr\.de|cnes\.fr|asi\.it|ukspace\.gov\.uk|gov\.uk|netherlandsspaceoffice\.nl|sron\.nl|eso\.org|stsci\.edu|caltech\.edu)$/
+
+const hostVan = u => { try { return new URL(u).hostname.toLowerCase().replace(/^www\./, '') } catch { return '' } }
+const opHost = (host, lijst) => lijst.some(h => host === h || host.endsWith('.' + h))
+
+/** Een plausibele oorspronkelijke bron? → score (0 = nee). */
+function bronScore(url, tipHost) {
+  const host = hostVan(url)
+  if (!host || host === tipHost || host.endsWith('.' + tipHost)) return 0
+  if (!/^https?:/i.test(url) || /\.(pdf|jpe?g|png|gif|webp|mp4|zip)(\?|$)/i.test(url)) return 0
+  if (opHost(host, NIEUWSSITES)) return 0
+  let pad = ''
+  try { pad = new URL(url).pathname } catch { return 0 }
+  if (pad === '/' || pad === '') return 0 // een homepage is geen bron
+  if (OFFICIEEL.test(host)) return 3
+  if (opHost(host, PERSDIENSTEN)) return 2
+  return 1
+}
+
+/** Links in de tekst van een artikelpagina, beste oorspronkelijke bronnen eerst. */
+function primaireLinks(html, tipUrl) {
+  const tipHost = hostVan(tipUrl)
+  const h = String(html || '').replace(/<(script|style|noscript|nav|header|footer|aside|form)[\s\S]*?<\/\1>/gi, ' ')
+  const blok = (/<article[\s>][\s\S]*?<\/article>/i.exec(h) || /<main[\s>][\s\S]*?<\/main>/i.exec(h) || [h])[0]
+  const gezien = new Map()
+  for (const m of blok.matchAll(/<a\s[^>]*href=["']([^"'#]+)["']/gi)) {
+    let url
+    try { url = new URL(decode(m[1]), tipUrl).toString() } catch { continue }
+    const score = bronScore(url, tipHost)
+    if (score && !gezien.has(url)) gezien.set(url, score)
+  }
+  return [...gezien.entries()].sort((a, b) => b[1] - a[1]).map(([u]) => u)
+}
+
+const BRONNAAM = [
+  [/(^|\.)jpl\.nasa\.gov$/, 'NASA JPL'], [/(^|\.)nasa\.gov$/, 'NASA'], [/(^|\.)esa\.int$/, 'ESA'], [/(^|\.)jaxa\.jp$/, 'JAXA'],
+  [/(^|\.)faa\.gov$/, 'FAA'], [/(^|\.)spacex\.com$/, 'SpaceX'], [/(^|\.)blueorigin\.com$/, 'Blue Origin'], [/(^|\.)rocketlabcorp\.com$|(^|\.)rocketlabusa\.com$/, 'Rocket Lab'],
+  [/(^|\.)ulalaunch\.com$/, 'ULA'], [/(^|\.)arianespace\.com$/, 'Arianespace'], [/(^|\.)eso\.org$/, 'ESO'], [/(^|\.)spaceforce\.mil$/, 'U.S. Space Force'],
+  [/(^|\.)sda\.mil$/, 'Space Development Agency'], [/(^|\.)prnewswire\.com$/, 'PR Newswire'], [/(^|\.)businesswire\.com$/, 'Business Wire'], [/(^|\.)globenewswire\.com$/, 'GlobeNewswire'],
+]
+/** Leesbare naam van een bron uit de URL. */
+function bronNaam(url) {
+  const host = hostVan(url)
+  for (const [re, naam] of BRONNAAM) if (re.test(host)) return naam
+  return host
+}
+
+/** Beelden die we mogen tonen: NASA en ESA (vrij met bronvermelding), Pexels. */
+const VRIJE_BEELDHOSTS = /(^|\.)(nasa\.gov|esa\.int|pexels\.com)$/
+const isVrijBeeld = url => VRIJE_BEELDHOSTS.test(hostVan(url))
+/** Een bronpagina waarvan we het og:image mogen overnemen. */
+const isVrijeBron = url => /(^|\.)(nasa\.gov|esa\.int)$/.test(hostVan(url))
+
+/**
+ * Zoek bij een tip de oorspronkelijke bron. → { ok, url, naam, tekst, woorden } of { ok: false, reden }
+ * Haalt de tippagina op, dan hooguit vier links eruit, de beste eerst.
+ */
+async function primaireBron(tipUrl, fetchPagina = haalPagina) {
+  let html
+  try { html = await fetchPagina(tipUrl) } catch (e) { return { ok: false, reden: `tippagina niet bereikbaar (${String(e.message || e).slice(0, 80)})` } }
+  const links = primaireLinks(html, tipUrl).slice(0, 4)
+  if (!links.length) return { ok: false, reden: 'geen oorspronkelijke bron gevonden in de tip' }
+  for (const url of links) {
+    let tekst = ''
+    try { tekst = brontekstUitHtml(await fetchPagina(url)) } catch { continue }
+    const n = woorden(tekst)
+    if (n >= MIN_WOORDEN_BRON) return { ok: true, url, naam: bronNaam(url), tekst: tekst.slice(0, MAX_TEKENS_BRON), woorden: n }
+  }
+  return { ok: false, reden: `oorspronkelijke bron te kort of onbereikbaar (${links.length} geprobeerd)` }
+}
+
 // ── Claude ────────────────────────────────────────────────────────────────
 function maakClient() {
   // Leest ANTHROPIC_API_KEY (en, voor de tests, ANTHROPIC_BASE_URL) uit de
@@ -236,7 +335,7 @@ function maakClient() {
  * Herschrijf één item. → { ok, data?, reden?, aanroep }
  * `aanroep` = of er een request naar de API is gedaan (voor de teller).
  */
-async function herschrijf(client, { titel, tekst, bron }) {
+async function herschrijf(client, { titel, tekst, bron, bronUrl, tip }) {
   let res
   try {
     res = await client.beta.messages.create({
@@ -248,7 +347,14 @@ async function herschrijf(client, { titel, tekst, bron }) {
       fallbacks: 'default',
       output_config: { effort: 'medium', format: { type: 'json_schema', schema: SCHEMA } },
       system: SYSTEM,
-      messages: [{ role: 'user', content: `Bron: ${bron}\nOorspronkelijke titel: ${titel}\n\nBrontekst:\n${tekst}` }],
+      messages: [{ role: 'user', content: [
+        tip ? `Aanleiding (alleen een tip, neem hier niets uit over): ${tip.bron}, "${tip.titel}"\n` : '',
+        `Oorspronkelijke bron: ${bron}${bronUrl ? ` (${bronUrl})` : ''}`,
+        `Oorspronkelijke titel: ${titel}`,
+        '',
+        'Brontekst:',
+        tekst,
+      ].join('\n') }],
     })
   } catch (err) {
     const status = err instanceof Anthropic.APIError && err.status ? ` ${err.status}` : ''
@@ -276,4 +382,5 @@ module.exports = {
   MODEL, MIN_WOORDEN_BODY, MIN_WOORDEN_BRON, SCHEMA, SYSTEM,
   brontekstUitHtml, schoonFeedtekst, woorden, taal, isNederlands, valideer, voorfilter,
   zelfdeBron, brontekst, maakClient, herschrijf, structuur, structuurFrontmatter,
+  DUIDING, primaireLinks, primaireBron, bronNaam, bronScore, isVrijBeeld, isVrijeBron, haalPagina,
 }

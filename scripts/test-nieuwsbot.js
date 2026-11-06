@@ -44,7 +44,7 @@ const CIJFERZIN = 'De sonde vloog op 1.200 kilometer hoogte over de evenaar en m
 const goedAntwoord = titel => ({
   relevant: true, relevantie: 'Gaat over een ruimtemissie.', title: `Nederlandse titel bij ${titel.split(' ')[0]}`,
   excerpt: 'De sonde heeft de eerste metingen naar de aarde gestuurd. Die zijn volgens het team van goede kwaliteit.',
-  body: `${nlTekst(170)}\n\n## Ijs rond de evenaar\n\n${CIJFERZIN} ${nlTekst(150)}`,
+  body: `${nlTekst(170)}\n\n## Ijs rond de evenaar\n\n${CIJFERZIN} ${nlTekst(110)}\n\n## Wat betekent dit?\n\n${nlTekst(50)}`,
   kernpunten: ['De sonde stuurde de eerste metingen.', 'De gegevens zijn van goede kwaliteit.', 'Het ijs wordt in kaart gebracht.'],
   kerncijfers: [{ waarde: '1.200', eenheid: 'km', label: 'Hoogte' }, { waarde: '42', eenheid: '', label: 'Verzonnen getal' }, { waarde: '16', eenheid: '', label: 'Opnamen' }],
   citaat: { tekst: NL_ZINNEN[5], wie: 'De projectleider' },
@@ -90,6 +90,25 @@ const server = http.createServer((req, res) => {
   eq(N.valideer({ ...g, title: 'The probe and the data of the mission' }, 'x').reden, 'titel is Engels', 'valideer: Engelse titel')
   eq(N.valideer({ ...g, excerpt: '' }, 'x').reden, 'veld excerpt ontbreekt of is leeg', 'valideer: leeg veld')
   eq(N.valideer(null, 'x').ok, false, 'valideer: geen object')
+  eq(N.valideer({ ...g, body: g.body.replace('## Wat betekent dit?', '## Verder') }, 'x').reden, 'sectie "Wat betekent dit?" ontbreekt', 'valideer: eigen duiding verplicht')
+
+  // ── 1b. oorspronkelijke bron bij een tip ───────────────────────────────
+  const tipHtml = `<html><body><nav><a href="https://www.nasa.gov/">NASA</a></nav><article>
+    <p>Lees het <a href="https://www.spacex.com/updates/starship-flight-12/">bericht van SpaceX</a> en het <a href="https://www.nasa.gov/news-release/artemis-update/">persbericht van NASA</a>.</p>
+    <p><a href="https://spacenews.com/ander-artikel/">eerder bij SpaceNews</a> <a href="https://x.com/spacex/status/1">post</a> <a href="https://www.reuters.com/x/">Reuters</a> <a href="https://www.esa.int/">ESA home</a> <a href="https://www.nasa.gov/beeld.jpg">beeld</a></p>
+  </article></body></html>`
+  eq(N.primaireLinks(tipHtml, 'https://spacenews.com/tip/'), ['https://www.nasa.gov/news-release/artemis-update/', 'https://www.spacex.com/updates/starship-flight-12/'], 'primaireLinks: officieel eerst; geen nieuwssites, sociale media, homepages of bestanden')
+  eq([N.bronNaam('https://www.nasa.gov/x'), N.bronNaam('https://www.jpl.nasa.gov/x'), N.bronNaam('https://www.spacex.com/x'), N.bronNaam('https://www.iridium.com/x')], ['NASA', 'NASA JPL', 'SpaceX', 'iridium.com'], 'bronNaam')
+  eq([N.isVrijBeeld('https://images-assets.nasa.gov/a.jpg'), N.isVrijBeeld('https://i0.wp.com/spacenews.com/a.jpg'), N.isVrijBeeld('https://spaceflightnow.com/a.jpg')], [true, false, false], 'isVrijBeeld: NASA wel, SpaceNews en SpaceflightNow niet')
+  const nasaPagina = `<article>${[1, 2, 3, 4, 5, 6, 7].map(i => `<p>${EN_ZIN} Paragraph ${i} explains the next steps of the Artemis campaign.</p>`).join('')}</article>`
+  let opgehaald = []
+  let p = await N.primaireBron('https://spacenews.com/tip/', async u => { opgehaald.push(u); return u.includes('spacenews') ? tipHtml : nasaPagina })
+  ok(p.ok && p.url === 'https://www.nasa.gov/news-release/artemis-update/' && p.naam === 'NASA' && p.woorden >= 250, `primaireBron: NASA-persbericht als bron (${p.woorden} woorden)`)
+  eq(opgehaald, ['https://spacenews.com/tip/', 'https://www.nasa.gov/news-release/artemis-update/'], 'primaireBron: alleen de tip en de beste bron opgehaald')
+  p = await N.primaireBron('https://spacenews.com/tip/', async () => '<article><p>Geen links hier.</p></article>')
+  eq([p.ok, p.reden], [false, 'geen oorspronkelijke bron gevonden in de tip'], 'primaireBron: geen links → niet publiceren')
+  p = await N.primaireBron('https://spacenews.com/tip/', async u => u.includes('spacenews') ? tipHtml : '<article><p>Te kort.</p></article>')
+  ok(!p.ok && /te kort of onbereikbaar/.test(p.reden), 'primaireBron: bron te kort → niet publiceren')
 
   // ── 2. herschrijf ──────────────────────────────────────────────────────
   const tekst = enTekst(400)
@@ -113,6 +132,10 @@ const server = http.createServer((req, res) => {
   ok(/server-side-fallback-2026-07-01/.test(laatste.beta || ''), 'request: beta-header voor fallbacks')
   ok(laatste.body.messages[0].content.includes(tekst.slice(0, 200)), 'request: brontekst mee')
   ok(!('tool_choice' in laatste.body), 'request: geen geforceerde tool_choice')
+  ok(/## Wat betekent dit\?/.test(laatste.body.system) && /Zien vanuit Nederland/.test(laatste.body.system), 'request: eigen duiding in de systeemprompt')
+  r = await N.herschrijf(client, { titel: 'Probe TIP sends data', tekst, bron: 'NASA', bronUrl: 'https://www.nasa.gov/x/', tip: { bron: 'SpaceNews', titel: 'Probe TIP sends data' } })
+  const tipVraag = aanvragen[aanvragen.length - 1].body.messages[0].content
+  ok(r.ok && /^Aanleiding \(alleen een tip, neem hier niets uit over\): SpaceNews/.test(tipVraag) && tipVraag.includes('Oorspronkelijke bron: NASA (https://www.nasa.gov/x/)'), 'request: tip en oorspronkelijke bron in de vraag')
 
   for (const [titel, verwacht] of [
     ['AFGEKAPT probe', /^stop_reason max_tokens$/],
@@ -191,6 +214,29 @@ const server = http.createServer((req, res) => {
   logs.length = 0; console.log = (...a) => logs.push(a.join(' '))
   try { stats = await main({ ...opts, client: undefined, articlesDir: zonder, samenvattingPad: '' }) } finally { console.log = log0; if (sleutel !== undefined) process.env.ANTHROPIC_API_KEY = sleutel }
   eq([stats.gepubliceerd, fs.readdirSync(zonder).length], [0, 0], 'main zonder sleutel: niets gepubliceerd')
+
+  // Tipfeed: schrijven vanuit de oorspronkelijke bron, nooit vanuit de tip.
+  const tipDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nieuwsbot-tip-'))
+  const tipFeed = { url: 'https://spacenews.com/feed/', source: 'SpaceNews', category: 'missies', soort: 'tip' }
+  const tipItems = [
+    { title: 'Probe GOED via tip', link: 'https://spacenews.com/probe-goed/', 'content:encoded': `<p>Tiptekst van SpaceNews die nergens heen mag. ${lang}</p>`, enclosure: { url: 'https://spacenews.com/beeld.jpg' } },
+    { title: 'Probe zonder bron', link: 'https://spacenews.com/zonder/', 'content:encoded': `<p>${lang}</p>` },
+  ]
+  const tipPagina = async u => {
+    if (u === 'https://spacenews.com/probe-goed/') return '<article><p>Zie het <a href="https://www.nasa.gov/news-release/probe/">persbericht</a>.</p></article>'
+    if (u.startsWith('https://www.nasa.gov/')) return nasaPagina
+    return '<article><p>Niets.</p></article>'
+  }
+  logs.length = 0; console.log = (...a) => logs.push(a.join(' '))
+  try { stats = await main({ ...opts, feeds: [tipFeed], articlesDir: tipDir, laadFeed: async () => tipItems, fetchPagina: tipPagina, samenvattingPad: '', beeldVanBron: async () => ({ imageUrl: '', imageAlt: '', imageCredit: '' }) }) } finally { console.log = log0 }
+  eq(stats, { aanroepen: 1, gepubliceerd: 1, overgeslagen: 1 }, 'main tip: één gepubliceerd, tip zonder bron overgeslagen zonder aanroep')
+  const tipMd = fs.readFileSync(path.join(tipDir, 'probe-goed-via-tip.md'), 'utf-8')
+  ok(tipMd.includes('source: "NASA"') && tipMd.includes('sourceUrl: "https://www.nasa.gov/news-release/probe/"'), 'main tip: bron is het NASA-persbericht')
+  ok(tipMd.includes('tipSource: "SpaceNews"') && tipMd.includes('tipUrl: "https://spacenews.com/probe-goed/"'), 'main tip: tip staat apart vermeld')
+  ok(tipMd.includes('imageUrl: ""') && !tipMd.includes('spacenews.com/beeld.jpg'), 'main tip: geen beeld uit de tipfeed')
+  ok(logs.some(l => /Probe zonder bron — tip zonder oorspronkelijke bron: geen oorspronkelijke bron gevonden/.test(l)), 'main tip: ::warning:: voor een tip zonder bron')
+  const tipVraag2 = aanvragen[aanvragen.length - 1].body.messages[0].content
+  ok(!tipVraag2.includes('Tiptekst van SpaceNews'), 'main tip: tekst van de tip gaat niet naar Claude')
 
   // ── 5. Relevantie ──────────────────────────────────────────────────────
   for (const [titel, reden] of [
