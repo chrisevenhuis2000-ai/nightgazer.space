@@ -1,6 +1,6 @@
 ---
-title: "Hubble ontdekt raadsel van ontbrekende zuurstof in nabije dwerggalaxieën"
-excerpt: "Onderzoekers die met de Hubble-ruimtetelescoop 37 nabije dwerggalaxieën bestudeerden, ontdekten dat een groot deel van de verwachte zuurstof ontbreekt. Galactische winden, aangedreven door supernova's, blijken zuurstof effectiever uit kleine sterrenstelsels te blazen dan modellen voorspellen."
+title: "Hubble ontdekt dat nabije dwerggalaxieën het grootste deel van hun zuurstof kwijt zijn"
+excerpt: "Onderzoekers bestudeerden met Hubble 37 nabije dwerggalaxieën en vonden veel minder zuurstof dan simulaties voorspellen. Galactische winden van supernova's blijken het element effectiever de ruimte in te blazen dan modellen aannemen, waardoor kleine sterrenstelsels maar een klein deel van hun zuurstof vasthouden."
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-11-02T17:04:17.047Z"
@@ -9,33 +9,42 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-uncovers-case-of-missing-oxygen-in-nearby-dwarf-galaxies/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2026/11/STScI-01M4RST3TGWT2T53FVXQBSP75D.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "NASA’s Hubble Uncovers Case of Missing Oxygen in Nearby Dwarf Galaxies"
+imageAlt: "Hubble ontdekt dat nabije dwerggalaxieën het grootste deel van hun zuurstof kwijt zijn"
 imageCredit: "NASA"
-kernpunten: ["Hubble-onderzoek toont aan dat 37 nabije dwerggalaxieën veel minder zuurstof bevatten dan simulaties voorspellen.","Supernova-winden blazen zuurstof effectiever uit kleine sterrenstelsels dan modellen aannemen.","Waar de ontbrekende zuurstof precies blijft, is nog onduidelijk; vervolgonderzoek met Roman, Hubble en Webb volgt."]
-kerncijfers: [{"waarde":"37","eenheid":"","label":"bestudeerde nabije dwerggalaxieën"},{"waarde":"2014","eenheid":"","label":"eerder onderzoek Melkwegachtige stelsels"}]
-citaat: {"tekst":"We weten dat de zuurstof ooit in de stelsels moet hebben gezeten, dus moet hij zijn weggeslingerd","wie":"Grace Telford, universitair docent University of Utah"}
+vernieuwd: "2026-11-06"
+kernpunten: ["Hubble-onderzoek naar 37 nabije dwerggalaxieën toont veel minder zuurstof dan simulaties voorspellen.","Galactische winden van supernova's blazen zuurstof effectiever uit lichte stelsels dan modellen aannemen.","Waar de zuurstof precies is gebleven is nog onduidelijk; Roman, Hubble en Webb moeten verder onderzoek doen."]
+kerncijfers: [{"waarde":"37","eenheid":"","label":"onderzochte dwerggalaxieën"},{"waarde":"2014","eenheid":"","label":"eerder onderzoek Melkwegachtige stelsels"}]
+citaat: {"tekst":"Zuurstof wordt gemaakt door sterren, en die bevinden zich in sterrenstelsels. We weten dus dat de zuurstof op een bepaald moment in die stelsels moet hebben gezeten, dus moet hij zijn uitgestoten","wie":"Grace Telford, onderzoeker University of Utah"}
 ---
 
-De Hubble-ruimtetelescoop van NASA heeft een raadsel in onze kosmische buurt blootgelegd. In een artikel dat maandag verscheen in The Astrophysical Journal beschrijven onderzoekers hoe zij 37 nabije dwerggalaxieën bestudeerden: kleine sterrenstelsels met een paar duizend tot honderden miljoenen sterren. Een groot deel van de zuurstof die ze daar verwachtten aan te treffen, bleek te ontbreken.
+Kleine sterrenstelsels in onze kosmische buurt blijken een groot deel van hun zuurstof kwijt te zijn. Dat blijkt uit onderzoek met de Hubble-ruimtetelescoop, gepubliceerd in The Astrophysical Journal. Een team van astronomen bestudeerde 37 nabije dwerggalaxieën, stelsels met enkele duizenden tot honderden miljoenen sterren, en trof daarin veel minder zuurstof aan dan computersimulaties voorspellen.
 
-Simulaties voorspellen dat er aanzienlijk meer zuurstof in deze stelsels zou moeten zitten. Zuurstof dient daarbij als graadmeter voor een bredere groep zware elementen. De vraag is dus: waar is die zuurstof gebleven?
+De verklaring ligt volgens de onderzoekers bij zogeheten galactische winden: stromen gas die op gang worden gebracht door zware sterren en supernova-explosies. Die winden blijken bij lichte stelsels veel effectiever te zijn in het wegblazen van zuurstof dan de huidige modellen aannemen. Dwerggalaxieën houden daardoor maar een klein deel vast van de zuurstof die hun sterren maken.
 
-## Weggeblazen door supernova's
+## Een kosmisch speurwerk
 
-"Zuurstof wordt gemaakt door sterren, en die bevinden zich in sterrenstelsels. We weten dat de zuurstof ooit in de stelsels moet hebben gezeten, dus moet hij zijn weggeslingerd", zegt medeonderzoeker Grace Telford, universitair docent aan de University of Utah. "Daarvoor heb je energie nodig van zware sterren en supernova-explosies, die materiaal uit de stelsels de ruimte tussen de sterrenstelsels in drijven."
+"Zuurstof wordt gemaakt door sterren, en die bevinden zich in sterrenstelsels. We weten dus dat de zuurstof op een bepaald moment in die stelsels moet hebben gezeten, dus moet hij zijn uitgestoten", zegt Grace Telford van de University of Utah, een van de onderzoekers. Daarvoor is volgens haar energie nodig van zware sterren en supernova's, die materiaal uit het stelsel de ruimte tussen de sterrenstelsels in drijven.
 
-Volgens het onderzoek zijn galactische winden die door supernova's worden opgewekt effectiever in het verwijderen van zuurstof uit lichte sterrenstelsels dan huidige modellen voorspellen. Dwerggalaxieën kunnen slechts een klein deel van de door hun sterren geproduceerde zuurstof vasthouden.
+Het onderzoek maakt deel uit van het project Galaxies Losing Oxygen via Winds (GLOW), gefinancierd door NASA en de Amerikaanse National Science Foundation. De keuze voor zuurstof is vooral praktisch, legt projectleider Kristen Wingfield McQuinn uit. Na waterstof en helium is zuurstof het meest voorkomende element, het is relatief eenvoudig te meten en astronomen begrijpen goed hoe sterren het produceren. Daarmee is het een betrouwbare graadmeter voor alle zwaardere elementen die sterren maken. Door te volgen waar de zuurstof terechtkomt, leren astronomen ook hoeveel sterrenstelsels het intergalactisch medium verrijken: het ijle gas tussen de stelsels.
 
-## Waarom juist zuurstof?
+## Archiefbeelden van Hubble en Spitzer
 
-Het project heet Galaxies Losing Oxygen via Winds (GLOW) en wordt gefinancierd door NASA en de National Science Foundation. De wetenschappers volgden de zuurstof in sterren, in het gas tussen de sterren en in de ruimte tussen sterrenstelsels. Zuurstof is na waterstof en helium het meest voorkomende element, is relatief eenvoudig te meten en de productie ervan wordt goed begrepen. Dat maakt het een betrouwbare indicator voor de verdeling van chemische elementen.
+Het team gebruikte bestaande Hubble-opnamen in zichtbaar licht om afzonderlijke sterren te onderscheiden en zo de stervormingsgeschiedenis en samenstelling van elk stelsel te reconstrueren. Daarnaast werden gegevens gebruikt van de inmiddels uitgeschakelde Spitzer-ruimtetelescoop en van radiotelescopen op aarde: de Very Large Array en de Australian Telescope Compact Array. Zo kon worden nagegaan hoe de zuurstof verdeeld is over sterren, gas en stof.
 
-"Zuurstof is een van de belangrijkste elementen die sterren vormen. Weten hoeveel zuurstof er wordt gemaakt en hoeveel er binnen en buiten sterrenstelsels terechtkomt, helpt ons de evolutie van sterrenstelsels te begrijpen", zegt hoofdonderzoeker Kristen Wingfield McQuinn van het Space Telescope Science Institute en Rutgers University. Het vertelt ook hoeveel sterrenstelsels het intergalactisch medium, de ruimte tussen de stelsels, verrijken.
+De 37 stelsels zijn bewust gekozen. Hun massa ligt precies in het bereik waarin theorie voorspelt dat steeds meer zuurstof via supernova's wordt uitgestoten. Bovendien staan ze dichtbij genoeg om afzonderlijke sterren te zien, iets wat voor de overgrote meerderheid van de bekende dwerggalaxieën niet mogelijk is. Een van de bestudeerde stelsels is NGC 4449.
 
-## Archiefdata en meerdere telescopen
+## Waar is de zuurstof gebleven?
 
-Het team gebruikte archiefbeelden van Hubble om afzonderlijke sterren te onderscheiden en zo de stervormingsgeschiedenis en samenstelling te bepalen. Daarnaast werden gegevens gebruikt van de inmiddels uitgeschakelde Spitzer-ruimtetelescoop en van de radiotelescopen Very Large Array en Australian Telescope Compact Array. De 37 stelsels werden gekozen omdat hun massa in het bereik ligt waar theorie voorspelt dat steeds meer zuurstof door supernova's wordt uitgestoten, en omdat ze dichtbij genoeg staan om losse sterren te zien.
+Eerder onderzoek uit 2014 liet al zien dat stelsels zoals de Melkweg veel zuurstof verliezen, waarvan een deel terug te vinden is in het circumgalactisch medium: de ijle gashalo rond een sterrenstelsel. GLOW breidt dat uit naar lichte stelsels in uiteenlopende omgevingen. Of de ontbrekende zuurstof van dwerggalaxieën in zo'n halo hangt, of helemaal uit de omgeving van het stelsel is verdwenen, is nog onduidelijk.
 
-Een eerder onderzoek uit 2014 liet zien dat Melkwegachtige stelsels veel zuurstof verliezen, deels naar het circumgalactisch medium: de ijle gashalo rond een stelsel. Bij dwerggalaxieën is nog onduidelijk of de ontbrekende zuurstof daar zit of helemaal uit hun omgeving is verdwenen.
+McQuinn wil met de Nancy Grace Roman Space Telescope nog lichtere en zwakkere stelsels opsporen, om die daarna met Hubble en de James Webb-ruimtetelescoop nader te bekijken. Telford gaat met Hubble inzoomen op de zware sterren zelf, om te begrijpen hoe die in kleine stelsels verschillen van sterren elders.
 
-McQuinn wil met de Nancy Grace Roman-ruimtetelescoop nog lichtere stelsels opsporen en die daarna met Hubble en de James Webb-ruimtetelescoop nader bekijken. Telford gaat met Hubble inzoomen op de zware sterren die de zuurstof produceren en uitstoten.
+## Zien vanuit Nederland
+
+NGC 4449, een van de stelsels uit het onderzoek, staat in het sterrenbeeld Jachthonden en is met een kleine telescoop onder een donkere hemel te zien als een klein, langwerpig nevelvlekje. De afzonderlijke sterren die Hubble onderscheidt, zijn voor amateurtelescopen uiteraard onbereikbaar.
+
+## Wat betekent dit?
+
+Dwerggalaxieën worden gezien als de bouwstenen waaruit grotere stelsels zoals de Melkweg zijn gegroeid. Als zij hun zware elementen veel makkelijker kwijtraken dan gedacht, moeten modellen van de chemische evolutie van het heelal worden bijgesteld. Het laat ook zien dat sterrenstelsels geen gesloten systemen zijn: de elementen waaruit planeten en leven bestaan, worden over enorme afstanden rondgestrooid.
+
+Het onderzoek onderstreept daarnaast de waarde van Hubble, een samenwerking tussen NASA en ESA die al meer dan drie decennia actief is. De archiefbeelden blijven nieuwe ontdekkingen opleveren, terwijl Roman en Webb het werk straks naar nog kleinere en zwakkere stelsels uitbreiden.

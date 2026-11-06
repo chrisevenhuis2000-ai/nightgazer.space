@@ -1,26 +1,43 @@
 ---
-title: "NASA's Psyche-missie maakt beelden van Huygens-krater op Mars"
-excerpt: "De Psyche-ruimtesonde van NASA heeft spectaculaire beelden gemaakt van de grote Huygens-krater op Mars tijdens zijn reis naar de asteroïde Psyche. De multispectrale camera toont de 470 kilometer brede krater in verbeterde kleuren."
+title: "Psyche fotografeert onderweg Marskrater vernoemd naar Christiaan Huygens"
+excerpt: "De NASA-ruimtesonde Psyche heeft tijdens haar reis naar de metaalrijke asteroïde Psyche de zuidelijke hooglanden van Mars vastgelegd. Op de opname in verbeterde kleuren is de enorme dubbele ringkrater Huygens goed te zien. De kleurverschillen geven vermoedelijk variaties in de samenstelling van het oppervlak weer."
 category: "mars"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-05-20T10:22:46.746Z"
 featured: false
 tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/photojournal/nasas-psyche-mission-images-mars-huygens-crater/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26775/PIA26775.png/jcr:content/renditions/cq5dam.web.1280.1280.png"
-imageAlt: "NASA’s Psyche Mission Images Mars’ Huygens Crater"
+imageAlt: "Psyche fotografeert onderweg Marskrater vernoemd naar Christiaan Huygens"
 imageCredit: "NASA"
-kernpunten: ["De Psyche-sonde fotografeerde onderweg naar de asteroïde Psyche de Huygens-krater op Mars.","De krater is ongeveer 470 kilometer breed en ligt in de zwaar gekraterde zuidelijke hooglanden.","De kleurverschillen wijzen waarschijnlijk op variaties in de samenstelling van het oppervlak."]
-kerncijfers: [{"waarde":"470","eenheid":"km","label":"Doorsnede van Huygens-krater"},{"waarde":"15","eenheid":"graden","label":"Zuiderbreedte van de krater"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["NASA's ruimtesonde Psyche fotografeerde onderweg naar haar asteroïde de zuidelijke hooglanden van Mars.","Op het beeld is de dubbele ringkrater Huygens te zien, vernoemd naar de Nederlandse sterrenkundige Christiaan Huygens.","De kleuren in de multispectrale opname wijzen waarschijnlijk op verschillen in de samenstelling van het Marsoppervlak."]
+kerncijfers: [{"waarde":"470","eenheid":"km","label":"doorsnede Huygens-krater"},{"waarde":"15","eenheid":"graden","label":"zuiderbreedte van de krater"}]
 ---
 
-NASA's Psyche-missie heeft tijdens zijn reis naar de gelijknamige asteroïde indrukwekkende beelden vastgelegd van Mars' zuidelijke hooglanden. Het multispectrale camera-instrument aan boord van de ruimtesonde maakte deze opname van de grote dubbele ringkrater Huygens, die zich bevindt op ongeveer 15 graden zuiderbreedte.
+Een ruimtesonde die eigenlijk op weg is naar een asteroïde, heeft een opvallende foto van Mars teruggestuurd. NASA's Psyche richtte haar camera's op de zuidelijke hooglanden van de rode planeet en legde daarbij de grote krater Huygens vast. Voor Nederlandse lezers is dat een leuke bijkomstigheid: de krater draagt de naam van Christiaan Huygens, de zeventiende-eeuwse Nederlandse natuurkundige en sterrenkundige.
 
-De Huygens-krater, met een doorsnede van ongeveer 470 kilometer, is duidelijk zichtbaar in de rechterbovenhoek van de opname. Het gebied toont de zwaar gekraterde zuidelijke hooglanden van Mars in verbeterde kleuren, waarbij verschillende tinten het landschap dramatisch in beeld brengen.
+De opname werd gemaakt met het multispectrale camera-instrument aan boord van de sonde. Zo'n camera fotografeert niet alleen in gewone kleuren, maar via verschillende filters in afzonderlijke golflengtebanden. Door die beelden te combineren ontstaat een opname in zogeheten verbeterde kleuren, waarin kleine verschillen in het oppervlak veel sterker opvallen dan het menselijk oog ze zou zien.
 
-## Kleuren verraden samenstelling
+## Een dubbele ring van 470 kilometer
 
-De verschillende kleuren in deze spectaculaire opname zijn waarschijnlijk het gevolg van variaties in de samenstelling van het Martiaanse oppervlak. Deze multispectrale beelden helpen wetenschappers om de geologische eigenschappen van verschillende gebieden op Mars beter te begrijpen.
+De Huygens-krater ligt op ongeveer 15 graden zuiderbreedte en is met een doorsnede van ongeveer 470 kilometer een van de grote inslagstructuren op Mars. Op de foto is hij duidelijk te herkennen in de rechterbovenhoek. Het gaat om een dubbele ringkrater: een inslagbekken waarbij binnen de buitenrand nog een tweede, binnenste ring van heuvels en bergen ligt. Zulke structuren ontstaan alleen bij zeer krachtige inslagen.
 
-Hoewel de Psyche-missie primair is bedoeld om de metaalrijke asteroïde Psyche te onderzoeken, maken deze bijvangsten van Mars tijdens de reis waardevolle wetenschappelijke observaties mogelijk. De missie demonstreert hiermee hoe ruimtesondes onderweg naar hun hoofdbestemming kunnen bijdragen aan ons begrip van andere hemellichamen in ons zonnestelsel.
+Rond de krater strekt zich het typische landschap van de zuidelijke hooglanden uit. Dit deel van Mars is bezaaid met kraters, een teken dat het oppervlak hier zeer oud is en sinds lange tijd weinig is veranderd. De opname toont dat gebied in verschillende tinten, waardoor het landschap er dramatisch uitziet.
+
+## Kleuren als aanwijzing voor samenstelling
+
+De kleuren op het beeld zijn geen versiering. Volgens NASA zijn ze waarschijnlijk het gevolg van verschillen in de samenstelling van het Marsoppervlak. Verschillende gesteenten en mineralen weerkaatsen licht in de diverse golflengtebanden net iets anders, en dat maakt de multispectrale camera zichtbaar. Zulke beelden helpen wetenschappers de geologische eigenschappen van uiteenlopende gebieden op Mars beter te begrijpen.
+
+Voor het Psyche-team is de foto ook een praktische gelegenheid. De camera is ontworpen om straks een metaalrijke asteroïde in kaart te brengen, maar een goed bestudeerde planeet als Mars biedt onderweg een mooi doelwit om het instrument te gebruiken en de prestaties te beoordelen.
+
+## Bijvangst onderweg
+
+De hoofdtaak van Psyche ligt elders: de sonde moet de gelijknamige asteroïde onderzoeken, een object dat vermoedelijk grotendeels uit metaal bestaat. Volgens NASA laat deze opname zien hoe ruimtesondes ook op weg naar hun eigenlijke bestemming kunnen bijdragen aan kennis over andere hemellichamen in het zonnestelsel. Zulke waarnemingen worden ook wel wetenschappelijke bijvangst genoemd.
+
+## Wat betekent dit?
+
+De Marsbeelden zijn vooral een teken dat Psyche en haar instrumenten goed werken tijdens de lange reis. Psyche maakt onderweg gebruik van een scheervlucht langs Mars om met de zwaartekracht van de planeet extra vaart en een nieuwe koers te krijgen, een gangbare techniek die ook andere missies toepasten. Zo'n passage biedt meteen de kans om de camera's op een bekend doelwit te testen voordat het echte werk begint. Het uiteindelijke doel blijft uniek: Psyche wordt de eerste missie die een asteroïde bezoekt die waarschijnlijk vooral uit metaal bestaat, mogelijk een restant van de kern van een vroege, kapotgeslagen planeet in wording.
+
+Dat de krater op de foto de naam Huygens draagt, verbindt deze moderne missie met de Nederlandse sterrenkundige traditie. Christiaan Huygens bestudeerde Mars al met zelfgebouwde telescopen en tekende als een van de eersten herkenbare details op het oppervlak. Ruim drie eeuwen later kijkt een ruimtesonde van dichtbij naar een krater die zijn naam eert.

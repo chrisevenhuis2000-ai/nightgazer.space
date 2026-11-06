@@ -1,8 +1,9 @@
 ---
+vernieuwd: "2026-11-06"
 title: "Wat is een neutronenster? Uitleg in 3 niveaus"
 excerpt: "Van makkelijk naar technisch — ons AI-systeem legt het uit op jouw niveau."
 category: "educatie"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-03-01T10:00:00.000Z"
 readTime: "5"
 featured: "false"
