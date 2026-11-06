@@ -4,15 +4,15 @@ excerpt: "Volgens het Space Economy Report van adviesbureau Novaspace was 2025 e
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-11-02T17:05:12.998Z"
-featured: false
+featured: "false"
 tags: []
 source: "nova.space"
 sourceUrl: "https://nova.space/in-the-loop/2025-in-review-a-year-of-acceleration-and-transformation-in-the-global-space-economy/"
 tipSource: "SpaceNews"
 tipUrl: "https://spacenews.com/how-to-expand-reliable-flexible-access-to-space/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/NHQ202503290014/NHQ202503290014~medium.jpg"
+imageAlt: "2025 in vogelvlucht: defensie, soevereiniteit en nieuwe raketten veranderen de ruimtevaart"
+imageCredit: "NASA/Joel Kowsky / HQ"
 vernieuwd: "2026-11-06"
 kernpunten: ["ESA-lidstaten trokken voor 2026–28 een recordbudget van 26 miljard dollar uit, zo'n 30 procent meer dan voorheen.","Defensie en het streven naar eigen toegang tot de ruimte werden in 2025 de belangrijkste drijfveren van de sector.","Nieuwe raketten als New Glenn, Zhuque-3 en Starship zetten grote stappen richting herbruikbaarheid."]
 kerncijfers: [{"waarde":"26 miljard","eenheid":"dollar","label":"ESA-budget 2026–28"},{"waarde":"74 miljard","eenheid":"dollar","label":"defensie-uitgaven ruimtevaart 2025"},{"waarde":"54","eenheid":"","label":"fusies en overnames"}]

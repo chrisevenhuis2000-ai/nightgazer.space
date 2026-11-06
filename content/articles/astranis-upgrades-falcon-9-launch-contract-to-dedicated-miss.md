@@ -4,15 +4,15 @@ excerpt: "Het Amerikaanse bedrijf Astranis stapt met Perceptor in de bewaking va
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-26T14:16:00.149Z"
-featured: false
+featured: "false"
 tags: []
 source: "astranis.com"
 sourceUrl: "https://www.astranis.com/blog/perceptor-space-domain-awareness-and-maneuverability"
 tipSource: "SpaceNews"
 tipUrl: "https://spacenews.com/astranis-upgrades-falcon-9-launch-contract-to-dedicated-mission-for-entire-block-4-production-run-of-satellites/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20161119-PH_KLS01_0040/KSC-20161119-PH_KLS01_0040~medium.jpg"
+imageAlt: "Astranis presenteert Perceptor: satellieten die de geostationaire baan in de gaten houden"
+imageCredit: "NASA/Kim Shiflett / KSC"
 vernieuwd: "2026-11-06"
 kernpunten: ["Astranis kondigt Perceptor aan, een systeem om de geostationaire baan te bewaken en daar te manoeuvreren.","Het bedrijf wijst op dreiging van satellieten die andere satellieten kunnen naderen en verstoren, onder meer uit China.","Perceptor gebruikt het MicroGEO-platform, waarvan al vijf satellieten in de ruimte actief zijn."]
 kerncijfers: [{"waarde":"1 miljard","eenheid":"dollar","label":"orderportefeuille commerciële contracten"},{"waarde":"1,2 miljard","eenheid":"dollar","label":"opgehaald bij investeerders"}]
