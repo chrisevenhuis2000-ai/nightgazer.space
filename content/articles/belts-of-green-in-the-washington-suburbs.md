@@ -1,27 +1,45 @@
 ---
-title: "Groene Gordels in de Voorsteden van Washington"
-excerpt: "Satellietbeelden tonen hoe groene ruimtes zich als een lint door het stedelijke landschap slingeren langs de noordoostelijke kant van de Capital Beltway in Maryland. Deze natuurlijke corridors vormen een opvallend contrast met de dichtbebouwde voorsteden van de Amerikaanse hoofdstad."
+title: "ISS-astronaut fotografeert groene gordels rond Washington, met Goddard in beeld"
+excerpt: "Een astronaut aan boord van het internationale ruimtestation ISS heeft de groene buitenwijken ten noordoosten van Washington gefotografeerd. Op de foto staan het historische stadje Greenbelt en NASA's Goddard Space Flight Center, het eerste ruimtevaartcomplex van de Amerikaanse ruimtevaartorganisatie."
 category: "missies"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-04-22T08:28:19.601Z"
 featured: false
 tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/earth/earth-observatory/belts-of-green-in-the-washington-suburbs/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/belts-of-green-in-the-washington-suburbs/ISS069-E-39302_th.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageAlt: "Belts of Green in the Washington Suburbs"
+imageAlt: "ISS-astronaut fotografeert groene gordels rond Washington, met Goddard in beeld"
 imageCredit: "NASA"
-kernpunten: ["Satellietbeelden tonen groene corridors van bossen, parks en natuurgebieden langs de noordoostkant van de Capital Beltway in Maryland.","De gordels zijn het resultaat van stadsplanning en natuurbescherming en dienen voor recreatie, wilde dieren en waterhuishouding.","Ze gelden als voorbeeld voor andere grootstedelijke gebieden wereldwijd."]
+vernieuwd: "2026-11-06"
+kernpunten: ["Een astronaut van Expedition 69 fotografeerde op 30 juli 2023 vanuit het ISS de groene buitenwijken ten noordoosten van Washington.","Op de foto staat onder meer NASA's Goddard Space Flight Center, opgericht op 1 mei 1959 als NASA's eerste ruimtevaartcomplex.","De opname werd gemaakt met een Nikon D5 en een brandpuntsafstand van 1150 millimeter en is vrij beschikbaar via NASA."]
+kerncijfers: [{"waarde":"1150","eenheid":"millimeter","label":"brandpuntsafstand van de camera"},{"waarde":"1 mei 1959","eenheid":"","label":"oprichting Goddard Space Flight Center"},{"waarde":"5","eenheid":"vierkante kilometer","label":"oppervlakte Greenbelt Park"}]
 ---
 
-Ruimtebeelden van de regio rond Washington D.C. laten een fascinerend patroon zien van groene corridors die zich door het stedelijke weefsel van Maryland kronkelen. Langs de noordoostelijke kant van de beroemde Capital Beltway - de ringweg die de hoofdstad omringt - vormen bossen, parks en natuurgebieden een netwerk van groene longen in het anders zo dichtbebouwde gebied.
+Vanaf zo'n vierhonderd kilometer hoogte lijken de buitenwijken van Washington op een lappendeken van bebouwing en bos. Een bemanningslid van Expedition 69 aan boord van het internationale ruimtestation ISS legde op 30 juli 2023 dat patroon vast. Op de foto staat ook een bekende plek voor ruimtevaartliefhebbers: NASA's Goddard Space Flight Center in Greenbelt, in de Amerikaanse staat Maryland.
 
-## Resultaat van jarenlange planning
+De opname toont de noordoostkant van de Capital Beltway (I-495), de ringweg die om de Amerikaanse hoofdstad loopt. Die weg snijdt dwars door Greenbelt, een historisch stadje dat zijn naam niet voor niets draagt. Eind juli staat de vegetatie in de regio volop in blad, waardoor de groene zones scherp afsteken tegen wegen en gebouwen.
 
-Deze groene gordels zijn geen toeval, maar het resultaat van jarenlange stadsplanning en natuurbescherming. Ze dienen niet alleen als recreatiegebieden voor de miljoenen inwoners van de Washington Metropolitan Area, maar spelen ook een cruciale rol in de lokale ecologie. Deze corridors bieden leefruimte voor wilde dieren en helpen bij het reguleren van de waterhuishouding in dit drukbevolkte gebied.
+## Het eerste ruimtevaartcomplex van NASA
 
-Vanuit de ruimte gezien vormen deze groene zones een opvallend contrast met de grijze massa van wegen, parkeerplaatsen en gebouwen. De satellietbeelden illustreren hoe stedelijke ontwikkeling en natuurbehoud hand in hand kunnen gaan, waarbij groene infrastructuur een essentieel onderdeel vormt van moderne stadsplanning.
+Oostelijk van de ringweg ligt een verzameling gebouwen die samen het Goddard Space Flight Center vormen. Het centrum werd op 1 mei 1959 in Greenbelt opgericht als het allereerste ruimtevaartcomplex van NASA. Op de foto is te zien dat sommige gebouwen van elkaar gescheiden worden door stukken bos.
 
-## Voorbeeld voor andere grootstedelijke gebieden
+Ten noorden van Goddard liggen grote groene vlakken in het plaatsje Beltsville: een mengeling van bos en landbouwgrond, met onderzoekslocaties van de University of Maryland en het Amerikaanse ministerie van Landbouw (USDA). Iets ten westen van Greenbelt is in College Park de hoofdcampus van de University of Maryland zichtbaar.
 
-De groene gordels rond Washington dienen als inspirerend voorbeeld voor andere grootstedelijke gebieden wereldwijd. Ze tonen aan dat zelfs in de meest ontwikkelde regio's ruimte kan worden behouden voor natuur, wat ten goede komt aan zowel de leefkwaliteit van bewoners als de biodiversiteit van het gebied.
+## Een park en een planstad uit de jaren dertig
+
+Een van de opvallendste groene vlekken is Greenbelt Park, bijna 5 vierkante kilometer groot, met bospaden, picknickplaatsen en een camping. Het terrein was ooit bedoeld als uitbreiding van de stad, maar kwam in 1950 in handen van de National Park Service, de Amerikaanse nationale parkendienst. De Baltimore-Washington Parkway (MD-295), een grotendeels door bomen omzoomde weg tussen Baltimore en Washington, loopt dwars door het park.
+
+Direct ten noorden van het park ligt het historische centrum van Greenbelt, uitgelegd in de vorm van een halve maan. Het is een van drie planmatig ontworpen gemeenschappen die in de jaren dertig ontstonden binnen het New Deal-programma. Dat moest werklozen aan werk helpen en betaalbare coöperatieve woningen met bereikbaar groen opleveren. Woningen sluiten aan op wandelpaden, die weer uitkomen bij een van de oudste geplande winkelcentra van het land. Verder naar het zuiden ligt Hyattsville, dat al ruim dertig jaar erkend wordt als ‘tree city’.
+
+## Telelens in een baan om de aarde
+
+De foto, met de code ISS069-E-39302, werd gemaakt met een Nikon D5-camera en een brandpuntsafstand van 1150 millimeter: een flinke telelens, nodig om vanuit een baan om de aarde details als gebouwen en wegen te onderscheiden. Het beeld is bijgesneden, het contrast is verbeterd en lensartefacten zijn verwijderd.
+
+De opname werd beschikbaar gesteld door de ISS Crew Earth Observations Facility en de Earth Science and Remote Sensing Unit van NASA's Johnson Space Center. Dat programma helpt astronauten foto's te maken die zo waardevol mogelijk zijn voor wetenschappers en het publiek, en stelt ze gratis online beschikbaar.
+
+## Wat betekent dit?
+
+Astronautenfoto's zijn een bijzondere aanvulling op het werk van aardobservatiesatellieten. Waar satellieten automatisch en systematisch scannen, kiezen astronauten zelf hun onderwerp, hoek en lens. Zo ontstaan beelden die zowel wetenschappelijk bruikbaar zijn als het publiek een menselijke blik op onze planeet bieden. Dat er al sinds de begindagen van het ISS door bemanningen wordt gefotografeerd, maakt het archief bovendien waardevol om veranderingen in het landschap over de jaren te volgen.
+
+Dat juist Goddard in beeld komt, heeft iets symbolisch: vanuit dit centrum worden tal van wetenschappelijke ruimtemissies ontwikkeld en bestuurd, van aardobservatie tot ruimtetelescopen. Hier kijkt de ruimte als het ware terug naar de plek waar een groot deel van NASA's wetenschappelijke ruimtevaart vandaan komt.
