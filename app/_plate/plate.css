@@ -4598,3 +4598,154 @@ a:hover .pl-emulsion > img,
 
 /* Link naar de uitrusting onder het oordeel van vannacht. */
 .pl-verdict__uitr { margin-top: auto; padding-top: 4px; }
+
+/* ══ Telescoopgids — /sterrenkijken/eerste-telescoop ═══════════════════════
+   Leest als een gids: de kop en de stappen van /uitrusting, daaronder twee
+   meetbladen (vergroting, zicht per opening) in de taal van de plaat. Geen
+   live-blauw: niets hier verandert. Zicht is een vierkantje zoals
+   missiestatus, geen kleur. */
+
+.pl-gids__mag { padding-top: 14px; }
+.pl .pl-gids__noot { margin-top: 24px; max-width: 68ch; }
+
+/* ── Vergroting: balken op één schaal, met de grens van de lucht ── */
+.pl-gverg { margin-top: clamp(20px, 2.6vw, 30px); }
+.pl-gverg__in { padding: clamp(20px, 3vw, 34px) clamp(20px, 3vw, 44px) 20px; display: grid; gap: 14px; }
+.pl-gverg__rijen {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 14px;
+}
+.pl-gverg__rij {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr) 9.5rem;
+  align-items: center;
+  gap: 16px;
+}
+.pl-gverg__naam { display: grid; gap: 4px; }
+.pl-gverg__k { font-size: 0.9375rem; font-weight: 700; color: var(--pl-ink); line-height: 1.2; }
+.pl-gverg__baan {
+  position: relative;
+  height: 14px;
+  border-bottom: 1px solid var(--pl-rule-soft);
+}
+/* De grens van de lucht loopt door alle banen heen. */
+.pl-gverg__baan::after {
+  content: '';
+  position: absolute; top: -8px; bottom: -8px; left: var(--lucht);
+  border-left: 1px dashed var(--pl-ink-3);
+}
+.pl-gverg__balk {
+  position: absolute; left: 0; top: 2px; bottom: 2px;
+  background: var(--pl-orbit);
+  border: 1px solid var(--pl-stamp);
+}
+.pl-gverg__doos {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  border: 1px dashed var(--pl-warn);
+  border-left: 0;
+}
+.pl-gverg__x { font-size: 0.875rem; font-weight: 600; color: var(--pl-ink); white-space: nowrap; }
+.pl-gverg__doosx { color: var(--pl-warn); font-weight: 500; }
+.pl-gverg__as {
+  position: relative;
+  height: 16px;
+  margin: 0 calc(9.5rem + 16px);
+  font-size: 0.6875rem; color: var(--pl-ink-3);
+}
+.pl-gverg__as > span { position: absolute; top: 0; transform: translateX(-50%); }
+.pl-gverg__legenda {
+  list-style: none; margin: 6px 0 0; padding: 14px 0 0;
+  border-top: 1px solid var(--pl-rule-soft);
+  display: flex; flex-wrap: wrap; gap: 10px 28px;
+  font-size: 0.8125rem; color: var(--pl-ink-2);
+}
+.pl-gverg__legenda li { display: flex; align-items: center; gap: 10px; }
+.pl-gverg__l { display: inline-block; width: 22px; height: 10px; flex: none; }
+.pl-gverg__l--balk { background: var(--pl-orbit); border: 1px solid var(--pl-stamp); }
+.pl-gverg__l--doos { border: 1px dashed var(--pl-warn); }
+.pl-gverg__l--lucht { width: 0; height: 16px; border-left: 1px dashed var(--pl-ink-3); margin: 0 11px; }
+
+/* ── Zicht per opening: een ephemeris, rijen zijn doelen ── */
+.pl-gtabel__scroll { overflow-x: auto; }
+.pl-gtabel table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.pl-gtabel th, .pl-gtabel td {
+  padding: 14px clamp(14px, 2vw, 24px);
+  border-top: 1px solid var(--pl-rule-soft);
+  text-align: center;
+  vertical-align: middle;
+}
+.pl-gtabel thead th { border-top: 0; padding-top: 20px; padding-bottom: 12px; }
+.pl-gtabel thead th:first-child,
+.pl-gtabel tbody th { text-align: left; }
+.pl-gtabel tbody th { font-weight: 400; }
+.pl-gtabel__doel { display: grid; gap: 3px; }
+.pl-gtabel tbody tr { transition: background 200ms var(--pl-ease); }
+.pl-gtabel tbody tr:hover { background: var(--pl-plate-2); }
+.pl-gtabel__n { font-size: 0.9375rem; font-weight: 700; color: var(--pl-ink); }
+.pl-gtabel__w { font-size: 0.8125rem; color: var(--pl-ink-2); line-height: 1.45; }
+.pl-gzicht { display: inline-flex; align-items: center; justify-content: center; }
+.pl-gzicht i { display: block; width: 10px; height: 10px; border: 1px solid var(--pl-stamp); }
+.pl-gzicht[data-z="2"] i { background: var(--pl-stamp); }
+.pl-gzicht[data-z="1"] i { background: linear-gradient(135deg, var(--pl-stamp) 0 50%, transparent 50%); }
+.pl-gzicht[data-z="0"] i { width: 10px; height: 0; border: 0; border-top: 1px solid var(--pl-ink-3); }
+.pl-gtabel__legenda {
+  list-style: none; margin: 0;
+  padding: 14px clamp(14px, 2vw, 24px);
+  border-top: 1px solid var(--pl-rule);
+  display: flex; flex-wrap: wrap; gap: 10px 28px;
+  font-size: 0.8125rem; color: var(--pl-ink-2);
+}
+.pl-gtabel__legenda li { display: flex; align-items: center; gap: 10px; }
+.pl-gtabel__voet { padding: 0 clamp(14px, 2vw, 24px) 18px; max-width: 80ch; }
+
+/* ── Drie soorten: rijen met schema, uitleg en plus en min ── */
+.pl-gsoort { list-style: none; margin: 0; padding: 0; }
+.pl-gsoort__rij {
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 18px clamp(20px, 3vw, 40px);
+  align-items: start;
+  padding: 24px clamp(20px, 3vw, 36px);
+  border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-gsoort__rij:first-child { border-top: 0; }
+.pl-gsoort__rij .pl-uitr__schema { border-bottom: 0; padding: 4px 0 0; }
+.pl-gsoort__t { display: grid; gap: 8px; }
+.pl-gsoort__pm { margin: 0; display: grid; gap: 12px; }
+.pl-gsoort__pm > div { display: grid; gap: 4px; }
+.pl-gsoort__pm dd { margin: 0; }
+
+.pl-gadvies { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pl-gadvies .pl-ukaart { display: flex; flex-direction: column; gap: 12px; }
+.pl-gadvies .pl-ukaart__winkels { margin-top: auto; }
+
+.pl-gfout { border: 1px solid var(--pl-rule); background: var(--pl-plate); }
+.pl-gids__slot { display: grid; gap: 14px; }
+
+@media (max-width: 900px) {
+  .pl-gadvies { grid-template-columns: minmax(0, 1fr); }
+  .pl-gsoort__rij { grid-template-columns: minmax(0, 1fr); }
+  .pl-gsoort__rij .pl-uitr__schema { max-width: 300px; }
+}
+@media (max-width: 620px) {
+  .pl-gverg__rij { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
+  .pl-gverg__naam { grid-column: 1; grid-row: 1; display: flex; gap: 10px; align-items: baseline; }
+  .pl-gverg__x { grid-column: 2; grid-row: 1; text-align: right; }
+  .pl-gverg__baan { grid-column: 1 / -1; grid-row: 2; }
+  .pl-gverg__as { margin: 0; }
+  /* Op de telefoon past de tabel zonder schuiven: korte regels, smalle kolommen. */
+  .pl-gtabel table { min-width: 0; }
+  .pl-gtabel th, .pl-gtabel td { padding: 12px 6px; }
+  .pl-gtabel thead th:first-child, .pl-gtabel tbody th { padding-left: 16px; }
+  .pl-gtabel thead th { letter-spacing: 0.08em; font-size: 0.625rem; }
+  .pl-gtabel__w { display: none; }
+  .pl-gtabel__n { font-size: 0.875rem; }
+}
+
+/* ── Steun NightGazer: één plaat, één knop ── */
+.pl-steun {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px 28px; flex-wrap: wrap;
+  padding: clamp(18px, 2.6vw, 26px) clamp(20px, 3vw, 36px);
+}
+.pl-steun__t { display: grid; gap: 6px; max-width: 62ch; }

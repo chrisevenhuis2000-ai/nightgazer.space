@@ -17,7 +17,7 @@ export const WINKEL_NAAM: Record<Winkel, string> = {
 }
 
 /** Optisch schema op de productkaart. Alleen voor wat echt optiek is. */
-export type Vorm = 'porro' | 'newton' | 'maknewt'
+export type Vorm = 'porro' | 'newton' | 'maknewt' | 'lens'
 
 export type Product = {
   naam:   string
