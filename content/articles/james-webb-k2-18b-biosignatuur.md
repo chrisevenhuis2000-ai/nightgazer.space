@@ -1,8 +1,9 @@
 ---
+vernieuwd: "2026-11-06"
 title: "James Webb vindt mogelijke sporen van leven op planeet K2-18b"
 excerpt: "De JWST heeft dimethylsulfide gedetecteerd in de atmosfeer van K2-18b — een molecuul dat op Aarde uitsluitend door levende organismen wordt gemaakt. Het signaal nadert 3σ significantie en wakkert het debat over buitenaards leven opnieuw aan."
 category: "james-webb"
-author: "Dr. Mara Visser"
+author: "Redactie NightGazer"
 publishedAt: "2026-03-11T09:00:00.000Z"
 readTime: "6"
 featured: "true"
