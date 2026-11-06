@@ -1,28 +1,46 @@
 ---
-title: "SMILE-ruimtevaartuig gelanceerd om aarde's onzichtbare schild tegen zonnewind te onderzoeken"
-excerpt: "Het SMILE-ruimtevaartuig is succesvol gelanceerd vanaf de Europese ruimtehaven in Frans-Guyana. De missie heeft als doel zonnestormen en geomagnetische stormen beter te begrijpen en de wetenschap van ruimteweer verder te ontwikkelen."
+title: "Smile gelanceerd: ESA en China brengen het onzichtbare schild van de aarde in beeld"
+excerpt: "De Europees-Chinese ruimtesonde Smile is op 19 mei 2026 met een Vega-C-raket gelanceerd vanuit Frans-Guyana. De missie gaat als eerste het magnetische schild van de aarde in röntgenlicht fotograferen en het noorderlicht urenlang onafgebroken in ultraviolet volgen. Zo moeten wetenschappers beter begrijpen hoe zonnestormen onze planeet raken."
 category: "educatie"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-05-19T10:36:07.597Z"
 featured: false
 tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Smile/Smile_lifts_off_on_quest_to_reveal_Earth_s_invisible_shield_against_the_solar_wind"
 imageUrl: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/05/wide_view_of_vega-c_liftoff_with_smile/27281047-2-eng-GB/Wide_view_of_Vega-C_liftoff_with_Smile_card_full.jpg"
-imageAlt: "Smile lifts off on quest to reveal Earth’s invisible shield against the solar wind"
+imageAlt: "Smile gelanceerd: ESA en China brengen het onzichtbare schild van de aarde in beeld"
 imageCredit: "ESA"
-kernpunten: ["SMILE is op 19 mei 2026 met een Vega-C-raket gelanceerd vanaf Frans-Guyana.","De missie onderzoekt hoe de zonnewind samenwerkt met het magnetische veld van de aarde.","Betere kennis van ruimteweer moet satellieten, communicatie en het elektriciteitsnet beschermen."]
-kerncijfers: [{"waarde":"19 mei 2026","eenheid":"","label":"Datum van de lancering"},{"waarde":"05:52","eenheid":"","label":"Lanceertijd Nederlandse tijd"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["De Europees-Chinese sonde Smile is op 19 mei 2026 succesvol gelanceerd met een Vega-C-raket.","Smile maakt als eerste röntgenbeelden van de magnetosfeer en volgt het noorderlicht 45 uur aan één stuk in ultraviolet.","Na een maand van baanmanoeuvres begint in juli de wetenschappelijke waarneming, die drie jaar moet duren."]
+kerncijfers: [{"waarde":"121.000","eenheid":"km","label":"hoogste punt boven Noordpool"},{"waarde":"45","eenheid":"uur","label":"onafgebroken noorderlichtwaarneming"},{"waarde":"130 miljoen","eenheid":"euro","label":"bijdrage van ESA"}]
+citaat: {"tekst":"We staan op het punt iets te zien wat we nooit eerder hebben gezien: het onzichtbare harnas van de aarde in actie.","wie":"Josef Aschbacher, directeur-generaal ESA"}
 ---
 
-Het SMILE-ruimtevaartuig (Solar wind Magnetosphere Ionosphere Link Explorer) is op 19 mei 2026 om 05:52 Nederlandse tijd succesvol gelanceerd vanaf Europa's ruimtehaven in Frans-Guyana. De lancering vond plaats met een Vega-C-raket en markeert het begin van een ambitieuze wetenschappelijke missie.
+Een nieuwe Europese ruimtesonde gaat iets zichtbaar maken wat nog nooit iemand heeft gezien: het magnetische schild dat de aarde beschermt tegen de zon. Smile, een gezamenlijke missie van ESA en de Chinese Academie van Wetenschappen (CAS), vertrok op 19 mei 2026 om 05:52 uur Nederlandse tijd met een Vega-C-raket vanaf Europa's ruimtehaven in Frans-Guyana.
 
-## Zonnewind en aardmagnetisch veld
+Ruim een uur later, om 06:48 uur, ving het ESA-grondstation New Norcia in Australië het eerste signaal op. Een minuut daarna klapten de zonnepanelen uit, zodat de sonde stroom kan opwekken voor haar systemen en instrumenten. Daarmee verklaarde ESA de lancering geslaagd.
 
-De SMILE-missie heeft als hoofddoel om ons begrip van zonnestormen en geomagnetische stormen aanzienlijk te verbeteren. Het ruimtevaartuig zal onderzoek doen naar de complexe interacties tussen de zonnewind - een continue stroom geladen deeltjes van de zon - en het magnetische veld van de aarde, dat ons beschermt tegen deze kosmische straling.
+## Een onzichtbare bel rond de aarde
 
-Het onderzoek naar ruimteweer is van cruciaal belang voor onze moderne samenleving, aangezien zonnestormen grote gevolgen kunnen hebben voor satellieten, communicatiesystemen en zelfs het elektriciteitsnet op aarde. Door de 'onzichtbare schild' van ons magnetisch veld beter te begrijpen, kunnen wetenschappers accuratere voorspellingen maken over ruimteweerfenomenen.
+De zon blaast voortdurend een stroom geladen deeltjes de ruimte in: de zonnewind. Bij uitbarstingen kan die aanzwellen tot zonnestormen die satellieten en andere technologie kunnen beschadigen. Dat het leven op aarde daar weinig last van heeft, danken we aan het magnetisch veld dat diep in onze planeet wordt opgewekt. Dat veld vormt een enorme beschermende bel, de magnetosfeer. Zonder dat schild zou de aarde volgens ESA een kale, bruine woestenij zijn.
 
-## Bescherming van infrastructuur
+Hoe die verdediging precies werkt, is nog altijd grotendeels een raadsel. ESA-directeur-generaal Josef Aschbacher: "We staan op het punt iets te zien wat we nooit eerder hebben gezien: het onzichtbare harnas van de aarde in actie."
 
-De SMILE-missie vertegenwoordigt een belangrijke stap voorwaarts in de ruimteweerkunde en zal waardevolle inzichten opleveren die helpen bij het beschermen van technologische infrastructuur tegen de effecten van zonne-activiteit.
+## Röntgenogen en urenlang noorderlicht
+
+Smile heeft vier wetenschappelijke instrumenten aan boord. Het belangrijkste is een röntgencamera, de Soft X-ray Imager (SXI). Daarmee wordt Smile de eerste missie die de magnetosfeer in röntgenlicht waarneemt, om te zien waar en hoe de zonnewind op het schild botst. Die botsing veroorzaakt verstoringen, van kleine substormen tot zware geomagnetische stormen, die door de magnetosfeer richting de polen trekken.
+
+Daar ontstaan de poollichten. Een ultravioletcamera gaat het noorderlicht telkens 45 uur achter elkaar volgen, langer dan enige missie tot nu toe. Het is bovendien de eerste keer sinds 2008 dat de volledige ring van poollicht rond de Noordpool in ultraviolet wordt vastgelegd. Door röntgen- en uv-beelden naast elkaar te leggen, kunnen onderzoekers vrijwel live volgen hoe de aarde reageert op een aanval van de zonnewind.
+
+## Eerst een maand klimmen
+
+De komende maand voert Smile elf motorbranden uit om hoogte te winnen. Uiteindelijk komt de sonde in een zeer langgerekte baan die haar tot 121.000 kilometer boven de Noordpool brengt, waar ze meet, en tot 5000 kilometer boven de Zuidpool, waar ze haar gegevens efficiënt naar de aarde stuurt. Nadat armen zijn uitgeklapt en cameraklepjes geopend, moeten de echte waarnemingen in juli beginnen. De missie is ontworpen voor drie jaar.
+
+Het is de eerste missie die ESA en China volledig samen hebben geselecteerd, ontworpen, gebouwd, gelanceerd en bedreven. Europa leverde onder meer de payloadmodule, gebouwd door Airbus Defence and Space in Spanje, en de röntgencamera, ontwikkeld door de Universiteit van Leicester. In totaal droegen instellingen en bedrijven uit 14 Europese landen bij. CAS leverde het platform van de sonde en drie instrumenten. ESA investeerde 130 miljoen euro, gemiddeld zo'n 28 cent per Europeaan. Voor raketbouwer Avio was het de eerste keer dat het bedrijf zelf als lanceeroperator optrad.
+
+## Wat betekent dit?
+
+Ruimteweer wordt steeds belangrijker naarmate we meer afhankelijk zijn van satellieten voor navigatie, communicatie en stroomnetten. Eerdere missies zoals Cluster maten de magnetosfeer punt voor punt; Smile voegt daar voor het eerst een totaalbeeld aan toe. Betere modellen van ons magnetische schild helpen om astronauten en ruimtetechnologie in de toekomst beter te beschermen.
+
+Voor sterrenkijkers in Nederland is er een directe link: de zonnestormen die Smile bestudeert, zijn dezelfde die bij ons af en toe noorderlicht laag aan de horizon toveren. Wie in de komende jaren zo'n poollichtnacht meemaakt, weet dat er hoog boven de Noordpool een sonde meekijkt die precies probeert te begrijpen hoe dat schouwspel ontstaat.
