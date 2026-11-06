@@ -1,6 +1,6 @@
 ---
-title: "Op jacht naar het Internationale Ruimtestation"
-excerpt: "Een spectaculaire timelapsevideo uit Florida toont hoe een Falcon 9-raket met een Dragon-ruimtevaartuig in de vroege ochtend van 13 oktober het Internationale Ruimtestation achternazit. Het ISS zelf verschijnt halverwege in beeld, terwijl een gloeiende 'kwal' van uitlaatgassen het zonlicht opvangt. NASA koos de beelden als Astronomy Picture of the Day van 16 oktober 2026."
+title: "Timelapse legt Dragon vast terwijl die het ISS achternajaagt"
+excerpt: "Een timelapse van de vrachtlancering naar het ISS op 13 oktober is door NASA gekozen als Astronomy Picture of the Day. In één opname zijn de opstijgende Falcon 9, het overvliegende ruimtestation, een oplichtende 'kwal' van uitlaatgassen en de landing van de eerste trap te zien."
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-16T07:48:40.803Z"
@@ -9,28 +9,39 @@ tags: []
 source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-16-chasing-the-international-space-station/"
 imageUrl: "https://science.nasa.gov/wp-content/uploads/2023/10/NASA_logo-1.png"
-imageAlt: "APOD: 2026 October 16 – Chasing the International Space Station"
+imageAlt: "Timelapse legt Dragon vast terwijl die het ISS achternajaagt"
 imageCredit: "NASA"
-kernpunten: ["Een Falcon 9 met Dragon vertrok op 13 oktober vóór zonsopgang richting het ISS voor NASA's 35e vrachtmissie.","Een timelapse van Eric Holland toont het ISS, een kwalvormige uitlaatpluim en de landing van de eerste trap.","De eerste trap landde succesvol op Landing Zone 40 en kan opnieuw worden gebruikt."]
-kerncijfers: [{"waarde":"35e","eenheid":"","label":"Commercial Resupply Services-missie"},{"waarde":"13 okt","eenheid":"","label":"datum van de lancering"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Een timelapse van de vrachtlancering naar het ISS op 13 oktober werd de Astronomy Picture of the Day van 16 oktober 2026.","In dezelfde opname zijn de Falcon 9, het overvliegende ISS en een door de zon verlichte, kwalvormige uitlaatpluim te zien.","De eerste trap keerde terug en landde veilig op Landing Zone 40, zodat hij opnieuw kan worden gebruikt."]
+kerncijfers: [{"waarde":"35e","eenheid":"","label":"Commercial Resupply Services-missie"},{"waarde":"13 oktober","eenheid":"","label":"datum van de lancering"}]
 ---
 
-Een Falcon 9-raket en een Dragon-ruimtevaartuig schoten op dinsdag 13 oktober nog voor zonsopgang de lucht in, op weg naar een lage baan om de aarde. Fotograaf Eric Holland legde de lancering vast in een indrukwekkende timelapsevideo vanaf Indian Harbour Beach in Florida. Een timelapse is een reeks opnamen die versneld wordt afgespeeld, zodat een proces van vele minuten in een paar seconden zichtbaar wordt. NASA koos de video als Astronomy Picture of the Day (APOD) van 16 oktober 2026.
+Op één filmpje van dertig seconden staan zowel de achtervolger als het doelwit. Fotograaf Eric Holland filmde vanaf Indian Harbour Beach in Florida hoe een Falcon 9 met een Dragon-vrachtcapsule op dinsdag 13 oktober vóór zonsopgang vertrok. Een paar seconden later trok het Internationale Ruimtestation (ISS) door hetzelfde beeld. NASA koos de opname als Astronomy Picture of the Day (APOD) van 16 oktober 2026.
 
-De raket vertrok vanaf Space Launch Complex 40 op Cape Canaveral Space Force Station. Falcon 9 en Dragon waren op weg naar het Internationale Ruimtestation (ISS) in het kader van NASA's 35e Commercial Resupply Services-missie, een van de commerciële vrachtvluchten waarmee het ruimtestation wordt bevoorraad. Om het ISS te bereiken moet het ruimtevaartuig het station in zijn baan als het ware achtervolgen en inhalen, vandaar de titel van de opname.
+Holland maakte een timelapse: een reeks foto's die versneld wordt afgespeeld. Zo past een lancering van vele minuten in een halve minuut video. Dat maakt zichtbaar wat met het blote oog moeilijk te volgen is: de hele choreografie van een moderne raketvlucht.
 
-## Het ISS verschijnt in beeld
+## Bevoorrading van het ruimtestation
 
-Precies op het juiste moment duikt het ruimtestation zelf op in beeld. Bijna acht seconden na het begin van de timelapse van dertig seconden verschijnt het ISS als een heldere streep aan de bovenkant van het beeld, die 'omlaag' richting de horizon beweegt. Zo zijn de achtervolger en het doelwit tegelijk in één opname te zien.
+De raket vertrok vanaf Space Launch Complex 40 op Cape Canaveral Space Force Station. Het ging om NASA's 35e Commercial Resupply Services-missie, een van de commerciële vrachtvluchten waarmee het ISS van voorraden, experimenten en reserveonderdelen wordt voorzien. Om bij het station te komen moet de Dragon het ISS in zijn baan inhalen. Het ruimtevaartuig zit het station dus letterlijk achterna, en daar verwijst de titel van de APOD naar: 'Chasing the International Space Station'.
 
-Ondertussen scheiden de eerste en de tweede trap van de Falcon 9 zich van elkaar. Daarbij groeit een spectaculaire pluim van uitlaatgassen uit tot een vorm die doet denken aan een kwal. Hoewel het op de grond nog donker is, vangt deze pluim hoog in de atmosfeer al het licht van de opkomende zon op, waardoor hij fel oplicht tegen de schemerige hemel.
+De timing van de opname is opvallend. Bijna acht seconden na het begin verschijnt het ISS als een heldere streep aan de bovenkant van het beeld. Het station beweegt 'omlaag' richting de horizon, terwijl de raket in dezelfde richting koers zet.
 
-## Terugkeer en landing van de eerste trap
+## Een kwal aan de ochtendhemel
 
-Ongeveer twintig seconden na het begin van de video wordt de terugkeer van de eerste trap zichtbaar. Achtereenvolgens zijn de zogeheten boost back-ontbranding te zien, waarmee de trap koers zet terug richting de kust, vervolgens de ontbranding bij het opnieuw binnendringen van de atmosfeer en ten slotte de landingsontbranding. De eerste trap landde met succes op Landing Zone 40, zodat hij opnieuw kan worden gebruikt.
+Intussen scheiden de eerste en tweede trap van de Falcon 9 zich. Daarbij groeit een pluim van uitlaatgassen uit tot een vorm die op een kwal lijkt. Op de grond is het nog donker, maar hoog in de atmosfeer valt al zonlicht op de gassen. Daardoor licht de pluim fel op tegen de schemerige hemel. Dit verschijnsel wordt vaak gezien bij lanceringen rond zonsopgang of zonsondergang en blijft telkens een indrukwekkend gezicht.
 
-Terwijl de tweede trap het ISS volgt richting de verre horizon, blijft de kwalvormige pluim nog geruime tijd zichtbaar in de ochtendschemering. Zelfs na de geslaagde landing van de eerste trap drijft de oplichtende wolk van uitlaatgassen langzaam verder door de lucht, een vertrouwd maar telkens weer betoverend schouwspel bij lanceringen rond zonsopgang of zonsondergang.
+Ongeveer twintig seconden na de start van de video is de terugkeer van de eerste trap te volgen. Eerst is de boost back-ontbranding te zien, waarmee de trap omkeert en koers zet naar de kust. Daarna volgen een ontbranding bij het opnieuw binnendringen van de atmosfeer en ten slotte de landingsontbranding. De trap landde veilig op Landing Zone 40 en kan opnieuw worden gebruikt. Ook daarna blijft de oplichtende wolk nog lang zichtbaar en drijft hij langzaam verder door de ochtendschemering.
 
-## Over Astronomy Picture of the Day
+## Een dagelijkse blik op het heelal
 
-Astronomy Picture of the Day is een dienst van ASD bij NASA's Goddard Space Flight Center, NASA Science Activation en Michigan Technological University. De rubriek wordt samengesteld door Jerry Bonnell, Cecilia Chirenti, Robert Nemiroff en Keighley Rockcliffe, en belicht elke dag een ander beeld van het heelal met een korte toelichting van een professionele astronoom.
+Astronomy Picture of the Day is een dienst van ASD bij NASA's Goddard Space Flight Center, NASA Science Activation en Michigan Technological University. De rubriek wordt samengesteld door Jerry Bonnell, Cecilia Chirenti, Robert Nemiroff en Keighley Rockcliffe. Elke dag staat er een ander beeld van het heelal centraal, met een korte uitleg van een professionele astronoom.
+
+## Zien vanuit Nederland
+
+De lancering zelf en de kwalvormige pluim zijn alleen vanuit de omgeving van Florida te zien. Het ISS kun je vanuit Nederland wel regelmatig met het blote oog waarnemen. Het station is dan een heldere, gestaag bewegende stip die niet knippert. Je ziet het vooral kort na zonsondergang of vlak voor zonsopkomst, als het station nog in de zon staat en het bij ons al donker is. Apps en websites geven per woonplaats aan wanneer het ISS overkomt.
+
+## Wat betekent dit?
+
+De opname laat zien hoe gewoon vrachtvluchten naar het ISS en het hergebruik van rakettrappen zijn geworden. Vroeger was elke lancering een gebeurtenis; nu is een landende eerste trap bijna routine. Commerciële bevoorrading houdt het station draaiende, ook voor Europese experimenten en astronauten die er werken. Het ISS nadert de laatste jaren van zijn loopbaan, en deze ervaring met commerciële vluchten vormt de basis voor de opvolgers in een lage baan om de aarde.
+
+Voor sterrenkijkers is het filmpje vooral een mooie herinnering aan hoe dicht ruimtevaart en de nachthemel bij elkaar liggen. Wie bij een heldere schemering omhoog kijkt, kan het station zelf ook zien.
