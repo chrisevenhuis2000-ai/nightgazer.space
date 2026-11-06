@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SiteNav } from '@/app/components/SiteNav'
 import { SiteFooter } from '@/app/components/SiteFooter'
+import { STEUN_URL, STEUN_NAAM } from '@/lib/steun'
 
 export const metadata: Metadata = {
   title:       'Over de maker',
@@ -99,6 +100,17 @@ export default function OverPage() {
               en die gids vertelt me of het vannacht de moeite waard is om de telescoop buiten te zetten.
             </p>
           </section>
+
+          {STEUN_URL && (
+            <section style={kaart}>
+              <h2 style={kop}>Steun NightGazer</h2>
+              <p style={tekst}>
+                NightGazer is een hobbyproject zonder abonnement of betaalmuur. Vind je het nuttig,
+                dan houdt een kleine bijdrage via <a href={STEUN_URL} style={link} target="_blank" rel="noopener">{STEUN_NAAM}</a> de
+                site gratis voor iedereen.
+              </p>
+            </section>
+          )}
 
           <section style={kaart}>
             <h2 style={kop}>Contact</h2>
