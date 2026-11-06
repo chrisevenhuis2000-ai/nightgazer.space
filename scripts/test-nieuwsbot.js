@@ -109,6 +109,10 @@ const server = http.createServer((req, res) => {
   eq([p.ok, p.reden], [false, 'geen oorspronkelijke bron gevonden in de tip'], 'primaireBron: geen links → niet publiceren')
   p = await N.primaireBron('https://spacenews.com/tip/', async u => u.includes('spacenews') ? tipHtml : '<article><p>Te kort.</p></article>')
   ok(!p.ok && /te kort of onbereikbaar/.test(p.reden), 'primaireBron: bron te kort → niet publiceren')
+  p = await N.primaireBron('https://spaceflightnow.com/tip/', async u => { if (u.includes('spaceflightnow')) throw new Error('HTTP 403'); return nasaPagina }, tipHtml)
+  ok(p.ok && p.naam === 'NASA', 'primaireBron: tippagina 403 → links uit de feed-HTML')
+  p = await N.primaireBron('https://spaceflightnow.com/tip/', async () => { throw new Error('HTTP 403') })
+  ok(!p.ok && /niet bereikbaar \(HTTP 403\)/.test(p.reden), 'primaireBron: 403 zonder feed-HTML → niet publiceren')
 
   // ── 2. herschrijf ──────────────────────────────────────────────────────
   const tekst = enTekst(400)

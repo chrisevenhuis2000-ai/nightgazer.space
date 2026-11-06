@@ -299,7 +299,7 @@ async function main(opts = {}) {
       const isTip = feed.soort === 'tip'
       let bron, bronNaam = feed.source, bronUrl = item.link || ''
       if (isTip) {
-        const p = await N.primaireBron(item.link, opts.fetchPagina)
+        const p = await N.primaireBron(item.link, opts.fetchPagina, item.content || item['content:encoded'] || item.description || '')
         if (!p.ok) { sla(title, `tip zonder oorspronkelijke bron: ${p.reden} (geen Claude-aanroep)`); continue }
         bron = p; bronNaam = p.naam; bronUrl = p.url
       } else {
