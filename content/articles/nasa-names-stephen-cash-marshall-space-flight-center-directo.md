@@ -1,6 +1,6 @@
 ---
-title: "NASA benoemt Stephen Cash tot directeur van Marshall Space Flight Center"
-excerpt: "NASA-baas Jared Isaacman heeft Stephen Cash benoemd tot directeur van het Marshall Space Flight Center in Huntsville, Alabama. De ervaren ingenieur keert terug naar het centrum waar hij ruim veertig jaar geleden zijn loopbaan begon en dat een sleutelrol speelt in het Artemis-programma."
+title: "Veteraan Stephen Cash wordt directeur van NASA-raketcentrum Marshall"
+excerpt: "NASA-baas Jared Isaacman heeft Stephen Cash benoemd tot directeur van het Marshall Space Flight Center in Huntsville, Alabama. Cash begon er in 1982 zijn loopbaan en keert nu terug om het centrum te leiden achter de SLS-raket en de maanlanders van Artemis. Hij volgt waarnemend directeur Rae Ann Meyer op."
 category: "mars"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-17T11:37:30.488Z"
@@ -9,29 +9,34 @@ tags: []
 source: "NASA"
 sourceUrl: "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director/"
 imageUrl: "https://www.nasa.gov/wp-content/uploads/2026/10/steve-cash-photo.jpg"
-imageAlt: "NASA Names Stephen Cash Marshall Space Flight Center Director"
+imageAlt: "Veteraan Stephen Cash wordt directeur van NASA-raketcentrum Marshall"
 imageCredit: "NASA"
-kernpunten: ["NASA-administrator Jared Isaacman benoemt Stephen Cash per 19 oktober tot directeur van het Marshall Space Flight Center.","Cash begon in 1982 bij Marshall en leidde onder meer het Space Shuttle Propulsion Office en het directoraat Safety and Mission Assurance.","Marshall bouwt de SLS-raket, beheert het Human Landing System-programma en werkt aan nucleaire voortstuwing."]
-kerncijfers: [{"waarde":"5000","eenheid":"","label":"ambtenaren en contractmedewerkers"},{"waarde":"34","eenheid":"jaar","label":"Cash werkte bij NASA"},{"waarde":"1960","eenheid":"","label":"oprichting van Marshall"}]
-citaat: {"tekst":"Ik voel me nederig dat ik naast de briljante geesten hier mag staan, terwijl we het onmogelijke blijven omzetten in alledaagse geschiedenis.","wie":"Stephen Cash, nieuwe directeur Marshall Space Flight Center"}
+vernieuwd: "2026-11-06"
+kernpunten: ["Stephen Cash wordt per maandag 19 oktober directeur van NASA's Marshall Space Flight Center in Huntsville.","Marshall ontwikkelt de SLS-raket en beheert het maanlanderprogramma van Artemis, en werkt aan nucleaire aandrijving voor Mars.","Cash begon in 1982 bij Marshall, werkte 34 jaar voor NASA en volgt waarnemend directeur Rae Ann Meyer op."]
+kerncijfers: [{"waarde":"5.000","eenheid":"medewerkers","label":"personeel van Marshall"},{"waarde":"34","eenheid":"jaar","label":"loopbaan van Cash bij NASA"},{"waarde":"1960","eenheid":"","label":"oprichting Marshall Space Flight Center"}]
+citaat: {"tekst":"Het is een grote eer om weer thuis te zijn in het Marshall Space Flight Center","wie":"Stephen Cash, nieuwe directeur Marshall Space Flight Center"}
 ---
 
-NASA-administrator Jared Isaacman heeft Stephen Cash benoemd tot directeur van het Marshall Space Flight Center in Huntsville, Alabama. De benoeming gaat in op maandag 19 oktober. Cash, een doorgewinterde NASA-ingenieur en lucht- en ruimtevaartbestuurder, keert daarmee terug naar het centrum waar hij meer dan vier decennia geleden zijn carrière begon.
+Het NASA-centrum dat de raketten voor de terugkeer naar de maan bouwt, krijgt een nieuwe directeur met een lange voorgeschiedenis. NASA-administrator Jared Isaacman heeft Stephen Cash benoemd tot directeur van het Marshall Space Flight Center in Huntsville, Alabama. De benoeming gaat in op maandag 19 oktober. Voor Cash is het een terugkeer: hij begon er ruim veertig jaar geleden zijn loopbaan.
 
-Isaacman noemt Marshall het expertisecentrum van NASA op het gebied van voortstuwing. Volgens hem is Cash een 'Marshall-legende' die zijn hele loopbaan dicht bij de hardware en de mensen heeft gestaan, en die al eerder beslissingen heeft genomen op momenten dat bemande ruimtevaart op het spel stond. Nu Marshall een cruciale rol speelt in Artemis en zich richt op geavanceerde voortstuwing, kernenergie en systemen om dieper het zonnestelsel in te reizen, brengt Cash volgens Isaacman de nodige ervaring en technische kennis mee. Amit Kshatriya, associate administrator en hoofdingenieur van NASA, benadrukt dat Cash begrijpt dat het personeel 'het kroonjuweel' van Marshall is, en dat technische uitmuntendheid ontstaat door mensen praktisch te laten ontwerpen, bouwen en testen.
+Marshall is een van de grootste vestigingen van NASA, met meer dan 5.000 medewerkers in overheidsdienst en bij aannemers. Het centrum geldt binnen NASA als hét kenniscentrum voor raketaandrijving. Het ontwikkelt de SLS (Space Launch System), de zware raket van het Artemis-programma, en beheert het Human Landing System-programma: de landers die astronauten van een baan om de maan naar het maanoppervlak moeten brengen.
 
-## Een van de grootste NASA-centra
+## Van spaceshuttle tot veiligheid
 
-Als directeur leidt Cash een van de grootste NASA-centra, met meer dan 5000 ambtenaren en medewerkers van contractpartners. Marshall houdt zich bezig met voortstuwing, ruimtesystemen, wetenschappelijk onderzoek en technologieontwikkeling. Binnen het Artemis-programma ontwikkelt het centrum de SLS-raket (Space Launch System) en beheert het het Human Landing System-programma, dat de landers levert die astronauten naar het maanoppervlak moeten brengen. Daarnaast speelt Marshall een belangrijke rol bij de ontwikkeling van nucleaire energie en voortstuwing, een gebied dat naar verwachting verder groeit nu NASA toewerkt naar de eerste bemande missies naar Mars.
+Cash trad in 1982 bij Marshall in dienst en werkte in totaal 34 jaar voor NASA. Hij leidde onder meer het Space Shuttle Propulsion Office, de afdeling die verantwoordelijk was voor de aandrijfsystemen van de spaceshuttle tot en met de laatste vluchten. Van 2011 tot zijn pensioen in 2016 stond hij aan het hoofd van de directie Safety and Mission Assurance, die toeziet op veiligheid, betrouwbaarheid en kwaliteit van de techniek.
 
-'Het is een grote eer om weer thuis te zijn bij het Marshall Space Flight Center', aldus Cash. 'Ik voel me nederig dat ik naast de briljante geesten hier mag staan, terwijl we het onmogelijke blijven omzetten in alledaagse geschiedenis.'
+Na zijn vertrek bij NASA bleef hij actief in de ruimtevaartindustrie, onder meer als vicepresident voor geavanceerde ruimtesystemen bij Axient. In 2024 werd hij opgenomen in de Alabama Engineering Hall of Fame. 'Het is een grote eer om weer thuis te zijn in het Marshall Space Flight Center', aldus Cash. Hij zegt zich vereerd te voelen om samen met de knappe koppen daar 'het onmogelijke om te blijven zetten in alledaagse geschiedenis'.
 
-## Veertig jaar ervaring bij Marshall
+## Kernaandrijving als groeiend terrein
 
-Cash begon in 1982 bij Marshall en werkte in totaal 34 jaar voor NASA, in leidinggevende technische en managementfuncties bij enkele van de belangrijkste Amerikaanse bemande ruimtevaartprogramma's. Hij was onder meer manager van het Space Shuttle Propulsion Office, waar hij toezag op de voortstuwingssystemen van de spaceshuttle tot en met de laatste vluchten. Van 2011 tot zijn pensionering in 2016 leidde hij het directoraat Safety and Mission Assurance van Marshall, verantwoordelijk voor veiligheid, betrouwbaarheid en kwaliteitsborging.
+Isaacman noemt Cash een 'Marshall-legende' die zijn hele loopbaan dicht bij de hardware en de mensen heeft gestaan, en die al eerder beslissingen nam waar mensenlevens in de ruimte van afhingen. Volgens hem komt die ervaring goed van pas nu Marshall naast Artemis nieuwe uitdagingen oppakt, zoals geavanceerde aandrijving, kernenergie en systemen voor reizen dieper het zonnestelsel in. NASA verwacht dat juist kernenergie en nucleaire aandrijving, waarbij een kernreactor de energie levert om een ruimteschip voort te stuwen, belangrijker worden naarmate de eerste bemande Marsreis dichterbij komt.
 
-Na zijn vertrek bij NASA bleef Cash actief in de ruimtevaartindustrie, onder meer als vicepresident voor geavanceerde ruimtesystemen bij Axient. In 2024 werd hij opgenomen in de Alabama Engineering Hall of Fame voor zijn bijdragen aan de techniek en het Amerikaanse ruimtevaartprogramma.
+Ook Amit Kshatriya, associate administrator en hoofdingenieur van NASA, benadrukt de rol van de medewerkers. Volgens hem begrijpt Cash dat het personeel 'het kroonjuweel' van Marshall is, en dat technische uitmuntendheid blijft bestaan door getalenteerde mensen zelf te laten ontwerpen, bouwen, testen en leren.
 
-## Opvolger van waarnemend directeur Meyer
+Cash volgt Rae Ann Meyer op, die sinds september 2025 waarnemend directeur was. Zij keert terug naar haar eerdere functie van adjunct-directeur.
 
-Cash volgt Rae Ann Meyer op, die sinds september 2025 waarnemend directeur was. Zij keert terug naar haar functie als adjunct-directeur. Marshall werd opgericht in 1960 en speelt al ruim zestig jaar een centrale rol in de Amerikaanse ruimtevaart, van de Saturnus-raketten die tijdens Apollo astronauten naar de maan brachten tot de voortstuwingssystemen en technologieën voor het volgende tijdperk van bemande ruimtevaart.
+## Wat betekent dit?
+
+Marshall werd in 1960 opgericht en ontwikkelde onder meer de Saturnus-raketten waarmee de Apollo-astronauten naar de maan vlogen. Nu staat het centrum opnieuw centraal in de bemande maanvaart: de SLS en de maanlanders zijn cruciale onderdelen van Artemis, waarmee NASA mensen terug naar het maanoppervlak wil brengen. Dat de keuze valt op een ingenieur met diepe wortels in aandrijving én veiligheid, past bij een periode waarin die systemen hun waarde in bemande vluchten moeten bewijzen.
+
+Voor Europa is dat niet zonder belang. Het Orion-ruimteschip dat bovenop de SLS vliegt, wordt aangedreven door de European Service Module van ESA, en Europese astronauten hebben plaatsen toegezegd gekregen in latere Artemis-missies. Hoe soepel Marshall de raket en de maanlanders op schema houdt, bepaalt daarmee mede wanneer ook Europeanen richting de maan vertrekken.
