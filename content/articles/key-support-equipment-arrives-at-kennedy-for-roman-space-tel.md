@@ -1,26 +1,43 @@
 ---
-title: "Cruciale ondersteunende apparatuur aangekomen bij Kennedy voor Roman ruimtetelescoop"
-excerpt: "NASA heeft belangrijke apparatuur ontvangen bij het Kennedy Space Center ter voorbereiding op de lancering van de Nancy Grace Roman Space Telescope. Acht HEPA-luchtzuiveringsmodules en andere grondondersteunende apparatuur zullen zorgen voor optimale cleanroom-omstandigheden tijdens de laatste voorbereidingen van deze geavanceerde ruimtetelescoop."
+title: "Kennedy Space Center ontvangt luchtzuiveringsmodules voor Roman-ruimtetelescoop"
+excerpt: "Bij het Kennedy Space Center in Florida zijn acht zware HEPA-luchtzuiveringsmodules aangekomen die de cleanrooms klaarmaken voor de Nancy Grace Roman Space Telescope. De apparatuur moet zorgen voor een ultraschone omgeving tijdens de laatste assemblage- en testfasen. Daarmee komt de lancering van NASA's nieuwe grote ruimtetelescoop weer een stap dichterbij."
 category: "missies"
-author: "Redactie CosmosNL"
+author: "Redactie NightGazer"
 publishedAt: "2026-05-03T08:44:59.264Z"
 featured: false
 tags: []
 source: "NASA"
 sourceUrl: "https://www.nasa.gov/image-article/key-support-equipment-arrives-at-kennedy-for-roman-space-telescope/"
 imageUrl: "https://images-assets.nasa.gov/image/KSC-20260427-PH-LNL01_0002/KSC-20260427-PH-LNL01_0002~large.jpg"
-imageAlt: "Key Support Equipment Arrives at Kennedy for Roman Space Telescope"
+imageAlt: "Kennedy Space Center ontvangt luchtzuiveringsmodules voor Roman-ruimtetelescoop"
 imageCredit: "NASA"
-kernpunten: ["Technici bij Kennedy laadden op 27 april acht HEPA-luchtzuiveringsmodules en andere grondapparatuur uit.","De modules verbeteren de cleanroom-systemen van de PHSF voor de montage van gevoelige ruimtemissies.","De Roman-telescoop krijgt een spiegel van 2,4 meter en een gezichtsveld honderd keer groter dan dat van Hubble."]
-kerncijfers: [{"waarde":"815","eenheid":"kg","label":"gewicht per module"},{"waarde":"2,4","eenheid":"m","label":"diameter hoofdspiegel"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["Bij het Kennedy Space Center zijn op 27 april acht HEPA-luchtzuiveringsmodules aangekomen voor de voorbereiding van de Roman-telescoop.","De modules verbeteren de cleanrooms waarin de telescoop vrij van stof en vuil wordt geassembleerd en getest.","Roman krijgt een spiegel van 2,4 meter en een gezichtsveld dat honderd keer groter is dan dat van Hubble."]
+kerncijfers: [{"waarde":"815","eenheid":"kg","label":"gewicht per module"},{"waarde":"2,4","eenheid":"meter","label":"diameter hoofdspiegel Roman"}]
 ---
 
-Technici van NASA's Payload Hazardous Servicing Facility (PHSF) bij het Kennedy Space Center in Florida hebben op 27 april acht geavanceerde HEPA-luchtzuiveringsmodules (High-Efficiency Particulate Air) en andere grondondersteunende apparatuur uitgeladen. Deze apparatuur zal een cruciale rol spelen bij de lanceringsvoorbereidingen van NASA's Nancy Grace Roman Space Telescope.
+Voordat een ruimtetelescoop de lucht in gaat, moet niet alleen het instrument zelf klaar zijn, maar ook de ruimte waarin het wordt voorbereid. Bij het Kennedy Space Center in Florida is op 27 april een belangrijke zending aangekomen voor NASA's Nancy Grace Roman Space Telescope: acht geavanceerde luchtzuiveringsmodules en andere grondapparatuur die de telescoop straks moeten beschermen tegen stof en vuil.
 
-Elke module weegt ongeveer 815 kilogram en is ontworpen om de cleanroom-systemen van de PHSF aanzienlijk te verbeteren. Deze systemen zijn essentieel om te voldoen aan de strenge reinheidsstandaarden die nodig zijn voor de montage en voorbereiding van gevoelige ruimtemissies zoals de Roman Space Telescope.
+Technici van de Payload Hazardous Servicing Facility (PHSF) laadden de apparatuur uit. In dit gebouw worden ruimtevaartuigen in de laatste fase voor de lancering klaargemaakt. De nieuwe modules zijn van het type HEPA, wat staat voor High-Efficiency Particulate Air: filters die zelfs zeer kleine deeltjes uit de lucht halen.
 
-## Ambitieuze telescoop met groot gezichtsveld
+## Zware filters voor een schone omgeving
 
-De Nancy Grace Roman Space Telescope, vernoemd naar de pionier in de astronomie, zal een van NASA's meest ambitieuze ruimtetelescopen worden. Het observatorium is ontworpen om baanbrekend onderzoek te doen naar donkere energie, exoplaneten en andere kosmische mysteries. De telescoop zal beschikken over een hoofdspiegel van 2,4 meter en een gezichtsveld dat honderd keer groter is dan dat van de Hubble Space Telescope.
+Elke module weegt ongeveer 815 kilogram. Samen moeten ze de cleanroom-systemen van de PHSF flink verbeteren. Een cleanroom is een ruimte waarin het aantal zwevende deeltjes in de lucht streng wordt beperkt, zodat gevoelige apparatuur niet vervuild raakt.
 
-Met de aankomst van deze kritieke ondersteunende apparatuur zet NASA een belangrijke stap voorwaarts in de voorbereiding op de lancering van de Roman Space Telescope. De cleanroom-faciliteiten zullen zorgen voor de ultrareine omgeving die nodig is om de gevoelige instrumenten en componenten van de telescoop te beschermen tegen verontreiniging tijdens de laatste fasen van assemblage en testing.
+Voor een ruimtetelescoop is dat geen overbodige luxe. Een stofje op een spiegel of in een detector kan de prestaties van het instrument aantasten, en eenmaal in de ruimte is schoonmaken niet meer mogelijk. De strenge reinheidsnormen voor de montage en voorbereiding van missies als Roman vragen daarom om installaties die de lucht voortdurend zuiveren.
+
+De nieuwe apparatuur zorgt volgens NASA voor de ultraschone omgeving die nodig is om de instrumenten en onderdelen van de telescoop te beschermen tijdens de laatste fasen van assemblage en testen.
+
+## Een telescoop met een enorme blik
+
+De Nancy Grace Roman Space Telescope is vernoemd naar de astronome die bij NASA aan de wieg stond van het ruimtetelescoopprogramma en vaak de 'moeder van Hubble' wordt genoemd. Het observatorium geldt als een van NASA's meest ambitieuze ruimtetelescopen.
+
+Roman krijgt een hoofdspiegel van 2,4 meter, net zo groot als die van Hubble. Het grote verschil zit in het gezichtsveld: Roman kan een stuk hemel in één keer vastleggen dat honderd keer groter is dan wat Hubble ziet. Daardoor kan de telescoop in korte tijd enorme delen van het heelal in kaart brengen.
+
+Die brede blik is precies wat nodig is voor de wetenschappelijke doelen van de missie. Roman moet onder meer baanbrekend onderzoek doen naar donkere energie, de onbekende factor die de uitdijing van het heelal lijkt te versnellen, en naar exoplaneten, planeten rond andere sterren.
+
+## Wat betekent dit?
+
+De aankomst van luchtfilters klinkt misschien weinig spectaculair, maar het laat zien dat de voorbereidingen voor de lancering van Roman in volle gang zijn. Zodra de telescoop in Florida arriveert, moet alles klaarstaan om hem veilig en schoon gereed te maken voor de reis naar de ruimte. Elke stap in die keten is nodig om te voorkomen dat een miljardenproject door een simpel stofdeeltje in de problemen komt.
+
+Voor Europese sterrenkundigen is Roman extra interessant omdat de telescoop goed aansluit bij ESA's Euclid, die eveneens grote delen van de hemel in kaart brengt om donkere energie en donkere materie te onderzoeken. Samen kunnen beide missies elkaars metingen aanvullen en controleren. Na Hubble en James Webb wordt Roman daarmee een belangrijke volgende stap in het onderzoek naar de grootste vragen over de opbouw en het lot van het heelal.

@@ -1,6 +1,6 @@
 ---
-title: "Marsmaanlander MMX vertrekt op 19 oktober"
-excerpt: "De Japanse missie Martian Moons eXploration (MMX) wordt op 19 oktober 2026 (Nederlandse tijd) gelanceerd vanaf Tanegashima. De ruimtesonde moet als eerste ooit bodemmateriaal van de Marsmaan Phobos naar de aarde brengen en zo meer duidelijkheid geven over het ontstaan van de Marsmanen."
+title: "Japanse MMX vertrekt op 19 oktober naar Marsmaan Phobos"
+excerpt: "Op 19 oktober om 21:41 uur Nederlandse tijd lanceert Japan de Martian Moons eXploration-missie (MMX) met een H3-raket. De sonde moet als eerste ooit bodemmateriaal van de Marsmaan Phobos naar de aarde brengen. ESA is een van de partners, en ook Europese wetenschappers krijgen toegang tot de monsters."
 category: "mars"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-16T07:50:45.025Z"
@@ -9,29 +9,38 @@ tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Mars_moon_lander_set_to_launch_on_19_October"
 imageUrl: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mmx_from_launch_to_phobos/27573728-1-eng-GB/MMX_from_launch_to_Phobos_card_full.png"
-imageAlt: "Mars moon lander set to launch on 19 October"
+imageAlt: "Japanse MMX vertrekt op 19 oktober naar Marsmaan Phobos"
 imageCredit: "ESA"
-kernpunten: ["MMX moet op 19 oktober (Nederlandse tijd) met een H3-raket vertrekken om als eerste een monster van Marsmaan Phobos naar de aarde te brengen.","De sonde zet de rover Idefix af, landt zelf op Phobos en vliegt op de terugweg langs Deimos en Mars.","De capsule met minstens tien gram materiaal landt in 2031 in Australië en gaat daarna naar Japan voor onderzoek."]
-kerncijfers: [{"waarde":"21:41","eenheid":"uur","label":"Lancering Nederlandse tijd, 19 oktober"}]
-citaat: {"tekst":"De gegevens en monsters die MMX terugbrengt, zijn een venster op de evolutie van Mars en het zonnestelsel","wie":"Elliot Sefton-Nash, projectwetenschapper voor MMX bij ESA"}
+vernieuwd: "2026-11-06"
+kernpunten: ["De Japanse MMX-missie lanceert op 19 oktober om 21:41 uur Nederlandse tijd naar de Marsmaan Phobos.","De sonde zet de rover Idefix af, landt zelf op Phobos en brengt in 2031 minstens tien gram maanmateriaal naar de aarde.","ESA is partner en Europese wetenschappers krijgen toegang tot de monsters, die de herkomst van de Marsmanen moeten ophelderen."]
+kerncijfers: [{"waarde":"25","eenheid":"kilogram","label":"Massa van rover Idefix"},{"waarde":"15","eenheid":"gram","label":"Gewicht Idefix op Phobos"}]
+citaat: {"tekst":"De gegevens en monsters die MMX terugbrengt, zijn een venster op de evolutie van Mars en het zonnestelsel","wie":"Elliot Sefton-Nash, projectwetenschapper MMX bij ESA"}
 ---
 
-De Martian Moons eXploration-missie, kortweg MMX, staat klaar voor lancering met een H3-raket vanaf het Tanegashima Space Center in Japan. De start is gepland op 20 oktober 2026 om 04:41 uur Japanse tijd, wat overeenkomt met 21:41 uur Nederlandse tijd op 19 oktober. MMX moet de eerste missie worden die een monster van de Marsmaan Phobos verzamelt en naar de aarde terugbrengt. De missie wordt geleid door het Japanse ruimteagentschap JAXA, in samenwerking met NASA, het Franse CNES, het Duitse DLR en ESA.
+Op 19 oktober om 21:41 uur Nederlandse tijd begint een van de meest ambitieuze monstermissies van dit decennium. Vanaf het Tanegashima Space Center in Japan vertrekt dan een H3-raket met aan boord de Martian Moons eXploration-missie, kortweg MMX. In Japan is het op dat moment al 20 oktober, 04:41 uur. Het doel: als eerste ooit materiaal van de Marsmaan Phobos verzamelen en op aarde afleveren.
 
-## Raadselachtige manen van Mars
+De missie staat onder leiding van het Japanse ruimteagentschap JAXA. NASA, het Franse CNES, het Duitse DLR en de Europese ruimtevaartorganisatie ESA werken mee. Wie de start wil volgen, kan terecht op het YouTube-kanaal van JAXA, waar de lancering live in het Japans en Engels wordt uitgezonden.
 
-Mars heeft twee manen: Phobos (angst) en Deimos (terreur). Ondanks de vele missies naar de rode planeet zijn deze manen nog altijd raadselachtig. Geen enkel ruimtevaartuig heeft langdurig in hun buurt verbleven; wat we weten, komt grotendeels van een paar scheervluchten. Zelfs hun herkomst is onbekend. Het kunnen planetoïden zijn die door de zwaartekracht van Mars zijn ingevangen, maar ook restanten van puin dat na een gigantische inslag op Mars in een baan om de planeet terechtkwam. Om dat uit te zoeken zijn bodemmonsters nodig. ‘De gegevens en monsters die MMX terugbrengt, zijn een venster op de evolutie van Mars en het zonnestelsel’, zegt Elliot Sefton-Nash, projectwetenschapper voor MMX bij ESA.
+## Twee manen vol vragen
 
-MMX wordt de eerste sonde die in een baan rond Phobos komt, in een zogeheten quasi-satellietbaan, en de eerste die monsters verzamelt van een andere maan dan de onze. Er is speciale technologie ontwikkeld om in de uiterst lage zwaartekracht van Phobos robotisch te landen, te manoeuvreren en monsters te nemen. Bovendien wordt MMX de eerste missie die na een bezoek aan het Marssysteem naar de aarde terugkeert, een vermogen dat interessant is voor toekomstige monsterterugbrengmissies van Mars zelf en mogelijk ooit voor bemande reizen.
+Mars wordt vergezeld door twee kleine manen: Phobos en Deimos, vernoemd naar de Griekse begrippen voor angst en terreur. Hoewel er inmiddels tientallen sondes naar de rode planeet zijn gestuurd, weten we verrassend weinig over deze manen. Geen enkel ruimtevaartuig heeft er lange tijd in de buurt doorgebracht; de meeste kennis komt van een handvol snelle scheervluchten.
 
-## Rover Idefix en elf instrumenten
+Zelfs hoe de manen zijn ontstaan, is onduidelijk. Het kunnen planetoïden zijn die door de zwaartekracht van Mars zijn ingevangen. Een andere mogelijkheid is dat ze bestaan uit puin dat bij een enorme inslag op Mars de ruimte in werd geslingerd en daarna in een baan om de planeet bleef hangen. Alleen bodemmonsters kunnen uitsluitsel geven. ‘De gegevens en monsters die MMX terugbrengt, zijn een venster op de evolutie van Mars en het zonnestelsel’, zegt Elliot Sefton-Nash, projectwetenschapper voor MMX bij ESA.
 
-Het hoofdruimtevaartuig bestudeert Phobos eerst van afstand en zet daarna de rover Idefix op het oppervlak af. Vervolgens landt de sonde zelf om monsters te verzamelen. Op de terugweg vliegt MMX langs Deimos en Mars voor verder onderzoek. In totaal zijn er elf wetenschappelijke instrumenten aan boord: zeven op het hoofdvaartuig en vier op de rover. Daarnaast heeft het hoofdvaartuig een stralingsmonitor, twee camera’s met hoge resolutie en twee verschillende bemonsteringsapparaten. De rover van 25 kilogram moet de landing van het hoofdvaartuig voorbereiden en de samenstelling en textuur van het oppervlak analyseren. De zwaartekracht op Phobos is zo laag dat Idefix daar slechts het equivalent van 15 gram weegt.
+## Landen waar bijna niets weegt
 
-De reis naar Mars duurt ongeveer een jaar. MMX komt naar verwachting in augustus 2027 in een baan om Mars en vanaf september 2027 in een baan om Phobos. Begin 2029 wordt Idefix losgelaten. ESA’s Mars Express, die zeker tot 2029 bij Mars blijft werken, kan de waarnemingen van MMX mogelijk ondersteunen. De toekomstige ExoMars-rover Rosalind Franklin vult MMX aan door monsters uit de ondergrond van Mars te halen en die met een laboratorium aan boord te analyseren.
+MMX gaat meerdere primeurs neerzetten. Het wordt de eerste sonde in een zogeheten quasi-satellietbaan rond Phobos: een baan waarin het ruimtevaartuig samen met de maan om Mars draait en zo dicht bij Phobos blijft. Ook wordt het de eerste missie die monsters neemt van een andere maan dan de onze, en de eerste die na een bezoek aan het Marssysteem terugkeert naar de aarde.
 
-## Terugkeer met monsters in 2031
+Die lage zwaartekracht vraagt om speciale technologie. Eerst bekijkt het hoofdvaartuig Phobos van een afstand, daarna zet het de rover Idefix af. Die rover van 25 kilogram verkent het terrein voor de latere landing en onderzoekt de samenstelling en structuur van het oppervlak. Op Phobos weegt Idefix slechts het equivalent van 15 gram. In totaal reizen elf wetenschappelijke instrumenten mee: zeven op het hoofdvaartuig en vier op de rover. Daarnaast heeft het hoofdvaartuig een stralingsmonitor, twee camera’s met hoge resolutie en twee verschillende bemonsteringsapparaten.
 
-In 2030 landt het hoofdvaartuig op Phobos en worden de monsters in een terugkeermodule verpakt. Die bereikt de aarde in 2031 en stuurt minstens tien gram Phobos-materiaal in een capsule naar beneden. De capsule landt in Australië en gaat daarna naar Japan, waar het materiaal wordt uitgenomen, gecatalogiseerd en met de partners gedeeld. Ook Europese wetenschappers krijgen toegang; ESA werkt met CNES, DLR en JAXA aan oproepen om met de monsters te werken.
+## Een tijdlijn tot 2031
 
-‘Monsters naar onze meest geavanceerde laboratoria op aarde brengen vermenigvuldigt het aantal ontdekkingen, omdat onze nauwkeurigste instrumenten te groot, complex of gevoelig zijn om de ruimte in te sturen’, aldus Sefton-Nash. ‘Ook na afloop van de missie zullen toekomstige generaties wetenschappers de Phobos-monsters met nog geavanceerdere instrumenten bestuderen. Monsters op aarde blijven maar geven.’ De lancering is live te volgen in het Japans en Engels via het YouTube-kanaal van JAXA.
+De reis naar Mars duurt ongeveer een jaar. Naar verwachting komt MMX in augustus 2027 in een baan om Mars en vanaf september 2027 in een baan om Phobos. Begin 2029 wordt Idefix losgelaten, in 2030 landt het hoofdvaartuig zelf om monsters te verzamelen. Op de terugweg volgen nog scheervluchten langs Deimos en Mars.
+
+In 2031 bereikt een terugkeermodule de aarde en stuurt een capsule met minstens tien gram Phobos-materiaal naar beneden. Die landt in Australië en gaat daarna naar Japan, waar het materiaal wordt uitgenomen, gecatalogiseerd en gedeeld met de partners. ESA werkt met CNES, DLR en JAXA aan oproepen zodat ook Europese onderzoekers met de monsters aan de slag kunnen. Volgens Sefton-Nash is dat cruciaal, omdat de nauwkeurigste instrumenten te groot of te gevoelig zijn voor de ruimte. ‘Monsters op aarde blijven maar geven.’
+
+## Wat betekent dit?
+
+MMX bouwt voort op de Japanse ervaring met monstermissies naar planetoïden, zoals Hayabusa en Hayabusa2, en zet die stap nu richting het Marssysteem. Het vermogen om van Mars terug te keren naar de aarde is bovendien een belangrijke oefening voor toekomstige missies die bodemmateriaal van Mars zelf willen ophalen, en op termijn misschien voor bemande reizen.
+
+Voor Europa is MMX meer dan een gastrol. ESA’s Mars Express, die zeker tot 2029 bij Mars actief blijft, kan de waarnemingen mogelijk ondersteunen, en de toekomstige ExoMars-rover Rosalind Franklin vult het onderzoek aan door monsters uit de Marsbodem ter plekke te analyseren. Dankzij de afspraken over monstertoegang kunnen ook Europese laboratoria, mogelijk ook Nederlandse, straks meekijken naar de oorsprong van de raadselachtige Marsmanen.

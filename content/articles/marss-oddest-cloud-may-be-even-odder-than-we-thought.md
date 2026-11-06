@@ -1,6 +1,6 @@
 ---
-title: "Vreemdste wolk van Mars blijkt mogelijk nog vreemder dan gedacht"
-excerpt: "Met beelden van ESA's Mars Express en een geavanceerd weermodel hebben onderzoekers ontdekt dat de langgerekte wolk bij de vulkaan Arsia Mons waarschijnlijk ontstaat via homogene nucleatie. Dat is een exotisch natuurkundig proces dat nog nooit eerder in een planeetatmosfeer is waargenomen."
+title: "Vreemdste wolk van Mars ontstaat mogelijk door nooit eerder waargenomen natuurkunde"
+excerpt: "Onderzoekers die werken met ESA's Mars Express denken te begrijpen hoe de opvallendste wolk van Mars ontstaat: waterdamp die zonder stofdeeltjes direct bevriest tot ijs. Dat proces, homogene nucleatie, is nog nooit in een planeetatmosfeer gezien. De resultaten verschenen in Nature Geoscience."
 category: "mars"
 author: "Redactie NightGazer"
 publishedAt: "2026-10-16T07:51:28.277Z"
@@ -9,29 +9,36 @@ tags: []
 source: "ESA"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Mars_Express/Mars_s_oddest_cloud_may_be_even_odder_than_we_thought"
 imageUrl: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_arsia_mons_elongated_cloud_as_seen_by_mars_express/27546706-1-eng-GB/The_Arsia_Mons_Elongated_Cloud_as_seen_by_Mars_Express_card_full.png"
-imageAlt: "Mars’s oddest cloud may be even odder than we thought"
+imageAlt: "Vreemdste wolk van Mars ontstaat mogelijk door nooit eerder waargenomen natuurkunde"
 imageCredit: "ESA"
-kernpunten: ["De Arsia Mons Elongated Cloud op Mars lijkt te ontstaan door homogene nucleatie, waarbij waterdamp direct in ijsdeeltjes verandert.","Dit proces is nog nooit in een planeetatmosfeer gezien en vraagt een extreem hoge relatieve luchtvochtigheid.","De dunne Marsatmosfeer en de enorme hoogte van Arsia Mons zorgen voor precies de juiste omstandigheden."]
-kerncijfers: [{"waarde":"1800","eenheid":"km","label":"maximale lengte van de wolk"},{"waarde":"100.000","eenheid":"keer","label":"hogere luchtvochtigheid dan op aarde"},{"waarde":"30","eenheid":"graden","label":"temperatuurdaling in tien minuten"}]
+vernieuwd: "2026-11-06"
+kernpunten: ["De Arsia Mons Elongated Cloud op Mars ontstaat mogelijk door homogene nucleatie: waterdamp die zonder stofdeeltje direct bevriest.","Dat proces is nog nooit eerder in een planeetatmosfeer waargenomen en gold als vrijwel theoretisch.","Het onderzoek combineert waarnemingen van ESA's Mars Express met een weermodel van Mars en verscheen in Nature Geoscience."]
+kerncijfers: [{"waarde":"1800","eenheid":"km","label":"maximale lengte van wolk"},{"waarde":"20","eenheid":"km","label":"hoogte van Arsia Mons"},{"waarde":"30","eenheid":"graden","label":"temperatuurdaling in tien minuten"}]
 citaat: {"tekst":"Het begrijpen van deze exotische Marswolk vereiste exotische natuurkunde, en dat kan elders in de kosmos ook zo zijn.","wie":"Colin Wilson, projectwetenschapper Mars Express"}
 ---
 
-Wetenschappers die werken met ESA's Mars Express, in combinatie met een geavanceerd meteorologisch model van de Rode Planeet, hebben ontdekt dat achter de merkwaardigste wolk van Mars mogelijk zeer exotische natuurkunde schuilgaat. De resultaten zijn gepubliceerd in het vakblad Nature Geoscience.
+Op Mars verschijnt elk zuidelijk voorjaar en elke zuidelijke zomer een wolk die op geen andere lijkt: een witte sliert van waterijs die tot 1800 kilometer lang kan worden. Nieuw onderzoek met ESA's Mars Express wijst erop dat achter deze Arsia Mons Elongated Cloud (AMEC) een natuurkundig proces zit dat tot nu toe alleen in theorie bestond. De bevindingen zijn gepubliceerd in het vakblad Nature Geoscience.
 
-Elk voorjaar en elke zomer op het zuidelijk halfrond van Mars, tijdens het stofseizoen, verschijnt er een spectaculaire wolk: de Arsia Mons Elongated Cloud (AMEC), visueel de opvallendste wolk op de planeet. Deze witte sliert van waterijs ontstaat aan de lijzijde van de 20 kilometer hoge vulkaan Arsia Mons. De wolk vormt zich, groeit en vervaagt dagelijks, en strekt zich uit over maximaal 1800 kilometer, bijna twee keer de lengte van het Verenigd Koninkrijk, voordat ze snel verdampt. Die cyclus herhaalt zich maandenlang elke ochtend.
+De wolk ontstaat aan de lijzijde, de van de wind afgekeerde kant, van de vulkaan Arsia Mons, die 20 kilometer hoog is. Tijdens het stofseizoen vormt ze zich maandenlang elke ochtend opnieuw, groeit uit tot bijna twee keer de lengte van het Verenigd Koninkrijk en verdampt dan snel weer.
 
-## Simulaties zonder verklaring
+## Modellen liepen vast
 
-Mars Express bracht de AMEC in 2018 voor het eerst aan het licht en heeft de terugkerende wolk sindsdien herhaaldelijk bekeken. Onderzoekers stelden vast dat het om een orografische wolk gaat: een type wolk dat ook op aarde voorkomt en ontstaat wanneer wind langs het grillige reliëf van een vulkaan of berg stroomt. Toch slaagden simulaties er tot nu toe niet in om na te bootsen hoe de wolk precies tot leven komt.
+Mars Express bracht de AMEC in 2018 voor het eerst in beeld en heeft de terugkerende wolk sindsdien vaak bestudeerd. Al snel was duidelijk dat het om een orografische wolk gaat: een wolk die ontstaat wanneer wind over bergachtig terrein stroomt, iets wat ook op aarde gebeurt. Maar computersimulaties konden niet reproduceren hoe de wolk precies ontstaat.
 
-"Om de AMEC in onze modellen te laten ontstaan, moesten we exotische natuurkunde toevoegen. Natuurkunde die weliswaar in leerboeken staat, maar als theoretisch wordt beschouwd en waarvan meestal wordt gedacht dat ze in de natuur niet voorkomt", zegt hoofdauteur Jorge Hernández-Bernal van LMD/CNRS/Sorbonne Université in Parijs. "Zodra we die natuurkunde in onze simulaties opnamen, verscheen de AMEC precies zoals we hoopten."
+Dat lukte pas toen de onderzoekers, die de waarnemingen combineerden met een geavanceerd weermodel van Mars, iets ongebruikelijks toevoegden. "Om de AMEC in onze modellen te laten ontstaan, moesten we exotische natuurkunde toevoegen", zegt hoofdauteur Jorge Hernández-Bernal van LMD/CNRS/Sorbonne Université in Parijs. Het gaat volgens hem om natuurkunde die in leerboeken staat, maar als theoretisch geldt. "Zodra we die natuurkunde in onze simulaties opnamen, verscheen de AMEC precies zoals we hoopten."
 
-## Wolkvorming zonder stofdeeltjes
+## IJs zonder stofkern
 
-Wolken ontstaan normaal gesproken wanneer vochtige lucht afkoelt en waterdamp condenseert tot druppeltjes of ijskristallen. Dat gebeurt doorgaans via heterogene nucleatie: de damp heeft kleine deeltjes nodig om op te condenseren, zoals zout, pollen, roet of stof. Op Mars denkt men dat dit stof is. Bij de AMEC lijkt dat echter niet nodig. "Waterdamp verandert direct in ijsdeeltjes, zonder tussenstap", legt Hernández-Bernal uit. "Het is alsof er condensdruppels midden in een kamer verschijnen in plaats van op een raam. Dit heet homogene nucleatie, en we hebben het nog nooit in een planeetatmosfeer gezien." Eerder werd geopperd dat dit proces in de bovenste atmosfeerlagen van de aarde en Venus zou kunnen plaatsvinden, maar het werd nooit waargenomen. Er is namelijk een extreme relatieve luchtvochtigheid voor nodig, meer dan 100.000 keer hoger dan wat we in het dagelijks leven op aarde ervaren.
+Normaal gesproken heeft waterdamp een vast oppervlak nodig om op te condenseren, zoals een stofje, roetdeeltje of zoutkristal. Dit heet heterogene nucleatie; op Mars speelt stof die rol. Bij de AMEC lijkt dat niet nodig. "Waterdamp verandert direct in ijsdeeltjes, zonder tussenstap", aldus Hernández-Bernal. Hij vergelijkt het met condensdruppels die midden in een kamer verschijnen in plaats van op een raam. Dit heet homogene nucleatie, en het is nog nooit in een planeetatmosfeer gezien.
 
-De combinatie van de dunne Marsatmosfeer en de enorme hoogte van Arsia Mons schept volgens de onderzoekers precies de juiste omstandigheden. Wanneer de wind langs de vulkaan stroomt, veroorzaakt de massa ervan een krachtige golf die vochtige luchtpakketten binnen enkele minuten kilometers omhoog tilt. De temperatuur daalt daardoor in tien minuten met 30 graden en de relatieve luchtvochtigheid schiet omhoog, waarna de waterdamp spontaan bevriest tot wolkendeeltjes. Hoewel niet alle aspecten van de gemodelleerde wolk precies met de waarnemingen overeenkomen, noemt Hernández-Bernal het resultaat "opmerkelijk", omdat er veel minder over de atmosfeer van Mars bekend is dan over die van de aarde.
+Wetenschappers vermoedden eerder al dat het in de hoogste luchtlagen van de aarde en Venus zou kunnen gebeuren, maar waargenomen werd het nooit. Het vergt een extreem hoge relatieve luchtvochtigheid: meer dan 100.000 keer hoger dan wat we op aarde dagelijks meemaken. Op Mars komen de juiste omstandigheden samen: een dunne atmosfeer en een gigantische vulkaan. Wind die langs Arsia Mons stroomt, veroorzaakt een krachtige golf die vochtige lucht binnen minuten kilometers omhoog stuwt. De temperatuur zakt in tien minuten met 30 graden, de luchtvochtigheid schiet omhoog en de waterdamp bevriest spontaan. Het model komt niet op alle punten overeen met de waarnemingen, maar Hernández-Bernal noemt het resultaat "opmerkelijk", gezien hoe weinig er over de Marsatmosfeer bekend is.
 
-## Mars Express als waarnemer
+## Ochtendwaarnemingen van Mars Express
 
-Het model is gebaseerd op gegevens van drie camera's aan boord van Mars Express: de Visual Monitoring Camera, de High Resolution Stereo Camera (HRSC) en OMEGA. Mars Express is, samen met ESA's ExoMars Trace Gas Orbiter, een van de weinige Marsorbiters die 's ochtends kan waarnemen, wanneer de wolk aanwezig is. "Mars Express kan bovendien volgen hoe de wolk binnen enkele uren verandert", zegt projectwetenschapper Colin Wilson. Volgens hem laat de ontdekking zien dat onwaarschijnlijke processen niet bij voorbaat moeten worden uitgesloten bij het onderzoek naar planeten, ook exoplaneten. "Het begrijpen van deze exotische Marswolk vereiste exotische natuurkunde, en dat kan elders in de kosmos ook zo zijn."
+Het model steunt op beelden van drie instrumenten aan boord van Mars Express: de Visual Monitoring Camera, de High Resolution Stereo Camera (HRSC) en OMEGA. Samen met de ExoMars Trace Gas Orbiter is Mars Express een van de weinige Marsorbiters die 's ochtends kan waarnemen, precies wanneer de wolk er is. "Mars Express kan bovendien volgen hoe de wolk binnen enkele uren verandert", zegt projectwetenschapper Colin Wilson. Volgens hem leert de ontdekking dat onwaarschijnlijke processen niet bij voorbaat uitgesloten moeten worden, ook niet bij exoplaneten. "Het begrijpen van deze exotische Marswolk vereiste exotische natuurkunde, en dat kan elders in de kosmos ook zo zijn."
+
+## Wat betekent dit?
+
+Als het resultaat standhoudt, is Mars de eerste planeet waar homogene nucleatie in de natuur aan het werk lijkt te zijn. Dat is van belang voor klimaat- en weermodellen van Mars, maar ook voor het interpreteren van atmosferen van andere werelden, van Venus tot exoplaneten die met telescopen als JWST worden bestudeerd.
+
+Het onderzoek laat ook zien hoe waardevol een veteraan als Mars Express nog is. De Europese orbiter draait al sinds 2003 rond Mars en levert dankzij zijn bijzondere baan nog altijd waarnemingen die andere ruimtevaartuigen niet kunnen doen.
