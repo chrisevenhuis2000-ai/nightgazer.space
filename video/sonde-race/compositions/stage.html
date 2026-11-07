@@ -410,6 +410,9 @@
           { t: 24.2, p: [0, 1.6, 7.0], l: [0, 1.6, 0], fov: 40 },
         ];
 
+        // Instagram safe zone: standing tower shots sit ~10 % further back and a little left/up.
+        CAM_A.forEach((k) => { if (Array.isArray(k.p) && k.p[2] >= 17) {
+          k.p = [k.p[0] + 0.18, k.p[1], k.p[2] * 1.14]; k.l = [k.l[0] + 0.18, k.l[1] - 0.25, k.l[2]]; } });
         function renderTower(t) {
           const y = yearAt(t);
           // banner state
@@ -569,9 +572,9 @@
           camAt(CAM_C, t, finCam);
           const tt = t - T.finale;
           drawRow(fTex, P.v1, auAt(P.v1, yearAt(t)), true, "");
-          slabF.position.set(0.12, 1.15 + Math.sin(tt * 0.8) * 0.05, 0); slabF.scale.setScalar(0.62); slabF.rotation.set(-0.08, 0.1 + tt * 0.015, 0.02);
+          slabF.position.set(0.0, 1.15 + Math.sin(tt * 0.8) * 0.05, 0); slabF.scale.setScalar(0.48); slabF.rotation.set(-0.08, -0.04 + tt * 0.015, 0.02);
           const out = smooth((t - T.end) / 0.7); slabF.position.y -= out * 7; slabF.visible = out < 0.999;
-          flagA.position.set(-3.6, 5.0, -5.0); flagA.rotation.set(0, 0.35, 0.18); flagA.userData.update(t);
+          flagA.position.set(-4.6, 5.0, -5.0); flagA.rotation.set(0, 0.35, 0.18); flagA.userData.update(t);
           flagB.position.set(3.6, 4.8, -5.4); flagB.rotation.set(0, Math.PI - 0.5, -0.15); flagB.userData.update(t + 0.4);
           lichtdag.position.set(-0.1, 2.55, 0.6); lichtdag.rotation.set(-0.05, 0.22, 0.02);
           const s = 0.42 * (0.75 + 0.25 * ease.out(clamp01(tt / 0.6))); lichtdag.scale.setScalar(s);
