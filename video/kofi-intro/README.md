@@ -1,6 +1,6 @@
 # NightGazer Ko-fi intro — v2 (2026-11-07)
 
-v2: 37 s met voice-over (stem E, VoxCPM2; `assets/audio/voiceover.flac`, starttijden in `klank/voiceover.json`). Vijf shots: draaiende aarde met noorderlicht en vallende sterren → vijf echte pagina's van de site in 3D (home, sterrenkijken, meldingen, nieuws, educatie) met een melding die inschuift → de Phantom-melkweg die echt draait (differentiële rotatie in een shader) → koffiekop met maan in het schuim en stoom die in sterren overgaat → eindkaart. Beat-grid: `window.__KOFI_T` in `index.html`. Mix: engine 7 met `klank.kamer: false` (geen ruisbed) en de voice-over-bus.
+v2: 37 s met voice-over (v3: stem G, de energieke reclamestem; eerder stem E. VoxCPM2; `assets/audio/voiceover.flac`, starttijden in `klank/voiceover.json`). Vijf shots: draaiende aarde met noorderlicht en vallende sterren → vijf echte pagina's van de site in 3D (home, sterrenkijken, meldingen, nieuws, educatie) met een melding die inschuift → de Phantom-melkweg die echt draait (differentiële rotatie in een shader) → koffiekop met maan in het schuim en stoom die in sterren overgaat → eindkaart. Beat-grid: `window.__KOFI_T` in `index.html`. Mix: engine 7 met `klank.kamer: false` (geen ruisbed) en de voice-over-bus.
 
 ## v1 (2026-11-06), ter historie
 # NightGazer Ko-fi intro — "Help de sterren gratis te houden"
