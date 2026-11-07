@@ -107,8 +107,8 @@ export default {
         // VROEGER — the flashback
         const v = venster(t, L(6, 0.4), L(8, 0.8), 0.25, 0.3);
         if (v > 0) {
-          ov.tekst("VROEGER", 580, 250, { maat: 92, alpha: v });
-          ov.dubbel(370, 250, Math.PI, 54, { kleur: KLEUR.koraal, alpha: v });
+          ov.tekst("VROEGER", 610, 250, { maat: 92, alpha: v });
+          ov.dubbel(330, 250, Math.PI, 54, { kleur: KLEUR.koraal, alpha: v });
         }
         // spin chevrons around the Moon while it spins (screen space)
         const c = venster(t, L(6, 0.3), L(9, 0.6), 0.3, 0.5);

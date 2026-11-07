@@ -25,21 +25,22 @@ case "$cmd" in
     python3 -I scripts/kies.py "$id" "$O/tijden.json"
     ;;
   muziek)
-    D=$(python3 -I -c 'import math,sys; print(math.ceil(float(sys.argv[1]))+1)' "$(dur)")
+    D=$(python3 -I -c 'import math,sys; print(math.ceil(float(sys.argv[1]))+4)' "$(dur)")
     PROMPT=$(python3 -I -c 'import json,sys; print(json.load(open(sys.argv[1]))["muziek"])' "reels/$id.json")
     (cd "$SOCIAL" && npm run --silent muziek -- --bron acestep --duur "$D" --uit "$OLDPWD/$O/muziek.mp3" "$PROMPT")
     ;;
   mix)
     D=$(dur)
     # music: no rumble (QA: ACE-Step bass/wide stereo), narrower, ~12 LU under the voice, ducked while speaking,
-    # fade in/out. Voice: light presence EQ. Master: -14 LUFS, -1.5 dBTP.
+    # fade in/out. loudnorm upsamples to 192 kHz: resample back to 48k or the ducking drifts.
+    # ACE-Step returns ~3 s less than asked, so `muziek` asks 4 s extra. Voice: light presence EQ. Master: -14 LUFS, -1.5 dBTP.
     ffmpeg -y -v error -i "$O/vo.wav" -i "$O/muziek.mp3" -filter_complex "
-      [0:a]aresample=48000,highpass=f=80,equalizer=f=3200:t=q:w=1.2:g=2,loudnorm=I=-16:TP=-2:LRA=7,asplit=2[vo][sc];
+      [0:a]aresample=48000,highpass=f=80,equalizer=f=3200:t=q:w=1.2:g=2,loudnorm=I=-16:TP=-2:LRA=7,aresample=48000,asplit=2[vo][sc];
       [1:a]aresample=48000,atrim=0:${D},asetpts=PTS-STARTPTS,highpass=f=70,lowshelf=f=140:g=-4,extrastereo=m=0.6,
-           loudnorm=I=-27:TP=-4:LRA=8,afade=t=in:d=0.4,afade=t=out:st=$(python3 -I -c "print(max(0,$D-1.6))"):d=1.6[mu];
+           loudnorm=I=-27:TP=-4:LRA=8,aresample=48000,afade=t=in:d=0.4,afade=t=out:st=$(python3 -I -c "print(max(0,$D-1.6))"):d=1.6[mu];
       [mu][sc]sidechaincompress=threshold=0.03:ratio=3:attack=40:release=380[duck];
       [vo]pan=stereo|c0=c0|c1=c0[vos];
-      [vos][duck]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9[m]" \
+      [vos][duck]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000[m]" \
       -map "[m]" -ar 48000 -ac 2 -c:a pcm_s16le "$O/master.wav"
     ffmpeg -v info -i "$O/master.wav" -af ebur128=peak=true -f null - 2>&1 | grep -E "I:|Peak:" | tail -2
     ;;

@@ -218,7 +218,7 @@ export default {
         const k4 = venster(t, L(6, 0.2), L(7, 0.05), 0.3, 0.3);
         if (k4 > 0) ov.tekst("LEEUW", 540, 250, { maat: 96, alpha: k4, kleur: KLEUR.teal });
         const k5 = venster(t, L(7, 0.05), L(8, 0.05), 0.3, 0.3);
-        if (k5 > 0) { ov.tekst("NA 00:00", 540, 250, { maat: 116, alpha: k5 }); ov.tekst("Maan onder rond 23:00", 540, 360, { maat: 44, kleur: KLEUR.wit, gewicht: 700, gloei: 10, alpha: k5 }); }
+        if (k5 > 0) { ov.tekst("NA 00:00", 540, 250, { maat: 116, alpha: k5 }); ov.tekst("Maan onder vóór middernacht", 540, 360, { maat: 44, kleur: KLEUR.wit, gewicht: 700, gloei: 10, alpha: k5 }); }
         const k6 = venster(t, L(8, 0.1), dur + 1, 0.3, 0.1) * (1 - venster(t, L(8, 1) + 0.3, dur + 2, 0.3, 0.1));
         if (k6 > 0) ov.tekst("± 15 PER UUR", 540, 250, { maat: 104, alpha: k6 });
       },
