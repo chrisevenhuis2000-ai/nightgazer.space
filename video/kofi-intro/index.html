@@ -8,6 +8,16 @@
       { "imports": { "three": "./assets/vendor/three.module.js" } }
     </script>
     <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      // Beat grid in seconds, shared by stage.html and titles.html. VO lines r1..r7 land on these times
+      // (see klank/voiceover.json); everything else is placed relative to them.
+      window.__KOFI_T = {
+        dur: 39,
+        r1: 0.5, r2: 3.4, r3: 8.3, r4: 14.0, r5: 19.0, r6: 26.3, r7: 33.3,
+        meteor1: 1.6, aurora: 4.6, meteor2: 6.3, meteor3: 7.2,
+        screens: 8.0, toast: 11.2, galaxy: 18.6, coffee: 26.0, end: 33.0, still: 36.5,
+      };
+    </script>
     <link rel="stylesheet" href="assets/plate.css" />
     <style>
       /* Archivo + JetBrains Mono, shipped locally (SIL OFL, assets/fonts/). */
@@ -43,6 +53,9 @@
   </head>
   <body>
     <!--
+      v2 (2026-11-07): voice-over (stem E), five shots: turning Earth with aurora and meteors, the site's own pages
+      in 3D, the Phantom Galaxy turning, a coffee cup, the sign-off. Beat grid: window.__KOFI_T above.
+      v1 notes below are kept for history.
       NightGazer Ko-fi intro — "Help de sterren gratis te houden". 1920x1080, 30 fps, 32.0 s.
       Cuts and hits (the music cues in scripts/cues.json follow this grid):
         0.00  Europe at night (NASA Black Marble), hook on the poster frame
@@ -55,14 +68,14 @@
        27.50–32.00  completely still (end card)
       No plate frame, no plate number, no "Illustratie" label.
     -->
-    <div id="root" data-composition-id="main" data-start="0" data-duration="32" data-width="1920" data-height="1080">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="39" data-width="1920" data-height="1080">
       <div id="el-stage" class="clip" data-composition-id="stage" data-composition-src="compositions/stage.html"
-        data-start="0" data-duration="32" data-track-index="0" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="39" data-track-index="0" data-width="1920" data-height="1080"></div>
       <!-- Soundtrack: ACE-Step music mixed by nightgazer-social audio engine 7 (profile "film"), see AUDIO.md. -->
       <audio id="soundtrack" src="out/audio/kofi-intro-master.wav"
-        data-start="0" data-duration="32" data-track-index="3" data-volume="1"></audio>
+        data-start="0" data-duration="39" data-track-index="3" data-volume="1"></audio>
       <div id="el-titles" class="clip" data-composition-id="titles" data-composition-src="compositions/titles.html"
-        data-start="0" data-duration="32" data-track-index="2" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="39" data-track-index="2" data-width="1920" data-height="1080"></div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
