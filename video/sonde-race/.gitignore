@@ -1,0 +1,6 @@
+out/
+.hyperframes/
+node_modules/
+assets/src/
+assets/tex/
+__pycache__/

@@ -1,0 +1,52 @@
+/* NightGazer brand video — the plate archive, at video scale.
+   Tokens are copied from app/_plate/plate.css (the site's source of truth).
+   Video scale: site labels are 11px at ~1440 wide; here they are 18px at 1920. */
+
+/* @font-face lives inline in index.html so the render guard sees it. */
+
+:root {
+  --pl-ground:     #0E1022;
+  --pl-plate:      #15182F;
+  --pl-plate-2:    #1A1D38;
+  --pl-rule:       #272C50;
+  --pl-rule-soft:  #1E2240;
+  --pl-ink:        #EEF2FB;
+  --pl-ink-2:      #9AA6C8;
+  --pl-ink-3:      #868EB4;
+  --pl-mark:       #378ADD; /* chinagraph — live, perishable values only */
+  --pl-act:        #3DCFDF; /* closing call to action only, dark ink */
+  --pl-act-ink:    #06131A;
+  --pl-orbit:      #185FA5;
+  --pl-stamp:      #B5D4F4;
+  --pl-ease:       cubic-bezier(0.16, 1, 0.3, 1);
+  --sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Printed envelope-field label. */
+.ng-label {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pl-ink-3);
+  line-height: 1;
+  white-space: nowrap;
+}
+.ng-label--stamp { color: var(--pl-stamp); }
+
+/* Mono is for measurement only. */
+.ng-num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.ng-live { color: var(--pl-mark); }
+
+/* Content area inside the plate, shared by every scene. */
+.ng-sheet {
+  position: absolute;
+  left: 200px; right: 200px;
+  top: 190px; bottom: 170px;
+}

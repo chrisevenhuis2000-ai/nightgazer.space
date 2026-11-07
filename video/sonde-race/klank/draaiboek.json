@@ -1,0 +1,37 @@
+{
+  "duur": 30,
+  "fps": 30,
+  "frames": 900,
+  "tekstvensters": [[2, 95], [105, 180], [183, 225], [231, 273], [276, 336], [404, 450], [501, 552], [564, 606], [616, 690], [736, 816]],
+  "cues": {
+    "start": 0,
+    "plaat0": 1,
+    "lancering": 102,
+    "inhaal1": 189,
+    "jupiter": 228,
+    "inhaal2": 279,
+    "duel": 348,
+    "tekst1": 402,
+    "terug": 456,
+    "signaal-stil": 498,
+    "new-horizons": 558,
+    "tekst2": 612,
+    "tekst3": 726,
+    "afsluiting": 822,
+    "logo": 825,
+    "stil": 860,
+    "eind": 900
+  },
+  "klank": {
+    "plaat": "SONDE-RACE",
+    "pijler": "wow",
+    "muziek": "MUZIEK_PAD",
+    "kamer": false,
+    "script": [
+      { "beeld": "klassement van ruimtesondes, jaarteller loopt, banners slaan in", "camera": "snel, kantelend" },
+      { "beeld": "warp: Voyager 1 haalt Pioneer 10 in, lichtstralen en nevel", "camera": "snel, vlieg erdoor" },
+      { "beeld": "rode banner signaal stil, paarse lancering, interstellair", "camera": "kantelend" },
+      { "beeld": "finish: 1 lichtdag, geblokte vlaggen tussen de sterren", "camera": "wijd, van ver" }
+    ]
+  }
+}
