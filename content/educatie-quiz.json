@@ -1546,6 +1546,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-07",
+      "slug": "apod-2026-november-6-a-farewell-to-swift",
+      "titel": "Afscheid van Swift: NASA-telescoop voor explosies in het heelal verbrandt boven Indonesië",
+      "beg": {
+        "q": "Waarom zakte de satelliet Swift tijdens de periode dat de zon zeer actief was sneller naar de aarde toe?",
+        "options": [
+          "De dampkring zet dan uit, waardoor de satelliet meer luchtweerstand krijgt en snelheid verliest",
+          "De satelliet raakt door het zonlicht te zwaar en zakt daardoor naar beneden",
+          "De zon trekt de satelliet met haar zwaartekracht naar de aarde toe",
+          "De zonnewind blaast de satelliet recht naar beneden"
+        ],
+        "correct": 0,
+        "explain": "Bij een actieve zon zet de bovenste laag van de dampkring uit. Een satelliet in een lage baan botst dan tegen meer luchtdeeltjes, remt af en zakt omlaag. Daarom moeten satellieten in een lage baan soms worden opgekrikt."
+      },
+      "ama": {
+        "q": "Wat gebeurt er met een satelliet in een lage baan rond de aarde tijdens een zonnemaximum?",
+        "options": [
+          "De bovenste atmosfeer zet uit, de luchtweerstand neemt toe en de baan verlaagt sneller",
+          "De zwaartekracht van de aarde neemt tijdelijk toe door de zonne-energie",
+          "De aardatmosfeer krimpt, waardoor de satelliet minder remt en hoger komt te staan",
+          "Het zonlicht geeft de satelliet extra snelheid, waardoor hij verder van de aarde vliegt"
+        ],
+        "correct": 0,
+        "explain": "Extra zonne-energie verhit en verbreedt de hoge atmosfeer, zodat op baanhoogte meer gas aanwezig is. De grotere luchtweerstand kost snelheid en de baan zakt. Dit versnelde ook de terugkeer van Swift."
+      },
+      "pro": {
+        "q": "Welk mechanisme versnelde het baanverval van Swift rond het zonnemaximum?",
+        "options": [
+          "Verhoogde dichtheid van de thermosfeer op baanhoogte door extra EUV- en zonnestormverwarming, wat de atmosferische weerstand vergroot",
+          "Een toename van de stralingsdruk van de zon, die een netto remmend moment op de satelliet uitoefent",
+          "Een sterkere getijdenwerking van de zon, die de baanexcentriciteit verhoogt",
+          "Verlies van baanimpuls door de interactie met de magnetosfeer, die de satelliet afremt via inductiestromen"
+        ],
+        "correct": 0,
+        "explain": "Bij zonnemaximum verwarmen extreem-ultraviolette straling en zonnestormen de thermosfeer, die daardoor uitzet. De dichtheid op satellietbaanhoogte stijgt, en de weerstand schaalt met die dichtheid. Zo verliest de satelliet sneller energie en zakt zijn baan."
+      }
+    },
+    {
       "datum": "2026-11-06",
       "slug": "apod-2026-november-6-a-farewell-to-swift",
       "titel": "Afscheid van Swift: NASA-telescoop voor explosies in het heelal verbrandt boven Indonesië",
@@ -1963,5 +2001,5 @@
       }
     }
   ],
-  "bijgewerkt": "2026-11-06T15:09:59.783Z"
+  "bijgewerkt": "2026-11-07T14:07:13.347Z"
 }
