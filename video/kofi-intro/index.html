@@ -12,10 +12,10 @@
       // Beat grid in seconds, shared by stage.html and titles.html. VO lines r1..r7 land on these times
       // (see klank/voiceover.json); everything else is placed relative to them.
       window.__KOFI_T = {
-        dur: 39,
-        r1: 0.5, r2: 3.4, r3: 8.3, r4: 14.0, r5: 19.0, r6: 26.3, r7: 33.3,
-        meteor1: 1.6, aurora: 4.6, meteor2: 6.3, meteor3: 7.2,
-        screens: 8.0, toast: 11.2, galaxy: 18.6, coffee: 26.0, end: 33.0, still: 36.5,
+        dur: 37,
+        r1: 0.5, r2: 3.3, r3: 8.4, r4: 13.4, r5: 18.3, r6: 24.8, r7: 31.4,
+        meteor1: 1.4, aurora: 5.0, meteor2: 6.5, meteor3: 7.4,
+        screens: 8.2, toast: 11.4, galaxy: 17.9, coffee: 24.5, end: 31.1, still: 34.6,
       };
     </script>
     <link rel="stylesheet" href="assets/plate.css" />
@@ -68,14 +68,14 @@
        27.50–32.00  completely still (end card)
       No plate frame, no plate number, no "Illustratie" label.
     -->
-    <div id="root" data-composition-id="main" data-start="0" data-duration="39" data-width="1920" data-height="1080">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="37" data-width="1920" data-height="1080">
       <div id="el-stage" class="clip" data-composition-id="stage" data-composition-src="compositions/stage.html"
-        data-start="0" data-duration="39" data-track-index="0" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="37" data-track-index="0" data-width="1920" data-height="1080"></div>
       <!-- Soundtrack: ACE-Step music mixed by nightgazer-social audio engine 7 (profile "film"), see AUDIO.md. -->
       <audio id="soundtrack" src="out/audio/kofi-intro-master.wav"
-        data-start="0" data-duration="39" data-track-index="3" data-volume="1"></audio>
+        data-start="0" data-duration="37" data-track-index="3" data-volume="1"></audio>
       <div id="el-titles" class="clip" data-composition-id="titles" data-composition-src="compositions/titles.html"
-        data-start="0" data-duration="39" data-track-index="2" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="37" data-track-index="2" data-width="1920" data-height="1080"></div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });

@@ -1,0 +1,12 @@
+{
+ "bron": "VoxCPM2 stem E (seeds 1000/1001), gekozen takes uit ~/werk/kofi-v2/vo/gekozen",
+ "start_s": {
+  "r1": 0.5,
+  "r2": 3.3,
+  "r3": 8.4,
+  "r4": 13.4,
+  "r5": 18.3,
+  "r6": 24.8,
+  "r7": 31.4
+ }
+}

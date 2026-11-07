@@ -128,9 +128,11 @@
         const screenScene = new THREE.Scene();
         screenScene.add(starfield({ seed: 31 }));
         const SHOTS = [
-          { f: "sterrenkijken", pos: [-0.2, 0.15, 0], rot: [0.02, 0.32, -0.02] },
-          { f: "nieuws",        pos: [4.6, -0.35, -3.2], rot: [-0.02, 0.22, 0.01] },
-          { f: "educatie",      pos: [9.6, 0.25, -6.4], rot: [0.03, 0.12, -0.01] },
+          { f: "01-home",          pos: [-0.2, 0.15, 0],     rot: [0.02, 0.30, -0.02] },
+          { f: "02-sterrenkijken", pos: [4.2, -0.30, -2.6],  rot: [-0.02, 0.24, 0.01] },
+          { f: "03-meldingen",     pos: [8.6, 0.30, -5.2],   rot: [0.03, 0.18, -0.01] },
+          { f: "04-nieuws",        pos: [13.0, -0.25, -7.8], rot: [-0.01, 0.22, 0.01] },
+          { f: "06-educatie",      pos: [17.4, 0.20, -10.4], rot: [0.02, 0.16, -0.01] },
         ];
         const screenMeshes = SHOTS.map((s) => {
           const g = new THREE.Group();
@@ -139,9 +141,10 @@
             new THREE.MeshBasicMaterial({ color: 0x185fa5, transparent: true, opacity: 0.22, depthWrite: false, blending: THREE.AdditiveBlending }));
           glow.position.z = -0.02;
           const page = new THREE.Mesh(new THREE.PlaneGeometry(w, h),
-            new THREE.MeshBasicMaterial({ map: tex("assets/shots/" + s.f + ".png", true), transparent: true, toneMapped: false }));
+            new THREE.MeshBasicMaterial({ map: tex("assets/shots/" + s.f + ".jpg", true), transparent: true, toneMapped: false }));
           const edge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(w, h)),
             new THREE.LineBasicMaterial({ color: 0xb5d4f4, transparent: true, opacity: 0.55 }));
+          page.material.color.setScalar(1.3);   // the site is dark navy; lift it so it reads through the grade
           g.add(glow, page, edge);
           g.position.set(...s.pos); g.rotation.set(...s.rot);
           g.userData.page = page; g.userData.glow = glow; g.userData.edge = edge;
@@ -155,11 +158,11 @@
           const k = clamp01((t - T.screens) / span);
           // A continuous lateral dolly past the pages, nearest page first; each page drifts and settles.
           const e = ease.sine(k);
-          screenCam.position.set(lerp(-1.6, 9.2, e), lerp(0.25, 0.05, e), lerp(5.6, -1.4, e));
-          screenCam.lookAt(lerp(0.6, 11.4, e), lerp(0.1, 0.2, e), lerp(-0.4, -7.4, e));
+          screenCam.position.set(lerp(-1.6, 17.0, e), lerp(0.25, 0.05, e), lerp(5.6, -5.4, e));
+          screenCam.lookAt(lerp(0.6, 19.4, e), lerp(0.1, 0.2, e), lerp(-0.4, -11.4, e));
           screenCam.updateMatrixWorld();
           screenMeshes.forEach((g, i) => {
-            const local = clamp01((t - T.screens - i * 0.35) / 0.9);
+            const local = clamp01((t - T.screens - i * 1.4) / 0.9);
             const o = ease.out(local);
             g.userData.page.material.opacity = o;
             g.userData.edge.material.opacity = 0.55 * o;

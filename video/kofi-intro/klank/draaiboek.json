@@ -1,28 +1,30 @@
 {
-  "duur": 32,
+  "duur": 37,
   "fps": 30,
-  "frames": 960,
-  "tekstvensters": [[0, 108], [138, 384], [426, 621], [633, 756], [765, 960]],
+  "frames": 1110,
+  "tekstvensters": [[15, 83], [99, 230], [252, 387], [402, 522], [549, 718], [744, 917], [942, 1026]],
   "cues": {
     "start": 0,
     "plaat0": 1,
-    "tekst1": 120,
-    "tekst2": 405,
-    "tekst3": 630,
-    "afsluiting": 765,
-    "logo": 768,
-    "stil": 825,
-    "eind": 960
+    "tekst1": 246,
+    "tekst2": 537,
+    "tekst3": 735,
+    "afsluiting": 933,
+    "logo": 936,
+    "stil": 1038,
+    "eind": 1110
   },
   "klank": {
-    "plaat": "KOFI-INTRO",
+    "plaat": "KOFI-INTRO-V2",
     "pijler": "vannacht",
     "muziek": "MUZIEK_PAD",
+    "voiceover": "VOICEOVER_PAD",
+    "kamer": false,
     "script": [
-      { "beeld": "haak: Europa bij nacht, elke nacht gebeurt er iets boven je dak", "camera": "" },
-      { "beeld": "de horizon van de aarde wordt de rand van een planeet", "camera": "snelle wissel" },
-      { "beeld": "de camera klimt over de rand, de hele melkweg M74 komt op", "camera": "wijd, van ver" },
-      { "beeld": "de melkweg zakt weg in het merkblauw: help de sterren gratis te houden", "camera": "rustig terug" }
+      { "beeld": "haak: de aarde draait, noorderlicht en vallende sterren", "camera": "" },
+      { "beeld": "warp: de schermen van de site zweven door de ruimte", "camera": "snel, vlieg erdoor" },
+      { "beeld": "warp: de melkweg M74 draait, de hele melkweg van ver", "camera": "wijd, van ver" },
+      { "beeld": "koffiekop met stoom die in sterren overgaat", "camera": "rustig" }
     ]
   }
 }

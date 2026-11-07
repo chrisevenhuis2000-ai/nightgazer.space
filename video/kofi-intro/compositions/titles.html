@@ -164,8 +164,8 @@
           tl.set("#titles-wipe", { opacity: 0 }, T.r2);
           tl.to("#t-chips", { y: -260, duration: 0.01 }, T.r2 - 0.01);
           pop("#chip1", T.r2 + 0.1);
-          pop("#chip2", T.r2 + 1.25);
-          pop("#chip3", T.r2 + 2.35);
+          pop("#chip2", T.r2 + 1.8);
+          pop("#chip3", T.r2 + 2.8);
           out("#t-chips", T.screens - 0.35, 0.3);
           tl.to("#credit-earth", { opacity: 0, duration: 0.2 }, T.screens - 0.3);
 
@@ -175,7 +175,7 @@
           reveal("#t-site-2", T.r3 + 0.7);
           out("#t-site", T.r4 - 0.3, 0.25);
           tl.fromTo("#t-toast", { opacity: 0, x: 80, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "expo.out" }, T.toast);
-          tl.to("#t-toast", { opacity: 0, x: 60, duration: 0.35, ease: "power2.in" }, T.r4 + 2.2);
+          tl.to("#t-toast", { opacity: 0, x: 60, duration: 0.35, ease: "power2.in" }, T.r4 - 0.3);
           rise("#feat1", T.r4 + 0.15, 0.55, 24);
           rise("#feat2", T.r4 + 2.1, 0.55, 24);
           out("#t-feats p", T.galaxy - 0.4, 0.3);
