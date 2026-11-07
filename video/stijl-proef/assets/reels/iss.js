@@ -155,7 +155,7 @@ export default {
           ov.dubbel(x + Math.cos(ang) * 70, y + Math.sin(ang) * 70, ang, 44, { kleur: KLEUR.koraal, alpha: f });
         }
       },
-      post: () => ({ bloei: 0.6, belichting: 1.12 }),
+      post: () => ({ bloei: 0.6, belichting: 0.95 }),
       flits: (t) => 0.4 * venster(t, L(7, 0), L(7, 0) + 0.5, 0.06, 0.44),
     };
   },

@@ -123,7 +123,7 @@ export default {
         const lk = venster(t, L(9, 0.35), L(10, 0.3), 0.25, 0.4);
         if (lk > 0) ov.tekst("DRAAI = BAAN", 540, 470, { maat: 104, kleur: KLEUR.teal, alpha: lk, schaal: 0.9 + 0.1 * kit.easeOut((t - L(9, 0.35)) / 0.3) });
       },
-      post: (t) => ({ bloei: 0.6, belichting: 1.15 }),
+      post: (t) => ({ bloei: 0.6, belichting: 0.95 }),
       flits: (t) => 0.55 * venster(t, L(9, 0.3), L(9, 0.3) + 0.5, 0.06, 0.44),
     };
   },

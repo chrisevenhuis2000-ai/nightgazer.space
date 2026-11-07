@@ -77,8 +77,8 @@ export default {
     const koepel = new THREE.Mesh(new THREE.SphereGeometry(150, 64, 32), new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: true,
       vertexShader: `varying vec3 vD; void main(){ vD = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
       fragmentShader: `varying vec3 vD; void main(){ float h = clamp(vD.y, -0.2, 1.0);
-        vec3 c = mix(vec3(0.09,0.10,0.24), vec3(0.012,0.016,0.06), pow(clamp(h,0.,1.), 0.45));
-        c += vec3(0.05,0.04,0.09) * exp(-max(h,0.)*14.0);
+        vec3 c = mix(vec3(0.05,0.055,0.14), vec3(0.006,0.008,0.03), pow(clamp(h,0.,1.), 0.45));
+        c += vec3(0.03,0.025,0.06) * exp(-max(h,0.)*14.0);
         gl_FragColor = vec4(c, 1.); }` }));
     hemel.add(koepel);
     // Ground with a soft tree line (silhouette)
@@ -222,7 +222,7 @@ export default {
         const k6 = venster(t, L(8, 0.1), dur + 1, 0.3, 0.1) * (1 - venster(t, L(8, 1) + 0.3, dur + 2, 0.3, 0.1));
         if (k6 > 0) ov.tekst("± 15 PER UUR", 540, 250, { maat: 104, alpha: k6 });
       },
-      post: (t) => (t < omslag ? { bloei: 0.6, belichting: 1.15 } : { bloei: 0.75, belichting: 1.2, drempel: 0.4 }),
+      post: (t) => (t < omslag ? { bloei: 0.6, belichting: 0.95 } : { bloei: 0.75, belichting: 1.0, drempel: 0.4 }),
       flits: (t) => 0.95 * venster(t, omslag - 0.18, omslag + 0.55, 0.18, 0.5),
     };
   },

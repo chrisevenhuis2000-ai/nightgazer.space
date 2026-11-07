@@ -72,13 +72,13 @@ export function nevel({ seed = 1, helder = 1.0, tint = [0.0, 0.0, 0.0] } = {}) {
         float n = fbm(q);
         float m = fbm(q * 2.3 + vec3(4.1, uSeed, 2.0));
         float w = fbm(q * 0.7 + vec3(8.0, 1.0, uSeed));
-        vec3 base = vec3(0.022, 0.03, 0.095);
-        vec3 cloud = mix(vec3(0.05, 0.07, 0.18), vec3(0.085, 0.08, 0.21), m);
+        vec3 base = vec3(0.007, 0.009, 0.028);
+        vec3 cloud = mix(vec3(0.018, 0.026, 0.07), vec3(0.03, 0.032, 0.085), m);
         vec3 c = mix(base, cloud, smoothstep(0.35, 0.8, n) * 0.85);
-        c += vec3(0.07, 0.035, 0.12) * smoothstep(0.55, 0.85, w) * 0.5;   // violet wisps
-        c += vec3(0.02, 0.06, 0.09) * smoothstep(0.6, 0.9, m) * 0.6;     // teal haze
+        c += vec3(0.03, 0.018, 0.055) * smoothstep(0.55, 0.85, w) * 0.5;   // violet wisps
+        c += vec3(0.01, 0.03, 0.045) * smoothstep(0.6, 0.9, m) * 0.6;     // teal haze
         c += uTint;
-        float v = 1.0 - 0.45 * pow(length(p * vec2(1.0, 0.62)), 2.0);
+        float v = 1.0 - 0.55 * pow(length(p * vec2(1.0, 0.62)), 2.0);
         gl_FragColor = vec4(c * uHelder * v, 1.0);
       }`,
     depthWrite: false, depthTest: false,
