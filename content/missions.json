@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-06T15:22:47.627Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-11-07T14:20:12.337Z",
+    "autoUpdated": [
+      "ussf-432"
+    ]
   },
   "missions": [
     {
@@ -5559,13 +5561,13 @@
       "name": "USSF-432",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "7 nov 2026",
       "launchPrecision": "Second",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 7 nov 2026",
+      "highlight": "Gelanceerd op 7 nov 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5578,7 +5580,7 @@
       "timeline": [
         {
           "date": "7 nov 2026",
-          "event": "Geplande lancering van USSF-432"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
