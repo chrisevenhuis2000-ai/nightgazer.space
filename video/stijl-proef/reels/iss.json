@@ -1,0 +1,19 @@
+{
+  "id": "iss",
+  "pijler": "lancering",
+  "titel": "Waarom valt het ISS niet naar beneden?",
+  "muziek": "driving cinematic electronic score for a space launch explainer, pulsing synth ostinato, tight modern drums, rising tension then uplifting release, bright plucks, no vocals, light bass, no low strings, mid-forward clean mix, 118 bpm",
+  "lijnen": [
+    { "tekst": "Het ISS valt. Elke seconde.", "spreek": "Het ISS valt. Elke seconde." },
+    { "tekst": "Toch komt het nooit beneden.", "spreek": "Toch komt het nooit beneden." },
+    { "tekst": "Het geheim: snelheid opzij.", "spreek": "Het geheim: snelheid opzij." },
+    { "tekst": "Gooi iets zacht weg, en het valt terug.", "spreek": "Gooi iets zacht weg, en het valt terug." },
+    { "tekst": "Gooi harder, en het komt verder.", "spreek": "Gooi harder, en het komt verder." },
+    { "tekst": "Maar bij bijna *28.000 km per uur*", "spreek": "Maar bij bijna achtentwintigduizend kilometer per uur" },
+    { "tekst": "buigt de Aarde net zo snel weg als jij valt.", "spreek": "buigt de Aarde net zo snel weg als jij valt." },
+    { "tekst": "Je mist de grond. Steeds weer.", "spreek": "Je mist de grond. Steeds weer." },
+    { "tekst": "Daarom gaat een raket niet alleen omhoog,", "spreek": "Daarom gaat een raket niet alleen omhoog," },
+    { "tekst": "maar vooral opzij.", "spreek": "maar vooral opzij." }
+  ],
+  "bronnen": ["NASA: ISS orbits at about 17,500 mph (28,000 km/h), about 16 orbits per day"]
+}

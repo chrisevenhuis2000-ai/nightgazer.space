@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; background: #070a1c; overflow: hidden; }
+        #stage-gl, #stage-2d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+        #stage-flash { position: absolute; inset: 0; opacity: 0; mix-blend-mode: screen; background: radial-gradient(70% 50% at 50% 48%, rgba(220,240,255,0.9), rgba(95,216,234,0.25) 55%, rgba(0,0,0,0) 85%); }
+        #stage-grain { position: absolute; inset: -64px; mix-blend-mode: overlay; opacity: 0.09; }
+      </style>
+
+      <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+        <canvas id="stage-gl" width="1080" height="1920"></canvas>
+        <canvas id="stage-2d" width="1080" height="1920"></canvas>
+        <div id="stage-flash"></div>
+        <div id="stage-grain" data-layout-allow-overflow></div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.set({}, {}, window.__TIJDEN.dur);
+          window.__timelines["stage"] = tl;
+        })();
+      </script>
+
+      <script type="module">
+        import * as THREE from "three";
+        import * as kit from "./assets/stijl.js";
+        import { grainTile } from "./assets/space.js";
+        import maan from "./assets/reels/maan.js";
+        import iss from "./assets/reels/iss.js";
+        import leoniden from "./assets/reels/leoniden.js";
+
+        const REELS = { maan, iss, leoniden };
+        const W = 1080, H = 1920, FPS = 30;
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("stage-gl"), antialias: false, preserveDrawingBuffer: true });
+        renderer.setSize(W, H, false); renderer.setPixelRatio(1);
+        renderer.outputColorSpace = THREE.LinearSRGBColorSpace; renderer.toneMapping = THREE.NoToneMapping;
+        renderer.autoClear = false;
+        const post = kit.nabewerking(renderer, W, H);
+
+        const scene = new THREE.Scene();
+        const cam = new THREE.PerspectiveCamera(40, W / H, 0.02, 600);
+        const camPrev = cam.clone();
+        const bg = kit.nevel({ seed: 3 }); scene.add(bg);
+        const sterren = kit.starfield({ seed: 11 }); sterren.userData.setExposure(0.55); scene.add(sterren);
+        const dust = kit.stof({ seed: 5 }); scene.add(dust);
+        const ov = kit.overlay(document.getElementById("stage-2d"), cam);
+        const flash = document.getElementById("stage-flash");
+
+        const tijd = kit.tijdlijn();
+        const R = REELS[window.__REEL_ID].maak({ THREE, kit, scene, cam, ov, ...tijd, flash, bg, sterren });
+
+        const vel = new THREE.Vector3();
+        function renderAt(t) {
+          R.camera(camPrev, Math.max(0, t - 1 / FPS));
+          R.camera(cam, t);
+          vel.copy(cam.position).sub(camPrev.position).multiplyScalar(FPS);
+          bg.userData.update(cam, t);
+          sterren.position.copy(cam.position);
+          const st = R.stof ? R.stof(t) : { schaal: 1, mate: 1 };
+          dust.userData.update(cam, st.vel || vel, st.schaal, st.mate);
+          R.update(t);
+          post.begin();
+          renderer.render(scene, cam);
+          post.end(R.post ? R.post(t) : {});
+          ov.wis(); R.overlay && R.overlay(t, ov);
+          flash.style.opacity = R.flits ? String(R.flits(t)) : "0";
+          document.getElementById("stage-grain").style.backgroundImage = `url(${grainTile(7000 + Math.round(t * FPS))})`;
+        }
+        let last = window.__hfThreeTime || 0;
+        window.addEventListener("hf-seek", (e) => { last = e.detail.time; renderAt(last); });
+        document.fonts.load('800 80px Archivo').then(() => document.fonts.load('500 60px "JetBrains Mono"')).then(() => renderAt(last));
+        renderAt(last);
+      </script>
+    </template>
+  </body>
+</html>

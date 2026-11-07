@@ -1,0 +1,18 @@
+{
+  "id": "leoniden",
+  "pijler": "vannacht",
+  "titel": "Leoniden: dinsdagnacht 17 op 18 november",
+  "muziek": "dreamy night-sky cinematic electronic score, twinkling bell plucks, soft shimmering pads, gentle steady pulse, sense of wonder and anticipation, no vocals, light bass, no low strings, mid-forward clean mix, 96 bpm",
+  "lijnen": [
+    { "tekst": "Dinsdagnacht vliegt de Aarde door een stofspoor.", "spreek": "Dinsdagnacht vliegt de Aarde door een stofspoor." },
+    { "tekst": "Dat stof liet komeet Tempel-Tuttle achter.", "spreek": "Dat stof liet komeet Tempel-Tuttle achter." },
+    { "tekst": "Die komt maar eens per *33 jaar* langs.", "spreek": "Die komt maar eens per drieëndertig jaar langs." },
+    { "tekst": "Maar zijn spoor raken we elke november.", "spreek": "Maar zijn spoor raken we elke november." },
+    { "tekst": "Met *71 km per seconde*.", "spreek": "Met eenenzeventig kilometer per seconde." },
+    { "tekst": "Elk korreltje verbrandt in een flits.", "spreek": "Elk korreltje verbrandt in een flits." },
+    { "tekst": "Ze lijken te komen uit de Leeuw.", "spreek": "Ze lijken te komen uit de Leeuw." },
+    { "tekst": "Kijk na middernacht, als de Maan onder is.", "spreek": "Kijk na middernacht, als de Maan onder is." },
+    { "tekst": "Tot zo'n *15 per uur*, onder een donkere hemel.", "spreek": "Tot zo'n vijftien per uur, onder een donkere hemel." }
+  ],
+  "bronnen": ["EarthSky 2026: peak 0 UTC 18 Nov 2026, first quarter Moon, 10-15/h dark sky, watch after midnight", "Star Walk 2026: 71 km/s, parent comet 55P/Tempel-Tuttle, Moon sets before midnight"]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "maan",
+  "pijler": "snap-het",
+  "titel": "Waarom zie je altijd dezelfde kant van de Maan?",
+  "muziek": "calm cinematic ambient electronic score for a science explainer, soft pulsing synth arpeggio, warm pads, gentle airy percussion, curious and wondrous mood, steady flow, no vocals, light bass, no low strings, mid-forward clean mix, 100 bpm",
+  "lijnen": [
+    { "tekst": "Je ziet altijd dezelfde kant van de Maan.", "spreek": "Je ziet altijd dezelfde kant van de Maan." },
+    { "tekst": "Dus je zou denken: hij draait niet.", "spreek": "Dus je zou denken: hij draait niet." },
+    { "tekst": "Maar kijk eens van bovenaf.", "spreek": "Maar kijk eens van bovenaf." },
+    { "tekst": "Terwijl de Maan om de Aarde cirkelt,", "spreek": "Terwijl de Maan om de Aarde cirkelt," },
+    { "tekst": "draait hij precies één keer om zichzelf.", "spreek": "draait hij precies één keer om zichzelf." },
+    { "tekst": "Allebei in *27 dagen*.", "spreek": "Allebei in zevenentwintig dagen." },
+    { "tekst": "Dat is geen toeval.", "spreek": "Dat is geen toeval." },
+    { "tekst": "De Aarde trok de Maan een beetje uit,", "spreek": "De Aarde trok de Maan een beetje uit," },
+    { "tekst": "en remde zijn draai af,", "spreek": "en remde zijn draai af," },
+    { "tekst": "tot draai en baan gelijk liepen.", "spreek": "tot draai en baan gelijk liepen." },
+    { "tekst": "Daarom kijkt hij ons altijd aan.", "spreek": "Daarom kijkt hij ons altijd aan." }
+  ],
+  "bronnen": ["NASA Moon facts: rotation and orbit both 27.3 days (science.nasa.gov/moon/facts)"]
+}
