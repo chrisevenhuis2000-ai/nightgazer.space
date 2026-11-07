@@ -395,17 +395,17 @@
           { t: 5.7, p: [0.6, -0.4, 19.5], l: [0, -0.6, 0] },
           { t: 6.35, p: (t) => [1.8, v1y(t) - 0.8, 14.5], l: (t) => [0.4, v1y(t) - 0.3, 0], roll: -0.06, fov: 30 },
           { t: 7.2, p: [-1.6, 1.8, 17.5], l: [0, 0.2, 0], roll: 0.12 },
-          { t: 7.6, p: [3.4, -2.4, 13.5], l: [0, 0.2, 0], roll: -0.14, fov: 36 },
-          { t: 9.0, p: [1.5, -1.0, 14.5], l: [0, 0.0, 0], roll: -0.05 },
+          { t: 7.6, p: [2.7, -1.6, 19.0], l: [0.35, 0.5, 0], roll: -0.08, fov: 34 },
+          { t: 9.0, p: [1.5, -0.8, 19.0], l: [0.3, 0.4, 0], roll: -0.04 },
           { t: 9.45, p: (t) => [-1.4, v1y(t) + 0.4, 14.5], l: (t) => [0.4, v1y(t), 0], roll: 0.05, fov: 30 },
           { t: 10.2, p: [0, 0.2, 22.0], l: [0, -0.2, 0] },
           { t: 11.6, p: [0, 0.6, 10.5], l: [0, 0.8, 0], fov: 38 },
-          { t: 15.2, p: [-4.5, 3.6, 13.0], l: [0, 0.8, 0], roll: 0.14, fov: 34 },
-          { t: 16.4, p: [0, 0.2, 23.0], l: [0, -0.2, 0] },
-          { t: 17.6, p: [-1.8, 0.4, 16.5], l: [0, -0.6, 0], roll: 0.06 },
-          { t: 18.6, p: [0.8, -0.8, 19.5], l: [0, -0.7, 0], roll: -0.05 },
+          { t: 15.2, p: [-3.6, 3.0, 17.0], l: [0, 1.0, 0], roll: 0.1, fov: 34 },
+          { t: 16.4, p: [0, 0.4, 23.0], l: [0, 0.2, 0] },
+          { t: 17.6, p: [-1.4, 0.6, 21.0], l: [0, 0.2, 0], roll: 0.05 },
+          { t: 18.6, p: [0.6, -0.4, 22.0], l: [0, 0.0, 0], roll: -0.04 },
           { t: 20.0, p: [0, -0.6, 22.0], l: [0, -0.6, 0] },
-          { t: 20.4, p: [5.2, 3.2, 12.5], l: [0, 0.4, 0], roll: -0.2, fov: 36 },
+          { t: 20.4, p: [4.1, 2.4, 17.5], l: [0.4, 0.6, 0], roll: -0.12, fov: 35 },
           { t: 22.6, p: [0.5, 0.4, 21.0], l: [0, 0.0, 0], roll: 0.0 },
           { t: 24.2, p: [0, 1.6, 7.0], l: [0, 1.6, 0], fov: 40 },
         ];
@@ -454,7 +454,7 @@
             e.visible = vis; if (!vis) return;
             const yy = yearAt(t0), lead = auAt(P[order(yy)[0]], yy), gap = lead - auAt(P.v1, yy);
             e.userData.set("−" + nl(gap) + " AE");
-            e.position.set([-1.2, 1.4, -0.4][i], [2.2, -1.0, 0.6][i], lerp(-14, 9, age / 1.1));
+            e.position.set([-0.8, 1.2, -0.3][i], [-0.4, -2.4, -1.4][i], lerp(-14, 9, age / 1.1));
             e.rotation.set(0.15, [0.5, -0.4, 0.25][i], [-0.3, 0.25, -0.1][i]);
             e.userData.op(win(age, 0, 1.1, 0.15, 0.25));
           });
@@ -561,7 +561,7 @@
         fin.add(dot, dotGlow);
         const finCam = new THREE.PerspectiveCamera(36, W / H, 0.05, 400);
         const CAM_C = [
-          { t: T.finale, p: [-0.6, 0.2, 5.6], l: [0.1, 1.0, 0], roll: 0.08, fov: 40 },
+          { t: T.finale, p: [-0.5, 0.6, 7.6], l: [0.1, 1.2, 0], roll: 0.05, fov: 40 },
           { t: T.end, p: [-1.4, 1.4, 10.2], l: [0.1, 1.1, 0], roll: -0.04, fov: 38 },
           { t: T.dur, p: [-1.6, 1.5, 11.0], l: [0.1, 1.1, 0], roll: -0.05, fov: 38 },
         ];
@@ -569,12 +569,13 @@
           camAt(CAM_C, t, finCam);
           const tt = t - T.finale;
           drawRow(fTex, P.v1, auAt(P.v1, yearAt(t)), true, "");
-          slabF.position.set(0.1, 1.15 + Math.sin(tt * 0.8) * 0.05, 0); slabF.scale.setScalar(0.62); slabF.rotation.set(-0.1, 0.22 + tt * 0.02, 0.03);
-          flagA.position.set(-3.0, 4.7, -3.2); flagA.rotation.set(0, 0.35, 0.18); flagA.userData.update(t);
-          flagB.position.set(2.9, 4.5, -3.6); flagB.rotation.set(0, Math.PI - 0.5, -0.15); flagB.userData.update(t + 0.4);
+          slabF.position.set(-0.35, 1.15 + Math.sin(tt * 0.8) * 0.05, 0); slabF.scale.setScalar(0.62); slabF.rotation.set(-0.08, 0.1 + tt * 0.015, 0.02);
+          const out = smooth((t - T.end) / 0.7); slabF.position.y -= out * 7; slabF.visible = out < 0.999;
+          flagA.position.set(-3.6, 5.0, -5.0); flagA.rotation.set(0, 0.35, 0.18); flagA.userData.update(t);
+          flagB.position.set(3.6, 4.8, -5.4); flagB.rotation.set(0, Math.PI - 0.5, -0.15); flagB.userData.update(t + 0.4);
           lichtdag.position.set(0, 2.55, 0.2); lichtdag.rotation.set(-0.05, 0.22, 0.02);
-          const s = 0.5 * (0.75 + 0.25 * ease.out(clamp01(tt / 0.6))); lichtdag.scale.setScalar(s);
-          lichtdag.userData.op(clamp01(tt / 0.3) * (1 - 0.65 * clamp01((t - T.end) / 0.6)));
+          const s = 0.42 * (0.75 + 0.25 * ease.out(clamp01(tt / 0.6))); lichtdag.scale.setScalar(s);
+          lichtdag.userData.op(clamp01(tt / 0.3) * (1 - clamp01((t - T.end) / 0.5)));
           fSmoke.userData.update(tt, finCam, 0.65, null, 0.4); fSmoke2.userData.update(tt, finCam, 0.4, null, 0.2);
           dot.position.set(1.6, -1.4, -26); dotGlow.position.copy(dot.position); dotGlow.quaternion.copy(finCam.quaternion);
           renderer.render(fin, finCam);

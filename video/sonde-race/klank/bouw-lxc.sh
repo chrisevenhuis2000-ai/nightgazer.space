@@ -7,14 +7,15 @@
 set -euo pipefail
 SOCIAL=/opt/nightgazer-social
 HF="npx --yes hyperframes@0.8.162"
+# Chosen: take 4 of this prompt (2026-11-07). Mix with the kamer-uit patch: MOTOR=~/werk/kofi-v2/klank-patched/motor.py bash klank/bouw-lxc.sh mix 4
 # Hits land on the beat grid in index.html: impacts at 3.4 / 6.3 / 7.6 / 9.3 s, riser 11.6 -> drop 13.4 s, lift 24.2 s.
-PROMPT="cinematic electronic racing trailer score in space, ticking hi-hat pulse and driving arpeggiated synths, rising tension, short riser into a big impact and drop at 13 seconds, second lift at 24 seconds into a triumphant wide finale, epic and hopeful, no vocals, tight controlled low end, mono compatible bass, no sub rumble, clean mix with no noise or hiss, sparkling high end, 128 bpm, polished modern production"
+PROMPT="bright energetic electronic racing trailer theme, plucky arpeggiated synth lead up front, driving 16th note hi-hats, punchy tight kick, soaring saw lead melody, staccato strings and brass stabs, builds continuously, big drop at 13 seconds, even bigger triumphant finale from 24 seconds to the end, full energy until the last second, mid-forward bright mix, thin light bass, instrumental, 125 bpm"
 mkdir -p out/muziek out/audio out/stems
 
 case "${1:-}" in
   muziek)
     cd "$SOCIAL"
-    for i in 1 2 3; do
+    for i in ${TAKES:-4 5 6}; do
       npm run --silent muziek -- --bron acestep --duur 31 --uit "$OLDPWD/out/muziek/take$i.mp3" "$PROMPT, take $i"
     done
     ;;

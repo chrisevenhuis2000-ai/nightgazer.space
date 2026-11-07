@@ -25,7 +25,7 @@
         .cap.yellow b { background: #F5D547; color: #14130A; }
 
         /* the duel */
-        #t-duel { position: absolute; left: 64px; right: 64px; top: 220px; opacity: 0; }
+        #t-duel { position: absolute; left: 40px; right: 40px; top: 210px; opacity: 0; padding: 26px 28px 30px; border-radius: 20px; background: rgba(8,10,24,0.86); border: 1px solid rgba(181,212,244,0.18); }
         #t-duel .d1 { font: 500 64px/1 var(--mono); color: var(--pl-act); }
         #t-duel .d2 { margin-top: 18px; font: 800 74px/1.0 var(--sans); letter-spacing: -0.03em; color: var(--pl-ink); text-shadow: 0 4px 30px rgba(4,5,11,0.9); }
 
@@ -105,7 +105,7 @@
           cap("#c-nh", T.nh + 0.2, T.inter);
           cap("#c-inter", T.inter + 0.15, T.ffwd2 + 0.4);
           // duel
-          tl.fromTo("#t-duel", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: E }, T.pass3 + 0.05);
+          tl.fromTo("#t-duel", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.2, ease: E }, T.pass3 + 0.05);
           tl.to("#t-duel", { opacity: 0, duration: 0.25 }, T.back - 0.25);
           // finish
           tl.fromTo("#t-fin .f1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: E }, T.finale + 0.35);
