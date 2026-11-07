@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "datum": "2026-11-09",
+    "tijd": "12:00",
+    "slug": "taking-a-gander-at-utahs-goosenecks",
+    "hook": "Deze rivier loopt 8,9 km voor 2,1 km",
+    "vraag": "Hoe kan een rivier zo diep in de rots slingeren, als hij eerst over een vlakte stroomde?"
+  },
+  {
+    "datum": "2026-11-10",
+    "tijd": "12:00",
+    "slug": "a-beacon-of-light-in-swirls-of-dust",
+    "hook": "Zo fel dat Webb erdoor verblind raakt",
+    "vraag": "Wat maakt de kern van M77 feller dan de rest van het stelsel bij elkaar?"
+  },
+  {
+    "datum": "2026-11-11",
+    "tijd": "12:00",
+    "slug": "before-the-dawn-in-americas-heartland",
+    "hook": "Het Midwesten om 4:54 uur, vanuit het ISS",
+    "vraag": "Wat is die groene gloed boven de dampkring, als het geen noorderlicht is?"
+  },
+  {
+    "datum": "2026-11-12",
+    "tijd": "12:00",
+    "slug": "curiosity-blog-sols-5043-5049-preparing-to-drill-at-nazca",
+    "hook": "Waar komen deze schijfjes op Mars vandaan?",
+    "vraag": "Waarom vuurt Curiosity deze keer alle 150 laserschoten op hetzelfde punt?"
+  },
+  {
+    "datum": "2026-11-13",
+    "tijd": "12:00",
+    "slug": "webb-hubble-find-massive-star-clusters-emerge-faster",
+    "hook": "Welke sterrenhopen ontsnappen het snelst?",
+    "vraag": "Wat betekent het voor planeten als een sterrenhoop zijn gas snel wegblaast?"
+  },
+  {
+    "datum": "2026-11-14",
+    "tijd": "12:00",
+    "slug": "where-winds-blow-and-lava-flows",
+    "hook": "Een tafelberg op Mars, drie keer Kaapstad",
+    "vraag": "Hoe verraden de ruggen rond de berg uit welke richting de wind waaide?"
+  },
+  {
+    "datum": "2026-11-15",
+    "tijd": "12:00",
+    "slug": "stars-brewing-in-a-nebulous-cauldron",
+    "hook": "Hier worden nu sterren geboren",
+    "vraag": "Waarom kijken astronomen hier naar het vroege heelal, terwijl N159 zo dichtbij staat?"
+  }
+]
