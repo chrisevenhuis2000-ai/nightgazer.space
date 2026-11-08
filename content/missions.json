@@ -1,9 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-07T14:20:12.337Z",
-    "autoUpdated": [
-      "ussf-432"
-    ]
+    "lastUpdated": "2026-11-08T14:30:48.121Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -4717,7 +4715,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "13 nov 2026",
-      "launchPrecision": "Day",
+      "launchPrecision": "Minute",
       "objective": "Vijftiende testvlucht van Starship, de vierde in de V3-configuratie.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 13 nov 2026",
