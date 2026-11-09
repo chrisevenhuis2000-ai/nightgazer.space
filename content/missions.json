@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-08T14:30:48.121Z",
+    "lastUpdated": "2026-11-09T17:47:43.902Z",
     "autoUpdated": []
   },
   "missions": [
@@ -5600,7 +5600,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "10 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 10 nov 2026",
