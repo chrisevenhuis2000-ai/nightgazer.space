@@ -1,0 +1,2081 @@
+# Fase 2: concepten hooks en 3D (niet voor het plan)
+week: 2026-W46
+posts:
+  - id: NG-9301
+    titel: "Snap het, Voyager 1 een lichtdag (haak A: tijd)"
+    pijler: snap-het
+    template: reel-uitleg
+    status: idee
+    moment: 2026-11-12T17:30:00+01:00
+    platforms:
+      - instagram
+    data:
+      voorbeeld: true
+      onderwerp: Voyager 1, een lichtdag
+      lijnen:
+        - tekst: Woensdag is Voyager 1 een hele lichtdag ver.
+          spreek: Woensdag is Voyager 1 een hele lichtdag ver.
+        - tekst: Stuur je hem nu een bericht,
+          spreek: Stuur je hem nu een bericht,
+        - tekst: het schiet de planeten voorbij,
+          spreek: het schiet de planeten voorbij,
+        - tekst: schuin omhoog, uit hun vlak.
+          spreek: schuin omhoog, uit hun vlak.
+        - tekst: Daar vliegt Voyager 1, al sinds *1977*.
+          spreek: Daar vliegt Voyager 1, al sinds negentienzevenenzeventig.
+        - tekst: Nu al meer dan *25,80 miljard km* ver.
+          spreek: Nu al meer dan vijfentwintig komma tachtig miljard kilometer ver.
+        - tekst: Op *18 november* is licht een hele dag onderweg.
+          spreek: Op achttien november is licht een hele dag onderweg.
+        - tekst: Zo lang reist jouw bericht.
+          spreek: Zo lang reist jouw bericht.
+        - tekst: Naar een plaat met groeten in *55 talen*.
+          spreek: Naar een plaat met groeten in vijfenvijftig talen.
+        - tekst: "Woensdag: een hele lichtdag ver."
+          spreek: "Woensdag: een hele lichtdag ver."
+      script:
+        - beeld: Voyager 1 groot in beeld, een lichtspoor terug naar een stipje aarde
+          camera: dichtbij, licht inzoomen
+        - beeld: De puls schiet weg over de banen van de planeten en buigt omhoog uit het vlak
+          camera: log-zoom mee met de puls, hoog boven het zonnestelsel
+        - beeld: De sonde met de schotel naar huis; de afstand telt op
+          camera: naar de sonde, eromheen
+        - beeld: "18 november: een hele lichtdag; de puls komt aan"
+          camera: achteruit, dan dichtbij
+        - beeld: De gouden plaat glinstert; terug naar het beeld van het begin
+          camera: langs de plaat, terug naar frame 0
+      labels:
+        haak1: "Woensdag: Voyager 1"
+        haak2: een hele lichtdag ver
+        afstand: 25,80 MILJARD KM
+        jaar: "1977"
+        datum: 18 NOVEMBER
+        lichtdag: een hele lichtdag
+        talen: 55 TALEN
+        voyager: Voyager 1
+        bericht: Jouw bericht
+      feiten:
+        - waarde: 25,80 miljard km
+          citaat: At the time of this article, the Canberra antenna tracked Voyager 1 at 25.80 billion km, or just over 16 billion miles.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 25,80 MILJARD KM
+          citaat: At the time of this article, the Canberra antenna tracked Voyager 1 at 25.80 billion km, or just over 16 billion miles.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: "1977"
+          citaat: Launched in 1977 to fly by Jupiter and Saturn, Voyager 1 crossed into interstellar space in August 2012 and continues to collect data.
+          bron: https://science.nasa.gov/mission/voyager/voyager-1/
+        - waarde: 18 november
+          citaat: On November 18, 2026, 49 years after its launch, Voyager 1 will cross the one-light-day mark, 16.1 billion miles from the Sun.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 18 NOVEMBER
+          citaat: On November 18, 2026, 49 years after its launch, Voyager 1 will cross the one-light-day mark, 16.1 billion miles from the Sun.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 55 talen
+          citaat: each craft carries the Golden Record, a 12-inch phonograph record with spoken greetings in 55 languages, 27 musical tracks, 116 images, and other sounds from Earth.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 55 TALEN
+          citaat: each craft carries the Golden Record, a 12-inch phonograph record with spoken greetings in 55 languages, 27 musical tracks, 116 images, and other sounds from Earth.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+      namen:
+        - Voyager 1
+      oproep: "Meer uitleg: link in bio"
+      muziek:
+        prompt: warm cinematic ambient electronic score, slow lyrical piano over soft synth strings in D major, intimate start, steady gentle pulse, opens into a wide hopeful swell, no vocals, light bass, no low strings, clean mid-forward mix, 90 bpm
+      scene: |
+        // ── Kit 2 (proef): bouwstenen die in fase 3 naar _gedeeld/huisstijl.js gaan. Hier inline, want data.scene mag niets importeren.
+        // atmosfeer(): een halo-schil met dagkant + voorwaartse verstrooiing (tegenlicht), en `spreiding` die de boog rond de rand sluit.
+        // planeet(): een bol met terminator, nachtkant en een binnenrand die meedoet met de atmosfeer. textuurBol(): een NASA-kaart.
+        // logCam(): een camera die afstand logaritmisch interpoleert (powers of ten) tussen houdingen.
+        const K2 = (THREE) => {
+          const NZ = `
+            float h3(vec3 p){ p=fract(p*0.3183099+.1); p*=17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+            float n3(vec3 x){ vec3 i=floor(x), f=fract(x); f=f*f*(3.0-2.0*f);
+              return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),f.x), mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),f.x),f.y),
+                         mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),f.x), mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),f.x),f.y), f.z); }
+            float fbm(vec3 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*n3(p); p*=2.03; a*=.5; } return s; }`;
+          const VS = `varying vec3 vW; varying vec3 vN; varying vec3 vP; varying vec2 vUv;
+            void main(){ vP=position; vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz;
+              gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`;
+          function atmosfeer({ binnen = 1, straal = 1.06, kleur = [1.0, 0.84, 0.6], dag = 0.4, voor = 2.6, zon }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uCol: { value: new THREE.Vector3(...kleur) }, uDag: { value: dag },
+                          uVoor: { value: voor }, uSpread: { value: 0 }, uA: { value: 1 }, uR: { value: binnen / straal } },
+              vertexShader: VS,
+              fragmentShader: `uniform vec3 uL; uniform vec3 uCol; uniform float uDag; uniform float uVoor; uniform float uSpread; uniform float uA; uniform float uR;
+                varying vec3 vW; varying vec3 vN;
+                void main(){
+                  vec3 V = normalize(cameraPosition - vW); vec3 N = normalize(vN);
+                  float d = clamp(-dot(N, V), 0.0, 1.0);
+                  float edge = sqrt(max(0.0, 1.0 - uR * uR));           // -dot(N,V) op de rand van de planeet
+                  float f = pow(clamp(d / max(edge, 1e-3), 0.0, 1.0), 3.0) * (1.0 - smoothstep(edge, edge + 0.08, d));
+                  float lp = dot(N, uL);
+                  float day = smoothstep(-0.25, 0.55, lp);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  float taps = mix(0.12 + 0.7 * clamp(uSpread - 0.3, 0.0, 1.0), 1.0, smoothstep(-0.9, 0.9, lq));
+                  vec3 c = uCol * f * (uDag * day + uVoor * fwd * boog * taps) * uA;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+              transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.BackSide,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, alpha, zon: z } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (alpha != null) mat.uniforms.uA.value = alpha;
+              if (z) mat.uniforms.uL.value.copy(z).normalize();
+            };
+            return m;
+          }
+          // soort: 'venus' (wolkendek), 'rots' (grijs). Terminator met zachte overgang, binnenrand warm bij tegenlicht.
+          function planeet(soort, { straal = 1, zon, seed = 1 }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uSeed: { value: seed }, uSpread: { value: 0 }, uLicht: { value: 1 } },
+              vertexShader: VS,
+              fragmentShader: NZ + `uniform vec3 uL; uniform float uSeed; uniform float uSpread; uniform float uLicht;
+                varying vec3 vW; varying vec3 vN; varying vec3 vP;
+                void main(){
+                  vec3 p = normalize(vP); vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  ${soort === "venus"
+                    ? `float b = fbm(vec3(p.x*2.0, p.y*7.0, p.z*2.0) + uSeed); vec3 alb = mix(vec3(0.80,0.72,0.55), vec3(0.97,0.92,0.80), b);`
+                    : `float b = fbm(p*4.0 + uSeed); vec3 alb = mix(vec3(0.36,0.37,0.40), vec3(0.66,0.66,0.68), b);`}
+                  float lp = dot(N, uL);
+                  float lit = smoothstep(-0.04, 0.32, lp);
+                  vec3 c = alb * lit * 1.15 * uLicht + vec3(0.006, 0.008, 0.018);
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  c += vec3(1.0, 0.82, 0.58) * pow(1.0 - mu, 6.0) * fwd * boog * mix(0.12, 1.0, smoothstep(-0.9, 0.9, lq)) * 1.4;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, licht } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (licht != null) mat.uniforms.uLicht.value = licht;
+            };
+            return m;
+          }
+          // Een bol met een NASA-kaart uit assets/scenes/texturen/ (licentie en credit in texturen.json).
+          // nacht: de kaart is licht (Black Marble): hij gloeit op de nachtkant en verdwijnt in de dag.
+          function textuurBol(bestand, { straal = 1, zon, nacht = false, helder = 2.2 }) {
+            window.THREE = window.THREE || THREE;          // HyperFrames wacht dan op de textuur vóór frame 0
+            const tex = new THREE.TextureLoader().load("assets/scenes/texturen/" + bestand);
+            tex.colorSpace = THREE.NoColorSpace; tex.anisotropy = 4;
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { kaart: { value: tex }, uL: { value: zon.clone().normalize() }, uNacht: { value: nacht ? 1 : 0 }, uHelder: { value: helder } },
+              vertexShader: VS,
+              fragmentShader: `uniform sampler2D kaart; uniform vec3 uL; uniform float uNacht; uniform float uHelder;
+                varying vec3 vW; varying vec3 vN; varying vec2 vUv;
+                void main(){
+                  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  vec3 t = texture2D(kaart, vUv).rgb;
+                  float lp = dot(N, uL);
+                  float dag = smoothstep(-0.08, 0.3, lp);
+                  vec3 c;
+                  if (uNacht > 0.5) {
+                    float l = dot(t, vec3(0.3, 0.55, 0.15));
+                    vec3 stad = mix(vec3(0.9, 0.86, 0.74), t, 0.35) * smoothstep(0.12, 0.7, l) * 0.9;   // warm wit, niet oranje (QA paars)
+                    vec3 grond = t * 0.3 + vec3(0.010, 0.018, 0.040);
+                    c = (grond + stad) * uHelder * (1.0 - dag) * 0.6 + vec3(0.05, 0.12, 0.25) * dag;
+                  } else {
+                    c = t * (0.06 + 0.94 * dag) * uHelder;
+                  }
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  c *= mix(0.55, 1.0, smoothstep(0.0, 0.5, mu));
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            return new THREE.Mesh(new THREE.SphereGeometry(straal, 192, 128), mat);
+          }
+          // Breedte/lengte → punt op de bol, met de UV-afbeelding van SphereGeometry (zoals scenes/aarde.js).
+          const RAD = Math.PI / 180;
+          const breedteLengte = (lat, lon, r = 1) => { const phi = (lon + 180) * RAD, c = Math.cos(lat * RAD); return new THREE.Vector3(-Math.cos(phi) * c * r, Math.sin(lat * RAD) * r, Math.sin(phi) * c * r); };
+          // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
+          // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
+          function logCam(keys) {
+            const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
+                           in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
+            const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
+            const v = (x, t) => (typeof x === "function" ? x(t) : x);
+            return (cam, t) => {
+              let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+              const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
+              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
+              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
+              cam.position.copy(doel).addScaledVector(dir, afst);
+              u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
+              cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
+              const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
+              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+            };
+          }
+          // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
+          function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
+            const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
+            if (a <= 0 || data.labels.haak1 === undefined) return;
+            const twee = data.labels.haak2 !== undefined;
+            ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
+            if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
+          }
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+        };
+
+        // Snap het — een bericht naar Voyager 1 (een lichtdag op 18 november 2026). Eén wereld: zon, banen, de aarde (Black
+        // Marble, nachtkant), en ver boven het vlak de sonde. De camera reist mee met het bericht, met log-afstand (powers of ten).
+        // Variant A: frame 0 = de sonde, met het lichtspoor terug naar een stipje aarde. Variant B: frame 0 = Nederland bij nacht,
+        // het bericht vertrekt. A eindigt bij de sonde, B weer bij de aarde.
+        window.reel = {
+          maak({ THREE, kit, scene, L, dur, data }) {
+            const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { lijn, cirkel, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
+            const VAR = "A";
+            const E = new THREE.Vector3(6, 0, 0), RE = 0.32;
+            const V = new THREE.Vector3(-70, 92, -96);                         // na Saturnus "headed north out of the ecliptic plane"
+            const zonG = maakZon({ straal: 0.9 }); scene.add(zonG);
+            [6, 31, 57].forEach((r, i) => scene.add(lijn(cirkel(r, 360), { kleur: KLEUR.teal, breedte: i ? 3 : 4, dicht: true, alpha: i ? 0.35 : 0.55 })));
+            const jup = kit.bol("mars", { straal: 0.9, seed: 7, zon: new THREE.Vector3(1, 0, 0) }); jup.position.set(-22, 0, -22); scene.add(jup);
+            const sat = kit.bol("maan", { straal: 0.75, seed: 9, zon: new THREE.Vector3(1, 0, 0) }); sat.position.set(40, 0, -40); scene.add(sat);
+            const zonRicht = E.clone().negate().normalize();
+            const aarde = textuurBol("aarde-nacht-2016.jpg", { straal: RE, zon: zonRicht, nacht: true, helder: 1.7 });
+            // NL naar de camera-kant (de nachtkant, weg van de zon)
+            const nl = breedteLengte(52.1, 5.2).normalize();
+            aarde.quaternion.setFromUnitVectors(nl, new THREE.Vector3(0.55, 0.5, 0.67).normalize());
+            aarde.position.copy(E); scene.add(aarde);
+            const lucht = atmosfeer({ binnen: RE, straal: RE * 1.035, zon: zonRicht, kleur: [0.5, 0.75, 1.0], dag: 1.0, voor: 1.4 }); lucht.position.copy(E); scene.add(lucht);
+            const nlPunt = (t) => nl.clone().applyQuaternion(aarde.quaternion).multiplyScalar(RE * 1.01).add(E);
+            // de sonde: schotel, romp, gieken, de gouden plaat
+            const sonde = new THREE.Group(); sonde.position.copy(V); scene.add(sonde);
+            const mat = new THREE.ShaderMaterial({ uniforms: { uL: { value: zonRicht.clone() } },
+              vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `uniform vec3 uL; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 Vv=normalize(cameraPosition-vW);
+                float d=max(dot(N,normalize(-vW)),0.0)*0.55+0.08; float r=pow(1.0-abs(dot(N,Vv)),3.0);
+                gl_FragColor=vec4(vec3(0.80,0.83,0.88)*(0.25+0.75*d) + vec3(0.37,0.85,0.92)*r*0.7, 1.0); }`, side: THREE.DoubleSide });
+            const prof = []; for (let i = 0; i <= 24; i++) { const r = i / 24; prof.push(new THREE.Vector2(r * 1.1, r * r * 0.38)); }
+            const schotelMat = new THREE.ShaderMaterial({ side: THREE.DoubleSide,
+              vertexShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
+                float voor = step(0.0, dot(N, V)); float r = vUv.y;
+                vec3 c = mix(vec3(0.20,0.22,0.27), vec3(0.78,0.81,0.86), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
+                c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.6;
+                c *= 1.0 - 0.55 * smoothstep(0.93, 0.97, r) * (1.0 - smoothstep(0.985, 1.0, r));
+                c += vec3(0.9,0.95,1.0) * exp(-pow((r - 0.62) * 40.0, 2.0)) * 0.12;
+                gl_FragColor = vec4(c, 1.0); }` });
+            const schotel = new THREE.Mesh(new THREE.LatheGeometry(prof, 96), schotelMat); schotel.position.y = 0.05; sonde.add(schotel);
+            const romp = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.24, 10), mat); romp.position.y = -0.17; sonde.add(romp);
+            const goud = new THREE.Mesh(new THREE.CircleGeometry(0.15, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.86, 0.68, 0.36), side: THREE.DoubleSide }));
+            goud.position.set(0, -0.17, 0.35); sonde.add(goud);
+            const glint = gloed("#FFD58A", { grootte: 0.9, scherp: 10, alpha: 0 }); glint.position.set(0, -0.17, 0.4); sonde.add(glint);
+            [[1, -0.1, 0.2, 3.0], [-1, -0.1, -0.3, 2.2], [0.2, -0.15, -1, 4.2]].forEach(([x, y, z, len]) => {
+              const d = new THREE.Vector3(x, y, z).normalize();
+              sonde.add(lijn([new THREE.Vector3(0, -0.17, 0), d.multiplyScalar(len).add(new THREE.Vector3(0, -0.17, 0))], { kleur: "#C9D6E8", breedte: 2.5, alpha: 0.9 }));
+            });
+            // de schotel (+Y) kijkt naar huis
+            const naarHuis = E.clone().sub(V).normalize();
+            sonde.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), naarHuis);
+            const opzij = new THREE.Vector3().crossVectors(naarHuis, new THREE.Vector3(0, 1, 0)).normalize();
+            const schuin = (a, b) => naarHuis.clone().multiplyScalar(a).add(opzij.clone().multiplyScalar(b)).add(new THREE.Vector3(0, 0.25, 0)).normalize().toArray();
+            // het bericht: een puls met een spoor van de aarde naar de sonde
+            const pad = []; for (let i = 0; i <= 200; i++) pad.push(new THREE.Vector3().lerpVectors(E, V, i / 200));
+            const spoor = lijn(pad, { kleur: KLEUR.teal, breedte: 7, basis: 0 }); scene.add(spoor);
+            const puls = gloed("#E8FBFF", { grootte: 1, scherp: 6, alpha: 0 }); scene.add(puls);
+            const vertrek = VAR === "A" ? L(1, 0.4) : 0.15, aankomst = L(7, 0.6);
+            const prog = (t) => { const x = clamp01((t - vertrek) / (aankomst - vertrek)); return x < 0.12 ? 0.12 * Math.pow(x / 0.12, 2.5) : x; };
+            const pulsPos = (t) => new THREE.Vector3().lerpVectors(nlPunt(t), V, prog(t));
+            // ── de camera ───────────────────────────────────────────────────────────────────────────
+            const omhoog = V.clone().sub(E).normalize();
+            const bijSonde = (afst, fov, rich = schuin(0.75, 0.6)) => ({ doel: V.toArray(), richting: rich, afstand: afst, fov });
+            const bijAarde = (afst, fov) => ({ doel: E.clone().add(omhoog.clone().multiplyScalar(RE * 0.9)).toArray(), richting: nl.clone().applyQuaternion(aarde.quaternion).add(new THREE.Vector3(0, -0.35, 0)).normalize().toArray(), afstand: afst, fov });
+            const metPuls = (afst, fov, rich) => ({ doel: (t) => pulsPos(t).toArray(), richting: rich, afstand: afst, fov });
+            const boven = { doel: [0, 0, 0], richting: [0.15, 1, 0.55], afstand: 190, fov: 46 };
+            const keys = [
+              ...(VAR === "A"
+                ? [{ t: 0, ...bijSonde(11, 34) }, { t: L(0, 1), ...bijSonde(9.5, 34), e: "lin" }, { t: L(1, 1), ...bijAarde(1.9, 38), el: "in" }]
+                : [{ t: 0, ...bijAarde(1.25, 36) }, { t: L(0, 1), ...bijAarde(1.6, 38), e: "lin" }, { t: L(1, 1), ...metPuls(14, 44, [0.4, -0.3, 1]), el: "in" }]),
+              { t: L(2, 1), ...boven, el: "in" },
+              { t: L(3, 1), doel: [-30, 40, -40], richting: [1, 0.05, 0.1], afstand: 210, fov: 48 },
+              { t: L(4, 1), ...bijSonde(6.5, 40), el: "in" },
+              { t: L(5, 1), ...bijSonde(5.2, 40, schuin(0.6, 0.8)) },
+              { t: L(6, 1), ...bijSonde(9.5, 44, schuin(0.85, -0.5)) },
+              { t: L(7, 1), ...bijSonde(5.5, 40, schuin(0.5, 0.85)) },
+              { t: L(8, 1), ...bijSonde(4.8, 34, schuin(0.2, 0.98)) },
+              ...(VAR === "A" ? [{ t: dur, ...bijSonde(11, 34) }] : [{ t: L(9, 0.35), ...bijAarde(1.4, 36), el: "in" }, { t: dur, ...bijAarde(1.25, 36), e: "lin" }]),
+            ];
+            const cam = logCam(keys);
+            return {
+              camera: (c, t) => { cam(c, t); c.far = 4000; c.updateProjectionMatrix(); },
+              update(t) {
+                aarde.rotation.z = 0;
+                const p = prog(t);
+                spoor.userData.set({ kop: p, len: VAR === "A" && t < L(1, 0.4) ? 1 : 0.35, alpha: VAR === "A" && t < L(1, 0.4) ? 0.55 * (1 - smooth((t - L(0, 1)) / 0.6)) : venster(t, vertrek, L(9, 0.5), 0.2, 0.6), basis: 0.08 });
+                puls.position.copy(pulsPos(t)); puls.scale.setScalar(0.12 + 2.0 * Math.sqrt(p));
+                puls.userData.set({ alpha: venster(t, vertrek, aankomst + 0.3, 0.15, 0.3) });
+                glint.userData.set({ alpha: venster(t, L(8, 0), L(9, 0.6), 0.4, 0.5) * (0.6 + 0.4 * Math.sin(t * 3) ** 2) });
+              },
+              overlay(t, ov) {
+                haakkaart(ov, t, L, data);
+                const k5 = venster(t, L(5, 0), L(5, 1) + 0.2, 0.25, 0.3);
+                if (k5 > 0) ov.tekst("afstand", 540, 430, { maat: 96, alpha: k5, teller: (t - L(5, 0)) / 0.7 });
+                const k4 = venster(t, L(4, 0.3), L(4, 1) + 0.1, 0.25, 0.3);
+                if (k4 > 0) ov.tekst("jaar", 540, 430, { maat: 120, alpha: k4, teller: (t - L(4, 0.3)) / 0.6 });
+                const k6 = venster(t, L(6, 0.1), L(7, 0.2), 0.25, 0.3);
+                if (k6 > 0) { ov.tekst("datum", 540, 420, { maat: 112, alpha: k6, schaal: 0.85 + 0.15 * easeOut((t - L(6, 0.1)) / 0.3) }); ov.tekst("lichtdag", 540, 530, { maat: 50, kleur: KLEUR.wit, alpha: k6, gloei: 10, gewicht: 700 }); }
+                const k8 = venster(t, L(8, 0.2), L(8, 1) + 0.3, 0.25, 0.3);
+                if (k8 > 0) ov.tekst("talen", 540, 430, { maat: 104, alpha: k8, teller: (t - L(8, 0.2)) / 0.5 });
+                const kv = venster(t, L(4, 0), L(7, 1), 0.3, 0.3);
+                if (kv > 0) { const [x, y, voor] = ov.proj(V); if (voor) ov.tekst("voyager", Math.max(200, Math.min(880, x)), Math.max(300, Math.min(1460, y - 230)), { maat: 46, kleur: KLEUR.wit, alpha: kv * 0.95, gloei: 10, gewicht: 700 }); }
+                const kb = VAR === "B" ? venster(t, 0, L(1, 0.5), 0.01, 0.4) : 0;
+                if (kb > 0) { const [x, y, voor] = ov.proj(nlPunt(t)); if (voor) ov.tekst("bericht", Math.max(200, Math.min(880, x)), Math.max(300, Math.min(1460, y - 120)), { maat: 46, kleur: KLEUR.teal, alpha: kb, gloei: 12, gewicht: 700 }); }
+              },
+              post: () => ({ bloei: 0.65, belichting: 0.95 }),
+              flits: (t) => 0.5 * venster(t, L(6, 0.15), L(6, 0.15) + 0.5, 0.06, 0.44),
+              stof: (t) => ({ schaal: 1, mate: 1 }),
+            };
+          },
+        };
+    instagram:
+      type: reel
+      caption: |-
+        Op 18 november staat Voyager 1 een hele lichtdag van de zon. Een bericht dat je nu stuurt, is ongeveer een dag onderweg.
+
+        Meer uitleg op nightgazer.space (link in bio)
+        Meer uitleg: link in bio
+
+        Bron: NASA. 3D-animatie van NightGazer op NASA-gegevens; aarde: NASA Earth Observatory (Black Marble).
+    hashtags:
+      - "#nightgazer"
+      - "#voyager1"
+      - "#nasa"
+    bronnen: &a1
+      - naam: "NASA, November's Night Sky Notes: Light-Day Away"
+        url: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        licentie: NASA (publiek domein)
+        credit: NASA
+      - naam: NASA, Voyager 1
+        url: https://science.nasa.gov/mission/voyager/voyager-1/
+        licentie: NASA (publiek domein)
+        credit: NASA
+  - id: NG-9302
+    titel: "Snap het, Voyager 1 een lichtdag (haak B: jij)"
+    pijler: snap-het
+    template: reel-uitleg
+    status: idee
+    moment: 2026-11-12T17:30:00+01:00
+    platforms:
+      - instagram
+    data:
+      voorbeeld: true
+      onderwerp: Voyager 1, een lichtdag
+      lijnen:
+        - tekst: Een bericht naar Voyager 1 is straks een dag onderweg.
+          spreek: Een bericht naar Voyager 1 is straks een dag onderweg.
+        - tekst: Het vertrekt met de snelheid van het licht.
+          spreek: Het vertrekt met de snelheid van het licht.
+        - tekst: het schiet de planeten voorbij,
+          spreek: het schiet de planeten voorbij,
+        - tekst: schuin omhoog, uit hun vlak.
+          spreek: schuin omhoog, uit hun vlak.
+        - tekst: Daar vliegt Voyager 1, al sinds *1977*.
+          spreek: Daar vliegt Voyager 1, al sinds negentienzevenenzeventig.
+        - tekst: Nu al meer dan *25,80 miljard km* ver.
+          spreek: Nu al meer dan vijfentwintig komma tachtig miljard kilometer ver.
+        - tekst: Op *18 november* is licht een hele dag onderweg.
+          spreek: Op achttien november is licht een hele dag onderweg.
+        - tekst: Zo lang reist jouw bericht.
+          spreek: Zo lang reist jouw bericht.
+        - tekst: Naar een plaat met groeten in *55 talen*.
+          spreek: Naar een plaat met groeten in vijfenvijftig talen.
+        - tekst: Een dag onderweg, van hier naar daar.
+          spreek: Een dag onderweg, van hier naar daar.
+      script:
+        - beeld: Nederland bij nacht vanuit de ruimte; een puls vertrekt
+          camera: dichtbij, licht inzoomen
+        - beeld: De puls schiet weg over de banen van de planeten en buigt omhoog uit het vlak
+          camera: log-zoom mee met de puls, hoog boven het zonnestelsel
+        - beeld: De sonde met de schotel naar huis; de afstand telt op
+          camera: naar de sonde, eromheen
+        - beeld: "18 november: een hele lichtdag; de puls komt aan"
+          camera: achteruit, dan dichtbij
+        - beeld: De gouden plaat glinstert; terug naar het beeld van het begin
+          camera: langs de plaat, terug naar frame 0
+      labels:
+        haak1: Een bericht naar Voyager 1
+        haak2: is straks een dag onderweg
+        afstand: 25,80 MILJARD KM
+        jaar: "1977"
+        datum: 18 NOVEMBER
+        lichtdag: een hele lichtdag
+        talen: 55 TALEN
+        voyager: Voyager 1
+        bericht: Jouw bericht
+      feiten:
+        - waarde: 25,80 miljard km
+          citaat: At the time of this article, the Canberra antenna tracked Voyager 1 at 25.80 billion km, or just over 16 billion miles.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 25,80 MILJARD KM
+          citaat: At the time of this article, the Canberra antenna tracked Voyager 1 at 25.80 billion km, or just over 16 billion miles.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: "1977"
+          citaat: Launched in 1977 to fly by Jupiter and Saturn, Voyager 1 crossed into interstellar space in August 2012 and continues to collect data.
+          bron: https://science.nasa.gov/mission/voyager/voyager-1/
+        - waarde: 18 november
+          citaat: On November 18, 2026, 49 years after its launch, Voyager 1 will cross the one-light-day mark, 16.1 billion miles from the Sun.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 18 NOVEMBER
+          citaat: On November 18, 2026, 49 years after its launch, Voyager 1 will cross the one-light-day mark, 16.1 billion miles from the Sun.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 55 talen
+          citaat: each craft carries the Golden Record, a 12-inch phonograph record with spoken greetings in 55 languages, 27 musical tracks, 116 images, and other sounds from Earth.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+        - waarde: 55 TALEN
+          citaat: each craft carries the Golden Record, a 12-inch phonograph record with spoken greetings in 55 languages, 27 musical tracks, 116 images, and other sounds from Earth.
+          bron: https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/
+      namen:
+        - Voyager 1
+      oproep: "Meer uitleg: link in bio"
+      muziek:
+        prompt: warm cinematic ambient electronic score, slow lyrical piano over soft synth strings in D major, intimate start, steady gentle pulse, opens into a wide hopeful swell, no vocals, light bass, no low strings, clean mid-forward mix, 90 bpm
+      scene: |
+        // ── Kit 2 (proef): bouwstenen die in fase 3 naar _gedeeld/huisstijl.js gaan. Hier inline, want data.scene mag niets importeren.
+        // atmosfeer(): een halo-schil met dagkant + voorwaartse verstrooiing (tegenlicht), en `spreiding` die de boog rond de rand sluit.
+        // planeet(): een bol met terminator, nachtkant en een binnenrand die meedoet met de atmosfeer. textuurBol(): een NASA-kaart.
+        // logCam(): een camera die afstand logaritmisch interpoleert (powers of ten) tussen houdingen.
+        const K2 = (THREE) => {
+          const NZ = `
+            float h3(vec3 p){ p=fract(p*0.3183099+.1); p*=17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+            float n3(vec3 x){ vec3 i=floor(x), f=fract(x); f=f*f*(3.0-2.0*f);
+              return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),f.x), mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),f.x),f.y),
+                         mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),f.x), mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),f.x),f.y), f.z); }
+            float fbm(vec3 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*n3(p); p*=2.03; a*=.5; } return s; }`;
+          const VS = `varying vec3 vW; varying vec3 vN; varying vec3 vP; varying vec2 vUv;
+            void main(){ vP=position; vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz;
+              gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`;
+          function atmosfeer({ binnen = 1, straal = 1.06, kleur = [1.0, 0.84, 0.6], dag = 0.4, voor = 2.6, zon }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uCol: { value: new THREE.Vector3(...kleur) }, uDag: { value: dag },
+                          uVoor: { value: voor }, uSpread: { value: 0 }, uA: { value: 1 }, uR: { value: binnen / straal } },
+              vertexShader: VS,
+              fragmentShader: `uniform vec3 uL; uniform vec3 uCol; uniform float uDag; uniform float uVoor; uniform float uSpread; uniform float uA; uniform float uR;
+                varying vec3 vW; varying vec3 vN;
+                void main(){
+                  vec3 V = normalize(cameraPosition - vW); vec3 N = normalize(vN);
+                  float d = clamp(-dot(N, V), 0.0, 1.0);
+                  float edge = sqrt(max(0.0, 1.0 - uR * uR));           // -dot(N,V) op de rand van de planeet
+                  float f = pow(clamp(d / max(edge, 1e-3), 0.0, 1.0), 3.0) * (1.0 - smoothstep(edge, edge + 0.08, d));
+                  float lp = dot(N, uL);
+                  float day = smoothstep(-0.25, 0.55, lp);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  float taps = mix(0.12 + 0.7 * clamp(uSpread - 0.3, 0.0, 1.0), 1.0, smoothstep(-0.9, 0.9, lq));
+                  vec3 c = uCol * f * (uDag * day + uVoor * fwd * boog * taps) * uA;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+              transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.BackSide,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, alpha, zon: z } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (alpha != null) mat.uniforms.uA.value = alpha;
+              if (z) mat.uniforms.uL.value.copy(z).normalize();
+            };
+            return m;
+          }
+          // soort: 'venus' (wolkendek), 'rots' (grijs). Terminator met zachte overgang, binnenrand warm bij tegenlicht.
+          function planeet(soort, { straal = 1, zon, seed = 1 }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uSeed: { value: seed }, uSpread: { value: 0 }, uLicht: { value: 1 } },
+              vertexShader: VS,
+              fragmentShader: NZ + `uniform vec3 uL; uniform float uSeed; uniform float uSpread; uniform float uLicht;
+                varying vec3 vW; varying vec3 vN; varying vec3 vP;
+                void main(){
+                  vec3 p = normalize(vP); vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  ${soort === "venus"
+                    ? `float b = fbm(vec3(p.x*2.0, p.y*7.0, p.z*2.0) + uSeed); vec3 alb = mix(vec3(0.80,0.72,0.55), vec3(0.97,0.92,0.80), b);`
+                    : `float b = fbm(p*4.0 + uSeed); vec3 alb = mix(vec3(0.36,0.37,0.40), vec3(0.66,0.66,0.68), b);`}
+                  float lp = dot(N, uL);
+                  float lit = smoothstep(-0.04, 0.32, lp);
+                  vec3 c = alb * lit * 1.15 * uLicht + vec3(0.006, 0.008, 0.018);
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  c += vec3(1.0, 0.82, 0.58) * pow(1.0 - mu, 6.0) * fwd * boog * mix(0.12, 1.0, smoothstep(-0.9, 0.9, lq)) * 1.4;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, licht } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (licht != null) mat.uniforms.uLicht.value = licht;
+            };
+            return m;
+          }
+          // Een bol met een NASA-kaart uit assets/scenes/texturen/ (licentie en credit in texturen.json).
+          // nacht: de kaart is licht (Black Marble): hij gloeit op de nachtkant en verdwijnt in de dag.
+          function textuurBol(bestand, { straal = 1, zon, nacht = false, helder = 2.2 }) {
+            window.THREE = window.THREE || THREE;          // HyperFrames wacht dan op de textuur vóór frame 0
+            const tex = new THREE.TextureLoader().load("assets/scenes/texturen/" + bestand);
+            tex.colorSpace = THREE.NoColorSpace; tex.anisotropy = 4;
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { kaart: { value: tex }, uL: { value: zon.clone().normalize() }, uNacht: { value: nacht ? 1 : 0 }, uHelder: { value: helder } },
+              vertexShader: VS,
+              fragmentShader: `uniform sampler2D kaart; uniform vec3 uL; uniform float uNacht; uniform float uHelder;
+                varying vec3 vW; varying vec3 vN; varying vec2 vUv;
+                void main(){
+                  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  vec3 t = texture2D(kaart, vUv).rgb;
+                  float lp = dot(N, uL);
+                  float dag = smoothstep(-0.08, 0.3, lp);
+                  vec3 c;
+                  if (uNacht > 0.5) {
+                    float l = dot(t, vec3(0.3, 0.55, 0.15));
+                    vec3 stad = mix(vec3(0.9, 0.86, 0.74), t, 0.35) * smoothstep(0.12, 0.7, l) * 0.9;   // warm wit, niet oranje (QA paars)
+                    vec3 grond = t * 0.3 + vec3(0.010, 0.018, 0.040);
+                    c = (grond + stad) * uHelder * (1.0 - dag) * 0.6 + vec3(0.05, 0.12, 0.25) * dag;
+                  } else {
+                    c = t * (0.06 + 0.94 * dag) * uHelder;
+                  }
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  c *= mix(0.55, 1.0, smoothstep(0.0, 0.5, mu));
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            return new THREE.Mesh(new THREE.SphereGeometry(straal, 192, 128), mat);
+          }
+          // Breedte/lengte → punt op de bol, met de UV-afbeelding van SphereGeometry (zoals scenes/aarde.js).
+          const RAD = Math.PI / 180;
+          const breedteLengte = (lat, lon, r = 1) => { const phi = (lon + 180) * RAD, c = Math.cos(lat * RAD); return new THREE.Vector3(-Math.cos(phi) * c * r, Math.sin(lat * RAD) * r, Math.sin(phi) * c * r); };
+          // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
+          // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
+          function logCam(keys) {
+            const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
+                           in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
+            const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
+            const v = (x, t) => (typeof x === "function" ? x(t) : x);
+            return (cam, t) => {
+              let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+              const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
+              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
+              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
+              cam.position.copy(doel).addScaledVector(dir, afst);
+              u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
+              cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
+              const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
+              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+            };
+          }
+          // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
+          function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
+            const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
+            if (a <= 0 || data.labels.haak1 === undefined) return;
+            const twee = data.labels.haak2 !== undefined;
+            ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
+            if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
+          }
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+        };
+
+        // Snap het — een bericht naar Voyager 1 (een lichtdag op 18 november 2026). Eén wereld: zon, banen, de aarde (Black
+        // Marble, nachtkant), en ver boven het vlak de sonde. De camera reist mee met het bericht, met log-afstand (powers of ten).
+        // Variant A: frame 0 = de sonde, met het lichtspoor terug naar een stipje aarde. Variant B: frame 0 = Nederland bij nacht,
+        // het bericht vertrekt. A eindigt bij de sonde, B weer bij de aarde.
+        window.reel = {
+          maak({ THREE, kit, scene, L, dur, data }) {
+            const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { lijn, cirkel, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
+            const VAR = "B";
+            const E = new THREE.Vector3(6, 0, 0), RE = 0.32;
+            const V = new THREE.Vector3(-70, 92, -96);                         // na Saturnus "headed north out of the ecliptic plane"
+            const zonG = maakZon({ straal: 0.9 }); scene.add(zonG);
+            [6, 31, 57].forEach((r, i) => scene.add(lijn(cirkel(r, 360), { kleur: KLEUR.teal, breedte: i ? 3 : 4, dicht: true, alpha: i ? 0.35 : 0.55 })));
+            const jup = kit.bol("mars", { straal: 0.9, seed: 7, zon: new THREE.Vector3(1, 0, 0) }); jup.position.set(-22, 0, -22); scene.add(jup);
+            const sat = kit.bol("maan", { straal: 0.75, seed: 9, zon: new THREE.Vector3(1, 0, 0) }); sat.position.set(40, 0, -40); scene.add(sat);
+            const zonRicht = E.clone().negate().normalize();
+            const aarde = textuurBol("aarde-nacht-2016.jpg", { straal: RE, zon: zonRicht, nacht: true, helder: 1.7 });
+            // NL naar de camera-kant (de nachtkant, weg van de zon)
+            const nl = breedteLengte(52.1, 5.2).normalize();
+            aarde.quaternion.setFromUnitVectors(nl, new THREE.Vector3(0.55, 0.5, 0.67).normalize());
+            aarde.position.copy(E); scene.add(aarde);
+            const lucht = atmosfeer({ binnen: RE, straal: RE * 1.035, zon: zonRicht, kleur: [0.5, 0.75, 1.0], dag: 1.0, voor: 1.4 }); lucht.position.copy(E); scene.add(lucht);
+            const nlPunt = (t) => nl.clone().applyQuaternion(aarde.quaternion).multiplyScalar(RE * 1.01).add(E);
+            // de sonde: schotel, romp, gieken, de gouden plaat
+            const sonde = new THREE.Group(); sonde.position.copy(V); scene.add(sonde);
+            const mat = new THREE.ShaderMaterial({ uniforms: { uL: { value: zonRicht.clone() } },
+              vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `uniform vec3 uL; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 Vv=normalize(cameraPosition-vW);
+                float d=max(dot(N,normalize(-vW)),0.0)*0.55+0.08; float r=pow(1.0-abs(dot(N,Vv)),3.0);
+                gl_FragColor=vec4(vec3(0.80,0.83,0.88)*(0.25+0.75*d) + vec3(0.37,0.85,0.92)*r*0.7, 1.0); }`, side: THREE.DoubleSide });
+            const prof = []; for (let i = 0; i <= 24; i++) { const r = i / 24; prof.push(new THREE.Vector2(r * 1.1, r * r * 0.38)); }
+            const schotelMat = new THREE.ShaderMaterial({ side: THREE.DoubleSide,
+              vertexShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
+                float voor = step(0.0, dot(N, V)); float r = vUv.y;
+                vec3 c = mix(vec3(0.20,0.22,0.27), vec3(0.78,0.81,0.86), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
+                c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.6;
+                c *= 1.0 - 0.55 * smoothstep(0.93, 0.97, r) * (1.0 - smoothstep(0.985, 1.0, r));
+                c += vec3(0.9,0.95,1.0) * exp(-pow((r - 0.62) * 40.0, 2.0)) * 0.12;
+                gl_FragColor = vec4(c, 1.0); }` });
+            const schotel = new THREE.Mesh(new THREE.LatheGeometry(prof, 96), schotelMat); schotel.position.y = 0.05; sonde.add(schotel);
+            const romp = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.24, 10), mat); romp.position.y = -0.17; sonde.add(romp);
+            const goud = new THREE.Mesh(new THREE.CircleGeometry(0.15, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.86, 0.68, 0.36), side: THREE.DoubleSide }));
+            goud.position.set(0, -0.17, 0.35); sonde.add(goud);
+            const glint = gloed("#FFD58A", { grootte: 0.9, scherp: 10, alpha: 0 }); glint.position.set(0, -0.17, 0.4); sonde.add(glint);
+            [[1, -0.1, 0.2, 3.0], [-1, -0.1, -0.3, 2.2], [0.2, -0.15, -1, 4.2]].forEach(([x, y, z, len]) => {
+              const d = new THREE.Vector3(x, y, z).normalize();
+              sonde.add(lijn([new THREE.Vector3(0, -0.17, 0), d.multiplyScalar(len).add(new THREE.Vector3(0, -0.17, 0))], { kleur: "#C9D6E8", breedte: 2.5, alpha: 0.9 }));
+            });
+            // de schotel (+Y) kijkt naar huis
+            const naarHuis = E.clone().sub(V).normalize();
+            sonde.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), naarHuis);
+            const opzij = new THREE.Vector3().crossVectors(naarHuis, new THREE.Vector3(0, 1, 0)).normalize();
+            const schuin = (a, b) => naarHuis.clone().multiplyScalar(a).add(opzij.clone().multiplyScalar(b)).add(new THREE.Vector3(0, 0.25, 0)).normalize().toArray();
+            // het bericht: een puls met een spoor van de aarde naar de sonde
+            const pad = []; for (let i = 0; i <= 200; i++) pad.push(new THREE.Vector3().lerpVectors(E, V, i / 200));
+            const spoor = lijn(pad, { kleur: KLEUR.teal, breedte: 7, basis: 0 }); scene.add(spoor);
+            const puls = gloed("#E8FBFF", { grootte: 1, scherp: 6, alpha: 0 }); scene.add(puls);
+            const vertrek = VAR === "A" ? L(1, 0.4) : 0.15, aankomst = L(7, 0.6);
+            const prog = (t) => { const x = clamp01((t - vertrek) / (aankomst - vertrek)); return x < 0.12 ? 0.12 * Math.pow(x / 0.12, 2.5) : x; };
+            const pulsPos = (t) => new THREE.Vector3().lerpVectors(nlPunt(t), V, prog(t));
+            // ── de camera ───────────────────────────────────────────────────────────────────────────
+            const omhoog = V.clone().sub(E).normalize();
+            const bijSonde = (afst, fov, rich = schuin(0.75, 0.6)) => ({ doel: V.toArray(), richting: rich, afstand: afst, fov });
+            const bijAarde = (afst, fov) => ({ doel: E.clone().add(omhoog.clone().multiplyScalar(RE * 0.9)).toArray(), richting: nl.clone().applyQuaternion(aarde.quaternion).add(new THREE.Vector3(0, -0.35, 0)).normalize().toArray(), afstand: afst, fov });
+            const metPuls = (afst, fov, rich) => ({ doel: (t) => pulsPos(t).toArray(), richting: rich, afstand: afst, fov });
+            const boven = { doel: [0, 0, 0], richting: [0.15, 1, 0.55], afstand: 190, fov: 46 };
+            const keys = [
+              ...(VAR === "A"
+                ? [{ t: 0, ...bijSonde(11, 34) }, { t: L(0, 1), ...bijSonde(9.5, 34), e: "lin" }, { t: L(1, 1), ...bijAarde(1.9, 38), el: "in" }]
+                : [{ t: 0, ...bijAarde(1.25, 36) }, { t: L(0, 1), ...bijAarde(1.6, 38), e: "lin" }, { t: L(1, 1), ...metPuls(14, 44, [0.4, -0.3, 1]), el: "in" }]),
+              { t: L(2, 1), ...boven, el: "in" },
+              { t: L(3, 1), doel: [-30, 40, -40], richting: [1, 0.05, 0.1], afstand: 210, fov: 48 },
+              { t: L(4, 1), ...bijSonde(6.5, 40), el: "in" },
+              { t: L(5, 1), ...bijSonde(5.2, 40, schuin(0.6, 0.8)) },
+              { t: L(6, 1), ...bijSonde(9.5, 44, schuin(0.85, -0.5)) },
+              { t: L(7, 1), ...bijSonde(5.5, 40, schuin(0.5, 0.85)) },
+              { t: L(8, 1), ...bijSonde(4.8, 34, schuin(0.2, 0.98)) },
+              ...(VAR === "A" ? [{ t: dur, ...bijSonde(11, 34) }] : [{ t: L(9, 0.35), ...bijAarde(1.4, 36), el: "in" }, { t: dur, ...bijAarde(1.25, 36), e: "lin" }]),
+            ];
+            const cam = logCam(keys);
+            return {
+              camera: (c, t) => { cam(c, t); c.far = 4000; c.updateProjectionMatrix(); },
+              update(t) {
+                aarde.rotation.z = 0;
+                const p = prog(t);
+                spoor.userData.set({ kop: p, len: VAR === "A" && t < L(1, 0.4) ? 1 : 0.35, alpha: VAR === "A" && t < L(1, 0.4) ? 0.55 * (1 - smooth((t - L(0, 1)) / 0.6)) : venster(t, vertrek, L(9, 0.5), 0.2, 0.6), basis: 0.08 });
+                puls.position.copy(pulsPos(t)); puls.scale.setScalar(0.12 + 2.0 * Math.sqrt(p));
+                puls.userData.set({ alpha: venster(t, vertrek, aankomst + 0.3, 0.15, 0.3) });
+                glint.userData.set({ alpha: venster(t, L(8, 0), L(9, 0.6), 0.4, 0.5) * (0.6 + 0.4 * Math.sin(t * 3) ** 2) });
+              },
+              overlay(t, ov) {
+                haakkaart(ov, t, L, data);
+                const k5 = venster(t, L(5, 0), L(5, 1) + 0.2, 0.25, 0.3);
+                if (k5 > 0) ov.tekst("afstand", 540, 430, { maat: 96, alpha: k5, teller: (t - L(5, 0)) / 0.7 });
+                const k4 = venster(t, L(4, 0.3), L(4, 1) + 0.1, 0.25, 0.3);
+                if (k4 > 0) ov.tekst("jaar", 540, 430, { maat: 120, alpha: k4, teller: (t - L(4, 0.3)) / 0.6 });
+                const k6 = venster(t, L(6, 0.1), L(7, 0.2), 0.25, 0.3);
+                if (k6 > 0) { ov.tekst("datum", 540, 420, { maat: 112, alpha: k6, schaal: 0.85 + 0.15 * easeOut((t - L(6, 0.1)) / 0.3) }); ov.tekst("lichtdag", 540, 530, { maat: 50, kleur: KLEUR.wit, alpha: k6, gloei: 10, gewicht: 700 }); }
+                const k8 = venster(t, L(8, 0.2), L(8, 1) + 0.3, 0.25, 0.3);
+                if (k8 > 0) ov.tekst("talen", 540, 430, { maat: 104, alpha: k8, teller: (t - L(8, 0.2)) / 0.5 });
+                const kv = venster(t, L(4, 0), L(7, 1), 0.3, 0.3);
+                if (kv > 0) { const [x, y, voor] = ov.proj(V); if (voor) ov.tekst("voyager", Math.max(200, Math.min(880, x)), Math.max(300, Math.min(1460, y - 230)), { maat: 46, kleur: KLEUR.wit, alpha: kv * 0.95, gloei: 10, gewicht: 700 }); }
+                const kb = VAR === "B" ? venster(t, 0, L(1, 0.5), 0.01, 0.4) : 0;
+                if (kb > 0) { const [x, y, voor] = ov.proj(nlPunt(t)); if (voor) ov.tekst("bericht", Math.max(200, Math.min(880, x)), Math.max(300, Math.min(1460, y - 120)), { maat: 46, kleur: KLEUR.teal, alpha: kb, gloei: 12, gewicht: 700 }); }
+              },
+              post: () => ({ bloei: 0.65, belichting: 0.95 }),
+              flits: (t) => 0.5 * venster(t, L(6, 0.15), L(6, 0.15) + 0.5, 0.06, 0.44),
+              stof: (t) => ({ schaal: 1, mate: 1 }),
+            };
+          },
+        };
+    instagram:
+      type: reel
+      caption: |-
+        Op 18 november staat Voyager 1 een hele lichtdag van de zon. Een bericht dat je nu stuurt, is ongeveer een dag onderweg.
+
+        Meer uitleg op nightgazer.space (link in bio)
+        Meer uitleg: link in bio
+
+        Bron: NASA. 3D-animatie van NightGazer op NASA-gegevens; aarde: NASA Earth Observatory (Black Marble).
+    hashtags:
+      - "#nightgazer"
+      - "#voyager1"
+      - "#nasa"
+    bronnen: *a1
+  - id: NG-9303
+    titel: "Vannacht, de hoorns van Venus (haak A: onmogelijk beeld)"
+    pijler: vannacht
+    template: reel-uitleg
+    status: idee
+    moment: 2026-11-12T17:30:00+01:00
+    platforms:
+      - instagram
+    data:
+      voorbeeld: true
+      onderwerp: De hoorns van Venus
+      lijnen:
+        - tekst: Dit is geen maan.
+          spreek: Dit is geen maan.
+        - tekst: Het is Venus, eind oktober.
+          spreek: Het is Venus, eind oktober.
+        - tekst: Ze stond bijna tussen de zon en ons.
+          spreek: Ze stond bijna tussen de zon en ons.
+        - tekst: Dan zie je vooral haar nachtkant.
+          spreek: Dan zie je vooral haar nachtkant.
+        - tekst: Maar haar dikke lucht buigt het zonlicht.
+          spreek: Maar haar dikke lucht buigt het zonlicht.
+        - tekst: Zo groeit de sikkel voorbij *180 graden*.
+          spreek: Zo groeit de sikkel voorbij honderdtachtig graden.
+        - tekst: Nu staat ze 's ochtends laag in het zuidoosten.
+          spreek: Nu staat ze 's ochtends laag in het zuidoosten.
+        - tekst: Met een verrekijker zie je de sikkel.
+          spreek: Met een verrekijker zie je de sikkel.
+        - tekst: Geen maan. Venus.
+          spreek: Geen maan. Venus.
+      script:
+        - beeld: Een gloeiende, bijna gesloten boog in het donker
+          camera: dichtbij, licht inzoomen
+        - beeld: Zon, Venus en aarde op een lijn, van opzij
+          camera: achteruit tot alle drie in beeld zijn
+        - beeld: Stralen buigen om de rand; de boog groeit voorbij 180 graden
+          camera: langs de rand
+        - beeld: Terug naar de horizon boven NL; zuidoost
+          camera: log-zoom naar de aarde
+        - beeld: Terug naar het beeld van het begin
+          camera: zoals frame 0
+      labels:
+        zon: Zon
+        venus: Venus
+        aarde: Aarde
+        graden: 180 GRADEN
+        zuidoost: Zuidoost
+      feiten:
+        - waarde: 180 graden
+          citaat: creating a glowing crescent arc that extends beyond 180 degrees
+          bron: https://science.nasa.gov/image-article/apod-29-october-2026-the-horns-of-venus/
+        - waarde: 180 GRADEN
+          citaat: creating a glowing crescent arc that extends beyond 180 degrees
+          bron: https://science.nasa.gov/image-article/apod-29-october-2026-the-horns-of-venus/
+      oproep: "Vannacht kijken: link in bio"
+      muziek:
+        prompt: delicate harp and soft glass bells over warm airy synth pads in F major, curious and luminous, steady flowing arpeggios, a bright shimmering lift in the middle, gentle dawn-like ending, no vocals, light bass, no low strings, clean mix, 96 bpm
+      scene: |
+        // ── Kit 2 (proef): bouwstenen die in fase 3 naar _gedeeld/huisstijl.js gaan. Hier inline, want data.scene mag niets importeren.
+        // atmosfeer(): een halo-schil met dagkant + voorwaartse verstrooiing (tegenlicht), en `spreiding` die de boog rond de rand sluit.
+        // planeet(): een bol met terminator, nachtkant en een binnenrand die meedoet met de atmosfeer. textuurBol(): een NASA-kaart.
+        // logCam(): een camera die afstand logaritmisch interpoleert (powers of ten) tussen houdingen.
+        const K2 = (THREE) => {
+          const NZ = `
+            float h3(vec3 p){ p=fract(p*0.3183099+.1); p*=17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+            float n3(vec3 x){ vec3 i=floor(x), f=fract(x); f=f*f*(3.0-2.0*f);
+              return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),f.x), mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),f.x),f.y),
+                         mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),f.x), mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),f.x),f.y), f.z); }
+            float fbm(vec3 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*n3(p); p*=2.03; a*=.5; } return s; }`;
+          const VS = `varying vec3 vW; varying vec3 vN; varying vec3 vP; varying vec2 vUv;
+            void main(){ vP=position; vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz;
+              gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`;
+          function atmosfeer({ binnen = 1, straal = 1.06, kleur = [1.0, 0.84, 0.6], dag = 0.4, voor = 2.6, zon }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uCol: { value: new THREE.Vector3(...kleur) }, uDag: { value: dag },
+                          uVoor: { value: voor }, uSpread: { value: 0 }, uA: { value: 1 }, uR: { value: binnen / straal } },
+              vertexShader: VS,
+              fragmentShader: `uniform vec3 uL; uniform vec3 uCol; uniform float uDag; uniform float uVoor; uniform float uSpread; uniform float uA; uniform float uR;
+                varying vec3 vW; varying vec3 vN;
+                void main(){
+                  vec3 V = normalize(cameraPosition - vW); vec3 N = normalize(vN);
+                  float d = clamp(-dot(N, V), 0.0, 1.0);
+                  float edge = sqrt(max(0.0, 1.0 - uR * uR));           // -dot(N,V) op de rand van de planeet
+                  float f = pow(clamp(d / max(edge, 1e-3), 0.0, 1.0), 3.0) * (1.0 - smoothstep(edge, edge + 0.08, d));
+                  float lp = dot(N, uL);
+                  float day = smoothstep(-0.25, 0.55, lp);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  float taps = mix(0.12 + 0.7 * clamp(uSpread - 0.3, 0.0, 1.0), 1.0, smoothstep(-0.9, 0.9, lq));
+                  vec3 c = uCol * f * (uDag * day + uVoor * fwd * boog * taps) * uA;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+              transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.BackSide,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, alpha, zon: z } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (alpha != null) mat.uniforms.uA.value = alpha;
+              if (z) mat.uniforms.uL.value.copy(z).normalize();
+            };
+            return m;
+          }
+          // soort: 'venus' (wolkendek), 'rots' (grijs). Terminator met zachte overgang, binnenrand warm bij tegenlicht.
+          function planeet(soort, { straal = 1, zon, seed = 1 }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uSeed: { value: seed }, uSpread: { value: 0 }, uLicht: { value: 1 } },
+              vertexShader: VS,
+              fragmentShader: NZ + `uniform vec3 uL; uniform float uSeed; uniform float uSpread; uniform float uLicht;
+                varying vec3 vW; varying vec3 vN; varying vec3 vP;
+                void main(){
+                  vec3 p = normalize(vP); vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  ${soort === "venus"
+                    ? `float b = fbm(vec3(p.x*2.0, p.y*7.0, p.z*2.0) + uSeed); vec3 alb = mix(vec3(0.80,0.72,0.55), vec3(0.97,0.92,0.80), b);`
+                    : `float b = fbm(p*4.0 + uSeed); vec3 alb = mix(vec3(0.36,0.37,0.40), vec3(0.66,0.66,0.68), b);`}
+                  float lp = dot(N, uL);
+                  float lit = smoothstep(-0.04, 0.32, lp);
+                  vec3 c = alb * lit * 1.15 * uLicht + vec3(0.006, 0.008, 0.018);
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  c += vec3(1.0, 0.82, 0.58) * pow(1.0 - mu, 6.0) * fwd * boog * mix(0.12, 1.0, smoothstep(-0.9, 0.9, lq)) * 1.4;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, licht } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (licht != null) mat.uniforms.uLicht.value = licht;
+            };
+            return m;
+          }
+          // Een bol met een NASA-kaart uit assets/scenes/texturen/ (licentie en credit in texturen.json).
+          // nacht: de kaart is licht (Black Marble): hij gloeit op de nachtkant en verdwijnt in de dag.
+          function textuurBol(bestand, { straal = 1, zon, nacht = false, helder = 2.2 }) {
+            window.THREE = window.THREE || THREE;          // HyperFrames wacht dan op de textuur vóór frame 0
+            const tex = new THREE.TextureLoader().load("assets/scenes/texturen/" + bestand);
+            tex.colorSpace = THREE.NoColorSpace; tex.anisotropy = 4;
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { kaart: { value: tex }, uL: { value: zon.clone().normalize() }, uNacht: { value: nacht ? 1 : 0 }, uHelder: { value: helder } },
+              vertexShader: VS,
+              fragmentShader: `uniform sampler2D kaart; uniform vec3 uL; uniform float uNacht; uniform float uHelder;
+                varying vec3 vW; varying vec3 vN; varying vec2 vUv;
+                void main(){
+                  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  vec3 t = texture2D(kaart, vUv).rgb;
+                  float lp = dot(N, uL);
+                  float dag = smoothstep(-0.08, 0.3, lp);
+                  vec3 c;
+                  if (uNacht > 0.5) {
+                    float l = dot(t, vec3(0.3, 0.55, 0.15));
+                    vec3 stad = mix(vec3(0.9, 0.86, 0.74), t, 0.35) * smoothstep(0.12, 0.7, l) * 0.9;   // warm wit, niet oranje (QA paars)
+                    vec3 grond = t * 0.3 + vec3(0.010, 0.018, 0.040);
+                    c = (grond + stad) * uHelder * (1.0 - dag) * 0.6 + vec3(0.05, 0.12, 0.25) * dag;
+                  } else {
+                    c = t * (0.06 + 0.94 * dag) * uHelder;
+                  }
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  c *= mix(0.55, 1.0, smoothstep(0.0, 0.5, mu));
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            return new THREE.Mesh(new THREE.SphereGeometry(straal, 192, 128), mat);
+          }
+          // Breedte/lengte → punt op de bol, met de UV-afbeelding van SphereGeometry (zoals scenes/aarde.js).
+          const RAD = Math.PI / 180;
+          const breedteLengte = (lat, lon, r = 1) => { const phi = (lon + 180) * RAD, c = Math.cos(lat * RAD); return new THREE.Vector3(-Math.cos(phi) * c * r, Math.sin(lat * RAD) * r, Math.sin(phi) * c * r); };
+          // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
+          // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
+          function logCam(keys) {
+            const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
+                           in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
+            const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
+            const v = (x, t) => (typeof x === "function" ? x(t) : x);
+            return (cam, t) => {
+              let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+              const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
+              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
+              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
+              cam.position.copy(doel).addScaledVector(dir, afst);
+              u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
+              cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
+              const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
+              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+            };
+          }
+          // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
+          function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
+            const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
+            if (a <= 0 || data.labels.haak1 === undefined) return;
+            const twee = data.labels.haak2 !== undefined;
+            ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
+            if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
+          }
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+        };
+
+        // Vannacht — de hoorns van Venus. Eén wereld: zon, Venus en de aarde op (bijna) één lijn.
+        // Variant A: frame 0 = de bijna gesloten boog ("Dit is geen maan."). Variant B: frame 0 = de ochtendhorizon boven NL met
+        // Venus laag in het zuidoosten ("Vrijdagochtend…"), dan een log-zoom naar de sikkel. Beide eindigen waar ze begonnen.
+        window.reel = {
+          maak({ THREE, kit, scene, L, dur, data, ov }) {
+            const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { lijn, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
+            const VAR = "A";
+            // ── de wereld ───────────────────────────────────────────────────────────────────────────────
+            const S = new THREE.Vector3(0, -9, -30), E = new THREE.Vector3(0, 0, 70), RE = 3;
+            const Ld = S.clone().normalize();                                   // van Venus naar de zon
+            const venus = planeet("venus", { straal: 1, zon: Ld, seed: 3 }); scene.add(venus);
+            const halo = atmosfeer({ straal: 1.045, zon: Ld, dag: 0.5, voor: 3.0 }); scene.add(halo);
+            const zonG = maakZon({ straal: 2.2 }); zonG.position.copy(S); scene.add(zonG);
+            // De aarde: Black Marble (NASA, publiek domein), met NL bovenaan en het zuidoosten richting Venus.
+            const ochtend = new THREE.Vector3(0.0, -0.32, -1).normalize();      // de zon net onder de horizon, in het zuidoosten
+            const aarde = textuurBol("aarde-nacht-2016.jpg", { straal: RE, zon: ochtend, nacht: true, helder: 1.0 });
+            const nl = breedteLengte(52.1, 5.2).normalize();
+            const q1 = new THREE.Quaternion().setFromUnitVectors(nl, new THREE.Vector3(0, 1, 0));
+            const noord = breedteLengte(53.1, 5.2).normalize().sub(nl).applyQuaternion(q1); noord.y = 0; noord.normalize();
+            const oost = breedteLengte(52.1, 6.5).normalize().sub(nl).applyQuaternion(q1); oost.y = 0; oost.normalize();
+            const zo = oost.clone().sub(noord).normalize();                     // zuidoost in het raakvlak
+            const q2 = new THREE.Quaternion().setFromUnitVectors(zo, new THREE.Vector3(0, 0, -1));
+            aarde.quaternion.copy(q2.multiply(q1)); aarde.position.copy(E); scene.add(aarde);
+            const lucht = atmosfeer({ binnen: RE, straal: RE * 1.03, zon: ochtend, kleur: [0.55, 0.78, 1.0], dag: 0.9, voor: 1.2 });
+            lucht.position.copy(E); lucht.userData.set({ spreiding: -0.2 }); scene.add(lucht);
+            const vGloed = gloed("#FFF1D6", { grootte: 3.2, scherp: 9, alpha: 0 }); scene.add(vGloed);
+            // de lijn zon – Venus – aarde en de lichtstralen die om de rand buigen
+            const as = lijn([S.clone().multiplyScalar(0.9), new THREE.Vector3(0, 0, 0), E.clone().setZ(E.z - RE * 1.4)], { kleur: KLEUR.teal, breedte: 5 });
+            scene.add(as);
+            const stralen = new THREE.Group(); scene.add(stralen);
+            for (let i = 0; i < 6; i++) {
+              const a = (i / 6) * Math.PI * 2 + 0.3, ring = new THREE.Vector3(Math.cos(a), Math.sin(a), 0);
+              const pts = [];
+              for (let k = 0; k <= 60; k++) {
+                const u = k / 60, z = lerp(-9, 9, u), r = 1.09 + 0.55 * Math.pow(Math.abs(z) / 9, 2);
+                pts.push(ring.clone().multiplyScalar(r).add(new THREE.Vector3(0, 0, z)).applyAxisAngle(new THREE.Vector3(1, 0, 0), Math.atan2(-Ld.y, -Ld.z) * 0));
+              }
+              const l = lijn(pts, { kleur: KLEUR.creme, breedte: 4 }); l.lookAt(Ld.clone().negate()); stralen.add(l);
+            }
+            // ── tijd: de boog ─────────────────────────────────────────────────────────────────────────
+            // A: frame 0 al bijna rond; B: pas na de zoom. Bij "nachtkant" klein, bij de onthulling voorbij 180 graden, slot = begin.
+            const spreidingVan = (t) => {
+              const begin = VAR === "A" ? 0.35 : 0.2;
+              const krimp = smooth((t - L(2, 0)) / (L(3, 1) - L(2, 0)));
+              const groei = smooth((t - L(4, 0.2)) / (L(5, 0.6) - L(4, 0.2)));
+              const slot = smooth((t - L(7, 0)) / (L(8, 0.5) - L(7, 0)));
+              return lerp(lerp(lerp(begin, -0.25, krimp), 0.92, groei), VAR === "A" ? 0.35 : 0.2, slot);
+            };
+            // ── de camera: één doorlopende beweging, log-afstand ─────────────────────────────────────────
+            const naarAarde = [0.05, 0.12, 1];                          // richting van Venus naar de camera (aardekant)
+            const sikkel = (afst, fov) => ({ doel: [0, -0.18, 0], richting: naarAarde, afstand: afst, fov });
+            const horizonCam = E.clone().add(new THREE.Vector3(0, RE + 0.11, 0));
+            const horizon = (fov, kijkY) => ({ doel: [0, 0, 0], kijk: [0, kijkY, 0], richting: horizonCam.clone().normalize().toArray(), afstand: horizonCam.length(), fov });
+            const zij = { doel: [0, -4, 20], richting: [1, 0.15, 0], afstand: 150, fov: 46, op: [0, 0, -1] };
+            const keys = VAR === "A" ? [
+              { t: 0, ...sikkel(7.6, 34) },
+              { t: L(0, 1), ...sikkel(6.9, 34), e: "lin" },
+              { t: L(1, 1), ...sikkel(8.4, 36) },
+              { t: L(2, 1), ...zij, e: "sine" },
+              { t: L(3, 1), ...zij, afstand: 140 },
+              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
+              { t: L(5, 1), ...sikkel(7.2, 36) },
+              { t: L(6, 1), ...horizon(28, -6), el: "in" },
+              { t: L(7, 1), ...horizon(24, -4) },
+              { t: dur, ...sikkel(7.6, 34), el: "out" },
+            ] : [
+              { t: 0, ...horizon(28, -6) },
+              { t: L(0, 1), ...horizon(25, -3.5), e: "lin" },
+              { t: L(1, 1), ...sikkel(8.4, 36), el: "in" },
+              { t: L(2, 1), ...zij, e: "sine" },
+              { t: L(3, 1), ...zij, afstand: 140 },
+              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
+              { t: L(5, 1), ...sikkel(7.2, 36) },
+              { t: L(6, 1), ...horizon(28, -6), el: "in" },
+              { t: L(7, 1), ...horizon(26, -4.5) },
+              { t: dur, ...horizon(24, -3.5), e: "lin" },
+            ];
+            const cam = logCam(keys);
+            let camRef = null;
+            return {
+              camera: (c, t) => { cam(c, t); camRef = c; },
+              update(t) {
+                const s = spreidingVan(t);
+                venus.userData.set({ spreiding: s }); halo.userData.set({ spreiding: s });
+                venus.rotation.y = t * 0.03;
+                const afst = camRef ? camRef.position.length() : 8;
+                vGloed.userData.set({ alpha: 0.9 * clamp01((afst - 20) / 25) });  // van ver: een felle stip
+                zonG.visible = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) > 0.01;
+                zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6)));
+                as.userData.set({ kop: smooth((t - L(2, 0.3)) / 1.0), len: 1, alpha: venster(t, L(2, 0.2), L(3, 1), 0.4, 0.5) });
+                stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0) - i * 0.07) / 1.2), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
+              },
+              overlay(t, ov) {
+                haakkaart(ov, t, L, data);
+                const lab = (k, p, dy, a, o = {}) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
+                  ov.tekst(k, Math.max(170, Math.min(910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
+                const w = venster(t, L(2, 0.5), L(3, 1), 0.3, 0.4);
+                lab("zon", S, -90, w); lab("venus", new THREE.Vector3(0, 0, 0), -80, w); lab("aarde", E, -110, w);
+                const g = venster(t, L(5, 0), L(6, 0.2), 0.25, 0.35);
+                if (g > 0) ov.tekst("graden", 540, 420, { maat: 120, alpha: g, schaal: 0.85 + 0.15 * easeOut((t - L(5, 0)) / 0.3), teller: (t - L(5, 0)) / 0.5 });
+                const h = Math.max(venster(t, L(6, 0.3), L(8, 1) + 1, 0.3, 0.3) * (VAR === "A" ? venster(t, 0, L(7, 1) + 0.2, 0.1, 0.4) : 1),
+                                   VAR === "B" ? venster(t, -1, L(0, 1) + 0.4, 0.01, 0.4) : 0);
+                if (h > 0 && camRef && camRef.position.length() > 30) {
+                  const [x, y] = ov.proj(new THREE.Vector3(0, 0, 0));
+                  ov.tekst("zuidoost", Math.max(200, Math.min(880, x)), Math.min(1480, y + 190), { maat: 44, kleur: KLEUR.teal, alpha: h, gloei: 12, gewicht: 700 });
+                  ov.dubbel(Math.max(200, Math.min(880, x)), Math.min(1480, y + 130), -Math.PI / 2, 40, { kleur: KLEUR.teal, alpha: h * 0.9 });
+                }
+              },
+              post: () => ({ bloei: 0.7, belichting: 0.95 }),
+              flits: (t) => 0.5 * venster(t, L(5, 0.35), L(5, 0.35) + 0.5, 0.06, 0.44),
+              onderwerp: () => (VAR === "A" ? [200, 380, 880, 1060] : [140, 300, 940, 1500]),
+            };
+          },
+        };
+    instagram:
+      type: reel
+      caption: |-
+        Venus heeft soms hoorns. Eind oktober stond ze bijna tussen de zon en de aarde, en haar dikke atmosfeer boog het zonlicht tot een boog van meer dan 180 graden.
+
+        Vannacht kijken: link in bio
+        Meer op nightgazer.space/sterrenkijken
+
+        Bron: NASA (APOD). 3D-animatie van NightGazer; aarde: NASA Earth Observatory (Black Marble).
+    hashtags:
+      - "#nightgazer"
+      - "#venus"
+      - "#sterrenkijken"
+    bronnen: &a2
+      - naam: "NASA, APOD 29 October 2026: The Horns of Venus"
+        url: https://science.nasa.gov/image-article/apod-29-october-2026-the-horns-of-venus/
+        licentie: NASA (publiek domein)
+        credit: NASA
+  - id: NG-9304
+    titel: "Vannacht, de hoorns van Venus (haak B: tijd en plek)"
+    pijler: vannacht
+    template: reel-uitleg
+    status: idee
+    moment: 2026-11-12T17:30:00+01:00
+    platforms:
+      - instagram
+    data:
+      voorbeeld: true
+      onderwerp: De hoorns van Venus
+      lijnen:
+        - tekst: Vrijdagochtend zie je Venus laag in het zuidoosten.
+          spreek: Vrijdagochtend zie je Venus laag in het zuidoosten.
+        - tekst: Maar eind oktober deed ze iets vreemds.
+          spreek: Maar eind oktober deed ze iets vreemds.
+        - tekst: Ze stond bijna tussen de zon en ons.
+          spreek: Ze stond bijna tussen de zon en ons.
+        - tekst: Dan zie je vooral haar nachtkant.
+          spreek: Dan zie je vooral haar nachtkant.
+        - tekst: Maar haar dikke lucht buigt het zonlicht.
+          spreek: Maar haar dikke lucht buigt het zonlicht.
+        - tekst: Zo groeit de sikkel voorbij *180 graden*.
+          spreek: Zo groeit de sikkel voorbij honderdtachtig graden.
+        - tekst: Nu staat ze 's ochtends laag in het zuidoosten.
+          spreek: Nu staat ze 's ochtends laag in het zuidoosten.
+        - tekst: Met een verrekijker zie je de sikkel.
+          spreek: Met een verrekijker zie je de sikkel.
+        - tekst: Vrijdagochtend, laag in het zuidoosten.
+          spreek: Vrijdagochtend, laag in het zuidoosten.
+      script:
+        - beeld: De ochtendhorizon boven Nederland; een fel punt laag in het zuidoosten
+          camera: dichtbij, licht inzoomen
+        - beeld: Zon, Venus en aarde op een lijn, van opzij
+          camera: achteruit tot alle drie in beeld zijn
+        - beeld: Stralen buigen om de rand; de boog groeit voorbij 180 graden
+          camera: langs de rand
+        - beeld: Terug naar de horizon boven NL; zuidoost
+          camera: log-zoom naar de aarde
+        - beeld: Terug naar het beeld van het begin
+          camera: zoals frame 0
+      labels:
+        haak1: "Vrijdagochtend: Venus"
+        haak2: laag in het zuidoosten
+        zon: Zon
+        venus: Venus
+        aarde: Aarde
+        graden: 180 GRADEN
+        zuidoost: Zuidoost
+      feiten:
+        - waarde: 180 graden
+          citaat: creating a glowing crescent arc that extends beyond 180 degrees
+          bron: https://science.nasa.gov/image-article/apod-29-october-2026-the-horns-of-venus/
+        - waarde: 180 GRADEN
+          citaat: creating a glowing crescent arc that extends beyond 180 degrees
+          bron: https://science.nasa.gov/image-article/apod-29-october-2026-the-horns-of-venus/
+      oproep: "Vannacht kijken: link in bio"
+      muziek:
+        prompt: delicate harp and soft glass bells over warm airy synth pads in F major, curious and luminous, steady flowing arpeggios, a bright shimmering lift in the middle, gentle dawn-like ending, no vocals, light bass, no low strings, clean mix, 96 bpm
+      scene: |
+        // ── Kit 2 (proef): bouwstenen die in fase 3 naar _gedeeld/huisstijl.js gaan. Hier inline, want data.scene mag niets importeren.
+        // atmosfeer(): een halo-schil met dagkant + voorwaartse verstrooiing (tegenlicht), en `spreiding` die de boog rond de rand sluit.
+        // planeet(): een bol met terminator, nachtkant en een binnenrand die meedoet met de atmosfeer. textuurBol(): een NASA-kaart.
+        // logCam(): een camera die afstand logaritmisch interpoleert (powers of ten) tussen houdingen.
+        const K2 = (THREE) => {
+          const NZ = `
+            float h3(vec3 p){ p=fract(p*0.3183099+.1); p*=17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+            float n3(vec3 x){ vec3 i=floor(x), f=fract(x); f=f*f*(3.0-2.0*f);
+              return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),f.x), mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),f.x),f.y),
+                         mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),f.x), mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),f.x),f.y), f.z); }
+            float fbm(vec3 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*n3(p); p*=2.03; a*=.5; } return s; }`;
+          const VS = `varying vec3 vW; varying vec3 vN; varying vec3 vP; varying vec2 vUv;
+            void main(){ vP=position; vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz;
+              gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`;
+          function atmosfeer({ binnen = 1, straal = 1.06, kleur = [1.0, 0.84, 0.6], dag = 0.4, voor = 2.6, zon }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uCol: { value: new THREE.Vector3(...kleur) }, uDag: { value: dag },
+                          uVoor: { value: voor }, uSpread: { value: 0 }, uA: { value: 1 }, uR: { value: binnen / straal } },
+              vertexShader: VS,
+              fragmentShader: `uniform vec3 uL; uniform vec3 uCol; uniform float uDag; uniform float uVoor; uniform float uSpread; uniform float uA; uniform float uR;
+                varying vec3 vW; varying vec3 vN;
+                void main(){
+                  vec3 V = normalize(cameraPosition - vW); vec3 N = normalize(vN);
+                  float d = clamp(-dot(N, V), 0.0, 1.0);
+                  float edge = sqrt(max(0.0, 1.0 - uR * uR));           // -dot(N,V) op de rand van de planeet
+                  float f = pow(clamp(d / max(edge, 1e-3), 0.0, 1.0), 3.0) * (1.0 - smoothstep(edge, edge + 0.08, d));
+                  float lp = dot(N, uL);
+                  float day = smoothstep(-0.25, 0.55, lp);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  float taps = mix(0.12 + 0.7 * clamp(uSpread - 0.3, 0.0, 1.0), 1.0, smoothstep(-0.9, 0.9, lq));
+                  vec3 c = uCol * f * (uDag * day + uVoor * fwd * boog * taps) * uA;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+              transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.BackSide,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, alpha, zon: z } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (alpha != null) mat.uniforms.uA.value = alpha;
+              if (z) mat.uniforms.uL.value.copy(z).normalize();
+            };
+            return m;
+          }
+          // soort: 'venus' (wolkendek), 'rots' (grijs). Terminator met zachte overgang, binnenrand warm bij tegenlicht.
+          function planeet(soort, { straal = 1, zon, seed = 1 }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uSeed: { value: seed }, uSpread: { value: 0 }, uLicht: { value: 1 } },
+              vertexShader: VS,
+              fragmentShader: NZ + `uniform vec3 uL; uniform float uSeed; uniform float uSpread; uniform float uLicht;
+                varying vec3 vW; varying vec3 vN; varying vec3 vP;
+                void main(){
+                  vec3 p = normalize(vP); vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  ${soort === "venus"
+                    ? `float b = fbm(vec3(p.x*2.0, p.y*7.0, p.z*2.0) + uSeed); vec3 alb = mix(vec3(0.80,0.72,0.55), vec3(0.97,0.92,0.80), b);`
+                    : `float b = fbm(p*4.0 + uSeed); vec3 alb = mix(vec3(0.36,0.37,0.40), vec3(0.66,0.66,0.68), b);`}
+                  float lp = dot(N, uL);
+                  float lit = smoothstep(-0.04, 0.32, lp);
+                  vec3 c = alb * lit * 1.15 * uLicht + vec3(0.006, 0.008, 0.018);
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  c += vec3(1.0, 0.82, 0.58) * pow(1.0 - mu, 6.0) * fwd * boog * mix(0.12, 1.0, smoothstep(-0.9, 0.9, lq)) * 1.4;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, licht } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (licht != null) mat.uniforms.uLicht.value = licht;
+            };
+            return m;
+          }
+          // Een bol met een NASA-kaart uit assets/scenes/texturen/ (licentie en credit in texturen.json).
+          // nacht: de kaart is licht (Black Marble): hij gloeit op de nachtkant en verdwijnt in de dag.
+          function textuurBol(bestand, { straal = 1, zon, nacht = false, helder = 2.2 }) {
+            window.THREE = window.THREE || THREE;          // HyperFrames wacht dan op de textuur vóór frame 0
+            const tex = new THREE.TextureLoader().load("assets/scenes/texturen/" + bestand);
+            tex.colorSpace = THREE.NoColorSpace; tex.anisotropy = 4;
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { kaart: { value: tex }, uL: { value: zon.clone().normalize() }, uNacht: { value: nacht ? 1 : 0 }, uHelder: { value: helder } },
+              vertexShader: VS,
+              fragmentShader: `uniform sampler2D kaart; uniform vec3 uL; uniform float uNacht; uniform float uHelder;
+                varying vec3 vW; varying vec3 vN; varying vec2 vUv;
+                void main(){
+                  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  vec3 t = texture2D(kaart, vUv).rgb;
+                  float lp = dot(N, uL);
+                  float dag = smoothstep(-0.08, 0.3, lp);
+                  vec3 c;
+                  if (uNacht > 0.5) {
+                    float l = dot(t, vec3(0.3, 0.55, 0.15));
+                    vec3 stad = mix(vec3(0.9, 0.86, 0.74), t, 0.35) * smoothstep(0.12, 0.7, l) * 0.9;   // warm wit, niet oranje (QA paars)
+                    vec3 grond = t * 0.3 + vec3(0.010, 0.018, 0.040);
+                    c = (grond + stad) * uHelder * (1.0 - dag) * 0.6 + vec3(0.05, 0.12, 0.25) * dag;
+                  } else {
+                    c = t * (0.06 + 0.94 * dag) * uHelder;
+                  }
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  c *= mix(0.55, 1.0, smoothstep(0.0, 0.5, mu));
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            return new THREE.Mesh(new THREE.SphereGeometry(straal, 192, 128), mat);
+          }
+          // Breedte/lengte → punt op de bol, met de UV-afbeelding van SphereGeometry (zoals scenes/aarde.js).
+          const RAD = Math.PI / 180;
+          const breedteLengte = (lat, lon, r = 1) => { const phi = (lon + 180) * RAD, c = Math.cos(lat * RAD); return new THREE.Vector3(-Math.cos(phi) * c * r, Math.sin(lat * RAD) * r, Math.sin(phi) * c * r); };
+          // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
+          // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
+          function logCam(keys) {
+            const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
+                           in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
+            const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
+            const v = (x, t) => (typeof x === "function" ? x(t) : x);
+            return (cam, t) => {
+              let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+              const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
+              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
+              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
+              cam.position.copy(doel).addScaledVector(dir, afst);
+              u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
+              cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
+              const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
+              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+            };
+          }
+          // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
+          function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
+            const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
+            if (a <= 0 || data.labels.haak1 === undefined) return;
+            const twee = data.labels.haak2 !== undefined;
+            ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
+            if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
+          }
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+        };
+
+        // Vannacht — de hoorns van Venus. Eén wereld: zon, Venus en de aarde op (bijna) één lijn.
+        // Variant A: frame 0 = de bijna gesloten boog ("Dit is geen maan."). Variant B: frame 0 = de ochtendhorizon boven NL met
+        // Venus laag in het zuidoosten ("Vrijdagochtend…"), dan een log-zoom naar de sikkel. Beide eindigen waar ze begonnen.
+        window.reel = {
+          maak({ THREE, kit, scene, L, dur, data, ov }) {
+            const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { lijn, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
+            const VAR = "B";
+            // ── de wereld ───────────────────────────────────────────────────────────────────────────────
+            const S = new THREE.Vector3(0, -9, -30), E = new THREE.Vector3(0, 0, 70), RE = 3;
+            const Ld = S.clone().normalize();                                   // van Venus naar de zon
+            const venus = planeet("venus", { straal: 1, zon: Ld, seed: 3 }); scene.add(venus);
+            const halo = atmosfeer({ straal: 1.045, zon: Ld, dag: 0.5, voor: 3.0 }); scene.add(halo);
+            const zonG = maakZon({ straal: 2.2 }); zonG.position.copy(S); scene.add(zonG);
+            // De aarde: Black Marble (NASA, publiek domein), met NL bovenaan en het zuidoosten richting Venus.
+            const ochtend = new THREE.Vector3(0.0, -0.32, -1).normalize();      // de zon net onder de horizon, in het zuidoosten
+            const aarde = textuurBol("aarde-nacht-2016.jpg", { straal: RE, zon: ochtend, nacht: true, helder: 1.0 });
+            const nl = breedteLengte(52.1, 5.2).normalize();
+            const q1 = new THREE.Quaternion().setFromUnitVectors(nl, new THREE.Vector3(0, 1, 0));
+            const noord = breedteLengte(53.1, 5.2).normalize().sub(nl).applyQuaternion(q1); noord.y = 0; noord.normalize();
+            const oost = breedteLengte(52.1, 6.5).normalize().sub(nl).applyQuaternion(q1); oost.y = 0; oost.normalize();
+            const zo = oost.clone().sub(noord).normalize();                     // zuidoost in het raakvlak
+            const q2 = new THREE.Quaternion().setFromUnitVectors(zo, new THREE.Vector3(0, 0, -1));
+            aarde.quaternion.copy(q2.multiply(q1)); aarde.position.copy(E); scene.add(aarde);
+            const lucht = atmosfeer({ binnen: RE, straal: RE * 1.03, zon: ochtend, kleur: [0.55, 0.78, 1.0], dag: 0.9, voor: 1.2 });
+            lucht.position.copy(E); lucht.userData.set({ spreiding: -0.2 }); scene.add(lucht);
+            const vGloed = gloed("#FFF1D6", { grootte: 3.2, scherp: 9, alpha: 0 }); scene.add(vGloed);
+            // de lijn zon – Venus – aarde en de lichtstralen die om de rand buigen
+            const as = lijn([S.clone().multiplyScalar(0.9), new THREE.Vector3(0, 0, 0), E.clone().setZ(E.z - RE * 1.4)], { kleur: KLEUR.teal, breedte: 5 });
+            scene.add(as);
+            const stralen = new THREE.Group(); scene.add(stralen);
+            for (let i = 0; i < 6; i++) {
+              const a = (i / 6) * Math.PI * 2 + 0.3, ring = new THREE.Vector3(Math.cos(a), Math.sin(a), 0);
+              const pts = [];
+              for (let k = 0; k <= 60; k++) {
+                const u = k / 60, z = lerp(-9, 9, u), r = 1.09 + 0.55 * Math.pow(Math.abs(z) / 9, 2);
+                pts.push(ring.clone().multiplyScalar(r).add(new THREE.Vector3(0, 0, z)).applyAxisAngle(new THREE.Vector3(1, 0, 0), Math.atan2(-Ld.y, -Ld.z) * 0));
+              }
+              const l = lijn(pts, { kleur: KLEUR.creme, breedte: 4 }); l.lookAt(Ld.clone().negate()); stralen.add(l);
+            }
+            // ── tijd: de boog ─────────────────────────────────────────────────────────────────────────
+            // A: frame 0 al bijna rond; B: pas na de zoom. Bij "nachtkant" klein, bij de onthulling voorbij 180 graden, slot = begin.
+            const spreidingVan = (t) => {
+              const begin = VAR === "A" ? 0.35 : 0.2;
+              const krimp = smooth((t - L(2, 0)) / (L(3, 1) - L(2, 0)));
+              const groei = smooth((t - L(4, 0.2)) / (L(5, 0.6) - L(4, 0.2)));
+              const slot = smooth((t - L(7, 0)) / (L(8, 0.5) - L(7, 0)));
+              return lerp(lerp(lerp(begin, -0.25, krimp), 0.92, groei), VAR === "A" ? 0.35 : 0.2, slot);
+            };
+            // ── de camera: één doorlopende beweging, log-afstand ─────────────────────────────────────────
+            const naarAarde = [0.05, 0.12, 1];                          // richting van Venus naar de camera (aardekant)
+            const sikkel = (afst, fov) => ({ doel: [0, -0.18, 0], richting: naarAarde, afstand: afst, fov });
+            const horizonCam = E.clone().add(new THREE.Vector3(0, RE + 0.11, 0));
+            const horizon = (fov, kijkY) => ({ doel: [0, 0, 0], kijk: [0, kijkY, 0], richting: horizonCam.clone().normalize().toArray(), afstand: horizonCam.length(), fov });
+            const zij = { doel: [0, -4, 20], richting: [1, 0.15, 0], afstand: 150, fov: 46, op: [0, 0, -1] };
+            const keys = VAR === "A" ? [
+              { t: 0, ...sikkel(7.6, 34) },
+              { t: L(0, 1), ...sikkel(6.9, 34), e: "lin" },
+              { t: L(1, 1), ...sikkel(8.4, 36) },
+              { t: L(2, 1), ...zij, e: "sine" },
+              { t: L(3, 1), ...zij, afstand: 140 },
+              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
+              { t: L(5, 1), ...sikkel(7.2, 36) },
+              { t: L(6, 1), ...horizon(28, -6), el: "in" },
+              { t: L(7, 1), ...horizon(24, -4) },
+              { t: dur, ...sikkel(7.6, 34), el: "out" },
+            ] : [
+              { t: 0, ...horizon(28, -6) },
+              { t: L(0, 1), ...horizon(25, -3.5), e: "lin" },
+              { t: L(1, 1), ...sikkel(8.4, 36), el: "in" },
+              { t: L(2, 1), ...zij, e: "sine" },
+              { t: L(3, 1), ...zij, afstand: 140 },
+              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
+              { t: L(5, 1), ...sikkel(7.2, 36) },
+              { t: L(6, 1), ...horizon(28, -6), el: "in" },
+              { t: L(7, 1), ...horizon(26, -4.5) },
+              { t: dur, ...horizon(24, -3.5), e: "lin" },
+            ];
+            const cam = logCam(keys);
+            let camRef = null;
+            return {
+              camera: (c, t) => { cam(c, t); camRef = c; },
+              update(t) {
+                const s = spreidingVan(t);
+                venus.userData.set({ spreiding: s }); halo.userData.set({ spreiding: s });
+                venus.rotation.y = t * 0.03;
+                const afst = camRef ? camRef.position.length() : 8;
+                vGloed.userData.set({ alpha: 0.9 * clamp01((afst - 20) / 25) });  // van ver: een felle stip
+                zonG.visible = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) > 0.01;
+                zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6)));
+                as.userData.set({ kop: smooth((t - L(2, 0.3)) / 1.0), len: 1, alpha: venster(t, L(2, 0.2), L(3, 1), 0.4, 0.5) });
+                stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0) - i * 0.07) / 1.2), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
+              },
+              overlay(t, ov) {
+                haakkaart(ov, t, L, data);
+                const lab = (k, p, dy, a, o = {}) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
+                  ov.tekst(k, Math.max(170, Math.min(910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
+                const w = venster(t, L(2, 0.5), L(3, 1), 0.3, 0.4);
+                lab("zon", S, -90, w); lab("venus", new THREE.Vector3(0, 0, 0), -80, w); lab("aarde", E, -110, w);
+                const g = venster(t, L(5, 0), L(6, 0.2), 0.25, 0.35);
+                if (g > 0) ov.tekst("graden", 540, 420, { maat: 120, alpha: g, schaal: 0.85 + 0.15 * easeOut((t - L(5, 0)) / 0.3), teller: (t - L(5, 0)) / 0.5 });
+                const h = Math.max(venster(t, L(6, 0.3), L(8, 1) + 1, 0.3, 0.3) * (VAR === "A" ? venster(t, 0, L(7, 1) + 0.2, 0.1, 0.4) : 1),
+                                   VAR === "B" ? venster(t, -1, L(0, 1) + 0.4, 0.01, 0.4) : 0);
+                if (h > 0 && camRef && camRef.position.length() > 30) {
+                  const [x, y] = ov.proj(new THREE.Vector3(0, 0, 0));
+                  ov.tekst("zuidoost", Math.max(200, Math.min(880, x)), Math.min(1480, y + 190), { maat: 44, kleur: KLEUR.teal, alpha: h, gloei: 12, gewicht: 700 });
+                  ov.dubbel(Math.max(200, Math.min(880, x)), Math.min(1480, y + 130), -Math.PI / 2, 40, { kleur: KLEUR.teal, alpha: h * 0.9 });
+                }
+              },
+              post: () => ({ bloei: 0.7, belichting: 0.95 }),
+              flits: (t) => 0.5 * venster(t, L(5, 0.35), L(5, 0.35) + 0.5, 0.06, 0.44),
+              onderwerp: () => (VAR === "A" ? [200, 380, 880, 1060] : [140, 300, 940, 1500]),
+            };
+          },
+        };
+    instagram:
+      type: reel
+      caption: |-
+        Venus heeft soms hoorns. Eind oktober stond ze bijna tussen de zon en de aarde, en haar dikke atmosfeer boog het zonlicht tot een boog van meer dan 180 graden.
+
+        Vannacht kijken: link in bio
+        Meer op nightgazer.space/sterrenkijken
+
+        Bron: NASA (APOD). 3D-animatie van NightGazer; aarde: NASA Earth Observatory (Black Marble).
+    hashtags:
+      - "#nightgazer"
+      - "#venus"
+      - "#sterrenkijken"
+    bronnen: *a2
+  - id: NG-9305
+    titel: "Lancering, een radarsatelliet (haak A: tegen-intuïtief)"
+    pijler: lancering
+    template: reel-uitleg
+    status: idee
+    moment: 2026-11-12T17:30:00+01:00
+    platforms:
+      - instagram
+    data:
+      voorbeeld: true
+      onderwerp: Radarsatelliet
+      lijnen:
+        - tekst: Deze satelliet kijkt dwars door wolken heen.
+          spreek: Deze satelliet kijkt dwars door wolken heen.
+        - tekst: Deze week brengt een Electron hem omhoog.
+          spreek: Deze week brengt een Electron hem omhoog.
+        - tekst: Naar een lage baan rond de aarde.
+          spreek: Naar een lage baan rond de aarde.
+        - tekst: Daar vouwt hij een plat paneel uit.
+          spreek: Daar vouwt hij een plat paneel uit.
+        - tekst: Hij stuurt pulsen naar de grond,
+          spreek: Hij stuurt pulsen naar de grond,
+        - tekst: en vangt de echo op.
+          spreek: en vangt de echo op.
+        - tekst: Wolken houden die pulsen niet tegen.
+          spreek: Wolken houden die pulsen niet tegen.
+        - tekst: Zo groeit er regel voor regel een beeld.
+          spreek: Zo groeit er regel voor regel een beeld.
+        - tekst: Dag en nacht.
+          spreek: Dag en nacht.
+        - tekst: Dwars door de wolken.
+          spreek: Dwars door de wolken.
+      script:
+        - beeld: De satelliet boven een wolkenzee bij nacht; een puls gaat al omlaag
+          camera: dichtbij, licht uitzoomen
+        - beeld: De raket klimt naar een lage baan
+          camera: mee omhoog
+        - beeld: Het paneel vouwt uit; pulsen omlaag, echo omhoog
+          camera: naast de satelliet, dan eronder
+        - beeld: "Door een gat in de wolken: het radarbeeld groeit regel voor regel"
+          camera: omlaag door de wolken
+        - beeld: Terug boven de wolken, zoals het begin
+          camera: omhoog naar frame 0
+      labels:
+        haak1: Deze satelliet kijkt
+        haak2: dwars door wolken heen
+        raket: Electron
+        satelliet: Radarsatelliet
+        puls: Radarpuls
+        echo: Echo
+        baan: "Lage baan: 2.000 km of lager"
+      feiten:
+        - waarde: 2.000 km
+          citaat: Low Earth orbit encompasses Earth-centered orbits with an altitude of 1,200 miles (2,000 km) or less.
+          bron: https://www.nasa.gov/humans-in-space/leo-economy-frequently-asked-questions/
+      oproep: "Volg de lancering: link in bio"
+      muziek:
+        prompt: soft sonar-like high pings and airy synth pads in G major, calm and curious, rhythmic echoing plucks, steady pulse, a bright lift in the middle, no vocals, no drums, light bass, no low strings, clean mix, 100 bpm
+      scene: |
+        // ── Kit 2 (proef): bouwstenen die in fase 3 naar _gedeeld/huisstijl.js gaan. Hier inline, want data.scene mag niets importeren.
+        // atmosfeer(): een halo-schil met dagkant + voorwaartse verstrooiing (tegenlicht), en `spreiding` die de boog rond de rand sluit.
+        // planeet(): een bol met terminator, nachtkant en een binnenrand die meedoet met de atmosfeer. textuurBol(): een NASA-kaart.
+        // logCam(): een camera die afstand logaritmisch interpoleert (powers of ten) tussen houdingen.
+        const K2 = (THREE) => {
+          const NZ = `
+            float h3(vec3 p){ p=fract(p*0.3183099+.1); p*=17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+            float n3(vec3 x){ vec3 i=floor(x), f=fract(x); f=f*f*(3.0-2.0*f);
+              return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),f.x), mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),f.x),f.y),
+                         mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),f.x), mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),f.x),f.y), f.z); }
+            float fbm(vec3 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*n3(p); p*=2.03; a*=.5; } return s; }`;
+          const VS = `varying vec3 vW; varying vec3 vN; varying vec3 vP; varying vec2 vUv;
+            void main(){ vP=position; vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz;
+              gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`;
+          function atmosfeer({ binnen = 1, straal = 1.06, kleur = [1.0, 0.84, 0.6], dag = 0.4, voor = 2.6, zon }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uCol: { value: new THREE.Vector3(...kleur) }, uDag: { value: dag },
+                          uVoor: { value: voor }, uSpread: { value: 0 }, uA: { value: 1 }, uR: { value: binnen / straal } },
+              vertexShader: VS,
+              fragmentShader: `uniform vec3 uL; uniform vec3 uCol; uniform float uDag; uniform float uVoor; uniform float uSpread; uniform float uA; uniform float uR;
+                varying vec3 vW; varying vec3 vN;
+                void main(){
+                  vec3 V = normalize(cameraPosition - vW); vec3 N = normalize(vN);
+                  float d = clamp(-dot(N, V), 0.0, 1.0);
+                  float edge = sqrt(max(0.0, 1.0 - uR * uR));           // -dot(N,V) op de rand van de planeet
+                  float f = pow(clamp(d / max(edge, 1e-3), 0.0, 1.0), 3.0) * (1.0 - smoothstep(edge, edge + 0.08, d));
+                  float lp = dot(N, uL);
+                  float day = smoothstep(-0.25, 0.55, lp);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  float taps = mix(0.12 + 0.7 * clamp(uSpread - 0.3, 0.0, 1.0), 1.0, smoothstep(-0.9, 0.9, lq));
+                  vec3 c = uCol * f * (uDag * day + uVoor * fwd * boog * taps) * uA;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+              transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.BackSide,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, alpha, zon: z } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (alpha != null) mat.uniforms.uA.value = alpha;
+              if (z) mat.uniforms.uL.value.copy(z).normalize();
+            };
+            return m;
+          }
+          // soort: 'venus' (wolkendek), 'rots' (grijs). Terminator met zachte overgang, binnenrand warm bij tegenlicht.
+          function planeet(soort, { straal = 1, zon, seed = 1 }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uSeed: { value: seed }, uSpread: { value: 0 }, uLicht: { value: 1 } },
+              vertexShader: VS,
+              fragmentShader: NZ + `uniform vec3 uL; uniform float uSeed; uniform float uSpread; uniform float uLicht;
+                varying vec3 vW; varying vec3 vN; varying vec3 vP;
+                void main(){
+                  vec3 p = normalize(vP); vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  ${soort === "venus"
+                    ? `float b = fbm(vec3(p.x*2.0, p.y*7.0, p.z*2.0) + uSeed); vec3 alb = mix(vec3(0.80,0.72,0.55), vec3(0.97,0.92,0.80), b);`
+                    : `float b = fbm(p*4.0 + uSeed); vec3 alb = mix(vec3(0.36,0.37,0.40), vec3(0.66,0.66,0.68), b);`}
+                  float lp = dot(N, uL);
+                  float lit = smoothstep(-0.04, 0.32, lp);
+                  vec3 c = alb * lit * 1.15 * uLicht + vec3(0.006, 0.008, 0.018);
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  c += vec3(1.0, 0.82, 0.58) * pow(1.0 - mu, 6.0) * fwd * boog * mix(0.12, 1.0, smoothstep(-0.9, 0.9, lq)) * 1.4;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, licht } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (licht != null) mat.uniforms.uLicht.value = licht;
+            };
+            return m;
+          }
+          // Een bol met een NASA-kaart uit assets/scenes/texturen/ (licentie en credit in texturen.json).
+          // nacht: de kaart is licht (Black Marble): hij gloeit op de nachtkant en verdwijnt in de dag.
+          function textuurBol(bestand, { straal = 1, zon, nacht = false, helder = 2.2 }) {
+            window.THREE = window.THREE || THREE;          // HyperFrames wacht dan op de textuur vóór frame 0
+            const tex = new THREE.TextureLoader().load("assets/scenes/texturen/" + bestand);
+            tex.colorSpace = THREE.NoColorSpace; tex.anisotropy = 4;
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { kaart: { value: tex }, uL: { value: zon.clone().normalize() }, uNacht: { value: nacht ? 1 : 0 }, uHelder: { value: helder } },
+              vertexShader: VS,
+              fragmentShader: `uniform sampler2D kaart; uniform vec3 uL; uniform float uNacht; uniform float uHelder;
+                varying vec3 vW; varying vec3 vN; varying vec2 vUv;
+                void main(){
+                  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  vec3 t = texture2D(kaart, vUv).rgb;
+                  float lp = dot(N, uL);
+                  float dag = smoothstep(-0.08, 0.3, lp);
+                  vec3 c;
+                  if (uNacht > 0.5) {
+                    float l = dot(t, vec3(0.3, 0.55, 0.15));
+                    vec3 stad = mix(vec3(0.9, 0.86, 0.74), t, 0.35) * smoothstep(0.12, 0.7, l) * 0.9;   // warm wit, niet oranje (QA paars)
+                    vec3 grond = t * 0.3 + vec3(0.010, 0.018, 0.040);
+                    c = (grond + stad) * uHelder * (1.0 - dag) * 0.6 + vec3(0.05, 0.12, 0.25) * dag;
+                  } else {
+                    c = t * (0.06 + 0.94 * dag) * uHelder;
+                  }
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  c *= mix(0.55, 1.0, smoothstep(0.0, 0.5, mu));
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            return new THREE.Mesh(new THREE.SphereGeometry(straal, 192, 128), mat);
+          }
+          // Breedte/lengte → punt op de bol, met de UV-afbeelding van SphereGeometry (zoals scenes/aarde.js).
+          const RAD = Math.PI / 180;
+          const breedteLengte = (lat, lon, r = 1) => { const phi = (lon + 180) * RAD, c = Math.cos(lat * RAD); return new THREE.Vector3(-Math.cos(phi) * c * r, Math.sin(lat * RAD) * r, Math.sin(phi) * c * r); };
+          // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
+          // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
+          function logCam(keys) {
+            const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
+                           in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
+            const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
+            const v = (x, t) => (typeof x === "function" ? x(t) : x);
+            return (cam, t) => {
+              let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+              const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
+              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
+              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
+              cam.position.copy(doel).addScaledVector(dir, afst);
+              u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
+              cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
+              const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
+              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+            };
+          }
+          // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
+          function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
+            const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
+            if (a <= 0 || data.labels.haak1 === undefined) return;
+            const twee = data.labels.haak2 !== undefined;
+            ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
+            if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
+          }
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+        };
+
+        // Lancering — een radarsatelliet die door wolken kijkt (Electron, iQPS). Eén wereld: een wolkendek bij nacht in lagen
+        // (goedkope volumetrie: vijf fbm-lagen met parallax, maanlicht op de toppen), de grond eronder, de satelliet erboven.
+        // Variant A: frame 0 = de satelliet boven de wolkenzee, eerste puls al onderweg. Variant B: frame 0 = de raket die door
+        // het wolkendek breekt. Beide eindigen boven de wolken, waar ze begonnen.
+        window.reel = {
+          maak({ THREE, kit, scene, L, dur, data }) {
+            const { logCam, haakkaart, NZ } = K2(THREE);
+            const { lijn, cirkel, gloed, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
+            const VAR = "A";
+            const WOLK = 0, GROND = -2.2, BAAN = 5.5;
+            // ── het wolkendek: lagen met dezelfde ruis, elk een eigen dichtheid (licht van boven) ────────────────
+            const lagen = [];
+            for (let i = 0; i < 6; i++) {
+              const h = WOLK - 0.42 + i * 0.14;
+              const m = new THREE.ShaderMaterial({
+                uniforms: { uT: { value: 0 }, uH: { value: i / 5 }, uGat: { value: 0 }, uGatP: { value: new THREE.Vector2(0, 0) }, uA: { value: 1 } },
+                vertexShader: `varying vec2 vXZ; varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vXZ = w.xz; vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+                fragmentShader: NZ + `uniform float uT; uniform float uH; uniform float uGat; uniform vec2 uGatP; uniform float uA; varying vec2 vXZ; varying vec3 vW;
+                  void main(){
+                    vec2 p = vXZ * 0.32 + vec2(uT * 0.025, 0.0);
+                    float d = fbm(vec3(p, 1.7)) * 1.25 + 0.3 * fbm(vec3(p * 3.1, 4.0)) - 0.45;
+                    float dichtheid = smoothstep(uH * 0.32 - 0.05, uH * 0.32 + 0.32, d);
+                    float gat = uGat * (1.0 - smoothstep(0.6, 3.2, length(vXZ - uGatP)));
+                    float a = dichtheid * (1.0 - gat) * 0.42 * uA;
+                    float ver = 1.0 - smoothstep(14.0, 30.0, length(vW - cameraPosition));
+                    vec3 c = mix(vec3(0.04, 0.06, 0.12), vec3(0.30, 0.36, 0.52), uH * uH) * (0.75 + 0.4 * d);
+                    gl_FragColor = vec4(c * a * ver, a * ver);
+                  }`,
+                transparent: true, depthWrite: false, side: THREE.DoubleSide,
+              });
+              const mesh = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), m); mesh.rotation.x = -Math.PI / 2; mesh.position.y = h; mesh.renderOrder = 2 + i;
+              scene.add(mesh); lagen.push(m);
+            }
+            // ── de grond: donker land en zee; het radarbeeld groeit regel voor regel (de scanlijn) ─────────────────────
+            const grondMat = new THREE.ShaderMaterial({
+              uniforms: { uScan: { value: -20 }, uA: { value: 1 } }, transparent: true, depthWrite: true,
+              vertexShader: `varying vec2 vXZ; varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vXZ = w.xz; vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+              fragmentShader: NZ + `uniform float uScan; uniform float uA; varying vec2 vXZ; varying vec3 vW;
+                void main(){
+                  float land = smoothstep(0.5, 0.53, fbm(vec3(vXZ * 0.22, 9.0)) + vXZ.x * 0.03);
+                  float relief = fbm(vec3(vXZ * 1.4, 2.0)) * 0.7 + fbm(vec3(vXZ * 6.0, 5.0)) * 0.3;
+                  float spikkel = h3(vec3(floor(vXZ * 90.0), 1.0)); float velden = 0.0;
+                  vec3 donker = mix(vec3(0.006, 0.01, 0.025), vec3(0.015, 0.02, 0.03), land);
+                  float sar = (land * (0.12 + 0.5 * relief) + (1.0 - land) * 0.03) * (0.8 + 0.4 * spikkel);
+                  vec3 radar = vec3(sar) * vec3(0.78, 0.82, 0.88);
+                  float gedaan = smoothstep(uScan + 0.05, uScan - 0.05, vXZ.y);
+                  float lijn = exp(-pow((vXZ.y - uScan) * 14.0, 2.0)) * step(-19.0, uScan);
+                  vec3 c = mix(donker, radar * 0.75, gedaan) + vec3(1.0, 0.86, 0.55) * lijn * 0.6;
+                  gl_FragColor = vec4(c * uA, 1.0 - smoothstep(16.0, 30.0, length(vW - cameraPosition)));
+                }`,
+            });
+            const grond = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), grondMat); grond.renderOrder = 1; grond.rotation.x = -Math.PI / 2; grond.position.y = GROND; scene.add(grond);
+            const maan = gloed("#DCE6FF", { grootte: 2.2, scherp: 7, alpha: 0.6 }); maan.position.set(-14, 9, -24); scene.add(maan);
+            // ── de satelliet: romp, een plat radarpaneel dat uitvouwt ─────────────────────────────────────
+            const satMat = new THREE.ShaderMaterial({
+              vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
+                float d = max(dot(N, normalize(vec3(-0.5,0.7,-0.6))),0.0)*0.6+0.1; float r=pow(1.0-abs(dot(N,V)),3.0);
+                gl_FragColor=vec4(vec3(0.78,0.72,0.58)*d + vec3(0.37,0.85,0.92)*r*0.5, 1.0); }`, side: THREE.DoubleSide });
+            function satMatDonker() { return new THREE.ShaderMaterial({
+              vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); float r=pow(1.0-abs(dot(N,V)),2.5);
+                gl_FragColor=vec4(vec3(0.03,0.035,0.05) + vec3(1.0,0.85,0.6)*r*0.55*smoothstep(-6.0,0.0,vW.y), 1.0); }` }); }
+            const sat = new THREE.Group(); scene.add(sat);
+            sat.add(new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.4, 0.26), satMat));
+            const vleugels = [-1, 1].map((s) => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.02, 0.42), satMat); p.position.x = s * 0.45; g.add(p); g.position.set(s * 0.17, -0.16, 0); sat.add(g); return g; });
+            // ── de raket: slank, een warm spoor ─────────────────────────────────────────────────────────────
+            const raket = new THREE.Group(); scene.add(raket);
+            const rMat = satMatDonker();
+            const romp = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.2, 16), rMat); raket.add(romp);
+            const neus = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.22, 16), rMat); neus.position.y = 0.71; raket.add(neus);
+            const vlam = gloed("#FFE2A8", { grootte: 0.9, scherp: 5, alpha: 1 }); vlam.position.y = -0.7; raket.add(vlam);
+            const spoorPts = []; for (let i = 0; i <= 80; i++) spoorPts.push(new THREE.Vector3(0, lerp(GROND - 1, BAAN, i / 80), 0));
+            const spoor = lijn(spoorPts, { kleur: "#FFD9A0", breedte: 6 }); scene.add(spoor);
+            const lanceer = VAR === "B" ? -0.6 : L(1, 0);
+            const raketY = (t) => { const y0 = VAR === "B" ? -0.2 : GROND - 1, t0 = VAR === "B" ? 0 : L(1, 0); const x = clamp01((t - t0) / (L(2, 0.8) - t0)); return lerp(y0, BAAN + 1, x * x * 0.6 + x * 0.4); };
+            // ── pulsen: warme ringen omlaag, echo omhoog ───────────────────────────────────────────────────
+            const ringen = []; for (let i = 0; i < 4; i++) { const r = lijn(cirkel(1, 160), { kleur: "#FFE6B8", breedte: 5, dicht: true }); scene.add(r); ringen.push(r); }
+            const satPos = (t) => new THREE.Vector3(lerp(-1.5, 1.5, t / dur), BAAN, lerp(2.0, -2.0, t / dur));
+            const scan = (t) => lerp(-12, 10, smooth((t - L(7, 0)) / (L(8, 1) - L(7, 0))));
+            // ── camera ───────────────────────────────────────────────────────────────────────────────
+            const bijSat = (afst, fov, rich = [0.75, 0.32, 0.65]) => ({ doel: (t) => satPos(t).add(new THREE.Vector3(0, -0.35, 0)).toArray(), richting: rich, afstand: afst, fov });
+            const bijRaket = (afst, fov) => ({ doel: (t) => [0, Math.max(raketY(t), 0.25) + 0.2, 0], kijk: (t) => [0, raketY(t) + 0.1, 0], richting: [0.85, 0.32, 0.6], afstand: afst, fov });
+            const onder = { doel: [0, GROND, -2], kijk: [0, GROND, -3], richting: [0.05, 0.9, 0.6], afstand: 7.0, fov: 54 };
+            const keys = [
+              ...(VAR === "A"
+                ? [{ t: 0, ...bijSat(5.2, 38) }, { t: L(0, 1), ...bijSat(4.6, 38), e: "lin" }, { t: L(1, 1), ...bijRaket(4.5, 44) }]
+                : [{ t: 0, ...bijRaket(5.5, 40) }, { t: L(0, 1), ...bijRaket(6.0, 42), e: "lin" }, { t: L(1, 1), ...bijRaket(7.0, 44) }]),
+              { t: L(2, 1), ...bijSat(3.4, 40) },
+              { t: L(3, 1), ...bijSat(2.4, 38, [0.9, 0.05, 0.4]) },
+              { t: L(4, 1), ...bijSat(5.5, 46, [0.6, -0.25, 0.75]) },
+              { t: L(5, 1), ...bijSat(8.5, 50, [0.3, -0.1, 0.95]) },
+              { t: L(6, 1), ...onder, el: "in" },
+              { t: L(7, 1), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
+              { t: L(8, 1), ...bijSat(6.0, 46, [0.5, 0.1, 0.85]), el: "out" },
+              { t: dur, ...(VAR === "A" ? bijSat(5.2, 38) : bijSat(5.5, 40)) },
+            ];
+            const cam = logCam(keys);
+            let camRef = null;
+            return {
+              camera: (c, t) => { cam(c, t); camRef = c; },
+              update(t) {
+                lagen.forEach((m) => { m.uniforms.uT.value = t; m.uniforms.uGat.value = smooth((t - L(6, 0)) / (L(6, 1) - L(6, 0))) * (1 - smooth((t - L(8, 0)) / (L(8, 1) - L(8, 0)))); m.uniforms.uGatP.value.set(0, -2); });
+                const sp = satPos(t); sat.position.copy(sp); sat.rotation.y = 0.4;
+                const uit = smooth((t - L(3, 0)) / (L(3, 1) - L(3, 0)));
+                vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" ? (t < L(1, 0) ? 1 : uit) : uit); });
+                const ry = raketY(t); raket.position.set(0, ry, 0);
+                raket.visible = t < L(2, 1) + 0.2 && (VAR === "B" || t >= L(1, 0)); raket.scale.setScalar(0.7);
+                vlam.userData.set({ alpha: 0.9 + 0.1 * Math.sin(t * 40) });
+                spoor.userData.set({ kop: clamp01((ry - GROND + 1) / (BAAN - GROND + 2)), len: 0.45, alpha: venster(t, VAR === "B" ? -1 : L(1, 0), L(2, 1) + 0.3, 0.2, 0.5) });
+                // pulsen: in A al in frame 0 onderweg; daarna L4–L6
+                ringen.forEach((r, i) => {
+                  const cyc = 1.4, aan = (VAR === "A" && t < L(0, 1) + 0.6) || (t > L(4, 0) && t < L(6, 1));
+                  const f = ((t + i * cyc / 4) % cyc) / cyc;
+                  const omlaag = i % 2 === 0;
+                  const y = omlaag ? lerp(sp.y - 0.3, GROND, f) : lerp(GROND, sp.y - 0.3, f);
+                  r.position.set(sp.x, y, sp.z); const s = omlaag ? lerp(0.15, 3.2, f) : lerp(3.2, 0.15, f); r.scale.set(s, 1, s);
+                  r.userData.set({ alpha: aan ? (omlaag ? 1 : 0.55) * Math.sin(Math.PI * f) : 0 });
+                });
+                grondMat.uniforms.uScan.value = t < L(7, 0) ? -20 : scan(t); grondMat.uniforms.uA.value = 1 - 0.6 * smooth((t - L(8, 0.5)) / (L(9, 0.5) - L(8, 0.5)));
+              },
+              overlay(t, ov) {
+                haakkaart(ov, t, L, data);
+                const lab = (k, p, dy, a, kleur = KLEUR.wit) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
+                  ov.tekst(k, Math.max(220, Math.min(y + dy > 860 ? 720 : 860, x)), Math.max(290, Math.min(1470, y + dy)), { maat: 46, kleur, alpha: a, gloei: 10, gewicht: 700 }); };
+                lab("raket", new THREE.Vector3(0, raketY(t), 0), -180, venster(t, VAR === "B" ? L(1, 0) : L(1, 0.2), L(2, 0.5), 0.3, 0.3));
+                const kb = venster(t, L(2, 0.2), L(2, 1) + 0.2, 0.3, 0.3);
+                if (kb > 0) ov.tekst("baan", 540, 420, { maat: 62, alpha: kb });
+                lab("satelliet", satPos(t), -150, venster(t, L(3, 0), L(3, 1) + 0.2, 0.3, 0.3));
+                lab("puls", satPos(t).setY(1.2), 0, venster(t, L(4, 0.2), L(4, 1) + 0.1, 0.3, 0.3), KLEUR.creme);
+                lab("echo", satPos(t).setY(2.4), 0, venster(t, L(5, 0.2), L(5, 1) + 0.1, 0.3, 0.3), KLEUR.creme);
+              },
+              post: () => ({ bloei: 0.6, belichting: 0.95 }),
+              flits: (t) => 0.45 * venster(t, L(7, 0.1), L(7, 0.1) + 0.5, 0.06, 0.44),
+            };
+          },
+        };
+    instagram:
+      type: reel
+      caption: |-
+        Deze week brengt een Electron een radarsatelliet omhoog. Hij stuurt pulsen naar de aarde en vangt de echo op, dag en nacht, ook door wolken. Een geplande tijd kan nog verschuiven.
+
+        Volg de lancering: link in bio
+        Meer op nightgazer.space/missies
+
+        Bron: NASA, Launch Library 2. 3D-animatie van NightGazer.
+    hashtags:
+      - "#nightgazer"
+      - "#rocketlab"
+      - "#lancering"
+    bronnen: &a3
+      - naam: NASA, Commercial Space FAQ
+        url: https://www.nasa.gov/humans-in-space/leo-economy-frequently-asked-questions/
+        licentie: NASA (publiek domein)
+        credit: NASA
+  - id: NG-9306
+    titel: "Lancering, een radarsatelliet (haak B: tijd)"
+    pijler: lancering
+    template: reel-uitleg
+    status: idee
+    moment: 2026-11-12T17:30:00+01:00
+    platforms:
+      - instagram
+    data:
+      voorbeeld: true
+      onderwerp: Radarsatelliet
+      lijnen:
+        - tekst: "Deze week: een satelliet die door wolken kijkt."
+          spreek: "Deze week: een satelliet die door wolken kijkt."
+        - tekst: Een Electron brengt hem omhoog.
+          spreek: Een Electron brengt hem omhoog.
+        - tekst: Naar een lage baan rond de aarde.
+          spreek: Naar een lage baan rond de aarde.
+        - tekst: Daar vouwt hij een plat paneel uit.
+          spreek: Daar vouwt hij een plat paneel uit.
+        - tekst: Hij stuurt pulsen naar de grond,
+          spreek: Hij stuurt pulsen naar de grond,
+        - tekst: en vangt de echo op.
+          spreek: en vangt de echo op.
+        - tekst: Wolken houden die pulsen niet tegen.
+          spreek: Wolken houden die pulsen niet tegen.
+        - tekst: Zo groeit er regel voor regel een beeld.
+          spreek: Zo groeit er regel voor regel een beeld.
+        - tekst: Dag en nacht.
+          spreek: Dag en nacht.
+        - tekst: Gepland, dus het kan nog verschuiven.
+          spreek: Gepland, dus het kan nog verschuiven.
+      script:
+        - beeld: Een slanke raket breekt door het wolkendek
+          camera: dichtbij, licht uitzoomen
+        - beeld: De raket klimt naar een lage baan
+          camera: mee omhoog
+        - beeld: Het paneel vouwt uit; pulsen omlaag, echo omhoog
+          camera: naast de satelliet, dan eronder
+        - beeld: "Door een gat in de wolken: het radarbeeld groeit regel voor regel"
+          camera: omlaag door de wolken
+        - beeld: Terug boven de wolken, zoals het begin
+          camera: omhoog naar frame 0
+      labels:
+        haak1: "Deze week: een satelliet"
+        haak2: die door wolken kijkt
+        raket: Electron
+        satelliet: Radarsatelliet
+        puls: Radarpuls
+        echo: Echo
+        baan: "Lage baan: 2.000 km of lager"
+      feiten:
+        - waarde: 2.000 km
+          citaat: Low Earth orbit encompasses Earth-centered orbits with an altitude of 1,200 miles (2,000 km) or less.
+          bron: https://www.nasa.gov/humans-in-space/leo-economy-frequently-asked-questions/
+      oproep: "Volg de lancering: link in bio"
+      muziek:
+        prompt: soft sonar-like high pings and airy synth pads in G major, calm and curious, rhythmic echoing plucks, steady pulse, a bright lift in the middle, no vocals, no drums, light bass, no low strings, clean mix, 100 bpm
+      scene: |
+        // ── Kit 2 (proef): bouwstenen die in fase 3 naar _gedeeld/huisstijl.js gaan. Hier inline, want data.scene mag niets importeren.
+        // atmosfeer(): een halo-schil met dagkant + voorwaartse verstrooiing (tegenlicht), en `spreiding` die de boog rond de rand sluit.
+        // planeet(): een bol met terminator, nachtkant en een binnenrand die meedoet met de atmosfeer. textuurBol(): een NASA-kaart.
+        // logCam(): een camera die afstand logaritmisch interpoleert (powers of ten) tussen houdingen.
+        const K2 = (THREE) => {
+          const NZ = `
+            float h3(vec3 p){ p=fract(p*0.3183099+.1); p*=17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+            float n3(vec3 x){ vec3 i=floor(x), f=fract(x); f=f*f*(3.0-2.0*f);
+              return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),f.x), mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),f.x),f.y),
+                         mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),f.x), mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),f.x),f.y), f.z); }
+            float fbm(vec3 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*n3(p); p*=2.03; a*=.5; } return s; }`;
+          const VS = `varying vec3 vW; varying vec3 vN; varying vec3 vP; varying vec2 vUv;
+            void main(){ vP=position; vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz;
+              gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`;
+          function atmosfeer({ binnen = 1, straal = 1.06, kleur = [1.0, 0.84, 0.6], dag = 0.4, voor = 2.6, zon }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uCol: { value: new THREE.Vector3(...kleur) }, uDag: { value: dag },
+                          uVoor: { value: voor }, uSpread: { value: 0 }, uA: { value: 1 }, uR: { value: binnen / straal } },
+              vertexShader: VS,
+              fragmentShader: `uniform vec3 uL; uniform vec3 uCol; uniform float uDag; uniform float uVoor; uniform float uSpread; uniform float uA; uniform float uR;
+                varying vec3 vW; varying vec3 vN;
+                void main(){
+                  vec3 V = normalize(cameraPosition - vW); vec3 N = normalize(vN);
+                  float d = clamp(-dot(N, V), 0.0, 1.0);
+                  float edge = sqrt(max(0.0, 1.0 - uR * uR));           // -dot(N,V) op de rand van de planeet
+                  float f = pow(clamp(d / max(edge, 1e-3), 0.0, 1.0), 3.0) * (1.0 - smoothstep(edge, edge + 0.08, d));
+                  float lp = dot(N, uL);
+                  float day = smoothstep(-0.25, 0.55, lp);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  float taps = mix(0.12 + 0.7 * clamp(uSpread - 0.3, 0.0, 1.0), 1.0, smoothstep(-0.9, 0.9, lq));
+                  vec3 c = uCol * f * (uDag * day + uVoor * fwd * boog * taps) * uA;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+              transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.BackSide,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, alpha, zon: z } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (alpha != null) mat.uniforms.uA.value = alpha;
+              if (z) mat.uniforms.uL.value.copy(z).normalize();
+            };
+            return m;
+          }
+          // soort: 'venus' (wolkendek), 'rots' (grijs). Terminator met zachte overgang, binnenrand warm bij tegenlicht.
+          function planeet(soort, { straal = 1, zon, seed = 1 }) {
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { uL: { value: zon.clone().normalize() }, uSeed: { value: seed }, uSpread: { value: 0 }, uLicht: { value: 1 } },
+              vertexShader: VS,
+              fragmentShader: NZ + `uniform vec3 uL; uniform float uSeed; uniform float uSpread; uniform float uLicht;
+                varying vec3 vW; varying vec3 vN; varying vec3 vP;
+                void main(){
+                  vec3 p = normalize(vP); vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  ${soort === "venus"
+                    ? `float b = fbm(vec3(p.x*2.0, p.y*7.0, p.z*2.0) + uSeed); vec3 alb = mix(vec3(0.80,0.72,0.55), vec3(0.97,0.92,0.80), b);`
+                    : `float b = fbm(p*4.0 + uSeed); vec3 alb = mix(vec3(0.36,0.37,0.40), vec3(0.66,0.66,0.68), b);`}
+                  float lp = dot(N, uL);
+                  float lit = smoothstep(-0.04, 0.32, lp);
+                  vec3 c = alb * lit * 1.15 * uLicht + vec3(0.006, 0.008, 0.018);
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  float fwd = pow(max(0.0, dot(-V, uL)), 6.0);
+                  vec3 Lp = uL - V * dot(uL, V); float lq = length(Lp) > 1e-4 ? dot(N, normalize(Lp)) : 0.0;
+                  float boog = smoothstep(-uSpread - 0.15, -uSpread + 0.15, lq);
+                  c += vec3(1.0, 0.82, 0.58) * pow(1.0 - mu, 6.0) * fwd * boog * mix(0.12, 1.0, smoothstep(-0.9, 0.9, lq)) * 1.4;
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            const m = new THREE.Mesh(new THREE.SphereGeometry(straal, 160, 120), mat);
+            m.userData.set = ({ spreiding, licht } = {}) => {
+              if (spreiding != null) mat.uniforms.uSpread.value = spreiding;
+              if (licht != null) mat.uniforms.uLicht.value = licht;
+            };
+            return m;
+          }
+          // Een bol met een NASA-kaart uit assets/scenes/texturen/ (licentie en credit in texturen.json).
+          // nacht: de kaart is licht (Black Marble): hij gloeit op de nachtkant en verdwijnt in de dag.
+          function textuurBol(bestand, { straal = 1, zon, nacht = false, helder = 2.2 }) {
+            window.THREE = window.THREE || THREE;          // HyperFrames wacht dan op de textuur vóór frame 0
+            const tex = new THREE.TextureLoader().load("assets/scenes/texturen/" + bestand);
+            tex.colorSpace = THREE.NoColorSpace; tex.anisotropy = 4;
+            const mat = new THREE.ShaderMaterial({
+              uniforms: { kaart: { value: tex }, uL: { value: zon.clone().normalize() }, uNacht: { value: nacht ? 1 : 0 }, uHelder: { value: helder } },
+              vertexShader: VS,
+              fragmentShader: `uniform sampler2D kaart; uniform vec3 uL; uniform float uNacht; uniform float uHelder;
+                varying vec3 vW; varying vec3 vN; varying vec2 vUv;
+                void main(){
+                  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vW);
+                  vec3 t = texture2D(kaart, vUv).rgb;
+                  float lp = dot(N, uL);
+                  float dag = smoothstep(-0.08, 0.3, lp);
+                  vec3 c;
+                  if (uNacht > 0.5) {
+                    float l = dot(t, vec3(0.3, 0.55, 0.15));
+                    vec3 stad = mix(vec3(0.9, 0.86, 0.74), t, 0.35) * smoothstep(0.12, 0.7, l) * 0.9;   // warm wit, niet oranje (QA paars)
+                    vec3 grond = t * 0.3 + vec3(0.010, 0.018, 0.040);
+                    c = (grond + stad) * uHelder * (1.0 - dag) * 0.6 + vec3(0.05, 0.12, 0.25) * dag;
+                  } else {
+                    c = t * (0.06 + 0.94 * dag) * uHelder;
+                  }
+                  float mu = clamp(dot(N, V), 0.0, 1.0);
+                  c *= mix(0.55, 1.0, smoothstep(0.0, 0.5, mu));
+                  gl_FragColor = vec4(c, 1.0);
+                }`,
+            });
+            return new THREE.Mesh(new THREE.SphereGeometry(straal, 192, 128), mat);
+          }
+          // Breedte/lengte → punt op de bol, met de UV-afbeelding van SphereGeometry (zoals scenes/aarde.js).
+          const RAD = Math.PI / 180;
+          const breedteLengte = (lat, lon, r = 1) => { const phi = (lon + 180) * RAD, c = Math.cos(lat * RAD); return new THREE.Vector3(-Math.cos(phi) * c * r, Math.sin(lat * RAD) * r, Math.sin(phi) * c * r); };
+          // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
+          // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
+          function logCam(keys) {
+            const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
+                           in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
+            const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
+            const v = (x, t) => (typeof x === "function" ? x(t) : x);
+            return (cam, t) => {
+              let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+              const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
+              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
+              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
+              cam.position.copy(doel).addScaledVector(dir, afst);
+              u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
+              cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
+              const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
+              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+            };
+          }
+          // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
+          function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
+            const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
+            if (a <= 0 || data.labels.haak1 === undefined) return;
+            const twee = data.labels.haak2 !== undefined;
+            ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
+            if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
+          }
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+        };
+
+        // Lancering — een radarsatelliet die door wolken kijkt (Electron, iQPS). Eén wereld: een wolkendek bij nacht in lagen
+        // (goedkope volumetrie: vijf fbm-lagen met parallax, maanlicht op de toppen), de grond eronder, de satelliet erboven.
+        // Variant A: frame 0 = de satelliet boven de wolkenzee, eerste puls al onderweg. Variant B: frame 0 = de raket die door
+        // het wolkendek breekt. Beide eindigen boven de wolken, waar ze begonnen.
+        window.reel = {
+          maak({ THREE, kit, scene, L, dur, data }) {
+            const { logCam, haakkaart, NZ } = K2(THREE);
+            const { lijn, cirkel, gloed, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
+            const VAR = "B";
+            const WOLK = 0, GROND = -2.2, BAAN = 5.5;
+            // ── het wolkendek: lagen met dezelfde ruis, elk een eigen dichtheid (licht van boven) ────────────────
+            const lagen = [];
+            for (let i = 0; i < 6; i++) {
+              const h = WOLK - 0.42 + i * 0.14;
+              const m = new THREE.ShaderMaterial({
+                uniforms: { uT: { value: 0 }, uH: { value: i / 5 }, uGat: { value: 0 }, uGatP: { value: new THREE.Vector2(0, 0) }, uA: { value: 1 } },
+                vertexShader: `varying vec2 vXZ; varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vXZ = w.xz; vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+                fragmentShader: NZ + `uniform float uT; uniform float uH; uniform float uGat; uniform vec2 uGatP; uniform float uA; varying vec2 vXZ; varying vec3 vW;
+                  void main(){
+                    vec2 p = vXZ * 0.32 + vec2(uT * 0.025, 0.0);
+                    float d = fbm(vec3(p, 1.7)) * 1.25 + 0.3 * fbm(vec3(p * 3.1, 4.0)) - 0.45;
+                    float dichtheid = smoothstep(uH * 0.32 - 0.05, uH * 0.32 + 0.32, d);
+                    float gat = uGat * (1.0 - smoothstep(0.6, 3.2, length(vXZ - uGatP)));
+                    float a = dichtheid * (1.0 - gat) * 0.42 * uA;
+                    float ver = 1.0 - smoothstep(14.0, 30.0, length(vW - cameraPosition));
+                    vec3 c = mix(vec3(0.04, 0.06, 0.12), vec3(0.30, 0.36, 0.52), uH * uH) * (0.75 + 0.4 * d);
+                    gl_FragColor = vec4(c * a * ver, a * ver);
+                  }`,
+                transparent: true, depthWrite: false, side: THREE.DoubleSide,
+              });
+              const mesh = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), m); mesh.rotation.x = -Math.PI / 2; mesh.position.y = h; mesh.renderOrder = 2 + i;
+              scene.add(mesh); lagen.push(m);
+            }
+            // ── de grond: donker land en zee; het radarbeeld groeit regel voor regel (de scanlijn) ─────────────────────
+            const grondMat = new THREE.ShaderMaterial({
+              uniforms: { uScan: { value: -20 }, uA: { value: 1 } }, transparent: true, depthWrite: true,
+              vertexShader: `varying vec2 vXZ; varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vXZ = w.xz; vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+              fragmentShader: NZ + `uniform float uScan; uniform float uA; varying vec2 vXZ; varying vec3 vW;
+                void main(){
+                  float land = smoothstep(0.5, 0.53, fbm(vec3(vXZ * 0.22, 9.0)) + vXZ.x * 0.03);
+                  float relief = fbm(vec3(vXZ * 1.4, 2.0)) * 0.7 + fbm(vec3(vXZ * 6.0, 5.0)) * 0.3;
+                  float spikkel = h3(vec3(floor(vXZ * 90.0), 1.0)); float velden = 0.0;
+                  vec3 donker = mix(vec3(0.006, 0.01, 0.025), vec3(0.015, 0.02, 0.03), land);
+                  float sar = (land * (0.12 + 0.5 * relief) + (1.0 - land) * 0.03) * (0.8 + 0.4 * spikkel);
+                  vec3 radar = vec3(sar) * vec3(0.78, 0.82, 0.88);
+                  float gedaan = smoothstep(uScan + 0.05, uScan - 0.05, vXZ.y);
+                  float lijn = exp(-pow((vXZ.y - uScan) * 14.0, 2.0)) * step(-19.0, uScan);
+                  vec3 c = mix(donker, radar * 0.75, gedaan) + vec3(1.0, 0.86, 0.55) * lijn * 0.6;
+                  gl_FragColor = vec4(c * uA, 1.0 - smoothstep(16.0, 30.0, length(vW - cameraPosition)));
+                }`,
+            });
+            const grond = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), grondMat); grond.renderOrder = 1; grond.rotation.x = -Math.PI / 2; grond.position.y = GROND; scene.add(grond);
+            const maan = gloed("#DCE6FF", { grootte: 2.2, scherp: 7, alpha: 0.6 }); maan.position.set(-14, 9, -24); scene.add(maan);
+            // ── de satelliet: romp, een plat radarpaneel dat uitvouwt ─────────────────────────────────────
+            const satMat = new THREE.ShaderMaterial({
+              vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
+                float d = max(dot(N, normalize(vec3(-0.5,0.7,-0.6))),0.0)*0.6+0.1; float r=pow(1.0-abs(dot(N,V)),3.0);
+                gl_FragColor=vec4(vec3(0.78,0.72,0.58)*d + vec3(0.37,0.85,0.92)*r*0.5, 1.0); }`, side: THREE.DoubleSide });
+            function satMatDonker() { return new THREE.ShaderMaterial({
+              vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); float r=pow(1.0-abs(dot(N,V)),2.5);
+                gl_FragColor=vec4(vec3(0.03,0.035,0.05) + vec3(1.0,0.85,0.6)*r*0.55*smoothstep(-6.0,0.0,vW.y), 1.0); }` }); }
+            const sat = new THREE.Group(); scene.add(sat);
+            sat.add(new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.4, 0.26), satMat));
+            const vleugels = [-1, 1].map((s) => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.02, 0.42), satMat); p.position.x = s * 0.45; g.add(p); g.position.set(s * 0.17, -0.16, 0); sat.add(g); return g; });
+            // ── de raket: slank, een warm spoor ─────────────────────────────────────────────────────────────
+            const raket = new THREE.Group(); scene.add(raket);
+            const rMat = satMatDonker();
+            const romp = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.2, 16), rMat); raket.add(romp);
+            const neus = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.22, 16), rMat); neus.position.y = 0.71; raket.add(neus);
+            const vlam = gloed("#FFE2A8", { grootte: 0.9, scherp: 5, alpha: 1 }); vlam.position.y = -0.7; raket.add(vlam);
+            const spoorPts = []; for (let i = 0; i <= 80; i++) spoorPts.push(new THREE.Vector3(0, lerp(GROND - 1, BAAN, i / 80), 0));
+            const spoor = lijn(spoorPts, { kleur: "#FFD9A0", breedte: 6 }); scene.add(spoor);
+            const lanceer = VAR === "B" ? -0.6 : L(1, 0);
+            const raketY = (t) => { const y0 = VAR === "B" ? -0.2 : GROND - 1, t0 = VAR === "B" ? 0 : L(1, 0); const x = clamp01((t - t0) / (L(2, 0.8) - t0)); return lerp(y0, BAAN + 1, x * x * 0.6 + x * 0.4); };
+            // ── pulsen: warme ringen omlaag, echo omhoog ───────────────────────────────────────────────────
+            const ringen = []; for (let i = 0; i < 4; i++) { const r = lijn(cirkel(1, 160), { kleur: "#FFE6B8", breedte: 5, dicht: true }); scene.add(r); ringen.push(r); }
+            const satPos = (t) => new THREE.Vector3(lerp(-1.5, 1.5, t / dur), BAAN, lerp(2.0, -2.0, t / dur));
+            const scan = (t) => lerp(-12, 10, smooth((t - L(7, 0)) / (L(8, 1) - L(7, 0))));
+            // ── camera ───────────────────────────────────────────────────────────────────────────────
+            const bijSat = (afst, fov, rich = [0.75, 0.32, 0.65]) => ({ doel: (t) => satPos(t).add(new THREE.Vector3(0, -0.35, 0)).toArray(), richting: rich, afstand: afst, fov });
+            const bijRaket = (afst, fov) => ({ doel: (t) => [0, Math.max(raketY(t), 0.25) + 0.2, 0], kijk: (t) => [0, raketY(t) + 0.1, 0], richting: [0.85, 0.32, 0.6], afstand: afst, fov });
+            const onder = { doel: [0, GROND, -2], kijk: [0, GROND, -3], richting: [0.05, 0.9, 0.6], afstand: 7.0, fov: 54 };
+            const keys = [
+              ...(VAR === "A"
+                ? [{ t: 0, ...bijSat(5.2, 38) }, { t: L(0, 1), ...bijSat(4.6, 38), e: "lin" }, { t: L(1, 1), ...bijRaket(4.5, 44) }]
+                : [{ t: 0, ...bijRaket(5.5, 40) }, { t: L(0, 1), ...bijRaket(6.0, 42), e: "lin" }, { t: L(1, 1), ...bijRaket(7.0, 44) }]),
+              { t: L(2, 1), ...bijSat(3.4, 40) },
+              { t: L(3, 1), ...bijSat(2.4, 38, [0.9, 0.05, 0.4]) },
+              { t: L(4, 1), ...bijSat(5.5, 46, [0.6, -0.25, 0.75]) },
+              { t: L(5, 1), ...bijSat(8.5, 50, [0.3, -0.1, 0.95]) },
+              { t: L(6, 1), ...onder, el: "in" },
+              { t: L(7, 1), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
+              { t: L(8, 1), ...bijSat(6.0, 46, [0.5, 0.1, 0.85]), el: "out" },
+              { t: dur, ...(VAR === "A" ? bijSat(5.2, 38) : bijSat(5.5, 40)) },
+            ];
+            const cam = logCam(keys);
+            let camRef = null;
+            return {
+              camera: (c, t) => { cam(c, t); camRef = c; },
+              update(t) {
+                lagen.forEach((m) => { m.uniforms.uT.value = t; m.uniforms.uGat.value = smooth((t - L(6, 0)) / (L(6, 1) - L(6, 0))) * (1 - smooth((t - L(8, 0)) / (L(8, 1) - L(8, 0)))); m.uniforms.uGatP.value.set(0, -2); });
+                const sp = satPos(t); sat.position.copy(sp); sat.rotation.y = 0.4;
+                const uit = smooth((t - L(3, 0)) / (L(3, 1) - L(3, 0)));
+                vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" ? (t < L(1, 0) ? 1 : uit) : uit); });
+                const ry = raketY(t); raket.position.set(0, ry, 0);
+                raket.visible = t < L(2, 1) + 0.2 && (VAR === "B" || t >= L(1, 0)); raket.scale.setScalar(0.7);
+                vlam.userData.set({ alpha: 0.9 + 0.1 * Math.sin(t * 40) });
+                spoor.userData.set({ kop: clamp01((ry - GROND + 1) / (BAAN - GROND + 2)), len: 0.45, alpha: venster(t, VAR === "B" ? -1 : L(1, 0), L(2, 1) + 0.3, 0.2, 0.5) });
+                // pulsen: in A al in frame 0 onderweg; daarna L4–L6
+                ringen.forEach((r, i) => {
+                  const cyc = 1.4, aan = (VAR === "A" && t < L(0, 1) + 0.6) || (t > L(4, 0) && t < L(6, 1));
+                  const f = ((t + i * cyc / 4) % cyc) / cyc;
+                  const omlaag = i % 2 === 0;
+                  const y = omlaag ? lerp(sp.y - 0.3, GROND, f) : lerp(GROND, sp.y - 0.3, f);
+                  r.position.set(sp.x, y, sp.z); const s = omlaag ? lerp(0.15, 3.2, f) : lerp(3.2, 0.15, f); r.scale.set(s, 1, s);
+                  r.userData.set({ alpha: aan ? (omlaag ? 1 : 0.55) * Math.sin(Math.PI * f) : 0 });
+                });
+                grondMat.uniforms.uScan.value = t < L(7, 0) ? -20 : scan(t); grondMat.uniforms.uA.value = 1 - 0.6 * smooth((t - L(8, 0.5)) / (L(9, 0.5) - L(8, 0.5)));
+              },
+              overlay(t, ov) {
+                haakkaart(ov, t, L, data);
+                const lab = (k, p, dy, a, kleur = KLEUR.wit) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
+                  ov.tekst(k, Math.max(220, Math.min(y + dy > 860 ? 720 : 860, x)), Math.max(290, Math.min(1470, y + dy)), { maat: 46, kleur, alpha: a, gloei: 10, gewicht: 700 }); };
+                lab("raket", new THREE.Vector3(0, raketY(t), 0), -180, venster(t, VAR === "B" ? L(1, 0) : L(1, 0.2), L(2, 0.5), 0.3, 0.3));
+                const kb = venster(t, L(2, 0.2), L(2, 1) + 0.2, 0.3, 0.3);
+                if (kb > 0) ov.tekst("baan", 540, 420, { maat: 62, alpha: kb });
+                lab("satelliet", satPos(t), -150, venster(t, L(3, 0), L(3, 1) + 0.2, 0.3, 0.3));
+                lab("puls", satPos(t).setY(1.2), 0, venster(t, L(4, 0.2), L(4, 1) + 0.1, 0.3, 0.3), KLEUR.creme);
+                lab("echo", satPos(t).setY(2.4), 0, venster(t, L(5, 0.2), L(5, 1) + 0.1, 0.3, 0.3), KLEUR.creme);
+              },
+              post: () => ({ bloei: 0.6, belichting: 0.95 }),
+              flits: (t) => 0.45 * venster(t, L(7, 0.1), L(7, 0.1) + 0.5, 0.06, 0.44),
+            };
+          },
+        };
+    instagram:
+      type: reel
+      caption: |-
+        Deze week brengt een Electron een radarsatelliet omhoog. Hij stuurt pulsen naar de aarde en vangt de echo op, dag en nacht, ook door wolken. Een geplande tijd kan nog verschuiven.
+
+        Volg de lancering: link in bio
+        Meer op nightgazer.space/missies
+
+        Bron: NASA, Launch Library 2. 3D-animatie van NightGazer.
+    hashtags:
+      - "#nightgazer"
+      - "#rocketlab"
+      - "#lancering"
+    bronnen: *a3
