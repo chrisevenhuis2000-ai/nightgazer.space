@@ -1,0 +1,84 @@
+{
+ "id": "maan",
+ "opmerking": "spreektaal-versie voor de stemproef; zelfde aantal zinnen als video/stijl-proef/reels/maan.json, zodat L(i, f) en de scènes blijven kloppen",
+ "blokken": [
+  [
+   1,
+   2
+  ],
+  [
+   3,
+   4,
+   5
+  ],
+  [
+   6,
+   7
+  ],
+  [
+   8,
+   9,
+   10
+  ],
+  [
+   11
+  ]
+ ],
+ "lijnen": [
+  {
+   "tekst": "Je ziet altijd dezelfde kant van de Maan.",
+   "spreek": "Je ziet altijd dezelfde kant van de Maan.",
+   "nadruk": "dezelfde"
+  },
+  {
+   "tekst": "Dus hij draait niet, toch?",
+   "spreek": "Dus hij draait niet, toch?",
+   "nadruk": "niet"
+  },
+  {
+   "tekst": "Kijk eens van bovenaf.",
+   "spreek": "Kijk eens van bovenaf.",
+   "nadruk": "bovenaf"
+  },
+  {
+   "tekst": "Terwijl hij om de Aarde draait,",
+   "spreek": "Terwijl hij om de Aarde draait,",
+   "nadruk": "Aarde"
+  },
+  {
+   "tekst": "draait hij precies één keer om zichzelf.",
+   "spreek": "draait hij precies één keer om zichzelf.",
+   "nadruk": "één"
+  },
+  {
+   "tekst": "Allebei in *27 dagen*.",
+   "spreek": "Allebei in zevenentwintig dagen.",
+   "nadruk": "allebei"
+  },
+  {
+   "tekst": "Dat is geen toeval.",
+   "spreek": "Dat is geen toeval.",
+   "nadruk": "geen"
+  },
+  {
+   "tekst": "De Aarde rekte hem een beetje uit,",
+   "spreek": "De Aarde rekte hem een beetje uit,",
+   "nadruk": "rekte"
+  },
+  {
+   "tekst": "en remde hem af,",
+   "spreek": "en remde hem af,",
+   "nadruk": "remde"
+  },
+  {
+   "tekst": "tot draai en baan gelijk liepen.",
+   "spreek": "tot draai en baan gelijk liepen.",
+   "nadruk": "gelijk"
+  },
+  {
+   "tekst": "Daarom kijkt hij ons altijd aan.",
+   "spreek": "Daarom kijkt-ie ons altijd aan.",
+   "nadruk": "altijd"
+  }
+ ]
+}

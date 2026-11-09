@@ -1,0 +1,80 @@
+{
+ "id": "iss",
+ "opmerking": "spreektaal-versie voor de stemproef; zelfde aantal zinnen als video/stijl-proef/reels/iss.json, zodat L(i, f) en de scènes blijven kloppen",
+ "blokken": [
+  [
+   1,
+   2
+  ],
+  [
+   3
+  ],
+  [
+   4,
+   5
+  ],
+  [
+   6,
+   7
+  ],
+  [
+   8
+  ],
+  [
+   9,
+   10
+  ]
+ ],
+ "lijnen": [
+  {
+   "tekst": "Het ISS valt. Elke seconde.",
+   "spreek": "Het ie-es-es valt. Elke seconde.",
+   "nadruk": "valt"
+  },
+  {
+   "tekst": "En toch komt het nooit beneden.",
+   "spreek": "En toch komt het nooit beneden.",
+   "nadruk": "nooit"
+  },
+  {
+   "tekst": "Het geheim? Snelheid opzij.",
+   "spreek": "Het geheim? Snelheid opzij.",
+   "nadruk": "opzij"
+  },
+  {
+   "tekst": "Gooi iets zacht weg, en het valt terug.",
+   "spreek": "Gooi iets zachtjes weg, en het valt terug.",
+   "nadruk": "zachtjes"
+  },
+  {
+   "tekst": "Gooi harder, en het komt verder.",
+   "spreek": "Gooi harder, en het komt verder.",
+   "nadruk": "verder"
+  },
+  {
+   "tekst": "Maar bij bijna *28.000 km per uur*",
+   "spreek": "Maar bij bijna achtentwintigduizend kilometer per uur",
+   "nadruk": "achtentwintigduizend"
+  },
+  {
+   "tekst": "buigt de Aarde net zo snel weg als jij valt.",
+   "spreek": "buigt de Aarde net zo snel weg als jij valt.",
+   "nadruk": "weg"
+  },
+  {
+   "tekst": "Je mist de grond. Steeds weer.",
+   "spreek": "Je mist de grond. Steeds weer.",
+   "nadruk": "mist"
+  },
+  {
+   "tekst": "Daarom gaat een raket niet alleen omhoog,",
+   "spreek": "Daarom gaat een raket niet alleen omhoog,",
+   "nadruk": "omhoog"
+  },
+  {
+   "tekst": "maar vooral opzij.",
+   "spreek": "maar vooral opzij.",
+   "nadruk": "opzij"
+  }
+ ]
+}

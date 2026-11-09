@@ -1,0 +1,70 @@
+{
+ "id": "leoniden",
+ "opmerking": "spreektaal-versie voor de stemproef; zelfde aantal zinnen als video/stijl-proef/reels/leoniden.json, zodat L(i, f) en de scènes blijven kloppen",
+ "blokken": [
+  [
+   1,
+   2,
+   3
+  ],
+  [
+   4,
+   5
+  ],
+  [
+   6,
+   7
+  ],
+  [
+   8,
+   9
+  ]
+ ],
+ "lijnen": [
+  {
+   "tekst": "Dinsdagnacht vliegen we door een stofspoor.",
+   "spreek": "Dinsdagnacht vliegen we door een stofspoor.",
+   "nadruk": "stofspoor"
+  },
+  {
+   "tekst": "Stof van komeet Tempel-Tuttle.",
+   "spreek": "Stof van komeet Tempel-Tuttle.",
+   "nadruk": "Tempel-Tuttle"
+  },
+  {
+   "tekst": "Die komt maar eens per *33 jaar* langs.",
+   "spreek": "Die komt maar eens in de drieëndertig jaar langs.",
+   "nadruk": "drieëndertig"
+  },
+  {
+   "tekst": "Maar zijn spoor raken we elke november.",
+   "spreek": "Maar zijn spoor raken we elke november.",
+   "nadruk": "elke"
+  },
+  {
+   "tekst": "Met *71 km per seconde*.",
+   "spreek": "Met eenenzeventig kilometer per seconde.",
+   "nadruk": "eenenzeventig"
+  },
+  {
+   "tekst": "Elk korreltje verbrandt in een flits.",
+   "spreek": "Elk korreltje verbrandt in een flits.",
+   "nadruk": "flits"
+  },
+  {
+   "tekst": "Ze lijken uit de Leeuw te komen.",
+   "spreek": "Ze lijken uit de Leeuw te komen.",
+   "nadruk": "Leeuw"
+  },
+  {
+   "tekst": "Kijk na middernacht, als de Maan onder is.",
+   "spreek": "Kijk na middernacht, als de Maan onder is.",
+   "nadruk": "middernacht"
+  },
+  {
+   "tekst": "Tot zo'n *15 per uur*, onder een donkere hemel.",
+   "spreek": "Tot zo'n vijftien per uur, onder een donkere hemel.",
+   "nadruk": "vijftien"
+  }
+ ]
+}
