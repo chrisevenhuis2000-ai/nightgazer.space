@@ -39,9 +39,6 @@ export default function Hemelkalender() {
         {/* ══ Kop ══ */}
         <section className="pl-wrap" aria-labelledby="pl-hk">
           <div className="pl-uhero pl-hk__kop">
-            <div className="pl-uhero__ground" aria-hidden="true">
-              <div className="pl-emulsion"><img src={nasaBeeld(KALENDER_KOP.nasaId)} alt="" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></div>
-            </div>
             <div className="pl-uhero__in pl-hk__in">
               <div className="pl-hk__tekst">
                 <h1 id="pl-hk" className="pl-h1">Hemelkalender {KALENDER_JAAR}</h1>
@@ -50,16 +47,21 @@ export default function Hemelkalender() {
                   en per maand de planeten, meteorenzwermen en verduisteringen, met een groot NASA-beeld
                   dat bij die maand hoort. Om op te hangen, of op je tablet mee naar buiten te nemen.
                 </p>
+                <dl className="pl-hk__spec">
+                  <div><dt className="pl-label">Prijs</dt><dd>{KALENDER_PRIJS}</dd></div>
+                  <div><dt className="pl-label">Formaat</dt><dd>PDF, A4 staand</dd></div>
+                  <div><dt className="pl-label">Omvang</dt><dd>14 pagina’s</dd></div>
+                </dl>
                 <div className="pl-hk__koop">
                   <Koop />
-                  <p className="pl-body-s">PDF, 14 pagina’s A4 staand. Je betaalt en downloadt via Ko-fi.</p>
+                  <p className="pl-body-s">Je betaalt bij Ko-fi en downloadt de pdf meteen.</p>
                 </div>
               </div>
-              <a href={VOORBEELDEN[0].src} className="pl-hk__omslag" target="_blank" rel="noopener" aria-label="Voorblad groot bekijken (opent in nieuw tabblad)">
-                <img src={VOORBEELDEN[0].src} alt={VOORBEELDEN[0].alt} width={900} height={1273} />
+              <a href={VOORBEELDEN[0].src} className="pl-hk__stapel" target="_blank" rel="noopener" aria-label="Voorblad groot bekijken (opent in nieuw tabblad)">
+                <img src={VOORBEELDEN[1].src} alt="" className="pl-hk__stapel-achter" width={900} height={1274} />
+                <img src={VOORBEELDEN[0].src} alt={VOORBEELDEN[0].alt} className="pl-hk__stapel-voor" width={900} height={1273} />
               </a>
             </div>
-            <p className="pl-uhero__credit">{KALENDER_KOP.titel} · {KALENDER_KOP.credit}</p>
           </div>
         </section>
 
@@ -132,6 +134,9 @@ export default function Hemelkalender() {
               </li>
             ))}
           </ul>
+          <p className="pl-body-s pl-hk__voorblad">
+            Voorblad: {KALENDER_KOP.titel.charAt(0).toLowerCase() + KALENDER_KOP.titel.slice(1)} ({KALENDER_KOP.credit}).
+          </p>
         </section>
 
         {/* ══ Nog een keer de knop ══ */}
