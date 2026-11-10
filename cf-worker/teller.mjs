@@ -95,17 +95,19 @@ export function maakDatapunt(body, { ua, land, origin }) {
 /** SQL voor /tel/stats: per dag weergaven, bezoeken en de push-trechter. */
 export function statsSql(dagen) {
   const d = Math.max(1, Math.min(90, Math.floor(dagen) || 30))
+  // sumIf/toStartOfDay: de functies die de SQL-API van Analytics Engine
+  // ondersteunt. _sample_interval weegt de steekproef terug naar echte aantallen.
   return `
 SELECT
-  toDate(timestamp) AS dag,
-  SUM(IF(blob1 = 'pv', _sample_interval, 0)) AS weergaven,
-  SUM(IF(blob1 = 'pv', _sample_interval * double2, 0)) AS bezoeken,
-  SUM(IF(blob1 = 'pv' AND blob4 = 'NL', _sample_interval * double2, 0)) AS bezoeken_nl,
-  SUM(IF(blob1 = 'pv' AND blob9 != '', _sample_interval * double2, 0)) AS bezoeken_in_app,
-  SUM(IF(blob6 = 'push-klik', _sample_interval, 0)) AS push_klik,
-  SUM(IF(blob6 = 'push-aan', _sample_interval, 0)) AS push_aan,
-  SUM(IF(blob6 = 'push-geweigerd', _sample_interval, 0)) AS push_geweigerd,
-  SUM(IF(blob6 = 'push-teaser', _sample_interval, 0)) AS push_teaser
+  toStartOfDay(timestamp) AS dag,
+  sumIf(_sample_interval, blob1 = 'pv') AS weergaven,
+  sumIf(_sample_interval * double2, blob1 = 'pv') AS bezoeken,
+  sumIf(_sample_interval * double2, blob1 = 'pv' AND blob4 = 'NL') AS bezoeken_nl,
+  sumIf(_sample_interval * double2, blob1 = 'pv' AND blob9 != '') AS bezoeken_in_app,
+  sumIf(_sample_interval, blob6 = 'push-teaser') AS push_teaser,
+  sumIf(_sample_interval, blob6 = 'push-klik') AS push_klik,
+  sumIf(_sample_interval, blob6 = 'push-aan') AS push_aan,
+  sumIf(_sample_interval, blob6 = 'push-geweigerd') AS push_geweigerd
 FROM ${TEL_DATASET}
 WHERE timestamp > NOW() - INTERVAL '${d}' DAY
 GROUP BY dag
