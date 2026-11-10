@@ -20,6 +20,7 @@ import {
   archivo, FOOTER_COLS, PlateHead, editionLabel, Ladder, img, UitrustingVerwijzing,
 } from '@/app/_plate/shared'
 import { LessonFigure } from './Figuren'
+import { HemelfotoTeaser } from '@/app/_plate/HemelfotoTeaser'
 import { Vandaag } from './Vandaag'
 
 type Level = 'beg' | 'ama' | 'pro'
@@ -408,6 +409,10 @@ export default function Niveauladder() {
               </button>
             )}
           </div>
+        </section>
+
+        <section className="pl-wrap" aria-label="Spel van de dag">
+          <HemelfotoTeaser />
         </section>
 
         {/* ══ De zes onderwerpen ══ */}
