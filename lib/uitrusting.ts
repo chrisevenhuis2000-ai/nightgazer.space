@@ -62,13 +62,20 @@ export const KOPBEELD = {
 }
 
 const BOL_SITE_ID = '1552276'
-const bol = (q: string) => {
+export const bol = (q: string) => {
   const doel = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(q)}`
   return `https://partner.bol.com/click/click?p=2&t=url&s=${BOL_SITE_ID}&f=TXL`
     + `&url=${encodeURIComponent(doel)}&name=${encodeURIComponent(q)}`
 }
 const AMAZON_TAG = 'nightgazerspa-21'
-const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`
+export const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`
+
+/** Alle producten op naam, voor pagina's die er een selectie uit tonen. */
+export const product = (naam: string): Product => {
+  const p = GROEPEN.flatMap(g => g.producten).find(x => x.naam === naam)
+  if (!p) throw new Error(`Onbekend product: ${naam}`)
+  return p
+}
 
 export const GROEPEN: Groep[] = [
   {

@@ -49,3 +49,35 @@ export function telWeergave() {
 export function telGebeurtenis(e: string, x?: string) {
   verstuur({ t: 'ev', e, x })
 }
+
+/* ── Klikken naar buiten: winkels en Ko-fi ─────────────────────────────────
+   Eén luisteraar op het document, zodat elke bestaande en toekomstige knop
+   meetelt zonder dat een pagina er iets voor hoeft te doen. Er gaat alleen
+   mee wélke bestemming het was (bol, amazon of kofi) en vanaf welk pad;
+   niet welk product, en niets over de bezoeker. */
+
+export function uitDoel(href: string): 'bol' | 'amazon' | 'kofi' | '' {
+  let host = ''
+  try { host = new URL(href, 'https://nightgazer.space').hostname.toLowerCase() } catch { return '' }
+  if (host === 'bol.com' || host.endsWith('.bol.com')) return 'bol'
+  if (host === 'amazon.nl' || host.endsWith('.amazon.nl')) return 'amazon'
+  if (host === 'ko-fi.com' || host.endsWith('.ko-fi.com')) return 'kofi'
+  return ''
+}
+
+let luistert = false
+
+export function telUitklikken() {
+  if (typeof document === 'undefined' || luistert) return
+  luistert = true
+  const meld = (ev: MouseEvent) => {
+    // auxclick vuurt ook voor de rechterknop; alleen de middelste opent een tab.
+    if (ev.type === 'auxclick' && ev.button !== 1) return
+    const a = (ev.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null
+    if (!a) return
+    const doel = uitDoel(a.href)
+    if (doel) telGebeurtenis('uit-klik', doel)
+  }
+  document.addEventListener('click', meld, { capture: true })
+  document.addEventListener('auxclick', meld, { capture: true })
+}

@@ -17,6 +17,7 @@
 import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { Steun } from '../../components/Steun'
+import { AffiliateMelding } from '../../components/AffiliateMelding'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import {
@@ -83,7 +84,8 @@ export default function Uitrusting() {
                 sterrenbeelden en de ISS. Wil je verder, dan is dit wat ik zou aanraden, in de
                 volgorde waarin je het nodig hebt. Kijk op{' '}
                 <Link href="/sterrenkijken/" className="pl-voorw__a">Sterrenkijken</Link> welke
-                nacht deze week het best is.
+                nacht deze week het best is. Zoek je een cadeau voor iemand anders, kijk dan in de{' '}
+                <Link href="/sterrenkijken/cadeaugids/" className="pl-voorw__a">cadeaugids</Link>.
               </p>
 
               <nav className="pl-ustappen" aria-label="Stappen op deze pagina">
@@ -96,13 +98,7 @@ export default function Uitrusting() {
                 ))}
               </nav>
 
-              <p className="pl-uhero__melding">
-                <span className="pl-label pl-label--stamp">Over deze links</span>
-                <span>
-                  Koop je iets via een knop op deze pagina, dan krijgt NightGazer een kleine
-                  commissie van de winkel. Jij betaalt niets extra.
-                </span>
-              </p>
+              <AffiliateMelding />
             </div>
             <p className="pl-uhero__credit">{KOPBEELD.titel} · {KOPBEELD.credit}</p>
           </div>

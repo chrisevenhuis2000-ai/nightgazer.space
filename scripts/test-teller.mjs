@@ -19,6 +19,9 @@ ok(p.doubles[1] === 0, 'interne klik is geen nieuw bezoek')
 // Gebeurtenissen: alleen bekende
 ok(maakDatapunt({ t: 'ev', e: 'push-klik', p: '/sterrenkijken/' }, ctx).blobs[5] === 'push-klik', 'bekende gebeurtenis')
 ok(maakDatapunt({ t: 'ev', e: 'iets-anders', p: '/' }, ctx) === null, 'onbekende gebeurtenis genegeerd')
+p = maakDatapunt({ t: 'ev', e: 'uit-klik', x: 'bol', p: '/sterrenkijken/cadeaugids/' }, ctx)
+ok(p && p.blobs[5] === 'uit-klik' && p.blobs[6] === 'bol', 'klik naar winkel telt, met bestemming')
+ok(statsSql(30).includes("klik_kofi") && statsSql(30).includes("'/sterrenkijken/cadeaugids/'"), 'stats tonen klikken en geldpagina')
 
 // Weigeren
 ok(maakDatapunt({ t: 'pv', p: '/' }, { ...ctx, ua: 'Googlebot/2.1' }) === null, 'bot')
