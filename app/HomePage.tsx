@@ -18,7 +18,7 @@ import Link from 'next/link'
 import { MISSIONS } from '@/lib/missions-data'
 import { SiteFooter } from './components/SiteFooter'
 import { MeldingenTeaser } from './components/MeldingenTeaser'
-import { HemelfotoTeaser } from './_plate/HemelfotoTeaser'
+import { SpellenBlok } from './_plate/SpellenBlok'
 import {
   PROXY, APOD_CACHE_KEY,
   type APODData, type ISSData, type Article,
@@ -746,8 +746,8 @@ export default function HomePage({ start }: {
           </div>
         </section>
 
-        <section className="pl-wrap" aria-label="Spel van de dag">
-          <HemelfotoTeaser />
+        <section className="pl-wrap" aria-label="Spellen van de dag">
+          <SpellenBlok />
         </section>
 
         <section className="pl-wrap" aria-label="Meldingen">

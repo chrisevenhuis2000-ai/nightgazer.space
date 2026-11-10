@@ -4957,3 +4957,49 @@ a:hover .pl-emulsion > img,
 .pl-hft__t { display: grid; gap: 6px; min-width: 0; }
 .pl-hft__kop { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.02em; }
 .pl-hft__cta { display: inline-flex; align-items: center; gap: 8px; color: var(--pl-act); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Teken het sterrenbeeld (/spellen/sterrenbeeld) en de spellenrij
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.pl-sb__naam { color: var(--pl-ink); }
+.pl-sb__veld {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(ellipse at 50% 120%, #1a2350 0%, #0a0c1d 55%, #05060f 100%);
+  border: 1px solid var(--pl-rule);
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-user-select: none; user-select: none;
+}
+.pl-sb__veld svg { display: block; width: 100%; height: 100%; cursor: pointer; }
+.pl-sb__veld[data-klaar="1"] svg { cursor: default; }
+.pl-sb__stof { fill: #c9d4f2; }
+.pl-sb__ster { fill: #EEF2FB; filter: drop-shadow(0 0 6px rgba(181, 212, 244, 0.55)); }
+.pl-sb__ster[data-uit="1"] { opacity: 0.35; filter: none; }
+.pl-sb__sel { fill: none; stroke: var(--pl-act); stroke-width: 4; }
+.pl-sb__lijn { stroke: var(--pl-good); stroke-width: 5; stroke-linecap: round; }
+.pl-sb__tip { stroke: var(--pl-act); stroke-width: 4; stroke-dasharray: 14 12; stroke-linecap: round; animation: pl-sb-puls 1.3s ease-in-out infinite; }
+.pl-sb__fout { stroke: var(--pl-warn); stroke-width: 5; stroke-linecap: round; animation: pl-sb-weg 650ms ease-out forwards; }
+@keyframes pl-sb-puls { 50% { opacity: 0.35; } }
+@keyframes pl-sb-weg { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pl-sb__tip, .pl-sb__fout { animation: none; } }
+.pl-sb__label { fill: var(--pl-ink-2); font-size: 26px; font-family: inherit; paint-order: stroke; stroke: #05060f; stroke-width: 6px; }
+.pl-sb__horizon {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 7px 10px;
+  border-top: 1px dashed color-mix(in srgb, var(--pl-ink-3) 60%, transparent);
+  background: linear-gradient(to top, rgba(5, 6, 15, 0.9), rgba(5, 6, 15, 0.4));
+  text-align: center;
+  pointer-events: none;
+}
+.pl-sb__balk { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.pl-sb__balk .pl-btn { margin-left: auto; min-height: 38px; padding: 0 16px; }
+.pl-sb__uitleg { display: grid; gap: 10px; }
+.pl-sb__stappen { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.pl-sb__knop-n { font-weight: 700; }
+
+.pl-spellen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .pl-spellen { grid-template-columns: minmax(0, 1fr); } }
+.pl-hft__img--lucht { background: radial-gradient(ellipse at 50% 120%, #1a2350 0%, #05060f 80%); }
+.pl-hft__img--lucht svg { position: absolute; inset: 0; width: 100%; height: 100%; }

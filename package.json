@@ -24,7 +24,8 @@
     "test:workflowstart": "node scripts/test-workflow-start.js",
     "update-quiz": "node scripts/educatie-quiz.js",
     "test:quiz": "node scripts/test-educatie-quiz.js",
-    "test:hemelfoto": "node scripts/test-hemelfoto.mjs"
+    "test:hemelfoto": "node scripts/test-hemelfoto.mjs",
+    "test:sterrenbeeld": "node scripts/test-sterrenbeeld.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",
