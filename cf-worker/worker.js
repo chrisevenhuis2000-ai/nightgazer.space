@@ -1,6 +1,7 @@
 import { APOD_FEED, parseFeed, bouwApod, apodDatum } from './apod.mjs'
 import { magBeeld } from './beeldhosts.mjs'
 import { WORKFLOW_CRONS, startWorkflow } from './workflows.mjs'
+import { maakDatapunt, statsSql, TEL_DATASET } from './teller.mjs'
 
 const ALLOWED_ORIGINS = [
   'https://nightgazer.space',
@@ -53,6 +54,15 @@ function b64url(bytes) {
 async function sha256hex(tekst) {
   const h = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(tekst))
   return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, '0')).join('')
+}
+
+/** Plek afronden op twee decimalen (ongeveer een kilometer): genoeg voor
+ *  het weer en de ISS, en geen precieze locatie op de server. */
+function rondAf(v) {
+  const r = v && typeof v === 'object' ? { ...v } : {}
+  if (typeof r.lat === 'number') r.lat = Math.round(r.lat * 100) / 100
+  if (typeof r.lon === 'number') r.lon = Math.round(r.lon * 100) / 100
+  return r
 }
 
 /** De privésleutel staat als JWK in een secret; importeren voor ES256. */
@@ -569,6 +579,70 @@ export default {
     }
 
 
+    // ── Teller: paginaweergave of gebeurtenis (cf-worker/teller.mjs) ─────
+    // De site stuurt dit met navigator.sendBeacon als text/plain, zodat er
+    // geen CORS-preflight nodig is. Antwoord is altijd 204: een meting mag
+    // nooit een foutmelding in de console van een bezoeker opleveren.
+    if (request.method === 'POST' && url.pathname === '/tel') {
+      if (env.TEL) {
+        try {
+          const body = JSON.parse((await request.text()).slice(0, 2000))
+          const punt = maakDatapunt(body, {
+            ua: request.headers.get('User-Agent') || '',
+            land: request.cf?.country || '',
+            origin: request.headers.get('Origin') || '',
+          })
+          if (punt) env.TEL.writeDataPoint(punt)
+        } catch { /* kapotte meting: negeren */ }
+      }
+      return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': getAllowedOrigin(request) } })
+    }
+
+    // ── Teller: cijfers per dag ──────────────────────────────────────────
+    // Alleen totalen, geen losse metingen. Vijf minuten gecachet, zodat
+    // herhaald opvragen het SQL-budget van Analytics Engine niet opmaakt.
+    // Nodig: secret CF_ANALYTICS_TOKEN (Account Analytics: Read).
+    if (request.method === 'GET' && url.pathname === '/tel/stats') {
+      if (!env.CF_ANALYTICS_TOKEN || !env.CF_ACCOUNT_ID) {
+        return cors(request, JSON.stringify({ error: 'teller-cijfers nog niet ingericht' }), 503)
+      }
+      const dagen = parseInt(url.searchParams.get('dagen') || '30')
+      const cache = caches.default
+      const cacheKey = new Request(`https://cache.nightgazer/tel-stats-${dagen}`)
+      const hit = await cache.match(cacheKey)
+      if (hit) return cors(request, await hit.text())
+      const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/analytics_engine/sql`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${env.CF_ANALYTICS_TOKEN}` },
+        body: statsSql(dagen),
+      })
+      if (!res.ok) return cors(request, JSON.stringify({ error: `analytics engine ${res.status}` }), 502)
+      const d = await res.json()
+      const tekst = JSON.stringify({ dataset: TEL_DATASET, dagen: d.data || [] })
+      await cache.put(cacheKey, new Response(tekst, { headers: { 'Cache-Control': 'public, max-age=300' } }))
+      return cors(request, tekst)
+    }
+
+    // ── Push: hoeveel abonnees? ──────────────────────────────────────────
+    // Alleen het aantal. Tien minuten gecachet: KV-list is op het gratis
+    // plan beperkt tot duizend per dag.
+    if (request.method === 'GET' && url.pathname === '/push/stats') {
+      if (!env.SUBS) return cors(request, JSON.stringify({ abonnees: 0, actief: false }))
+      const cache = caches.default
+      const cacheKey = new Request('https://cache.nightgazer/push-stats')
+      const hit = await cache.match(cacheKey)
+      if (hit) return cors(request, await hit.text())
+      let aantal = 0, cursor
+      do {
+        const l = await env.SUBS.list({ prefix: 'sub:', cursor })
+        aantal += l.keys.length
+        cursor = l.list_complete ? undefined : l.cursor
+      } while (cursor)
+      const tekst = JSON.stringify({ abonnees: aantal, actief: true })
+      await cache.put(cacheKey, new Response(tekst, { headers: { 'Cache-Control': 'public, max-age=600' } }))
+      return cors(request, tekst)
+    }
+
     // ── Push: sleutel opvragen ───────────────────────────────────────────
     if (request.method === 'GET' && url.pathname === '/push/key') {
       return cors(request, JSON.stringify({
@@ -592,7 +666,7 @@ export default {
       const bestaand = await env.SUBS.get(`sub:${id}`, 'json')
       await env.SUBS.put(`sub:${id}`, JSON.stringify({
         endpoint,
-        voorkeur: body.voorkeur || {},
+        voorkeur: rondAf(body.voorkeur),
         wekkers: Array.isArray(body.wekkers) ? body.wekkers.slice(0, 40) : [],
         laatst: bestaand?.laatst || {},
         bericht: bestaand?.bericht || null,
