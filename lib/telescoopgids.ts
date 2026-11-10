@@ -106,8 +106,9 @@ export const FOUTEN: Fout[] = [
   { titel: 'Meteen naar binnen',   tekst: 'Een telescoop moet een half uur afkoelen buiten, en je ogen twintig minuten wennen aan het donker.' },
 ]
 
-/** Beelden van images.nasa.gov; id’s uit de metadata van images-api.nasa.gov. */
+/** Beelden van images.nasa.gov; id’s uit de metadata van images-api.nasa.gov.
+    PIA04227 heeft geen ~medium, alleen ~small en ~orig. */
 export const GIDS_BEELD = {
-  kop:     { nasaId: 'PIA04227', titel: 'De Orionnevel door Hubble. Door een telescoop zie je het hart als grijze gloed', credit: 'NASA en het Hubble Heritage Team · 1999' },
+  kop:     { nasaId: 'PIA04227', maat: 'orig' as const, titel: 'De Orionnevel door Hubble. Door een telescoop zie je het hart als grijze gloed', credit: 'NASA en het Hubble Heritage Team · 1999' },
   jupiter: { nasaId: 'PIA01593', titel: 'Jupiter door Hubble. Met 130 mm zie je de twee donkere wolkbanden', credit: 'NASA/Hubble Heritage Team · 1999' },
 }

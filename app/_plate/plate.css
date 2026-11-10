@@ -4549,7 +4549,7 @@ a:hover .pl-emulsion > img,
   scroll-margin-top: 84px;
 }
 .pl-ukaart:target { border-color: var(--pl-act); }
-/* Cadeaugids: kaarten naast elkaar, er staat geen plaat naast. */
+/* Cadeaugids, 'wat je beter niet geeft': kaarten naast elkaar, zonder plaat. */
 .pl-cadeaus { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); align-items: stretch; margin-top: 16px; }
 .pl-cadeaus .pl-ukaart { align-content: start; }
 .pl-cadeaus .pl-ukaart__winkels { margin-top: auto; }

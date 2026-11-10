@@ -45,7 +45,10 @@ export type Groep = {
   producten: Product[]
 }
 
-export const nasaBeeld = (id: string, maat: 'small' | 'medium' = 'medium') =>
+/** Niet elk NASA-beeld heeft elke maat: van sommige PIA-beelden bestaan
+    alleen ~small en ~orig. Geef dan de maat mee die er wel is. */
+export type NasaMaat = 'small' | 'medium' | 'large' | 'orig'
+export const nasaBeeld = (id: string, maat: NasaMaat = 'medium') =>
   `https://images-assets.nasa.gov/image/${id}/${id}~${maat}.jpg`
 export const nasaPagina = (id: string) => `https://images.nasa.gov/details/${id}`
 

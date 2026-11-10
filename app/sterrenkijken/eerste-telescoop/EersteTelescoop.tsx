@@ -113,7 +113,7 @@ export default function EersteTelescoop() {
         <section className="pl-wrap" aria-labelledby="pl-gids">
           <div className="pl-uhero">
             <div className="pl-uhero__ground" aria-hidden="true">
-              <div className="pl-emulsion"><img src={nasaBeeld(GIDS_BEELD.kop.nasaId)} alt="" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></div>
+              <div className="pl-emulsion"><img src={nasaBeeld(GIDS_BEELD.kop.nasaId, GIDS_BEELD.kop.maat)} alt="" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></div>
             </div>
             <div className="pl-uhero__in">
               <h1 id="pl-gids" className="pl-h1">Je eerste telescoop kiezen</h1>
