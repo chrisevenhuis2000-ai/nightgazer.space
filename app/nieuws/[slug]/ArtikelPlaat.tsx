@@ -17,6 +17,7 @@
 
 import { Fragment, useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link'
+import { Steun } from '../../components/Steun'
 import { SiteFooter } from '@/app/components/SiteFooter'
 import { LEVELS, type ReadingLevel } from '@/types'
 import { type ArticleData, type Enrichment, type Kerncijfer, PROXY, IMG, parseMarkdown } from '@/lib/article-data'
@@ -514,6 +515,10 @@ ${article.rawBody.slice(0, 2500)}` }],
                     })}
                   </div>
                 )}
+
+                <div style={{ marginTop: 36 }}>
+                  <Steun tekst="Dit nieuws in gewone taal is gratis. Ik bouw NightGazer alleen, in mijn vrije tijd. Vond je dit nuttig? Een koffie helpt echt." />
+                </div>
               </article>
 
               <aside className={`pl-read-side pl-read-side--rail${structured && !mission ? ' pl-read-side--toc' : ''}`}>
