@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-09T17:47:43.902Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-11-10T15:46:38.877Z",
+    "autoUpdated": [
+      "ussf-266"
+    ]
   },
   "missions": [
     {
@@ -3282,7 +3284,7 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "missie",
-      "launched": "31 dec 2026",
+      "launched": "6 jan 2027",
       "objective": "Demonstratievlucht van de Astrobotic Griffin-lander met de FLIP-rover van Astrolab naar de maan.",
       "body": "Maan",
       "highlight": "Gepland voor 31 december 2026",
@@ -3297,7 +3299,7 @@
       "missionUrl": "https://voyagertechnologies.com/",
       "timeline": [
         {
-          "date": "december 2026",
+          "date": "6 jan 2027",
           "event": "Geplande lancering van Griffin Mission One"
         }
       ],
@@ -3316,7 +3318,7 @@
         "astrolab"
       ],
       "_lastClaudeUpdate": "2026-10-29T14:38:46.081Z",
-      "launchPrecision": "Month"
+      "launchPrecision": "Day"
     },
     {
       "id": "curveball",
@@ -5599,11 +5601,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "10 nov 2026",
-      "launchPrecision": "Second",
+      "launched": "11 nov 2026",
+      "launchPrecision": "Minute",
       "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 10 nov 2026",
+      "highlight": "Lancering gepland: 11 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5615,7 +5617,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "10 nov 2026",
+          "date": "11 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-5\")"
         }
       ],
@@ -5675,11 +5677,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "13 nov 2026",
+      "launched": "14 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 13 nov 2026",
+      "highlight": "Lancering gepland: 14 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5691,7 +5693,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "13 nov 2026",
+          "date": "14 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-6\")"
         }
       ],
@@ -5704,6 +5706,44 @@
         "starshield"
       ],
       "_lastClaudeUpdate": "2026-11-03T15:28:05.574Z"
+    },
+    {
+      "id": "ussf-266",
+      "_ll2Id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+      "name": "USSF-266",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "17 nov 2026",
+      "launchPrecision": "Minute",
+      "objective": "Geclassificeerde missie voor de United States Space Force naar een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: 17 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "USSF-266 is een geclassificeerde missie van SpaceX voor de United States Space Force, gepland voor november 2026. De Falcon 9 brengt de nuttige lading naar een polaire baan. Op basis van de locaties van de neervallende rakettrappen lijkt het mogelijk te gaan om een batch geclassificeerde LEO-satellieten op het Starshield-satellietbus van SpaceX.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spaceforce.mil/",
+      "timeline": [
+        {
+          "date": "17 nov 2026",
+          "event": "Geplande lancering van USSF-266"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "ussf",
+        "polaire baan",
+        "starshield"
+      ],
+      "_lastClaudeUpdate": "2026-11-10T15:46:33.286Z"
     }
   ]
 }
