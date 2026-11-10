@@ -1402,6 +1402,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-10",
+      "slug": "apod-2026-november-10-saturn-behind-the-moon",
+      "titel": "Saturnus verdwijnt achter de Maan: astrofoto van een zeldzame bedekking",
+      "beg": {
+        "q": "Waarom verdwijnt Saturnus tijdens een bedekking even uit het zicht?",
+        "options": [
+          "De schaduw van de aarde valt over Saturnus heen",
+          "Saturnus dooft even uit, zoals een lamp",
+          "Saturnus beweegt tijdelijk naar de andere kant van de zon",
+          "De Maan schuift precies tussen ons en Saturnus in"
+        ],
+        "correct": 3,
+        "explain": "Bij een bedekking staat de Maan op één lijn tussen de aarde en Saturnus en blokkeert zo het zicht op de planeet. Saturnus zelf gaat nergens heen; het is alleen een kwestie van kijkrichting."
+      },
+      "ama": {
+        "q": "Waarom is een bedekking van Saturnus door de Maan maar vanuit een smalle strook op aarde te zien?",
+        "options": [
+          "De atmosfeer van de aarde laat het alleen op bepaalde breedtegraden toe",
+          "Saturnus bevindt zich alleen boven bepaalde landen boven de horizon",
+          "Saturnus is te lichtzwak om vanuit andere plekken te zien",
+          "De Maan staat dichtbij, waardoor haar positie voor de achtergrond sterk verschilt per waarnemingsplaats"
+        ],
+        "correct": 3,
+        "explain": "De Maan staat veel dichterbij dan Saturnus, dus haar schijnbare plek aan de hemel verschuift sterk met de positie van de waarnemer (parallax). Daardoor valt Saturnus alleen binnen een smalle baan over de aarde precies achter de Maan; elders schuift de Maan er langs."
+      },
+      "pro": {
+        "q": "Welk effect veroorzaakt dat de bedekkingsstrook op aarde smal is en dat de Maan elders voor Saturnus langs schuift?",
+        "options": [
+          "Atmosferische refractie die Saturnus verplaatst",
+          "Aberratie van het licht door de baansnelheid van de aarde",
+          "Gravitationele lichtbuiging door de massa van de Maan",
+          "Dagelijkse parallax van de Maan door haar geringe afstand ten opzichte van Saturnus"
+        ],
+        "correct": 3,
+        "explain": "De Maan staat op ongeveer 384.000 km, Saturnus op ruim een miljard kilometer. De parallax van de Maan is daardoor groot (ongeveer een graad over de aarde), de parallax van Saturnus verwaarloosbaar, dus alleen een smalle strook ziet de exacte bedekking."
+      }
+    },
+    {
       "datum": "2026-11-09",
       "slug": "nasas-escapade-completes-powered-earth-flybys-now-en-route-t",
       "titel": "Tweelingsondes ESCAPADE schieten via de aarde naar Mars",
@@ -1893,45 +1931,7 @@
         "correct": 1,
         "explain": "Metalliciteit is het aandeel elementen zwaarder dan waterstof en helium. Die elementen zijn in de loop van de tijd door eerdere sterren gevormd, dus in het vroege heelal waren ze schaars. De Grote Magelhaense Wolk heeft er minder dan de Melkweg, maar niet nul, en vormt daardoor een nabije proeftuin voor vroege stervorming."
       }
-    },
-    {
-      "datum": "2026-10-22",
-      "slug": "apod-2026-october-21-new-ghosts-revealed-in-cassiopeia",
-      "titel": "Nieuwe 'spoken' ontdekt in Cassiopeia",
-      "beg": {
-        "q": "Waarom konden de makers van de foto de zwakke blauwe nevels in Cassiopeia zichtbaar maken?",
-        "options": [
-          "Ze gebruikten een filter dat al het licht van sterren tegenhoudt",
-          "Ze fotografeerden alleen op de lichtste nachten van het jaar",
-          "Ze maakten één korte opname met een heel grote lens",
-          "Ze namen urenlang op met een filter dat alleen het licht van zuurstof doorlaat"
-        ],
-        "correct": 3,
-        "explain": "Met 100 uur belichtingstijd en een filter dat alleen zuurstoflicht doorlaat, komen zeer zwakke nevels boven het achtergrondlicht uit. Lang belichten is bij zwakke objecten de standaardmanier om genoeg licht te verzamelen."
-      },
-      "ama": {
-        "q": "Waarom wijst de blauwe kleur van Object 1, 2 en 3 op geïoniseerd zuurstof, terwijl IC 59 en IC 63 rood gloeien?",
-        "options": [
-          "Ze bevatten geen gas, alleen stof dat blauw licht weerkaatst",
-          "Het gas straalt op andere golflengtes: waterstof geeft rood licht, geïoniseerd zuurstof blauwgroen licht",
-          "Ze bewegen sneller naar ons toe, waardoor hun licht blauwer wordt",
-          "Hun gas bestaat vooral uit waterstof dat door de kou blauw straalt"
-        ],
-        "correct": 1,
-        "explain": "Elk element zendt bij aanslaan of ionisatie licht uit op eigen, vaste golflengtes. Waterstof geeft de rode gloed van IC 59 en IC 63, geïoniseerd zuurstof (O III) straalt blauwgroen, en dat maakt de kleur een chemische vingerafdruk."
-      },
-      "pro": {
-        "q": "Welke emissie kenmerkt geïoniseerd zuurstof in een nevel, en waarom is een smalbandig zuurstoffilter geschikt om zulke nevels te vinden?",
-        "options": [
-          "Het is thermische continuümstraling van stof, die over alle golflengtes gelijk is",
-          "De Balmerlijnen van zuurstof, die met een breedbandfilter het best te zien zijn",
-          "Het zijn verboden lijnen van O III rond 500,7 nm, die in een smalle band zitten en zo het continuümachtergrondlicht grotendeels weren",
-          "De 21 cm-lijn van neutrale zuurstof, die door het filter wordt versterkt"
-        ],
-        "correct": 2,
-        "explain": "Dubbel geïoniseerd zuurstof zendt sterke verboden lijnen uit, vooral bij 500,7 en 495,9 nm. Een smalbandfilter laat alleen die lijnen door en onderdrukt lichtvervuiling en continuümlicht van sterren, waardoor het contrast van zwakke nevels sterk toeneemt."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-09T17:36:16.489Z"
+  "bijgewerkt": "2026-11-10T15:43:23.582Z"
 }
