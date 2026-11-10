@@ -1751,15 +1751,15 @@ posts:
             // Rustpunten in de pauzes (P); van de baan naar de grond en terug altijd via een wijd beeld.
             const P = rust(L, data.lijnen.length);
             const wijd = { doel: [0, 1.6, 0], richting: [0.85, 0.25, 0.6], afstand: 14, fov: 46 };
-            const omlaag = { doel: [0, 2.2, -0.5], richting: [0.25, 0.7, 0.66], afstand: 11, fov: 50 };
+            const omlaag = { doel: [0, 2.2, -0.5], richting: [0.3, 0.45, 0.84], afstand: 11, fov: 50 };
             const keys = [
               ...(VAR === "A"
                 ? [{ t: 0, ...bijSat(5.2, 38) }, { t: P(0), ...bijSat(5.8, 39) }, { t: P(1), ...wijd }]
                 : [{ t: 0, ...bijRaket(5.5, 40) }, { t: P(0), ...bijRaket(6.0, 42) }, { t: P(1), ...bijRaket(7.5, 44) }]),
               { t: P(2), ...bijSat(4.4, 40) },
-              { t: P(3), ...bijSat(3.4, 38, [0.9, 0.08, 0.42]) },
+              { t: P(3), ...bijSat(4.3, 38, [0.85, 0.08, 0.5]) },
               { t: P(4), ...bijSat(5.5, 46, [0.65, -0.2, 0.72]) },
-              { t: P(5), ...bijSat(8.0, 50, [0.4, -0.1, 0.9]) },
+              { t: P(5), ...bijSat(8.0, 50, [0.4, 0.05, 0.9]) },
               { t: P(6), ...omlaag },
               { t: P(7), ...onder },
               { t: P(8), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
@@ -1773,7 +1773,7 @@ posts:
               update(t) {
                 lagen.forEach((m) => { m.uniforms.uT.value = t; m.uniforms.uGat.value = smooth((t - L(6, 0)) / (L(6, 1) - L(6, 0))) * (1 - smooth((t - L(8, 0)) / (L(8, 1) - L(8, 0)))); m.uniforms.uGatP.value.set(0, -2); });
                 const sp = satPos(t); sat.position.copy(sp); sat.rotation.y = 0.4;
-                const uit = smooth((t - L(3, 0)) / (L(3, 1) - L(3, 0)));
+                const uit = smooth((t - L(2, 0.5)) / (L(3, 1) - L(2, 0.5)));
                 vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" && t < L(3, 0) ? 1 - smooth((t - L(0, 1)) / (L(1, 1) - L(0, 1))) : uit); });
                 const ry = raketY(t); raket.position.set(0, ry, 0);
                 raket.visible = t < L(2, 1) + 0.2 && (VAR === "B" || t >= L(1, 0)); raket.scale.setScalar(0.7);
@@ -2144,15 +2144,15 @@ posts:
             // Rustpunten in de pauzes (P); van de baan naar de grond en terug altijd via een wijd beeld.
             const P = rust(L, data.lijnen.length);
             const wijd = { doel: [0, 1.6, 0], richting: [0.85, 0.25, 0.6], afstand: 14, fov: 46 };
-            const omlaag = { doel: [0, 2.2, -0.5], richting: [0.25, 0.7, 0.66], afstand: 11, fov: 50 };
+            const omlaag = { doel: [0, 2.2, -0.5], richting: [0.3, 0.45, 0.84], afstand: 11, fov: 50 };
             const keys = [
               ...(VAR === "A"
                 ? [{ t: 0, ...bijSat(5.2, 38) }, { t: P(0), ...bijSat(5.8, 39) }, { t: P(1), ...wijd }]
                 : [{ t: 0, ...bijRaket(5.5, 40) }, { t: P(0), ...bijRaket(6.0, 42) }, { t: P(1), ...bijRaket(7.5, 44) }]),
               { t: P(2), ...bijSat(4.4, 40) },
-              { t: P(3), ...bijSat(3.4, 38, [0.9, 0.08, 0.42]) },
+              { t: P(3), ...bijSat(4.3, 38, [0.85, 0.08, 0.5]) },
               { t: P(4), ...bijSat(5.5, 46, [0.65, -0.2, 0.72]) },
-              { t: P(5), ...bijSat(8.0, 50, [0.4, -0.1, 0.9]) },
+              { t: P(5), ...bijSat(8.0, 50, [0.4, 0.05, 0.9]) },
               { t: P(6), ...omlaag },
               { t: P(7), ...onder },
               { t: P(8), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
@@ -2166,7 +2166,7 @@ posts:
               update(t) {
                 lagen.forEach((m) => { m.uniforms.uT.value = t; m.uniforms.uGat.value = smooth((t - L(6, 0)) / (L(6, 1) - L(6, 0))) * (1 - smooth((t - L(8, 0)) / (L(8, 1) - L(8, 0)))); m.uniforms.uGatP.value.set(0, -2); });
                 const sp = satPos(t); sat.position.copy(sp); sat.rotation.y = 0.4;
-                const uit = smooth((t - L(3, 0)) / (L(3, 1) - L(3, 0)));
+                const uit = smooth((t - L(2, 0.5)) / (L(3, 1) - L(2, 0.5)));
                 vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" && t < L(3, 0) ? 1 - smooth((t - L(0, 1)) / (L(1, 1) - L(0, 1))) : uit); });
                 const ry = raketY(t); raket.position.set(0, ry, 0);
                 raket.visible = t < L(2, 1) + 0.2 && (VAR === "B" || t >= L(1, 0)); raket.scale.setScalar(0.7);
