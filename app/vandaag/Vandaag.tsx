@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { Steun } from '../components/Steun'
+import { MeldingenTeaser } from '../components/MeldingenTeaser'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, img } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { artikelLink, nuInNederland, zichtbaar, type DagmapItem } from '@/lib/dagmap'
@@ -105,6 +106,10 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
             </ol>
           </section>
         )}
+
+        <section className="pl-wrap" aria-label="Meldingen">
+          <MeldingenTeaser />
+        </section>
 
         <section className="pl-wrap" aria-label="Steun NightGazer">
           <Steun tekst="Ik maak deze dagelijkse nieuwsmap alleen, in mijn vrije tijd. Vind je hem nuttig? Een koffie helpt echt." />

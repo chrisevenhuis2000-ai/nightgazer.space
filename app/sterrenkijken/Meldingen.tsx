@@ -14,16 +14,21 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  SEINEN, pushMogelijk, serverSleutel, huidigAbonnement, abonneer, zegOp,
+  SEINEN, omgeving, serverSleutel, huidigAbonnement, abonneer, zegOp,
   type Sein, type Wekker,
 } from '@/lib/push'
+import { telGebeurtenis } from '@/lib/tel'
 import { haalTle, vindPassages, helderheid } from '@/lib/iss'
 import { compass, KOMPAS_VOLUIT } from '@/lib/sky-chart'
 import { Ico } from '@/app/_plate/Instruments'
 
 const KEUZE_KEY = 'nightgazer_meldingen'
+/* Wanneer de ISS-wekkers voor het laatst zijn bijgewerkt. Er gaan er vijf
+   mee; zonder verversen houden de ISS-meldingen na een paar dagen op. */
+const VERVERST_KEY = 'nightgazer_meldingen_ververst'
+const VERVERS_NA = 12 * 3600 * 1000
 
-type Staat = 'kijken' | 'kan-niet' | 'niet-ingericht' | 'uit' | 'aan' | 'geweigerd'
+type Staat = 'kijken' | 'kan-niet' | 'in-app' | 'ios-beginscherm' | 'niet-ingericht' | 'uit' | 'aan' | 'geweigerd'
 
 export default function Meldingen({ lat, lon, plaats }: {
   lat: number; lon: number; plaats: string
@@ -34,6 +39,7 @@ export default function Meldingen({ lat, lon, plaats }: {
   const [kpDrempel, setKpDrempel] = useState(6)
   const [bezig, setBezig] = useState(false)
   const [fout, setFout] = useState<string | null>(null)
+  const [gekopieerd, setGekopieerd] = useState(false)
 
   useEffect(() => {
     let leeft = true
@@ -49,7 +55,8 @@ export default function Meldingen({ lat, lon, plaats }: {
         }
       } catch { /* voorkeuren niet beschikbaar */ }
 
-      if (!pushMogelijk()) { if (leeft) setStaat('kan-niet'); return }
+      const omg = omgeving()
+      if (omg !== 'ok') { if (leeft) setStaat(omg); return }
 
       const k = await serverSleutel(ac.signal)
       if (!leeft) return
@@ -64,6 +71,23 @@ export default function Meldingen({ lat, lon, plaats }: {
 
     return () => { leeft = false; ac.abort() }
   }, [])
+
+  /* Komt de bezoeker via een "Zet meldingen aan"-knop (#pl-meld), dan
+     verschuift de pagina nog terwijl het weer erboven laadt. Na het laden
+     nog één keer naar dit blok scrollen. */
+  useEffect(() => {
+    if (location.hash !== '#pl-meld') return
+    const t = setTimeout(() => {
+      document.getElementById('pl-meld')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    }, 900)
+    return () => clearTimeout(t)
+  }, [])
+
+  /* Eén meting per bezoek van wat het blok liet zien: zo is te zien hoeveel
+     bezoekers push niet eens konden aanzetten, en waarom. */
+  useEffect(() => {
+    if (staat !== 'kijken') telGebeurtenis('push-staat', staat)
+  }, [staat])
 
   const bewaar = useCallback((seinen: Sein[], drempel: number) => {
     try { localStorage.setItem(KEUZE_KEY, JSON.stringify({ seinen, kpDrempel: drempel })) }
@@ -94,18 +118,24 @@ export default function Meldingen({ lat, lon, plaats }: {
   const zetAan = useCallback(async () => {
     if (!sleutel) return
     setBezig(true); setFout(null)
+    telGebeurtenis('push-klik', gekozen.join(','))
     try {
       const toestemming = await Notification.requestPermission()
       if (toestemming !== 'granted') {
+        telGebeurtenis('push-geweigerd', toestemming)
         setStaat(toestemming === 'denied' ? 'geweigerd' : 'uit')
         return
       }
       const wekkers = await maakWekkers()
       await abonneer({ seinen: gekozen, lat, lon, plaats, kpDrempel }, wekkers, sleutel)
       bewaar(gekozen, kpDrempel)
+      try { localStorage.setItem(VERVERST_KEY, String(Date.now())) } catch { /* niet erg */ }
+      telGebeurtenis('push-aan', gekozen.join(','))
       setStaat('aan')
     } catch (e) {
-      setFout(e instanceof Error ? e.message : 'aanmelden mislukt')
+      const melding = e instanceof Error ? e.message : 'aanmelden mislukt'
+      telGebeurtenis('push-fout', melding.slice(0, 40))
+      setFout(melding)
     } finally {
       setBezig(false)
     }
@@ -122,16 +152,47 @@ export default function Meldingen({ lat, lon, plaats }: {
     } catch { /* volgende poging opnieuw */ }
   }, [staat, sleutel, lat, lon, plaats, maakWekkers, bewaar])
 
+  /* Staat het al aan, dan bij elk bezoek (hooguit twee keer per dag) de
+     ISS-wekkers en de plek opnieuw doorgeven. */
+  useEffect(() => {
+    if (staat !== 'aan' || !sleutel) return
+    let vorige = 0
+    try { vorige = Number(localStorage.getItem(VERVERST_KEY)) || 0 } catch { /* onbekend */ }
+    if (Date.now() - vorige < VERVERS_NA) return
+    ;(async () => {
+      try {
+        const wekkers = await maakWekkers()
+        await abonneer({ seinen: gekozen, lat, lon, plaats, kpDrempel }, wekkers, sleutel)
+        localStorage.setItem(VERVERST_KEY, String(Date.now()))
+      } catch { /* volgende bezoek opnieuw */ }
+    })()
+  }, [staat, sleutel, gekozen, kpDrempel, lat, lon, plaats, maakWekkers])
+
   const zetUit = useCallback(async () => {
     setBezig(true)
-    try { await zegOp(); setStaat('uit') } finally { setBezig(false) }
+    try { await zegOp(); telGebeurtenis('push-uit'); setStaat('uit') } finally { setBezig(false) }
+  }, [])
+
+  const kopieer = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(location.href.split('#')[0] + '#pl-meld')
+      setGekopieerd(true)
+    } catch { /* klembord niet beschikbaar: de uitleg staat er nog */ }
   }, [])
 
   const uitleg = useMemo(() => {
     switch (staat) {
+      case 'in-app':
+        return 'Je kijkt nu in de browser van Instagram (of Facebook/TikTok). Die kan geen meldingen tonen. '
+          + 'Tik rechtsboven op ⋯ en kies "Openen in browser" (of "Openen in Safari"), '
+          + 'en zet de meldingen daar aan.'
+      case 'ios-beginscherm':
+        return 'Op een iPhone werken meldingen alleen vanaf je beginscherm. '
+          + 'Tik in Safari op het deel-icoon (vierkant met pijl), kies "Zet op beginscherm", '
+          + 'open NightGazer vanaf dat icoon en kom hier terug.'
       case 'kan-niet':
         return 'Deze browser kan geen meldingen op de achtergrond tonen. '
-          + 'Op een iPhone lukt het alleen als je NightGazer eerst aan je beginscherm toevoegt.'
+          + 'Probeer Chrome, Edge, Firefox of Safari.'
       case 'niet-ingericht':
         return 'De meldingsdienst staat nog niet aan op de server. Zodra dat gebeurt verschijnt hier een knop.'
       case 'geweigerd':
@@ -157,6 +218,15 @@ export default function Meldingen({ lat, lon, plaats }: {
           </span>
         )}
       </div>
+
+      {/* Kan het hier niet, dan eerst zeggen waarom en wat je moet doen,
+          niet pas onder de lijst. */}
+      {uitleg && <p className="pl-body-s pl-meldk__uitleg">{uitleg}</p>}
+      {staat === 'in-app' && (
+        <button type="button" className="pl-btn pl-btn--act" onClick={kopieer}>
+          {gekopieerd ? 'Gekopieerd: plak de link in je browser' : 'Kopieer de link'}
+        </button>
+      )}
 
       <ul className="pl-meldk__lijst">
         {SEINEN.map(s => {
@@ -201,7 +271,6 @@ export default function Meldingen({ lat, lon, plaats }: {
         })}
       </ul>
 
-      {uitleg && <p className="pl-body-s pl-meldk__uitleg">{uitleg}</p>}
       {fout && <p className="pl-body-s pl-meldk__fout">Er ging iets mis: {fout}</p>}
 
       <div className="pl-meldk__voet">
@@ -216,6 +285,7 @@ export default function Meldingen({ lat, lon, plaats }: {
           </button>
         )}
         {staat === 'kijken' && <span className="pl-label">even kijken…</span>}
+
 
         <span className="pl-label pl-meldk__plaats">
           {staat === 'aan' || staat === 'uit' ? `gebaseerd op ${plaats}` : ''}

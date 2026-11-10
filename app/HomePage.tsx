@@ -17,6 +17,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import { MISSIONS } from '@/lib/missions-data'
 import { SiteFooter } from './components/SiteFooter'
+import { MeldingenTeaser } from './components/MeldingenTeaser'
 import {
   PROXY, APOD_CACHE_KEY,
   type APODData, type ISSData, type Article,
@@ -742,6 +743,10 @@ export default function HomePage({ start }: {
             <DezeWeekPlate />
             <ApodPlate apod={apod} />
           </div>
+        </section>
+
+        <section className="pl-wrap" aria-label="Meldingen">
+          <MeldingenTeaser />
         </section>
 
         <div className="pl-wrap">

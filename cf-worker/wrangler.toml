@@ -26,3 +26,14 @@ crons = ["*/15 * * * *", "17 7 * * *", "43 7 * * *"]
 [[kv_namespaces]]
 binding = "SUBS"
 id = "62db9e6a234047c5907a7c18f4f99151"
+
+# De eigen bezoekersteller (cf-worker/teller.mjs). Analytics Engine maakt de
+# dataset zelf aan bij het eerste datapunt. Cookieloos, geen IP-adres.
+# /tel/stats leest hem terug met secret CF_ANALYTICS_TOKEN (Account
+# Analytics: Read); CF_ACCOUNT_ID staat hieronder.
+[[analytics_engine_datasets]]
+binding = "TEL"
+dataset = "nightgazer_tel"
+
+[vars]
+CF_ACCOUNT_ID = "81e3376cdf10af6f23d939f91c4d920c"

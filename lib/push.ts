@@ -50,6 +50,27 @@ export function pushMogelijk(): boolean {
     && 'Notification' in window
 }
 
+/**
+ * Waarom push hier wel of niet kan. De meeste bezoekers komen via de
+ * Instagram-bio en zitten dan in de ingebouwde browser van Instagram: daar
+ * bestaat push niet, en "voeg toe aan beginscherm" ook niet. Die bezoeker
+ * moet eerst naar Safari of Chrome, en dat moet de site dan ook zeggen.
+ */
+export type Omgeving = 'ok' | 'in-app' | 'ios-beginscherm' | 'kan-niet'
+
+export function omgeving(): Omgeving {
+  if (typeof window === 'undefined') return 'kan-niet'
+  const ua = navigator.userAgent || ''
+  if (/Instagram|FBAN|FBAV|FB_IAB|FBIOS|musical_ly|BytedanceWebview|TikTok/i.test(ua)) return 'in-app'
+  if (pushMogelijk()) return 'ok'
+  const ios = /iPhone|iPad|iPod/i.test(ua)
+    || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)
+  const losGeopend = window.matchMedia?.('(display-mode: standalone)').matches
+    || (navigator as Navigator & { standalone?: boolean }).standalone === true
+  if (ios && !losGeopend) return 'ios-beginscherm'
+  return 'kan-niet'
+}
+
 let registratie: Promise<ServiceWorkerRegistration> | null = null
 export function registreerSw(): Promise<ServiceWorkerRegistration> {
   if (!registratie) registratie = navigator.serviceWorker.register('/sw.js', { scope: '/' })
