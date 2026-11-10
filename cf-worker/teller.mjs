@@ -36,7 +36,15 @@ export const GEBEURTENISSEN = new Set([
   'sterrenbeeld-klaar',  // sterrenbeeld af (extra = 'id:missers')
   'sterrenbeeld-verder', // tik op de vervolglink na het tekenen
   'sterrenbeeld-teaser', // tik op het spelblokje
+  'uit-klik',            // tik op een link naar een winkel of Ko-fi (extra = 'bol' | 'amazon' | 'kofi')
 ])
+
+/** Pagina's met winkelknoppen: hun weergaven tellen als "geldpagina". */
+export const GELDPAGINAS = [
+  '/sterrenkijken/uitrusting/',
+  '/sterrenkijken/eerste-telescoop/',
+  '/sterrenkijken/cadeaugids/',
+]
 
 const BOT = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|curl|wget|python|httpclient|axios|node-fetch|go-http|java\/|facebookexternalhit|embedly|monitor/i
 
@@ -101,7 +109,7 @@ export function maakDatapunt(body, { ua, land, origin }) {
   }
 }
 
-/** SQL voor /tel/stats: per dag weergaven, bezoeken, de push-trechter en de twee dagspellen. */
+/** SQL voor /tel/stats: per dag weergaven, bezoeken, de push-trechter, de twee dagspellen en de klikken naar winkels en Ko-fi. */
 export function statsSql(dagen) {
   const d = Math.max(1, Math.min(90, Math.floor(dagen) || 30))
   // sumIf/toStartOfDay: de functies die de SQL-API van Analytics Engine
@@ -127,7 +135,12 @@ SELECT
   sumIf(_sample_interval, blob6 = 'sterrenbeeld-teaser') AS sterrenbeeld_teaser,
   sumIf(_sample_interval, blob6 = 'sterrenbeeld-start') AS sterrenbeeld_start,
   sumIf(_sample_interval, blob6 = 'sterrenbeeld-klaar') AS sterrenbeeld_klaar,
-  sumIf(_sample_interval, blob6 = 'sterrenbeeld-verder') AS sterrenbeeld_verder
+  sumIf(_sample_interval, blob6 = 'sterrenbeeld-verder') AS sterrenbeeld_verder,
+  sumIf(_sample_interval, blob1 = 'pv' AND blob2 IN (${GELDPAGINAS.map(p => `'${p}'`).join(', ')})) AS geldpagina_weergaven,
+  sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/sterrenkijken/cadeaugids/') AS cadeaugids_weergaven,
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'bol') AS klik_bol,
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'amazon') AS klik_amazon,
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kofi') AS klik_kofi
 FROM ${TEL_DATASET}
 WHERE timestamp > NOW() - INTERVAL '${d}' DAY
 GROUP BY dag

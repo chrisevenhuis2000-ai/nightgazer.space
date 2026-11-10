@@ -15,6 +15,7 @@
 import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { Steun } from '../../components/Steun'
+import { AffiliateMelding } from '../../components/AffiliateMelding'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, UitrustingVerwijzing } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { Schema } from '../uitrusting/Schema'
@@ -112,7 +113,7 @@ export default function EersteTelescoop() {
         <section className="pl-wrap" aria-labelledby="pl-gids">
           <div className="pl-uhero">
             <div className="pl-uhero__ground" aria-hidden="true">
-              <div className="pl-emulsion"><img src={nasaBeeld(GIDS_BEELD.kop.nasaId)} alt="" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></div>
+              <div className="pl-emulsion"><img src={nasaBeeld(GIDS_BEELD.kop.nasaId, GIDS_BEELD.kop.maat)} alt="" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></div>
             </div>
             <div className="pl-uhero__in">
               <h1 id="pl-gids" className="pl-h1">Je eerste telescoop kiezen</h1>
@@ -133,13 +134,7 @@ export default function EersteTelescoop() {
                 ))}
               </nav>
 
-              <p className="pl-uhero__melding">
-                <span className="pl-label pl-label--stamp">Over deze links</span>
-                <span>
-                  Koop je iets via een knop op deze pagina, dan krijgt NightGazer een kleine
-                  commissie van de winkel. Jij betaalt niets extra.
-                </span>
-              </p>
+              <AffiliateMelding />
             </div>
             <p className="pl-uhero__credit">{GIDS_BEELD.kop.titel} · {GIDS_BEELD.kop.credit}</p>
           </div>

@@ -53,9 +53,12 @@ const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
     kop: 'Affiliate-links',
     tekst: <>
       Op de pagina{' '}
-      <Link href="/sterrenkijken/uitrusting/" className="pl-voorw__a">Uitrusting</Link> staan links naar
+      <Link href="/sterrenkijken/uitrusting/" className="pl-voorw__a">Uitrusting</Link>, in de{' '}
+      <Link href="/sterrenkijken/eerste-telescoop/" className="pl-voorw__a">telescoopgids</Link> en in de{' '}
+      <Link href="/sterrenkijken/cadeaugids/" className="pl-voorw__a">cadeaugids</Link> staan links naar
       Bol en Amazon.nl. Koop je iets via zo&apos;n link, dan krijgt NightGazer een kleine commissie van
-      de winkel. Jij betaalt niets extra en de aanbevelingen hangen niet af van de commissie.
+      de winkel. Jij betaalt niets extra en de aanbevelingen hangen niet af van de commissie. Als
+      Amazon-partner verdien ik aan in aanmerking komende aankopen.
     </>,
   },
   {
