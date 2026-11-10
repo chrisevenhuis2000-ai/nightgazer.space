@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=2560, height=1440" />
+    <title>NightGazer — YouTube-banner</title>
+    <style>
+      /* Archivo + JetBrains Mono, shipped locally (SIL OFL, assets/fonts/). */
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("../assets/fonts/archivo-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("../assets/fonts/archivo-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("../assets/fonts/archivo-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("../assets/fonts/archivo-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("../assets/fonts/archivo-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("../assets/fonts/archivo-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("../assets/fonts/archivo-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("../assets/fonts/archivo-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("../assets/fonts/archivo-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("../assets/fonts/archivo-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("../assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("../assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("../assets/fonts/jetbrains-mono-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("../assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("../assets/fonts/jetbrains-mono-greek-400-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+        @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("../assets/fonts/jetbrains-mono-greek-500-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 2560px; height: 1440px; overflow: hidden; background: #0E1022; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #0E1022;
+        font-family: "Archivo", ui-sans-serif, system-ui, sans-serif; }
+
+      /* The plate fills the whole TV frame; everything readable sits in the
+         YouTube safe area (x 507-2053, y 509-931), which every device shows. */
+      #plate {
+        position: absolute; left: 32px; top: 32px; width: 2496px; height: 1376px;
+        background-color: #15182F;
+        background-image:
+          repeating-linear-gradient(90deg, rgba(39,44,80,0.40) 0 1px, transparent 1px 60px),
+          repeating-linear-gradient(0deg,  rgba(39,44,80,0.26) 0 1px, transparent 1px 60px);
+        background-position: 28px 28px;
+        border: 1px solid #272C50;
+      }
+      .loupe { position: absolute; border-radius: 50%;
+        background: radial-gradient(50% 50% at 50% 50%, rgba(24,95,165,0.34) 0%, rgba(24,95,165,0) 70%); }
+      #loupe-1 { left: 420px; top: 380px; width: 1150px; height: 660px; }
+      #loupe-2 { left: 1300px; top: 470px; width: 1050px; height: 520px; opacity: 0.5; }
+      #loupe-3 { left: 1780px; top: 60px; width: 700px; height: 440px; opacity: 0.35; }
+      #lines { position: absolute; inset: 0; width: 2560px; height: 1440px; }
+
+      #text { position: absolute; right: 567px; top: 509px; height: 422px; width: 800px;
+        display: flex; flex-direction: column; justify-content: center; align-items: flex-end; text-align: right; }
+      .label { font-size: 23px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+        color: #B5D4F4; line-height: 1; white-space: nowrap; }
+      #rule { width: 100%; height: 1px; background: #272C50; margin: 18px 0 20px; }
+      #title { font-size: 100px; font-weight: 800; line-height: 0.96; letter-spacing: -0.034em; color: #EEF2FB; }
+      #sub { margin-top: 18px; font-size: 34px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: #9AA6C8; }
+      #meta { margin-top: 20px; color: #868EB4; font-size: 21px; }
+      .star-name { font-family: "JetBrains Mono", monospace; font-size: 20px; fill: #868EB4; }
+      .mono-faint { font-family: "JetBrains Mono", monospace; font-size: 20px; fill: #868EB4; fill-opacity: 0.7; letter-spacing: 0.04em; }
+    </style>
+  </head>
+  <body>
+    <!-- Static 2560x1440 YouTube channel banner. Phone shows only the centre
+         1546x423, desktop the full-width 2560x423 band, TV the whole frame.
+         Export: open in Chromium at a 2560x1440 viewport (scale 1) and screenshot to PNG. -->
+    <div id="root">
+      <div id="plate"></div>
+      <div id="loupe-1" class="loupe"></div>
+      <div id="loupe-2" class="loupe"></div>
+      <div id="loupe-3" class="loupe"></div>
+      <svg id="lines" viewBox="0 0 2560 1440" aria-hidden="true">
+        <g id="grain"></g>
+        <polyline points="44.5,72.5 44.5,44.5 72.5,44.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.5" />
+        <polyline points="2515.5,1367.5 2515.5,1395.5 2487.5,1395.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.5" />
+        <!-- Small corner marks that frame the desktop band. -->
+        <polyline points="72.5,540.5 72.5,524.5 88.5,524.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.35" />
+        <polyline points="2487.5,900.5 2487.5,916.5 2471.5,916.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.35" />
+        <g id="ruler-top" stroke="#185FA5" stroke-width="1.4"></g>
+        <g id="ruler-right" stroke="#185FA5" stroke-width="1.4"></g>
+        <g id="cas"></g>
+        <g id="asterism"></g>
+        <text class="mono-faint" x="96" y="1352">52°N · 5°O — de hemel boven Nederland</text>
+        <text class="mono-faint" x="2464" y="1352" text-anchor="end">nightgazer.space</text>
+      </svg>
+      <div id="text">
+        <p class="label">nightgazer.space</p>
+        <div id="rule"></div>
+        <p id="title">Astronomie<br />voor iedereen</p>
+        <p id="sub">Elke nacht: wat je vanuit Nederland kunt zien.</p>
+        <p id="meta" class="label">Nieuws &middot; Sterrenkijken &middot; Uitleg op jouw niveau</p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        const NS = "http://www.w3.org/2000/svg";
+        const el = (tag, attrs, parent) => {
+          const n = document.createElementNS(NS, tag);
+          for (const k in attrs) n.setAttribute(k, attrs[k]);
+          parent.appendChild(n);
+          return n;
+        };
+        // Edge fiducial rulers: a tick every 16px, a long tick every 10th.
+        const top = document.getElementById("ruler-top");
+        for (let i = 0, x = 1000.5; x < 2440; i++, x += 16)
+          el("line", { x1: x, x2: x, y1: 33, y2: i % 10 === 0 ? 53 : 43 }, top);
+        const right = document.getElementById("ruler-right");
+        for (let i = 0, y = 120.5; y < 1000; i++, y += 16)
+          el("line", { y1: y, y2: y, x1: 2527, x2: i % 10 === 0 ? 2507 : 2517 }, right);
+
+        // Silver grains, seeded so every render is identical.
+        let s = 20261110;
+        const rnd = () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
+        const grain = document.getElementById("grain");
+        for (let i = 0; i < 900; i++) {
+          const x = 40 + rnd() * 2480, y = 40 + rnd() * 1360;
+          const big = rnd() > 0.93;
+          el("circle", { cx: x.toFixed(1), cy: y.toFixed(1), r: big ? 2.0 : 1.1,
+                         fill: "#B5D4F4", "fill-opacity": (big ? 0.55 : 0.2 + rnd() * 0.25).toFixed(2) }, grain);
+        }
+
+        // Plot an asterism from real J2000 positions (sky view: east is left).
+        function plot(stars, path, ra0, de0, sc, rot, cx, cy) {
+          const d0 = de0 * Math.PI / 180, r = rot * Math.PI / 180;
+          return stars.map(([n, ra, de, m]) => {
+            const x = -(ra - ra0) * 15 * Math.cos(d0) * sc, y = -(de - de0) * sc;
+            return { n, m, x: cx + x * Math.cos(r) - y * Math.sin(r), y: cy + x * Math.sin(r) + y * Math.cos(r) };
+          });
+        }
+        function draw(P, order, g, k, op) {
+          el("polyline", { points: order.map(i => `${P[i].x.toFixed(1)},${P[i].y.toFixed(1)}`).join(" "),
+            fill: "none", stroke: "#B5D4F4", "stroke-opacity": 0.38 * op, "stroke-width": 1.5 }, g);
+          for (const p of P) {
+            const r = (7.5 - p.m * 1.4) * k;
+            el("circle", { cx: p.x, cy: p.y, r: r * 3.2, fill: "#185FA5", "fill-opacity": 0.22 * op }, g);
+            el("circle", { cx: p.x, cy: p.y, r: r, fill: "#EEF2FB", "fill-opacity": op }, g);
+          }
+        }
+
+        // De Grote Beer (Steelpannetje), the hero, inside the safe area.
+        const uma = [
+          ["Dubhe", 11.062, 61.75, 1.8], ["Merak", 11.031, 56.38, 2.4],
+          ["Phecda", 11.897, 53.69, 2.4], ["Megrez", 12.257, 57.03, 3.3],
+          ["Alioth", 12.900, 55.96, 1.8], ["Mizar", 13.399, 54.93, 2.2],
+          ["Alkaid", 13.792, 49.31, 1.9],
+        ];
+        const ast = document.getElementById("asterism");
+        const P = plot(uma, null, 12.4, 55.5, 26, 12, 935, 740);
+        draw(P, [0, 1, 2, 3, 0, 3, 4, 5, 6], ast, 1.4, 1);
+        const d = P[0];
+        el("circle", { cx: d.x, cy: d.y, r: 25, fill: "none", stroke: "#B5D4F4", "stroke-opacity": 0.55, "stroke-width": 1.5 }, ast);
+        for (const [dx, dy, ex, ey] of [[-40,0,-30,0],[40,0,30,0],[0,-40,0,-30],[0,40,0,30]])
+          el("line", { x1: d.x + dx, y1: d.y + dy, x2: d.x + ex, y2: d.y + ey, stroke: "#B5D4F4", "stroke-opacity": 0.55, "stroke-width": 1.5 }, ast);
+        const label = (p, txt, dx, dy, anchor) => {
+          const t = el("text", { x: p.x + dx, y: p.y + dy, "text-anchor": anchor, class: "star-name" }, ast);
+          t.textContent = txt;
+        };
+        label(P[0], "α UMa  Dubhe", -46, 7, "end");
+        label(P[6], "η UMa  Alkaid", -14, 46, "start");
+
+        // Cassiopeia, faint, only on TV (top right, outside the safe area).
+        const cas = [
+          ["Caph", 0.153, 59.15, 2.3], ["Schedar", 0.675, 56.54, 2.2],
+          ["Navi", 0.945, 60.72, 2.5], ["Ruchbah", 1.430, 60.24, 2.7], ["Segin", 1.907, 63.67, 3.4],
+        ];
+        const C = plot(cas, null, 1.0, 60, 24, -8, 2150, 270);
+        draw(C, [0, 1, 2, 3, 4], document.getElementById("cas"), 1.2, 0.55);
+      })();
+    </script>
+  </body>
+</html>
