@@ -59,8 +59,8 @@ window.reel = {
     const zijZacht = { ...zij, richting: [0.85, 0.15, 0.5], op: [0, 0.5, -0.87] };
     const dicht = { doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 5.2, fov: 40, op: [0, 1, 0] };
     const begin = VAR === "A"
-      ? [{ t: 0, ...sikkel(7.6, 34) }, { t: P(0), ...sikkel(7.2, 34) }, { t: P(1), ...sikkel(8.6, 36) }]
-      : [{ t: 0, ...horizon(28, -6) }, { t: P(0), ...horizon(25, -3.5), vast: 0.6 }, { t: P(1), ...sikkel(8.6, 36) }];
+      ? [{ t: 0, ...sikkel(7.6, 34) }, { t: P(0), ...sikkel(7.2, 34), e: "out" }, { t: P(1), ...sikkel(8.6, 36) }]
+      : [{ t: 0, ...horizon(28, -6) }, { t: P(0), ...horizon(25, -3.5), e: "out", vast: 0.6 }, { t: P(1), ...sikkel(8.6, 36) }];
     const keys = [
       ...begin,
       { t: P(2), ...schuinZij },

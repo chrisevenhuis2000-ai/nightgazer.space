@@ -72,7 +72,7 @@ window.reel = {
     const langs = (afst, fov, a, b) => ({ doel: V.toArray(), richting: schuin(a, b), afstand: afst, fov });
     const keys = [
       { t: 0, ...bijSonde(11, 34) },
-      { t: P(0), ...bijSonde(12.5, 35) },
+      { t: P(0), ...bijSonde(12.5, 35), e: "out" },  // beweging vanaf frame 1
       { t: P(1), ...langs(34, 38, 0.82, 0.5) },
       { t: P(2), ...langs(100, 42, 0.9, 0.36) },
       { t: P(3), ...langs(225, 46, 0.95, 0.24), vast: 0.2 },
@@ -105,7 +105,7 @@ window.reel = {
         if (k6 > 0) { ov.tekst("datum", 540, 420, { maat: 112, alpha: k6, schaal: 0.85 + 0.15 * easeOut((t - L(6, 0.1)) / 0.3) }); ov.tekst("lichtdag", 540, 530, { maat: 50, kleur: KLEUR.wit, alpha: k6, gloei: 10, gewicht: 700 }); }
         const k8 = venster(t, L(8, 0.2), L(8, 1) + 0.3, 0.25, 0.3);
         if (k8 > 0) ov.tekst("talen", 540, 430, { maat: 104, alpha: k8, teller: (t - L(8, 0.2)) / 0.5 });
-        const kv = venster(t, L(4, 0), L(7, 1), 0.3, 0.3);
+        const kv = venster(t, L(4, 0), L(6, 0), 0.3, 0.3);  // weg vóór de datum en "een hele lichtdag"
         if (kv > 0) { const [x, y, voor] = ov.proj(V); if (voor) ov.tekst("voyager", Math.max(200, Math.min(880, x)), Math.max(300, Math.min(1460, y - 230)), { maat: 46, kleur: KLEUR.wit, alpha: kv * 0.95, gloei: 10, gewicht: 700 }); }
         const kb = VAR === "B" ? venster(t, 0, L(1, 0.5), 0.01, 0.4) : 0;
         if (kb > 0) { const [x, y, voor] = ov.proj(nlPunt(t)); if (voor) ov.tekst("bericht", Math.max(200, Math.min(880, x)), Math.max(300, Math.min(1460, y - 120)), { maat: 46, kleur: KLEUR.teal, alpha: kb, gloei: 12, gewicht: 700 }); }
