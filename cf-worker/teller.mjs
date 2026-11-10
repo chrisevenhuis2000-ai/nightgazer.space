@@ -32,6 +32,10 @@ export const GEBEURTENISSEN = new Set([
   'hemelfoto-deel',   // tik op Deel je uitslag
   'hemelfoto-verder', // tik op een artikel of vervolglink na het raden
   'hemelfoto-teaser', // tik op het spelblokje op de voorpagina, /vandaag of /educatie
+  'sterrenbeeld-start',  // eerste lijn in Teken het sterrenbeeld (extra = sterrenbeeld)
+  'sterrenbeeld-klaar',  // sterrenbeeld af (extra = 'id:missers')
+  'sterrenbeeld-verder', // tik op de vervolglink na het tekenen
+  'sterrenbeeld-teaser', // tik op het spelblokje
 ])
 
 const BOT = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|curl|wget|python|httpclient|axios|node-fetch|go-http|java\/|facebookexternalhit|embedly|monitor/i
@@ -97,7 +101,7 @@ export function maakDatapunt(body, { ua, land, origin }) {
   }
 }
 
-/** SQL voor /tel/stats: per dag weergaven, bezoeken, de push-trechter en Raad de hemelfoto. */
+/** SQL voor /tel/stats: per dag weergaven, bezoeken, de push-trechter en de twee dagspellen. */
 export function statsSql(dagen) {
   const d = Math.max(1, Math.min(90, Math.floor(dagen) || 30))
   // sumIf/toStartOfDay: de functies die de SQL-API van Analytics Engine
@@ -118,7 +122,12 @@ SELECT
   sumIf(_sample_interval, blob6 = 'hemelfoto-start') AS hemelfoto_start,
   sumIf(_sample_interval, blob6 = 'hemelfoto-klaar') AS hemelfoto_klaar,
   sumIf(_sample_interval, blob6 = 'hemelfoto-deel') AS hemelfoto_deel,
-  sumIf(_sample_interval, blob6 = 'hemelfoto-verder') AS hemelfoto_verder
+  sumIf(_sample_interval, blob6 = 'hemelfoto-verder') AS hemelfoto_verder,
+  sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/spellen/sterrenbeeld/') AS sterrenbeeld_weergaven,
+  sumIf(_sample_interval, blob6 = 'sterrenbeeld-teaser') AS sterrenbeeld_teaser,
+  sumIf(_sample_interval, blob6 = 'sterrenbeeld-start') AS sterrenbeeld_start,
+  sumIf(_sample_interval, blob6 = 'sterrenbeeld-klaar') AS sterrenbeeld_klaar,
+  sumIf(_sample_interval, blob6 = 'sterrenbeeld-verder') AS sterrenbeeld_verder
 FROM ${TEL_DATASET}
 WHERE timestamp > NOW() - INTERVAL '${d}' DAY
 GROUP BY dag
