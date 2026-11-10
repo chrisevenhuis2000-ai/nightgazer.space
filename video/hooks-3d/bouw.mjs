@@ -61,7 +61,7 @@ const venus = (v) => ({
     l("Maar haar dikke lucht buigt het zonlicht."),
     l("Zo groeit de sikkel voorbij *180 graden*.", "Zo groeit de sikkel voorbij honderdtachtig graden."),
     l("Nu staat ze 's ochtends laag in het zuidoosten."),
-    l("Met een verrekijker zie je de sikkel."),
+    l("Een verrekijker toont de sikkel."),
     v === "A" ? l("Geen maan. Venus.") : l("Vrijdagochtend, laag in het zuidoosten."),
   ],
   script: [
@@ -91,7 +91,7 @@ const radar = (v) => ({
     v === "A" ? l("Deze satelliet kijkt dwars door wolken heen.") : l("Deze week: een satelliet die door wolken kijkt."),
     v === "A" ? l("Deze week brengt een Electron hem omhoog.") : l("Een Electron brengt hem omhoog."),
     l("Naar een lage baan rond de aarde."),
-    l("Daar vouwt hij een plat paneel uit."),
+    l("Daar vouwt hij zijn antenne uit."),
     l("Hij stuurt pulsen naar de grond,"),
     l("en vangt de echo op."),
     l("Wolken houden die pulsen niet tegen."),
@@ -102,7 +102,7 @@ const radar = (v) => ({
   script: [
     { beeld: v === "A" ? "De satelliet boven een wolkenzee bij nacht; een puls gaat al omlaag" : "Een slanke raket breekt door het wolkendek", camera: "dichtbij, licht uitzoomen" },
     { beeld: "De raket klimt naar een lage baan", camera: "mee omhoog" },
-    { beeld: "Het paneel vouwt uit; pulsen omlaag, echo omhoog", camera: "naast de satelliet, dan eronder" },
+    { beeld: "De antenne vouwt uit; pulsen omlaag, echo omhoog", camera: "naast de satelliet, dan eronder" },
     { beeld: "Door een gat in de wolken: het radarbeeld groeit regel voor regel", camera: "omlaag door de wolken" },
     { beeld: "Terug boven de wolken, zoals het begin", camera: "omhoog naar frame 0" },
   ],
@@ -134,5 +134,14 @@ const posts = [
   post("NG-9305", "Lancering, een radarsatelliet (haak A: tegen-intuïtief)", "lancering", radar("A"), capRad, ["#nightgazer", "#rocketlab", "#lancering"], bronRad),
   post("NG-9306", "Lancering, een radarsatelliet (haak B: tijd)", "lancering", radar("B"), capRad, ["#nightgazer", "#rocketlab", "#lancering"], bronRad),
 ];
+const TIJDEN = { "NG-9301": {"lijnen":[[0.35,2.424],[2.724,3.669],[3.769,5.046],[5.146,7.04],[7.34,10.104],[10.404,12.793],[13.093,15.716],[16.016,17.066],[17.366,19.222],[19.522,20.931]],"dur":22.831},
+"NG-9302": {"lijnen":[[0.35,2.573],[2.873,4.404],[4.704,5.981],[6.081,7.974],[8.274,11.038],[11.338,13.728],[14.028,16.65],[16.95,18],[18.3,20.156],[20.456,21.662]],"dur":23.562},
+"NG-9303": {"lijnen":[[0.35,1.062],[1.362,2.59],[2.89,4.358],[4.658,5.804],[6.104,7.652],[7.952,10.436],[10.736,12.643],[12.943,14.245],[14.545,15.591]],"dur":17.491},
+"NG-9304": {"lijnen":[[0.35,2.506],[2.806,4.318],[4.618,6.086],[6.386,7.531],[7.831,9.379],[9.679,12.163],[12.463,14.371],[14.671,15.972],[16.272,18.268]],"dur":20.168},
+"NG-9305": {"lijnen":[[0.35,1.94],[2.24,3.944],[4.244,5.574],[5.874,7.141],[7.441,8.691],[8.791,9.901],[10.201,11.569],[11.869,13.866],[14.166,14.753],[15.053,15.724]],"dur":17.624},
+"NG-9306": {"lijnen":[[0.35,2.368],[2.668,4.098],[4.398,5.728],[6.028,7.295],[7.595,8.846],[8.946,10.055],[10.355,11.723],[12.023,14.021],[14.321,14.908],[15.208,16.714]],"dur":18.614} };
+// Alleen lokaal (schets met de echte stemtijden van de LXC, 09-11): concepten-lokaal.yaml, niet voor de LXC.
+const lokaal = posts.map(p => ({ ...p, data: { ...p.data, tijden: TIJDEN[p.id] } }));
+writeFileSync(dir + "concepten-lokaal.yaml", YAML.stringify({ week: "2026-W46", posts: lokaal }, { lineWidth: 0 }));
 writeFileSync(dir + "concepten.yaml", "# Fase 2: concepten hooks en 3D (niet voor het plan)\n" + YAML.stringify({ week: "2026-W46", posts }, { lineWidth: 0 }));
 console.log("ok", posts.length);

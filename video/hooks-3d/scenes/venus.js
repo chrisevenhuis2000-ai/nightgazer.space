@@ -3,7 +3,7 @@
 // Venus laag in het zuidoosten ("Vrijdagochtend…"), dan een log-zoom naar de sikkel. Beide eindigen waar ze begonnen.
 window.reel = {
   maak({ THREE, kit, scene, L, dur, data, ov }) {
-    const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart } = K2(THREE);
+    const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust } = K2(THREE);
     const { lijn, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
     const VAR = "__VAR__";
     // ── de wereld ───────────────────────────────────────────────────────────────────────────────
@@ -53,28 +53,23 @@ window.reel = {
     const horizonCam = E.clone().add(new THREE.Vector3(0, RE + 0.11, 0));
     const horizon = (fov, kijkY) => ({ doel: [0, 0, 0], kijk: [0, kijkY, 0], richting: horizonCam.clone().normalize().toArray(), afstand: horizonCam.length(), fov });
     const zij = { doel: [0, -4, 20], richting: [1, 0.15, 0], afstand: 150, fov: 46, op: [0, 0, -1] };
-    const keys = VAR === "A" ? [
-      { t: 0, ...sikkel(7.6, 34) },
-      { t: L(0, 1), ...sikkel(6.9, 34), e: "lin" },
-      { t: L(1, 1), ...sikkel(8.4, 36) },
-      { t: L(2, 1), ...zij, e: "sine" },
-      { t: L(3, 1), ...zij, afstand: 140 },
-      { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
-      { t: L(5, 1), ...sikkel(7.2, 36) },
-      { t: L(6, 1), ...horizon(28, -6), el: "in" },
-      { t: L(7, 1), ...horizon(24, -4) },
-      { t: dur, ...sikkel(7.6, 34), el: "out" },
-    ] : [
-      { t: 0, ...horizon(28, -6) },
-      { t: L(0, 1), ...horizon(25, -3.5), e: "lin" },
-      { t: L(1, 1), ...sikkel(8.4, 36), el: "in" },
-      { t: L(2, 1), ...zij, e: "sine" },
-      { t: L(3, 1), ...zij, afstand: 140 },
-      { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
-      { t: L(5, 1), ...sikkel(7.2, 36) },
-      { t: L(6, 1), ...horizon(28, -6), el: "in" },
-      { t: L(7, 1), ...horizon(26, -4.5) },
-      { t: dur, ...horizon(24, -3.5), e: "lin" },
+    // Rustpunten in de pauzes (P); de wissels in het midden van een zin, en nooit een draai van 90 graden in één zin.
+    const P = rust(L, data.lijnen.length);
+    const schuinZij = { doel: [0, -1, 5], richting: [0.45, 0.15, 0.88], afstand: 22, fov: 42, op: [0, 0.85, -0.5] };
+    const zijZacht = { ...zij, richting: [0.85, 0.15, 0.5], op: [0, 0.5, -0.87] };
+    const dicht = { doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 5.2, fov: 40, op: [0, 1, 0] };
+    const begin = VAR === "A"
+      ? [{ t: 0, ...sikkel(7.6, 34) }, { t: P(0), ...sikkel(7.2, 34) }, { t: P(1), ...sikkel(8.6, 36) }]
+      : [{ t: 0, ...horizon(28, -6) }, { t: P(0), ...horizon(25, -3.5), vast: 0.6 }, { t: P(1), ...sikkel(8.6, 36) }];
+    const keys = [
+      ...begin,
+      { t: P(2), ...schuinZij },
+      { t: P(3), ...zijZacht },
+      { t: P(4), ...dicht },
+      { t: P(5), ...sikkel(7.2, 36) },
+      { t: P(6), ...horizon(28, -6), vast: 0.6 },  // de grond verschijnt pas als de camera over de aarde komt: ruim vóór de zinsgrens
+      { t: P(7), ...horizon(24, -4) },
+      { t: dur, ...(VAR === "A" ? sikkel(7.6, 34) : horizon(26, -4.5)) },
     ];
     const cam = logCam(keys);
     let camRef = null;
@@ -86,15 +81,16 @@ window.reel = {
         venus.rotation.y = t * 0.03;
         const afst = camRef ? camRef.position.length() : 8;
         vGloed.userData.set({ alpha: 0.9 * clamp01((afst - 20) / 25) });  // van ver: een felle stip
-        zonG.visible = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) > 0.01;
-        zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6)));
+        const zonA = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) * clamp01(((camRef ? camRef.position.length() : 8) - 26) / 40);
+        zonG.visible = zonA > 0.01;
+        zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = zonA));
         as.userData.set({ kop: smooth((t - L(2, 0.3)) / 1.0), len: 1, alpha: venster(t, L(2, 0.2), L(3, 1), 0.4, 0.5) });
-        stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0) - i * 0.07) / 1.2), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
+        stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0.45) - i * 0.07) / 2.0), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
       },
       overlay(t, ov) {
         haakkaart(ov, t, L, data);
         const lab = (k, p, dy, a, o = {}) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
-          ov.tekst(k, Math.max(170, Math.min(910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
+          ov.tekst(k, Math.max(170, Math.min(y + dy > 840 ? 820 : 910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
         const w = venster(t, L(2, 0.5), L(3, 1), 0.3, 0.4);
         lab("zon", S, -90, w); lab("venus", new THREE.Vector3(0, 0, 0), -80, w); lab("aarde", E, -110, w);
         const g = venster(t, L(5, 0), L(6, 0.2), 0.25, 0.35);

@@ -111,6 +111,11 @@ const K2 = (THREE) => {
   // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
   // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
   function logCam(keys) {
+    // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+    // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+    // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+    // schermsnelheid in plaats van een vlucht door de leegte.
+    const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
     const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                    in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
     const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -118,17 +123,26 @@ const K2 = (THREE) => {
     return (cam, t) => {
       let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
       const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-      const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-      a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+      const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+      const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+      const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+      const dA = v(A.afstand, t), dB = v(B.afstand, t);
+      const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+      const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+      a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
       d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-      const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
       cam.position.copy(doel).addScaledVector(dir, afst);
       u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
       cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
       const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-      cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+      cam.lookAt(kijk);
+      // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+      if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+      cam.updateProjectionMatrix(); cam.updateMatrixWorld();
     };
   }
+  // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+  const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
   // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
   function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
     const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -137,5 +151,5 @@ const K2 = (THREE) => {
     ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
     if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
   }
-  return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+  return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
 };

@@ -4,7 +4,7 @@
 // het bericht vertrekt. A eindigt bij de sonde, B weer bij de aarde.
 window.reel = {
   maak({ THREE, kit, scene, L, dur, data }) {
-    const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart } = K2(THREE);
+    const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart, rust } = K2(THREE);
     const { lijn, cirkel, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
     const VAR = "__VAR__";
     const E = new THREE.Vector3(6, 0, 0), RE = 0.32;
@@ -33,8 +33,8 @@ window.reel = {
       vertexShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
       fragmentShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
         float voor = step(0.0, dot(N, V)); float r = vUv.y;
-        vec3 c = mix(vec3(0.20,0.22,0.27), vec3(0.78,0.81,0.86), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
-        c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.6;
+        vec3 c = mix(vec3(0.13,0.15,0.19), vec3(0.50,0.53,0.58), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
+        c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.45;
         c *= 1.0 - 0.55 * smoothstep(0.93, 0.97, r) * (1.0 - smoothstep(0.985, 1.0, r));
         c += vec3(0.9,0.95,1.0) * exp(-pow((r - 0.62) * 40.0, 2.0)) * 0.12;
         gl_FragColor = vec4(c, 1.0); }` });
@@ -56,7 +56,7 @@ window.reel = {
     const pad = []; for (let i = 0; i <= 200; i++) pad.push(new THREE.Vector3().lerpVectors(E, V, i / 200));
     const spoor = lijn(pad, { kleur: KLEUR.teal, breedte: 7, basis: 0 }); scene.add(spoor);
     const puls = gloed("#E8FBFF", { grootte: 1, scherp: 6, alpha: 0 }); scene.add(puls);
-    const vertrek = VAR === "A" ? L(1, 0.4) : 0.15, aankomst = L(7, 0.6);
+    const vertrek = VAR === "A" ? L(1, 0.4) : L(0, 0.5), aankomst = L(7, 0.6);
     const prog = (t) => { const x = clamp01((t - vertrek) / (aankomst - vertrek)); return x < 0.12 ? 0.12 * Math.pow(x / 0.12, 2.5) : x; };
     const pulsPos = (t) => new THREE.Vector3().lerpVectors(nlPunt(t), V, prog(t));
     // ── de camera ───────────────────────────────────────────────────────────────────────────
@@ -65,19 +65,25 @@ window.reel = {
     const bijAarde = (afst, fov) => ({ doel: E.clone().add(omhoog.clone().multiplyScalar(RE * 0.9)).toArray(), richting: nl.clone().applyQuaternion(aarde.quaternion).add(new THREE.Vector3(0, -0.35, 0)).normalize().toArray(), afstand: afst, fov });
     const metPuls = (afst, fov, rich) => ({ doel: (t) => pulsPos(t).toArray(), richting: rich, afstand: afst, fov });
     const boven = { doel: [0, 0, 0], richting: [0.15, 1, 0.55], afstand: 190, fov: 46 };
+    // Rustpunten in de pauzes (P). Het doel blijft de sonde: de camera zoomt alleen uit en in langs de lijn naar huis
+    // (over de aarde en de zon heen), met kleine draaien. Geen pan door de leegte, dus geen sprongen.
+    // B deelt de camera met A; B verschilt in de haak en de puls die al in beeld onderweg is.
+    const P = rust(L, data.lijnen.length);
+    const langs = (afst, fov, a, b) => ({ doel: V.toArray(), richting: schuin(a, b), afstand: afst, fov });
     const keys = [
-      ...(VAR === "A"
-        ? [{ t: 0, ...bijSonde(11, 34) }, { t: L(0, 1), ...bijSonde(9.5, 34), e: "lin" }, { t: L(1, 1), ...bijAarde(1.9, 38), el: "in" }]
-        : [{ t: 0, ...bijAarde(1.25, 36) }, { t: L(0, 1), ...bijAarde(1.6, 38), e: "lin" }, { t: L(1, 1), ...metPuls(14, 44, [0.4, -0.3, 1]), el: "in" }]),
-      { t: L(2, 1), ...boven, el: "in" },
-      { t: L(3, 1), doel: [-30, 40, -40], richting: [1, 0.05, 0.1], afstand: 210, fov: 48 },
-      { t: L(4, 1), ...bijSonde(6.5, 40), el: "in" },
-      { t: L(5, 1), ...bijSonde(5.2, 40, schuin(0.6, 0.8)) },
-      { t: L(6, 1), ...bijSonde(9.5, 44, schuin(0.85, -0.5)) },
-      { t: L(7, 1), ...bijSonde(5.5, 40, schuin(0.5, 0.85)) },
-      { t: L(8, 1), ...bijSonde(4.8, 34, schuin(0.2, 0.98)) },
-      ...(VAR === "A" ? [{ t: dur, ...bijSonde(11, 34) }] : [{ t: L(9, 0.35), ...bijAarde(1.4, 36), el: "in" }, { t: dur, ...bijAarde(1.25, 36), e: "lin" }]),
+      { t: 0, ...bijSonde(11, 34) },
+      { t: P(0), ...bijSonde(12.5, 35) },
+      { t: P(1), ...langs(34, 38, 0.82, 0.5) },
+      { t: P(2), ...langs(100, 42, 0.9, 0.36) },
+      { t: P(3), ...langs(225, 46, 0.95, 0.24), vast: 0.2 },
+      { t: P(4), ...bijSonde(10, 38), vast: 0.24 },
+      { t: P(5), ...bijSonde(9.5, 38, schuin(0.62, 0.78)) },
+      { t: P(6), ...bijSonde(11, 40, schuin(0.8, 0.35)) },
+      { t: P(7), ...bijSonde(10, 38, schuin(0.6, 0.75)) },
+      { t: P(8), ...bijSonde(9, 34, schuin(0.4, 0.9)) },
+      { t: dur, ...(VAR === "A" ? bijSonde(11, 34) : bijSonde(13, 36)) },
     ];
+    keys.hoog = 180;
     const cam = logCam(keys);
     return {
       camera: (c, t) => { cam(c, t); c.far = 4000; c.updateProjectionMatrix(); },

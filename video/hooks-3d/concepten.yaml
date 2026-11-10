@@ -195,6 +195,11 @@ posts:
           // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
           // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
           function logCam(keys) {
+            // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+            // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+            // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+            // schermsnelheid in plaats van een vlucht door de leegte.
+            const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
             const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                            in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
             const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -202,17 +207,26 @@ posts:
             return (cam, t) => {
               let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
               const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+              const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+              const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+              const dA = v(A.afstand, t), dB = v(B.afstand, t);
+              const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+              const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
               d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
               cam.position.copy(doel).addScaledVector(dir, afst);
               u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
               cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
               const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+              cam.lookAt(kijk);
+              // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+              if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+              cam.updateProjectionMatrix(); cam.updateMatrixWorld();
             };
           }
+          // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+          const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
           // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
           function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
             const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -221,7 +235,7 @@ posts:
             ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
             if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
           }
-          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
         };
 
         // Snap het — een bericht naar Voyager 1 (een lichtdag op 18 november 2026). Eén wereld: zon, banen, de aarde (Black
@@ -230,7 +244,7 @@ posts:
         // het bericht vertrekt. A eindigt bij de sonde, B weer bij de aarde.
         window.reel = {
           maak({ THREE, kit, scene, L, dur, data }) {
-            const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart, rust } = K2(THREE);
             const { lijn, cirkel, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
             const VAR = "A";
             const E = new THREE.Vector3(6, 0, 0), RE = 0.32;
@@ -259,8 +273,8 @@ posts:
               vertexShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
               fragmentShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
                 float voor = step(0.0, dot(N, V)); float r = vUv.y;
-                vec3 c = mix(vec3(0.20,0.22,0.27), vec3(0.78,0.81,0.86), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
-                c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.6;
+                vec3 c = mix(vec3(0.13,0.15,0.19), vec3(0.50,0.53,0.58), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
+                c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.45;
                 c *= 1.0 - 0.55 * smoothstep(0.93, 0.97, r) * (1.0 - smoothstep(0.985, 1.0, r));
                 c += vec3(0.9,0.95,1.0) * exp(-pow((r - 0.62) * 40.0, 2.0)) * 0.12;
                 gl_FragColor = vec4(c, 1.0); }` });
@@ -282,7 +296,7 @@ posts:
             const pad = []; for (let i = 0; i <= 200; i++) pad.push(new THREE.Vector3().lerpVectors(E, V, i / 200));
             const spoor = lijn(pad, { kleur: KLEUR.teal, breedte: 7, basis: 0 }); scene.add(spoor);
             const puls = gloed("#E8FBFF", { grootte: 1, scherp: 6, alpha: 0 }); scene.add(puls);
-            const vertrek = VAR === "A" ? L(1, 0.4) : 0.15, aankomst = L(7, 0.6);
+            const vertrek = VAR === "A" ? L(1, 0.4) : L(0, 0.5), aankomst = L(7, 0.6);
             const prog = (t) => { const x = clamp01((t - vertrek) / (aankomst - vertrek)); return x < 0.12 ? 0.12 * Math.pow(x / 0.12, 2.5) : x; };
             const pulsPos = (t) => new THREE.Vector3().lerpVectors(nlPunt(t), V, prog(t));
             // ── de camera ───────────────────────────────────────────────────────────────────────────
@@ -291,19 +305,25 @@ posts:
             const bijAarde = (afst, fov) => ({ doel: E.clone().add(omhoog.clone().multiplyScalar(RE * 0.9)).toArray(), richting: nl.clone().applyQuaternion(aarde.quaternion).add(new THREE.Vector3(0, -0.35, 0)).normalize().toArray(), afstand: afst, fov });
             const metPuls = (afst, fov, rich) => ({ doel: (t) => pulsPos(t).toArray(), richting: rich, afstand: afst, fov });
             const boven = { doel: [0, 0, 0], richting: [0.15, 1, 0.55], afstand: 190, fov: 46 };
+            // Rustpunten in de pauzes (P). Het doel blijft de sonde: de camera zoomt alleen uit en in langs de lijn naar huis
+            // (over de aarde en de zon heen), met kleine draaien. Geen pan door de leegte, dus geen sprongen.
+            // B deelt de camera met A; B verschilt in de haak en de puls die al in beeld onderweg is.
+            const P = rust(L, data.lijnen.length);
+            const langs = (afst, fov, a, b) => ({ doel: V.toArray(), richting: schuin(a, b), afstand: afst, fov });
             const keys = [
-              ...(VAR === "A"
-                ? [{ t: 0, ...bijSonde(11, 34) }, { t: L(0, 1), ...bijSonde(9.5, 34), e: "lin" }, { t: L(1, 1), ...bijAarde(1.9, 38), el: "in" }]
-                : [{ t: 0, ...bijAarde(1.25, 36) }, { t: L(0, 1), ...bijAarde(1.6, 38), e: "lin" }, { t: L(1, 1), ...metPuls(14, 44, [0.4, -0.3, 1]), el: "in" }]),
-              { t: L(2, 1), ...boven, el: "in" },
-              { t: L(3, 1), doel: [-30, 40, -40], richting: [1, 0.05, 0.1], afstand: 210, fov: 48 },
-              { t: L(4, 1), ...bijSonde(6.5, 40), el: "in" },
-              { t: L(5, 1), ...bijSonde(5.2, 40, schuin(0.6, 0.8)) },
-              { t: L(6, 1), ...bijSonde(9.5, 44, schuin(0.85, -0.5)) },
-              { t: L(7, 1), ...bijSonde(5.5, 40, schuin(0.5, 0.85)) },
-              { t: L(8, 1), ...bijSonde(4.8, 34, schuin(0.2, 0.98)) },
-              ...(VAR === "A" ? [{ t: dur, ...bijSonde(11, 34) }] : [{ t: L(9, 0.35), ...bijAarde(1.4, 36), el: "in" }, { t: dur, ...bijAarde(1.25, 36), e: "lin" }]),
+              { t: 0, ...bijSonde(11, 34) },
+              { t: P(0), ...bijSonde(12.5, 35) },
+              { t: P(1), ...langs(34, 38, 0.82, 0.5) },
+              { t: P(2), ...langs(100, 42, 0.9, 0.36) },
+              { t: P(3), ...langs(225, 46, 0.95, 0.24), vast: 0.2 },
+              { t: P(4), ...bijSonde(10, 38), vast: 0.24 },
+              { t: P(5), ...bijSonde(9.5, 38, schuin(0.62, 0.78)) },
+              { t: P(6), ...bijSonde(11, 40, schuin(0.8, 0.35)) },
+              { t: P(7), ...bijSonde(10, 38, schuin(0.6, 0.75)) },
+              { t: P(8), ...bijSonde(9, 34, schuin(0.4, 0.9)) },
+              { t: dur, ...(VAR === "A" ? bijSonde(11, 34) : bijSonde(13, 36)) },
             ];
+            keys.hoog = 180;
             const cam = logCam(keys);
             return {
               camera: (c, t) => { cam(c, t); c.far = 4000; c.updateProjectionMatrix(); },
@@ -552,6 +572,11 @@ posts:
           // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
           // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
           function logCam(keys) {
+            // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+            // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+            // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+            // schermsnelheid in plaats van een vlucht door de leegte.
+            const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
             const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                            in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
             const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -559,17 +584,26 @@ posts:
             return (cam, t) => {
               let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
               const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+              const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+              const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+              const dA = v(A.afstand, t), dB = v(B.afstand, t);
+              const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+              const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
               d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
               cam.position.copy(doel).addScaledVector(dir, afst);
               u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
               cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
               const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+              cam.lookAt(kijk);
+              // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+              if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+              cam.updateProjectionMatrix(); cam.updateMatrixWorld();
             };
           }
+          // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+          const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
           // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
           function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
             const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -578,7 +612,7 @@ posts:
             ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
             if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
           }
-          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
         };
 
         // Snap het — een bericht naar Voyager 1 (een lichtdag op 18 november 2026). Eén wereld: zon, banen, de aarde (Black
@@ -587,7 +621,7 @@ posts:
         // het bericht vertrekt. A eindigt bij de sonde, B weer bij de aarde.
         window.reel = {
           maak({ THREE, kit, scene, L, dur, data }) {
-            const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { textuurBol, atmosfeer, breedteLengte, logCam, haakkaart, rust } = K2(THREE);
             const { lijn, cirkel, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
             const VAR = "B";
             const E = new THREE.Vector3(6, 0, 0), RE = 0.32;
@@ -616,8 +650,8 @@ posts:
               vertexShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vUv=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
               fragmentShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW);
                 float voor = step(0.0, dot(N, V)); float r = vUv.y;
-                vec3 c = mix(vec3(0.20,0.22,0.27), vec3(0.78,0.81,0.86), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
-                c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.6;
+                vec3 c = mix(vec3(0.13,0.15,0.19), vec3(0.50,0.53,0.58), smoothstep(0.0, 1.0, r)) * mix(0.55, 1.0, voor);
+                c += vec3(0.37,0.85,0.92) * pow(1.0-abs(dot(N,V)),2.5) * 0.45;
                 c *= 1.0 - 0.55 * smoothstep(0.93, 0.97, r) * (1.0 - smoothstep(0.985, 1.0, r));
                 c += vec3(0.9,0.95,1.0) * exp(-pow((r - 0.62) * 40.0, 2.0)) * 0.12;
                 gl_FragColor = vec4(c, 1.0); }` });
@@ -639,7 +673,7 @@ posts:
             const pad = []; for (let i = 0; i <= 200; i++) pad.push(new THREE.Vector3().lerpVectors(E, V, i / 200));
             const spoor = lijn(pad, { kleur: KLEUR.teal, breedte: 7, basis: 0 }); scene.add(spoor);
             const puls = gloed("#E8FBFF", { grootte: 1, scherp: 6, alpha: 0 }); scene.add(puls);
-            const vertrek = VAR === "A" ? L(1, 0.4) : 0.15, aankomst = L(7, 0.6);
+            const vertrek = VAR === "A" ? L(1, 0.4) : L(0, 0.5), aankomst = L(7, 0.6);
             const prog = (t) => { const x = clamp01((t - vertrek) / (aankomst - vertrek)); return x < 0.12 ? 0.12 * Math.pow(x / 0.12, 2.5) : x; };
             const pulsPos = (t) => new THREE.Vector3().lerpVectors(nlPunt(t), V, prog(t));
             // ── de camera ───────────────────────────────────────────────────────────────────────────
@@ -648,19 +682,25 @@ posts:
             const bijAarde = (afst, fov) => ({ doel: E.clone().add(omhoog.clone().multiplyScalar(RE * 0.9)).toArray(), richting: nl.clone().applyQuaternion(aarde.quaternion).add(new THREE.Vector3(0, -0.35, 0)).normalize().toArray(), afstand: afst, fov });
             const metPuls = (afst, fov, rich) => ({ doel: (t) => pulsPos(t).toArray(), richting: rich, afstand: afst, fov });
             const boven = { doel: [0, 0, 0], richting: [0.15, 1, 0.55], afstand: 190, fov: 46 };
+            // Rustpunten in de pauzes (P). Het doel blijft de sonde: de camera zoomt alleen uit en in langs de lijn naar huis
+            // (over de aarde en de zon heen), met kleine draaien. Geen pan door de leegte, dus geen sprongen.
+            // B deelt de camera met A; B verschilt in de haak en de puls die al in beeld onderweg is.
+            const P = rust(L, data.lijnen.length);
+            const langs = (afst, fov, a, b) => ({ doel: V.toArray(), richting: schuin(a, b), afstand: afst, fov });
             const keys = [
-              ...(VAR === "A"
-                ? [{ t: 0, ...bijSonde(11, 34) }, { t: L(0, 1), ...bijSonde(9.5, 34), e: "lin" }, { t: L(1, 1), ...bijAarde(1.9, 38), el: "in" }]
-                : [{ t: 0, ...bijAarde(1.25, 36) }, { t: L(0, 1), ...bijAarde(1.6, 38), e: "lin" }, { t: L(1, 1), ...metPuls(14, 44, [0.4, -0.3, 1]), el: "in" }]),
-              { t: L(2, 1), ...boven, el: "in" },
-              { t: L(3, 1), doel: [-30, 40, -40], richting: [1, 0.05, 0.1], afstand: 210, fov: 48 },
-              { t: L(4, 1), ...bijSonde(6.5, 40), el: "in" },
-              { t: L(5, 1), ...bijSonde(5.2, 40, schuin(0.6, 0.8)) },
-              { t: L(6, 1), ...bijSonde(9.5, 44, schuin(0.85, -0.5)) },
-              { t: L(7, 1), ...bijSonde(5.5, 40, schuin(0.5, 0.85)) },
-              { t: L(8, 1), ...bijSonde(4.8, 34, schuin(0.2, 0.98)) },
-              ...(VAR === "A" ? [{ t: dur, ...bijSonde(11, 34) }] : [{ t: L(9, 0.35), ...bijAarde(1.4, 36), el: "in" }, { t: dur, ...bijAarde(1.25, 36), e: "lin" }]),
+              { t: 0, ...bijSonde(11, 34) },
+              { t: P(0), ...bijSonde(12.5, 35) },
+              { t: P(1), ...langs(34, 38, 0.82, 0.5) },
+              { t: P(2), ...langs(100, 42, 0.9, 0.36) },
+              { t: P(3), ...langs(225, 46, 0.95, 0.24), vast: 0.2 },
+              { t: P(4), ...bijSonde(10, 38), vast: 0.24 },
+              { t: P(5), ...bijSonde(9.5, 38, schuin(0.62, 0.78)) },
+              { t: P(6), ...bijSonde(11, 40, schuin(0.8, 0.35)) },
+              { t: P(7), ...bijSonde(10, 38, schuin(0.6, 0.75)) },
+              { t: P(8), ...bijSonde(9, 34, schuin(0.4, 0.9)) },
+              { t: dur, ...(VAR === "A" ? bijSonde(11, 34) : bijSonde(13, 36)) },
             ];
+            keys.hoog = 180;
             const cam = logCam(keys);
             return {
               camera: (c, t) => { cam(c, t); c.far = 4000; c.updateProjectionMatrix(); },
@@ -733,8 +773,8 @@ posts:
           spreek: Zo groeit de sikkel voorbij honderdtachtig graden.
         - tekst: Nu staat ze 's ochtends laag in het zuidoosten.
           spreek: Nu staat ze 's ochtends laag in het zuidoosten.
-        - tekst: Met een verrekijker zie je de sikkel.
-          spreek: Met een verrekijker zie je de sikkel.
+        - tekst: Een verrekijker toont de sikkel.
+          spreek: Een verrekijker toont de sikkel.
         - tekst: Geen maan. Venus.
           spreek: Geen maan. Venus.
       script:
@@ -878,6 +918,11 @@ posts:
           // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
           // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
           function logCam(keys) {
+            // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+            // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+            // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+            // schermsnelheid in plaats van een vlucht door de leegte.
+            const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
             const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                            in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
             const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -885,17 +930,26 @@ posts:
             return (cam, t) => {
               let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
               const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+              const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+              const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+              const dA = v(A.afstand, t), dB = v(B.afstand, t);
+              const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+              const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
               d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
               cam.position.copy(doel).addScaledVector(dir, afst);
               u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
               cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
               const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+              cam.lookAt(kijk);
+              // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+              if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+              cam.updateProjectionMatrix(); cam.updateMatrixWorld();
             };
           }
+          // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+          const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
           // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
           function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
             const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -904,7 +958,7 @@ posts:
             ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
             if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
           }
-          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
         };
 
         // Vannacht — de hoorns van Venus. Eén wereld: zon, Venus en de aarde op (bijna) één lijn.
@@ -912,7 +966,7 @@ posts:
         // Venus laag in het zuidoosten ("Vrijdagochtend…"), dan een log-zoom naar de sikkel. Beide eindigen waar ze begonnen.
         window.reel = {
           maak({ THREE, kit, scene, L, dur, data, ov }) {
-            const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust } = K2(THREE);
             const { lijn, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
             const VAR = "A";
             // ── de wereld ───────────────────────────────────────────────────────────────────────────────
@@ -962,28 +1016,23 @@ posts:
             const horizonCam = E.clone().add(new THREE.Vector3(0, RE + 0.11, 0));
             const horizon = (fov, kijkY) => ({ doel: [0, 0, 0], kijk: [0, kijkY, 0], richting: horizonCam.clone().normalize().toArray(), afstand: horizonCam.length(), fov });
             const zij = { doel: [0, -4, 20], richting: [1, 0.15, 0], afstand: 150, fov: 46, op: [0, 0, -1] };
-            const keys = VAR === "A" ? [
-              { t: 0, ...sikkel(7.6, 34) },
-              { t: L(0, 1), ...sikkel(6.9, 34), e: "lin" },
-              { t: L(1, 1), ...sikkel(8.4, 36) },
-              { t: L(2, 1), ...zij, e: "sine" },
-              { t: L(3, 1), ...zij, afstand: 140 },
-              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
-              { t: L(5, 1), ...sikkel(7.2, 36) },
-              { t: L(6, 1), ...horizon(28, -6), el: "in" },
-              { t: L(7, 1), ...horizon(24, -4) },
-              { t: dur, ...sikkel(7.6, 34), el: "out" },
-            ] : [
-              { t: 0, ...horizon(28, -6) },
-              { t: L(0, 1), ...horizon(25, -3.5), e: "lin" },
-              { t: L(1, 1), ...sikkel(8.4, 36), el: "in" },
-              { t: L(2, 1), ...zij, e: "sine" },
-              { t: L(3, 1), ...zij, afstand: 140 },
-              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
-              { t: L(5, 1), ...sikkel(7.2, 36) },
-              { t: L(6, 1), ...horizon(28, -6), el: "in" },
-              { t: L(7, 1), ...horizon(26, -4.5) },
-              { t: dur, ...horizon(24, -3.5), e: "lin" },
+            // Rustpunten in de pauzes (P); de wissels in het midden van een zin, en nooit een draai van 90 graden in één zin.
+            const P = rust(L, data.lijnen.length);
+            const schuinZij = { doel: [0, -1, 5], richting: [0.45, 0.15, 0.88], afstand: 22, fov: 42, op: [0, 0.85, -0.5] };
+            const zijZacht = { ...zij, richting: [0.85, 0.15, 0.5], op: [0, 0.5, -0.87] };
+            const dicht = { doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 5.2, fov: 40, op: [0, 1, 0] };
+            const begin = VAR === "A"
+              ? [{ t: 0, ...sikkel(7.6, 34) }, { t: P(0), ...sikkel(7.2, 34) }, { t: P(1), ...sikkel(8.6, 36) }]
+              : [{ t: 0, ...horizon(28, -6) }, { t: P(0), ...horizon(25, -3.5), vast: 0.6 }, { t: P(1), ...sikkel(8.6, 36) }];
+            const keys = [
+              ...begin,
+              { t: P(2), ...schuinZij },
+              { t: P(3), ...zijZacht },
+              { t: P(4), ...dicht },
+              { t: P(5), ...sikkel(7.2, 36) },
+              { t: P(6), ...horizon(28, -6), vast: 0.6 },  // de grond verschijnt pas als de camera over de aarde komt: ruim vóór de zinsgrens
+              { t: P(7), ...horizon(24, -4) },
+              { t: dur, ...(VAR === "A" ? sikkel(7.6, 34) : horizon(26, -4.5)) },
             ];
             const cam = logCam(keys);
             let camRef = null;
@@ -995,15 +1044,16 @@ posts:
                 venus.rotation.y = t * 0.03;
                 const afst = camRef ? camRef.position.length() : 8;
                 vGloed.userData.set({ alpha: 0.9 * clamp01((afst - 20) / 25) });  // van ver: een felle stip
-                zonG.visible = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) > 0.01;
-                zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6)));
+                const zonA = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) * clamp01(((camRef ? camRef.position.length() : 8) - 26) / 40);
+                zonG.visible = zonA > 0.01;
+                zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = zonA));
                 as.userData.set({ kop: smooth((t - L(2, 0.3)) / 1.0), len: 1, alpha: venster(t, L(2, 0.2), L(3, 1), 0.4, 0.5) });
-                stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0) - i * 0.07) / 1.2), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
+                stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0.45) - i * 0.07) / 2.0), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
               },
               overlay(t, ov) {
                 haakkaart(ov, t, L, data);
                 const lab = (k, p, dy, a, o = {}) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
-                  ov.tekst(k, Math.max(170, Math.min(910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
+                  ov.tekst(k, Math.max(170, Math.min(y + dy > 840 ? 820 : 910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
                 const w = venster(t, L(2, 0.5), L(3, 1), 0.3, 0.4);
                 lab("zon", S, -90, w); lab("venus", new THREE.Vector3(0, 0, 0), -80, w); lab("aarde", E, -110, w);
                 const g = venster(t, L(5, 0), L(6, 0.2), 0.25, 0.35);
@@ -1066,8 +1116,8 @@ posts:
           spreek: Zo groeit de sikkel voorbij honderdtachtig graden.
         - tekst: Nu staat ze 's ochtends laag in het zuidoosten.
           spreek: Nu staat ze 's ochtends laag in het zuidoosten.
-        - tekst: Met een verrekijker zie je de sikkel.
-          spreek: Met een verrekijker zie je de sikkel.
+        - tekst: Een verrekijker toont de sikkel.
+          spreek: Een verrekijker toont de sikkel.
         - tekst: Vrijdagochtend, laag in het zuidoosten.
           spreek: Vrijdagochtend, laag in het zuidoosten.
       script:
@@ -1213,6 +1263,11 @@ posts:
           // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
           // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
           function logCam(keys) {
+            // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+            // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+            // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+            // schermsnelheid in plaats van een vlucht door de leegte.
+            const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
             const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                            in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
             const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -1220,17 +1275,26 @@ posts:
             return (cam, t) => {
               let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
               const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+              const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+              const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+              const dA = v(A.afstand, t), dB = v(B.afstand, t);
+              const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+              const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
               d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
               cam.position.copy(doel).addScaledVector(dir, afst);
               u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
               cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
               const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+              cam.lookAt(kijk);
+              // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+              if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+              cam.updateProjectionMatrix(); cam.updateMatrixWorld();
             };
           }
+          // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+          const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
           // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
           function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
             const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -1239,7 +1303,7 @@ posts:
             ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
             if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
           }
-          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
         };
 
         // Vannacht — de hoorns van Venus. Eén wereld: zon, Venus en de aarde op (bijna) één lijn.
@@ -1247,7 +1311,7 @@ posts:
         // Venus laag in het zuidoosten ("Vrijdagochtend…"), dan een log-zoom naar de sikkel. Beide eindigen waar ze begonnen.
         window.reel = {
           maak({ THREE, kit, scene, L, dur, data, ov }) {
-            const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart } = K2(THREE);
+            const { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust } = K2(THREE);
             const { lijn, gloed, zon: maakZon, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
             const VAR = "B";
             // ── de wereld ───────────────────────────────────────────────────────────────────────────────
@@ -1297,28 +1361,23 @@ posts:
             const horizonCam = E.clone().add(new THREE.Vector3(0, RE + 0.11, 0));
             const horizon = (fov, kijkY) => ({ doel: [0, 0, 0], kijk: [0, kijkY, 0], richting: horizonCam.clone().normalize().toArray(), afstand: horizonCam.length(), fov });
             const zij = { doel: [0, -4, 20], richting: [1, 0.15, 0], afstand: 150, fov: 46, op: [0, 0, -1] };
-            const keys = VAR === "A" ? [
-              { t: 0, ...sikkel(7.6, 34) },
-              { t: L(0, 1), ...sikkel(6.9, 34), e: "lin" },
-              { t: L(1, 1), ...sikkel(8.4, 36) },
-              { t: L(2, 1), ...zij, e: "sine" },
-              { t: L(3, 1), ...zij, afstand: 140 },
-              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
-              { t: L(5, 1), ...sikkel(7.2, 36) },
-              { t: L(6, 1), ...horizon(28, -6), el: "in" },
-              { t: L(7, 1), ...horizon(24, -4) },
-              { t: dur, ...sikkel(7.6, 34), el: "out" },
-            ] : [
-              { t: 0, ...horizon(28, -6) },
-              { t: L(0, 1), ...horizon(25, -3.5), e: "lin" },
-              { t: L(1, 1), ...sikkel(8.4, 36), el: "in" },
-              { t: L(2, 1), ...zij, e: "sine" },
-              { t: L(3, 1), ...zij, afstand: 140 },
-              { t: L(4, 0), doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 4.2, fov: 40, op: [0, 1, 0] },
-              { t: L(5, 1), ...sikkel(7.2, 36) },
-              { t: L(6, 1), ...horizon(28, -6), el: "in" },
-              { t: L(7, 1), ...horizon(26, -4.5) },
-              { t: dur, ...horizon(24, -3.5), e: "lin" },
+            // Rustpunten in de pauzes (P); de wissels in het midden van een zin, en nooit een draai van 90 graden in één zin.
+            const P = rust(L, data.lijnen.length);
+            const schuinZij = { doel: [0, -1, 5], richting: [0.45, 0.15, 0.88], afstand: 22, fov: 42, op: [0, 0.85, -0.5] };
+            const zijZacht = { ...zij, richting: [0.85, 0.15, 0.5], op: [0, 0.5, -0.87] };
+            const dicht = { doel: [0, 0, 0], richting: [0.9, 0.2, 0.4], afstand: 5.2, fov: 40, op: [0, 1, 0] };
+            const begin = VAR === "A"
+              ? [{ t: 0, ...sikkel(7.6, 34) }, { t: P(0), ...sikkel(7.2, 34) }, { t: P(1), ...sikkel(8.6, 36) }]
+              : [{ t: 0, ...horizon(28, -6) }, { t: P(0), ...horizon(25, -3.5), vast: 0.6 }, { t: P(1), ...sikkel(8.6, 36) }];
+            const keys = [
+              ...begin,
+              { t: P(2), ...schuinZij },
+              { t: P(3), ...zijZacht },
+              { t: P(4), ...dicht },
+              { t: P(5), ...sikkel(7.2, 36) },
+              { t: P(6), ...horizon(28, -6), vast: 0.6 },  // de grond verschijnt pas als de camera over de aarde komt: ruim vóór de zinsgrens
+              { t: P(7), ...horizon(24, -4) },
+              { t: dur, ...(VAR === "A" ? sikkel(7.6, 34) : horizon(26, -4.5)) },
             ];
             const cam = logCam(keys);
             let camRef = null;
@@ -1330,15 +1389,16 @@ posts:
                 venus.rotation.y = t * 0.03;
                 const afst = camRef ? camRef.position.length() : 8;
                 vGloed.userData.set({ alpha: 0.9 * clamp01((afst - 20) / 25) });  // van ver: een felle stip
-                zonG.visible = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) > 0.01;
-                zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6)));
+                const zonA = venster(t, L(2, 0.2), L(4, 0.2), 0.6, 0.6) * clamp01(((camRef ? camRef.position.length() : 8) - 26) / 40);
+                zonG.visible = zonA > 0.01;
+                zonG.children.forEach((c) => c.material && c.material.uniforms && c.material.uniforms.uA && (c.material.uniforms.uA.value = zonA));
                 as.userData.set({ kop: smooth((t - L(2, 0.3)) / 1.0), len: 1, alpha: venster(t, L(2, 0.2), L(3, 1), 0.4, 0.5) });
-                stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0) - i * 0.07) / 1.2), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
+                stralen.children.forEach((l, i) => l.userData.set({ kop: smooth((t - L(4, 0.45) - i * 0.07) / 2.0), len: 0.35, alpha: venster(t, L(4, 0), L(5, 0.7), 0.3, 0.5) }));
               },
               overlay(t, ov) {
                 haakkaart(ov, t, L, data);
                 const lab = (k, p, dy, a, o = {}) => { if (a <= 0.01) return; const [x, y, voor] = ov.proj(p); if (!voor) return;
-                  ov.tekst(k, Math.max(170, Math.min(910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
+                  ov.tekst(k, Math.max(170, Math.min(y + dy > 840 ? 820 : 910, x)), Math.max(280, Math.min(1480, y + dy)), { maat: 46, kleur: KLEUR.wit, alpha: a, gloei: 10, gewicht: 700, ...o }); };
                 const w = venster(t, L(2, 0.5), L(3, 1), 0.3, 0.4);
                 lab("zon", S, -90, w); lab("venus", new THREE.Vector3(0, 0, 0), -80, w); lab("aarde", E, -110, w);
                 const g = venster(t, L(5, 0), L(6, 0.2), 0.25, 0.35);
@@ -1389,8 +1449,8 @@ posts:
           spreek: Deze week brengt een Electron hem omhoog.
         - tekst: Naar een lage baan rond de aarde.
           spreek: Naar een lage baan rond de aarde.
-        - tekst: Daar vouwt hij een plat paneel uit.
-          spreek: Daar vouwt hij een plat paneel uit.
+        - tekst: Daar vouwt hij zijn antenne uit.
+          spreek: Daar vouwt hij zijn antenne uit.
         - tekst: Hij stuurt pulsen naar de grond,
           spreek: Hij stuurt pulsen naar de grond,
         - tekst: en vangt de echo op.
@@ -1408,7 +1468,7 @@ posts:
           camera: dichtbij, licht uitzoomen
         - beeld: De raket klimt naar een lage baan
           camera: mee omhoog
-        - beeld: Het paneel vouwt uit; pulsen omlaag, echo omhoog
+        - beeld: De antenne vouwt uit; pulsen omlaag, echo omhoog
           camera: naast de satelliet, dan eronder
         - beeld: "Door een gat in de wolken: het radarbeeld groeit regel voor regel"
           camera: omlaag door de wolken
@@ -1543,6 +1603,11 @@ posts:
           // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
           // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
           function logCam(keys) {
+            // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+            // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+            // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+            // schermsnelheid in plaats van een vlucht door de leegte.
+            const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
             const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                            in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
             const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -1550,17 +1615,26 @@ posts:
             return (cam, t) => {
               let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
               const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+              const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+              const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+              const dA = v(A.afstand, t), dB = v(B.afstand, t);
+              const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+              const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
               d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
               cam.position.copy(doel).addScaledVector(dir, afst);
               u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
               cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
               const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+              cam.lookAt(kijk);
+              // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+              if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+              cam.updateProjectionMatrix(); cam.updateMatrixWorld();
             };
           }
+          // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+          const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
           // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
           function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
             const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -1569,7 +1643,7 @@ posts:
             ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
             if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
           }
-          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
         };
 
         // Lancering — een radarsatelliet die door wolken kijkt (Electron, iQPS). Eén wereld: een wolkendek bij nacht in lagen
@@ -1578,7 +1652,7 @@ posts:
         // het wolkendek breekt. Beide eindigen boven de wolken, waar ze begonnen.
         window.reel = {
           maak({ THREE, kit, scene, L, dur, data }) {
-            const { logCam, haakkaart, NZ } = K2(THREE);
+            const { logCam, haakkaart, rust, NZ } = K2(THREE);
             const { lijn, cirkel, gloed, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
             const VAR = "A";
             const WOLK = 0, GROND = -2.2, BAAN = 5.5;
@@ -1635,9 +1709,27 @@ posts:
               vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
               fragmentShader: `varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); float r=pow(1.0-abs(dot(N,V)),2.5);
                 gl_FragColor=vec4(vec3(0.03,0.035,0.05) + vec3(1.0,0.85,0.6)*r*0.55*smoothstep(-6.0,0.0,vW.y), 1.0); }` }); }
+            // Goudfolie (MLI) met kreukels, een donkerblauw paneel met cellen; licht van de maan, een turquoise rand.
+            const MAANR = "normalize(vec3(-14.0, 9.0, -24.0))";
+            const folie = new THREE.ShaderMaterial({
+              vertexShader: `varying vec3 vN; varying vec3 vW; varying vec3 vP; void main(){ vN=normalize(mat3(modelMatrix)*normal); vP=position; vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: NZ + `varying vec3 vN; varying vec3 vW; varying vec3 vP; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); vec3 Lm=${MAANR};
+                float k = fbm(vP * 38.0); N = normalize(N + 0.35 * vec3(k - 0.5, fbm(vP * 41.0 + 3.0) - 0.5, fbm(vP * 37.0 + 7.0) - 0.5));
+                float d = max(dot(N, Lm), 0.0); float sp = pow(max(dot(reflect(-Lm, N), V), 0.0), 18.0); float r = pow(1.0 - abs(dot(N, V)), 3.0);
+                vec3 c = vec3(0.62, 0.44, 0.16) * (0.18 + 0.7 * d) + vec3(1.0, 0.86, 0.55) * sp * 0.9 + vec3(0.37, 0.85, 0.92) * r * 0.35;
+                gl_FragColor = vec4(c, 1.0); }` });
+            const paneelMat = new THREE.ShaderMaterial({ side: THREE.DoubleSide,
+              vertexShader: `varying vec3 vN; varying vec3 vW; varying vec2 vU; void main(){ vU=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec3 vN; varying vec3 vW; varying vec2 vU; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); vec3 Lm=${MAANR};
+                vec2 g = abs(fract(vU * vec2(10.0, 4.0)) - 0.5); float lijn = 1.0 - smoothstep(0.42, 0.47, max(g.x, g.y));
+                float sp = pow(max(dot(reflect(-Lm, N), V), 0.0), 40.0); float r = pow(1.0 - abs(dot(N, V)), 2.5);
+                vec3 c = vec3(0.035, 0.06, 0.12) + vec3(0.45, 0.55, 0.65) * (1.0 - lijn) * 0.22 + vec3(0.8, 0.9, 1.0) * sp * 0.6 + vec3(0.37, 0.85, 0.92) * r * 0.25;
+                gl_FragColor = vec4(c, 1.0); }` });
             const sat = new THREE.Group(); scene.add(sat);
-            sat.add(new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.4, 0.26), satMat));
-            const vleugels = [-1, 1].map((s) => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.02, 0.42), satMat); p.position.x = s * 0.45; g.add(p); g.position.set(s * 0.17, -0.16, 0); sat.add(g); return g; });
+            sat.add(new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.42, 0.3), folie));
+            const kap = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 0.1, 12), folie); kap.position.y = 0.26; sat.add(kap);
+            const vleugels = [-1, 1].map((s) => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.025, 0.46), paneelMat); p.position.x = s * 0.6; g.add(p);
+              g.add(lijn([new THREE.Vector3(0, 0, 0), new THREE.Vector3(s * 0.05, 0, 0)], { kleur: "#C9D6E8", breedte: 2 })); g.position.set(s * 0.15, -0.16, 0); sat.add(g); return g; });
             // ── de raket: slank, een warm spoor ─────────────────────────────────────────────────────────────
             const raket = new THREE.Group(); scene.add(raket);
             const rMat = satMatDonker();
@@ -1656,17 +1748,22 @@ posts:
             const bijSat = (afst, fov, rich = [0.75, 0.32, 0.65]) => ({ doel: (t) => satPos(t).add(new THREE.Vector3(0, -0.35, 0)).toArray(), richting: rich, afstand: afst, fov });
             const bijRaket = (afst, fov) => ({ doel: (t) => [0, Math.max(raketY(t), 0.25) + 0.2, 0], kijk: (t) => [0, raketY(t) + 0.1, 0], richting: [0.85, 0.32, 0.6], afstand: afst, fov });
             const onder = { doel: [0, GROND, -2], kijk: [0, GROND, -3], richting: [0.05, 0.9, 0.6], afstand: 7.0, fov: 54 };
+            // Rustpunten in de pauzes (P); van de baan naar de grond en terug altijd via een wijd beeld.
+            const P = rust(L, data.lijnen.length);
+            const wijd = { doel: [0, 1.6, 0], richting: [0.85, 0.25, 0.6], afstand: 14, fov: 46 };
+            const omlaag = { doel: [0, 2.2, -0.5], richting: [0.25, 0.7, 0.66], afstand: 11, fov: 50 };
             const keys = [
               ...(VAR === "A"
-                ? [{ t: 0, ...bijSat(5.2, 38) }, { t: L(0, 1), ...bijSat(4.6, 38), e: "lin" }, { t: L(1, 1), ...bijRaket(4.5, 44) }]
-                : [{ t: 0, ...bijRaket(5.5, 40) }, { t: L(0, 1), ...bijRaket(6.0, 42), e: "lin" }, { t: L(1, 1), ...bijRaket(7.0, 44) }]),
-              { t: L(2, 1), ...bijSat(3.4, 40) },
-              { t: L(3, 1), ...bijSat(2.4, 38, [0.9, 0.05, 0.4]) },
-              { t: L(4, 1), ...bijSat(5.5, 46, [0.6, -0.25, 0.75]) },
-              { t: L(5, 1), ...bijSat(8.5, 50, [0.3, -0.1, 0.95]) },
-              { t: L(6, 1), ...onder, el: "in" },
-              { t: L(7, 1), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
-              { t: L(8, 1), ...bijSat(6.0, 46, [0.5, 0.1, 0.85]), el: "out" },
+                ? [{ t: 0, ...bijSat(5.2, 38) }, { t: P(0), ...bijSat(5.8, 39) }, { t: P(1), ...wijd }]
+                : [{ t: 0, ...bijRaket(5.5, 40) }, { t: P(0), ...bijRaket(6.0, 42) }, { t: P(1), ...bijRaket(7.5, 44) }]),
+              { t: P(2), ...bijSat(4.4, 40) },
+              { t: P(3), ...bijSat(3.4, 38, [0.9, 0.08, 0.42]) },
+              { t: P(4), ...bijSat(5.5, 46, [0.65, -0.2, 0.72]) },
+              { t: P(5), ...bijSat(8.0, 50, [0.4, -0.1, 0.9]) },
+              { t: P(6), ...omlaag },
+              { t: P(7), ...onder },
+              { t: P(8), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
+              { t: (P(8) + dur) / 2, ...wijd, afstand: 15, vast: 0 },
               { t: dur, ...(VAR === "A" ? bijSat(5.2, 38) : bijSat(5.5, 40)) },
             ];
             const cam = logCam(keys);
@@ -1677,14 +1774,14 @@ posts:
                 lagen.forEach((m) => { m.uniforms.uT.value = t; m.uniforms.uGat.value = smooth((t - L(6, 0)) / (L(6, 1) - L(6, 0))) * (1 - smooth((t - L(8, 0)) / (L(8, 1) - L(8, 0)))); m.uniforms.uGatP.value.set(0, -2); });
                 const sp = satPos(t); sat.position.copy(sp); sat.rotation.y = 0.4;
                 const uit = smooth((t - L(3, 0)) / (L(3, 1) - L(3, 0)));
-                vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" ? (t < L(1, 0) ? 1 : uit) : uit); });
+                vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" && t < L(3, 0) ? 1 - smooth((t - L(0, 1)) / (L(1, 1) - L(0, 1))) : uit); });
                 const ry = raketY(t); raket.position.set(0, ry, 0);
                 raket.visible = t < L(2, 1) + 0.2 && (VAR === "B" || t >= L(1, 0)); raket.scale.setScalar(0.7);
                 vlam.userData.set({ alpha: 0.9 + 0.1 * Math.sin(t * 40) });
                 spoor.userData.set({ kop: clamp01((ry - GROND + 1) / (BAAN - GROND + 2)), len: 0.45, alpha: venster(t, VAR === "B" ? -1 : L(1, 0), L(2, 1) + 0.3, 0.2, 0.5) });
                 // pulsen: in A al in frame 0 onderweg; daarna L4–L6
                 ringen.forEach((r, i) => {
-                  const cyc = 1.4, aan = (VAR === "A" && t < L(0, 1) + 0.6) || (t > L(4, 0) && t < L(6, 1));
+                  const cyc = 2.4, aan = (VAR === "A" && t < L(0, 1) + 0.6) || (t > L(4, 0) && t < L(6, 1));
                   const f = ((t + i * cyc / 4) % cyc) / cyc;
                   const omlaag = i % 2 === 0;
                   const y = omlaag ? lerp(sp.y - 0.3, GROND, f) : lerp(GROND, sp.y - 0.3, f);
@@ -1705,7 +1802,7 @@ posts:
                 lab("echo", satPos(t).setY(2.4), 0, venster(t, L(5, 0.2), L(5, 1) + 0.1, 0.3, 0.3), KLEUR.creme);
               },
               post: () => ({ bloei: 0.6, belichting: 0.95 }),
-              flits: (t) => 0.45 * venster(t, L(7, 0.1), L(7, 0.1) + 0.5, 0.06, 0.44),
+              flits: (t) => 0.45 * venster(t, L(7, 0.5), L(7, 0.5) + 0.5, 0.06, 0.44),
             };
           },
         };
@@ -1745,8 +1842,8 @@ posts:
           spreek: Een Electron brengt hem omhoog.
         - tekst: Naar een lage baan rond de aarde.
           spreek: Naar een lage baan rond de aarde.
-        - tekst: Daar vouwt hij een plat paneel uit.
-          spreek: Daar vouwt hij een plat paneel uit.
+        - tekst: Daar vouwt hij zijn antenne uit.
+          spreek: Daar vouwt hij zijn antenne uit.
         - tekst: Hij stuurt pulsen naar de grond,
           spreek: Hij stuurt pulsen naar de grond,
         - tekst: en vangt de echo op.
@@ -1764,7 +1861,7 @@ posts:
           camera: dichtbij, licht uitzoomen
         - beeld: De raket klimt naar een lage baan
           camera: mee omhoog
-        - beeld: Het paneel vouwt uit; pulsen omlaag, echo omhoog
+        - beeld: De antenne vouwt uit; pulsen omlaag, echo omhoog
           camera: naast de satelliet, dan eronder
         - beeld: "Door een gat in de wolken: het radarbeeld groeit regel voor regel"
           camera: omlaag door de wolken
@@ -1899,6 +1996,11 @@ posts:
           // logCam: houdingen {t, doel:[x,y,z], richting:[x,y,z] (van doel naar camera), afstand, fov, op?:[x,y,z], e?}
           // De afstand loopt logaritmisch (powers of ten), richting en doel lopen glad mee.
           function logCam(keys) {
+            // Standaard "maat": de camera staat (bijna) stil rond elke sleutel en beweegt in het midden van het stuk ertussen.
+            // Zo loopt het beeld door op elke zinsgrens (render:qa: doorloop ≥ 0,5, 8 frames voor en na) en blijft de beweging
+            // ertussen vloeiend. Het doel schuift mee met de afstand (ver weg schuift het, dichtbij staat het): een vaste
+            // schermsnelheid in plaats van een vlucht door de leegte.
+            const ss = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * x * (x * (x * 6 - 15) + 10); };
             const ease = { sine: (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.max(0, Math.min(1, x))), lin: (x) => Math.max(0, Math.min(1, x)),
                            in: (x) => Math.pow(Math.max(0, Math.min(1, x)), 2.2), out: (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 2.2) };
             const a = new THREE.Vector3(), b = new THREE.Vector3(), d1 = new THREE.Vector3(), d2 = new THREE.Vector3(), u1 = new THREE.Vector3(), u2 = new THREE.Vector3();
@@ -1906,17 +2008,26 @@ posts:
             return (cam, t) => {
               let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
               const A = keys[i], B = keys[Math.min(i + 1, keys.length - 1)];
-              const k = t <= A.t ? 0 : B.t > A.t ? ease[B.e || "sine"]((t - A.t) / (B.t - A.t)) : 1;
-              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, k);
+              const D = B.t - A.t, x = t <= A.t ? 0 : D > 0 ? (t - A.t) / D : 1;
+              const hA = D > 0 ? Math.min(A.vast ?? 0.32, 0.3 * D) / D : 0, hB = D > 0 ? Math.min(B.vast ?? 0.32, 0.3 * D) / D : 0;
+              const k = B.e ? ease[B.e](x) : ss((x - hA) / Math.max(1e-6, 1 - hA - hB));
+              const dA = v(A.afstand, t), dB = v(B.afstand, t);
+              const afst = Math.exp(Math.log(dA) + (Math.log(dB) - Math.log(dA)) * (B.el ? ease[B.el](k) : k));
+              const kd = Math.abs(Math.log(dB / dA)) > 0.3 ? (afst - dA) / (dB - dA) : k;
+              a.fromArray(v(A.doel, t)); b.fromArray(v(B.doel, t)); const doel = a.lerp(b, kd);
               d1.fromArray(v(A.richting, t)).normalize(); d2.fromArray(v(B.richting, t)).normalize(); const dir = d1.lerp(d2, k).normalize();
-              const afst = Math.exp(Math.log(v(A.afstand, t)) + (Math.log(v(B.afstand, t)) - Math.log(v(A.afstand, t))) * (B.el ? ease[B.el](k) : k));
               cam.position.copy(doel).addScaledVector(dir, afst);
               u1.fromArray(A.op || [0, 1, 0]); u2.fromArray(B.op || A.op || [0, 1, 0]); cam.up.copy(u1.lerp(u2, k).normalize());
               cam.fov = (A.fov ?? 40) + ((B.fov ?? A.fov ?? 40) - (A.fov ?? 40)) * k;
               const kijk = A.kijk || B.kijk ? new THREE.Vector3().fromArray(v(A.kijk || A.doel, t)).lerp(new THREE.Vector3().fromArray(v(B.kijk || B.doel, t)), k) : doel;
-              cam.lookAt(kijk); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+              cam.lookAt(kijk);
+              // Het onderwerp iets boven het midden (y ≈ 780): vrij van de ondertitels (y 1130) en van de haak bovenin.
+              if (cam.setViewOffset) cam.setViewOffset(1080, 1920, 0, keys.hoog ?? 0, 1080, 1920);
+              cam.updateProjectionMatrix(); cam.updateMatrixWorld();
             };
           }
+          // De rustpunten van de camera: midden in de pauze na zin i (de laatste: kort na het eind).
+          const rust = (L, n) => (i) => (i + 1 < n ? (L(i, 1) + L(i + 1, 0)) / 2 : L(i, 1) + 0.15);
           // De haakkaart: de hele haak groot bovenin, al in frame 0, tot de eerste zin klaar is (labels haak1/haak2).
           function haakkaart(ov, t, L, data, { y = 360, maat = 66 } = {}) {
             const a = 1 - Math.max(0, Math.min(1, (t - L(0, 1) - 0.15) / 0.35));
@@ -1925,7 +2036,7 @@ posts:
             ov.tekst("haak1", 540, y, { maat, kleur: "#EEF2FB", alpha: a, gloei: 8, gewicht: 800 });
             if (twee) ov.tekst("haak2", 540, y + maat * 1.12, { maat, kleur: "#FF6F7D", alpha: a, gloei: 14, gewicht: 800 });
           }
-          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, NZ };
+          return { atmosfeer, planeet, textuurBol, breedteLengte, logCam, haakkaart, rust, NZ };
         };
 
         // Lancering — een radarsatelliet die door wolken kijkt (Electron, iQPS). Eén wereld: een wolkendek bij nacht in lagen
@@ -1934,7 +2045,7 @@ posts:
         // het wolkendek breekt. Beide eindigen boven de wolken, waar ze begonnen.
         window.reel = {
           maak({ THREE, kit, scene, L, dur, data }) {
-            const { logCam, haakkaart, NZ } = K2(THREE);
+            const { logCam, haakkaart, rust, NZ } = K2(THREE);
             const { lijn, cirkel, gloed, KLEUR, smooth, venster, clamp01, lerp, easeOut } = kit;
             const VAR = "B";
             const WOLK = 0, GROND = -2.2, BAAN = 5.5;
@@ -1991,9 +2102,27 @@ posts:
               vertexShader: `varying vec3 vN; varying vec3 vW; void main(){ vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
               fragmentShader: `varying vec3 vN; varying vec3 vW; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); float r=pow(1.0-abs(dot(N,V)),2.5);
                 gl_FragColor=vec4(vec3(0.03,0.035,0.05) + vec3(1.0,0.85,0.6)*r*0.55*smoothstep(-6.0,0.0,vW.y), 1.0); }` }); }
+            // Goudfolie (MLI) met kreukels, een donkerblauw paneel met cellen; licht van de maan, een turquoise rand.
+            const MAANR = "normalize(vec3(-14.0, 9.0, -24.0))";
+            const folie = new THREE.ShaderMaterial({
+              vertexShader: `varying vec3 vN; varying vec3 vW; varying vec3 vP; void main(){ vN=normalize(mat3(modelMatrix)*normal); vP=position; vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: NZ + `varying vec3 vN; varying vec3 vW; varying vec3 vP; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); vec3 Lm=${MAANR};
+                float k = fbm(vP * 38.0); N = normalize(N + 0.35 * vec3(k - 0.5, fbm(vP * 41.0 + 3.0) - 0.5, fbm(vP * 37.0 + 7.0) - 0.5));
+                float d = max(dot(N, Lm), 0.0); float sp = pow(max(dot(reflect(-Lm, N), V), 0.0), 18.0); float r = pow(1.0 - abs(dot(N, V)), 3.0);
+                vec3 c = vec3(0.62, 0.44, 0.16) * (0.18 + 0.7 * d) + vec3(1.0, 0.86, 0.55) * sp * 0.9 + vec3(0.37, 0.85, 0.92) * r * 0.35;
+                gl_FragColor = vec4(c, 1.0); }` });
+            const paneelMat = new THREE.ShaderMaterial({ side: THREE.DoubleSide,
+              vertexShader: `varying vec3 vN; varying vec3 vW; varying vec2 vU; void main(){ vU=uv; vN=normalize(mat3(modelMatrix)*normal); vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.); }`,
+              fragmentShader: `varying vec3 vN; varying vec3 vW; varying vec2 vU; void main(){ vec3 N=normalize(vN); vec3 V=normalize(cameraPosition-vW); vec3 Lm=${MAANR};
+                vec2 g = abs(fract(vU * vec2(10.0, 4.0)) - 0.5); float lijn = 1.0 - smoothstep(0.42, 0.47, max(g.x, g.y));
+                float sp = pow(max(dot(reflect(-Lm, N), V), 0.0), 40.0); float r = pow(1.0 - abs(dot(N, V)), 2.5);
+                vec3 c = vec3(0.035, 0.06, 0.12) + vec3(0.45, 0.55, 0.65) * (1.0 - lijn) * 0.22 + vec3(0.8, 0.9, 1.0) * sp * 0.6 + vec3(0.37, 0.85, 0.92) * r * 0.25;
+                gl_FragColor = vec4(c, 1.0); }` });
             const sat = new THREE.Group(); scene.add(sat);
-            sat.add(new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.4, 0.26), satMat));
-            const vleugels = [-1, 1].map((s) => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.02, 0.42), satMat); p.position.x = s * 0.45; g.add(p); g.position.set(s * 0.17, -0.16, 0); sat.add(g); return g; });
+            sat.add(new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.42, 0.3), folie));
+            const kap = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 0.1, 12), folie); kap.position.y = 0.26; sat.add(kap);
+            const vleugels = [-1, 1].map((s) => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.025, 0.46), paneelMat); p.position.x = s * 0.6; g.add(p);
+              g.add(lijn([new THREE.Vector3(0, 0, 0), new THREE.Vector3(s * 0.05, 0, 0)], { kleur: "#C9D6E8", breedte: 2 })); g.position.set(s * 0.15, -0.16, 0); sat.add(g); return g; });
             // ── de raket: slank, een warm spoor ─────────────────────────────────────────────────────────────
             const raket = new THREE.Group(); scene.add(raket);
             const rMat = satMatDonker();
@@ -2012,17 +2141,22 @@ posts:
             const bijSat = (afst, fov, rich = [0.75, 0.32, 0.65]) => ({ doel: (t) => satPos(t).add(new THREE.Vector3(0, -0.35, 0)).toArray(), richting: rich, afstand: afst, fov });
             const bijRaket = (afst, fov) => ({ doel: (t) => [0, Math.max(raketY(t), 0.25) + 0.2, 0], kijk: (t) => [0, raketY(t) + 0.1, 0], richting: [0.85, 0.32, 0.6], afstand: afst, fov });
             const onder = { doel: [0, GROND, -2], kijk: [0, GROND, -3], richting: [0.05, 0.9, 0.6], afstand: 7.0, fov: 54 };
+            // Rustpunten in de pauzes (P); van de baan naar de grond en terug altijd via een wijd beeld.
+            const P = rust(L, data.lijnen.length);
+            const wijd = { doel: [0, 1.6, 0], richting: [0.85, 0.25, 0.6], afstand: 14, fov: 46 };
+            const omlaag = { doel: [0, 2.2, -0.5], richting: [0.25, 0.7, 0.66], afstand: 11, fov: 50 };
             const keys = [
               ...(VAR === "A"
-                ? [{ t: 0, ...bijSat(5.2, 38) }, { t: L(0, 1), ...bijSat(4.6, 38), e: "lin" }, { t: L(1, 1), ...bijRaket(4.5, 44) }]
-                : [{ t: 0, ...bijRaket(5.5, 40) }, { t: L(0, 1), ...bijRaket(6.0, 42), e: "lin" }, { t: L(1, 1), ...bijRaket(7.0, 44) }]),
-              { t: L(2, 1), ...bijSat(3.4, 40) },
-              { t: L(3, 1), ...bijSat(2.4, 38, [0.9, 0.05, 0.4]) },
-              { t: L(4, 1), ...bijSat(5.5, 46, [0.6, -0.25, 0.75]) },
-              { t: L(5, 1), ...bijSat(8.5, 50, [0.3, -0.1, 0.95]) },
-              { t: L(6, 1), ...onder, el: "in" },
-              { t: L(7, 1), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
-              { t: L(8, 1), ...bijSat(6.0, 46, [0.5, 0.1, 0.85]), el: "out" },
+                ? [{ t: 0, ...bijSat(5.2, 38) }, { t: P(0), ...bijSat(5.8, 39) }, { t: P(1), ...wijd }]
+                : [{ t: 0, ...bijRaket(5.5, 40) }, { t: P(0), ...bijRaket(6.0, 42) }, { t: P(1), ...bijRaket(7.5, 44) }]),
+              { t: P(2), ...bijSat(4.4, 40) },
+              { t: P(3), ...bijSat(3.4, 38, [0.9, 0.08, 0.42]) },
+              { t: P(4), ...bijSat(5.5, 46, [0.65, -0.2, 0.72]) },
+              { t: P(5), ...bijSat(8.0, 50, [0.4, -0.1, 0.9]) },
+              { t: P(6), ...omlaag },
+              { t: P(7), ...onder },
+              { t: P(8), ...onder, afstand: 7.6, richting: [0.0, 0.95, 0.35] },
+              { t: (P(8) + dur) / 2, ...wijd, afstand: 15, vast: 0 },
               { t: dur, ...(VAR === "A" ? bijSat(5.2, 38) : bijSat(5.5, 40)) },
             ];
             const cam = logCam(keys);
@@ -2033,14 +2167,14 @@ posts:
                 lagen.forEach((m) => { m.uniforms.uT.value = t; m.uniforms.uGat.value = smooth((t - L(6, 0)) / (L(6, 1) - L(6, 0))) * (1 - smooth((t - L(8, 0)) / (L(8, 1) - L(8, 0)))); m.uniforms.uGatP.value.set(0, -2); });
                 const sp = satPos(t); sat.position.copy(sp); sat.rotation.y = 0.4;
                 const uit = smooth((t - L(3, 0)) / (L(3, 1) - L(3, 0)));
-                vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" ? (t < L(1, 0) ? 1 : uit) : uit); });
+                vleugels.forEach((g, i) => { g.rotation.z = (i ? -1 : 1) * lerp(1.45, 0, VAR === "A" && t < L(3, 0) ? 1 - smooth((t - L(0, 1)) / (L(1, 1) - L(0, 1))) : uit); });
                 const ry = raketY(t); raket.position.set(0, ry, 0);
                 raket.visible = t < L(2, 1) + 0.2 && (VAR === "B" || t >= L(1, 0)); raket.scale.setScalar(0.7);
                 vlam.userData.set({ alpha: 0.9 + 0.1 * Math.sin(t * 40) });
                 spoor.userData.set({ kop: clamp01((ry - GROND + 1) / (BAAN - GROND + 2)), len: 0.45, alpha: venster(t, VAR === "B" ? -1 : L(1, 0), L(2, 1) + 0.3, 0.2, 0.5) });
                 // pulsen: in A al in frame 0 onderweg; daarna L4–L6
                 ringen.forEach((r, i) => {
-                  const cyc = 1.4, aan = (VAR === "A" && t < L(0, 1) + 0.6) || (t > L(4, 0) && t < L(6, 1));
+                  const cyc = 2.4, aan = (VAR === "A" && t < L(0, 1) + 0.6) || (t > L(4, 0) && t < L(6, 1));
                   const f = ((t + i * cyc / 4) % cyc) / cyc;
                   const omlaag = i % 2 === 0;
                   const y = omlaag ? lerp(sp.y - 0.3, GROND, f) : lerp(GROND, sp.y - 0.3, f);
@@ -2061,7 +2195,7 @@ posts:
                 lab("echo", satPos(t).setY(2.4), 0, venster(t, L(5, 0.2), L(5, 1) + 0.1, 0.3, 0.3), KLEUR.creme);
               },
               post: () => ({ bloei: 0.6, belichting: 0.95 }),
-              flits: (t) => 0.45 * venster(t, L(7, 0.1), L(7, 0.1) + 0.5, 0.06, 0.44),
+              flits: (t) => 0.45 * venster(t, L(7, 0.5), L(7, 0.5) + 0.5, 0.06, 0.44),
             };
           },
         };
