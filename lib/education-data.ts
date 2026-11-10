@@ -21,7 +21,7 @@ export const TOPIC_DETAILS: Record<string, {
     featuredConcept: 'Planetaire beweging',
     beg: 'De planeten bewegen in ellipsvormige banen om de zon. Hoe dichter een planeet bij de zon is, hoe sneller hij beweegt. De Aarde doet er 365 dagen over voor één ronde, Mars 687 dagen. De zwaartekracht van de zon trekt alle planeten naar zich toe en houdt ze zo in hun baan.',
     ama: 'Kepler formuleerde drie wetten (1609–1619): (1) Planeten bewegen in ellipsen met de zon in één brandpunt. (2) De verbindingslijn ster–planeet bestrijkt gelijke oppervlakken in gelijke tijden (behoud van impulsmoment). (3) T² ∝ a³ — de omlooptijd in het kwadraat is evenredig met de halve grootas in de derde macht. Newton verklaarde dit later met F = GMm/r².',
-    pro: 'Afwijkingen van perfecte Kepler-ellipsen (seculareprecession) volgen uit N-body-storingen en, voor Mercurius, uit Algemene Relativiteitstheorie (43 boogseconden/eeuw). Lagrangepunten L1–L5 zijn evenwichtspunten in het beperkte drie-lichamenprobleem; L4/L5 zijn stabiel (Trojanen). De Tisserand-parameter T = a_J/a + 2√(a/a_J(1−e²))·cos(i) bepaalt de dynamische klasse van kleine lichamen.',
+    pro: 'Afwijkingen van perfecte Kepler-ellipsen (seculiere precessie) volgen uit N-body-storingen en, voor Mercurius, uit Algemene Relativiteitstheorie (43 boogseconden/eeuw). Lagrangepunten L1–L5 zijn evenwichtspunten in het beperkte drie-lichamenprobleem; L4/L5 zijn stabiel (Trojanen). De Tisserand-parameter T = a_J/a + 2√(a/a_J(1−e²))·cos(i) bepaalt de dynamische klasse van kleine lichamen.',
     keyFacts: [
       '8 planeten + 5 erkende dwergplaneten',
       'Zon–Aarde-afstand = 1 AU = 149,6 miljoen km',
@@ -47,10 +47,10 @@ export const TOPIC_DETAILS: Record<string, {
     featuredConcept: 'Kernfusie',
     beg: 'In het hart van de zon smelten waterstofatomen samen tot helium. Dit heet kernfusie en levert enorm veel energie op — het is waarom de zon straalt. Elke seconde zet de zon 600 miljoen ton waterstof om. De zon doet dit al 4,6 miljard jaar en heeft nog minstens evenveel brandstof over.',
     ama: 'In sterren zoals de zon verloopt fusie via de proton-protonketen (pp-keten): 4 ¹H → ⁴He + 2e⁺ + 2νe + 26,7 MeV. In zwaardere sterren (> 1,3 M☉) domineert de efficiëntere CNO-cyclus (T-gevoeligheid ∝ T²⁰). De kern heeft T ≈ 15 miljoen K en P ≈ 250 miljard atm. De zon produceert 3,8 × 10²⁶ W aan stralingsvermogen.',
-    pro: 'De pp-I keten levert ~85% van de zonne-energie. Neutrino-experimenten (Super-Kamiokande, SNO) bevestigen het standaard zonnemodel en losten het zonnige-neutrino-probleem op via neutrino-oscillatie. Na de hoofdreeks: heliumfusie via de triple-alpha-reactie (3 ⁴He → ¹²C) bij ~10⁸ K. Massieve sterren (>8 M☉) doorlopen snel Si-fusie tot een ijzerkern die implodeert als supernova type II.',
+    pro: 'De pp-I-keten levert ~85% van de zonne-energie. Neutrino-experimenten (Super-Kamiokande, SNO) bevestigen het standaard zonnemodel en losten het zonneneutrinoprobleem op via neutrino-oscillatie. Na de hoofdreeks: heliumfusie via de triple-alpha-reactie (3 ⁴He → ¹²C) bij ~10⁸ K. Massieve sterren (>8 M☉) doorlopen snel Si-fusie tot een ijzerkern die implodeert als supernova type II.',
     keyFacts: [
       'Zon: oppervlaktetemperatuur ~5.778 K, kerntemperatuur ~15 miljoen K',
-      'HR-diagram: hoofdreeks, reuzen, witten dwergen',
+      'HR-diagram: hoofdreeks, reuzen, witte dwergen',
       'Ster met zon-massa leeft ±10 miljard jaar',
       'Neutronensterren: diameter ~20 km, dichtheid > 10¹⁷ kg/m³',
     ],
@@ -92,7 +92,7 @@ export const TOPIC_DETAILS: Record<string, {
       { term: 'Gravitationele lensing', def: 'Het buigen van lichtstralen door een zware massa, conform Einsteins Algemene Relativiteitstheorie. Maakt onzichtbare massa zichtbaar.' },
       { term: 'Spiraalstelsel', def: 'Een type sterrenstelsel met een centrale bult en uitgestrekte spiraalvormige armen van sterren en gas. De Melkweg en Andromeda zijn spiraalstelsels.' },
       { term: 'Galactische kern', def: 'Het dichtst bevolkte, helderste centrale gebied van een sterrenstelsel. Bevat vaak een supermassief zwart gat (bij de Melkweg: Sgr A*, 4 miljoen M☉).' },
-      { term: 'WIMP', def: 'Weakly Interacting Massive Particle — een hypothetische donkere-materiedeeltje dat alleen via zwaartekracht en de zwakke kernkracht wisselwerkt.' },
+      { term: 'WIMP', def: 'Weakly Interacting Massive Particle — een hypothetisch donkere-materiedeeltje dat alleen via zwaartekracht en de zwakke kernkracht wisselwerkt.' },
     ],
   },
   kosmologie: {
@@ -114,9 +114,9 @@ export const TOPIC_DETAILS: Record<string, {
     glossary: [
       { term: 'Oerknal', def: 'De theorie dat het heelal ±13,8 miljard jaar geleden begon vanuit een extreem hete, dichte toestand en sindsdien uitdijt en afkoelt.' },
       { term: 'Roodverschuiving', def: 'De verschuiving van lichtgolven naar langere (roodere) golflengten doordat de bron van ons wegbeweegt of het heelal uitdijt. Symbool: z.' },
-      { term: 'CMB', def: 'Kosmische Achtergrondstraling (Cosmic Microwave Background) — reststraling van 380.000 jaar na de oerknal, nu zichtbaar als microgolven op T = 2,7 K.' },
+      { term: 'CMB', def: 'Kosmische achtergrondstraling (Cosmic Microwave Background) — reststraling van 380.000 jaar na de oerknal, nu zichtbaar als microgolven op T = 2,7 K.' },
       { term: 'Donkere energie', def: 'Een onbekende vorm van energie die de uitdijing van het heelal versnelt. Goed voor ~68% van de totale energie-inhoud. Symbool: Λ (kosmologische constante).' },
-      { term: 'Inflatie', def: 'Een fase van extreem snelle, exponentiële uitdijing in het eerste 10⁻³² seconde na de oerknal. Verklaart de vlakheid en uniformiteit van het heelal.' },
+      { term: 'Inflatie', def: 'Een fase van extreem snelle, exponentiële uitdijing in de eerste 10⁻³² seconde na de oerknal. Verklaart de vlakheid en uniformiteit van het heelal.' },
       { term: 'Hubble-constante (H₀)', def: 'De huidige uitdijingssnelheid van het heelal per afstandseenheid, uitgedrukt in km/s/Mpc. Actuele waarde: ~67–73 km/s/Mpc (Hubble-spanning).' },
       { term: 'ΛCDM', def: 'Het standaardmodel van de kosmologie: Lambda (donkere energie) + Cold Dark Matter. Beschrijft de structuur en evolutie van het heelal met hoge nauwkeurigheid.' },
     ],
@@ -125,11 +125,11 @@ export const TOPIC_DETAILS: Record<string, {
     featuredConcept: 'Detectiemethoden',
     beg: 'Exoplaneten zijn planeten om andere sterren. Ze zijn te ver weg om direct te zien, maar we detecteren ze indirect. De meest gebruikte methode: transitmethode. Als een planeet voor zijn ster passeert, wordt de ster ietsje donkerder. De NASA-telescoop Kepler vond zo 2.600+ planeten. TESS gaat verder met deze zoektocht.',
     ama: 'Twee hoofdmethoden: (1) Transitmethode: ΔF/F = (R_p/R_*)² voor centrale transit. (2) Radiale snelheidsmethode: sterrewobble K = (2πG/P)^(1/3) × M_p sin(i) / (M_* + M_p)^(2/3) × 1/√(1−e²). Gecombineerd geeft men bulkdichtheid ρ_p. Andere methoden: directe imaging (HR 8799), microlensing (OGLE, Roman), astrometrie (Gaia DR3 bevat ±10.000 kandidaten).',
-    pro: 'Transmissiespectroscopie: ΔF(λ)/F = 2R_p H(λ) / R_*², waarbij H = kT_eq/μg de atmosferische schaallengte is. JWST heeft CO₂ (WASP-39b, 2022), SO₂, H₂O en C₂H₂ gedetecteerd. K2-18b-data (2023) suggereren dimethylsulfide (DMS, potentieel biosignatuur), onder voorbehoud. Het Earth Similarity Index (ESI) en habitability-modellen combineren T_eq, M_p, ρ_p en atmosferische retention via Jeans-parameter.',
+    pro: 'Transmissiespectroscopie: ΔF(λ)/F = 2R_p H(λ) / R_*², waarbij H = kT_eq/μg de atmosferische schaallengte is. JWST heeft CO₂ (WASP-39b, 2022), SO₂, H₂O en C₂H₂ gedetecteerd. K2-18b-data (2023) suggereren dimethylsulfide (DMS, potentieel biosignatuur), onder voorbehoud. De Earth Similarity Index (ESI) en habitability-modellen combineren T_eq, M_p, ρ_p en atmosferische retention via Jeans-parameter.',
     keyFacts: [
       '5.800+ bevestigde exoplaneten (2025, NASA Exoplanet Archive)',
       'Dichtstbijzijnde: Proxima Centauri b (~4,2 lichtjaar)',
-      'Kepler-detecteerde dat ±20% van sterren een Aarde-achtige planeet heeft',
+      'Kepler detecteerde dat ±20% van sterren een Aarde-achtige planeet heeft',
       'Bewoonbare zone: gebied waar vloeibaar water op oppervlak mogelijk is',
     ],
     sources: [
@@ -144,14 +144,14 @@ export const TOPIC_DETAILS: Record<string, {
       { term: 'Bewoonbare zone', def: 'Het gebied rond een ster waar de temperatuur vloeibaar water op een planeetoppervlak toelaat. Ook wel "Goudlokje-zone" genoemd.' },
       { term: 'Biosignatuur', def: 'Een chemisch of fysisch signaal in een atmosfeer of oppervlak dat op de aanwezigheid van leven kan wijzen, zoals zuurstof, methaan of dimethylsulfide.' },
       { term: 'Transmissiespectroscopie', def: 'Het analyseren van sterrenlicht dat door de atmosfeer van een exoplaneet filtert bij een transit. Onthult de chemische samenstelling van de atmosfeer.' },
-      { term: 'Super-Aarde', def: 'Een exoplaneet met een massa groter dan de Aarde (1–10 M⊕) maar kleiner dan Neptunus. Kunnen rotsachtig of gasachtig zijn.' },
+      { term: 'Superaarde', def: 'Een exoplaneet met een massa groter dan de Aarde (1–10 M⊕) maar kleiner dan Neptunus. Kan rotsachtig of gasachtig zijn.' },
     ],
   },
   ruimtevaart: {
     featuredConcept: 'Orbitale mechanica',
-    beg: 'Een raket in een baan om de Aarde valt eigenlijk constant — maar gaat zo snel zijwaarts dat de Aarde onder hem wegbogt. De ISS cirkelt op 400 km hoogte met 27.600 km/u. Om van baan te wisselen brandt je de motor even bij — zelfs om lager te gaan moet je afremmen. Dit voelt contra-intuïtief maar is pure fysica.',
+    beg: 'Een raket in een baan om de Aarde valt eigenlijk constant — maar gaat zo snel zijwaarts dat de Aarde onder hem wegbuigt. De ISS cirkelt op 400 km hoogte met 27.600 km/u. Om van baan te wisselen brand je de motor even bij — zelfs om lager te gaan moet je afremmen. Dit voelt contra-intuïtief maar is pure fysica.',
     ama: 'Tsiolkovsky\'s raketformule: Δv = v_e × ln(m₀/m_f). Eerste kosmische snelheid (LEO): v_c = √(GM/r) ≈ 7,9 km/s. Ontsnappingssnelheid: v_esc = √(2)·v_c ≈ 11,2 km/s. De Hohmann-transferbaan gebruikt twee motorbranden en is de meest energiezuinige overgang tussen twee cirkelbanen (Δv_totaal minimaal). Vis-viva: v² = GM(2/r − 1/a).',
-    pro: 'Gravitational assist: in het planetaire referentiestelsel is |v_∞| behouden; in het heliocentrische stelsel wint de sonde impuls (Voyager-missies). Low-thrust trajectories (ionaandrijving, Isp > 3.000 s) volgen spiraalvormige banen; Edelbaum-approximatie geeft Δv ≈ π/2 |v₁ − v₂| voor inclination changes. Station-keeping via J2-perturbaties (aardoblateness) vereist periodieke correcties. Tidal locking, Hill sphere en Lagrange L2 zijn sleutels voor moderne missieontwerp (bijv. JWST op L2).',
+    pro: 'Gravitational assist: in het planetaire referentiestelsel is |v_∞| behouden; in het heliocentrische stelsel wint de sonde impuls (Voyager-missies). Low-thrust trajectories (ionaandrijving, Isp > 3.000 s) volgen spiraalvormige banen; Edelbaum-approximatie geeft Δv ≈ π/2 |v₁ − v₂| voor inclination changes. Station-keeping via J2-perturbaties (aardoblateness) vereist periodieke correcties. Tidal locking, Hill sphere en Lagrange L2 zijn sleutels voor modern missieontwerp (bijv. JWST op L2).',
     keyFacts: [
       'ISS hoogte: ~400 km, omlooptijd: ~92 minuten',
       'Maanvlucht Apollo 11: 3 dagen, 3 uur, 49 minuten',
@@ -192,13 +192,13 @@ export const TOPICS = [
     id: 'sterrenstelsels', icon: '🌌', title: 'Sterrenstelsels',
     color: '#c080ff', bg: 'linear-gradient(135deg,#0e0518,#14082a)',
     desc: 'Melkwegstelsels, bolvormige sterrenhopen en de grootschalige structuur van het heelal.',
-    concepts: ['Melkweg structuur', 'Galactische kernen', 'Stelseltypes', 'Botsende stelsels', 'Donkere materie'],
+    concepts: ['Melkwegstructuur', 'Galactische kernen', 'Stelseltypes', 'Botsende stelsels', 'Donkere materie'],
   },
   {
     id: 'kosmologie', icon: '🔭', title: 'Kosmologie',
     color: '#378ADD', bg: 'linear-gradient(135deg,#040a14,#081224)',
     desc: 'De oerknal, uitdijend heelal, donkere energie en het lot van alles.',
-    concepts: ['Oerknal theorie', 'Kosmische achtergrondstraling', 'Donkere energie', 'Inflatie', 'Multiversum'],
+    concepts: ['Oerknaltheorie', 'Kosmische achtergrondstraling', 'Donkere energie', 'Inflatie', 'Multiversum'],
   },
   {
     id: 'exoplaneten', icon: '🪐', title: 'Exoplaneten',
@@ -210,20 +210,20 @@ export const TOPICS = [
     id: 'ruimtevaart', icon: '🚀', title: 'Ruimtevaart',
     color: '#3dcfdf', bg: 'linear-gradient(135deg,#041214,#08201e)',
     desc: 'Raketten, ruimtestations, en de ambitieuze missies naar de Maan en Mars.',
-    concepts: ['Orbitale mechanica', 'Voortstuwing', 'Leven in de ruimte', 'Maanprogramma\'s', 'Mars kolonisatie'],
+    concepts: ['Orbitale mechanica', 'Voortstuwing', 'Leven in de ruimte', 'Maanprogramma\'s', 'Marskolonisatie'],
   },
 ]
 
 export const CONCEPTS = [
   { slug: 'neutronenster-uitgelegd',   icon: '💫', title: 'Neutronenster',    category: 'Sterren',        color: '#d4a84b', desc: 'De extreem compacte overblijfselen van massieve sterren.' },
-  { slug: 'desi-donkere-energie',       icon: '🌑', title: 'Donkere Energie',  category: 'Kosmologie',     color: '#c080ff', desc: 'De mysterieuze kracht achter de versnelde uitdijing van het heelal.' },
+  { slug: 'desi-donkere-energie',       icon: '🌑', title: 'Donkere energie',  category: 'Kosmologie',     color: '#c080ff', desc: 'De mysterieuze kracht achter de versnelde uitdijing van het heelal.' },
   { slug: 'james-webb-k2-18b-biosignatuur', icon: '🌍', title: 'Exoplaneten',     category: 'Exoplaneten',    color: '#3ddf90', desc: 'Planeten buiten ons zonnestelsel en de zoektocht naar leven.' },
-  { slug: 'smiles-journey-from-launch-to-orbit', icon: '🚀', title: 'Orbitale Mechanica', category: 'Ruimtevaart',  color: '#3dcfdf', desc: 'Hoe een raket een satelliet in de juiste baan brengt, aan de hand van de reis van Smile.' },
+  { slug: 'smiles-journey-from-launch-to-orbit', icon: '🚀', title: 'Orbitale mechanica', category: 'Ruimtevaart',  color: '#3dcfdf', desc: 'Hoe een raket een satelliet in de juiste baan brengt, aan de hand van de reis van Smile.' },
 ]
 
 export const FAQS = [
-  { q: 'Moet ik een telescoop hebben om te leren?',   a: 'Nee! Veel van de astronomie-concepten zijn puur theoretisch. Voor sterrenkijken helpt een verrekijker al enorm — maar kennis vereist geen instrument.' },
+  { q: 'Moet ik een telescoop hebben om te leren?',   a: 'Nee! Veel van de astronomieconcepten zijn puur theoretisch. Voor sterrenkijken helpt een verrekijker al enorm — maar kennis vereist geen instrument.' },
   { q: 'Wat is het verschil tussen de niveaus?',      a: 'Beginner gebruikt alledaagse taal en vergelijkingen. Amateur voegt getallen en terminologie toe. Pro is wetenschappelijk niveau met formules.' },
-  { q: 'Kan ik van niveau wisselen in artikelen?',    a: 'Ja — elke artikel pagina heeft een Beginner / Amateur / Pro knop. Onze AI herschrijft het artikel direct voor jouw niveau.' },
+  { q: 'Kan ik van niveau wisselen in artikelen?',    a: 'Ja — elke artikelpagina heeft een knop Beginner / Amateur / Pro. Onze AI herschrijft het artikel direct voor jouw niveau.' },
   { q: 'Zijn er Nederlandse bronnen voor meer info?', a: 'NightGazer verzamelt dagelijks astronomie- en ruimtevaartnieuws van onder meer NASA en ESA, en elk artikel is op drie leesniveaus te lezen. Voor verdieping zijn NOVA Astronomie en Sterrewacht Leiden uitstekende Nederlandse bronnen.' },
 ]

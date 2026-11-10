@@ -37,7 +37,7 @@ Voordat hij brak was K1 waarschijnlijk iets groter dan gemiddeld, met een doorsn
 
 Dankzij de scherpe beelden kon het team de fragmenten terugrekenen naar het moment dat ze nog één geheel vormden. Daarbij stuitten de onderzoekers op een raadsel: waarom zagen waarnemers op aarde de heldere uitbarstingen pas enige tijd na de breuk? Vers ijs zou de komeet vrijwel direct moeten laten oplichten. Mogelijk moet zich eerst een laagje droog stof vormen dat daarna wordt weggeblazen, of moet warmte eerst onder het oppervlak doordringen en druk opbouwen.
 
-Het onderzoek is nog niet klaar. Waarnemingen vanaf de grond tonen al aan dat K1 opvallend weinig koolstof bevat vergeleken met andere kometen. Spectra van Hubble's instrumenten STIS en COS moeten meer onthullen over de samenstelling. Inmiddels is K1 een verzameling brokstukken op zo'n 400 miljoen kilometer van de aarde, in het sterrenbeeld Vissen, op weg het zonnestelsel uit.
+Het onderzoek is nog niet klaar. Waarnemingen vanaf de grond tonen al aan dat K1 opvallend weinig koolstof bevat vergeleken met andere kometen. Spectra van Hubbles instrumenten STIS en COS moeten meer onthullen over de samenstelling. Inmiddels is K1 een verzameling brokstukken op zo'n 400 miljoen kilometer van de aarde, in het sterrenbeeld Vissen, op weg het zonnestelsel uit.
 
 ## Wat betekent dit?
 

@@ -29,7 +29,7 @@ Centrale thema's waren het voorkomen dat missies elkaar hinderen, interoperabili
 
 ## Peru wil regio erbij betrekken
 
-Gastland Peru, dat zich in 2024 aansloot, wilde met de workshop vooral Zuid-Amerikaanse landen bij elkaar brengen. Volgens generaal-majoor Roberto Melgar Sheen, directeur van het Peruaanse ruimteagentschap CONIDA, is dat gelukt: alle Zuid-Amerikaanse ondertekenaars namen deel, de meeste ter plekke en een klein deel online. Vice-minister van Buitenlandse Zaken Felix Denegri zei dat Peru via de akkoorden banden wil smeden die bijdragen aan de wetenschappelijke en lucht- en ruimtevaartontwikkeling van zijn land.
+Gastland Peru, dat zich in 2024 aansloot, wilde met de workshop vooral Zuid-Amerikaanse landen bij elkaar brengen. Volgens generaal-majoor Roberto Melgar Sheen, directeur van het Peruaanse ruimteagentschap CONIDA, is dat gelukt: alle Zuid-Amerikaanse ondertekenaars namen deel, de meeste ter plekke en een klein deel online. Viceminister van Buitenlandse Zaken Felix Denegri zei dat Peru via de akkoorden banden wil smeden die bijdragen aan de wetenschappelijke en lucht- en ruimtevaartontwikkeling van zijn land.
 
 NASA-baas Jared Isaacman sprak van groeiend wereldwijd momentum. "Elke ondertekenaar van de Artemis-akkoorden heeft de kans om een betekenisvolle rol te spelen met NASA terwijl we samen werken aan een blijvende menselijke aanwezigheid op het maanoppervlak", aldus Isaacman.
 

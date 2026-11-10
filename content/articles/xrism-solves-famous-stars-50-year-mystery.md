@@ -17,7 +17,7 @@ kerncijfers: [{"waarde":"150 miljoen","eenheid":"graden","label":"temperatuur va
 citaat: {"tekst":"Er is decennialang door veel onderzoeksgroepen intensief gewerkt aan het raadsel van gamma-Cas. En nu, dankzij de zeer nauwkeurige waarnemingen van XRISM, is het ons eindelijk gelukt","wie":"Yaël Nazé, astronoom Universiteit van Luik"}
 ---
 
-Wie op een heldere avond naar het noorden kijkt, ziet hem vrijwel altijd staan: gamma Cassiopeiae, de ster in het midden van de W-vormige sterrenbeeld Cassiopeia. Ondanks die bekendheid hield de ster astronomen ruim een halve eeuw voor de gek met merkwaardige röntgenstraling. Nieuwe waarnemingen met de röntgentelescoop XRISM laten nu zien waar die straling vandaan komt: van een onzichtbare begeleider, een witte dwerg, die materiaal van de ster naar zich toe trekt.
+Wie op een heldere avond naar het noorden kijkt, ziet hem vrijwel altijd staan: gamma Cassiopeiae, de ster in het midden van het W-vormige sterrenbeeld Cassiopeia. Ondanks die bekendheid hield de ster astronomen ruim een halve eeuw voor de gek met merkwaardige röntgenstraling. Nieuwe waarnemingen met de röntgentelescoop XRISM laten nu zien waar die straling vandaan komt: van een onzichtbare begeleider, een witte dwerg, die materiaal van de ster naar zich toe trekt.
 
 Het onderzoek staat onder leiding van Yaël Nazé van de Universiteit van Luik in België en is gepubliceerd in het vakblad Astronomy & Astrophysics. "Er is decennialang door veel onderzoeksgroepen intensief gewerkt aan het raadsel van gamma-Cas. En nu, dankzij de zeer nauwkeurige waarnemingen van XRISM, is het ons eindelijk gelukt", zegt Nazé.
 

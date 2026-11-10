@@ -29,7 +29,7 @@ QSO1 is een typisch voorbeeld van een zogeheten Little Red Dot: een klein, rooda
 
 ## Draaiend gas als weegschaal
 
-Eerdere metingen schatten de massa van het zwarte gat op 40 miljoen zonsmassa's, maar zulke schattingen in het verre heelal zijn altijd indirect. Ze leunen op aannames uit het nabije heelal waarvan niemand zeker wist of ze daar ook gelden. Het team gebruikte daarom de integral field unit van NIRSpec, het nabij-infrarode spectrograaf van Webb die door ESA is geleverd. Zo'n instrument maakt voor elk punt in het beeld een apart spectrum, zodat je zowel de beweging als de samenstelling van het gas in kaart brengt.
+Eerdere metingen schatten de massa van het zwarte gat op 40 miljoen zonsmassa's, maar zulke schattingen in het verre heelal zijn altijd indirect. Ze leunen op aannames uit het nabije heelal waarvan niemand zeker wist of ze daar ook gelden. Het team gebruikte daarom de integral field unit van NIRSpec, de nabij-infrarode spectrograaf van Webb die door ESA is geleverd. Zo'n instrument maakt voor elk punt in het beeld een apart spectrum, zodat je zowel de beweging als de samenstelling van het gas in kaart brengt.
 
 Hoofdauteurs Ignas Juodžbalis (Cambridge) en Cosimo Marconcini (Universiteit van Florence) zagen dat het waterstofgas een zogeheten Kepler-beweging volgt: het draait om een centraal punt zoals de planeten om de zon. "Dit is belangrijk omdat het ons vertelt dat het grootste deel van de massa van QSO1 in het zwarte gat in het centrum zit", aldus Juodžbalis. Met eenvoudige zwaartekrachtwetten konden ze zo de massa direct uitrekenen: ongeveer 50 miljoen zonsmassa's, ofwel twee derde van de totale massa van QSO1. In nabije sterrenstelsels is dat aandeel duizenden keren kleiner.
 

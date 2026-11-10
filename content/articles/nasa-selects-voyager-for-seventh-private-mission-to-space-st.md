@@ -31,7 +31,7 @@ De missie is geen gratis ritje. Voyager koopt diensten van NASA in, zoals verbru
 
 ## Op weg naar commerciële ruimtestations
 
-NASA-directeur Jared Isaacman ziet de selectie als een stap richting een toekomst met meerdere commercieel uitgebaatte ruimtestations. "Met nu drie geselecteerde aanbieders voor private missies doet NASA alles wat het kan om meer astronauten de ruimte in te sturen en de economie in een baan om de aarde aan te wakkeren", zei hij. Volgens Isaacman brengt elke nieuwe partner nieuwe mogelijkheden mee die de weg vrijmaken voor een levendige en duurzame markt in een lage baan om de aarde.
+NASA-directeur Jared Isaacman ziet de selectie als een stap richting een toekomst met meerdere commercieel uitgebate ruimtestations. "Met nu drie geselecteerde aanbieders voor private missies doet NASA alles wat het kan om meer astronauten de ruimte in te sturen en de economie in een baan om de aarde aan te wakkeren", zei hij. Volgens Isaacman brengt elke nieuwe partner nieuwe mogelijkheden mee die de weg vrijmaken voor een levendige en duurzame markt in een lage baan om de aarde.
 
 Dylan Taylor, topman van Voyager, noemt de opdracht een bevestiging van tientallen jaren samenwerking met NASA. Volgens hem is de infrastructuur die nu in een lage baan om de aarde wordt gebouwd het startpunt voor de toekomst van de mensheid in de verre ruimte.
 
