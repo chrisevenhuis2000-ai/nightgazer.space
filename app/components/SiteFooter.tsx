@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { CookieInstellingen } from './CookieInstellingen'
+import { STEUN_URL, STEUN_NAAM } from '@/lib/steun'
 
 export interface FooterCol {
   title: string
@@ -128,6 +129,14 @@ export function SiteFooter({ cols = DEFAULT_COLS, tagline = DEFAULT_TAGLINE, not
                 >{icon}</a>
               ))}
             </div>
+            {STEUN_URL && (
+              <a href={STEUN_URL} target="_blank" rel="noopener" className="footer-steun"
+                aria-label={`NightGazer steunen via ${STEUN_NAAM} (opent in nieuw tabblad)`}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16, padding: '7px 12px', border: '1px solid #2A2E62', borderRadius: 4, fontSize: '0.8rem', color: '#C8D2F0', textDecoration: 'none' }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = '#378ADD')}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = '#2A2E62')}
+              ><span aria-hidden="true">☕</span>Trakteer op een koffie</a>
+            )}
           </div>
 
           {cols.map(col => (

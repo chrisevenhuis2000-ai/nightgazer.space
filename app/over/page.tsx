@@ -109,6 +109,11 @@ export default function OverPage() {
                 dan houdt een kleine bijdrage via <a href={STEUN_URL} style={link} target="_blank" rel="noopener">{STEUN_NAAM}</a> de
                 site gratis voor iedereen.
               </p>
+              <a href={STEUN_URL} target="_blank" rel="noopener"
+                aria-label={`NightGazer steunen via ${STEUN_NAAM} (opent in nieuw tabblad)`}
+                style={{ display: 'inline-block', marginTop: 16, padding: '10px 18px', background: '#378ADD', color: '#FFFFFF', borderRadius: 4, fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none' }}>
+                ☕ Trakteer op een koffie
+              </a>
             </section>
           )}
 
