@@ -68,7 +68,7 @@ export function quickMatches(a: Article, spec: { cat?: string; words?: string[] 
 
 export const FOOTER_COLS: FooterCol[] = [
   { title: 'Onderwerpen', links: [['James Webb', '/nieuws/onderwerp/james-webb'], ['Mars', '/nieuws/onderwerp/mars'], ['Maan', '/nieuws/onderwerp/maan'], ['Kosmologie', '/nieuws/onderwerp/kosmologie'], ['Sterrenkijken', '/sterrenkijken']] },
-  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies'], ['Uitrusting', '/sterrenkijken/uitrusting'], ['Eerste telescoop', '/sterrenkijken/eerste-telescoop'], ['Cadeaugids', '/sterrenkijken/cadeaugids'], ['Raad de hemelfoto', '/spellen/hemelfoto'], ['Teken het sterrenbeeld', '/spellen/sterrenbeeld']] },
+  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies'], ['Uitrusting', '/sterrenkijken/uitrusting'], ['Eerste telescoop', '/sterrenkijken/eerste-telescoop'], ['Cadeaugids', '/sterrenkijken/cadeaugids'], ['Hemelkalender 2027', '/sterrenkijken/hemelkalender'], ['Raad de hemelfoto', '/spellen/hemelfoto'], ['Teken het sterrenbeeld', '/spellen/sterrenbeeld']] },
   { title: 'Over ons', links: [['Redactie', '/over'], ['Contact', '/contact'], ['Privacy', '/privacy'], ['Voorwaarden', '/voorwaarden']] },
 ]
 
@@ -421,6 +421,25 @@ export function useMissionGallery(
   }, [m, count])
 
   return found
+}
+
+/* ══ Verwijzing naar de Hemelkalender ══════════════════════════════════════
+   Wijst naar de productpagina, niet rechtstreeks naar Ko-fi: daar staat
+   eerst wat je koopt. */
+export function KalenderVerwijzing({ tekst }: { tekst: string }) {
+  return (
+    <div className="pl-plate pl-uitr-ref">
+      <div>
+        <span className="pl-label">Hemelkalender 2027</span>
+        <p className="pl-body">{tekst}</p>
+      </div>
+      <Link href="/sterrenkijken/hemelkalender/" className="pl-read">
+        <span>Bekijk de kalender</span>
+        <span className="pl-read__rule" aria-hidden="true" />
+        <Ico.arrow />
+      </Link>
+    </div>
+  )
 }
 
 /* ══ Verwijzing naar de uitrusting ════════════════════════════════════════

@@ -5008,3 +5008,44 @@ a:hover .pl-emulsion > img,
 @media (max-width: 760px) { .pl-spellen { grid-template-columns: minmax(0, 1fr); } }
 .pl-hft__img--lucht { background: radial-gradient(ellipse at 50% 120%, #1a2350 0%, #05060f 80%); }
 .pl-hft__img--lucht svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ══ Hemelkalender — /sterrenkijken/hemelkalender ══════════════════════════
+   Productpagina: de kop van /uitrusting met het voorblad ernaast, echte
+   pdf-pagina's als voorbeeld, en de twaalf maandbeelden als contactblad.
+   Eén koopknop (pl-cta__primary) in de kop en één onderaan. */
+.pl-hk__in { grid-template-columns: minmax(0, 1fr) minmax(0, 300px); align-items: center; gap: clamp(24px, 4vw, 56px); padding-bottom: 56px; }
+.pl-hk__twee .pl-hk__blok:first-child { align-content: start; }
+.pl-hk__tekst { display: grid; gap: clamp(18px, 2.4vw, 26px); align-content: start; }
+.pl-hk__koop { display: grid; gap: 10px; justify-items: start; }
+.pl-hk__omslag { display: block; border: 1px solid var(--pl-rule); box-shadow: 0 24px 60px -24px rgba(0,0,0,0.8); }
+.pl-hk__omslag img { width: 100%; height: auto; }
+.pl-hk__paginas { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); }
+.pl-hk__pagina { display: block; border: 1px solid var(--pl-rule); transition: border-color 220ms var(--pl-ease); }
+.pl-hk__pagina:hover { border-color: var(--pl-act); }
+.pl-hk__pagina img { width: 100%; height: auto; }
+.pl-hk__twee { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); }
+.pl-hk__blok { display: grid; gap: 16px; align-content: start; padding: clamp(20px, 3vw, 34px); }
+.pl-hk__lijst { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.pl-hk__top { list-style: none; margin: 0; padding: 0; display: grid; }
+.pl-hk__top li { display: grid; gap: 4px; padding: 12px 0; border-top: 1px solid var(--pl-rule-soft); }
+.pl-hk__top li:first-child { border-top: 0; padding-top: 0; }
+.pl-hk__top-t { font-weight: 700; color: var(--pl-ink); letter-spacing: -0.012em; }
+.pl-hk__beelden { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px clamp(10px, 1.6vw, 18px); }
+.pl-hk__beeld { display: grid; gap: 6px; }
+.pl-hk__thumb { aspect-ratio: 1; overflow: hidden; background: #000; border: 1px solid var(--pl-rule); transition: border-color 220ms var(--pl-ease); }
+.pl-hk__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pl-hk__beeld:hover .pl-hk__thumb { border-color: var(--pl-act); }
+.pl-hk__beeld-t { font-size: 0.8125rem; font-weight: 600; line-height: 1.35; color: var(--pl-ink); }
+.pl-hk__beeld-c { font-size: 0.6875rem; line-height: 1.4; color: var(--pl-ink-3); }
+@media (max-width: 900px) {
+  .pl-hk__in { grid-template-columns: minmax(0, 1fr); padding-bottom: clamp(24px, 3vw, 36px); }
+  .pl-hk__omslag { max-width: 260px; }
+  .pl-hk__twee { grid-template-columns: minmax(0, 1fr); }
+  .pl-hk__beelden { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .pl-hk__paginas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pl-hk__paginas li:last-child { display: none; }
+  .pl-hk__beelden { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pl-hk__koop .pl-cta__primary { width: 100%; justify-content: center; }
+}

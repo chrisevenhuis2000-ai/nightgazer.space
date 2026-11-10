@@ -21,6 +21,7 @@ ok(maakDatapunt({ t: 'ev', e: 'push-klik', p: '/sterrenkijken/' }, ctx).blobs[5]
 ok(maakDatapunt({ t: 'ev', e: 'iets-anders', p: '/' }, ctx) === null, 'onbekende gebeurtenis genegeerd')
 p = maakDatapunt({ t: 'ev', e: 'uit-klik', x: 'bol', p: '/sterrenkijken/cadeaugids/' }, ctx)
 ok(p && p.blobs[5] === 'uit-klik' && p.blobs[6] === 'bol', 'klik naar winkel telt, met bestemming')
+ok(statsSql(30).includes("klik_kalender") && statsSql(30).includes("'/sterrenkijken/hemelkalender/'"), 'stats tonen de kalender')
 ok(statsSql(30).includes("klik_kofi") && statsSql(30).includes("'/sterrenkijken/cadeaugids/'"), 'stats tonen klikken en geldpagina')
 
 // Weigeren
