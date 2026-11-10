@@ -741,7 +741,7 @@ async function main() {
       orbit,
     }
 
-    const objective   = `${launchName} — ${agencyName} missie naar ${orbit}.`
+    const objective   = `${launchName} — missie van ${agencyName} naar ${orbit}.`
     const description = `${launchName} is een geplande missie van ${agencyName} naar ${orbit}.`
     const status      = mapLL2Status(ll2Launch.status?.name, soort)
     const highlight   = highlightVoorStatus(status, { datum: formatDutch(ll2Data.launchDate), voertuig: ll2Data.vehicle, precisie: ll2Data.netPrecision })

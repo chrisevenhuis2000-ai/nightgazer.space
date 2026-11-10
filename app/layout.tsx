@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nightgazer.space'),
   title:       { default: 'NightGazer — Astronomie voor Iedereen', template: '%s | NightGazer' },
   description: 'Nederlandstalig astronomie-platform met AI-aangedreven uitleg op jouw niveau. Van beginners tot professionals.',
-  keywords:    ['astronomie', 'ruimtevaart', 'NASA', 'sterrenkijken', 'JWST', 'ruimte nieuws', 'nightgazer'],
+  keywords:    ['astronomie', 'ruimtevaart', 'NASA', 'sterrenkijken', 'JWST', 'ruimtenieuws', 'nightgazer'],
   openGraph: {
     siteName: 'NightGazer',
     locale:   'nl_NL',

@@ -440,8 +440,8 @@ export default function Lanceermanifest() {
                 <>
                   <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>De strook lezen</span>
                   Elk merkteken is één geplande vlucht, geplaatst op zijn datum.
-                  Waar de tekens opeenhopen ligt een drukke week. Klik een maand
-                  om het venster te kiezen, of een teken om naar die vlucht te springen.
+                  Waar de tekens opeenhopen ligt een drukke week. Klik op een maand
+                  om het venster te kiezen, of op een teken om naar die vlucht te springen.
                 </>
               }>
                 <span className="pl-label">Cadans 2026</span>

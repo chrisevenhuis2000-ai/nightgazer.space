@@ -67,7 +67,7 @@
           "pro": {
             "q": "Welke oorzaak heeft de relativistische bijdrage van ongeveer 43 boogseconden per eeuw aan de periheliumverschuiving van Mercurius?",
             "options": [
-              "Weerstand van het zonnewind tegen de planeet",
+              "Weerstand van de zonnewind tegen de planeet",
               "De kromming van de ruimtetijd door de zon (Algemene Relativiteitstheorie)",
               "De zwaartekracht van Jupiter alleen",
               "De afplatting van de zon door zijn rotatie"
@@ -423,7 +423,7 @@
             "options": [
               "Neutronen",
               "Waterstofgas",
-              "IJzeren atomen",
+              "IJzeratomen",
               "Elektronen alleen"
             ],
             "correct": 0,
@@ -471,7 +471,7 @@
               "Behoud van impulsmoment",
               "Behoud van baryongetal",
               "Behoud van lading",
-              "Behoud van parity"
+              "Behoud van pariteit"
             ],
             "correct": 0,
             "explain": "Bij de instorting van de kern neemt de straal sterk af, dus moet de hoeksnelheid toenemen om het impulsmoment te behouden. Dit geeft rotatieperioden tot milliseconden."
@@ -623,7 +623,7 @@
               "Een gigantische kern van donkere materie met een vaste rand"
             ],
             "correct": 2,
-            "explain": "Waarnemingen in het infrarood laten zien dat de Melkweg een staafspiraalstelsel is met een centrale staafvormige bulge. Daarbij hoort ook een dikke en dunne schijf."
+            "explain": "Waarnemingen in het infrarood laten zien dat de Melkweg een staafspiraalstelsel is met een centrale staafvormige bulge. Daarbij hoort ook een dikke en een dunne schijf."
           }
         },
         {
@@ -1179,18 +1179,18 @@
         {
           "id": "2026-W46-exoplaneten-7",
           "beg": {
-            "q": "Betekent het woord 'super-Aarde' dat een planeet bewoonbaar is?",
+            "q": "Betekent het woord 'superaarde' dat een planeet bewoonbaar is?",
             "options": [
               "Nee, het zegt alleen dat de planeet zwaarder of groter is dan de Aarde",
-              "Nee, want super-Aardes bestaan niet echt",
-              "Ja, super-Aardes zijn altijd bewoonbaar",
+              "Nee, want superaardes bestaan niet echt",
+              "Ja, superaardes zijn altijd bewoonbaar",
               "Ja, maar alleen als hij rood is"
             ],
             "correct": 0,
-            "explain": "'Super' slaat alleen op de grootte of massa, niet op de omstandigheden. Een super-Aarde kan een hete, droge of gasrijke wereld zijn zonder bewoonbaar oppervlak. Er zijn er veel gevonden, terwijl ons zonnestelsel er geen heeft."
+            "explain": "'Super' slaat alleen op de grootte of massa, niet op de omstandigheden. Een superaarde kan een hete, droge of gasrijke wereld zijn zonder bewoonbaar oppervlak. Er zijn er veel gevonden, terwijl ons zonnestelsel er geen heeft."
           },
           "ama": {
-            "q": "Welk massabereik wordt meestal met een 'super-Aarde' bedoeld?",
+            "q": "Welk massabereik wordt meestal met een 'superaarde' bedoeld?",
             "options": [
               "1 tot ongeveer 10 aardmassa's",
               "Meer dan 1000 aardmassa's",
@@ -1201,15 +1201,15 @@
             "explain": "De term verwijst naar planeten tussen ongeveer 1 en 10 aardmassa's, dus zwaarder dan de Aarde en lichter dan Uranus en Neptunus. De naam zegt niets over samenstelling of temperatuur."
           },
           "pro": {
-            "q": "Wat laat de 'straalkloof' (radius valley) rond 1,5–2 R⊕ zien over planeten die als super-Aarde worden aangeduid?",
+            "q": "Wat laat de 'straalkloof' (radius valley) rond 1,5–2 R⊕ zien over planeten die als superaarde worden aangeduid?",
             "options": [
               "Planeten van ongeveer 1,5 R⊕ en kleiner zijn meestal rotsachtig, groter vaak mini-Neptunussen met een gasomhulsel",
-              "Super-Aardes hebben altijd een dichtheid van 5,5 g/cm³",
+              "Superaardes hebben altijd een dichtheid van 5,5 g/cm³",
               "Planeten rond 2 R⊕ bestaan niet",
               "Alle planeten kleiner dan 1,5 R⊕ zijn gasreuzen"
             ],
             "correct": 0,
-            "explain": "Er zijn opvallend weinig planeten tussen ongeveer 1,5 en 2 R⊕. Daaronder zijn ze overwegend rotsachtig en daarboven hebben ze vaak een dikke waterstof-heliumomhulling. De term 'super-Aarde' dekt dus zeer uiteenlopende werelden."
+            "explain": "Er zijn opvallend weinig planeten tussen ongeveer 1,5 en 2 R⊕. Daaronder zijn ze overwegend rotsachtig en daarboven hebben ze vaak een dikke waterstof-heliumomhulling. De term 'superaarde' dekt dus zeer uiteenlopende werelden."
           }
         }
       ]
@@ -1391,7 +1391,7 @@
               "Het complete ruimteschip landde op de Maan",
               "Een bijtanken in de baan om de Aarde verving de maanlander",
               "De raket gebruikte zwaartekrachtshulp van Mars",
-              "Een aparte maanlander daalde af terwijl de moduul met bemanning in een baan om de Maan bleef"
+              "Een aparte maanlander daalde af terwijl de module met bemanning in een baan om de Maan bleef"
             ],
             "correct": 3,
             "explain": "Bij LOR landde alleen de maanlander en koppelde die later weer aan de commandomodule in maanbaan. Dit bespaarde veel massa vergeleken met een directe landing."
@@ -1560,7 +1560,7 @@
         "q": "Hoe remt de Detumbler van Airbus een tollende dode satelliet af, zonder dat er stroom of een boordcomputer nodig is?",
         "options": [
           "Met een zeil dat de druk van zonlicht gebruikt om de draaiing te stoppen",
-          "Met een zware tolwiel dat draait en de satelliet zo stilzet",
+          "Met een zwaar tolwiel dat draait en de satelliet zo stilzet",
           "Met kleine raketmotoren die de satelliet tegendraaiend duwen",
           "Met een magneet die op het aardmagnetisch veld gericht blijft, waardoor stromen in het metaal de draaiing afremmen"
         ],
@@ -1637,7 +1637,7 @@
         "options": [
           "De Maan verandert van kleur omdat hij zelf licht uitstraalt dat per nacht verschilt",
           "De schaduw van de aarde valt dan over de Maan heen",
-          "De Maan wordt dichtbij de horizon echt heter en gaat daardoor rood gloeien",
+          "De Maan wordt dicht bij de horizon echt heter en gaat daardoor rood gloeien",
           "Het maanlicht legt een lange weg door de lucht af en een deel van het blauwe licht wordt onderweg weggestrooid"
         ],
         "correct": 3,
@@ -1766,7 +1766,7 @@
           "Ongeveer 12 uur, op circa 20.000 km hoogte"
         ],
         "correct": 2,
-        "explain": "Een satelliet moet de omloopstijd van de aarde om haar as (een sterrendag van ongeveer 23 uur en 56 minuten) evenaren, en dat kan alleen op ongeveer 35.786 km boven de evenaar. De baan van 90 minuten op 400 km hoort bij het ISS, die van 12 uur op 20.000 km bij GPS-satellieten."
+        "explain": "Een satelliet moet de rotatietijd van de aarde om haar as (een sterrendag van ongeveer 23 uur en 56 minuten) evenaren, en dat kan alleen op ongeveer 35.786 km boven de evenaar. De baan van 90 minuten op 400 km hoort bij het ISS, die van 12 uur op 20.000 km bij GPS-satellieten."
       },
       "pro": {
         "q": "Welke combinatie bepaalt de straal van de geostationaire baan, met omlooptijd gelijk aan de siderische rotatieperiode van de aarde?",
@@ -1796,7 +1796,7 @@
         "explain": "Een geostationaire satelliet doet er precies één aardrotatie over om één rondje te maken, dus blijft hij boven hetzelfde punt. Daarom kunnen schotelantennes op de grond blijven wijzen zonder te hoeven draaien."
       },
       "ama": {
-        "q": "Wat moet een satelliet in de geostationaire baan overeenkomen met de aarde om boven hetzelfde punt op de evenaar te blijven?",
+        "q": "Waarin moet een satelliet in de geostationaire baan overeenkomen met de aarde om boven hetzelfde punt op de evenaar te blijven?",
         "options": [
           "Zijn hoogte moet gelijk zijn aan die van het ISS, ongeveer 400 km",
           "Zijn baan moet over de polen lopen",
@@ -1921,7 +1921,7 @@
         "explain": "Elk element zendt bij aanslaan of ionisatie licht uit op eigen, vaste golflengtes. Waterstof geeft de rode gloed van IC 59 en IC 63, geïoniseerd zuurstof (O III) straalt blauwgroen, en dat maakt de kleur een chemische vingerafdruk."
       },
       "pro": {
-        "q": "Welke emissie kenmerkt geïioniseerd zuurstof in een nevel, en waarom is een smalbandig zuurstoffilter geschikt om zulke nevels te vinden?",
+        "q": "Welke emissie kenmerkt geïoniseerd zuurstof in een nevel, en waarom is een smalbandig zuurstoffilter geschikt om zulke nevels te vinden?",
         "options": [
           "Het is thermische continuümstraling van stof, die over alle golflengtes gelijk is",
           "De Balmerlijnen van zuurstof, die met een breedbandfilter het best te zien zijn",

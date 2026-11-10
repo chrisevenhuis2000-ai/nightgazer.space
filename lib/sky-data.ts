@@ -28,8 +28,8 @@ export const PRESET_LOCATIONS: Location[] = [
 
 export const DARK_SPOTS = [
   { name: 'Terschelling',    lat: 53.43, lon: 5.35, bortle: '2–3', desc: 'Het donkerste stuk Nederland. Spectaculair voor Melkweg-fotografie.',            tip: 'Boschplaat aan de oostkant is het donkerst. Neem warme kleding mee!' },
-  { name: 'Spiekeroog (DE)', lat: 53.77, lon: 7.69, bortle: '2–3', desc: 'IDA-gecertificeerd Dark Sky eiland in Duitsland. Extreem donker.',               tip: 'Veerboot vanuit Neuharlingersiel. Perfecte Melkweg-conditie!' },
-  { name: 'Lauwersmeer',     lat: 53.36, lon: 6.20, bortle: '3–4', desc: 'Nationaal Park, officieel Dark Sky Park. Beste locatie in Noord-Nederland.',       tip: 'Ga naar de zuidkant van het meer voor minste lichtvervuiling.' },
+  { name: 'Spiekeroog (DE)', lat: 53.77, lon: 7.69, bortle: '2–3', desc: 'IDA-gecertificeerd Dark Sky-eiland in Duitsland. Extreem donker.',               tip: 'Veerboot vanuit Neuharlingersiel. Perfecte Melkweg-conditie!' },
+  { name: 'Lauwersmeer',     lat: 53.36, lon: 6.20, bortle: '3–4', desc: 'Nationaal Park, officieel Dark Sky Park. Beste locatie in Noord-Nederland.',       tip: 'Ga naar de zuidkant van het meer voor de minste lichtvervuiling.' },
   { name: 'Bargerveen',      lat: 52.68, lon: 7.03, bortle: '3–4', desc: 'Groot natuurgebied in Zuidoost-Drenthe, ver van grote steden.',                   tip: 'Combineer met een bezoek aan het veenmuseum overdag.' },
   { name: 'Bourtangermoor',  lat: 53.01, lon: 7.20, bortle: '3–4', desc: 'Grensgebied Drenthe/Duitsland, zeer weinig lichtvervuiling.',                     tip: 'Net over de Duitse grens is het nog donkerder.' },
   { name: 'Fochteloërveen',  lat: 52.96, lon: 6.38, bortle: '4',   desc: 'Hoogveengebied met weinig lichtvervuiling. Dichtbij en toegankelijk.',            tip: 'Vlak terrein = groot hemelbereik. Parkeer bij de ingang.' },
@@ -41,14 +41,14 @@ export const DARK_SPOTS = [
 export const SHOWER_YEAR = 2026
 
 export const METEORS = [
-  { name: 'Quadrantiden',  peak: '3–4 jan',   day: 3,  zhr: 110, rating: 1, month: 1,  radiant: 'Ossenhoeder',  note: 'Volle maan verstoorde zicht volledig' },
+  { name: 'Quadrantiden',  peak: '3–4 jan',   day: 3,  zhr: 110, rating: 1, month: 1,  radiant: 'Ossenhoeder',  note: 'Volle maan verstoorde het zicht volledig' },
   { name: 'Lyriden',       peak: '21–22 apr',  day: 21, zhr: 18,  rating: 4, month: 4,  radiant: 'Lier',         note: 'Donkere hemel! Beste na middernacht' },
   { name: 'Eta Aquariden', peak: '5–6 mei',    day: 5,  zhr: 50,  rating: 2, month: 5,  radiant: 'Waterman',     note: 'Maanlicht verstoort helaas veel' },
   { name: 'Perseïden',     peak: '12–13 aug',  day: 12, zhr: 100, rating: 5, month: 8,  radiant: 'Perseus',      note: 'BESTE KANS 2026! Nieuwe maan = perfecte condities' },
   { name: 'Draconiden',    peak: '8–9 okt',    day: 8,  zhr: 10,  rating: 3, month: 10, radiant: 'Draak', vroeg: true, note: 'Klein maar donkere hemel, vroege avond' },
   { name: 'Orioniden',     peak: '21 okt',     day: 21, zhr: 20,  rating: 2, month: 10, radiant: 'Orion',        note: 'Maanlicht hindert, alleen helderste zichtbaar' },
   { name: 'Leoniden',      peak: '16–17 nov',  day: 16, zhr: 15,  rating: 3, month: 11, radiant: 'Leeuw',        note: 'Halve maan, redelijke condities' },
-  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimale maanlicht' },
+  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimaal maanlicht' },
   { name: 'Ursiden',       peak: '21–22 dec',  day: 21, zhr: 10,  rating: 1, month: 12, radiant: 'Kleine Beer',  note: 'Bijna volle maan, lastig' },
 ]
 

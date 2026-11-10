@@ -13,7 +13,7 @@ imageAlt: "Hubble ontdekt dat nabije dwerggalaxieën het grootste deel van hun z
 imageCredit: "NASA"
 vernieuwd: "2026-11-06"
 kernpunten: ["Hubble-onderzoek naar 37 nabije dwerggalaxieën toont veel minder zuurstof dan simulaties voorspellen.","Galactische winden van supernova's blazen zuurstof effectiever uit lichte stelsels dan modellen aannemen.","Waar de zuurstof precies is gebleven is nog onduidelijk; Roman, Hubble en Webb moeten verder onderzoek doen."]
-kerncijfers: [{"waarde":"37","eenheid":"","label":"onderzochte dwerggalaxieën"},{"waarde":"2014","eenheid":"","label":"eerder onderzoek Melkwegachtige stelsels"}]
+kerncijfers: [{"waarde":"37","eenheid":"","label":"onderzochte dwerggalaxieën"},{"waarde":"2014","eenheid":"","label":"eerder onderzoek melkwegachtige stelsels"}]
 citaat: {"tekst":"Zuurstof wordt gemaakt door sterren, en die bevinden zich in sterrenstelsels. We weten dus dat de zuurstof op een bepaald moment in die stelsels moet hebben gezeten, dus moet hij zijn uitgestoten","wie":"Grace Telford, onderzoeker University of Utah"}
 ---
 

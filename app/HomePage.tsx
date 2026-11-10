@@ -730,7 +730,7 @@ export default function HomePage({ start }: {
           <div className="pl-band">
             <div className="pl-band__t">
               <h2 id="pl-instr-title" className="pl-h2">Live instrumenten</h2>
-              <span className="pl-label">Verversen zelf</span>
+              <span className="pl-label">Verversen vanzelf</span>
             </div>
             <Link href="/sterrenkijken" className="pl-read">
               <span>Sterrenkijken</span>
