@@ -616,7 +616,15 @@ export default {
         headers: { Authorization: `Bearer ${env.CF_ANALYTICS_TOKEN}` },
         body: statsSql(dagen),
       })
-      if (!res.ok) return cors(request, JSON.stringify({ error: `analytics engine ${res.status}` }), 502)
+      if (!res.ok) {
+        const uitleg = (await res.text()).slice(0, 300)
+        /* Nog geen enkel datapunt: dan bestaat de tabel nog niet. Dat is
+           gewoon nul, geen fout. */
+        if (/unknown table|does not exist|not found/i.test(uitleg)) {
+          return cors(request, JSON.stringify({ dataset: TEL_DATASET, dagen: [], leeg: true }))
+        }
+        return cors(request, JSON.stringify({ error: `analytics engine ${res.status}`, uitleg }), 502)
+      }
       const d = await res.json()
       const tekst = JSON.stringify({ dataset: TEL_DATASET, dagen: d.data || [] })
       await cache.put(cacheKey, new Response(tekst, { headers: { 'Cache-Control': 'public, max-age=300' } }))
