@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { Steun } from '../../components/Steun'
 import { AffiliateMelding } from '../../components/AffiliateMelding'
-import { archivo, FOOTER_COLS, PlateHead, editionLabel } from '@/app/_plate/shared'
+import { archivo, FOOTER_COLS, PlateHead, editionLabel, KalenderVerwijzing } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { WINKEL_NAAM, nasaBeeld, nasaPagina, type Winkel } from '@/lib/uitrusting'
 import { KLASSEN, NIET_DOEN, CADEAU_KOP, GRATIS_BEELD, type Beeld } from '@/lib/cadeaugids'
@@ -77,6 +77,11 @@ export default function Cadeaugids() {
             </div>
             <p className="pl-uhero__credit">{CADEAU_KOP.titel} · {CADEAU_KOP.credit}</p>
           </div>
+        </section>
+
+        {/* ══ Voor iedereen: de kalender ══ */}
+        <section className="pl-wrap" aria-label="Hemelkalender 2027">
+          <KalenderVerwijzing tekst="Voor nog geen vijf euro: de Hemelkalender 2027. Elke nacht de maan en per maand wat er boven Nederland te zien is, met een NASA-beeld per maand. Als pdf om zelf te printen." />
         </section>
 
         {/* ══ De prijsklassen ══ */}

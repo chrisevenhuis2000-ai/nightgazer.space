@@ -56,12 +56,13 @@ export function telGebeurtenis(e: string, x?: string) {
    mee wélke bestemming het was (bol, amazon of kofi) en vanaf welk pad;
    niet welk product, en niets over de bezoeker. */
 
-export function uitDoel(href: string): 'bol' | 'amazon' | 'kofi' | '' {
-  let host = ''
-  try { host = new URL(href, 'https://nightgazer.space').hostname.toLowerCase() } catch { return '' }
+export function uitDoel(href: string): 'bol' | 'amazon' | 'kofi' | 'kalender' | '' {
+  let host = '', pad = ''
+  try { const u = new URL(href, 'https://nightgazer.space'); host = u.hostname.toLowerCase(); pad = u.pathname } catch { return '' }
   if (host === 'bol.com' || host.endsWith('.bol.com')) return 'bol'
   if (host === 'amazon.nl' || host.endsWith('.amazon.nl')) return 'amazon'
-  if (host === 'ko-fi.com' || host.endsWith('.ko-fi.com')) return 'kofi'
+  // Een product in de Ko-fi-shop (/s/…) is de kalender, de rest is een bijdrage.
+  if (host === 'ko-fi.com' || host.endsWith('.ko-fi.com')) return pad.startsWith('/s/') ? 'kalender' : 'kofi'
   return ''
 }
 

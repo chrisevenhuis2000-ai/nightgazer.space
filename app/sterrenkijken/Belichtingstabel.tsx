@@ -34,7 +34,7 @@ interface Night {
 }
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, UitrustingVerwijzing,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, UitrustingVerwijzing, KalenderVerwijzing,
 } from '@/app/_plate/shared'
 
 import IssOverkomsten from './IssOverkomsten'
@@ -658,6 +658,7 @@ export default function Belichtingstabel() {
 
         <div className="pl-wrap">
           <UitrustingVerwijzing tekst="Een heldere nacht gevonden? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
+          <KalenderVerwijzing tekst="Het hele jaar vooruit kijken? Elke nacht de maan en per maand de planeten, vallende sterren en de zonsverduistering van 2 augustus, op een A4-wandkalender." />
         </div>
 
         <div className="pl-wrap">

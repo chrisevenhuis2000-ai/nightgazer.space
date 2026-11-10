@@ -36,7 +36,7 @@ export const GEBEURTENISSEN = new Set([
   'sterrenbeeld-klaar',  // sterrenbeeld af (extra = 'id:missers')
   'sterrenbeeld-verder', // tik op de vervolglink na het tekenen
   'sterrenbeeld-teaser', // tik op het spelblokje
-  'uit-klik',            // tik op een link naar een winkel of Ko-fi (extra = 'bol' | 'amazon' | 'kofi')
+  'uit-klik',            // tik op een link naar een winkel of Ko-fi (extra = 'bol' | 'amazon' | 'kofi' | 'kalender')
 ])
 
 /** Pagina's met winkelknoppen: hun weergaven tellen als "geldpagina". */
@@ -44,6 +44,7 @@ export const GELDPAGINAS = [
   '/sterrenkijken/uitrusting/',
   '/sterrenkijken/eerste-telescoop/',
   '/sterrenkijken/cadeaugids/',
+  '/sterrenkijken/hemelkalender/',
 ]
 
 const BOT = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|curl|wget|python|httpclient|axios|node-fetch|go-http|java\/|facebookexternalhit|embedly|monitor/i
@@ -140,7 +141,9 @@ SELECT
   sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/sterrenkijken/cadeaugids/') AS cadeaugids_weergaven,
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'bol') AS klik_bol,
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'amazon') AS klik_amazon,
-  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kofi') AS klik_kofi
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kofi') AS klik_kofi,
+  sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/sterrenkijken/hemelkalender/') AS kalender_weergaven,
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kalender') AS klik_kalender
 FROM ${TEL_DATASET}
 WHERE timestamp > NOW() - INTERVAL '${d}' DAY
 GROUP BY dag
