@@ -1,3 +1,9 @@
+# Korte link voor de Instagram-bio: nightgazer.space/bio → /vandaag met
+# utm-parameters, zodat de teller (lib/tel.ts) het bezoek aan Instagram toeschrijft.
+# 302 zodat het doel later kan veranderen zonder dat browsers het onthouden.
+/bio /vandaag/?utm_source=instagram&utm_medium=bio&utm_campaign=profiel 302
+/bio/ /vandaag/?utm_source=instagram&utm_medium=bio&utm_campaign=profiel 302
+
 # Verwijderde artikelen (scripts/nieuws-vernieuw.js) → het nieuwsarchief
 /nieuws/a-fault-line-in-full-bloom/ /nieuws/ 301
 /nieuws/a-bit-of-gray-on-an-emerald-isle/ /nieuws/ 301
