@@ -5105,4 +5105,4 @@ a:hover .pl-emulsion > img,
   transition: color 180ms var(--pl-ease), border-color 180ms var(--pl-ease);
 }
 .pl-spring a:hover { color: var(--pl-act); border-color: var(--pl-act); }
-.pl-band .pl-h2[id] { scroll-margin-top: 140px; }
+.pl .pl-h2[id] { scroll-margin-top: 140px; }
