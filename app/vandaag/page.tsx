@@ -32,7 +32,7 @@ export default function Page() {
   for (const r of leesDagmap()) {
     const a = bySlug.get(r.slug)
     if (!a) continue // artikel verwijderd of hernoemd: niet naar een 404 sturen
-    items.push({ ...r, title: a.title, excerpt: a.excerpt, imageUrl: a.imageUrl })
+    items.push({ ...r, title: a.title, excerpt: a.excerpt, imageUrl: a.imageUrl, gepubliceerd: a.publishedAt?.slice(0, 10) })
   }
   // Valt terug op het nieuwste nieuws als er (nog) geen carrousel live is.
   const nieuwste = index.slice(0, 7).map(a => ({ slug: a.slug, title: a.title, excerpt: a.excerpt, imageUrl: a.imageUrl, datum: a.publishedAt?.slice(0, 10) }))

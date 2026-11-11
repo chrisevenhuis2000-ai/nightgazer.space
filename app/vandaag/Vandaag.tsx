@@ -23,7 +23,7 @@ import { SpellenBlok } from '@/app/_plate/SpellenBlok'
 import { Cadeautijd } from '@/app/_plate/Cadeautijd'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, img } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
-import { artikelLink, nuInNederland, zichtbaar, type DagmapItem } from '@/lib/dagmap'
+import { artikelLink, nuInNederland, uitArchief, zichtbaar, type DagmapItem } from '@/lib/dagmap'
 
 const INSTAGRAM = 'https://www.instagram.com/nightgazer.space/'
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
@@ -35,7 +35,10 @@ function datumTekst(d?: string) {
   return `${dag} ${MAANDEN[m - 1]}`
 }
 
-interface Kaart { slug: string; title: string; excerpt: string; imageUrl?: string; datum?: string; hook?: string; vraag?: string }
+interface Kaart { slug: string; title: string; excerpt: string; imageUrl?: string; datum?: string; hook?: string; vraag?: string; gepubliceerd?: string }
+
+/** "Uit ons archief · 7 mei": zo ziet niemand een ouder artikel aan voor nieuws van vandaag. */
+const archiefTekst = (k: Kaart) => `Uit ons archief · ${datumTekst(k.gepubliceerd)}`
 
 export default function Vandaag({ items, nieuwste, gebouwd }: {
   items: DagmapItem[]
@@ -69,6 +72,7 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
                   {opPost ? `Vandaag op Instagram · ${datumTekst(top.datum)}` : 'Het nieuwste artikel'}
                 </span>
                 <h1 id="pl-vdg-kop" className="pl-h1 pl-vdg__hook">{top.hook || top.title}</h1>
+                {opPost && uitArchief(top) && <span className="pl-label">{archiefTekst(top)}</span>}
                 {top.vraag && <p className="pl-vdg__vraag">{top.vraag}</p>}
                 <p className="pl-uhero__lede">{top.excerpt}</p>
                 <div className="pl-vdg__actie">
@@ -102,7 +106,7 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
                       {k.imageUrl && <span className="pl-emulsion pl-emulsion--sm"><img src={img(k.imageUrl, 320)} alt="" loading="lazy" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></span>}
                     </span>
                     <span className="pl-vdg__tekst">
-                      <span className="pl-label pl-num">{datumTekst(k.datum)}</span>
+                      <span className="pl-label pl-num">{datumTekst(k.datum)}{opPost && uitArchief(k) ? ' · uit ons archief' : ''}</span>
                       <span className="pl-vdg__t">{k.hook || k.title}</span>
                       {k.hook && <span className="pl-body-s">{k.title}</span>}
                     </span>
