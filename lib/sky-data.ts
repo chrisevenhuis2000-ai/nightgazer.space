@@ -71,13 +71,13 @@ export function showerWindow(s: Shower, year = SHOWER_YEAR): { start: Date; end:
 
 /** Een zwerm als agenda-item. Gedeeld door de Hemelagenda op /sterrenkijken
     en scripts/generate-agenda.mjs (het vaste bestand /agenda/meteorenzwermen.ics). */
-export function zwermAgenda(s: Shower): CalEvent {
-  const { start, end } = showerWindow(s)
+export function zwermAgenda(s: Shower, year = SHOWER_YEAR): CalEvent {
+  const { start, end } = showerWindow(s, year)
   return {
-    uid: `${s.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${SHOWER_YEAR}@nightgazer.space`,
+    uid: `${s.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${year}@nightgazer.space`,
     title: `${s.name} — piek (tot ${s.zhr}/uur)`,
     description:
-      `${s.note}\n\n`
+      (year === SHOWER_YEAR ? `${s.note}\n\n` : `Piek rond ${s.peak}; de precieze datum en de maanstand volgen op nightgazer.space.\n\n`)
       + `Tot ${s.zhr} meteoren per uur bij een ideaal donkere hemel; in de praktijk minder.\n`
       + `De radiant ligt in ${s.radiant}, maar kijk daar juist niet strak naar — `
       + `de mooiste sporen zie je er een stuk vandaan.\n\n`

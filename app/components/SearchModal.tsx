@@ -75,10 +75,14 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
     onClose()
   }, [onClose])
 
+  // Niets gevonden: dan staan de gidsen er, en die zijn ook met de toetsen te kiezen.
+  const geen = results.length === 0 && !!query.trim()
+  const lijst = geen ? GIDSEN : results
+
   function onKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(a => Math.min(a + 1, results.length - 1)) }
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(a => Math.min(a + 1, lijst.length - 1)) }
     if (e.key === 'ArrowUp')   { e.preventDefault(); setActive(a => Math.max(a - 1, 0)) }
-    if (e.key === 'Enter' && results[active]) navigate(results[active].href)
+    if (e.key === 'Enter' && lijst[active]) navigate(lijst[active].href)
   }
 
   if (!open) return null
@@ -110,12 +114,12 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
 
         {/* Results */}
         <div className="search-modal-results" style={{ maxHeight: '60vh', overflowY: 'auto' }}>
-          {results.length === 0 && query && (
+          {geen && (
             <div style={{ padding: '18px 20px 6px', fontSize: '0.9rem', color: '#9AA6C8' }}>
               Niets gevonden voor &ldquo;{query}&rdquo;. Misschien zoek je een van deze gidsen:
             </div>
           )}
-          {(results.length === 0 && query ? GIDSEN : results).map((t, i, lijst) => {
+          {lijst.map((t, i) => {
             const kop = i === 0 || lijst[i - 1].soort !== t.soort
             const thumb = t.soort === 'artikel' ? index.find(a => `/nieuws/${a.slug}/` === t.href) : undefined
             return (
