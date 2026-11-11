@@ -25,7 +25,8 @@
     "update-quiz": "node scripts/educatie-quiz.js",
     "test:quiz": "node scripts/test-educatie-quiz.js",
     "test:hemelfoto": "node scripts/test-hemelfoto.mjs",
-    "test:sterrenbeeld": "node scripts/test-sterrenbeeld.mjs"
+    "test:sterrenbeeld": "node scripts/test-sterrenbeeld.mjs",
+    "test:geminiden": "node scripts/test-geminiden.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",

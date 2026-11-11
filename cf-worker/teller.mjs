@@ -37,7 +37,14 @@ export const GEBEURTENISSEN = new Set([
   'sterrenbeeld-verder', // tik op de vervolglink na het tekenen
   'sterrenbeeld-teaser', // tik op het spelblokje
   'uit-klik',            // tik op een link naar een winkel of Ko-fi (extra = 'bol' | 'amazon' | 'kofi' | 'kalender')
+  'omhoog-vink',         // 30 nachten omhoog: nacht afgevinkt (extra = datum)
+  'omhoog-print',        // 30 nachten omhoog: tik op Print de afvinkkaart
+  'omhoog-deel',         // 30 nachten omhoog: tik op Deel de uitdaging
+  'geminiden-telling',   // Tel de Geminiden: telling verstuurd
 ])
+
+/** Campagnekanalen (utm_source) van 30 nachten omhoog, voor /tel/stats. */
+export const OMHOOG_KANALEN = ['instagram', 'facebook', 'x', 'youtube', 'pers', 'sterrenwacht', 'forum']
 
 /** Pagina's met winkelknoppen: hun weergaven tellen als "geldpagina". */
 export const GELDPAGINAS = [
@@ -143,7 +150,14 @@ SELECT
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'amazon') AS klik_amazon,
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kofi') AS klik_kofi,
   sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/sterrenkijken/hemelkalender/') AS kalender_weergaven,
-  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kalender') AS klik_kalender
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kalender') AS klik_kalender,
+  sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/omhoog/') AS omhoog_weergaven,
+  sumIf(_sample_interval * double2, blob1 = 'pv' AND blob2 = '/omhoog/') AS omhoog_bezoeken,
+${OMHOOG_KANALEN.map(k => `  sumIf(_sample_interval * double2, blob1 = 'pv' AND blob8 = '${k}') AS bron_${k},`).join('\n')}
+  sumIf(_sample_interval, blob6 = 'omhoog-vink') AS omhoog_vink,
+  sumIf(_sample_interval, blob6 = 'omhoog-print') AS omhoog_print,
+  sumIf(_sample_interval, blob6 = 'omhoog-deel') AS omhoog_deel,
+  sumIf(_sample_interval, blob6 = 'geminiden-telling') AS geminiden_telling
 FROM ${TEL_DATASET}
 WHERE timestamp > NOW() - INTERVAL '${d}' DAY
 GROUP BY dag

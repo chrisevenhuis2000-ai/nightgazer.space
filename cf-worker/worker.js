@@ -2,6 +2,7 @@ import { APOD_FEED, parseFeed, bouwApod, apodDatum } from './apod.mjs'
 import { magBeeld } from './beeldhosts.mjs'
 import { WORKFLOW_CRONS, startWorkflow } from './workflows.mjs'
 import { maakDatapunt, statsSql, TEL_DATASET } from './teller.mjs'
+import { GEM_PREFIX, keurTelling, telSleutel, uitslag } from './geminiden.mjs'
 
 const ALLOWED_ORIGINS = [
   'https://nightgazer.space',
@@ -628,6 +629,39 @@ export default {
       const d = await res.json()
       const tekst = JSON.stringify({ dataset: TEL_DATASET, dagen: d.data || [] })
       await cache.put(cacheKey, new Response(tekst, { headers: { 'Cache-Control': 'public, max-age=300' } }))
+      return cors(request, tekst)
+    }
+
+    // ── Tel de Geminiden (cf-worker/geminiden.mjs) ───────────────────────
+    // POST bewaart één telling als KV-sleutel met metadata; GET telt ze op.
+    // De uitslag is twee minuten gecachet, zodat KV-list binnen het gratis
+    // dagbudget blijft, ook als de pagina die nacht vaak ververst.
+    if (request.method === 'POST' && url.pathname === '/geminiden') {
+      if (!env.SUBS) return cors(request, JSON.stringify({ fout: 'Telling nog niet ingericht.' }), 503)
+      let body = null
+      try { body = JSON.parse((await request.text()).slice(0, 1000)) } catch { /* lege telling */ }
+      const { meta, fout } = keurTelling(body)
+      if (fout) return cors(request, JSON.stringify({ fout }), 400)
+      await env.SUBS.put(telSleutel(), '1', { metadata: meta, expirationTtl: 60 * 60 * 24 * 120 })
+      await caches.default.delete(new Request('https://cache.nightgazer/geminiden'))
+      return cors(request, JSON.stringify({ ok: true }))
+    }
+
+    if (request.method === 'GET' && url.pathname === '/geminiden') {
+      if (!env.SUBS) return cors(request, JSON.stringify(uitslag([])))
+      const cache = caches.default
+      const cacheKey = new Request('https://cache.nightgazer/geminiden')
+      const hit = await cache.match(cacheKey)
+      if (hit) return cors(request, await hit.text())
+      const lijst = []
+      let cursor
+      do {
+        const l = await env.SUBS.list({ prefix: GEM_PREFIX, cursor })
+        for (const k of l.keys) lijst.push(k.metadata)
+        cursor = l.list_complete ? undefined : l.cursor
+      } while (cursor)
+      const tekst = JSON.stringify(uitslag(lijst))
+      await cache.put(cacheKey, new Response(tekst, { headers: { 'Cache-Control': 'public, max-age=120' } }))
       return cors(request, tekst)
     }
 
