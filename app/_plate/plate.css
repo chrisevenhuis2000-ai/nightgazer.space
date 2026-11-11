@@ -308,14 +308,18 @@ a:hover .pl-emulsion > img,
   height: 68px;
   display: flex;
   align-items: center;
-  gap: clamp(16px, 3vw, 44px);
+  gap: clamp(12px, 2vw, 26px);
 }
-.pl-head__logo img { height: 38px; width: auto; }
+.pl-head__logo { flex: none; display: block; }
+/* The logo never gives way: the flex row would otherwise shrink the link, and
+   `.pl img { max-width: 100% }` then squeezes the 5:1 wordmark. The nav and
+   the edition line make room instead (see the header breakpoints below). */
+.pl .pl-head__logo img { height: 38px; width: 190px; max-width: none; }
 .pl-nav { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .pl-nav a {
   display: flex; align-items: center;
   height: var(--pl-tap);
-  padding: 0 13px;
+  padding: 0 11px;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -330,13 +334,18 @@ a:hover .pl-emulsion > img,
 /* Provenance: what this edition of the archive is. */
 .pl-prov {
   margin-left: auto;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 8px;
   font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--pl-ink-3);
   white-space: nowrap;
 }
+/* The edition line is the only header part that may give way: on pages with
+   a long count label the date shortens with an ellipsis, the count stays. */
+.pl-prov { min-width: 0; }
+.pl-prov > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.pl-prov > .pl-num, .pl-prov__tick { flex: none; }
 .pl-prov__tick { width: 1px; height: 12px; background: var(--pl-rule); }
 .pl-prov__n { min-width: 3.4ch; display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
 
@@ -1225,6 +1234,22 @@ a:hover .pl-emulsion > img,
 .pl-instr__slot { min-height: 40px; display: flex; align-items: center; }
 
 /* ══ Responsive ══════════════════════════════════════════════════════════ */
+
+/* Header: logo, six nav items, edition line and keep button need ~1460px.
+   Below 1500px the edition line goes first, below ~1040px the nav folds into
+   the burger, so the logo always keeps its full size. */
+@media (max-width: 1500px) {
+  .pl-prov { display: none; }
+  .pl-keep { margin-left: auto; }
+}
+@media (max-width: 1040px) {
+  .pl-nav { display: none; }
+  .pl-burger { display: flex; }
+  .pl-keep + .pl-burger { margin-left: 0; }
+}
+@media (max-width: 360px) {
+  .pl .pl-head__logo img { height: 32px; width: 160px; }
+}
 
 @media (max-width: 1080px) {
   .pl-instr      { grid-template-columns: repeat(3, 1fr); }
