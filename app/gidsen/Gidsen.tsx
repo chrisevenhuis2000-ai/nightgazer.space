@@ -1,8 +1,9 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   /gidsen: de vier gidspagina's op één plek. De adressen zelf blijven onder
-   /sterrenkijken, zodat bestaande links blijven werken.
+   /gidsen: alle gidspagina's op één plek. De oudere gidsen houden hun adres
+   onder /sterrenkijken, zodat bestaande links blijven werken; de zwermgidsen
+   (Leoniden, Geminiden) staan onder /gidsen zelf.
 
    Opbouw: een kop met een NASA-plaat en drie "waar begin je?"-sprongen, dan
    de gidsen als platen met elk het beeld van hun eigen onderwerp. De
@@ -21,6 +22,7 @@ import { nasaBeeld, nasaPagina, GROEPEN, type NasaMaat } from '@/lib/uitrusting'
 import { SOORTEN } from '@/lib/telescoopgids'
 import { KLASSEN } from '@/lib/cadeaugids'
 import { KALENDER_PRIJS, KALENDER_JAAR, VOORBEELDEN } from '@/lib/hemelkalender'
+import { ZWERMGIDSEN } from '@/lib/zwermgids'
 
 type Plaat = { nasaId: string; maat?: NasaMaat; titel: string; credit: string; pos?: string }
 type Gids = {
@@ -60,6 +62,14 @@ const GIDSEN: Gids[] = [
     meta: `12 platen, ${KALENDER_PRIJS}`, actie: 'Bekijk de kalender',
   },
 ]
+
+/* De zwermgidsen staan apart, bovenaan: ze horen bij een datum. */
+const ZWERMEN: Gids[] = Object.values(ZWERMGIDSEN).map(z => ({
+  href: `/gidsen/${z.slug}/`, soort: 'Meteorenzwerm', kop: z.kop,
+  tekst: z.kaart,
+  meta: `${z.specs.find(s => s.label === 'Per uur')?.waarde} per uur`, actie: 'Hoe laat kijken?',
+  beeld: { nasaId: z.beeld.nasaId, titel: z.beeld.titel.replace(/^Een meteoor.*?,\s*/, 'Een meteoor, '), credit: z.beeld.credit, pos: '50% 40%' },
+}))
 
 const SPRONGEN = [
   { vraag: 'Ik wil een telescoop kopen', href: '/sterrenkijken/eerste-telescoop/' },
@@ -104,12 +114,36 @@ function Beeld({ g }: { g: Gids }) {
   )
 }
 
+function Plaat({ g, i, groot }: { g: Gids; i: number; groot?: boolean }) {
+  return (
+    <li className={`pl-gx__item${groot ? ' pl-gx__item--groot' : ''}`} data-zicht="nee" style={{ ['--i' as string]: i }}>
+      <Link href={g.href} className="pl-gx__a">
+        <Beeld g={g} />
+        <div className="pl-gx__tekst">
+          <span className="pl-label pl-label--stamp">{g.soort}</span>
+          <h3 className="pl-gx__kop">{g.kop}</h3>
+          <p className="pl-body-s">{g.tekst}</p>
+          <div className="pl-gx__voet">
+            <span className="pl-gx__meta">{g.meta}</span>
+            <span className="pl-read">
+              <span>{g.actie}</span>
+              <span className="pl-read__rule" aria-hidden="true" />
+              <Ico.arrow />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </li>
+  )
+}
+
 export default function Gidsen() {
   const lijst = useOntwikkel()
+  const zwermLijst = useOntwikkel()
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={GIDSEN.length} edition={editionLabel()} current="gidsen" totalLabel="gidsen" />
+      <PlateHead total={GIDSEN.length + ZWERMEN.length} edition={editionLabel()} current="gidsen" totalLabel="gidsen" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         {/* ══ Kop ══ */}
@@ -137,6 +171,19 @@ export default function Gidsen() {
           </div>
         </section>
 
+        {/* ══ Binnenkort aan de hemel ══ */}
+        <section className="pl-wrap" aria-labelledby="pl-gidsen-zwermen">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-gidsen-zwermen" className="pl-h2">Vallende sterren dit najaar</h2>
+              <span className="pl-label">Wanneer en hoe laat je kijkt</span>
+            </div>
+          </div>
+          <ul className="pl-gx pl-gx--twee" ref={zwermLijst}>
+            {ZWERMEN.map((g, i) => <Plaat key={g.href} g={g} i={i} />)}
+          </ul>
+        </section>
+
         {/* ══ De gidsen ══ */}
         <section className="pl-wrap" aria-labelledby="pl-gidsen-lijst">
           <div className="pl-band">
@@ -146,30 +193,11 @@ export default function Gidsen() {
             </div>
           </div>
           <ul className="pl-gx" ref={lijst}>
-            {GIDSEN.map((g, i) => (
-              <li key={g.href} className={`pl-gx__item${i === 0 ? ' pl-gx__item--groot' : ''}`} data-zicht="nee" style={{ ['--i' as string]: i }}>
-                <Link href={g.href} className="pl-gx__a">
-                  <Beeld g={g} />
-                  <div className="pl-gx__tekst">
-                    <span className="pl-label pl-label--stamp">{g.soort}</span>
-                    <h3 className="pl-gx__kop">{g.kop}</h3>
-                    <p className="pl-body-s">{g.tekst}</p>
-                    <div className="pl-gx__voet">
-                      <span className="pl-gx__meta">{g.meta}</span>
-                      <span className="pl-read">
-                        <span>{g.actie}</span>
-                        <span className="pl-read__rule" aria-hidden="true" />
-                        <Ico.arrow />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            ))}
+            {GIDSEN.map((g, i) => <Plaat key={g.href} g={g} i={i} groot={i === 0} />)}
           </ul>
           <p className="pl-gx__bron">
             Beelden:{' '}
-            {GIDSEN.filter(g => g.beeld).map((g, i, a) => (
+            {[...ZWERMEN, ...GIDSEN].filter(g => g.beeld).map((g, i, a) => (
               <span key={g.href}>
                 <a href={nasaPagina(g.beeld!.nasaId)} target="_blank" rel="noopener" className="pl-voorw__a">{g.beeld!.titel}</a>
                 {' '}({g.beeld!.credit}){i < a.length - 1 ? ', ' : '.'}

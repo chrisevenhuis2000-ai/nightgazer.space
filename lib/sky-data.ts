@@ -49,8 +49,8 @@ export const METEORS = [
   { name: 'Perseïden',     peak: '12–13 aug',  day: 12, zhr: 100, rating: 5, month: 8,  radiant: 'Perseus',      note: 'BESTE KANS 2026! Nieuwe maan = perfecte condities' },
   { name: 'Draconiden',    peak: '8–9 okt',    day: 8,  zhr: 10,  rating: 3, month: 10, radiant: 'Draak', vroeg: true, note: 'Klein maar donkere hemel, vroege avond' },
   { name: 'Orioniden',     peak: '21 okt',     day: 21, zhr: 20,  rating: 2, month: 10, radiant: 'Orion',        note: 'Maanlicht hindert, alleen helderste zichtbaar' },
-  { name: 'Leoniden',      peak: '16–17 nov',  day: 16, zhr: 15,  rating: 3, month: 11, radiant: 'Leeuw',        note: 'Halve maan, redelijke condities', gids: '/sterrenkijken/leoniden/' },
-  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimaal maanlicht', gids: '/sterrenkijken/geminiden/' },
+  { name: 'Leoniden',      peak: '16–17 nov',  day: 16, zhr: 15,  rating: 3, month: 11, radiant: 'Leeuw',        note: 'Halve maan, redelijke condities', gids: '/gidsen/leoniden/' },
+  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimaal maanlicht', gids: '/gidsen/geminiden/' },
   { name: 'Ursiden',       peak: '21–22 dec',  day: 21, zhr: 10,  rating: 1, month: 12, radiant: 'Kleine Beer',  note: 'Bijna volle maan, lastig' },
 ]
 

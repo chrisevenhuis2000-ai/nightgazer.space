@@ -1,7 +1,7 @@
 'use client'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   Zwermgids — /sterrenkijken/leoniden en /sterrenkijken/geminiden
+   Zwermgids — /gidsen/leoniden en /gidsen/geminiden
 
    Een leespagina die één zoekvraag beantwoordt: wanneer en hoe laat kijk ik.
    Het antwoord staat in de kop en de lede; daaronder één beeld met een taak,
@@ -187,7 +187,7 @@ export default function Zwermgids({ slug }: { slug: Gids['slug'] }) {
               <span className="pl-label">{ander.naam} {ander.jaar}</span>
               <p className="pl-body">{ander.kop.replace(/^[^:]+:\s*/, '').replace(/^./, c => c.toUpperCase())}.</p>
             </div>
-            <Link href={`/sterrenkijken/${ander.slug}/`} className="pl-read">
+            <Link href={`/gidsen/${ander.slug}/`} className="pl-read">
               <span>Naar de {ander.naam}</span>
               <span className="pl-read__rule" aria-hidden="true" />
               <Ico.arrow />
@@ -205,7 +205,7 @@ export default function Zwermgids({ slug }: { slug: Gids['slug'] }) {
 
       <GidsBalk links={[
         { href: '#pl-zg-nacht', tekst: 'Hoe laat?' },
-        { href: `/sterrenkijken/${ander.slug}/`, tekst: ander.naam },
+        { href: `/gidsen/${ander.slug}/`, tekst: ander.naam },
         { href: '/sterrenkijken/', tekst: 'Kan ik vannacht kijken?' },
       ]} />
       <SiteFooter cols={FOOTER_COLS} note="Beeld: NASA (images.nasa.gov) · Gegevens: hemel.waarnemen.com, IMO" />
