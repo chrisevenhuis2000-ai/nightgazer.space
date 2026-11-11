@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+      </style>
+      <div id="root" data-composition-id="afsluiter" data-width="1080" data-height="1920">
+        <div id="end-sheet" class="sheet">
+          <img id="end-logo" src="../assets/brand/logo-transparent.png" alt="NightGazer.space" width="500" height="100" />
+          <div id="end-rule"></div>
+          <p id="end-domain" class="display">nightgazer.space</p>
+          <div id="end-cta">
+            <span>Vannacht kijken</span>
+            <svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 H31 M23 2.5 L31 10 L23 17.5" fill="none" stroke="#06131A" stroke-width="2.5"/></svg>
+          </div>
+        </div>
+      </div>
+      <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        // Settled by 0.9 (8.9 s in the film), then completely still.
+        NG.develop(tl, "#end-logo", 0, 0.45);
+        tl.fromTo("#end-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: NG.ease }, 0.15);
+        NG.develop(tl, "#end-domain", 0.2, 0.4);
+        NG.wipeIn(tl, "#end-cta", 0.5, 0.35);
+        tl.set({}, {}, 2);
+        window.__timelines["afsluiter"] = tl;
+      })();
+      </script>
+    </template>
+  </body>
+</html>

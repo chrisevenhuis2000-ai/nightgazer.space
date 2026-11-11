@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+      </style>
+      <div id="root" data-composition-id="belofte" data-width="1080" data-height="1920">
+        <div id="promise-sheet" class="sheet">
+          <span id="promise-l1" class="promise-line display">Ruimtenieuws.</span>
+          <span id="promise-l2" class="promise-line display">In het Nederlands.</span>
+        </div>
+      </div>
+      <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        // Revealed by 0.25, held still 1.0 s.
+        NG.wipeIn(tl, "#promise-l1", 0, 0.2);
+        NG.wipeIn(tl, "#promise-l2", 0.05, 0.2);
+        tl.to("#promise-sheet", { opacity: 0, duration: 0.08, ease: "none" }, 1.17);
+        window.__timelines["belofte"] = tl;
+      })();
+      </script>
+    </template>
+  </body>
+</html>

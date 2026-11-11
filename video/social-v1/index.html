@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>NightGazer — social v1</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/ng.js"></script>
+    <link rel="stylesheet" href="assets/plate.css" />
+    <link rel="stylesheet" href="assets/social.css" />
+    <style>
+      /* Archivo + JetBrains Mono, shipped locally (SIL OFL, assets/fonts/). */
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("assets/fonts/archivo-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("assets/fonts/archivo-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("assets/fonts/archivo-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("assets/fonts/archivo-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("assets/fonts/archivo-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; src: url("assets/fonts/archivo-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; src: url("assets/fonts/archivo-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; src: url("assets/fonts/archivo-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; src: url("assets/fonts/archivo-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; src: url("assets/fonts/archivo-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; src: url("assets/fonts/jetbrains-mono-greek-400-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+      @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; src: url("assets/fonts/jetbrains-mono-greek-500-normal.woff2") format("woff2"); unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0E1022; }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0E1022;
+        font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+      }
+      #root > div[data-composition-src] { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <!--
+      NightGazer social v1 — 1080x1920, 30 fps, 10.0 s, no audio. Hook A.
+      The plate (track 0) is complete from frame 0; beats sit on track 1.
+        hook        0.00 – 1.50   "Kun je vannacht iets zien?" + VANNACHT cell (voorbeeld)
+        belofte     1.50 – 2.75   "Ruimtenieuws. In het Nederlands."
+        dieptes     2.75 – 5.15   Kernfusie, ladder Beginner → Pro (fragments from lib/education-data.ts)
+        instrument  5.15 – 8.00   ISS, volgende lancering, vannacht (illustratieve waarden)
+        afsluiter   8.00 – 10.00  logo, nightgazer.space, Vannacht kijken — still from 8.9 s
+      Safe zone for everything that matters: x 80–1000, y 250–1540.
+    -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1080" data-height="1920">
+      <div id="el-plate" class="clip" data-composition-id="plate" data-composition-src="compositions/plate.html"
+        data-start="0" data-duration="10" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="el-hook" class="clip" data-composition-id="hook" data-composition-src="compositions/hook.html"
+        data-start="0" data-duration="1.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-belofte" class="clip" data-composition-id="belofte" data-composition-src="compositions/belofte.html"
+        data-start="1.5" data-duration="1.25" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-dieptes" class="clip" data-composition-id="dieptes" data-composition-src="compositions/dieptes.html"
+        data-start="2.75" data-duration="2.4" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-instrument" class="clip" data-composition-id="instrument" data-composition-src="compositions/instrument.html"
+        data-start="5.15" data-duration="2.85" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-afsluiter" class="clip" data-composition-id="afsluiter" data-composition-src="compositions/afsluiter.html"
+        data-start="8" data-duration="2" data-track-index="1" data-width="1080" data-height="1920"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

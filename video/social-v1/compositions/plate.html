@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="nl">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+      </style>
+      <div id="root" data-composition-id="plate" data-width="1080" data-height="1920">
+        <div id="plate-field"></div>
+        <div id="plate-loupe"></div>
+        <svg id="plate-lines" viewBox="0 0 1080 1920" aria-hidden="true">
+          <polyline points="52.5,80.5 52.5,52.5 80.5,52.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.5" stroke-width="1" />
+          <polyline points="1027.5,1839.5 1027.5,1867.5 999.5,1867.5" fill="none" stroke="#B5D4F4" stroke-opacity="0.5" stroke-width="1" />
+          <g id="ruler-top" stroke="#185FA5" stroke-width="1"></g>
+          <g id="ruler-left" stroke="#185FA5" stroke-width="1"></g>
+        </svg>
+        <div id="plate-no" class="plate-field"><span class="ng-label">Plaat</span><b class="ng-num">NG-0001</b></div>
+        <div id="plate-date" class="plate-field"><span class="ng-label">Belicht</span><b class="ng-num">15.10.2026</b></div>
+        <div id="plate-arch" class="plate-field"><span class="ng-label">NightGazer · Plaatarchief</span></div>
+      </div>
+      <script>
+      (function () {
+        // Edge fiducial rulers: a tick every 12px, a long tick every 10th. Deterministic.
+        const NS = "http://www.w3.org/2000/svg";
+        const top = document.getElementById("ruler-top");
+        for (let i = 0, x = 100.5; x < 980; i++, x += 12) {
+          const l = document.createElementNS(NS, "line");
+          l.setAttribute("x1", x); l.setAttribute("x2", x);
+          l.setAttribute("y1", 41); l.setAttribute("y2", i % 10 === 0 ? 57 : 49);
+          top.appendChild(l);
+        }
+        const left = document.getElementById("ruler-left");
+        for (let i = 0, y = 100.5; y < 1820; i++, y += 12) {
+          const l = document.createElementNS(NS, "line");
+          l.setAttribute("y1", y); l.setAttribute("y2", y);
+          l.setAttribute("x1", 41); l.setAttribute("x2", i % 10 === 0 ? 57 : 49);
+          left.appendChild(l);
+        }
+        const tl = gsap.timeline({ paused: true });
+        // The loupe lifts slightly under the hook; the plate itself is complete from frame 0.
+        tl.fromTo("#plate-loupe", { opacity: 0.75 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 0);
+        tl.set({}, {}, 10);
+        window.__timelines["plate"] = tl;
+      })();
+      </script>
+    </template>
+  </body>
+</html>

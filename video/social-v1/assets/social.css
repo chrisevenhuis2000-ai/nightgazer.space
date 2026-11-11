@@ -1,0 +1,115 @@
+/* NightGazer social v1 — component styles (phone scale). Tokens: plate.css. */
+
+/* Phone scale: a printed label is 30px here (10px at 360 wide). */
+.ng-label { font-size: 30px; }
+
+/* ── The plate: present from frame 0, never built from nothing. ── */
+#plate-field {
+  position: absolute;
+  left: 40px; top: 40px; width: 1000px; height: 1840px;
+  background-color: var(--pl-plate);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(39,44,80,0.40) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(0deg,  rgba(39,44,80,0.26) 0 1px, transparent 1px 48px);
+  background-position: 24px 24px;
+  border: 1px solid var(--pl-rule);
+}
+#plate-lines { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+#plate-loupe {
+  position: absolute;
+  left: 40px; top: 160px; width: 1000px; height: 1000px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(24,95,165,0.30) 0%, rgba(24,95,165,0) 70%);
+}
+.plate-field { position: absolute; display: flex; align-items: baseline; gap: 16px; }
+#plate-no   { left: 100px; top: 150px; }
+#plate-date { right: 100px; top: 150px; }
+#plate-arch { left: 100px; bottom: 150px; }
+#plate-no b { font-size: 40px; font-weight: 500; color: var(--pl-stamp); line-height: 1; }
+#plate-date b { font-size: 30px; font-weight: 400; color: var(--pl-ink-2); line-height: 1; }
+
+/* Safe zone for everything that matters: x 80–1000, y 250–1540. */
+.sheet { position: absolute; left: 100px; right: 100px; top: 290px; bottom: 400px; }
+
+.display {
+  font-family: var(--sans);
+  font-weight: 800;
+  letter-spacing: -0.032em;
+  line-height: 1.02;
+  color: var(--pl-ink);
+}
+.wipe {
+  position: absolute;
+  left: 100px; top: 280px;
+  width: 1px; height: 1240px;
+  background: var(--pl-stamp);
+  opacity: 0;
+}
+
+/* ── Instrument cell (shared by the hook and beat 4) ── */
+.cell { border: 1px solid var(--pl-rule); padding: 38px 44px 40px; display: flex; flex-direction: column; gap: 26px; }
+.cell-lab { display: flex; align-items: center; gap: 18px; }
+.cell-lab .ng-label--stamp { margin-left: auto; }
+.dot { position: relative; display: block; width: 16px; height: 16px; background: var(--pl-mark); flex-shrink: 0; }
+.halo { position: absolute; inset: -8px; border: 1px solid var(--pl-mark); opacity: 0; }
+.val { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 500; line-height: 1; white-space: nowrap; }
+.unit { color: var(--pl-ink-3); }
+.readout { height: 4px; background: var(--pl-rule-soft); overflow: hidden; position: relative; }
+.readout i { position: absolute; top: 0; bottom: 0; left: 0; width: 34%; background: var(--pl-mark); }
+.bortle { display: flex; align-items: center; gap: 20px; }
+.blocks { display: flex; gap: 6px; }
+.blocks i { display: block; width: 14px; height: 38px; background: var(--pl-rule); }
+.blocks i.on { background: var(--pl-stamp); }
+.bortle .val { font-size: 40px; color: var(--pl-ink-2); }
+
+/* Beat 1 — hook */
+#hook-q { font-size: 136px; padding-right: 0.06em; }
+#hook-cell { margin-top: 80px; }
+#hook-score { font-size: 230px; color: var(--pl-mark); }
+#hook-score .unit { font-size: 80px; }
+
+/* Beat 2 — promise */
+#promise-sheet { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.promise-line { font-size: 108px; padding-right: 0.06em; align-self: flex-start; }
+
+/* Beat 3 — ladder */
+#depth-sheet { display: flex; flex-direction: column; justify-content: center; }
+#depth-row { display: flex; align-items: flex-end; gap: 34px; margin-top: 34px; }
+#depth-ladder { display: flex; align-items: flex-end; gap: 8px; height: 96px; }
+#depth-ladder i { display: block; width: 26px; background: var(--pl-rule); }
+#depth-ladder i:nth-child(1) { height: 40px; }
+#depth-ladder i:nth-child(2) { height: 68px; }
+#depth-ladder i:nth-child(3) { height: 96px; }
+#depth-ladder i.on { background: var(--pl-stamp); }
+#depth-level { position: relative; height: 112px; flex: 1; }
+.depth-name { position: absolute; left: 0; bottom: -6px; font-size: 124px; opacity: 0; }
+#depth-rule { height: 1px; background: var(--pl-rule); margin: 52px 0 48px; }
+#depth-body { position: relative; height: 300px; }
+.depth-frag {
+  position: absolute; left: 0; top: 0; right: 0;
+  font-family: var(--sans); font-size: 80px; font-weight: 600;
+  line-height: 1.14; letter-spacing: -0.02em; color: var(--pl-ink);
+  opacity: 0;
+}
+#depth-note { margin-top: 30px; }
+
+/* Beat 4 — instruments */
+#instr-sheet { display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+#instr-head { display: flex; justify-content: flex-end; }
+.instr-val { font-size: 82px; color: var(--pl-mark); }
+#instr-sky-val .unit { font-size: 46px; }
+
+/* Beat 5 — sign-off */
+#end-sheet { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#end-logo { display: block; width: 500px; height: 100px; }   /* native, never scaled */
+#end-rule { width: 520px; height: 1px; background: var(--pl-rule); margin: 70px 0 60px; }
+#end-domain { font-size: 104px; padding: 0 0.06em; }
+#end-cta {
+  margin-top: 70px;
+  display: flex; align-items: center; gap: 24px;
+  height: 120px; padding: 0 60px;
+  background: var(--pl-act); color: var(--pl-act-ink);
+  font-family: var(--sans); font-size: 48px; font-weight: 700; letter-spacing: -0.01em;
+  border-radius: 0;
+}
+#end-cta svg { width: 44px; height: 26px; display: block; }
+#end-domain { opacity: 0; } /* developed in at 8.2 s */
