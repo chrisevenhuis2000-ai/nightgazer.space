@@ -26,6 +26,8 @@
     "test:quiz": "node scripts/test-educatie-quiz.js",
     "test:hemelfoto": "node scripts/test-hemelfoto.mjs",
     "test:sterrenbeeld": "node scripts/test-sterrenbeeld.mjs",
+    "test:cadeautijd": "node scripts/test-cadeautijd.mjs",
+    "test:zoeken": "node scripts/test-zoeken.mjs",
     "test:geminiden": "node scripts/test-geminiden.mjs"
   },
   "dependencies": {
