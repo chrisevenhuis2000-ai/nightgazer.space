@@ -72,17 +72,6 @@ export default function Meldingen({ lat, lon, plaats }: {
     return () => { leeft = false; ac.abort() }
   }, [])
 
-  /* Komt de bezoeker via een "Zet meldingen aan"-knop (#pl-meld), dan
-     verschuift de pagina nog terwijl het weer erboven laadt. Na het laden
-     nog één keer naar dit blok scrollen. */
-  useEffect(() => {
-    if (location.hash !== '#pl-meld') return
-    const t = setTimeout(() => {
-      document.getElementById('pl-meld')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
-    }, 900)
-    return () => clearTimeout(t)
-  }, [])
-
   /* Eén meting per bezoek van wat het blok liet zien: zo is te zien hoeveel
      bezoekers push niet eens konden aanzetten, en waarom. */
   useEffect(() => {

@@ -5,9 +5,9 @@
 // browser van Instagram, waar een download via JavaScript vaak niets doet.
 // Draait in prebuild, dus het bestand is zo vers als de laatste build.
 //
-// shortcut: alleen de zwermen van SHOWER_YEAR die nog moeten komen; na de
-// Ursiden (eind december) is het bestand leeg tot de data een jaar verder
-// staat. Lanceringen staan er niet in: hun data schuiven te vaak.
+// De komende twaalf maanden: de rest van SHOWER_YEAR met de maanstand erbij,
+// daarna het jaar erop op de vaste piekdata, zonder maanstand.
+// Lanceringen staan er niet in: hun data schuiven te vaak.
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -18,11 +18,14 @@ const laad = f => {
   const js = ts.transpileModule(fs.readFileSync(path.join(hier, '../lib', f), 'utf8'), { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } }).outputText
   return 'data:text/javascript;base64,' + Buffer.from(js).toString('base64')
 }
-const { METEORS, zwermAgenda } = await import(laad('sky-data.ts'))
+const { METEORS, SHOWER_YEAR, zwermAgenda } = await import(laad('sky-data.ts'))
 const { buildIcs } = await import(laad('ics.ts'))
 
 const nu = new Date()
-const items = METEORS.map(zwermAgenda).filter(e => e.end >= nu)
+const tot = new Date(nu.getTime() + 365 * 86400_000)
+const items = [SHOWER_YEAR, SHOWER_YEAR + 1]
+  .flatMap(jaar => METEORS.map(s => zwermAgenda(s, jaar)))
+  .filter(e => e.end >= nu && e.start < tot)
 const uit = path.join(hier, '../public/agenda/meteorenzwermen.ics')
 fs.mkdirSync(path.dirname(uit), { recursive: true })
 fs.writeFileSync(uit, buildIcs(items, 'NightGazer · meteorenzwermen'))

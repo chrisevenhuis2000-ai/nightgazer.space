@@ -201,6 +201,23 @@ export default function Belichtingstabel() {
   const [spot, setSpot] = useState(0)
   const [month, setMonth] = useState(() => new Date().getMonth() + 1)
 
+  /* Komt de bezoeker binnen op een anker (#pl-meld vanuit de meldingenlink,
+     #pl-showers vanuit de zoekfunctie), dan verschuift de pagina nog terwijl
+     het weer, de ISS en het noorderlicht erboven laden. Daarom nog twee keer
+     naar het anker scrollen, tenzij de bezoeker zelf al scrolt. */
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    if (!id) return
+    let zelf = false
+    const stop = () => { zelf = true }
+    const opties = { passive: true, once: true } as const
+    window.addEventListener('wheel', stop, opties)
+    window.addEventListener('touchstart', stop, opties)
+    const naar = () => { if (!zelf) document.getElementById(id)?.scrollIntoView({ block: 'start' }) }
+    const t = [setTimeout(naar, 900), setTimeout(naar, 2400)]
+    return () => { t.forEach(clearTimeout); window.removeEventListener('wheel', stop); window.removeEventListener('touchstart', stop) }
+  }, [])
+
   /* Bewaarde locatie terughalen */
   useEffect(() => {
     try {
