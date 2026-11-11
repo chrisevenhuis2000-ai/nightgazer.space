@@ -71,7 +71,7 @@ export default function Sterrenbeeld() {
   if (!iso || !beeld || !moment) {
     return (
       <div className={`pl ${archivo.variable}`}>
-        <PlateHead total={BEELDEN.length} edition={editionLabel()} current="sterrenkijken" totalLabel="sterrenbeelden" />
+        <PlateHead total={BEELDEN.length} edition={editionLabel()} current="spellen" totalLabel="sterrenbeelden" />
         <main id="pl-main" className="pl-stack"><div className="pl-wrap"><div className="pl-skel" style={{ height: 520 }} /></div></main>
       </div>
     )
@@ -139,7 +139,7 @@ export default function Sterrenbeeld() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={BEELDEN.length} edition={editionLabel()} current="sterrenkijken" totalLabel="sterrenbeelden" />
+      <PlateHead total={BEELDEN.length} edition={editionLabel()} current="spellen" totalLabel="sterrenbeelden" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         <section className="pl-wrap" aria-labelledby="pl-sb-t">

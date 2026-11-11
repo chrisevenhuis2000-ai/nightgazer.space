@@ -20,6 +20,7 @@ import { SiteFooter } from '../components/SiteFooter'
 import { Steun } from '../components/Steun'
 import { MeldingenTeaser } from '../components/MeldingenTeaser'
 import { SpellenBlok } from '@/app/_plate/SpellenBlok'
+import { Cadeautijd } from '@/app/_plate/Cadeautijd'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, img } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { artikelLink, nuInNederland, zichtbaar, type DagmapItem } from '@/lib/dagmap'
@@ -81,6 +82,10 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
             </div>
           </section>
         )}
+
+        <div className="pl-wrap">
+          <Cadeautijd />
+        </div>
 
         {rest.length > 0 && (
           <section className="pl-wrap" aria-labelledby="pl-vdg-eerder">

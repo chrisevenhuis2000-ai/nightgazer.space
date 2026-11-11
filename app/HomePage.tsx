@@ -19,6 +19,7 @@ import { MISSIONS } from '@/lib/missions-data'
 import { SiteFooter } from './components/SiteFooter'
 import { MeldingenTeaser } from './components/MeldingenTeaser'
 import { SpellenBlok } from './_plate/SpellenBlok'
+import { Cadeautijd } from './_plate/Cadeautijd'
 import {
   PROXY, APOD_CACHE_KEY,
   type APODData, type ISSData, type Article,
@@ -712,11 +713,19 @@ export default function HomePage({ start }: {
           <FirstView apod={apod} iss={iss} issFailed={issFailed} total={total} latest={articles[0]?.date ?? ''} sky={sky} />
         </div>
 
+        <div className="pl-wrap">
+          <Cadeautijd />
+        </div>
+
         {lead && (
           <div className="pl-wrap">
             <LeadPlate lead={lead} side={side} total={total} />
           </div>
         )}
+
+        <section className="pl-wrap" aria-label="Spellen van de dag">
+          <SpellenBlok />
+        </section>
 
         {/* Fills what was an empty band of ground under the lead plate. */}
         <div className="pl-wrap">
@@ -744,10 +753,6 @@ export default function HomePage({ start }: {
             <DezeWeekPlate />
             <ApodPlate apod={apod} />
           </div>
-        </section>
-
-        <section className="pl-wrap" aria-label="Spellen van de dag">
-          <SpellenBlok />
         </section>
 
         <section className="pl-wrap" aria-label="Meldingen">

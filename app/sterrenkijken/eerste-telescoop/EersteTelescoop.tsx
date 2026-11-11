@@ -106,7 +106,7 @@ export default function EersteTelescoop() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={STAPPEN.length} edition={editionLabel()} current="sterrenkijken" totalLabel="stappen" />
+      <PlateHead total={STAPPEN.length} edition={editionLabel()} current="gidsen" totalLabel="stappen" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         {/* ══ Kop ══ */}

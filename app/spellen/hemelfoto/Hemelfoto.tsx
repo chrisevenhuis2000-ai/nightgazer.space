@@ -159,7 +159,7 @@ export default function Hemelfoto() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={vandaag} edition={editionLabel()} current="educatie" totalLabel={vandaag === 1 ? 'foto' : "foto's"} />
+      <PlateHead total={vandaag} edition={editionLabel()} current="spellen" totalLabel={vandaag === 1 ? 'foto' : "foto's"} />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         <section className="pl-wrap" aria-labelledby="pl-hf-t">
