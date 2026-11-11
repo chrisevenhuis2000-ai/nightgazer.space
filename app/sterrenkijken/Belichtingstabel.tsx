@@ -317,6 +317,12 @@ export default function Belichtingstabel() {
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
 
+        <nav className="pl-wrap pl-spring" aria-label="Op deze pagina">
+          {[['Vannacht', '#pl-when'], ['ISS', '#pl-iss'], ['Noorderlicht', '#pl-aurora'], ['Donkere plekken', '#pl-where'], ['Maan', '#pl-moon'], ['Agenda', '#pl-agenda'], ['Gidsen', '/gidsen/']].map(([t, h]) => (
+            <a key={h} href={h}>{t}</a>
+          ))}
+        </nav>
+
         {/* ══ Wanneer ══ */}
         <section className="pl-wrap" aria-labelledby="pl-when">
           <div className="pl-band">
@@ -450,6 +456,11 @@ export default function Belichtingstabel() {
             </div>
           )}
         </section>
+
+        <div className="pl-wrap">
+          <UitrustingVerwijzing tekst="Een heldere nacht gevonden? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
+          <KalenderVerwijzing tekst="Het hele jaar vooruit kijken? Elke nacht de maan en per maand de planeten, vallende sterren en de zonsverduistering van 2 augustus, op een A4-wandkalender." />
+        </div>
 
         {/* ══ ISS ══ */}
         <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-iss">
@@ -655,11 +666,6 @@ export default function Belichtingstabel() {
 
           <Hemelagenda />
         </section>
-
-        <div className="pl-wrap">
-          <UitrustingVerwijzing tekst="Een heldere nacht gevonden? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
-          <KalenderVerwijzing tekst="Het hele jaar vooruit kijken? Elke nacht de maan en per maand de planeten, vallende sterren en de zonsverduistering van 2 augustus, op een A4-wandkalender." />
-        </div>
 
         <div className="pl-wrap">
           <AdPlate slot="6261315300" />

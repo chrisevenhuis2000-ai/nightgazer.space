@@ -23,6 +23,8 @@ const pages = [
   { loc: '/sterrenkijken/eerste-telescoop', changefreq: 'monthly', priority: '0.6' },
   { loc: '/sterrenkijken/cadeaugids', changefreq: 'monthly', priority: '0.6' },
   { loc: '/sterrenkijken/hemelkalender', changefreq: 'monthly', priority: '0.6' },
+  { loc: '/gidsen',                        changefreq: 'monthly', priority: '0.6' },
+  { loc: '/spellen',                       changefreq: 'daily',   priority: '0.5' },
   { loc: '/spellen/hemelfoto',             changefreq: 'daily',   priority: '0.6' },
   { loc: '/spellen/sterrenbeeld',          changefreq: 'daily',   priority: '0.6' },
   { loc: '/educatie',      changefreq: 'monthly', priority: '0.6' },

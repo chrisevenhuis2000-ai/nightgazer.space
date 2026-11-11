@@ -33,7 +33,7 @@ export default function Hemelkalender() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={12} edition={editionLabel()} current="sterrenkijken" totalLabel="platen" />
+      <PlateHead total={12} edition={editionLabel()} current="gidsen" totalLabel="platen" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         {/* ══ Kop ══ */}
