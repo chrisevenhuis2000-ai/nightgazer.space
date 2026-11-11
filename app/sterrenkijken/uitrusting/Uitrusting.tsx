@@ -68,7 +68,7 @@ export default function Uitrusting() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={TOTAAL} edition={editionLabel()} current="gidsen" totalLabel="aanraders" />
+      <PlateHead total={TOTAAL} edition={editionLabel()} current="gidsen" totalLabel="tips" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         {/* ══ Kop ══ */}

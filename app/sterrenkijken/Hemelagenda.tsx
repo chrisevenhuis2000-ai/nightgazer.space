@@ -15,7 +15,7 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 import { useMemo, useState } from 'react'
-import { METEORS, SHOWER_YEAR, showerWindow, type Shower } from '@/lib/sky-data'
+import { METEORS, showerWindow, zwermAgenda, type Shower } from '@/lib/sky-data'
 import { buildSchedule, type ScheduledLaunch } from '@/lib/mission-schedule'
 import { downloadIcs, slugFile, type CalEvent } from '@/lib/ics'
 import { Ico } from '@/app/_plate/Instruments'
@@ -38,34 +38,14 @@ const dagLabel = (d: Date) =>
   d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' })
 
 function zwermItem(s: Shower): Item {
-  const { start, end: eind } = showerWindow(s)
-  const beschrijving =
-    `${s.note}\n\n`
-    + `Tot ${s.zhr} meteoren per uur bij een ideaal donkere hemel; in de praktijk minder.\n`
-    + `De radiant ligt in ${s.radiant}, maar kijk daar juist niet strak naar — `
-    + `de mooiste sporen zie je er een stuk vandaan.\n\n`
-    + `Kijken kan van ${start.getHours()}:00 tot ${eind.getHours()}:00. `
-    + `Geen telescoop of verrekijker: je ogen vangen het meeste. `
-    + `Geef ze twintig minuten om aan het donker te wennen en kijk niet op je telefoon.\n\n`
-    + `nightgazer.space/sterrenkijken`
-
   return {
     key: `zwerm-${s.name}`,
     soort: 'zwerm',
-    datum: start,
+    datum: showerWindow(s).start,
     titel: s.name,
     regel: `Piek ${s.peak} · ZHR ${s.zhr} · radiant in ${s.radiant}`,
     detail: s.note,
-    agenda: {
-      uid: `${slugFile(s.name)}-${SHOWER_YEAR}@nightgazer.space`,
-      title: `${s.name} — piek (tot ${s.zhr}/uur)`,
-      description: beschrijving,
-      url: 'https://nightgazer.space/sterrenkijken/',
-      allDay: false,
-      start,
-      end: eind,
-      remindDays: 1,
-    },
+    agenda: zwermAgenda(s),
   }
 }
 

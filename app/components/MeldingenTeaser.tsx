@@ -1,29 +1,36 @@
 'use client'
 
-/* Meldingen-blokje voor /vandaag en de voorpagina.
+/* Agenda-blokje voor /vandaag en de voorpagina.
 
-   Het echte meldingsblok staat op /sterrenkijken, halverwege een lange
-   pagina; daar komt bijna niemand. Wie via Instagram binnenkomt landt op
-   /vandaag. Dit blokje wijst de weg, in dezelfde vorm als het steunblok. */
+   Was "Zet meldingen aan". Push haalde 0 abonnees: op de iPhone moet de site
+   eerst op het beginscherm, en in de browser van Instagram werkt het niet.
+   Een gewone link naar een .ics-bestand werkt op elke telefoon: de agenda
+   opent en zet de komende meteorenzwermen erin, met een herinnering de dag
+   ervoor. Het bestand maakt scripts/generate-agenda.mjs bij de build.
+   Push blijft bestaan op /sterrenkijken, voor wie dat wil. */
 import Link from 'next/link'
 import { telGebeurtenis } from '@/lib/tel'
+
+const waar = () => (typeof location !== 'undefined' ? location.pathname : '')
 
 export function MeldingenTeaser({ tekst }: { tekst?: string }) {
   return (
     <div className="pl-plate pl-steun">
       <div className="pl-steun__t">
-        <h2 className="pl-h3">Krijg een seintje als er iets te zien is</h2>
+        <h2 className="pl-h3">Mis geen vallende sterren</h2>
         <p className="pl-body-s">
-          {tekst ?? 'Noorderlicht, een heldere nacht of de ISS boven jouw plek: een melding op je telefoon, ook als de site dicht is. Gratis, zonder account.'}
+          {tekst ?? 'Zet de komende meteorenzwermen in je agenda, met een herinnering de dag ervoor. Werkt op elke telefoon, zonder account. '}
+          Liever een melding bij noorderlicht of de ISS?{' '}
+          <Link href="/sterrenkijken/#pl-meld" className="pl-voorw__a" onClick={() => telGebeurtenis('push-teaser', waar())}>Zet meldingen aan</Link>.
         </p>
       </div>
-      <Link
-        href="/sterrenkijken/#pl-meld"
+      <a
+        href="/agenda/meteorenzwermen.ics"
         className="pl-btn pl-btn--act"
-        onClick={() => telGebeurtenis('push-teaser', typeof location !== 'undefined' ? location.pathname : '')}
+        onClick={() => telGebeurtenis('agenda-teaser', waar())}
       >
-        Zet meldingen aan
-      </Link>
+        Zet het in je agenda
+      </a>
     </div>
   )
 }

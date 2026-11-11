@@ -174,7 +174,7 @@ export default function ArtikelPlaat({ slug, initial = null }: {
       .catch(() => setNotFound(true))
   }, [slug, initial])
 
-  /* Verwante platen en het archieftotaal */
+  /* Verwante artikelen en het archieftotaal */
   useEffect(() => {
     if (!article) return
     fetch('/content/articles-index.json')
@@ -370,7 +370,7 @@ ${article.rawBody.slice(0, 2500)}` }],
   if (notFound) {
     return (
       <div className={`pl ${archivo.variable}`}>
-        <PlateHead total={0} edition={editionLabel()} current="nieuws" totalLabel="platen" />
+        <PlateHead total={0} edition={editionLabel()} current="nieuws" totalLabel="artikelen" />
         <main id="pl-main" className="pl-stack">
           <div className="pl-wrap">
             <div className="pl-plate" style={{ padding: '56px 24px', display: 'grid', gap: 14, justifyItems: 'start' }}>
@@ -379,7 +379,7 @@ ${article.rawBody.slice(0, 2500)}` }],
                 Het artikel kon niet geladen worden. Probeer het opnieuw, of zoek
                 verder in het archief.
               </p>
-              <Link href="/nieuws/" className="pl-btn">Naar het archief</Link>
+              <Link href="/nieuws/" className="pl-btn">Alle artikelen</Link>
             </div>
           </div>
         </main>
@@ -391,7 +391,7 @@ ${article.rawBody.slice(0, 2500)}` }],
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={total} edition={editionLabel()} current="nieuws" totalLabel="platen" />
+      <PlateHead total={total} edition={editionLabel()} current="nieuws" totalLabel="artikelen" />
 
       {/* ══ Belichting ══ */}
       <div className="pl-expose">
@@ -626,12 +626,12 @@ ${article.rawBody.slice(0, 2500)}` }],
             <div className="pl-band">
               <div className="pl-band__t">
                 <h2 id="pl-rel" className="pl-h2" style={{ fontSize: 'clamp(1.2rem,1.8vw,1.5rem)' }}>
-                  Verwante platen
+                  Verwante artikelen
                 </h2>
                 <span className="pl-label">{article?.category}</span>
               </div>
               <Link href="/nieuws/" className="pl-read">
-                <span>Het hele archief</span>
+                <span>Alle artikelen</span>
                 <span className="pl-read__rule" aria-hidden="true" />
                 <Ico.arrow />
               </Link>

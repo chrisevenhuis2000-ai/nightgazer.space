@@ -54,6 +54,17 @@ export default function Sterrenbeeld() {
   const [flits, setFlits] = useState<{ a: string; b: string } | null>(null)
   const [tip, setTip] = useState<string | null>(null)
   const svg = useRef<SVGSVGElement>(null)
+  // Kleinste sterstraal in speelveld-eenheden, zodat een ster op elk scherm minstens 8 px breed is.
+  const [minR, setMinR] = useState(4)
+  useEffect(() => {
+    const el = svg.current
+    if (!el) return
+    const meet = () => { const w = el.clientWidth; if (w) setMinR(Math.max(4, (4 * MAAT) / w)) }
+    meet()
+    const ro = new ResizeObserver(meet)
+    ro.observe(el)
+    return () => ro.disconnect()
+  })
 
   useEffect(() => {
     const d = nlDag()
@@ -175,10 +186,10 @@ export default function Sterrenbeeld() {
                   {flits && (() => { const A = p(flits.a), B = p(flits.b); return A && B ? <line className="pl-sb__fout" x1={A.x} y1={A.y} x2={B.x} y2={B.y} /> : null })()}
                   {punten.map(q => (
                     <g key={q.naam} data-naam={q.naam}>
-                      {sel === q.naam && <circle cx={q.x} cy={q.y} r={straal(q.mag) + 16} className="pl-sb__sel" />}
-                      <circle cx={q.x} cy={q.y} r={straal(q.mag)} className="pl-sb__ster" data-uit={spel.klaar && !q.hoort ? '1' : '0'} />
+                      {sel === q.naam && <circle cx={q.x} cy={q.y} r={straal(q.mag, MAAT, minR) + 16} className="pl-sb__sel" />}
+                      <circle cx={q.x} cy={q.y} r={straal(q.mag, MAAT, minR)} className="pl-sb__ster" data-uit={spel.klaar && !q.hoort ? '1' : '0'} />
                       {spel.klaar && q.hoort && (
-                        <text x={q.x + straal(q.mag) + 8} y={q.y + 6} className="pl-sb__label">{q.naam}</text>
+                        <text x={q.x + straal(q.mag, MAAT, minR) + 8} y={q.y + 6} className="pl-sb__label">{q.naam}</text>
                       )}
                     </g>
                   ))}

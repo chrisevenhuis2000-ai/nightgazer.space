@@ -77,7 +77,7 @@ function Ticker({ articles, exclude }: { articles: Article[]; exclude: Set<strin
   ))
 
   return (
-    <section className="pl-ticker" aria-label="Laatste platen">
+    <section className="pl-ticker" aria-label="Laatste artikelen">
       <div className="pl-ticker__label">
         <span className="pl-dot pl-live" aria-hidden="true" />
         <span className="pl-label">Nieuw binnen</span>
@@ -123,8 +123,8 @@ function FirstView({ apod, iss, issFailed, total, latest, sky }: {
             Wat er vannacht te zien is, en wat er vandaag gebeurde
           </h1>
           <p className="pl-body" style={{ maxWidth: '54ch' }}>
-            Het Nederlandse archief voor astronomie en ruimtevaart. Live condities boven,
-            {' '}{total} platen eronder — elk artikel op drie niveaus.
+            Nederlands nieuws over sterrenkunde en ruimtevaart. Bovenaan wat je vannacht ziet,
+            {' '}{total} artikelen eronder — elk artikel op drie niveaus.
           </p>
 
           <div className="pl-cta">
@@ -141,11 +141,11 @@ function FirstView({ apod, iss, issFailed, total, latest, sky }: {
 
         <dl className="pl-envelope">
           <div>
-            <dt className="pl-label">Laatste opname</dt>
+            <dt className="pl-label">Laatst bijgewerkt</dt>
             <dd className="pl-num">{latest || '—'}</dd>
           </div>
           <div>
-            <dt className="pl-label">Platen</dt>
+            <dt className="pl-label">Artikelen</dt>
             <dd className="pl-num">{total}</dd>
           </div>
           <div>
@@ -284,20 +284,20 @@ function FirstView({ apod, iss, issFailed, total, latest, sky }: {
         <div className="pl-instr__cell">
           <Tip align="right" label={
             <>
-              <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>Het archief</span>
+              <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>Alle artikelen</span>
               Elk artikel bestaat op drie leesniveaus en is gearchiveerd met plaatnummer,
-              onderwerp en leestijd. Nieuwe platen komen dagelijks automatisch binnen.
+              onderwerp en leestijd. Nieuwe artikelen komen dagelijks automatisch binnen.
             </>
           }>
             <span className="pl-label" style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-              <Ico.plate />Archief
+              <Ico.plate />Artikelen
             </span>
           </Tip>
           <div className="pl-instr__slot">
             <span className="pl-instr__val pl-num">{total}</span>
           </div>
           <a href="#pl-archief" className="pl-read" style={{ minHeight: 22 }}>
-            <span>Naar het archief</span>
+            <span>Alle artikelen</span>
             <span className="pl-read__rule" aria-hidden="true" />
           </a>
         </div>
@@ -339,7 +339,7 @@ function LeadPlate({ lead, side, total }: { lead: Article; side: Article[]; tota
 
         <div className="pl-lead__body">
           <div className="pl-meta">
-            <span className="pl-label pl-label--stamp">{isToday ? 'Plaat van vandaag' : 'Nieuwste plaat'}</span>
+            <span className="pl-label pl-label--stamp">{isToday ? 'Artikel van vandaag' : 'Nieuwste artikel'}</span>
             <span className="pl-meta__tick" aria-hidden="true" />
             <span>{lead.category}</span>
           </div>
@@ -545,7 +545,7 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
     <section id="pl-archief" aria-labelledby="pl-arch-title">
       <div className="pl-band">
         <div className="pl-band__t">
-          <h2 id="pl-arch-title" className="pl-h2">Het archief</h2>
+          <h2 id="pl-arch-title" className="pl-h2">Alle artikelen</h2>
           {quickTag && (
             <button type="button" className="pl-tag" aria-pressed="true" onClick={onClearQuick}>
               #{quickTag}
@@ -555,7 +555,7 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
           )}
         </div>
         <p className="pl-label" aria-live="polite">
-          {aantal === total ? `${total} platen` : `${aantal} van ${total} platen`}
+          {aantal === total ? `${total} artikelen` : `${aantal} van ${total} artikelen`}
         </p>
       </div>
 
@@ -578,13 +578,13 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
 
         {rows.length === 0 ? (
           <div style={{ padding: '52px 24px', display: 'grid', gap: 14, justifyItems: 'start', position: 'relative', zIndex: 1 }}>
-            <h3 className="pl-h3">Geen platen onder deze combinatie</h3>
+            <h3 className="pl-h3">Geen artikelen bij deze keuze</h3>
             <p className="pl-body-s">
               {quickTag
                 ? `Er is niets dat zowel #${quickTag} als "${filter}" is. Laat een van de twee vallen.`
-                : 'Het archief heeft hier nog niets van. Kies een ander onderwerp of open alle platen.'}
+                : 'Hier is nog niets over. Kies een ander onderwerp of bekijk alle artikelen.'}
             </p>
-            <button className="pl-btn" onClick={() => { pick('Alles'); onClearQuick() }}>Alle platen</button>
+            <button className="pl-btn" onClick={() => { pick('Alles'); onClearQuick() }}>Alle artikelen</button>
           </div>
         ) : (
           <ol style={{ listStyle: 'none', margin: 0, padding: 0 }} aria-live="polite">
@@ -622,7 +622,7 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
       {more && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 20, flexWrap: 'wrap' }}>
           <button className="pl-btn" onClick={() => setShown(s => s + ROWS_PER_PAGE)}>
-            Volgende {Math.min(ROWS_PER_PAGE, aantal - shown)} platen
+            Volgende {Math.min(ROWS_PER_PAGE, aantal - shown)} artikelen
           </button>
           <span className="pl-label pl-num" style={{ letterSpacing: '0.1em' }}>
             {rows.length} / {aantal}
