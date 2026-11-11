@@ -40,6 +40,7 @@ export const GEBEURTENISSEN = new Set([
   'omhoog-vink',         // 30 nachten omhoog: nacht afgevinkt (extra = datum)
   'omhoog-print',        // 30 nachten omhoog: tik op Print de afvinkkaart
   'omhoog-deel',         // 30 nachten omhoog: tik op Deel de uitdaging
+  'omhoog-blok',         // tik op het campagneblok op home, /vandaag of /sterrenkijken (extra = datum)
   'geminiden-telling',   // Tel de Geminiden: telling verstuurd
 ])
 
@@ -157,6 +158,7 @@ ${OMHOOG_KANALEN.map(k => `  sumIf(_sample_interval * double2, blob1 = 'pv' AND 
   sumIf(_sample_interval, blob6 = 'omhoog-vink') AS omhoog_vink,
   sumIf(_sample_interval, blob6 = 'omhoog-print') AS omhoog_print,
   sumIf(_sample_interval, blob6 = 'omhoog-deel') AS omhoog_deel,
+  sumIf(_sample_interval, blob6 = 'omhoog-blok') AS omhoog_blok,
   sumIf(_sample_interval, blob6 = 'geminiden-telling') AS geminiden_telling
 FROM ${TEL_DATASET}
 WHERE timestamp > NOW() - INTERVAL '${d}' DAY

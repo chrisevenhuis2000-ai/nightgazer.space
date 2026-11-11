@@ -43,6 +43,7 @@ import Noorderlicht from './Noorderlicht'
 import ObjectVanDeNacht from './ObjectVanDeNacht'
 import Hemelagenda from './Hemelagenda'
 import Maankalender from './Maankalender'
+import { OmhoogBlok } from '@/app/_plate/OmhoogBlok'
 import { haalKp, laatstGemeten } from '@/lib/aurora'
 
 const DarkSkyMap = dynamic(() => import('./DarkSkyMap'), {
@@ -322,6 +323,10 @@ export default function Belichtingstabel() {
             <a key={h} href={h}>{t}</a>
           ))}
         </nav>
+
+        <div className="pl-wrap">
+          <OmhoogBlok />
+        </div>
 
         {/* ══ Wanneer ══ */}
         <section className="pl-wrap" aria-labelledby="pl-when">

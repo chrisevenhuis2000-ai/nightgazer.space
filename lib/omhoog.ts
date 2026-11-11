@@ -95,7 +95,7 @@ export const NACHTEN: Nacht[] = [
     titel: 'Het ISS zien overkomen',
     tekst: 'Het ruimtestation is een felle, rustige stip die in een paar minuten over de hemel schuift. Op Sterrenkijken staan de overgangen van deze week voor jouw plek.',
     wanneer: 'Tijd per overgang, zie de lijst',
-    link: { href: '/sterrenkijken/', tekst: 'ISS-overgangen bekijken' },
+    link: { href: '/sterrenkijken/#pl-iss', tekst: 'ISS-overgangen bekijken' },
   },
   {
     datum: '2026-11-27', met: 'oog',
@@ -170,7 +170,7 @@ export const NACHTEN: Nacht[] = [
     titel: 'Hoe donker is jouw hemel?',
     tekst: 'Morgen is het nieuwe maan. Tel hoeveel sterren je binnen het Grote Vierkant van Pegasus ziet. Nul is stadshemel, vier of meer is mooi donker.',
     wanneer: '19:00 tot 21:00, hoog in het zuiden',
-    link: { href: '/sterrenkijken/', tekst: 'Donkere plekken bij jou in de buurt' },
+    link: { href: '/sterrenkijken/#pl-where', tekst: 'Donkere plekken bij jou in de buurt' },
   },
   {
     datum: '2026-12-09', met: 'oog',

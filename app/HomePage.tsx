@@ -20,6 +20,7 @@ import { SiteFooter } from './components/SiteFooter'
 import { MeldingenTeaser } from './components/MeldingenTeaser'
 import { SpellenBlok } from './_plate/SpellenBlok'
 import { Cadeautijd } from './_plate/Cadeautijd'
+import { OmhoogBlok } from './_plate/OmhoogBlok'
 import {
   PROXY, APOD_CACHE_KEY,
   type APODData, type ISSData, type Article,
@@ -711,6 +712,10 @@ export default function HomePage({ start }: {
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         <div className="pl-wrap">
           <FirstView apod={apod} iss={iss} issFailed={issFailed} total={total} latest={articles[0]?.date ?? ''} sky={sky} />
+        </div>
+
+        <div className="pl-wrap">
+          <OmhoogBlok />
         </div>
 
         <div className="pl-wrap">
