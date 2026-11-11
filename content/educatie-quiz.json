@@ -1402,6 +1402,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-11",
+      "slug": "nasas-escapade-completes-powered-earth-flybys-now-en-route-t",
+      "titel": "Tweelingsondes ESCAPADE schieten via de aarde naar Mars",
+      "beg": {
+        "q": "Waarom opent het lanceervenster voor een zuinige reis naar Mars maar ongeveer eens in de twee jaar?",
+        "options": [
+          "Het duurt twee jaar om een nieuwe raket te bouwen.",
+          "Aarde en Mars staan maar eens in de twee jaar gunstig ten opzichte van elkaar, omdat ze met verschillende snelheden om de zon lopen.",
+          "Mars is alleen in de winter dicht genoeg bij de zon om te bereiken.",
+          "De zonnewind is maar eens in de twee jaar zwak genoeg om te vertrekken."
+        ],
+        "correct": 1,
+        "explain": "De aarde loopt sneller om de zon dan Mars, dus de onderlinge stand verandert steeds. Pas na ongeveer twee jaar staan de planeten weer zo dat een zuinige reis kan. ESCAPADE kon bij de lancering niet rechtstreeks vertrekken, omdat de planeten toen aan weerszijden van de zon stonden."
+      },
+      "ama": {
+        "q": "Na hoeveel tijd keert de gunstige onderlinge stand van aarde en Mars voor een zuinige overgangsbaan ongeveer terug?",
+        "options": [
+          "Ongeveer 23 maanden, één marsjaar",
+          "Ongeveer 48 maanden",
+          "Ongeveer 12 maanden",
+          "Ongeveer 26 maanden"
+        ],
+        "correct": 3,
+        "explain": "Dit is de synodische periode van aarde en Mars: ongeveer 780 dagen, dus zo'n 26 maanden. Een marsjaar is 687 dagen, maar de aarde loopt in die tijd door en moet Mars opnieuw inhalen. Daarom is het venster ruim twee jaar."
+      },
+      "pro": {
+        "q": "Welke synodische periode van aarde en Mars volgt uit hun siderische perioden van 365,25 en 687 dagen, en bepaalt het tweejaarlijkse lanceervenster?",
+        "options": [
+          "Ongeveer 238 dagen, uit 1/S = 1/P⊕ + 1/P♂",
+          "Ongeveer 687 dagen, want S = P♂",
+          "Ongeveer 1052 dagen, uit S = P⊕ + P♂",
+          "Ongeveer 780 dagen, uit 1/S = 1/P⊕ − 1/P♂"
+        ],
+        "correct": 3,
+        "explain": "De aarde haalt Mars in met een hoeksnelheid die het verschil is van beide hoeksnelheden, dus 1/S = 1/365,25 − 1/687, wat ongeveer 780 dagen geeft. Optelling van de snelheden geeft de verkeerde uitkomst, want dan zou de aarde Mars tegemoet lopen in plaats van inhalen."
+      }
+    },
+    {
       "datum": "2026-11-10",
       "slug": "apod-2026-november-10-saturn-behind-the-moon",
       "titel": "Saturnus verdwijnt achter de Maan: astrofoto van een zeldzame bedekking",
@@ -1893,45 +1931,7 @@
         "correct": 0,
         "explain": "Het signaal van een object is in elke opname hetzelfde en telt lineair op (∝ N). Onafhankelijke, willekeurige ruis telt kwadratisch op en groeit dus met √N. Daardoor verbetert de signaal-ruisverhouding met √N; vier keer zoveel opnamen geeft dus twee keer zo'n goede verhouding."
       }
-    },
-    {
-      "datum": "2026-10-23",
-      "slug": "stars-brewing-in-a-nebulous-cauldron",
-      "titel": "Sterren in een kolkende nevelketel: Webb kijkt in N159",
-      "beg": {
-        "q": "Waarom licht het gas in een stervormingsgebied als N159 op als een heldere nevel?",
-        "options": [
-          "Het ultraviolette licht van hete, zware sterren maakt het gas energierijk, waardoor het gaat gloeien",
-          "Het gas is zelf zo heet dat het van binnenuit brandt, zoals een vuur",
-          "Het gas weerkaatst het licht van de Melkweg als een spiegel",
-          "Het gas wordt verlicht door de zon van ons eigen zonnestelsel"
-        ],
-        "correct": 0,
-        "explain": "Zware, hete sterren zenden veel ultraviolette straling uit. Die straling geeft het omringende waterstofgas energie, waardoor het gaat oplichten. Zulke gloeiende gaswolken noemen astronomen emissienevels."
-      },
-      "ama": {
-        "q": "Wat gebeurt er met het waterstofgas in een H II-gebied zoals N159 onder invloed van zware sterren?",
-        "options": [
-          "Het wordt door kernfusie omgezet in zwaardere elementen",
-          "Het koelt af tot moleculair waterstof door de straling",
-          "Het wordt geïoniseerd door ultraviolette straling en gaat daardoor oplichten",
-          "Het condenseert tot vloeibaar waterstof door de sterrenwinden"
-        ],
-        "correct": 2,
-        "explain": "In een H II-gebied is het waterstof geïoniseerd: ultraviolette fotonen van zware sterren slaan elektronen los van de atomen. Als elektronen en protonen zich weer verbinden, zenden ze licht uit, waardoor de emissienevel zichtbaar wordt. De H II staat voor geïoniseerd waterstof."
-      },
-      "pro": {
-        "q": "Waarom is de lage metalliciteit van de Grote Magelhaense Wolk nuttig voor onderzoek naar stervorming in N159?",
-        "options": [
-          "Zware elementen ontbreken er volledig, waardoor alleen waterstofsterren kunnen ontstaan",
-          "De omstandigheden lijken daardoor meer op die in het vroege heelal, toen er nog weinig zware elementen waren",
-          "Stof is bij lage metalliciteit afwezig, waardoor ultraviolette straling ongehinderd het hele stelsel vult",
-          "Lage metalliciteit zorgt ervoor dat gaswolken sneller afkoelen dan in de Melkweg, waardoor sterren groter worden dan 150 zonsmassa"
-        ],
-        "correct": 1,
-        "explain": "Metalliciteit is het aandeel elementen zwaarder dan waterstof en helium. Die elementen zijn in de loop van de tijd door eerdere sterren gevormd, dus in het vroege heelal waren ze schaars. De Grote Magelhaense Wolk heeft er minder dan de Melkweg, maar niet nul, en vormt daardoor een nabije proeftuin voor vroege stervorming."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-10T15:43:23.582Z"
+  "bijgewerkt": "2026-11-11T16:06:22.355Z"
 }
