@@ -1,4 +1,4 @@
-/* De zwermgidsen: /sterrenkijken/leoniden en /sterrenkijken/geminiden.
+/* De zwermgidsen: /gidsen/leoniden en /gidsen/geminiden.
 
    Eén pagina per zwerm die mensen op Google zoeken ("Leoniden 2026",
    "Geminiden 2026"), met het antwoord bovenaan: wanneer, hoe laat, hoeveel.
@@ -23,6 +23,8 @@ export type Zwermgids = {
   /** De zin die in Google en bovenaan de pagina staat. */
   kop: string
   lede: string
+  /** Korte tekst voor de plaat op /gidsen. */
+  kaart: string
   beeld: { nasaId: string; titel: string; credit: string }
   specs: { label: string; waarde: string }[]
   /** De nacht van 18:00 tot 07:00, hoogte van de radiant in graden. */
@@ -48,6 +50,7 @@ export const ZWERMGIDSEN: Record<Zwermgids['slug'], Zwermgids> = {
       'De Leoniden pieken dinsdagavond 17 november rond 21 uur, maar dan staat hun radiant nog onder de horizon. ' +
       'Het beste kijk je in de vroege ochtend van woensdag 18 november, rond 6 uur. Reken onder een donkere hemel op ' +
       '4 tot 10 Leoniden per uur. De maan gaat om 00:06 onder en stoort daarna niet meer.',
+    kaart: 'De piek valt op dinsdagavond 17 november. Het meest zie je woensdagochtend rond 6 uur, als de maan al onder is.',
     beeld: {
       nasaId: 'NHQ202108110003',
       titel: 'Een meteoor in een opname van 30 seconden, tijdens de Perseïden van 2021 in West Virginia',
@@ -92,7 +95,8 @@ export const ZWERMGIDSEN: Record<Zwermgids['slug'], Zwermgids> = {
     kop: 'Geminiden 2026: de beste vallende sterren van het jaar, nacht van 13 op 14 december',
     lede:
       'De Geminiden zijn de rijkste meteorenzwerm van het jaar. In de nacht van zondag 13 op maandag 14 december zie je onder een donkere hemel ' +
-      'zo’n 49 tot 65 Geminiden per uur, het meest rond half 5 ’s ochtends. De maan gaat al om 20:38 onder, dus die stoort niet.',
+      'zo’n 49 tot 65 Geminiden per uur, het meest rond half vijf ’s ochtends. De maan gaat al om 20:38 onder, dus die stoort niet.',
+    kaart: 'De rijkste zwerm van het jaar, en dit jaar stoort de maan niet. Het meest zie je rond half vijf ’s ochtends.',
     beeld: {
       nasaId: 'NHQ202508030001',
       titel: 'Een meteoor boven de bomen in een opname van 30 seconden, tijdens de Perseïden van 2025 in West Virginia',

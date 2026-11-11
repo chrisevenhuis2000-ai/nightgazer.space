@@ -5127,6 +5127,7 @@ a:hover .pl-emulsion > img,
 
 .pl-gx { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); }
 .pl-gx__item--groot { grid-column: 1 / -1; }
+.pl-gx--twee { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .pl-gx__a { display: grid; grid-template-rows: auto 1fr; height: 100%; background: var(--pl-plate); border: 1px solid var(--pl-rule); transition: border-color 220ms var(--pl-ease); }
 .pl-gx__a:hover { border-color: color-mix(in srgb, var(--pl-act) 55%, var(--pl-rule)); }
 .pl-gx__item--groot .pl-gx__a { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-rows: none; }
@@ -5225,7 +5226,7 @@ a:hover .pl-emulsion > img,
 }
 .pl-hf__uitleg { margin-top: 8px; color: var(--pl-ink-3); }
 
-/* ══ Zwermgids (/sterrenkijken/leoniden, /geminiden) ═══════════════════════
+/* ══ Zwermgids (/gidsen/leoniden, /geminiden) ═══════════════════════
    De kop geeft het antwoord; de nachtbalk laat zien waarom dat moment.
    Eén beweging: de radiantlijn tekent zich als de balk in beeld komt. */
 .pl-zg__kop .pl-h1 { max-width: 22ch; }
