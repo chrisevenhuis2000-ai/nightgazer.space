@@ -66,10 +66,12 @@ export const KOPBEELD = {
 /* Astroshop (nimax): het partnerprogramma hangt `?affiliate_id=` aan een
    gewone productlink. Productnummers (p,…) zijn in alle Astroshop-landen
    gelijk en de winkel vindt een product op dat nummer alleen, dus de links
-   gaan naar de Nederlandstalige winkel astroshop.be als /p,<nummer>. */
+   gaan naar de Nederlandstalige winkel astroshop.be als /p,<nummer>.
+   Niet elk nummer werkt kaal op .be (15194 gaf een redirect-lus); geef dan
+   het pad van de .be-productpagina mee. */
 const ASTROSHOP_ID = 'nightgazer'
-export const astroshop = (productnummer: number) =>
-  `https://www.astroshop.be/p,${productnummer}?affiliate_id=${ASTROSHOP_ID}`
+export const astroshop = (productnummer: number, pad = '') =>
+  `https://www.astroshop.be/${pad ? pad + '/' : ''}p,${productnummer}?affiliate_id=${ASTROSHOP_ID}`
 const AMAZON_TAG = 'nightgazerspa-21'
 export const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`
 
@@ -195,7 +197,7 @@ export const GROEPEN: Groep[] = [
       {
         naam:   'Turn Left at Orion',
         waarom: 'Engelstalig, maar de beste gids om met een kleine telescoop objecten echt te vinden, met tekeningen van wat je in het oculair ziet.',
-        links:  { astroshop: astroshop(15194), amazon: amazon('Turn Left at Orion') },
+        links:  { astroshop: astroshop(59410, 'sky-atlas/cambridge-university-press-atlas-turn-left-at-orion'), amazon: amazon('Turn Left at Orion') },
       },
     ],
   },
