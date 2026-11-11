@@ -2,6 +2,8 @@
 // Bron voor app/sterrenkijken/Belichtingstabel.tsx en de homepage-
 // instrumenten: locaties, donkere plekken, zwermen, score en maanfase.
 
+import type { CalEvent } from './ics'
+
 // ── Types ───────────────────────────────────────────────────────────────────
 
 export interface Location { lat: number; lon: number; name: string }
@@ -65,6 +67,30 @@ export function showerWindow(s: Shower, year = SHOWER_YEAR): { start: Date; end:
   const vroeg = 'vroeg' in s && s.vroeg
   const start = new Date(year, s.month - 1, s.day, vroeg ? 20 : 22, 0, 0)
   return { start, end: new Date(start.getTime() + (vroeg ? 3 : 4) * 3600_000) }
+}
+
+/** Een zwerm als agenda-item. Gedeeld door de Hemelagenda op /sterrenkijken
+    en scripts/generate-agenda.mjs (het vaste bestand /agenda/meteorenzwermen.ics). */
+export function zwermAgenda(s: Shower): CalEvent {
+  const { start, end } = showerWindow(s)
+  return {
+    uid: `${s.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${SHOWER_YEAR}@nightgazer.space`,
+    title: `${s.name} — piek (tot ${s.zhr}/uur)`,
+    description:
+      `${s.note}\n\n`
+      + `Tot ${s.zhr} meteoren per uur bij een ideaal donkere hemel; in de praktijk minder.\n`
+      + `De radiant ligt in ${s.radiant}, maar kijk daar juist niet strak naar — `
+      + `de mooiste sporen zie je er een stuk vandaan.\n\n`
+      + `Kijken kan van ${start.getHours()}:00 tot ${end.getHours()}:00. `
+      + `Geen telescoop of verrekijker: je ogen vangen het meeste. `
+      + `Geef ze twintig minuten om aan het donker te wennen en kijk niet op je telefoon.\n\n`
+      + `nightgazer.space/sterrenkijken`,
+    url: 'https://nightgazer.space/sterrenkijken/',
+    allDay: false,
+    start,
+    end,
+    remindDays: 1,
+  }
 }
 
 export const SKY_OBJECTS = [

@@ -77,7 +77,7 @@ export const LEVEL_WORD = { beg: 'Beginner', ama: 'Amateur', pro: 'Pro' } as con
 export const LEVEL_STEP = { beg: 1, ama: 2, pro: 3 } as const
 
 export function plateNo(total: number, i: number) {
-  return `NG-${String(Math.max(total - i, 1)).padStart(4, '0')}`
+  return `Nr. ${Math.max(total - i, 1)}`
 }
 
 export function img(url: string, w: number) {
@@ -95,7 +95,7 @@ export function Ladder({ level }: { level: 'beg' | 'ama' | 'pro' }) {
 }
 
 /* ══ Header ═══════════════════════════════════════════════════════════════ */
-export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
+export function PlateHead({ total, edition, current, totalLabel = 'artikelen' }: {
   total: number
   edition: string
   current: string
@@ -131,7 +131,7 @@ export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
           </nav>
 
           <div className="pl-prov">
-            <span>Editie {edition}</span>
+            <span>{edition}</span>
             <span className="pl-prov__tick" aria-hidden="true" />
             <span className="pl-num"><span className="pl-prov__n">{total}</span> {totalLabel}</span>
           </div>
@@ -316,7 +316,8 @@ export function useArticles(backfill = 24, initial?: Article[]): Article[] {
 }
 
 export function editionLabel(): string {
-  return new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })
+  const s = new Date().toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' })
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
 

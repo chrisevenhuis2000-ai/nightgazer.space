@@ -207,6 +207,11 @@ export default function Hemelfoto() {
                   return <li key={i} data-st={st} />
                 })}
               </ol>
+              {!stand.klaar && (
+                <p className="pl-body-s pl-hf__uitleg">
+                  {POGINGEN} pogingen. Na elke foute gok zoomt de foto verder uit. Groen omrand: goede soort, ander object.
+                </p>
+              )}
               {stand.klaar && <figcaption className="pl-hf__credit">{foto.credit}</figcaption>}
             </figure>
 

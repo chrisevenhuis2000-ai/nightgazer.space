@@ -105,7 +105,7 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
             placeholder="Zoek gidsen, zwermen, artikelen…"
             style={{ flex: 1, background: 'none', border: 'none', outline: 'none', color: '#fff', fontSize: '1rem', fontFamily: 'var(--font-sans)', caretColor: '#378ADD' }}
           />
-          <kbd style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', background: '#1a1c42', border: '1px solid #252858', borderRadius: 4, padding: '2px 6px' }}>ESC</kbd>
+          <kbd style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8', background: '#1a1c42', border: '1px solid #252858', borderRadius: 4, padding: '2px 6px' }}>ESC</kbd>
         </div>
 
         {/* Results */}
@@ -121,7 +121,7 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
             return (
               <div key={t.href}>
                 {kop && (
-                  <div style={{ padding: '12px 20px 4px', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A86A8' }}>
+                  <div style={{ padding: '12px 20px 4px', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A86A8' }}>
                     {t.soort === 'pagina' ? 'Gidsen en pagina’s' : t.soort === 'hemel' ? 'Aan de hemel' : 'Artikelen'}
                   </div>
                 )}
@@ -148,7 +148,7 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
                     </div>
                     <div style={{ fontSize: '0.8rem', color: '#9AA6C8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t.sub}</div>
                   </div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', flexShrink: 0 }}>↵</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8', flexShrink: 0 }}>↵</span>
                 </button>
               </div>
             )
@@ -158,7 +158,7 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
         {/* Footer hint */}
         <div style={{ padding: '8px 20px', borderTop: '1px solid #1a1c3a', display: 'flex', gap: 16 }}>
           {[['↑↓', 'navigeer'], ['↵', 'open'], ['ESC', 'sluit']].map(([key, label]) => (
-            <span key={key} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#7A86A8', display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span key={key} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8', display: 'flex', alignItems: 'center', gap: 4 }}>
               <kbd style={{ background: '#1a1c42', border: '1px solid #252858', borderRadius: 3, padding: '1px 5px', color: '#7A86A8' }}>{key}</kbd>
               {label}
             </span>

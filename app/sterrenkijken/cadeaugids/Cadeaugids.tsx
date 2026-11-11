@@ -72,7 +72,7 @@ export default function Cadeaugids() {
                   <a key={k.id} href={`#pl-cadeau-${k.id}`} className="pl-ustappen__a">
                     <span className="pl-label pl-label--stamp pl-num">{k.label}</span>
                     <span className="pl-ustappen__t">{k.titel}</span>
-                    <span className="pl-label pl-num">{k.cadeaus.length} {k.cadeaus.length === 1 ? 'aanrader' : 'aanraders'}</span>
+                    <span className="pl-label pl-num">{k.cadeaus.length} {k.cadeaus.length === 1 ? 'tip' : 'tips'}</span>
                   </a>
                 ))}
               </nav>

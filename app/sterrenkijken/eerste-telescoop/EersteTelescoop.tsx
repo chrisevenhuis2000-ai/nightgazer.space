@@ -342,7 +342,7 @@ export default function EersteTelescoop() {
         </section>
 
         <section className="pl-wrap pl-gids__slot" aria-label="Verder">
-          <UitrustingVerwijzing tekst="Alle aanraders op een rij, van rood lampje en sterrenkaart tot boeken voor bewolkte avonden." />
+          <UitrustingVerwijzing tekst="Alle tips op een rij, van rood lampje en sterrenkaart tot boeken voor bewolkte avonden." />
           <Steun />
         </section>
       </main>

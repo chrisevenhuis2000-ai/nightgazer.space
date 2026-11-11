@@ -172,12 +172,12 @@ export function SiteFooter({ cols = DEFAULT_COLS, tagline = DEFAULT_TAGLINE, not
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             {BADGES.map(([label, icon]) => (
-              <span key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', border: '1px solid #252858', borderRadius: 2, fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#7A86A8' }}>
+              <span key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', border: '1px solid #252858', borderRadius: 2, fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }}>
                 <span aria-hidden="true">{icon}</span>{label}
               </span>
             ))}
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="footer-to-top" aria-label="Terug naar boven"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#7A86A8' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }}
               onMouseEnter={e => (e.currentTarget.style.color = '#FFFFFF')}
               onMouseLeave={e => (e.currentTarget.style.color = '#7A86A8')}
             >

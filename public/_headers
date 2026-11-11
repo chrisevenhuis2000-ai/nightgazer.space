@@ -6,3 +6,8 @@
   Referrer-Policy: no-referrer
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+
+# Het agendabestand: als agenda openen, niet als tekst tonen, en elke dag vers.
+/agenda/*
+  Content-Type: text/calendar; charset=utf-8
+  Cache-Control: public, max-age=3600
