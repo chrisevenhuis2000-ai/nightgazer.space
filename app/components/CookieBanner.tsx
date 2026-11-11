@@ -9,6 +9,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ANALYTICS_KEUZE } from './AdSenseScript'
+import { archivo } from '@/app/_plate/shared'
 
 export const OPEN_BANNER = 'ng-cookie-instellingen'
 
@@ -44,32 +45,19 @@ export default function CookieBanner() {
     setOpen(false)
   }
 
-  const knop: React.CSSProperties = {
-    padding: '9px 16px', borderRadius: 3, cursor: 'pointer',
-    fontFamily: 'var(--font-sans)', fontSize: '0.85rem', fontWeight: 600,
-  }
-
   return (
-    <div role="dialog" aria-live="polite" aria-label="Toestemming voor bezoekersstatistieken"
-      style={{
-        position: 'fixed', left: 16, right: 16, bottom: 16, zIndex: 1000,
-        maxWidth: 560, margin: '0 auto',
-        background: '#12132A', border: '1px solid #252858', borderRadius: 4,
-        boxShadow: '0 8px 32px rgba(0,0,0,0.5)', padding: '18px 20px',
-      }}>
-      <p style={{ fontSize: '0.88rem', color: '#C8D0E0', lineHeight: 1.6, margin: 0 }}>
-        Mag NightGazer anonieme bezoekersstatistieken bijhouden met Google Analytics?
-        Dat helpt mij zien welke artikelen jullie lezen. Daarvoor zet Google een
-        analytische cookie. Advertentiecookies worden niet geplaatst.{' '}
-        <Link href="/privacy/" style={{ color: '#378ADD', textDecoration: 'none' }}>Privacy</Link>
+    <div role="dialog" aria-live="polite" aria-labelledby="ng-toestemming-kop" className={`ng-toestemming ${archivo.variable}`}>
+      <p id="ng-toestemming-kop" className="ng-toestemming__label">Toestemming · Statistieken</p>
+      <p className="ng-toestemming__tekst">
+        Mag ik anoniem meten welke artikelen gelezen worden? Google Analytics zet
+        daarvoor één cookie. Geen advertentiecookies.{' '}
+        <Link href="/privacy/" className="ng-toestemming__link">Privacy</Link>
       </p>
-      <div style={{ display: 'flex', gap: 10, marginTop: 14, flexWrap: 'wrap' }}>
-        <button type="button" onClick={() => kies(true)}
-          style={{ ...knop, background: '#378ADD', color: '#FFFFFF', border: '1px solid #378ADD' }}>
+      <div className="ng-toestemming__knoppen">
+        <button type="button" onClick={() => kies(true)} className="ng-toestemming__knop ng-toestemming__knop--ja">
           Accepteren
         </button>
-        <button type="button" onClick={() => kies(false)}
-          style={{ ...knop, background: 'transparent', color: '#C8D0E0', border: '1px solid #3A3F78' }}>
+        <button type="button" onClick={() => kies(false)} className="ng-toestemming__knop">
           Weigeren
         </button>
       </div>
