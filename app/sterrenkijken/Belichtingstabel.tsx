@@ -659,7 +659,7 @@ export default function Belichtingstabel() {
               <tbody>
                 {METEORS.map(s => (
                   <tr key={s.name} data-next={s.name === nextShower.name ? '1' : '0'}>
-                    <td>{s.name}</td>
+                    <td>{'gids' in s && s.gids ? <Link href={s.gids} className="pl-voorw__a">{s.name}</Link> : s.name}</td>
                     <td>{s.peak}</td>
                     <td>{s.zhr}</td>
                     <td><Rate value={s.rating} /></td>

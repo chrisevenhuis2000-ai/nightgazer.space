@@ -41,7 +41,7 @@ export function past(tekst: string, vraag: string): boolean {
 
 const HEMEL = METEORS.map(m => ({
   titel: m.name, sub: `Meteorenzwerm · piek ${m.peak} · tot ${m.zhr} per uur`,
-  href: '/sterrenkijken/#pl-showers', woorden: `${m.name} meteoren meteorenzwerm vallende sterren ${m.radiant}`,
+  href: 'gids' in m && m.gids ? m.gids : '/sterrenkijken/#pl-showers', woorden: `${m.name} meteoren meteorenzwerm vallende sterren ${m.radiant}`,
 }))
 
 export const GIDSEN: Treffer[] = PAGINAS.slice(0, 4).map(p => ({ ...p, soort: 'pagina' }))
