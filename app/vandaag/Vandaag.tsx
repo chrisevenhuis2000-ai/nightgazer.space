@@ -21,6 +21,7 @@ import { Steun } from '../components/Steun'
 import { MeldingenTeaser } from '../components/MeldingenTeaser'
 import { SpellenBlok } from '@/app/_plate/SpellenBlok'
 import { Cadeautijd } from '@/app/_plate/Cadeautijd'
+import { OmhoogBlok } from '@/app/_plate/OmhoogBlok'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, img } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { artikelLink, nuInNederland, uitArchief, zichtbaar, type DagmapItem } from '@/lib/dagmap'
@@ -86,6 +87,10 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
             </div>
           </section>
         )}
+
+        <div className="pl-wrap">
+          <OmhoogBlok />
+        </div>
 
         <div className="pl-wrap">
           <Cadeautijd />
