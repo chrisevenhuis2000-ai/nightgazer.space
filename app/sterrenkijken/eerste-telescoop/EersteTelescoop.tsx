@@ -16,7 +16,7 @@ import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { Steun } from '../../components/Steun'
 import { AffiliateMelding } from '../../components/AffiliateMelding'
-import { archivo, FOOTER_COLS, PlateHead, editionLabel, UitrustingVerwijzing } from '@/app/_plate/shared'
+import { archivo, FOOTER_COLS, PlateHead, editionLabel, UitrustingVerwijzing, GidsBalk } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { Schema } from '../uitrusting/Schema'
 import { GROEPEN, WINKEL_NAAM, nasaBeeld, nasaPagina, type Winkel, type Product } from '@/lib/uitrusting'
@@ -347,6 +347,10 @@ export default function EersteTelescoop() {
         </section>
       </main>
 
+      <GidsBalk links={[
+        { href: '#pl-gids-advies', tekst: 'Welke past bij mij?' },
+        { href: '/sterrenkijken/cadeaugids/', tekst: 'Cadeaugids' },
+      ]} />
       <SiteFooter cols={FOOTER_COLS} note="Beelden: NASA (images.nasa.gov)" />
     </div>
   )

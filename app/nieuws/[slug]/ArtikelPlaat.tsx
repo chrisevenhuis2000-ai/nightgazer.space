@@ -26,7 +26,7 @@ import { MISSIONS } from '@/lib/missions-data'
 import { TOPICS } from '@/lib/topics'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo, UitrustingVerwijzing,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo, GidsenVerwijzing,
 } from '@/app/_plate/shared'
 
 const ORDER: ReadingLevel[] = ['original', 'beginner', 'amateur', 'pro']
@@ -109,11 +109,6 @@ function Para({ text, state, lead }: { text: string; state: ParaState; lead: boo
   return (
     <p className={`pl-para${lead ? ' pl-para--lead' : ''}`} data-state={state}>
       {text}
-      {state === 'failed' && (
-        <span className="pl-para__note">
-          Herschrijven mislukt voor deze alinea — dit is de oorspronkelijke tekst.
-        </span>
-      )}
     </p>
   )
 }
@@ -242,8 +237,9 @@ export default function ArtikelPlaat({ slug, initial = null }: {
 
   /* ── Ontwikkelen: alinea's komen één voor één scherp ───────────────────
      De herschrijving loopt per alinea, dus de plaat ontwikkelt zich ook per
-     alinea. Mislukt er één, dan zegt die alinea dat en toont het origineel —
-     eeuwig laten gloeien zou een belofte zijn die niet meer komt. */
+     alinea. Mislukt er één, dan toont die alinea stil het origineel (geen
+     rode notitie: die las als "kapotte site"), en wordt het niveau niet
+     bewaard, zodat een volgende klik het opnieuw probeert. */
   const develop = useCallback(async (next: ReadingLevel) => {
     if (!article) return
     const id = ++runId.current
@@ -267,6 +263,7 @@ export default function ArtikelPlaat({ slug, initial = null }: {
     setStates(article.paragraphs.map(() => 'latent'))
 
     const out: string[] = [...article.paragraphs]
+    let failed = false
     await Promise.all(article.paragraphs.map(async (para, i) => {
       try {
         const res = await fetch(PROXY, {
@@ -288,13 +285,14 @@ export default function ArtikelPlaat({ slug, initial = null }: {
         setTexts(t => { const c = [...t]; c[i] = text; return c })
         setStates(s => { const c = [...s]; c[i] = 'developed'; return c })
       } catch {
+        failed = true
         if (runId.current !== id) return
         setStates(s => { const c = [...s]; c[i] = 'failed'; return c })
       }
     }))
 
     if (runId.current !== id) return
-    cache.current[next] = out
+    if (!failed) cache.current[next] = out
     setBusy(false)
   }, [article])
 
@@ -613,10 +611,12 @@ ${article.rawBody.slice(0, 2500)}` }],
           )}
         </div>
 
-        {/* ══ Uitrusting, alleen bij onderwerpen die je zelf kunt zien ══ */}
-        {['sterrenkijken', 'kometen'].includes(article?.category?.toLowerCase() ?? '') && (
+        {/* ══ Gidsen, alleen bij onderwerpen die je zelf kunt zien ══
+             Hier komt het zoekverkeer binnen; zonder deze regel was er geen weg
+             naar de telescoopgids, de cadeaugids of de kalender. */}
+        {['sterrenkijken', 'kometen', 'maan'].includes(article?.category?.toLowerCase() ?? '') && (
           <div className="pl-wrap">
-            <UitrustingVerwijzing tekst="Zelf naar buiten? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
+            <GidsenVerwijzing tekst="Zelf naar buiten? Hoe je een eerste telescoop kiest, wat je nodig hebt om meer te zien, en de Hemelkalender." />
           </div>
         )}
 
