@@ -8,6 +8,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Ico } from './Instruments'
+import { GidsenVerwijzing } from './shared'
 import { telGebeurtenis } from '@/lib/tel'
 import { nlDag } from '@/lib/hemelfoto'
 import { seizoen, SEIZOEN_TEKST, type Seizoen } from '@/lib/cadeautijd'
@@ -15,7 +16,7 @@ import { KALENDER_PRIJS, KALENDER_JAAR } from '@/lib/hemelkalender'
 import { STEUN_URL } from '@/lib/steun'
 
 const RIJEN = [
-  { href: '/sterrenkijken/cadeaugids/', kop: 'Cadeaugids', tekst: 'Van rood lampje tot telescoop, per prijsklasse vanaf € 25' },
+  { href: '/sterrenkijken/cadeaugids/', kop: 'Cadeaugids', tekst: 'Van rood lampje tot telescoop, per prijsklasse' },
   { href: '/sterrenkijken/hemelkalender/', kop: `Hemelkalender ${KALENDER_JAAR}`, tekst: `${KALENDER_PRIJS}, pdf, direct in huis` },
   { href: '/sterrenkijken/eerste-telescoop/', kop: 'Eerste telescoop kiezen', tekst: 'Waar je op let en wat je echt ziet' },
 ]
@@ -29,19 +30,7 @@ export function Cadeautijd() {
 
   if (!nu) return null
   if (nu === 'uit') {
-    return (
-      <div className="pl-plate pl-uitr-ref">
-        <div>
-          <span className="pl-label">Gidsen</span>
-          <p className="pl-body">Een telescoop kiezen, cadeaus en de Hemelkalender op één plek.</p>
-        </div>
-        <Link href="/gidsen/" className="pl-read" onClick={klik('/gidsen/')}>
-          <span>Naar de gidsen</span>
-          <span className="pl-read__rule" aria-hidden="true" />
-          <Ico.arrow />
-        </Link>
-      </div>
-    )
+    return <GidsenVerwijzing tekst="Een telescoop kiezen, cadeaus en de Hemelkalender op één plek." onClick={klik('/gidsen/')} />
   }
 
   const rijen = nu === 'januari' ? RIJEN.slice(1, 2) : RIJEN
@@ -67,4 +56,13 @@ export function Cadeautijd() {
       </p>
     </section>
   )
+}
+
+/* De besteldatum bovenaan de cadeaugids, alleen voor Sinterklaas en Kerst.
+   Ook pas na mount, om dezelfde reden als hierboven. */
+export function BestelRegel() {
+  const [nu, setNu] = useState<Seizoen | null>(null)
+  useEffect(() => { setNu(seizoen(nlDag())) }, [])
+  if (nu !== 'sint' && nu !== 'kerst') return null
+  return <p className="pl-tijd__seizoen">{SEIZOEN_TEKST[nu]}</p>
 }

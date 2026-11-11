@@ -443,6 +443,36 @@ export function KalenderVerwijzing({ tekst }: { tekst: string }) {
   )
 }
 
+/* ══ Vaste balk onderin, alleen op de telefoon ══════════════════════════
+   Op de lange gidsen raakte je op mobiel de weg kwijt (de prijsklassen
+   staan bovenaan, de kalender halverwege). Twee vaste links onderin. */
+export function GidsBalk({ links }: { links: { href: string; tekst: string }[] }) {
+  return (
+    <nav className="pl-balk" aria-label="Snel naar">
+      {links.map(l => <Link key={l.href} href={l.href}>{l.tekst}</Link>)}
+    </nav>
+  )
+}
+
+/* ══ Verwijzing naar de gidsen ═══════════════════════════════════════════
+   Eén regel naar /gidsen: onder artikelen die je zelf aan de hemel kunt
+   zien, en buiten het cadeauseizoen op home en /vandaag. */
+export function GidsenVerwijzing({ tekst, onClick }: { tekst: string; onClick?: () => void }) {
+  return (
+    <div className="pl-plate pl-uitr-ref">
+      <div>
+        <span className="pl-label">Gidsen</span>
+        <p className="pl-body">{tekst}</p>
+      </div>
+      <Link href="/gidsen/" className="pl-read" onClick={onClick}>
+        <span>Naar de gidsen</span>
+        <span className="pl-read__rule" aria-hidden="true" />
+        <Ico.arrow />
+      </Link>
+    </div>
+  )
+}
+
 /* ══ Verwijzing naar de uitrusting ════════════════════════════════════════
    Eén blok, gedeeld door /sterrenkijken en /educatie, dat naar de pagina met
    aanraders wijst. Het blok zelf bevat geen winkellinks. */

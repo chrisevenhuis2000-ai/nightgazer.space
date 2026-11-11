@@ -14,9 +14,11 @@ import Link from 'next/link'
 import { SiteFooter } from '../../components/SiteFooter'
 import { Steun } from '../../components/Steun'
 import { AffiliateMelding } from '../../components/AffiliateMelding'
-import { archivo, FOOTER_COLS, PlateHead, editionLabel, KalenderVerwijzing } from '@/app/_plate/shared'
+import { archivo, FOOTER_COLS, PlateHead, editionLabel, KalenderVerwijzing, GidsBalk } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { WINKEL_NAAM, nasaBeeld, nasaPagina, type Winkel } from '@/lib/uitrusting'
+import { KALENDER_PRIJS, KALENDER_JAAR } from '@/lib/hemelkalender'
+import { BestelRegel } from '@/app/_plate/Cadeautijd'
 import { KLASSEN, NIET_DOEN, CADEAU_KOP, GRATIS_BEELD, type Beeld } from '@/lib/cadeaugids'
 
 const TOTAAL = KLASSEN.reduce((n, k) => n + k.cadeaus.length, 0)
@@ -63,6 +65,8 @@ export default function Cadeaugids() {
                 <Link href="/sterrenkijken/eerste-telescoop/" className="pl-voorw__a">hoe je een eerste telescoop kiest</Link>.
               </p>
 
+              <BestelRegel />
+
               <nav className="pl-ustappen" aria-label="Prijsklassen op deze pagina">
                 {KLASSEN.map(k => (
                   <a key={k.id} href={`#pl-cadeau-${k.id}`} className="pl-ustappen__a">
@@ -81,7 +85,7 @@ export default function Cadeaugids() {
 
         {/* ══ Voor iedereen: de kalender ══ */}
         <section className="pl-wrap" aria-label="Hemelkalender 2027">
-          <KalenderVerwijzing tekst="Voor nog geen vijf euro: de Hemelkalender 2027. Elke nacht de maan en per maand wat er boven Nederland te zien is, met een NASA-beeld per maand. Als pdf om zelf te printen." />
+          <KalenderVerwijzing tekst={`Het kleinste cadeau, ${KALENDER_PRIJS}: de Hemelkalender ${KALENDER_JAAR}. Elke nacht de maan en per maand wat er boven Nederland te zien is, met een NASA-beeld per maand. Een pdf om zelf te printen, dus ook op het laatste moment nog op tijd.`} />
         </section>
 
         {/* ══ De prijsklassen ══ */}
@@ -90,7 +94,7 @@ export default function Cadeaugids() {
             <div className="pl-band">
               <div className="pl-band__t">
                 <h2 id={`pl-cadeau-${k.id}-t`} className="pl-h2">{k.titel}</h2>
-                <span className="pl-label">Richtprijs, kijk in de winkel voor de prijs van vandaag</span>
+                <span className="pl-body-s">Richtprijs. In de winkel zie je de prijs van vandaag.</span>
               </div>
               <p className="pl-label pl-label--stamp pl-num">{k.label}</p>
             </div>
@@ -189,6 +193,10 @@ export default function Cadeaugids() {
         </section>
       </main>
 
+      <GidsBalk links={[
+        { href: '#pl-cadeau', tekst: 'Prijsklassen' },
+        { href: '/sterrenkijken/hemelkalender/', tekst: `Hemelkalender ${KALENDER_PRIJS}` },
+      ]} />
       <SiteFooter cols={FOOTER_COLS} note="Beelden: NASA (images.nasa.gov)" />
     </div>
   )

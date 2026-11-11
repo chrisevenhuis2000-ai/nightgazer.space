@@ -2514,17 +2514,8 @@ a:hover .pl-emulsion > img,
 }
 
 .pl-para[data-state="failed"] {
-  color: var(--pl-ink-2);
   filter: none;
   opacity: 1;
-}
-.pl-para__note {
-  display: block;
-  margin-top: 8px;
-  padding-left: 11px;
-  border-left: 1px solid var(--pl-warn);
-  font-size: 0.78rem;
-  color: var(--pl-ink-3);
 }
 
 /* ── Kantlijn ── */
@@ -5106,3 +5097,20 @@ a:hover .pl-emulsion > img,
 }
 .pl-spring a:hover { color: var(--pl-act); border-color: var(--pl-act); }
 .pl .pl-h2[id] { scroll-margin-top: 140px; }
+
+/* ── Vaste balk onderin op de gidsen (GidsBalk), alleen op de telefoon ── */
+.pl-balk { display: none; }
+@media (max-width: 620px) {
+  .pl:has(.pl-balk) { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+  .pl-balk {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 18;
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: var(--pl-plate); border-top: 1px solid var(--pl-rule);
+  }
+  .pl-balk a {
+    display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 12px;
+    color: var(--pl-act); font-size: 0.9375rem; font-weight: 600; text-align: center;
+  }
+  .pl-balk a + a { border-left: 1px solid var(--pl-rule); }
+}
