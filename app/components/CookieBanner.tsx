@@ -65,7 +65,7 @@ export default function CookieBanner() {
       </p>
       <div style={{ display: 'flex', gap: 10, marginTop: 14, flexWrap: 'wrap' }}>
         <button type="button" onClick={() => kies(true)}
-          style={{ ...knop, background: '#378ADD', color: '#FFFFFF', border: '1px solid #378ADD' }}>
+          style={{ ...knop, background: '#2563B8', color: '#FFFFFF', border: '1px solid #2563B8' }}>
           Accepteren
         </button>
         <button type="button" onClick={() => kies(false)}
