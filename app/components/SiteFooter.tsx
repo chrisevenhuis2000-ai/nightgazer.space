@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { CookieInstellingen } from './CookieInstellingen'
-import { STEUN_URL, STEUN_NAAM } from '@/lib/steun'
+import { STEUN_URL, STEUN_NAAM, STEUN_AFSCHRIFT } from '@/lib/steun'
 
 export interface FooterCol {
   title: string
@@ -136,6 +136,9 @@ export function SiteFooter({ cols = DEFAULT_COLS, tagline = DEFAULT_TAGLINE, not
                 onMouseEnter={e => (e.currentTarget.style.borderColor = '#378ADD')}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = '#2A2E62')}
               ><span aria-hidden="true">☕</span>Trakteer op een koffie</a>
+            )}
+            {STEUN_URL && (
+              <p style={{ fontSize: '0.72rem', color: '#7A86A8', lineHeight: 1.6, maxWidth: 280, marginTop: 8 }}>{STEUN_AFSCHRIFT}</p>
             )}
           </div>
 

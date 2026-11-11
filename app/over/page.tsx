@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SiteNav } from '@/app/components/SiteNav'
 import { SiteFooter } from '@/app/components/SiteFooter'
-import { STEUN_URL, STEUN_NAAM } from '@/lib/steun'
+import { STEUN_URL, STEUN_NAAM, STEUN_AFSCHRIFT } from '@/lib/steun'
 
 export const metadata: Metadata = {
   title:       'Over de maker',
@@ -114,6 +114,15 @@ export default function OverPage() {
                 style={{ display: 'inline-block', marginTop: 16, padding: '10px 18px', background: '#378ADD', color: '#FFFFFF', borderRadius: 4, fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none' }}>
                 ☕ Trakteer op een koffie
               </a>
+              <p style={{ fontSize: '0.76rem', color: '#7A86A8', lineHeight: 1.6, marginTop: 10 }}>{STEUN_AFSCHRIFT}</p>
+
+              <h3 style={{ fontSize: '0.88rem', fontWeight: 700, color: '#FFFFFF', marginTop: 24, marginBottom: 6 }}>
+                Ik zie &lsquo;CRIXIUM&rsquo; op mijn afschrift, klopt dat?
+              </h3>
+              <p style={tekst}>
+                Ja. Crixium is het bedrijf van de maker van Nightgazer en verwerkt de donaties via Ko-fi en PayPal.
+                Vragen? Neem contact op via de <Link href="/contact/" style={link}>contactpagina</Link>.
+              </p>
             </section>
           )}
 
