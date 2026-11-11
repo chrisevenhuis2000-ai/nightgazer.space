@@ -3,6 +3,14 @@ import Script from 'next/script'
 export const ADSENSE_CLIENT = 'ca-pub-1782461224909980'
 const GA_ID = 'G-ETD8FLPPCL'
 
+/**
+ * Zet op true zodra AdSense de site heeft goedgekeurd. Tot die tijd vult
+ * Google de blokken niet: ze groeien leeg op (de pagina verspringt) of tonen
+ * met een adblocker een wit veld. Het script hieronder laadt wel altijd, dat
+ * is wat de AdSense-keuring nodig heeft; de blokken zelf zijn niet nodig.
+ */
+export const ADVERTENTIES_AAN = false
+
 /** Sleutel in localStorage met de keuze uit de eigen Analytics-banner: 'ja' of 'nee'. */
 export const ANALYTICS_KEUZE = 'ng-analytics-toestemming'
 
