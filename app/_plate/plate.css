@@ -899,7 +899,11 @@ a:hover .pl-emulsion > img,
   border-bottom: 1px solid var(--pl-rule);
   display: flex; align-items: center; gap: 12px;
 }
-.pl-ad__body { padding: 14px 16px; min-height: 96px; display: flex; align-items: center; justify-content: center; }
+.pl-ad__body { padding: 14px 16px; min-height: 280px; display: flex; align-items: center; justify-content: center; }
+/* Ruimte vooraf gereserveerd (280px, de gewone hoogte van een responsieve
+   advertentie) zodat de pagina niet verspringt. Vult Google het blok niet,
+   dan verdwijnt het hele veld. */
+.pl-ad:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
 
 /* ── Quiz options: marks, not coloured pills ── */
 .pl-opt {

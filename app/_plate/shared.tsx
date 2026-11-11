@@ -9,6 +9,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import localFont from 'next/font/local'
 import { AdUnit } from '../components/AdUnit'
+import { ADVERTENTIES_AAN } from '../components/AdSenseScript'
 import { type FooterCol } from '../components/SiteFooter'
 import {
   PROXY, type Article,
@@ -217,10 +218,11 @@ export function QuickBar({ articles, active, onPick }: {
 
 
 /* ══ Labelled advertising field ═══════════════════════════════════════════
-   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder slot rendert het
-   veld niets: geen gereserveerde ruimte voor een advertentie die niet komt. */
+   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder slot, of zolang
+   ADVERTENTIES_AAN uit staat (AdSense nog niet goedgekeurd), rendert het veld
+   niets: geen gereserveerde ruimte voor een advertentie die niet komt. */
 export function AdPlate({ slot }: { slot?: string }) {
-  if (!slot) return null
+  if (!slot || !ADVERTENTIES_AAN) return null
   return <AdField slot={slot} />
 }
 
