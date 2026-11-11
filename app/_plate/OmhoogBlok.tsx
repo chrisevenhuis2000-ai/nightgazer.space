@@ -20,7 +20,7 @@ export function OmhoogBlok() {
 
   const k = NACHTEN.findIndex(n => n.datum === dag)
   const n = k >= 0 ? NACHTEN[k] : null
-  const label = n ? `30 nachten omhoog · nacht ${k + 1} · ${n.ochtend ? 'morgenvroeg' : 'vanavond'}` : '30 nachten omhoog · start maandag 16 november'
+  const label = n ? `30 nachten omhoog · nacht ${k + 1} · ${n.ochtend ? 'vroeg in de ochtend' : 'vanavond'}` : '30 nachten omhoog · start maandag 16 november'
   const tekst = n
     ? `${n.titel}. ${n.wanneer}.`
     : dag < OMHOOG_START
