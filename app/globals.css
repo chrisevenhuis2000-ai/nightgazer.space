@@ -590,3 +590,47 @@
   .ticker-scroll { animation: none; }
   .ticker-mask { mask-image: none; -webkit-mask-image: none; }
 }
+
+/* ── Toestemmingsbanner (CookieBanner) — plaatstijl, zie DESIGN.md ──
+   Rechte hoeken, 1px lijn, geen schaduw, hoekmarkeringen. Accepteren in
+   --pl-act met donkere inkt (11.4:1); Weigeren even groot, als lijnknop.
+   Geen inkomende animatie. */
+.ng-toestemming {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000;
+  max-width: 520px; margin: 0 auto;
+  background: #15182F; border: 1px solid #272C50;
+  padding: 18px 20px 20px;
+  color: #EEF2FB;
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.ng-toestemming::before,
+.ng-toestemming::after {
+  content: ''; position: absolute; width: 11px; height: 11px;
+  border: 1px solid #B5D4F4; opacity: 0.5; pointer-events: none;
+}
+.ng-toestemming::before { top: 7px; left: 7px; border-right: 0; border-bottom: 0; }
+.ng-toestemming::after  { bottom: 7px; right: 7px; border-left: 0; border-top: 0; }
+.ng-toestemming__label {
+  margin: 0 0 10px; font-size: 0.8125rem; font-weight: 600; line-height: 1;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #868EB4;
+}
+.ng-toestemming__tekst { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #9AA6C8; text-wrap: pretty; }
+.ng-toestemming__link { color: #3DCFDF; text-decoration: underline; text-underline-offset: 3px; }
+.ng-toestemming__knoppen { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.ng-toestemming__knop {
+  min-height: 44px; padding: 0 18px; border-radius: 0; cursor: pointer;
+  font: inherit; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  background: transparent; color: #EEF2FB; border: 1px solid #272C50;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.ng-toestemming__knop:hover { border-color: #3DCFDF; color: #3DCFDF; }
+.ng-toestemming__knop--ja { background: #3DCFDF; color: #06131A; border-color: #3DCFDF; }
+.ng-toestemming__knop--ja:hover { background: #6CDBE7; color: #06131A; }
+.ng-toestemming__knop:focus-visible,
+.ng-toestemming__link:focus-visible { outline: 2px solid #3DCFDF; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .ng-toestemming { left: 0; right: 0; bottom: 0; max-width: none; border-width: 1px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) { .ng-toestemming__knop { transition: none; } }
