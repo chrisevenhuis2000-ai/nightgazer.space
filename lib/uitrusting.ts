@@ -4,16 +4,15 @@
    vervangen nooit meer is dan één regel plakken. Een winkel zonder link
    krijgt geen knop; een product zonder enige link toont alleen de uitleg.
 
-   Bol: partnerlinks via partner.bol.com met de site-ID van NightGazer, naar
-   de zoekresultaten voor het product. Een link uit de linkgenerator van Bol
-   (naar een productpagina) mag er direct voor in de plaats.
+   Astroshop: partnerlinks naar de productpagina op astroshop.nl, via de
+   affiliate-link van NightGazer (zie astroshop() hieronder).
    Amazon.nl: zoeklinks met de tracking-ID van NightGazer (Associates). */
 
-export type Winkel = 'bol' | 'amazon'
+export type Winkel = 'astroshop' | 'amazon'
 
 export const WINKEL_NAAM: Record<Winkel, string> = {
-  bol:    'Bol',
-  amazon: 'Amazon.nl',
+  astroshop: 'Astroshop',
+  amazon:    'Amazon.nl',
 }
 
 /** Optisch schema op de productkaart. Alleen voor wat echt optiek is. */
@@ -64,11 +63,14 @@ export const KOPBEELD = {
   credit: 'NASA/Bill Ingalls · 2021',
 }
 
-const BOL_SITE_ID = '1552276'
-export const bol = (q: string) => {
-  const doel = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(q)}`
-  return `https://partner.bol.com/click/click?p=2&t=url&s=${BOL_SITE_ID}&f=TXL`
-    + `&url=${encodeURIComponent(doel)}&name=${encodeURIComponent(q)}`
+/* Astroshop (nimax): het partnerprogramma hangt `?affiliate_id=` aan een
+   gewone productlink. Productnummers (p,…) zijn in alle Astroshop-landen
+   gelijk; de links wijzen naar astroshop.eu, zoals de partnerlinks van Crix. */
+const ASTROSHOP_ID = 'nightgazer'
+export const astroshop = (url: string) => {
+  const u = new URL(url)
+  u.searchParams.set('affiliate_id', ASTROSHOP_ID)
+  return u.toString()
 }
 const AMAZON_TAG = 'nightgazerspa-21'
 export const amazon = (q: string) => `https://www.amazon.nl/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`
@@ -95,12 +97,12 @@ export const GROEPEN: Groep[] = [
       {
         naam:   'Hoofdlamp met rood licht',
         waarom: 'Wit licht kost je twintig minuten aan donkeraanpassing; rood licht niet. Handen vrij voor kaart en telescoop.',
-        links:  { bol: bol('hoofdlamp rood licht'), amazon: amazon('hoofdlamp rood licht') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/headlamps/meade-led-headlamp-red-white-/p,77217'), amazon: amazon('hoofdlamp rood licht') },
       },
       {
         naam:   'Draaibare sterrenkaart',
         waarom: 'Stel datum en tijd in en je ziet welke sterrenbeelden er boven je staan. Werkt zonder batterij en zonder fel scherm.',
-        links:  { bol: bol('draaibare sterrenkaart'), amazon: amazon('draaibare sterrenkaart') },
+        links:  { amazon: amazon('draaibare sterrenkaart') },
       },
     ],
   },
@@ -122,7 +124,7 @@ export const GROEPEN: Groep[] = [
         opening: 50,
         specs:  [{ label: 'Vergroting', waarde: '10×' }, { label: 'Opening', waarde: '50 mm' }],
         waarom: 'Het klassieke formaat voor de nachthemel: 50 mm vangt genoeg licht en je houdt hem nog uit de hand stil.',
-        links:  { bol: bol('Celestron UpClose G2 10x50'), amazon: amazon('Celestron UpClose G2 10x50') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/instruments/celestron-binoculars-upclose-g2-10x50-porro/p,44882'), amazon: amazon('Celestron UpClose G2 10x50') },
       },
       {
         naam:   'Celestron SkyMaster 15x70',
@@ -131,7 +133,7 @@ export const GROEPEN: Groep[] = [
         opening: 70,
         specs:  [{ label: 'Vergroting', waarde: '15×' }, { label: 'Opening', waarde: '70 mm' }],
         waarom: 'Meer vergroting en meer licht voor sterrenhopen en nevels. Zwaar genoeg dat je hem op een statief zet.',
-        links:  { bol: bol('Celestron SkyMaster 15x70'), amazon: amazon('Celestron SkyMaster 15x70') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/instruments/celestron-binoculars-skymaster-15x70/p,7828'), amazon: amazon('Celestron SkyMaster 15x70') },
       },
     ],
   },
@@ -153,7 +155,7 @@ export const GROEPEN: Groep[] = [
         opening: 130,
         specs:  [{ label: 'Opening', waarde: '130 mm' }, { label: 'Brandpunt', waarde: '650 mm' }],
         waarom: 'Een tafeltelescoop die je in een minuut opzet. Genoeg voor de ringen van Saturnus en de banden van Jupiter.',
-        links:  { bol: bol('Sky-Watcher Heritage 130P'), amazon: amazon('Sky-Watcher Heritage 130P') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/skywatcher-dobson-telescope-n-130-650-heritage-flextube-dob/p,14966'), amazon: amazon('Sky-Watcher Heritage 130P') },
       },
       {
         naam:   'Sky-Watcher Skyliner 200P Dobson',
@@ -162,7 +164,7 @@ export const GROEPEN: Groep[] = [
         opening: 200,
         specs:  [{ label: 'Opening', waarde: '200 mm' }, { label: 'Brandpunt', waarde: '1200 mm' }],
         waarom: '200 mm opening op een simpele draaibare voet. Groot, maar je groeit er jaren niet uit.',
-        links:  { bol: bol('Sky-Watcher Skyliner 200P'), amazon: amazon('Sky-Watcher Skyliner 200P') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/telescopes/skywatcher-dobson-telescope-n-200-1200-skyliner-classic-dob/p,4440'), amazon: amazon('Sky-Watcher Skyliner 200P') },
       },
       {
         naam:   'Explore Scientific Comet Hunter',
@@ -172,7 +174,7 @@ export const GROEPEN: Groep[] = [
         specs:  [{ label: 'Opening', waarde: '152 mm' }, { label: 'Brandpunt', waarde: '731 mm' }],
         waarom: 'Een compacte Maksutov-Newton met een breed beeldveld, geschikt voor kijken en voor astrofotografie.',
         zelf:   true,
-        links:  { bol: bol('Explore Scientific Comet Hunter'), amazon: amazon('Explore Scientific Comet Hunter') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/telescopes/explore-scientific-maksutov-newton-telescope-mn-152-731-ota/p,22534'), amazon: amazon('Explore Scientific Comet Hunter') },
       },
     ],
   },
@@ -190,12 +192,12 @@ export const GROEPEN: Groep[] = [
       {
         naam:   'Sterrengids (jaarlijks)',
         waarom: 'Het Nederlandse jaarboek met per maand de planeten, de maan, verduisteringen en meteorenzwermen.',
-        links:  { bol: bol('Sterrengids'), amazon: amazon('Sterrengids') },
+        links:  { amazon: amazon('Sterrengids') },
       },
       {
         naam:   'Turn Left at Orion',
         waarom: 'Engelstalig, maar de beste gids om met een kleine telescoop objecten echt te vinden, met tekeningen van wat je in het oculair ziet.',
-        links:  { bol: bol('Turn Left at Orion'), amazon: amazon('Turn Left at Orion') },
+        links:  { astroshop: astroshop('https://www.astroshop.eu/astro-books-for-beginners/cambridge-university-press-book-turn-left-at-orion/p,15194'), amazon: amazon('Turn Left at Orion') },
       },
     ],
   },
