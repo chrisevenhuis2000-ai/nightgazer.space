@@ -34,8 +34,6 @@ const DRAWERS: { key: string; label: string; slug?: string }[] = [
   { key: 'James Webb',    label: 'James Webb',   slug: 'james-webb' },
   { key: 'Kosmologie',    label: 'Kosmologie',   slug: 'kosmologie' },
   { key: 'Kometen',       label: 'Kometen',      slug: 'kometen' },
-  { key: 'Zwarte Gaten',  label: 'Zwarte gaten' },
-  { key: 'Sterrenkijken', label: 'Sterrenkijken' },
 ]
 
 type Level = 'alle' | 'beg' | 'ama' | 'pro'
