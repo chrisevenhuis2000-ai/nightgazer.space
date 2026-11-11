@@ -5224,3 +5224,77 @@ a:hover .pl-emulsion > img,
   .pl-lead__fig .pl-stampno, .pl-lede__fig .pl-stampno { display: none; }
 }
 .pl-hf__uitleg { margin-top: 8px; color: var(--pl-ink-3); }
+
+/* ══ Zwermgids (/sterrenkijken/leoniden, /geminiden) ═══════════════════════
+   De kop geeft het antwoord; de nachtbalk laat zien waarom dat moment.
+   Eén beweging: de radiantlijn tekent zich als de balk in beeld komt. */
+.pl-zg__kop .pl-h1 { max-width: 22ch; }
+.pl-zg__kop .pl-uhero__in { padding-bottom: clamp(48px, 5vw, 64px); }
+.pl-zg__specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; max-width: 640px; }
+.pl-zg__kop .pl-uhero__ground .pl-emulsion > img { opacity: 0.8; }
+.pl-zg__geldig { color: var(--pl-ink-2); }
+.pl-zg__intro { max-width: 62ch; margin: 0 0 16px; color: var(--pl-ink-2); }
+.pl-zg__bron { color: var(--pl-ink-3); max-width: 72ch; }
+.pl-uhero__credit a { color: inherit; text-decoration: none; }
+.pl-uhero__credit a:hover { color: var(--pl-ink-2); }
+
+.pl-zg__balk { margin: 0; padding: clamp(18px, 2.4vw, 28px) clamp(16px, 2.4vw, 28px) clamp(16px, 2vw, 22px); }
+.pl-zg__vlak { position: relative; height: clamp(200px, 26vw, 280px); margin-left: 64px; }
+.pl-zg__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pl-zg__band { position: absolute; top: 0; height: calc(200 / 220 * 100%); }
+.pl-zg__band--donker { background: rgba(24,95,165,0.14); border-left: 1px dashed var(--pl-rule); border-right: 1px dashed var(--pl-rule); }
+.pl-zg__band--maan {
+  background: repeating-linear-gradient(135deg, rgba(181,212,244,0.07) 0 6px, transparent 6px 12px);
+  border-right: 1px solid rgba(181,212,244,0.35);
+}
+.pl-zg__band--maan .pl-label { position: absolute; left: 8px; top: 6px; color: var(--pl-stamp); white-space: nowrap; }
+.pl-zg__horizon { stroke: var(--pl-ink-3); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.pl-zg__raster { stroke: var(--pl-rule); stroke-width: 1; stroke-dasharray: 2 6; vector-effect: non-scaling-stroke; }
+.pl-zg__piek { stroke: var(--pl-stamp); stroke-width: 1; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; opacity: 0.7; }
+.pl-zg__onder { fill: rgba(61,207,223,0.08); }
+.pl-zg__lijn {
+  fill: none; stroke: var(--pl-mark); stroke-width: 2.5; stroke-linejoin: round;
+}
+.pl-zg__svg--lijn { clip-path: inset(-8px 0 -8px 0); }
+.pl-zg__balk[data-anim="aan"] .pl-zg__svg--lijn { clip-path: inset(-8px 100% -8px 0); }
+.pl-zg__balk[data-anim="aan"][data-zicht="ja"] .pl-zg__svg--lijn { clip-path: inset(-8px 0 -8px 0); transition: clip-path 1600ms var(--pl-ease-o); }
+.pl-zg__balk[data-anim="aan"] .pl-zg__best { opacity: 0; }
+.pl-zg__balk[data-anim="aan"][data-zicht="ja"] .pl-zg__best { opacity: 1; transition: opacity 400ms var(--pl-ease) 1300ms; }
+.pl-zg__hoogte { position: absolute; left: -64px; width: 56px; transform: translateY(-50%); text-align: right; color: var(--pl-ink-3); }
+.pl-zg__piektekst { position: absolute; top: 0; transform: translateX(6px); color: var(--pl-stamp); white-space: nowrap; }
+.pl-zg__best { position: absolute; width: 0; height: 0; }
+.pl-zg__best > i {
+  position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--pl-ground); border: 2px solid var(--pl-ink); box-shadow: 0 0 0 4px rgba(55,138,221,0.35);
+}
+.pl-zg__besttekst {
+  position: absolute; right: 14px; top: 14px; white-space: nowrap;
+  padding: 4px 8px; background: var(--pl-plate-lift); border: 1px solid var(--pl-rule);
+  font-size: 0.8125rem; color: var(--pl-ink);
+}
+.pl-zg__as { position: relative; height: 22px; margin: 12px 0 0 64px; font-size: 0.75rem; color: var(--pl-ink-2); }
+.pl-zg__as > span { position: absolute; transform: translateX(-50%); }
+.pl-zg__as > span:first-child { transform: none; }
+.pl-zg__legenda { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-size: 0.8125rem; color: var(--pl-ink-2); }
+.pl-zg__legenda > span { display: inline-flex; align-items: center; gap: 8px; }
+.pl-zg__l { display: inline-block; width: 18px; height: 10px; }
+.pl-zg__l--lijn { height: 0; border-top: 2.5px solid var(--pl-mark); }
+.pl-zg__l--donker { background: rgba(24,95,165,0.3); border: 1px dashed var(--pl-rule); }
+.pl-zg__l--maan { background: repeating-linear-gradient(135deg, rgba(181,212,244,0.25) 0 3px, transparent 3px 6px); }
+.pl-zg__l-tekst { color: var(--pl-stamp); }
+.pl-zg__l--best { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--pl-ink); }
+.pl-zg__legenda .pl-zg__l-best { display: none; }
+
+@media (max-width: 620px) {
+  .pl-zg__specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pl-zg__vlak, .pl-zg__as { margin-left: 44px; }
+  .pl-zg__hoogte { left: -44px; width: 38px; font-size: 0.6875rem; }
+  .pl-zg__as > span:nth-child(even) { display: none; }
+  .pl-zg__besttekst { display: none; }
+  .pl-zg__piektekst { top: 26px; }
+  .pl-zg__legenda .pl-zg__l-best { display: inline-flex; color: var(--pl-ink); }
+  .pl-zg__specs dd { font-size: 0.9375rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pl-zg__balk .pl-zg__svg--lijn, .pl-zg__balk .pl-zg__best { transition: none !important; }
+}
