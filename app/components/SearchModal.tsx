@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { zoek, GIDSEN, type Treffer } from '@/lib/zoeken'
 
 interface Article {
   slug:        string
@@ -41,7 +42,7 @@ export function useSearchModal() {
 export default function SearchModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [query,   setQuery]   = useState('')
   const [index,   setIndex]   = useState<Article[]>([])
-  const [results, setResults] = useState<Article[]>([])
+  const [results, setResults] = useState<Treffer[]>([])
   const [active,  setActive]  = useState(0)
   const inputRef  = useRef<HTMLInputElement>(null)
 
@@ -62,28 +63,22 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
     }
   }, [open])
 
-  // Filter on query
+  // Filter on query. Leeg: de gidsen en het nieuwste nieuws.
   useEffect(() => {
-    if (!query.trim()) { setResults(index.slice(0, 6)); setActive(0); return }
-    const q = query.toLowerCase()
-    const matches = index.filter(a =>
-      a.title.toLowerCase().includes(q) ||
-      a.excerpt.toLowerCase().includes(q) ||
-      a.category.toLowerCase().includes(q)
-    ).slice(0, 8)
-    setResults(matches)
+    const nieuw = (a: Article): Treffer => ({ soort: 'artikel', titel: a.title, sub: [a.category, a.date].filter(Boolean).join(' · '), href: `/nieuws/${a.slug}/` })
+    setResults(query.trim() ? zoek(query, index) : [...GIDSEN, ...index.slice(0, 4).map(nieuw)])
     setActive(0)
   }, [query, index])
 
-  const navigate = useCallback((slug: string) => {
-    window.location.href = `/nieuws/${slug}`
+  const navigate = useCallback((href: string) => {
+    window.location.href = href
     onClose()
   }, [onClose])
 
   function onKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'ArrowDown') { e.preventDefault(); setActive(a => Math.min(a + 1, results.length - 1)) }
     if (e.key === 'ArrowUp')   { e.preventDefault(); setActive(a => Math.max(a - 1, 0)) }
-    if (e.key === 'Enter' && results[active]) navigate(results[active].slug)
+    if (e.key === 'Enter' && results[active]) navigate(results[active].href)
   }
 
   if (!open) return null
@@ -107,51 +102,57 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
             value={query}
             onChange={e => setQuery(e.target.value)}
             onKeyDown={onKeyDown}
-            placeholder="Zoek artikelen…"
+            placeholder="Zoek gidsen, zwermen, artikelen…"
             style={{ flex: 1, background: 'none', border: 'none', outline: 'none', color: '#fff', fontSize: '1rem', fontFamily: 'var(--font-sans)', caretColor: '#378ADD' }}
           />
           <kbd style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', background: '#1a1c42', border: '1px solid #252858', borderRadius: 4, padding: '2px 6px' }}>ESC</kbd>
         </div>
 
         {/* Results */}
-        <div className="search-modal-results" style={{ maxHeight: 400, overflowY: 'auto' }}>
-          {results.length === 0 && query ? (
-            <div style={{ padding: '24px 20px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.77rem', color: '#7A86A8' }}>
-              Geen artikelen gevonden voor "{query}"
+        <div className="search-modal-results" style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+          {results.length === 0 && query && (
+            <div style={{ padding: '18px 20px 6px', fontSize: '0.9rem', color: '#9AA6C8' }}>
+              Niets gevonden voor &ldquo;{query}&rdquo;. Misschien zoek je een van deze gidsen:
             </div>
-          ) : (
-            results.map((a, i) => (
-              <button
-                key={a.slug}
-                onClick={() => navigate(a.slug)}
-                onMouseEnter={() => setActive(i)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 14, width: '100%', padding: '12px 20px',
-                  background: i === active ? 'rgba(55,138,221,0.1)' : 'transparent',
-                  border: 'none', borderBottom: '1px solid #1a1c3a', cursor: 'pointer',
-                  textAlign: 'left', transition: 'background 0.1s',
-                }}
-              >
-                {a.imageUrl ? (
-                  <img src={a.imageUrl} alt="" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', flexShrink: 0 }} />
-                ) : (
-                  <div style={{ width: 44, height: 44, borderRadius: 4, background: '#1a1c42', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', flexShrink: 0 }}>
-                    {a.emoji || '🌌'}
+          )}
+          {(results.length === 0 && query ? GIDSEN : results).map((t, i, lijst) => {
+            const kop = i === 0 || lijst[i - 1].soort !== t.soort
+            const thumb = t.soort === 'artikel' ? index.find(a => `/nieuws/${a.slug}/` === t.href) : undefined
+            return (
+              <div key={t.href}>
+                {kop && (
+                  <div style={{ padding: '12px 20px 4px', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A86A8' }}>
+                    {t.soort === 'pagina' ? 'Gidsen en pagina’s' : t.soort === 'hemel' ? 'Aan de hemel' : 'Artikelen'}
                   </div>
                 )}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#fff', lineHeight: 1.3, marginBottom: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {a.title}
+                <button
+                  onClick={() => navigate(t.href)}
+                  onMouseEnter={() => setActive(i)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 14, width: '100%', padding: '12px 20px',
+                    background: i === active ? 'rgba(55,138,221,0.1)' : 'transparent',
+                    border: 'none', borderBottom: '1px solid #1a1c3a', cursor: 'pointer',
+                    textAlign: 'left', transition: 'background 0.1s',
+                  }}
+                >
+                  {thumb && (thumb.imageUrl ? (
+                    <img src={thumb.imageUrl} alt="" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', flexShrink: 0 }} />
+                  ) : (
+                    <div style={{ width: 44, height: 44, borderRadius: 4, background: '#1a1c42', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', flexShrink: 0 }}>
+                      {thumb.emoji || '🌌'}
+                    </div>
+                  ))}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff', lineHeight: 1.3, marginBottom: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {t.titel}
+                    </div>
+                    <div style={{ fontSize: '0.8rem', color: '#9AA6C8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t.sub}</div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: a.catColor || '#7aadff' }}>{a.category}</span>
-                    {a.date && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#7A86A8' }}>{a.date}</span>}
-                  </div>
-                </div>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', flexShrink: 0 }}>↵</span>
-              </button>
-            ))
-          )}
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', flexShrink: 0 }}>↵</span>
+                </button>
+              </div>
+            )
+          })}
         </div>
 
         {/* Footer hint */}
