@@ -425,7 +425,7 @@ export default function Niveauladder() {
                 key={t.id}
                 topic={t}
                 level={level}
-                no={`NG-E${String(i + 1).padStart(2, '0')}`}
+                no={`Nr. ${i + 1}`}
                 swapKey={swapKey}
                 done={!!done[t.id]}
                 onDone={ok => markDone(t.id, ok)}
@@ -442,7 +442,7 @@ export default function Niveauladder() {
               <span className="pl-label">Artikelen bij deze onderwerpen</span>
             </div>
             <Link href="/nieuws/" className="pl-read">
-              <span>Het hele archief</span>
+              <span>Alle artikelen</span>
               <span className="pl-read__rule" aria-hidden="true" />
               <Ico.arrow />
             </Link>

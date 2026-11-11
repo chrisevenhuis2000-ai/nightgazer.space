@@ -24,6 +24,8 @@ const pages = [
   { loc: '/sterrenkijken/cadeaugids', changefreq: 'monthly', priority: '0.6' },
   { loc: '/sterrenkijken/hemelkalender', changefreq: 'monthly', priority: '0.6' },
   { loc: '/gidsen',                        changefreq: 'monthly', priority: '0.6' },
+  { loc: '/gidsen/leoniden',               changefreq: 'weekly',  priority: '0.7' },
+  { loc: '/gidsen/geminiden',              changefreq: 'weekly',  priority: '0.7' },
   { loc: '/spellen',                       changefreq: 'daily',   priority: '0.5' },
   { loc: '/spellen/hemelfoto',             changefreq: 'daily',   priority: '0.6' },
   { loc: '/spellen/sterrenbeeld',          changefreq: 'daily',   priority: '0.6' },

@@ -9,6 +9,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import localFont from 'next/font/local'
 import { AdUnit } from '../components/AdUnit'
+import { ADVERTENTIES_AAN } from '../components/AdSenseScript'
 import { type FooterCol } from '../components/SiteFooter'
 import {
   PROXY, type Article,
@@ -77,7 +78,7 @@ export const LEVEL_WORD = { beg: 'Beginner', ama: 'Amateur', pro: 'Pro' } as con
 export const LEVEL_STEP = { beg: 1, ama: 2, pro: 3 } as const
 
 export function plateNo(total: number, i: number) {
-  return `NG-${String(Math.max(total - i, 1)).padStart(4, '0')}`
+  return `Nr. ${Math.max(total - i, 1)}`
 }
 
 export function img(url: string, w: number) {
@@ -95,7 +96,7 @@ export function Ladder({ level }: { level: 'beg' | 'ama' | 'pro' }) {
 }
 
 /* ══ Header ═══════════════════════════════════════════════════════════════ */
-export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
+export function PlateHead({ total, edition, current, totalLabel = 'artikelen' }: {
   total: number
   edition: string
   current: string
@@ -131,7 +132,7 @@ export function PlateHead({ total, edition, current, totalLabel = 'platen' }: {
           </nav>
 
           <div className="pl-prov">
-            <span>Editie {edition}</span>
+            <span>{edition}</span>
             <span className="pl-prov__tick" aria-hidden="true" />
             <span className="pl-num"><span className="pl-prov__n">{total}</span> {totalLabel}</span>
           </div>
@@ -217,10 +218,11 @@ export function QuickBar({ articles, active, onPick }: {
 
 
 /* ══ Labelled advertising field ═══════════════════════════════════════════
-   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder slot rendert het
-   veld niets: geen gereserveerde ruimte voor een advertentie die niet komt. */
+   Elke pagina geeft zijn eigen AdSense-slot mee. Zonder slot, of zolang
+   ADVERTENTIES_AAN uit staat (AdSense nog niet goedgekeurd), rendert het veld
+   niets: geen gereserveerde ruimte voor een advertentie die niet komt. */
 export function AdPlate({ slot }: { slot?: string }) {
-  if (!slot) return null
+  if (!slot || !ADVERTENTIES_AAN) return null
   return <AdField slot={slot} />
 }
 
@@ -316,7 +318,8 @@ export function useArticles(backfill = 24, initial?: Article[]): Article[] {
 }
 
 export function editionLabel(): string {
-  return new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })
+  const s = new Date().toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' })
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
 
@@ -436,6 +439,36 @@ export function KalenderVerwijzing({ tekst }: { tekst: string }) {
       </div>
       <Link href="/sterrenkijken/hemelkalender/" className="pl-read">
         <span>Bekijk de kalender</span>
+        <span className="pl-read__rule" aria-hidden="true" />
+        <Ico.arrow />
+      </Link>
+    </div>
+  )
+}
+
+/* ══ Vaste balk onderin, alleen op de telefoon ══════════════════════════
+   Op de lange gidsen raakte je op mobiel de weg kwijt (de prijsklassen
+   staan bovenaan, de kalender halverwege). Twee vaste links onderin. */
+export function GidsBalk({ links }: { links: { href: string; tekst: string }[] }) {
+  return (
+    <nav className="pl-balk" aria-label="Snel naar">
+      {links.map(l => <Link key={l.href} href={l.href}>{l.tekst}</Link>)}
+    </nav>
+  )
+}
+
+/* ══ Verwijzing naar de gidsen ═══════════════════════════════════════════
+   Eén regel naar /gidsen: onder artikelen die je zelf aan de hemel kunt
+   zien, en buiten het cadeauseizoen op home en /vandaag. */
+export function GidsenVerwijzing({ tekst, onClick }: { tekst: string; onClick?: () => void }) {
+  return (
+    <div className="pl-plate pl-uitr-ref">
+      <div>
+        <span className="pl-label">Gidsen</span>
+        <p className="pl-body">{tekst}</p>
+      </div>
+      <Link href="/gidsen/" className="pl-read" onClick={onClick}>
+        <span>Naar de gidsen</span>
         <span className="pl-read__rule" aria-hidden="true" />
         <Ico.arrow />
       </Link>

@@ -75,10 +75,14 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
     onClose()
   }, [onClose])
 
+  // Niets gevonden: dan staan de gidsen er, en die zijn ook met de toetsen te kiezen.
+  const geen = results.length === 0 && !!query.trim()
+  const lijst = geen ? GIDSEN : results
+
   function onKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(a => Math.min(a + 1, results.length - 1)) }
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(a => Math.min(a + 1, lijst.length - 1)) }
     if (e.key === 'ArrowUp')   { e.preventDefault(); setActive(a => Math.max(a - 1, 0)) }
-    if (e.key === 'Enter' && results[active]) navigate(results[active].href)
+    if (e.key === 'Enter' && lijst[active]) navigate(lijst[active].href)
   }
 
   if (!open) return null
@@ -105,23 +109,23 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
             placeholder="Zoek gidsen, zwermen, artikelen…"
             style={{ flex: 1, background: 'none', border: 'none', outline: 'none', color: '#fff', fontSize: '1rem', fontFamily: 'var(--font-sans)', caretColor: '#378ADD' }}
           />
-          <kbd style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', background: '#1a1c42', border: '1px solid #252858', borderRadius: 4, padding: '2px 6px' }}>ESC</kbd>
+          <kbd style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8', background: '#1a1c42', border: '1px solid #252858', borderRadius: 4, padding: '2px 6px' }}>ESC</kbd>
         </div>
 
         {/* Results */}
         <div className="search-modal-results" style={{ maxHeight: '60vh', overflowY: 'auto' }}>
-          {results.length === 0 && query && (
+          {geen && (
             <div style={{ padding: '18px 20px 6px', fontSize: '0.9rem', color: '#9AA6C8' }}>
               Niets gevonden voor &ldquo;{query}&rdquo;. Misschien zoek je een van deze gidsen:
             </div>
           )}
-          {(results.length === 0 && query ? GIDSEN : results).map((t, i, lijst) => {
+          {lijst.map((t, i) => {
             const kop = i === 0 || lijst[i - 1].soort !== t.soort
             const thumb = t.soort === 'artikel' ? index.find(a => `/nieuws/${a.slug}/` === t.href) : undefined
             return (
               <div key={t.href}>
                 {kop && (
-                  <div style={{ padding: '12px 20px 4px', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A86A8' }}>
+                  <div style={{ padding: '12px 20px 4px', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7A86A8' }}>
                     {t.soort === 'pagina' ? 'Gidsen en pagina’s' : t.soort === 'hemel' ? 'Aan de hemel' : 'Artikelen'}
                   </div>
                 )}
@@ -148,7 +152,7 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
                     </div>
                     <div style={{ fontSize: '0.8rem', color: '#9AA6C8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t.sub}</div>
                   </div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.73rem', color: '#7A86A8', flexShrink: 0 }}>↵</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8', flexShrink: 0 }}>↵</span>
                 </button>
               </div>
             )
@@ -158,7 +162,7 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
         {/* Footer hint */}
         <div style={{ padding: '8px 20px', borderTop: '1px solid #1a1c3a', display: 'flex', gap: 16 }}>
           {[['↑↓', 'navigeer'], ['↵', 'open'], ['ESC', 'sluit']].map(([key, label]) => (
-            <span key={key} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#7A86A8', display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span key={key} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8', display: 'flex', alignItems: 'center', gap: 4 }}>
               <kbd style={{ background: '#1a1c42', border: '1px solid #252858', borderRadius: 3, padding: '1px 5px', color: '#7A86A8' }}>{key}</kbd>
               {label}
             </span>

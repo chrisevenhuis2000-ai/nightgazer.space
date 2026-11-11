@@ -2,6 +2,8 @@
 // Bron voor app/sterrenkijken/Belichtingstabel.tsx en de homepage-
 // instrumenten: locaties, donkere plekken, zwermen, score en maanfase.
 
+import type { CalEvent } from './ics'
+
 // ── Types ───────────────────────────────────────────────────────────────────
 
 export interface Location { lat: number; lon: number; name: string }
@@ -47,8 +49,8 @@ export const METEORS = [
   { name: 'Perseïden',     peak: '12–13 aug',  day: 12, zhr: 100, rating: 5, month: 8,  radiant: 'Perseus',      note: 'BESTE KANS 2026! Nieuwe maan = perfecte condities' },
   { name: 'Draconiden',    peak: '8–9 okt',    day: 8,  zhr: 10,  rating: 3, month: 10, radiant: 'Draak', vroeg: true, note: 'Klein maar donkere hemel, vroege avond' },
   { name: 'Orioniden',     peak: '21 okt',     day: 21, zhr: 20,  rating: 2, month: 10, radiant: 'Orion',        note: 'Maanlicht hindert, alleen helderste zichtbaar' },
-  { name: 'Leoniden',      peak: '16–17 nov',  day: 16, zhr: 15,  rating: 3, month: 11, radiant: 'Leeuw',        note: 'Halve maan, redelijke condities' },
-  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimaal maanlicht' },
+  { name: 'Leoniden',      peak: '16–17 nov',  day: 16, zhr: 15,  rating: 3, month: 11, radiant: 'Leeuw',        note: 'Halve maan, redelijke condities', gids: '/gidsen/leoniden/' },
+  { name: 'Geminiden',     peak: '13–14 dec',  day: 13, zhr: 150, rating: 5, month: 12, radiant: 'Tweelingen',   note: 'Grootste shower! Minimaal maanlicht', gids: '/gidsen/geminiden/' },
   { name: 'Ursiden',       peak: '21–22 dec',  day: 21, zhr: 10,  rating: 1, month: 12, radiant: 'Kleine Beer',  note: 'Bijna volle maan, lastig' },
 ]
 
@@ -65,6 +67,30 @@ export function showerWindow(s: Shower, year = SHOWER_YEAR): { start: Date; end:
   const vroeg = 'vroeg' in s && s.vroeg
   const start = new Date(year, s.month - 1, s.day, vroeg ? 20 : 22, 0, 0)
   return { start, end: new Date(start.getTime() + (vroeg ? 3 : 4) * 3600_000) }
+}
+
+/** Een zwerm als agenda-item. Gedeeld door de Hemelagenda op /sterrenkijken
+    en scripts/generate-agenda.mjs (het vaste bestand /agenda/meteorenzwermen.ics). */
+export function zwermAgenda(s: Shower, year = SHOWER_YEAR): CalEvent {
+  const { start, end } = showerWindow(s, year)
+  return {
+    uid: `${s.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${year}@nightgazer.space`,
+    title: `${s.name} — piek (tot ${s.zhr}/uur)`,
+    description:
+      (year === SHOWER_YEAR ? `${s.note}\n\n` : `Piek rond ${s.peak}; de precieze datum en de maanstand volgen op nightgazer.space.\n\n`)
+      + `Tot ${s.zhr} meteoren per uur bij een ideaal donkere hemel; in de praktijk minder.\n`
+      + `De radiant ligt in ${s.radiant}, maar kijk daar juist niet strak naar — `
+      + `de mooiste sporen zie je er een stuk vandaan.\n\n`
+      + `Kijken kan van ${start.getHours()}:00 tot ${end.getHours()}:00. `
+      + `Geen telescoop of verrekijker: je ogen vangen het meeste. `
+      + `Geef ze twintig minuten om aan het donker te wennen en kijk niet op je telefoon.\n\n`
+      + `nightgazer.space/sterrenkijken`,
+    url: 'https://nightgazer.space/sterrenkijken/',
+    allDay: false,
+    start,
+    end,
+    remindDays: 1,
+  }
 }
 
 export const SKY_OBJECTS = [

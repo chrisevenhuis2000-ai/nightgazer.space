@@ -33,7 +33,7 @@ export default function Hemelkalender() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={12} edition={editionLabel()} current="gidsen" totalLabel="platen" />
+      <PlateHead total={12} edition={editionLabel()} current="gidsen" totalLabel="maanden" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         {/* ══ Kop ══ */}
@@ -43,7 +43,7 @@ export default function Hemelkalender() {
               <div className="pl-hk__tekst">
                 <h1 id="pl-hk" className="pl-h1">Hemelkalender {KALENDER_JAAR}</h1>
                 <p className="pl-uhero__lede">
-                  Het hele hemeljaar boven Nederland op twaalf platen. Elke nacht de stand van de maan,
+                  Het hele hemeljaar boven Nederland op twaalf pagina's. Elke nacht de stand van de maan,
                   en per maand de planeten, meteorenzwermen en verduisteringen, met een groot NASA-beeld
                   dat bij die maand hoort. Om op te hangen, of op je tablet mee naar buiten te nemen.
                 </p>

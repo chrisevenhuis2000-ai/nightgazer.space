@@ -22,6 +22,23 @@ export interface DagmapItem extends DagmapRegel {
   title: string
   excerpt: string
   imageUrl?: string
+  /** YYYY-MM-DD, publicatiedatum van het artikel. */
+  gepubliceerd?: string
+}
+
+/** Een Dagmap kiest artikelen van hooguit zoveel dagen oud; ouder heet "Uit ons archief" (gebruikerstest 11-2026). */
+export const VERS_DAGEN = 14
+
+/** Dagen tussen twee datums (YYYY-MM-DD), b na a positief. */
+function dagenTussen(a: string, b: string): number {
+  const t = (d: string) => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10))
+  return Math.round((t(b) - t(a)) / 86_400_000)
+}
+
+/** Was het artikel op de dag van de carrousel ouder dan VERS_DAGEN? Dan tonen we "Uit ons archief". */
+export function uitArchief(r: { datum?: string; gepubliceerd?: string }): boolean {
+  if (!r.datum || !r.gepubliceerd) return false
+  return dagenTussen(r.gepubliceerd.slice(0, 10), r.datum) > VERS_DAGEN
 }
 
 /** Sorteersleutel 'YYYY-MM-DD HH:MM'. */

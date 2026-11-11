@@ -26,7 +26,7 @@ import {
    uit lib/topics.ts waar die bestaan, zodat de nieuwspagina en de
    onderwerp-routes dezelfde tekst gebruiken. */
 const DRAWERS: { key: string; label: string; slug?: string }[] = [
-  { key: 'Alles',         label: 'Alle platen' },
+  { key: 'Alles',         label: 'Alle artikelen' },
   { key: 'Missies',       label: 'Missies',      slug: 'missies' },
   { key: 'Educatie',      label: 'Educatie',     slug: 'educatie' },
   { key: 'Maan',          label: 'Maan',         slug: 'maan' },
@@ -72,7 +72,7 @@ function Lede({ a, no }: { a: Article; no: string }) {
 
       <span className="pl-lede__body">
         <span className="pl-meta">
-          <span className="pl-label pl-label--stamp">Nieuwste plaat</span>
+          <span className="pl-label pl-label--stamp">Nieuwste artikel</span>
           <span className="pl-meta__tick" aria-hidden="true" />
           <span>{a.category}</span>
         </span>
@@ -318,7 +318,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
               )}
             </div>
             <p className="pl-label" aria-live="polite">
-              {aantal === total ? `${total} platen` : `${aantal} van ${total} platen`}
+              {aantal === total ? `${total} artikelen` : `${aantal} van ${total} artikelen`}
             </p>
           </div>
 
@@ -409,7 +409,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
                     )}
                 </div>
                 <p className="pl-label pl-num" style={{ letterSpacing: '0.12em', whiteSpace: 'nowrap' }}>
-                  {aantal} {aantal === 1 ? 'plaat' : 'platen'}
+                  {aantal} {aantal === 1 ? 'artikel' : 'artikelen'}
                 </p>
               </header>
 
@@ -430,7 +430,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
                     className="pl-btn"
                     onClick={() => { setDrawer('Alles'); setLevel('alle'); setQuickTag(null) }}
                   >
-                    Alle platen
+                    Alle artikelen
                   </button>
                 </div>
               ) : (
@@ -466,7 +466,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
               {more && (
                 <footer className="pl-sheet__foot">
                   <button className="pl-btn" onClick={() => setShown(s => s + ROWS_PER_PAGE)}>
-                    Volgende {Math.min(ROWS_PER_PAGE, aantal - shown)} platen
+                    Volgende {Math.min(ROWS_PER_PAGE, aantal - shown)} artikelen
                   </button>
                   <span className="pl-label pl-num" style={{ letterSpacing: '0.1em' }}>
                     {rows.length} / {aantal}
@@ -479,7 +479,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
 
               {!more && rows.length > 0 && (
                 <footer className="pl-sheet__foot">
-                  <span className="pl-label">Alle {aantal} platen in deze lade geladen</span>
+                  <span className="pl-label">Alle {aantal} artikelen geladen</span>
                 </footer>
               )}
             </div>

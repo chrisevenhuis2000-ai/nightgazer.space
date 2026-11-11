@@ -36,7 +36,7 @@ export const GEBEURTENISSEN = new Set([
   'sterrenbeeld-klaar',  // sterrenbeeld af (extra = 'id:missers')
   'sterrenbeeld-verder', // tik op de vervolglink na het tekenen
   'sterrenbeeld-teaser', // tik op het spelblokje
-  'uit-klik',            // tik op een link naar een winkel of Ko-fi (extra = 'bol' | 'amazon' | 'kofi' | 'kalender')
+  'uit-klik',            // tik op een link naar een winkel of Ko-fi (extra = 'astroshop' | 'amazon' | 'kofi' | 'kalender')
   'omhoog-vink',         // 30 nachten omhoog: nacht afgevinkt (extra = datum)
   'omhoog-print',        // 30 nachten omhoog: tik op Print de afvinkkaart
   'omhoog-deel',         // 30 nachten omhoog: tik op Deel de uitdaging
@@ -147,6 +147,7 @@ SELECT
   sumIf(_sample_interval, blob6 = 'sterrenbeeld-verder') AS sterrenbeeld_verder,
   sumIf(_sample_interval, blob1 = 'pv' AND blob2 IN (${GELDPAGINAS.map(p => `'${p}'`).join(', ')})) AS geldpagina_weergaven,
   sumIf(_sample_interval, blob1 = 'pv' AND blob2 = '/sterrenkijken/cadeaugids/') AS cadeaugids_weergaven,
+  sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'astroshop') AS klik_astroshop,
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'bol') AS klik_bol,
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'amazon') AS klik_amazon,
   sumIf(_sample_interval, blob6 = 'uit-klik' AND blob7 = 'kofi') AS klik_kofi,

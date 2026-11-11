@@ -5,7 +5,8 @@
    Er staan hier geen nieuwe winkellinks; elk product komt op naam uit
    lib/uitrusting.ts, zodat een link maar op één plek hoeft te veranderen.
 
-   De prijsklassen zijn richtlijnen (stand november 2026). Prijzen wisselen
+   De prijsklassen zijn richtlijnen (stand november 2026) en sluiten op elkaar
+   aan, zonder gaten. Tussen € en bedrag staat een vaste spatie (U+00A0). Prijzen wisselen
    per winkel en per week, dus de pagina noemt geen bedrag per product. */
 
 import { product, type Product, type NasaMaat } from './uitrusting'
@@ -33,7 +34,7 @@ export const KLASSEN: Klasse[] = [
   {
     id:    'klein',
     titel: 'Een klein cadeau',
-    label: 'Tot ongeveer € 25',
+    label: 'Tot € 25',
     intro: 'Voor de schoen, of als extraatje bij iets groters. Dit zijn de dingen die elke sterrenkijker gebruikt en zelden voor zichzelf koopt.',
     beeld: {
       nasaId: 'NHQ202108110005',
@@ -49,7 +50,7 @@ export const KLASSEN: Klasse[] = [
   {
     id:    'midden',
     titel: 'Een echt cadeau',
-    label: 'Ongeveer € 30 tot € 75',
+    label: '€ 25 tot € 100',
     intro: 'Een verrekijker is het cadeau waar een beginner het meest aan heeft. Je ziet er direct mee, zonder opbouwen of uitlijnen.',
     beeld: {
       nasaId: 'GSFC_20171208_Archive_e001864',
@@ -64,7 +65,7 @@ export const KLASSEN: Klasse[] = [
   {
     id:    'groot',
     titel: 'Een groot cadeau',
-    label: 'Ongeveer € 100 tot € 300',
+    label: '€ 100 tot € 300',
     intro: 'Vanaf hier zie je de ringen van Saturnus en de wolkbanden van Jupiter. Kies liever een kleine goede telescoop dan een grote wankele.',
     beeld: {
       nasaId: 'PIA03162',
@@ -79,7 +80,7 @@ export const KLASSEN: Klasse[] = [
   {
     id:    'top',
     titel: 'Het cadeau van het jaar',
-    label: 'Vanaf ongeveer € 400',
+    label: 'Vanaf € 300',
     intro: 'Voor iemand die zeker weet dat de hobby blijft. Groot en zwaar, dus overleg of er een plek voor is.',
     beeld: {
       nasaId: 'PIA04227',

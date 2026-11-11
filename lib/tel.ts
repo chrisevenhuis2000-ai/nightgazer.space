@@ -53,13 +53,13 @@ export function telGebeurtenis(e: string, x?: string) {
 /* ── Klikken naar buiten: winkels en Ko-fi ─────────────────────────────────
    Eén luisteraar op het document, zodat elke bestaande en toekomstige knop
    meetelt zonder dat een pagina er iets voor hoeft te doen. Er gaat alleen
-   mee wélke bestemming het was (bol, amazon of kofi) en vanaf welk pad;
+   mee wélke bestemming het was (astroshop, amazon of kofi) en vanaf welk pad;
    niet welk product, en niets over de bezoeker. */
 
-export function uitDoel(href: string): 'bol' | 'amazon' | 'kofi' | 'kalender' | '' {
+export function uitDoel(href: string): 'astroshop' | 'amazon' | 'kofi' | 'kalender' | '' {
   let host = '', pad = ''
   try { const u = new URL(href, 'https://nightgazer.space'); host = u.hostname.toLowerCase(); pad = u.pathname } catch { return '' }
-  if (host === 'bol.com' || host.endsWith('.bol.com')) return 'bol'
+  if (/(^|\.)astroshop\.[a-z]+$/.test(host)) return 'astroshop'
   if (host === 'amazon.nl' || host.endsWith('.amazon.nl')) return 'amazon'
   // Een product in de Ko-fi-shop (/s/…) is de kalender, de rest is een bijdrage.
   if (host === 'ko-fi.com' || host.endsWith('.ko-fi.com')) return pad.startsWith('/s/') ? 'kalender' : 'kofi'

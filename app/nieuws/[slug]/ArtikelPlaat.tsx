@@ -26,7 +26,7 @@ import { MISSIONS } from '@/lib/missions-data'
 import { TOPICS } from '@/lib/topics'
 import { Ico, Tip } from '@/app/_plate/Instruments'
 import {
-  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo, UitrustingVerwijzing,
+  archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, Ladder, plateNo, GidsenVerwijzing,
 } from '@/app/_plate/shared'
 
 const ORDER: ReadingLevel[] = ['original', 'beginner', 'amateur', 'pro']
@@ -109,11 +109,6 @@ function Para({ text, state, lead }: { text: string; state: ParaState; lead: boo
   return (
     <p className={`pl-para${lead ? ' pl-para--lead' : ''}`} data-state={state}>
       {text}
-      {state === 'failed' && (
-        <span className="pl-para__note">
-          Herschrijven mislukt voor deze alinea — dit is de oorspronkelijke tekst.
-        </span>
-      )}
     </p>
   )
 }
@@ -179,7 +174,7 @@ export default function ArtikelPlaat({ slug, initial = null }: {
       .catch(() => setNotFound(true))
   }, [slug, initial])
 
-  /* Verwante platen en het archieftotaal */
+  /* Verwante artikelen en het archieftotaal */
   useEffect(() => {
     if (!article) return
     fetch('/content/articles-index.json')
@@ -242,8 +237,9 @@ export default function ArtikelPlaat({ slug, initial = null }: {
 
   /* ── Ontwikkelen: alinea's komen één voor één scherp ───────────────────
      De herschrijving loopt per alinea, dus de plaat ontwikkelt zich ook per
-     alinea. Mislukt er één, dan zegt die alinea dat en toont het origineel —
-     eeuwig laten gloeien zou een belofte zijn die niet meer komt. */
+     alinea. Mislukt er één, dan toont die alinea stil het origineel (geen
+     rode notitie: die las als "kapotte site"), en wordt het niveau niet
+     bewaard, zodat een volgende klik het opnieuw probeert. */
   const develop = useCallback(async (next: ReadingLevel) => {
     if (!article) return
     const id = ++runId.current
@@ -267,6 +263,7 @@ export default function ArtikelPlaat({ slug, initial = null }: {
     setStates(article.paragraphs.map(() => 'latent'))
 
     const out: string[] = [...article.paragraphs]
+    let failed = false
     await Promise.all(article.paragraphs.map(async (para, i) => {
       try {
         const res = await fetch(PROXY, {
@@ -288,13 +285,14 @@ export default function ArtikelPlaat({ slug, initial = null }: {
         setTexts(t => { const c = [...t]; c[i] = text; return c })
         setStates(s => { const c = [...s]; c[i] = 'developed'; return c })
       } catch {
+        failed = true
         if (runId.current !== id) return
         setStates(s => { const c = [...s]; c[i] = 'failed'; return c })
       }
     }))
 
     if (runId.current !== id) return
-    cache.current[next] = out
+    if (!failed) cache.current[next] = out
     setBusy(false)
   }, [article])
 
@@ -372,7 +370,7 @@ ${article.rawBody.slice(0, 2500)}` }],
   if (notFound) {
     return (
       <div className={`pl ${archivo.variable}`}>
-        <PlateHead total={0} edition={editionLabel()} current="nieuws" totalLabel="platen" />
+        <PlateHead total={0} edition={editionLabel()} current="nieuws" totalLabel="artikelen" />
         <main id="pl-main" className="pl-stack">
           <div className="pl-wrap">
             <div className="pl-plate" style={{ padding: '56px 24px', display: 'grid', gap: 14, justifyItems: 'start' }}>
@@ -381,7 +379,7 @@ ${article.rawBody.slice(0, 2500)}` }],
                 Het artikel kon niet geladen worden. Probeer het opnieuw, of zoek
                 verder in het archief.
               </p>
-              <Link href="/nieuws/" className="pl-btn">Naar het archief</Link>
+              <Link href="/nieuws/" className="pl-btn">Alle artikelen</Link>
             </div>
           </div>
         </main>
@@ -393,7 +391,7 @@ ${article.rawBody.slice(0, 2500)}` }],
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={total} edition={editionLabel()} current="nieuws" totalLabel="platen" />
+      <PlateHead total={total} edition={editionLabel()} current="nieuws" totalLabel="artikelen" />
 
       {/* ══ Belichting ══ */}
       <div className="pl-expose">
@@ -613,10 +611,12 @@ ${article.rawBody.slice(0, 2500)}` }],
           )}
         </div>
 
-        {/* ══ Uitrusting, alleen bij onderwerpen die je zelf kunt zien ══ */}
-        {['sterrenkijken', 'kometen'].includes(article?.category?.toLowerCase() ?? '') && (
+        {/* ══ Gidsen, alleen bij onderwerpen die je zelf kunt zien ══
+             Hier komt het zoekverkeer binnen; zonder deze regel was er geen weg
+             naar de telescoopgids, de cadeaugids of de kalender. */}
+        {['sterrenkijken', 'kometen', 'maan'].includes(article?.category?.toLowerCase() ?? '') && (
           <div className="pl-wrap">
-            <UitrustingVerwijzing tekst="Zelf naar buiten? Van rood lampje tot eerste telescoop: dit heb je nodig om meer te zien." />
+            <GidsenVerwijzing tekst="Zelf naar buiten? Hoe je een eerste telescoop kiest, wat je nodig hebt om meer te zien, en de Hemelkalender." />
           </div>
         )}
 
@@ -626,12 +626,12 @@ ${article.rawBody.slice(0, 2500)}` }],
             <div className="pl-band">
               <div className="pl-band__t">
                 <h2 id="pl-rel" className="pl-h2" style={{ fontSize: 'clamp(1.2rem,1.8vw,1.5rem)' }}>
-                  Verwante platen
+                  Verwante artikelen
                 </h2>
                 <span className="pl-label">{article?.category}</span>
               </div>
               <Link href="/nieuws/" className="pl-read">
-                <span>Het hele archief</span>
+                <span>Alle artikelen</span>
                 <span className="pl-read__rule" aria-hidden="true" />
                 <Ico.arrow />
               </Link>

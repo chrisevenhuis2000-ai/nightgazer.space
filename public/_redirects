@@ -4,6 +4,12 @@
 /bio /vandaag/?utm_source=instagram&utm_medium=bio&utm_campaign=profiel 302
 /bio/ /vandaag/?utm_source=instagram&utm_medium=bio&utm_campaign=profiel 302
 
+# Zwermgidsen verhuisd naar /gidsen (11-11-2026)
+/sterrenkijken/leoniden/ /gidsen/leoniden/ 301
+/sterrenkijken/leoniden /gidsen/leoniden/ 301
+/sterrenkijken/geminiden/ /gidsen/geminiden/ 301
+/sterrenkijken/geminiden /gidsen/geminiden/ 301
+
 # Verwijderde artikelen (scripts/nieuws-vernieuw.js) → het nieuwsarchief
 /nieuws/a-fault-line-in-full-bloom/ /nieuws/ 301
 /nieuws/a-bit-of-gray-on-an-emerald-isle/ /nieuws/ 301

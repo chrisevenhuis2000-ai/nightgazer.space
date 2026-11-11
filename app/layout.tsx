@@ -5,6 +5,7 @@ import ErrorBoundary from './ErrorBoundary'
 import SearchProvider from './components/SearchProvider'
 import { AdSenseScript, ADSENSE_CLIENT } from './components/AdSenseScript'
 import Teller from './components/Teller'
+import CookieBanner from './components/CookieBanner'
 
 /* Lettertypen staan in de repo (app/fonts, latin-subset, variabel, OFL)
    in plaats van next/font/google: dat haalde ze bij elke build op bij
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </ErrorBoundary>
         <SearchProvider />
         <Teller />
+        <CookieBanner />
         <AdSenseScript />
       </body>
     </html>

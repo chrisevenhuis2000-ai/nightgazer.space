@@ -19,9 +19,10 @@ ok(p.doubles[1] === 0, 'interne klik is geen nieuw bezoek')
 // Gebeurtenissen: alleen bekende
 ok(maakDatapunt({ t: 'ev', e: 'push-klik', p: '/sterrenkijken/' }, ctx).blobs[5] === 'push-klik', 'bekende gebeurtenis')
 ok(maakDatapunt({ t: 'ev', e: 'iets-anders', p: '/' }, ctx) === null, 'onbekende gebeurtenis genegeerd')
-p = maakDatapunt({ t: 'ev', e: 'uit-klik', x: 'bol', p: '/sterrenkijken/cadeaugids/' }, ctx)
-ok(p && p.blobs[5] === 'uit-klik' && p.blobs[6] === 'bol', 'klik naar winkel telt, met bestemming')
+p = maakDatapunt({ t: 'ev', e: 'uit-klik', x: 'astroshop', p: '/sterrenkijken/cadeaugids/' }, ctx)
+ok(p && p.blobs[5] === 'uit-klik' && p.blobs[6] === 'astroshop', 'klik naar winkel telt, met bestemming')
 ok(statsSql(30).includes("klik_kalender") && statsSql(30).includes("'/sterrenkijken/hemelkalender/'"), 'stats tonen de kalender')
+ok(statsSql(30).includes("klik_astroshop"), 'stats tonen klikken naar Astroshop')
 ok(statsSql(30).includes("klik_kofi") && statsSql(30).includes("'/sterrenkijken/cadeaugids/'"), 'stats tonen klikken en geldpagina')
 
 ok(statsSql(30).includes('omhoog_bezoeken') && statsSql(30).includes("blob8 = 'pers') AS bron_pers,"), 'stats tonen de campagne per kanaal')

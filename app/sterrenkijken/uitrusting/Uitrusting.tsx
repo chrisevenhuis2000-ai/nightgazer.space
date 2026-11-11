@@ -3,7 +3,7 @@
 /* ══════════════════════════════════════════════════════════════════════════
    Uitrusting — /sterrenkijken/uitrusting
 
-   Aanraders met affiliate-links naar Bol en Amazon.nl. De producten, links
+   Aanraders met affiliate-links naar Astroshop en Amazon.nl. De producten, links
    en beelden staan in lib/uitrusting.ts. Eerlijkheid eerst: de melding over
    commissie staat in de kop, vóór het eerste product, en elke winkellink is
    rel="sponsored".
@@ -68,7 +68,7 @@ export default function Uitrusting() {
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={TOTAAL} edition={editionLabel()} current="gidsen" totalLabel="aanraders" />
+      <PlateHead total={TOTAAL} edition={editionLabel()} current="gidsen" totalLabel="tips" />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
         {/* ══ Kop ══ */}

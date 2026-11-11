@@ -260,8 +260,11 @@ export function speelveld(b: Beeld, when: Date, maat = 1000): Punt[] {
   return punten
 }
 
-/** Straal van een ster op het scherm: helderder is groter. */
-export const straal = (mag: number, maat = 1000) => (maat / 1000) * Math.max(4, Math.min(15, 11.5 - mag * 2.2))
+/** Straal van een ster op het scherm: helderder is groter. `min` is de
+    kleinste straal; op een smal scherm zet het spel die zo dat elke ster
+    minstens 8 px breed is (fase 3, gebruikerstest 2026-11). */
+export const straal = (mag: number, maat = 1000, min = 4) =>
+  (maat / 1000) * Math.max(min, Math.min(Math.max(15, min + 5), 11.5 - mag * 2.2))
 
 // ── Spelstand ───────────────────────────────────────────────────────────────
 
