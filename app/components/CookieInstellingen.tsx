@@ -1,12 +1,15 @@
 'use client'
 
+import { OPEN_BANNER } from './CookieBanner'
+
 declare global {
   interface Window { googlefc?: { callbackQueue?: unknown[]; showRevocationMessage?: () => void } }
 }
 
-/** Opent opnieuw het toestemmingsvenster van Google's CMP. */
+/** Opent opnieuw de eigen Analytics-banner en, als die actief is, het toestemmingsvenster van Google's CMP. */
 export function CookieInstellingen({ style }: { style?: React.CSSProperties }) {
   function open() {
+    window.dispatchEvent(new Event(OPEN_BANNER))
     window.googlefc = window.googlefc || {}
     window.googlefc.callbackQueue = window.googlefc.callbackQueue || []
     window.googlefc.callbackQueue.push(() => window.googlefc?.showRevocationMessage?.())

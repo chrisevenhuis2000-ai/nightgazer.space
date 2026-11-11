@@ -62,7 +62,7 @@ export default function PrivacyPage() {
           <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
             <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Cookies</h2>
             <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              NightGazer gebruikt functionele opslag (zoals uw quizantwoorden). Toestemming voor analytische cookies (Google Analytics) en advertentiecookies (Google AdSense) vragen we via het toestemmingsvenster van Google, een door Google gecertificeerd toestemmingsplatform volgens het IAB-TCF. U kunt uw keuze op elk moment wijzigen via ‘Cookie-instellingen’ onderaan elke pagina.
+              NightGazer gebruikt functionele opslag (zoals uw quizantwoorden). Toestemming voor analytische cookies (Google Analytics) vragen we via een eigen melding onderaan het scherm, met de keuze Accepteren of Weigeren. Uw keuze bewaren we op uw eigen apparaat. Advertentiecookies (Google AdSense) worden niet geplaatst; zodra we die gaan gebruiken, vragen we daar apart toestemming voor via het toestemmingsvenster van Google, een door Google gecertificeerd toestemmingsplatform volgens het IAB-TCF. U kunt uw keuze op elk moment wijzigen via ‘Cookie-instellingen’ onderaan elke pagina.
             </p>
           </section>
 
