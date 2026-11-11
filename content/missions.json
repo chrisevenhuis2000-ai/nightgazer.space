@@ -1,9 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-10T15:46:38.877Z",
-    "autoUpdated": [
-      "ussf-266"
-    ]
+    "lastUpdated": "2026-11-11T15:36:59.270Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -5601,11 +5599,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "11 nov 2026",
+      "launched": "12 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 11 nov 2026",
+      "highlight": "Lancering gepland: 12 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5617,7 +5615,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "11 nov 2026",
+          "date": "12 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-5\")"
         }
       ],
@@ -5677,11 +5675,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "14 nov 2026",
+      "launched": "15 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 14 nov 2026",
+      "highlight": "Lancering gepland: 15 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5693,7 +5691,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "14 nov 2026",
+          "date": "15 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-6\")"
         }
       ],
@@ -5715,11 +5713,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "17 nov 2026",
+      "launched": "18 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 17 nov 2026",
+      "highlight": "Lancering gepland: 18 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5731,7 +5729,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "17 nov 2026",
+          "date": "18 nov 2026",
           "event": "Geplande lancering van USSF-266"
         }
       ],
