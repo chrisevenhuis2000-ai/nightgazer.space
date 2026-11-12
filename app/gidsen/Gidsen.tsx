@@ -16,6 +16,7 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
+import { Hemelbrief } from '../components/Hemelbrief'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { nasaBeeld, nasaPagina, GROEPEN, type NasaMaat } from '@/lib/uitrusting'
@@ -207,7 +208,8 @@ export default function Gidsen() {
         </section>
 
         {/* ══ Daarna ══ */}
-        <section className="pl-wrap" aria-label="Naar buiten">
+        <section className="pl-wrap pl-gids__slot" aria-label="Naar buiten">
+          <Hemelbrief />
           <div className="pl-plate pl-uitr-ref">
             <div>
               <span className="pl-label">Vannacht</span>

@@ -17,6 +17,7 @@ import { useEffect, useRef } from 'react'
 import { SiteFooter } from '../components/SiteFooter'
 import { Steun } from '../components/Steun'
 import { MeldingenTeaser } from '../components/MeldingenTeaser'
+import { Hemelbrief } from '../components/Hemelbrief'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, GidsBalk } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { nasaBeeld, nasaPagina } from '@/lib/uitrusting'
@@ -181,6 +182,7 @@ export default function Zwermgids({ slug }: { slug: Gids['slug'] }) {
         </section>
 
         <section className="pl-wrap pl-gids__slot" aria-label="Verder">
+          <Hemelbrief />
           <MeldingenTeaser />
           <div className="pl-plate pl-uitr-ref">
             <div>
