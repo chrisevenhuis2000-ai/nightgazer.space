@@ -21,7 +21,8 @@ type Staat = 'leeg' | 'bezig' | 'klaar' | 'fout' | 'ongeldig'
 
 const waar = () => (typeof location !== 'undefined' ? location.pathname : '')
 
-export function Hemelbrief({ tekst }: { tekst?: string }) {
+/** kaal: alleen het formulier, zonder plaat en kop (voor in de kop van /hemelbrief). */
+export function Hemelbrief({ tekst, kaal }: { tekst?: string; kaal?: boolean }) {
   const [staat, setStaat] = useState<Staat>('leeg')
 
   async function verstuur(e: React.FormEvent<HTMLFormElement>) {
@@ -50,18 +51,12 @@ export function Hemelbrief({ tekst }: { tekst?: string }) {
     }
   }
 
-  return (
-    <div className="pl-plate pl-brief" id="hemelbrief">
-      <div className="pl-brief__t">
-        <h2 className="pl-h3">De Hemelbrief</h2>
-        <p className="pl-body-s">
-          {tekst ?? `Elke ${HEMELBRIEF_DAG} in je mail: wat je dat weekend aan de hemel ziet, wanneer het donker is en waar je moet kijken. Gratis, en afmelden kan altijd.`}
-        </p>
-      </div>
-      {staat === 'klaar' ? (
+  const inhoud = (
+      staat === 'klaar' ? (
         <p className="pl-brief__klaar" role="status">
-          <strong>Bijna klaar.</strong> Je krijgt een mail van NightGazer. Klik op de bevestigingslink, dan sta je erop.
-          Niets gezien? Kijk even bij je spam of reclame.
+          <i className="pl-brief__vink" aria-hidden="true" />
+          <span><strong>Bijna klaar.</strong> Je krijgt een mail van NightGazer. Klik op de bevestigingslink, dan sta je erop.
+          Niets gezien? Kijk even bij je spam of reclame.</span>
         </p>
       ) : (
         <form className="pl-brief__form" onSubmit={verstuur} noValidate>
@@ -81,10 +76,25 @@ export function Hemelbrief({ tekst }: { tekst?: string }) {
               ? 'Dat lijkt geen e-mailadres. Kijk even of er een @ en een punt in staan.'
               : staat === 'fout'
               ? 'Het aanmelden lukte niet. Probeer het over een paar minuten nog eens.'
+              : kaal
+              ? <>Gratis, en afmelden kan altijd. Je adres staat bij MailerLite en gaat nergens anders heen (<Link href="/privacy/" className="pl-voorw__a">privacy</Link>).</>
               : <>Je adres staat bij MailerLite en gaat nergens anders heen. Zie de <Link href="/privacy/" className="pl-voorw__a">privacyverklaring</Link>.</>}
           </p>
         </form>
-      )}
+      )
+  )
+
+  if (kaal) return <div className="pl-brief pl-brief--kaal" id="hemelbrief">{inhoud}</div>
+
+  return (
+    <div className="pl-plate pl-brief" id="hemelbrief">
+      <div className="pl-brief__t">
+        <h2 className="pl-h3">De Hemelbrief</h2>
+        <p className="pl-body-s">
+          {tekst ?? `Elke ${HEMELBRIEF_DAG} in je mail: wat je dat weekend aan de hemel ziet, wanneer het donker is en waar je moet kijken. Gratis, en afmelden kan altijd.`}
+        </p>
+      </div>
+      {inhoud}
     </div>
   )
 }

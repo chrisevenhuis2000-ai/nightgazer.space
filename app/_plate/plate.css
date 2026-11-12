@@ -5377,11 +5377,66 @@ a:hover .pl-emulsion > img,
 .pl-brief__val { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .pl-brief__uitleg { grid-column: 1 / -1; margin: 0; color: var(--pl-ink-3); font-size: 0.8125rem; line-height: 1.5; }
 .pl-brief__uitleg--fout { color: var(--pl-warn); }
-.pl-brief__klaar { margin: 0; padding: 14px 16px; border-left: 2px solid var(--pl-good); color: var(--pl-ink-2); font-size: 0.9375rem; line-height: 1.6; }
+.pl-brief__klaar {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start;
+  margin: 0; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--pl-good) 45%, var(--pl-rule));
+  background: color-mix(in srgb, var(--pl-good) 6%, transparent);
+  color: var(--pl-ink-2); font-size: 0.9375rem; line-height: 1.6;
+}
+.pl-brief__vink {
+  position: relative; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%;
+  border: 1.5px solid var(--pl-good);
+}
+.pl-brief__vink::after {
+  content: ''; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px;
+  border: solid var(--pl-good); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg);
+}
 .pl-brief__klaar strong { color: var(--pl-ink); }
 @media (max-width: 760px) {
   .pl-brief { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 420px) {
   .pl-brief__form { grid-template-columns: minmax(0, 1fr); }
+}
+.pl-hb__kop .pl-h1 { max-width: 18ch; }
+.pl-hb__kop .pl-uhero__in { padding-bottom: clamp(48px, 5vw, 64px); }
+.pl-hb__kop .pl-uhero__ground .pl-emulsion > img { opacity: 0.75; }
+/* het formulier zit in de kop: één regel veld + knop, op de breedte van de lede */
+.pl-brief--kaal { display: block; max-width: 560px; margin-top: clamp(20px, 2.4vw, 28px); padding: 0; }
+.pl-brief--kaal .pl-brief__in { background: color-mix(in srgb, var(--pl-ground) 82%, transparent); }
+.pl-brief--kaal .pl-brief__uitleg { color: var(--pl-ink-2); }
+
+/* bevestigd: een vinkje dat zichzelf trekt, één keer */
+.pl-hb__vink {
+  display: block; width: clamp(40px, 4vw, 52px); height: auto; margin-bottom: 16px;
+  fill: none; stroke: var(--pl-good); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pl-hb__vink circle, .pl-hb__vink path { stroke-dasharray: 1; animation: pl-hb-trek 700ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .pl-hb__vink circle { animation-delay: 120ms; }
+  .pl-hb__vink path { animation-delay: 520ms; animation-duration: 420ms; }
+}
+@keyframes pl-hb-trek { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* zo ziet een Hemelbrief eruit: een smalle brief, zoals in je mail */
+.pl-hb__inhoud { display: grid; gap: 20px; }
+.pl-hb__intro { margin: 0; max-width: 40ch; color: var(--pl-ink-2); }
+@media (min-width: 960px) {
+  .pl-hb__inhoud { grid-template-columns: minmax(0, 1fr) minmax(0, 720px); gap: clamp(32px, 4vw, 64px); align-items: start; }
+}
+.pl-hb__brief { max-width: 720px; padding: 0; }
+.pl-hb__brief-kop {
+  display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px clamp(20px, 3vw, 40px);
+  margin: 0; padding: 16px clamp(20px, 3vw, 32px); border-bottom: 1px solid var(--pl-rule);
+}
+.pl-hb__brief-kop div { display: grid; gap: 2px; }
+.pl-hb__brief-kop dt { font-size: 0.75rem; font-weight: 600; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pl-ink-3); }
+.pl-hb__brief-kop dd { margin: 0; color: var(--pl-ink); font-size: 0.9375rem; }
+.pl-hb__delen { list-style: none; margin: 0; padding: 4px clamp(20px, 3vw, 32px) 8px; }
+.pl-hb__delen li { display: grid; gap: 6px; padding: 20px 0; }
+.pl-hb__delen li + li { border-top: 1px solid var(--pl-rule-soft); }
+.pl-hb__delen .pl-body { margin: 0; color: var(--pl-ink-2); max-width: 60ch; }
+@media (max-width: 560px) {
+  .pl-hb__brief-kop { grid-template-columns: minmax(0, 1fr); }
+  .pl-hb__brief-kop div { grid-template-columns: 6.5em minmax(0, 1fr); align-items: baseline; }
 }
