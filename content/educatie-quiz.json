@@ -1402,6 +1402,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-12",
+      "slug": "apod-2026-november-10-saturn-behind-the-moon",
+      "titel": "Saturnus verdwijnt achter de Maan: astrofoto van een zeldzame bedekking",
+      "beg": {
+        "q": "Waarom verdwijnt Saturnus tijdelijk uit het zicht tijdens een bedekking door de Maan?",
+        "options": [
+          "Saturnus dooft tijdelijk door een zonnevlam",
+          "De Maan schuift vanuit ons gezien precies voor Saturnus langs",
+          "Saturnus beweegt tijdelijk uit het zonnestelsel weg",
+          "De schaduw van de aarde valt op Saturnus"
+        ],
+        "correct": 1,
+        "explain": "De Maan staat dichtbij en schuift precies tussen ons en Saturnus door, zodat de planeet verborgen is. Saturnus zelf verandert niet; de Maan hangt er als een schijf voor, zoals een hand voor een lamp die ver weg staat."
+      },
+      "ama": {
+        "q": "Waarom liggen de Maan, Saturnus en de ster 85 Aquarii op een foto dicht bij elkaar terwijl ze dat in werkelijkheid niet zijn?",
+        "options": [
+          "De zwaartekracht van de Maan trekt Saturnus en de ster naar zich toe",
+          "We zien alleen hun richting aan de hemel, niet hun afstand, en die verschilt enorm",
+          "Ze staan alle drie op ongeveer dezelfde afstand van de aarde",
+          "Telescopen vervormen de afstanden tussen heldere objecten"
+        ],
+        "correct": 1,
+        "explain": "Aan de hemel zien we alleen de positie in twee dimensies, de projectie, niet de diepte. De Maan ligt op ongeveer 384.000 km, Saturnus op ruim een miljard kilometer en de ster nog veel verder. Daardoor kunnen ze toch in dezelfde lijn lijken te staan."
+      },
+      "pro": {
+        "q": "Waarom is een bedekking maar vanuit een smalle strook op aarde te zien, terwijl Saturnus en de Maan wel voor een groot deel van de planeet boven de horizon staan?",
+        "options": [
+          "Saturnus is te lichtzwak om buiten de strook waar te nemen",
+          "De Maan staat dichtbij, waardoor de parallax groot is en de schaduwbaan op aarde smal is",
+          "De atmosfeer van de aarde breekt het licht van Saturnus buiten de strook volledig weg",
+          "De baan van de Maan verandert tijdens de bedekking sterk van helling"
+        ],
+        "correct": 1,
+        "explain": "De Maan is zo dichtbij dat haar schijnbare positie ten opzichte van verre objecten sterk afhangt van de waarnemingsplaats (maanparallax, ongeveer 1°). Saturnus ligt vrijwel op oneindig, dus de bedekking is alleen te zien binnen een smalle baan; daarbuiten schuift de Maan er net langs."
+      }
+    },
+    {
       "datum": "2026-11-11",
       "slug": "nasas-escapade-completes-powered-earth-flybys-now-en-route-t",
       "titel": "Tweelingsondes ESCAPADE schieten via de aarde naar Mars",
@@ -1893,45 +1931,7 @@
         "correct": 0,
         "explain": "Gelijkstellen van de zwaartekracht aan de middelpuntzoekende kracht geeft de derde wet van Kepler: r³ = GMT²/4π². Met T ≈ 86.164 s komt dat uit op ongeveer 42.164 km vanaf het aardmiddelpunt, ongeveer 35.786 km boven de evenaar."
       }
-    },
-    {
-      "datum": "2026-10-24",
-      "slug": "apod-2026-october-23-andromeda-in-southern-spring",
-      "titel": "Andromeda in de zuidelijke lente",
-      "beg": {
-        "q": "Waarom lijkt de Andromedanevel met het blote oog maar een klein, zwak vlekje, terwijl hij op lang belichte foto's veel groter is?",
-        "options": [
-          "Een camera maakt het stelsel groter doordat de lens de afstand tot Andromeda verkleint",
-          "De zwakke buitendelen van het stelsel zijn te lichtzwak voor het oog, maar komen met gevoelige camera's en lange belichting wel tevoorschijn",
-          "Alleen de buitenrand van het stelsel straalt licht uit, en dat zie je alleen op foto's",
-          "Het stelsel wordt groter doordat het tijdens de belichting door de ruimte naar de aarde toe beweegt"
-        ],
-        "correct": 1,
-        "explain": "Een camera kan met een lange belichting licht urenlang verzamelen, terwijl ons oog dat niet kan. Daardoor worden ook de heel zwakke buitendelen zichtbaar. Het stelsel beslaat zo bijna zes volle manen aan de hemel."
-      },
-      "ama": {
-        "q": "Waarom worden bij het fotograferen van Andromeda veel opnamen gestapeld en wordt de camera meegevoerd met de draaiing van de hemel?",
-        "options": [
-          "Stapelen maakt het stelsel fysiek groter, tracking maakt het stelsel helderder",
-          "Stapelen verlaagt de ruis zodat zwakke details zichtbaar worden, tracking houdt sterren scherp tijdens lange belichting",
-          "Stapelen corrigeert de dopplerverschuiving van het stelsel, tracking corrigeert de kromming van de lens",
-          "Stapelen voorkomt dat de aarde draait, tracking zorgt voor een helderdere voorgrond"
-        ],
-        "correct": 1,
-        "explain": "Door veel opnamen te combineren middelt de willekeurige ruis weg, terwijl het echte signaal van zwakke details blijft. De aarde draait, dus zonder meebewegen worden sterren bij lange belichting streepjes. Voor het landschap is een aparte opname nodig, omdat dat niet meebeweegt met de sterren."
-      },
-      "pro": {
-        "q": "Waarom verbetert het stapelen van N gelijke opnamen de signaal-ruisverhouding van zwakke details van Andromeda?",
-        "options": [
-          "Het signaal telt lineair op en de willekeurige ruis ongeveer met √N, dus de verhouding verbetert met een factor √N",
-          "Het signaal groeit ongeveer met N en de ruis blijft constant, dus de verhouding verbetert met een factor N",
-          "Signaal en ruis nemen beide met N toe, zodat de verhouding gelijk blijft maar het beeld helderder wordt",
-          "Het signaal groeit met N² en de ruis met N, dus de verhouding verbetert met een factor N"
-        ],
-        "correct": 0,
-        "explain": "Het signaal van een object is in elke opname hetzelfde en telt lineair op (∝ N). Onafhankelijke, willekeurige ruis telt kwadratisch op en groeit dus met √N. Daardoor verbetert de signaal-ruisverhouding met √N; vier keer zoveel opnamen geeft dus twee keer zo'n goede verhouding."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-11T16:06:22.355Z"
+  "bijgewerkt": "2026-11-12T16:46:40.106Z"
 }
