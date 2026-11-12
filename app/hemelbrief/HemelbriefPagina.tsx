@@ -24,19 +24,16 @@ export type Soort = 'aanmelden' | 'bevestigd' | 'afgemeld'
 
 const BEELD = { nasaId: 'NHQ202108110001', titel: 'De Melkweg met een Perseïde boven Spruce Knob, augustus 2021', credit: 'NASA/Bill Ingalls' }
 
-const KOP: Record<Soort, { label: string; titel: string; lede: string }> = {
+const KOP: Record<Soort, { titel: string; lede: string }> = {
   aanmelden: {
-    label: 'Gratis, elke ' + HEMELBRIEF_DAG,
     titel: 'De Hemelbrief: elk weekend weten wat je ziet',
     lede: `Elke ${HEMELBRIEF_DAG} een korte mail over de hemel boven Nederland: wat er dat weekend te zien is, wanneer het echt donker is en waar je moet kijken. Geschreven voor wie gewoon naar buiten wil.`,
   },
   bevestigd: {
-    label: 'Aanmelding bevestigd',
     titel: 'Je staat op de lijst',
     lede: `Dank je wel. De eerste Hemelbrief komt op ${HEMELBRIEF_EERSTE}, daarna elke ${HEMELBRIEF_DAG}. Zet NightGazer bij je contacten, dan belandt hij niet in je spam.`,
   },
   afgemeld: {
-    label: 'Afgemeld',
     titel: 'Je bent afgemeld',
     lede: 'Je krijgt de Hemelbrief niet meer, en je adres staat niet meer op de lijst. Je bent altijd welkom om op de site te kijken wat er vannacht te zien is.',
   },
@@ -55,6 +52,16 @@ const VERDER: Record<Soort, { href: string; label: string; tekst: string; actie:
   ],
 }
 
+/** Een getekend vinkje dat zichzelf trekt (zonder beweging: meteen af). */
+function Vink() {
+  return (
+    <svg className="pl-hb__vink" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="17" pathLength={1} />
+      <path d="M12.5 20.5l5 5 10-11" pathLength={1} />
+    </svg>
+  )
+}
+
 export default function HemelbriefPagina({ soort }: { soort: Soort }) {
   const k = KOP[soort]
   return (
@@ -69,12 +76,12 @@ export default function HemelbriefPagina({ soort }: { soort: Soort }) {
               <div className="pl-emulsion"><img src={nasaBeeld(BEELD.nasaId, 'large')} alt="" onError={e => { e.currentTarget.style.visibility = 'hidden' }} /></div>
             </div>
             <div className="pl-uhero__in">
-              <span className="pl-label pl-label--stamp pl-hb__label">
-                {soort === 'bevestigd' && <i className="pl-hb__vink" aria-hidden="true" />}
-                {k.label}
-              </span>
-              <h1 id="pl-hb" className="pl-h1">{k.titel}</h1>
+              <h1 id="pl-hb" className="pl-h1">
+                {soort === 'bevestigd' && <Vink />}
+                {k.titel}
+              </h1>
               <p className="pl-uhero__lede">{k.lede}</p>
+              {soort === 'aanmelden' && <Hemelbrief kaal />}
             </div>
             <p className="pl-uhero__credit">
               <a href={nasaPagina(BEELD.nasaId)} target="_blank" rel="noopener">{BEELD.titel} · {BEELD.credit}</a>
@@ -82,31 +89,34 @@ export default function HemelbriefPagina({ soort }: { soort: Soort }) {
           </div>
         </section>
 
-        {soort === 'aanmelden' && (
-          <section className="pl-wrap" aria-label="Aanmelden">
-            <Hemelbrief />
-          </section>
-        )}
-
         {soort !== 'afgemeld' && (
           <section className="pl-wrap" aria-labelledby="pl-hb-inhoud">
             <div className="pl-band">
               <div className="pl-band__t">
                 <h2 id="pl-hb-inhoud" className="pl-h2">Wat er in de brief staat</h2>
-                <span className="pl-label">Vijf minuten lezen</span>
               </div>
             </div>
-            <ol className="pl-voorw__list">
-              {HEMELBRIEF_INHOUD.map((d, i) => (
-                <li key={d.titel} className="pl-voorw__item">
-                  <span className="pl-label pl-label--stamp pl-num">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
+            <div className="pl-hb__inhoud">
+            <p className="pl-body pl-hb__intro">
+              Elke week dezelfde vier onderdelen, in deze volgorde, zodat je snel vindt wat je zoekt.
+              De eerste Hemelbrief komt op {HEMELBRIEF_EERSTE}.
+            </p>
+            <article className="pl-plate pl-hb__brief" aria-label="Zo ziet een Hemelbrief eruit">
+              <dl className="pl-hb__brief-kop">
+                <div><dt>Van</dt><dd>NightGazer</dd></div>
+                <div><dt>Wanneer</dt><dd>Elke {HEMELBRIEF_DAG}, voor het weekend</dd></div>
+                <div><dt>Leestijd</dt><dd>Vijf minuten</dd></div>
+              </dl>
+              <ol className="pl-hb__delen">
+                {HEMELBRIEF_INHOUD.map(d => (
+                  <li key={d.titel}>
                     <h3 className="pl-h3">{d.titel}</h3>
                     <p className="pl-body">{d.tekst}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+                  </li>
+                ))}
+              </ol>
+            </article>
+            </div>
           </section>
         )}
 
