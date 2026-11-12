@@ -5385,3 +5385,15 @@ a:hover .pl-emulsion > img,
 @media (max-width: 420px) {
   .pl-brief__form { grid-template-columns: minmax(0, 1fr); }
 }
+.pl-hb__kop .pl-h1 { max-width: 18ch; }
+.pl-hb__kop .pl-uhero__in { padding-bottom: clamp(48px, 5vw, 64px); }
+.pl-hb__kop .pl-uhero__ground .pl-emulsion > img { opacity: 0.75; }
+.pl-hb__label { display: inline-flex; align-items: center; gap: 10px; }
+.pl-hb__vink {
+  position: relative; width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid var(--pl-good);
+}
+.pl-hb__vink::after {
+  content: ''; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px;
+  border: solid var(--pl-good); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg);
+}
