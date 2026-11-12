@@ -1,7 +1,11 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-11T15:36:59.270Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-11-12T16:13:32.939Z",
+    "autoUpdated": [
+      "ussf-xxx-r-5",
+      "axiom-space-mission-5",
+      "sda-tranche-2-transport-layer-c"
+    ]
   },
   "missions": [
     {
@@ -2566,22 +2570,22 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "missie",
-      "launched": "31 dec 2026",
+      "launched": "29 jan 2027",
       "objective": "Aspera brengt ultraviolet licht van het intergalactisch medium in kaart om de geboorte van sterren te ontrafelen.",
       "body": "Low Earth Orbit",
-      "highlight": "Gepland voor lancering eind 2026 aan boord van een Electron-raket.",
+      "highlight": "Gepland voor lancering op 29 januari 2027",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
-      "description": "De Aspera-missie draagt een ultraviolettelescoop aan boord en richt zich op het hete gas in het intergalactische medium, dat vermoedelijk een sleutelrol speelt bij de vorming van sterren en planeten. Het ruimtevaartuig wordt gelanceerd door Rocket Lab op een Electron-raket naar een lage aardbaan. Aspera wordt de eerste NASA-astrofysicamissie die ultraviolette lichtsignaturen van dit gas verzamelt en in kaart brengt. De bevindingen kunnen een dieper inzicht geven in de oorsprong van sterren, planeten en mogelijk het leven zelf in het heelal.",
+      "description": "Aspera is een NASA-astrofysicamissie met een ultraviolet telescoop aan boord. Het ruimtevaartuig onderzoekt heet gas in het intergalactisch medium, dat vermoedelijk bijdraagt aan de geboorte van sterren en planeten. Het wordt de eerste NASA-astrofysicamissie die deze ultraviolette lichtsignaturen verzamelt en in kaart brengt.",
       "vehicle": "Electron",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.nasa.gov",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "29 jan 2027",
           "event": "Geplande lancering van Aspera"
         }
       ],
@@ -2598,9 +2602,12 @@
         "ultraviolet astronomie",
         "intergalactisch medium",
         "ultraviolet",
-        "astrofysica"
+        "astrofysica",
+        "sterrenstelsels",
+        "rocket lab electron"
       ],
-      "_lastClaudeUpdate": "2026-07-30T10:13:41.161Z"
+      "_lastClaudeUpdate": "2026-11-12T16:13:18.946Z",
+      "launchPrecision": "Day"
     },
     {
       "id": "strix-launch-11",
@@ -5597,13 +5604,13 @@
       "name": "USSF-xxx (\"R-5\")",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "12 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Geclassificeerde SpaceX-missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 12 nov 2026",
+      "highlight": "Gelanceerd op 12 nov 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5616,7 +5623,7 @@
       "timeline": [
         {
           "date": "12 nov 2026",
-          "event": "Geplande lancering van USSF-xxx (\"R-5\")"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -5742,6 +5749,82 @@
         "starshield"
       ],
       "_lastClaudeUpdate": "2026-11-10T15:46:33.286Z"
+    },
+    {
+      "id": "axiom-space-mission-5",
+      "_ll2Id": "de3d5d91-f115-4a86-b923-203a91a08735",
+      "name": "Axiom Space Mission 5",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 jan 2027",
+      "launchPrecision": "Month",
+      "objective": "Crew Dragon-vlucht voor Axiom Space met een commandant en drie privé-astronauten naar het ISS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: januari 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Axiom Space Mission 5 is een Crew Dragon-vlucht uitgevoerd door SpaceX voor het private bedrijf Axiom Space. De missie brengt een professioneel getrainde commandant samen met drie privé-astronauten naar het Internationaal Ruimtestation. De bemanning verblijft ongeveer een maand aan boord voordat zij terugkeert naar de aarde.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "",
+      "timeline": [
+        {
+          "date": "januari 2027",
+          "event": "Geplande lancering van Axiom Space Mission 5"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "axiom space",
+        "spacex",
+        "crew dragon",
+        "iss",
+        "falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-11-12T16:13:23.848Z"
+    },
+    {
+      "id": "sda-tranche-2-transport-layer-c",
+      "_ll2Id": "542a51bb-2351-48b9-98c5-9db130fb4c29",
+      "name": "SDA Tranche 2 Transport Layer C",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 jan 2027",
+      "launchPrecision": "Month",
+      "objective": "SpaceX lanceert een geclassificeerde lading voor de Tranche 2 Transport Layer van het Space Development Agency.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: januari 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Een Falcon 9-raket van SpaceX staat gepland om op 31 januari 2027 een geclassificeerde lading naar een polaire baan te brengen. De missie wordt uitgevoerd in opdracht van het Space Development Agency (SDA) als onderdeel van de Tranche 2 Transport Layer.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.sda.mil/",
+      "timeline": [
+        {
+          "date": "januari 2027",
+          "event": "Geplande lancering van SDA Tranche 2 Transport Layer C"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "sda",
+        "polar orbit",
+        "tranche 2 transport layer"
+      ],
+      "_lastClaudeUpdate": "2026-11-12T16:13:28.490Z"
     }
   ]
 }
