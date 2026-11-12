@@ -1,7 +1,7 @@
 // scripts/test-teller.mjs
 // De eigen bezoekersteller (cf-worker/teller.mjs) en de /tel-route.
 import assert from 'assert/strict'
-import { maakDatapunt, isBot, inAppBrowser, statsSql } from '../cf-worker/teller.mjs'
+import { maakDatapunt, isBot, inAppBrowser, statsSql, GEBEURTENISSEN } from '../cf-worker/teller.mjs'
 
 const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1'
 const INSTA = IPHONE.replace('Safari/604.1', 'Instagram 350.0.0.0 (iPhone15,3; iOS 18_1; nl_NL)')
@@ -23,6 +23,7 @@ p = maakDatapunt({ t: 'ev', e: 'uit-klik', x: 'astroshop', p: '/sterrenkijken/ca
 ok(p && p.blobs[5] === 'uit-klik' && p.blobs[6] === 'astroshop', 'klik naar winkel telt, met bestemming')
 ok(statsSql(30).includes("klik_kalender") && statsSql(30).includes("'/sterrenkijken/hemelkalender/'"), 'stats tonen de kalender')
 ok(statsSql(30).includes("klik_astroshop"), 'stats tonen klikken naar Astroshop')
+ok(statsSql(30).includes('hemelbrief_aan') && GEBEURTENISSEN.has('hemelbrief-aan'), 'Hemelbrief-aanmeldingen geteld')
 ok(statsSql(30).includes("klik_kofi") && statsSql(30).includes("'/sterrenkijken/cadeaugids/'"), 'stats tonen klikken en geldpagina')
 
 ok(statsSql(30).includes('omhoog_bezoeken') && statsSql(30).includes("blob8 = 'pers') AS bron_pers,"), 'stats tonen de campagne per kanaal')

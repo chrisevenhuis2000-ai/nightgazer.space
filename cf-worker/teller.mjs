@@ -27,6 +27,8 @@ export const GEBEURTENISSEN = new Set([
   'push-fout',       // iets anders ging mis
   'push-uit',        // opgezegd
   'push-teaser',     // tik op het meldingen-blokje op /vandaag of de voorpagina
+  'hemelbrief-aan',  // aanmelding voor de Hemelbrief verstuurd (extra = pagina)
+  'hemelbrief-fout', // aanmelding mislukt (extra = pagina)
   'hemelfoto-start',  // eerste gok in Raad de hemelfoto (extra = puzzelnummer)
   'hemelfoto-klaar',  // puzzel af (extra = '3/6' of 'X/6')
   'hemelfoto-deel',   // tik op Deel je uitslag
@@ -131,6 +133,8 @@ SELECT
   sumIf(_sample_interval * double2, blob1 = 'pv' AND blob4 = 'NL') AS bezoeken_nl,
   sumIf(_sample_interval * double2, blob1 = 'pv' AND blob9 != '') AS bezoeken_in_app,
   sumIf(_sample_interval, blob6 = 'push-teaser') AS push_teaser,
+  sumIf(_sample_interval, blob6 = 'hemelbrief-aan') AS hemelbrief_aan,
+  sumIf(_sample_interval, blob6 = 'hemelbrief-fout') AS hemelbrief_fout,
   sumIf(_sample_interval, blob6 = 'push-klik') AS push_klik,
   sumIf(_sample_interval, blob6 = 'push-aan') AS push_aan,
   sumIf(_sample_interval, blob6 = 'push-geweigerd') AS push_geweigerd,

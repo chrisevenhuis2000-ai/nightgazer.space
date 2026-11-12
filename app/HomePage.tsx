@@ -18,6 +18,7 @@ import Link from 'next/link'
 import { MISSIONS } from '@/lib/missions-data'
 import { SiteFooter } from './components/SiteFooter'
 import { MeldingenTeaser } from './components/MeldingenTeaser'
+import { Hemelbrief } from './components/Hemelbrief'
 import { SpellenBlok } from './_plate/SpellenBlok'
 import { Cadeautijd } from './_plate/Cadeautijd'
 import { OmhoogBlok } from './_plate/OmhoogBlok'
@@ -760,7 +761,8 @@ export default function HomePage({ start }: {
           </div>
         </section>
 
-        <section className="pl-wrap" aria-label="Meldingen">
+        <section className="pl-wrap pl-gids__slot" aria-label="Hemelbrief en meldingen">
+          <Hemelbrief />
           <MeldingenTeaser />
         </section>
 

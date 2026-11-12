@@ -5363,3 +5363,25 @@ a:hover .pl-emulsion > img,
 @media (prefers-reduced-motion: reduce) {
   .pl-zg__balk .pl-zg__svg--lijn, .pl-zg__balk .pl-zg__best { transition: none !important; }
 }
+
+/* ══ De Hemelbrief (aanmelden voor de wekelijkse mail) ════════════════════ */
+.pl-brief {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center;
+  gap: 16px clamp(20px, 4vw, 48px);
+  padding: clamp(20px, 2.8vw, 30px) clamp(20px, 3vw, 36px);
+}
+.pl-brief__t { display: grid; gap: 6px; max-width: 54ch; }
+.pl-brief__form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+.pl-brief__in { font-size: 1rem; }
+.pl-brief__in[aria-invalid="true"] { border-color: var(--pl-warn); }
+.pl-brief__val { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.pl-brief__uitleg { grid-column: 1 / -1; margin: 0; color: var(--pl-ink-3); font-size: 0.8125rem; line-height: 1.5; }
+.pl-brief__uitleg--fout { color: var(--pl-warn); }
+.pl-brief__klaar { margin: 0; padding: 14px 16px; border-left: 2px solid var(--pl-good); color: var(--pl-ink-2); font-size: 0.9375rem; line-height: 1.6; }
+.pl-brief__klaar strong { color: var(--pl-ink); }
+@media (max-width: 760px) {
+  .pl-brief { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .pl-brief__form { grid-template-columns: minmax(0, 1fr); }
+}

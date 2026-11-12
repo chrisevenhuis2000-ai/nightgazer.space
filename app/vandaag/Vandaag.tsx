@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { Steun } from '../components/Steun'
 import { MeldingenTeaser } from '../components/MeldingenTeaser'
+import { Hemelbrief } from '../components/Hemelbrief'
 import { SpellenBlok } from '@/app/_plate/SpellenBlok'
 import { Cadeautijd } from '@/app/_plate/Cadeautijd'
 import { OmhoogBlok } from '@/app/_plate/OmhoogBlok'
@@ -126,7 +127,8 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
           <SpellenBlok />
         </section>
 
-        <section className="pl-wrap" aria-label="Meldingen">
+        <section className="pl-wrap pl-gids__slot" aria-label="Hemelbrief en meldingen">
+          <Hemelbrief />
           <MeldingenTeaser />
         </section>
 
