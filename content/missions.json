@@ -1,10 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-12T16:13:32.939Z",
+    "lastUpdated": "2026-11-13T15:41:09.751Z",
     "autoUpdated": [
-      "ussf-xxx-r-5",
-      "axiom-space-mission-5",
-      "sda-tranche-2-transport-layer-c"
+      "nrol-136"
     ]
   },
   "missions": [
@@ -4456,7 +4454,7 @@
       "bgTo": "#080810",
       "description": "Rocket Lab voert met de Electron-raket de tiende lancering uit voor het Japanse aardobservatiebedrijf iQPS. Aan boord bevindt zich een SAR-satelliet (synthetic aperture radar) die in staat is om de aarde ongeacht weersomstandigheden of dag-nachtcycli te fotograferen. De missie draagt de naam 'The Mountain God Rises', een verwijzing naar de Japanse mythologie, en plaatst de satelliet in een lage aardbaan. iQPS bouwt zo verder aan zijn groeiende constellatie van radarsatellieten voor commerciële aardobservatie.",
       "vehicle": "Electron",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Rocket Lab Launch Complex 1A",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://i-qps.net/en/",
@@ -5682,11 +5680,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "15 nov 2026",
+      "launched": "18 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 15 nov 2026",
+      "highlight": "Lancering gepland: 18 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5698,7 +5696,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "15 nov 2026",
+          "date": "18 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-6\")"
         }
       ],
@@ -5825,6 +5823,44 @@
         "tranche 2 transport layer"
       ],
       "_lastClaudeUpdate": "2026-11-12T16:13:28.490Z"
+    },
+    {
+      "id": "nrol-136",
+      "_ll2Id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
+      "name": "NROL-136",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "21 nov 2026",
+      "launchPrecision": "Minute",
+      "objective": "Lancering van de vijftiende batch satellieten voor een verkenningsconstellatie van NRO.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 21 nov 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "NROL-136 is een geplande SpaceX Falcon 9-missie naar een lage aardbaan. Het betreft de vijftiende batch satellieten voor een verkenningsconstellatie die SpaceX en Northrop Grumman bouwen voor het National Reconnaissance Office. De constellatie levert beeldvorming en andere verkenningscapaciteiten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.nro.gov/",
+      "timeline": [
+        {
+          "date": "21 nov 2026",
+          "event": "Geplande lancering van NROL-136"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "nro",
+        "northrop grumman",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-11-13T15:41:04.530Z"
     }
   ]
 }
