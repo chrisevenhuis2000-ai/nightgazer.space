@@ -311,7 +311,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
               <h1 className="pl-h2">{initialTopic ? `${active.label} — nieuws` : 'Het nieuwsarchief'}</h1>
               {quickTag && (
                 <button type="button" className="pl-tag" aria-pressed="true" onClick={() => setQuickTag(null)}>
-                  #{quickTag}
+                  {QUICK_TAGS.find(q => q.tag === quickTag)?.label ?? quickTag}
                   <Ico.close size={11} />
                   <span className="sr-only"> — filter verwijderen</span>
                 </button>
@@ -424,7 +424,7 @@ export default function NieuwsArchief({ initialTopic, start }: {
                   <p className="pl-body-s">
                     Er is niets dat tegelijk {active.label.toLowerCase()}
                     {level !== 'alle' && ` én ${LEVEL_WORD[level].toLowerCase()}`}
-                    {quickTag && ` én #${quickTag}`} is. Laat een van de filters vallen.
+                    {quickTag && ` én "${QUICK_TAGS.find(q => q.tag === quickTag)?.label ?? quickTag}"`} is. Laat een van de filters vallen.
                   </p>
                   <button
                     className="pl-btn"
