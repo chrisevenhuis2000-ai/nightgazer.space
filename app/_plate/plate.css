@@ -413,10 +413,24 @@ a:hover .pl-emulsion > img,
 .pl-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .pl-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+/* The mobile menu hangs from the sticky header (top: 100%), so it opens
+   where the reader is. Long menus scroll inside, never the page behind. */
 .pl-mobnav {
+  position: absolute; top: 100%; left: 0; right: 0;
+  max-height: calc(100dvh - 68px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border-bottom: 1px solid var(--pl-rule);
   background: var(--pl-plate);
   padding: 8px var(--pl-gut) 20px;
+  box-shadow: 0 14px 30px rgba(6,8,20,0.55);
+}
+.pl-mobnav__veil {
+  /* absolute, not fixed: the header's backdrop-filter makes it the
+     containing block for fixed children as well */
+  position: absolute; top: 100%; left: 0; right: 0;
+  height: 100dvh;
+  background: rgba(6,8,20,0.45);
 }
 .pl-mobnav a {
   display: flex; align-items: center;

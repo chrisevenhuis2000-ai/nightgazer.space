@@ -16,6 +16,7 @@ import {
 } from '@/lib/home-content'
 import { Ico } from './Instruments'
 import { Bewaar } from './Bewaar'
+import { useScrollLock } from '../components/useScrollLock'
 import './plate.css'
 
 /* Uit de repo, niet van Google bij elke build: zie app/layout.tsx. */
@@ -112,6 +113,7 @@ export function PlateHead({ total, edition, current, totalLabel = 'artikelen' }:
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [open, close])
+  useScrollLock(open)
 
   return (
     <>
@@ -149,17 +151,22 @@ export function PlateHead({ total, edition, current, totalLabel = 'artikelen' }:
             <span /><span /><span />
           </button>
         </div>
-      </header>
 
-      {open && (
-        <nav id="pl-mobnav" className="pl-mobnav" aria-label="Mobiele navigatie">
-          {NAV.map(({ href, label, key }) => (
-            <Link key={key} href={href} onClick={close} aria-current={key === current ? 'page' : undefined}>
-              {label}
-            </Link>
-          ))}
-        </nav>
-      )}
+        {/* Inside the sticky header, so the menu opens right under it at the
+            current scroll position instead of at the top of the page. */}
+        {open && (
+          <>
+            <div className="pl-mobnav__veil" aria-hidden="true" onClick={close} />
+            <nav id="pl-mobnav" className="pl-mobnav" aria-label="Mobiele navigatie">
+              {NAV.map(({ href, label, key }) => (
+                <Link key={key} href={href} onClick={close} aria-current={key === current ? 'page' : undefined}>
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </>
+        )}
+      </header>
     </>
   )
 }

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect, useCallback } from 'react'
+import { useScrollLock } from './useScrollLock'
 
 export const NAV_LINKS = [
   { href: '/nieuws',        label: 'Nieuws' },
@@ -19,6 +20,7 @@ export function SiteNav() {
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [mobileOpen, close])
+  useScrollLock(mobileOpen)
   return (
     <>
       <nav aria-label="Hoofdnavigatie" style={{ position: 'sticky', top: 0, zIndex: 20, height: 'var(--nav-h)', background: 'rgba(26,26,46,0.96)', borderBottom: '1px solid #252858', backdropFilter: 'blur(16px)' }}>
@@ -42,17 +44,17 @@ export function SiteNav() {
             ))}
           </button>
         </div>
+        {mobileOpen && (
+          <div id="mobile-nav" role="navigation" aria-label="Mobiele navigatie" style={{ position: 'absolute', top: '100%', maxHeight: 'calc(100dvh - var(--nav-h))', overflowY: 'auto', overscrollBehavior: 'contain', left: 0, right: 0, background: '#1A1A2E', borderBottom: '1px solid #252858', padding: '24px', display: 'flex', flexDirection: 'column', gap: 4, animation: 'fadeIn 0.2s ease both' }}>
+            {NAV_LINKS.map(({ href, label }) => (
+              <Link key={href} href={href} onClick={close} style={{ display: 'block', padding: '12px 0', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8A9BC4', borderBottom: '1px solid #252858', textDecoration: 'none', transition: 'color 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#FFFFFF')}
+                onMouseLeave={e => (e.currentTarget.style.color = '#8A9BC4')}
+              >{label}</Link>
+            ))}
+          </div>
+        )}
       </nav>
-      {mobileOpen && (
-        <div id="mobile-nav" role="navigation" aria-label="Mobiele navigatie" style={{ position: 'fixed', top: 'calc(var(--topbar-h) + var(--nav-h))', left: 0, right: 0, background: 'rgba(26,26,46,0.98)', borderBottom: '1px solid #252858', backdropFilter: 'blur(20px)', padding: '24px', zIndex: 19, display: 'flex', flexDirection: 'column', gap: 4, animation: 'fadeIn 0.2s ease both' }}>
-          {NAV_LINKS.map(({ href, label }) => (
-            <Link key={href} href={href} onClick={close} style={{ display: 'block', padding: '12px 0', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8A9BC4', borderBottom: '1px solid #252858', textDecoration: 'none', transition: 'color 0.15s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#FFFFFF')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#8A9BC4')}
-            >{label}</Link>
-          ))}
-        </div>
-      )}
     </>
   )
 }
