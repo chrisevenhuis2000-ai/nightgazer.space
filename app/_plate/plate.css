@@ -5455,19 +5455,73 @@ a:hover .pl-emulsion > img,
   .pl-hb__brief-kop div { grid-template-columns: 6.5em minmax(0, 1fr); align-items: baseline; }
 }
 
-/* Welkom: persoonlijke intro op de homepage. Twee kolommen op breed scherm,
-   onder elkaar op de telefoon. De rijen lenen de stijl van Cadeautijd. */
+/* Welkom: persoonlijke intro op de homepage. Breed: foto | tekst | ingangen,
+   de foto loopt tot de rand van de plaat. Middel: foto als band erboven.
+   Telefoon: alles onder elkaar. Beelden krijgen dezelfde emulsie-graad als
+   de gidsen; één beweging, de zoom bij hover, alleen zonder reduced motion. */
 .pl-welkom {
-  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px clamp(28px, 4vw, 56px);
-  padding: clamp(20px, 3vw, 36px);
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 4fr);
+  padding: 0; overflow: hidden;
 }
-.pl-welkom__ik { display: grid; gap: 12px; align-content: start; }
+.pl-welkom__beeld {
+  position: relative; margin: 0; min-height: 100%; overflow: hidden;
+  background: #05060C; border-right: 1px solid var(--pl-rule);
+}
+.pl-welkom__beeld img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%;
+  filter: grayscale(0.3) contrast(1.05) brightness(0.9) saturate(0.95);
+}
+.pl-welkom__beeld::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(200deg, rgba(24,95,165,0.22), rgba(14,16,34,0.5)); mix-blend-mode: color;
+}
+.pl-welkom__credit {
+  position: absolute; z-index: 1; right: 12px; bottom: 10px;
+  font-size: 0.6875rem; color: var(--pl-ink-2); text-shadow: 0 1px 6px rgba(5,6,12,0.9);
+}
+.pl-welkom__ik, .pl-welkom__start { display: grid; gap: 12px; align-content: start; padding: clamp(22px, 2.8vw, 36px); }
+.pl-welkom__start { padding-left: 0; }
 .pl-welkom__ik .pl-body { max-width: 60ch; margin: 0; }
-.pl-welkom__ik .pl-read { justify-self: start; margin-top: 4px; }
-.pl-welkom__start { display: grid; gap: 12px; align-content: start; }
-.pl-welkom .pl-welkom__rij { grid-template-columns: minmax(0, 1fr) auto; }
-.pl-welkom__rij .pl-body-s { grid-column: 1; grid-row: 2; }
-.pl-welkom__rij svg { grid-column: 2; grid-row: 1 / 3; }
-@media (max-width: 860px) {
+.pl-welkom__ik .pl-read { justify-self: start; }
+
+.pl-welkom__env {
+  display: grid; grid-template-columns: repeat(3, minmax(0, auto)); justify-content: start; gap: 6px 28px;
+  margin: 6px 0 0; padding: 14px 0 2px; border-top: 1px solid var(--pl-rule-soft);
+}
+.pl-welkom__env div { display: grid; gap: 4px; }
+.pl-welkom__env dd { margin: 0; color: var(--pl-ink); font-size: 0.9375rem; }
+
+.pl-welkom__rijen { list-style: none; margin: 4px 0 0; padding: 0; border-top: 1px solid var(--pl-rule); }
+.pl-welkom__rij {
+  display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: 16px;
+  padding: 12px 0; border-bottom: 1px solid var(--pl-rule);
+  color: var(--pl-ink); transition: color 180ms var(--pl-ease);
+}
+.pl-welkom__rij:hover { color: var(--pl-act); }
+.pl-welkom__duim {
+  position: relative; display: block; width: 64px; height: 64px; overflow: hidden;
+  background: #05060C; border: 1px solid var(--pl-rule);
+}
+.pl-welkom__duim img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(0.3) contrast(1.05) brightness(0.9) saturate(0.95);
+}
+.pl-welkom__rij:hover .pl-welkom__duim { border-color: color-mix(in srgb, var(--pl-act) 55%, var(--pl-rule)); }
+.pl-welkom__rtekst { display: grid; gap: 2px; }
+.pl-welkom__kop { font-weight: 700; font-size: 1.05rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .pl-welkom__duim img { transition: transform 900ms var(--pl-ease-o), filter 900ms var(--pl-ease-o); }
+  .pl-welkom__rij:hover .pl-welkom__duim img { transform: scale(1.08); filter: grayscale(0.1) contrast(1.06) brightness(1) saturate(1); }
+}
+
+@media (max-width: 1100px) {
+  .pl-welkom { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pl-welkom__beeld { grid-column: 1 / -1; aspect-ratio: 21 / 8; min-height: 0; border-right: 0; border-bottom: 1px solid var(--pl-rule); }
+}
+@media (max-width: 760px) {
   .pl-welkom { grid-template-columns: minmax(0, 1fr); }
+  .pl-welkom__beeld { aspect-ratio: 16 / 9; }
+  .pl-welkom__start { padding: 0 clamp(20px, 3vw, 36px) clamp(20px, 3vw, 36px); }
+  .pl-welkom__env { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pl-welkom__env div:last-child { grid-column: 1 / -1; }
 }

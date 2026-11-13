@@ -1,20 +1,47 @@
 /* Welkom: een korte, persoonlijke intro op de homepage, direct onder de
-   eerste plaat. Links wie de site maakt en wat het is, rechts drie
-   ingangen voor wie net begint. Alle feiten over de maker komen van /over;
-   pas ze daar en hier samen aan. */
+   eerste plaat. Een foto van de nachthemel, wie de site maakt en wat het
+   is, en drie ingangen voor wie net begint, elk met het beeld van zijn
+   onderwerp. Alle feiten over de maker komen van /over; pas ze daar en hier
+   samen aan. De foto is van NASA, niet van de maker: vervang BEELD door een
+   eigen foto zodra die er is (en haal dan de credit weg). */
 
 import Link from 'next/link'
 import { Ico } from './Instruments'
+import { nasaBeeld } from '@/lib/uitrusting'
+
+/* Alle id's en credits uit de metadata van images-api.nasa.gov. */
+const BEELD = {
+  src: nasaBeeld('NHQ202108100009'),
+  alt: 'De Melkweg boven een donker bos, met een vallende ster',
+  credit: 'Foto NASA/Bill Ingalls',
+}
 
 const INGANGEN = [
-  { href: '/sterrenkijken/', kop: 'Kan ik vannacht kijken?', tekst: 'De komende nachten in één oogopslag: bewolking, maan en wind' },
-  { href: '/sterrenkijken/eerste-telescoop/', kop: 'Je eerste telescoop', tekst: 'Waar je op let, en wat je er echt mee ziet' },
-  { href: '/gidsen/', kop: 'Alle gidsen', tekst: 'Rustig beginnen, van meteorenzwerm tot uitrusting' },
+  {
+    href: '/sterrenkijken/', kop: 'Kan ik vannacht kijken?',
+    tekst: 'De komende nachten in één oogopslag: bewolking, maan en wind',
+    beeld: nasaBeeld('GSFC_20171208_Archive_e001864', 'small'), pos: '50% 50%',
+  },
+  {
+    href: '/sterrenkijken/eerste-telescoop/', kop: 'Je eerste telescoop',
+    tekst: 'Waar je op let, en wat je er echt mee ziet',
+    beeld: nasaBeeld('PIA03162', 'small'), pos: '50% 50%',
+  },
+  {
+    href: '/gidsen/', kop: 'Alle gidsen',
+    tekst: 'Rustig beginnen, van meteorenzwerm tot uitrusting',
+    beeld: nasaBeeld('PIA04227', 'small'), pos: '60% 50%',
+  },
 ]
 
 export function Welkom() {
   return (
     <section className="pl-plate pl-welkom" aria-labelledby="pl-welkom-kop">
+      <figure className="pl-welkom__beeld">
+        <img src={BEELD.src} alt={BEELD.alt} width={1280} height={967} decoding="async" />
+        <figcaption className="pl-welkom__credit">{BEELD.credit}</figcaption>
+      </figure>
+
       <div className="pl-welkom__ik">
         <span className="pl-label">Welkom bij NightGazer</span>
         <h2 id="pl-welkom-kop" className="pl-h2">Hoi, ik ben Crix</h2>
@@ -24,10 +51,15 @@ export function Welkom() {
           dan zij, en sindsdien kijk ik omhoog zodra het helder is.
         </p>
         <p className="pl-body">
-          Op deze site zet ik wat ik zelf had willen vinden toen ik begon: ruimtenieuws in het
+          Hier zet ik wat ik zelf had willen vinden toen ik begon: ruimtenieuws in het
           Nederlands, uitleg op je eigen niveau en een eerlijk antwoord op de vraag of je vannacht
-          iets kunt zien. Elk artikel kun je lezen als beginner, amateur of pro.
+          iets kunt zien. Elk artikel lees je als beginner, amateur of pro.
         </p>
+        <dl className="pl-welkom__env">
+          <div><dt className="pl-label">Kijkt sinds</dt><dd>januari 2026</dd></div>
+          <div><dt className="pl-label">Telescoop</dt><dd>Comet Hunter</dd></div>
+          <div><dt className="pl-label">Hemel</dt><dd>Bortle 4, Lauwersmeer</dd></div>
+        </dl>
         <Link href="/over/" className="pl-read">
           <span>Meer over mij</span>
           <span className="pl-read__rule" aria-hidden="true" />
@@ -37,12 +69,17 @@ export function Welkom() {
 
       <div className="pl-welkom__start">
         <span className="pl-label">Nieuw met sterrenkijken? Begin hier</span>
-        <ul className="pl-tijd__rijen">
+        <ul className="pl-welkom__rijen">
           {INGANGEN.map(r => (
             <li key={r.href}>
-              <Link href={r.href} className="pl-tijd__rij pl-welkom__rij">
-                <span className="pl-tijd__kop">{r.kop}</span>
-                <span className="pl-body-s">{r.tekst}</span>
+              <Link href={r.href} className="pl-welkom__rij">
+                <span className="pl-welkom__duim" aria-hidden="true">
+                  <img src={r.beeld} alt="" loading="lazy" decoding="async" style={{ objectPosition: r.pos }} />
+                </span>
+                <span className="pl-welkom__rtekst">
+                  <span className="pl-welkom__kop">{r.kop}</span>
+                  <span className="pl-body-s">{r.tekst}</span>
+                </span>
                 <Ico.arrow />
               </Link>
             </li>
