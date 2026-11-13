@@ -5468,12 +5468,13 @@ a:hover .pl-emulsion > img,
   background: #05060C; border-right: 1px solid var(--pl-rule);
 }
 .pl-welkom__beeld img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%;
-  filter: grayscale(0.3) contrast(1.05) brightness(0.9) saturate(0.95);
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;
 }
+/* Een eigen opname houdt zijn eigen kleur: geen emulsie-graad, alleen een
+   zachte vignet zodat de credit leesbaar blijft. */
 .pl-welkom__beeld::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(200deg, rgba(24,95,165,0.22), rgba(14,16,34,0.5)); mix-blend-mode: color;
+  background: linear-gradient(to top, rgba(5,6,12,0.55), rgba(5,6,12,0) 30%);
 }
 .pl-welkom__credit {
   position: absolute; z-index: 1; right: 12px; bottom: 10px;

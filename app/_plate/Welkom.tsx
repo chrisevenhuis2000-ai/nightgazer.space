@@ -2,18 +2,18 @@
    eerste plaat. Een foto van de nachthemel, wie de site maakt en wat het
    is, en drie ingangen voor wie net begint, elk met het beeld van zijn
    onderwerp. Alle feiten over de maker komen van /over; pas ze daar en hier
-   samen aan. De foto is van NASA, niet van de maker: vervang BEELD door een
-   eigen foto zodra die er is (en haal dan de credit weg). */
+   samen aan. */
 
 import Link from 'next/link'
 import { Ico } from './Instruments'
 import { nasaBeeld } from '@/lib/uitrusting'
 
-/* Alle id's en credits uit de metadata van images-api.nasa.gov. */
+/* De foto is van de maker zelf (public/beeld, verkleind, zonder EXIF).
+   De beelden bij de ingangen komen van NASA; id's uit images-api.nasa.gov. */
 const BEELD = {
-  src: nasaBeeld('NHQ202108100009'),
-  alt: 'De Melkweg boven een donker bos, met een vallende ster',
-  credit: 'Foto NASA/Bill Ingalls',
+  src: '/beeld/andromeda-crix.jpg',
+  alt: 'De Andromedanevel met haar twee begeleidende sterrenstelsels',
+  credit: 'De Andromedanevel, door Crix gefotografeerd',
 }
 
 const INGANGEN = [
@@ -38,7 +38,7 @@ export function Welkom() {
   return (
     <section className="pl-plate pl-welkom" aria-labelledby="pl-welkom-kop">
       <figure className="pl-welkom__beeld">
-        <img src={BEELD.src} alt={BEELD.alt} width={1280} height={967} decoding="async" />
+        <img src={BEELD.src} alt={BEELD.alt} width={1600} height={1122} decoding="async" />
         <figcaption className="pl-welkom__credit">{BEELD.credit}</figcaption>
       </figure>
 
