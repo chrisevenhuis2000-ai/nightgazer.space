@@ -34,6 +34,8 @@ const LADDER: Record<Exclude<ReadingLevel, 'original'>, 'beg' | 'ama' | 'pro'> =
   beginner: 'beg', amateur: 'ama', pro: 'pro',
 }
 const LEVEL_STORE = 'nightgazer_leesniveau_artikel'
+/** Het niveau voor wie nog nooit zelf koos. */
+const STANDAARD_NIVEAU: ReadingLevel = 'beginner'
 
 /* Categorie → missiepagina. Naam, agentschap en status komen uit de
    missiedata zelf, zodat de kaart nooit iets beweert dat daar niet staat. */
@@ -216,13 +218,6 @@ export default function ArtikelPlaat({ slug, initial = null }: {
     return () => { alive = false }
   }, [article, slug])
 
-  /* Bewaard niveau terughalen */
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(LEVEL_STORE) as ReadingLevel | null
-      if (saved && ORDER.includes(saved)) setLevel(saved)
-    } catch { /* origineel blijft staan */ }
-  }, [])
 
   /* Leesvoortgang */
   useEffect(() => {
@@ -240,11 +235,11 @@ export default function ArtikelPlaat({ slug, initial = null }: {
      alinea. Mislukt er één, dan toont die alinea stil het origineel (geen
      rode notitie: die las als "kapotte site"), en wordt het niveau niet
      bewaard, zodat een volgende klik het opnieuw probeert. */
-  const develop = useCallback(async (next: ReadingLevel) => {
+  const develop = useCallback(async (next: ReadingLevel, bewaar = true) => {
     if (!article) return
     const id = ++runId.current
     setLevel(next)
-    try { localStorage.setItem(LEVEL_STORE, next) } catch { /* niet erg */ }
+    if (bewaar) try { localStorage.setItem(LEVEL_STORE, next) } catch { /* niet erg */ }
 
     const cached = cache.current[next]
     if (cached) {
@@ -295,6 +290,24 @@ export default function ArtikelPlaat({ slug, initial = null }: {
     if (!failed) cache.current[next] = out
     setBusy(false)
   }, [article])
+
+  /* Startniveau. Wie zelf een niveau koos, krijgt dat terug (en de tekst
+     wordt nu ook echt op dat niveau gezet, niet alleen de knop). Wie nog
+     nooit koos, begint op Beginner: de site trekt ook mensen zonder
+     sterrenkundekennis, en de originele tekst staat er voor zoekmachines
+     en zonder JavaScript gewoon onder. Die automatische keuze wordt niet
+     bewaard; alleen een klik op een knop wordt onthouden. */
+  const gestart = useRef(false)
+  useEffect(() => {
+    if (!article || gestart.current) return
+    gestart.current = true
+    let start: ReadingLevel = STANDAARD_NIVEAU
+    try {
+      const saved = localStorage.getItem(LEVEL_STORE) as ReadingLevel | null
+      if (saved && ORDER.includes(saved)) start = saved
+    } catch { /* dan het standaardniveau */ }
+    if (start !== 'original') develop(start, false)
+  }, [article, develop])
 
   /* Kerncijfers en kernfeiten in de kantlijn — alleen voor oudere artikelen
      zonder eigen kernpunten; nieuwe artikelen brengen ze statisch mee. */
@@ -396,7 +409,7 @@ ${article.rawBody.slice(0, 2500)}` }],
       {/* ══ Belichting ══ */}
       <div className="pl-expose">
         <div className="pl-expose__in">
-          <span className="pl-expose__lab pl-label">Belichting</span>
+          <span className="pl-expose__lab pl-label">Leesniveau</span>
           <div className="pl-expose__set" role="group" aria-label="Kies je leesniveau">
             {ORDER.map(k => (
               <button

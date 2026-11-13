@@ -32,7 +32,7 @@ import { leesApodCache, schrijfApodCache, isGeldigeApod } from '@/lib/apod-cache
 import type { Startset } from '@/lib/article-index'
 import {
   Ico, Tip, useSky, skyTone, useUpcoming, type SkyState,
-  SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate, NiveauPlate,
+  SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate,
 } from '@/app/_plate/Instruments'
 import {
   archivo, ROWS_PER_PAGE, TOPICS, QUICK_TAGS, quickMatches,
@@ -40,58 +40,6 @@ import {
   PlateHead, QuickBar, AdPlate, useArticles, editionLabel,
 } from '@/app/_plate/shared'
 
-
-/* ══ Ticker: the latest plates, filling the void under the lead ══════════ */
-function Ticker({ articles, exclude }: { articles: Article[]; exclude: Set<string> }) {
-  const laneRef = useRef<HTMLDivElement>(null)
-  /* De hoofdplaat en de zijplaten staan er al vlak boven; de strip begint
-     bij de eerstvolgende, zodat geen kop twee keer onder elkaar staat. */
-  const items = articles.filter(a => !exclude.has(a.slug)).slice(0, 14)
-
-  /* Constant speed, not constant duration: a lane with more plates in it is
-     wider, so the duration has to grow with it or the scroll speeds up. */
-  useEffect(() => {
-    const lane = laneRef.current
-    if (!lane) return
-    const set = () => {
-      const half = lane.scrollWidth / 2
-      if (half > 0) lane.style.setProperty('--pl-ticker-dur', `${Math.round(half / 55)}s`)
-    }
-    set()
-    const ro = new ResizeObserver(set)
-    ro.observe(lane)
-    return () => ro.disconnect()
-  }, [items.length])
-
-  if (!items.length) return null
-
-  const strip = (dupe: boolean) => items.map(a => (
-    <Link
-      key={`${dupe ? 'b' : 'a'}-${a.slug}`}
-      href={`/nieuws/${a.slug}`}
-      className="pl-ticker__item"
-      tabIndex={dupe ? -1 : undefined}
-      aria-hidden={dupe || undefined}
-    >
-      <span className="pl-label">{a.category}</span>
-      <span className="pl-ticker__t">{a.title}</span>
-      <span className="pl-label pl-num">{a.readTime} min</span>
-    </Link>
-  ))
-
-  return (
-    <section className="pl-ticker" aria-label="Laatste artikelen">
-      <div className="pl-ticker__label">
-        <span className="pl-dot pl-live" aria-hidden="true" />
-        <span className="pl-label">Nieuw binnen</span>
-      </div>
-      <div className="pl-ticker__view">
-        {/* duplicated once so the marquee loops without a visible seam */}
-        <div className="pl-ticker__lane" ref={laneRef}>{strip(false)}{strip(true)}</div>
-      </div>
-    </section>
-  )
-}
 
 /* ══ First viewport: live instrument bar printed on the emulsion ══════════ */
 function FirstView({ apod, iss, issFailed, total, latest, sky }: {
@@ -425,7 +373,7 @@ function MissionRail() {
   return (
     <section aria-labelledby="pl-miss-title">
       <div className="pl-band">
-        <h2 id="pl-miss-title" className="pl-h2">Missies in bedrijf</h2>
+        <h2 id="pl-miss-title" className="pl-h2">Ruimtemissies die nu lopen</h2>
         <Link href="/missies" className="pl-read">
           <span>Alle missies</span>
           <span className="pl-read__rule" aria-hidden="true" />
@@ -551,7 +499,7 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
           <h2 id="pl-arch-title" className="pl-h2">Alle artikelen</h2>
           {quickTag && (
             <button type="button" className="pl-tag" aria-pressed="true" onClick={onClearQuick}>
-              #{quickTag}
+              {QUICK_TAGS.find(q => q.tag === quickTag)?.label ?? quickTag}
               <Ico.close size={11} />
               <span className="sr-only"> — filter verwijderen</span>
             </button>
@@ -566,7 +514,8 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
         <div className="pl-arch__loupe" ref={loupeRef} aria-hidden="true" />
 
         <div className="pl-topics" role="tablist" aria-label="Filter op onderwerp">
-          {TOPICS.map(t => (
+          {/* Lege onderwerpen weg: een knop met 0 erachter leest als een kapotte site. */}
+          {TOPICS.filter(t => t === 'Alles' || t === filter || (counts[t] ?? 0) > 0).map(t => (
             <button
               key={t}
               role="tab"
@@ -584,7 +533,7 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
             <h3 className="pl-h3">Geen artikelen bij deze keuze</h3>
             <p className="pl-body-s">
               {quickTag
-                ? `Er is niets dat zowel #${quickTag} als "${filter}" is. Laat een van de twee vallen.`
+                ? `Er is niets dat zowel "${QUICK_TAGS.find(q => q.tag === quickTag)?.label ?? quickTag}" als "${filter}" is. Laat een van de twee vallen.`
                 : 'Hier is nog niets over. Kies een ander onderwerp of bekijk alle artikelen.'}
             </p>
             <button className="pl-btn" onClick={() => { pick('Alles'); onClearQuick() }}>Alle artikelen</button>
@@ -702,7 +651,6 @@ export default function HomePage({ start }: {
   const side = articles.slice(1, 4)
   /* Tot de volledige index binnen is, telt het totaal uit de build. */
   const total = Math.max(articles.length, initialTotal)
-  const onTop = useMemo(() => new Set([lead, ...side].filter(Boolean).map(a => a.slug)), [lead, side])
   const edition = editionLabel()
 
   return (
@@ -712,6 +660,10 @@ export default function HomePage({ start }: {
       <QuickBar articles={articles} active={quickTag} onPick={pickQuick} />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
+        {/* Volgorde (nov 2026): eerst wat de site is en voor wie, dan het
+           nieuws en de hemel van vanavond, daarna de rest. Minder blokken
+           boven de vouw; de nieuwsticker en de niveau-uitleg zijn weg, die
+           herhaalden het archief en de intro. */}
         <div className="pl-wrap">
           <FirstView apod={apod} iss={iss} issFailed={issFailed} total={total} latest={articles[0]?.date ?? ''} sky={sky} />
         </div>
@@ -724,34 +676,17 @@ export default function HomePage({ start }: {
           <OmhoogBlok />
         </div>
 
-        <div className="pl-wrap">
-          <Cadeautijd />
-        </div>
-
         {lead && (
           <div className="pl-wrap">
             <LeadPlate lead={lead} side={side} total={total} />
           </div>
         )}
 
-        <section className="pl-wrap" aria-label="Spellen van de dag">
-          <SpellenBlok />
-        </section>
-
-        {/* Fills what was an empty band of ground under the lead plate. */}
-        <div className="pl-wrap">
-          <Ticker articles={articles} exclude={onTop} />
-        </div>
-
-        <div className="pl-wrap pl-gap-lg">
-          <MissionRail />
-        </div>
-
         <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-instr-title">
           <div className="pl-band">
             <div className="pl-band__t">
-              <h2 id="pl-instr-title" className="pl-h2">Live instrumenten</h2>
-              <span className="pl-label">Verversen vanzelf</span>
+              <h2 id="pl-instr-title" className="pl-h2">De hemel van vanavond</h2>
+              <span className="pl-label">Ververst vanzelf</span>
             </div>
             <Link href="/sterrenkijken" className="pl-read">
               <span>Sterrenkijken</span>
@@ -766,10 +701,29 @@ export default function HomePage({ start }: {
           </div>
         </section>
 
+        <div className="pl-wrap">
+          <Cadeautijd />
+        </div>
+
+        <section className="pl-wrap" aria-label="Spellen van de dag">
+          <SpellenBlok />
+        </section>
+
         <section className="pl-wrap pl-gids__slot" aria-label="Hemelbrief en meldingen">
           <Hemelbrief />
           <MeldingenTeaser />
         </section>
+
+        <div className="pl-wrap pl-gap-lg">
+          <MissionRail />
+        </div>
+
+        <div className="pl-wrap">
+          <div className="pl-bank pl-bank--instr pl-bank--2">
+            <IssPlate iss={iss} failed={issFailed} />
+            <QuizPlate />
+          </div>
+        </div>
 
         <div className="pl-wrap">
           <AdPlate slot="8887478647" />
@@ -783,19 +737,6 @@ export default function HomePage({ start }: {
             onClearQuick={() => setQuickTag(null)}
             perCategorie={start?.perCategorie}
           />
-        </div>
-
-        <div className="pl-wrap pl-gap-lg">
-          <div className="pl-bank pl-bank--instr pl-bank--2">
-            <IssPlate iss={iss} failed={issFailed} />
-            <QuizPlate />
-          </div>
-        </div>
-
-        <div className="pl-wrap">
-          <div className="pl-bank pl-bank--1">
-            <NiveauPlate featuredSlug={lead?.slug ?? ''} />
-          </div>
         </div>
       </main>
 

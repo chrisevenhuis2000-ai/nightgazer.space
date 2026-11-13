@@ -50,16 +50,18 @@ export const TOPICS = [
    OR on words in the title, so a tag like SpaceX works even though no
    article carries it as a category. Every tag here resolves to real
    articles — none are decorative. */
-export const QUICK_TAGS: { tag: string; cat?: string; words?: string[] }[] = [
+/* tag is de sleutel van het filter; label is wat de bezoeker leest. Geen
+   hashtags en geen afkortingen die alleen liefhebbers kennen. */
+export const QUICK_TAGS: { tag: string; label?: string; uitleg?: string; cat?: string; words?: string[] }[] = [
   { tag: 'Missies',   cat: 'missies' },
-  { tag: 'JWST',      cat: 'james-webb', words: ['webb', 'jwst'] },
+  { tag: 'JWST',      label: 'James Webb', uitleg: 'De James Webb-ruimtetelescoop', cat: 'james-webb', words: ['webb', 'jwst'] },
   { tag: 'SpaceX',    words: ['spacex', 'starship', 'falcon', 'starlink'] },
   { tag: 'Mars',      cat: 'mars', words: ['mars', 'perseverance', 'curiosity'] },
   { tag: 'Maan',      cat: 'maan', words: ['maan', 'lunar', 'moon', 'artemis'] },
-  { tag: 'NASA',      words: ['nasa'] },
-  { tag: 'ESA',       words: ['esa', 'ariane'] },
-  { tag: 'Educatie',  cat: 'educatie' },
-  { tag: 'Kosmologie', cat: 'kosmologie' },
+  { tag: 'NASA',      uitleg: 'De Amerikaanse ruimtevaartorganisatie', words: ['nasa'] },
+  { tag: 'ESA',       uitleg: 'De Europese ruimtevaartorganisatie', words: ['esa', 'ariane'] },
+  { tag: 'Educatie',  label: 'Uitleg', cat: 'educatie' },
+  { tag: 'Kosmologie', label: 'Heelal', uitleg: 'Kosmologie: hoe het heelal ontstond en groeit', cat: 'kosmologie' },
 ]
 
 export function quickMatches(a: Article, spec: { cat?: string; words?: string[] }): boolean {
@@ -200,7 +202,7 @@ export function QuickBar({ articles, active, onPick }: {
         <span className="pl-quick__rule" aria-hidden="true" />
 
         <div className="pl-tags" role="group" aria-label="Snelfilters">
-          {QUICK_TAGS.map(({ tag }) => {
+          {QUICK_TAGS.map(({ tag, label, uitleg }) => {
             const n = counts[tag] ?? 0
             if (n === 0) return null
             const on = active === tag
@@ -211,8 +213,9 @@ export function QuickBar({ articles, active, onPick }: {
                 className="pl-tag"
                 aria-pressed={on}
                 onClick={() => onPick(on ? null : tag)}
+                title={uitleg}
               >
-                #{tag}
+                {label ?? tag}
                 <span className="pl-tag__n pl-num">{n}</span>
               </button>
             )
