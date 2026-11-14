@@ -1402,6 +1402,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-14",
+      "slug": "gemini-astronaut-photos-inspired-early-earth-observation-pro",
+      "titel": "Foto's van Gemini-astronauten legden de basis voor Landsat",
+      "beg": {
+        "q": "Waarom is een foto van de aarde die vanuit een baan om de aarde is gemaakt nuttig voor wetenschappers?",
+        "options": [
+          "Je kunt in één keer een groot gebied overzien en zo veranderingen op het land zien",
+          "Foto's uit de ruimte tonen alleen de wolken, en die zijn belangrijk voor het weer",
+          "Alleen vanuit de ruimte kun je mensen en huizen op de grond zien",
+          "Foto's uit de ruimte laten zien hoe het binnenin de aarde eruitziet"
+        ],
+        "correct": 0,
+        "explain": "Vanuit een baan zie je enorme gebieden tegelijk, zoals rivieren, bossen en landbouwgrond. De foto's van de Gemini-astronauten lieten zien hoe handig dat is, en dat leidde uiteindelijk tot de Landsat-satellieten."
+      },
+      "ama": {
+        "q": "Welke ontwikkeling werd mede in gang gezet door de foto's van de Gemini-astronauten?",
+        "options": [
+          "De bouw van het internationale ruimtestation ISS",
+          "De eerste weersatelliet in een geostationaire baan",
+          "Het ontwerp van de maanlander voor Apollo",
+          "Het Landsat-programma voor aardobservatie, via het EROS-programma"
+        ],
+        "correct": 3,
+        "explain": "Volgens William Pecora van de USGS werd het EROS-programma in 1966 bedacht als gevolg van het nut van de orbitale fotografie van Mercury en Gemini. EROS baande de weg voor Landsat, dat nog steeds actief is."
+      },
+      "pro": {
+        "q": "Wat maakt vanuit een baan om de aarde genomen beelden bijzonder geschikt voor onderzoek naar aardse hulpbronnen en landgebruik?",
+        "options": [
+          "In de ruimte is er geen atmosfeer, dus wolken en nevel storen nooit",
+          "Beelden uit de ruimte kunnen direct de diepte van ertslagen onder de grond meten",
+          "Een satelliet in een lage baan staat boven één punt stil en kan dat gebied continu filmen",
+          "Een satelliet in een lage baan kan met dezelfde sensor herhaaldelijk grote delen van het oppervlak systematisch en uniform in kaart brengen"
+        ],
+        "correct": 3,
+        "explain": "Een satelliet in een lage baan overvliegt steeds nieuwe stroken van de aarde en komt periodiek terug, waardoor je grote gebieden consistent en herhaald kunt vergelijken. Daarom is Landsat zo geschikt voor het volgen van veranderingen. Een lage baan staat niet stil boven één punt, en wolken verstoren optische beelden wel degelijk."
+      }
+    },
+    {
       "datum": "2026-11-12",
       "slug": "apod-2026-november-10-saturn-behind-the-moon",
       "titel": "Saturnus verdwijnt achter de Maan: astrofoto van een zeldzame bedekking",
@@ -1893,45 +1931,7 @@
         "correct": 0,
         "explain": "Door de zwaartekracht gelijk te stellen aan de middelpuntzoekende kracht volgt r³ = GM·T²/(4π²). Met T ≈ 86164 s komt dat uit op ongeveer 42.164 km vanaf het middelpunt van de aarde, dus circa 35.786 km boven de evenaar na aftrek van de aardstraal."
       }
-    },
-    {
-      "datum": "2026-10-26",
-      "slug": "astranis-upgrades-falcon-9-launch-contract-to-dedicated-miss",
-      "titel": "Astranis koopt complete Falcon 9-lancering voor alle zes Block 4-satellieten",
-      "beg": {
-        "q": "Waarom lijkt een satelliet in de geostationaire baan vanaf de grond stil aan de hemel te staan?",
-        "options": [
-          "Hij staat helemaal stil in de ruimte, los van de aarde",
-          "Hij draait veel sneller rond dan de aarde, waardoor je hem niet meer ziet bewegen",
-          "Hij hangt vast aan een onzichtbare kabel naar de grond",
-          "Hij draait even snel om de aarde als de aarde om haar as draait"
-        ],
-        "correct": 3,
-        "explain": "Een geostationaire satelliet doet er precies één aardrotatie over om één rondje te maken, dus blijft hij boven hetzelfde punt. Daarom kunnen schotelantennes op de grond blijven wijzen zonder te hoeven draaien."
-      },
-      "ama": {
-        "q": "Waarin moet een satelliet in de geostationaire baan overeenkomen met de aarde om boven hetzelfde punt op de evenaar te blijven?",
-        "options": [
-          "Zijn hoogte moet gelijk zijn aan die van het ISS, ongeveer 400 km",
-          "Zijn baan moet over de polen lopen",
-          "Zijn omlooptijd moet precies 12 uur zijn",
-          "Zijn omlooptijd moet gelijk zijn aan de rotatieperiode van de aarde, ongeveer 24 uur"
-        ],
-        "correct": 3,
-        "explain": "De satelliet moet in ongeveer 24 uur (een siderische dag van 23 uur en 56 minuten) één baan afleggen, in een cirkelbaan boven de evenaar. Dat gebeurt op ongeveer 36.000 km hoogte; het ISS draait op ongeveer 400 km veel sneller rond."
-      },
-      "pro": {
-        "q": "Welke relatie bepaalt de straal van de geostationaire baan, met T gelijk aan de siderische rotatieperiode van de aarde?",
-        "options": [
-          "r³ = G·M·T²/(4π²), dus r ≈ 42.164 km vanaf het middelpunt van de aarde",
-          "r² = G·M·T/(2π), dus r ≈ 7000 km",
-          "r³ = G·M·T/(2π), dus r ≈ 384.000 km",
-          "r = R_aarde + 400 km, bepaald door de atmosferische weerstand"
-        ],
-        "correct": 0,
-        "explain": "Gelijkstellen van de zwaartekracht aan de middelpuntzoekende kracht geeft de derde wet van Kepler: r³ = GMT²/4π². Met T ≈ 86.164 s komt dat uit op ongeveer 42.164 km vanaf het aardmiddelpunt, ongeveer 35.786 km boven de evenaar."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-12T16:46:40.106Z"
+  "bijgewerkt": "2026-11-14T14:16:48.173Z"
 }
