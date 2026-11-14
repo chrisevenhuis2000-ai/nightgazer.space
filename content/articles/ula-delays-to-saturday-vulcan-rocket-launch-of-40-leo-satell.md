@@ -4,15 +4,15 @@ excerpt: "United Launch Alliance maakt zich op voor de eerste Vulcan-lancering i
 category: "missies"
 author: "Redactie NightGazer"
 publishedAt: "2026-11-14T14:09:39.811Z"
-featured: false
+featured: "false"
 tags: []
 source: "aviationweek.com"
 sourceUrl: "https://aviationweek.com/space/launch-vehicles-propulsion/vulcan-cleared-key-nov-13-return-flight-mission"
 tipSource: "SpaceflightNow"
 tipUrl: "https://spaceflightnow.com/2026/11/13/ulas-vulcan-rocket-plans-return-to-flight-with-launch-of-40-leo-satellites-for-amazon/"
-imageUrl: ""
-imageAlt: ""
-imageCredit: ""
+imageUrl: "https://images-assets.nasa.gov/image/KSC-20231114-PH-ILW01_0015/KSC-20231114-PH-ILW01_0015~medium.jpg"
+imageAlt: "Vulcan-raket keert na negen maanden terug met 40 Amazon Leo-satellieten"
+imageCredit: "NASA/Isaac Watson / KSC"
 kernpunten: ["De Vulcan-raket van ULA vliegt voor het eerst in negen maanden en moet 40 Amazon Leo-satellieten lanceren.","De vlucht moet bewijzen dat aangepaste straalpijpen de terugkerende problemen met de vastebrandstofboosters hebben opgelost.","Space Force-missies wachten op de uitkomst, terwijl ULA meer dan 70 missies in de wachtrij heeft staan."]
 kerncijfers: [{"waarde":"40","eenheid":"satellieten","label":"lading Vulcan Leo 1"},{"waarde":"3.236","eenheid":"satellieten","label":"geplande omvang Amazon-netwerk"},{"waarde":"38","eenheid":"vluchten","label":"Vulcan-missies voor Amazon"}]
 citaat: {"tekst":"Wat we hier doen is niet zonder risico,","wie":"Mark Peller, CEO van United Launch Alliance"}
