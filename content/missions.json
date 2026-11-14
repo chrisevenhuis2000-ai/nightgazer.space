@@ -1,8 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-13T15:41:09.751Z",
+    "lastUpdated": "2026-11-14T14:29:42.721Z",
     "autoUpdated": [
-      "nrol-136"
+      "the-mountain-god-rises-iqps-launch-10",
+      "strix-launch-14"
     ]
   },
   "missions": [
@@ -4300,7 +4301,7 @@
         "aardeomloopbaan"
       ],
       "_lastClaudeAttempt": {
-        "at": "2026-10-15T08:56:34.288Z",
+        "at": "2026-11-14T14:29:37.998Z",
         "reden": "geen-beschrijving"
       },
       "launchPrecision": "Year"
@@ -4442,13 +4443,13 @@
       "name": "The Mountain God Rises (iQPS Launch 10)",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "14 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van een synthetische apertuurradar-aardobservatiesatelliet voor het Japanse bedrijf iQPS.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 14 nov 2026",
+      "highlight": "Gelanceerd op 14 nov 2026 met Electron",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4461,7 +4462,7 @@
       "timeline": [
         {
           "date": "14 nov 2026",
-          "event": "Geplande lancering van The Mountain God Rises (iQPS Launch 10)"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -4720,7 +4721,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "13 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Vijftiende testvlucht van Starship, de vierde in de V3-configuratie.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 13 nov 2026",
@@ -5325,7 +5326,7 @@
         "aardeomloopbaan"
       ],
       "_lastClaudeAttempt": {
-        "at": "2026-10-15T08:56:34.289Z",
+        "at": "2026-11-14T14:29:37.998Z",
         "reden": "geen-beschrijving"
       }
     },
@@ -5364,7 +5365,7 @@
         "aardeomloopbaan"
       ],
       "_lastClaudeAttempt": {
-        "at": "2026-10-15T08:56:34.289Z",
+        "at": "2026-11-14T14:29:37.998Z",
         "reden": "geen-beschrijving"
       }
     },
@@ -5718,11 +5719,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "18 nov 2026",
+      "launched": "23 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 18 nov 2026",
+      "highlight": "Lancering gepland: 23 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5734,7 +5735,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "18 nov 2026",
+          "date": "23 nov 2026",
           "event": "Geplande lancering van USSF-266"
         }
       ],
@@ -5861,6 +5862,44 @@
         "low earth orbit"
       ],
       "_lastClaudeUpdate": "2026-11-13T15:41:04.530Z"
+    },
+    {
+      "id": "strix-launch-14",
+      "_ll2Id": "2093e4fc-ac8c-4296-a1b5-deececee6a72",
+      "name": "StriX Launch 14",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 nov 2026",
+      "launchPrecision": "Month",
+      "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf Synspective.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Lancering gepland: november 2026",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Rocket Lab plant de lancering van StriX Launch 14 met een Electron-raket naar een zonsynchrone baan. Aan boord bevindt zich een synthetische-apertuurradarsatelliet van het Japanse aardobservatiebedrijf Synspective.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://synspective.com/",
+      "timeline": [
+        {
+          "date": "november 2026",
+          "event": "Geplande lancering van StriX Launch 14"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "rocket lab",
+        "electron",
+        "synspective",
+        "sar-satelliet",
+        "sun-synchronous orbit"
+      ],
+      "_lastClaudeUpdate": "2026-11-14T14:29:38.001Z"
     }
   ]
 }
