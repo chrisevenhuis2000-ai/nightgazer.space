@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-14T14:29:42.721Z",
+    "lastUpdated": "2026-11-15T14:57:40.619Z",
     "autoUpdated": [
-      "the-mountain-god-rises-iqps-launch-10",
-      "strix-launch-14"
+      "flight-15",
+      "sda-tranche-2-transport-layer-f"
     ]
   },
   "missions": [
@@ -4718,13 +4718,13 @@
       "name": "Flight 15",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "13 nov 2026",
       "launchPrecision": "Second",
       "objective": "Vijftiende testvlucht van Starship, de vierde in de V3-configuratie.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 13 nov 2026",
+      "highlight": "Gelanceerd op 13 nov 2026 met Starship",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -4737,7 +4737,7 @@
       "timeline": [
         {
           "date": "13 nov 2026",
-          "event": "Geplande lancering van Flight 15"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -5900,6 +5900,44 @@
         "sun-synchronous orbit"
       ],
       "_lastClaudeUpdate": "2026-11-14T14:29:38.001Z"
+    },
+    {
+      "id": "sda-tranche-2-transport-layer-f",
+      "_ll2Id": "5276b922-e440-466b-9b19-5851a2d67e75",
+      "name": "SDA Tranche 2 Transport Layer F",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 jan 2027",
+      "launchPrecision": "Month",
+      "objective": "SpaceX lanceert een geclassificeerde lading voor de SDA Tranche 2 Transport Layer naar een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: januari 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Een Falcon 9-raket van SpaceX staat gepland om op 31 januari 2027 een geclassificeerde lading te lanceren voor de Space Development Agency (SDA). De missie maakt deel uit van de Tranche 2 Transport Layer en wordt in een polaire baan gebracht.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.sda.mil/",
+      "timeline": [
+        {
+          "date": "januari 2027",
+          "event": "Geplande lancering van SDA Tranche 2 Transport Layer F"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "sda",
+        "polar orbit",
+        "tranche 2 transport layer"
+      ],
+      "_lastClaudeUpdate": "2026-11-15T14:57:35.738Z"
     }
   ]
 }
