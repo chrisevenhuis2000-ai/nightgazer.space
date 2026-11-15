@@ -1402,6 +1402,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-15",
+      "slug": "apod-2026-november-13-ngc-206-and-the-star-clouds-of-androme",
+      "titel": "NGC 206: een reusachtige sterrenwolk in de Andromedanevel",
+      "beg": {
+        "q": "Waarom vertelt de felblauwe kleur van de sterren in NGC 206 ons dat die sterren jong zijn?",
+        "options": [
+          "Sterren worden blauw zodra ze net uit hun gaswolk zijn gekomen en worden daarna vanzelf rood.",
+          "Blauwe sterren zijn zware, hete sterren die hun brandstof snel opmaken en dus maar kort leven.",
+          "Stof in Andromeda kleurt alle sterren blauw, dus de kleur zegt iets over de stof en niet over de leeftijd.",
+          "Blauw licht is het enige licht dat de lange reis van 2,5 miljoen lichtjaar overleeft."
+        ],
+        "correct": 1,
+        "explain": "Zware sterren zijn heet en stralen blauw licht uit, maar ze verbruiken hun brandstof zo snel dat ze maar kort bestaan. Als je ze nog ziet, zijn ze dus kosmisch gezien net geboren. Stof maakt licht juist roder, niet blauwer."
+      },
+      "ama": {
+        "q": "Onze zon wordt ongeveer 10 miljard jaar oud; hoe lang leeft een hete blauwe ster van ongeveer 20 zonsmassa's, zoals in NGC 206, ruwweg?",
+        "options": [
+          "Ongeveer 1 miljard jaar.",
+          "Ongeveer 10 duizend jaar.",
+          "Ongeveer 10 miljoen jaar.",
+          "Ongeveer 10 miljard jaar, want alle sterren leven even lang."
+        ],
+        "correct": 2,
+        "explain": "Een ster van 20 zonsmassa's is veel lichtkrachtiger en leeft in de orde van tien miljoen jaar. Daarom zijn de jongste zware sterren in NGC 206 minder dan 10 miljoen jaar oud. Zulke sterren eindigen als supernova."
+      },
+      "pro": {
+        "q": "Als de lichtkracht van hoofdreekssterren ruwweg schaalt als L ∝ M^3.5, met welke factor is de hoofdreeksleeftijd van een ster van 10 zonsmassa's dan ongeveer korter dan die van de zon?",
+        "options": [
+          "Ongeveer een factor 30, want t ∝ M^-1,5.",
+          "Ongeveer een factor 3000, want t ∝ M^-3,5.",
+          "Ongeveer een factor 3, want t ∝ M^-0,5.",
+          "Ongeveer een factor 300, want t ∝ M/L ∝ M^-2,5."
+        ],
+        "correct": 3,
+        "explain": "De beschikbare brandstof is evenredig met M en het verbruik met L, dus t ∝ M/L ∝ M^-2,5. Voor M = 10 geeft dat 10^2,5 ≈ 300 keer korter. Bij zeer zware sterren vlakt de relatie af, maar de orde van grootte klopt."
+      }
+    },
+    {
       "datum": "2026-11-14",
       "slug": "gemini-astronaut-photos-inspired-early-earth-observation-pro",
       "titel": "Foto's van Gemini-astronauten legden de basis voor Landsat",
@@ -1893,45 +1931,7 @@
         "correct": 1,
         "explain": "Bij bijna-benedenconjunctie valt zonlicht van achteren op de planeet en wordt in de dikke atmosfeer gebroken en voorwaarts verstrooid. Zo wordt een ring zichtbaar die de geometrische sikkel overschrijdt. Venus heeft bovendien geen significant intrinsiek magnetisch veld."
       }
-    },
-    {
-      "datum": "2026-10-27",
-      "slug": "astranis-upgrades-falcon-9-launch-contract-to-dedicated-miss",
-      "titel": "Astranis koopt complete Falcon 9-lancering voor alle zes Block 4-satellieten",
-      "beg": {
-        "q": "Waarom lijkt een satelliet in de geostationaire baan vanaf de grond stil aan de hemel te staan?",
-        "options": [
-          "Hij staat helemaal stil in de ruimte, terwijl de aarde eronder doordraait",
-          "Hij wordt vastgehouden door een straal vanaf een grondstation",
-          "Hij hangt precies tussen de aarde en de maan, waar de zwaartekracht wegvalt",
-          "Hij draait even snel om de aarde als de aarde om haar as draait"
-        ],
-        "correct": 3,
-        "explain": "Omdat de satelliet in dezelfde tijd één rondje om de aarde maakt als de aarde om haar as draait, blijft hij boven hetzelfde punt. Een geostationaire satelliet staat dus niet stil, maar beweegt precies mee met de draaiing van de aarde."
-      },
-      "ama": {
-        "q": "Hoe lang duurt een omloop in de geostationaire baan, en op welke hoogte boven de evenaar ligt die baan ongeveer?",
-        "options": [
-          "Ongeveer 90 minuten, op circa 400 km hoogte",
-          "Ongeveer 24 uur, op circa 2000 km hoogte",
-          "Ongeveer 24 uur (één sterrendag), op circa 36.000 km hoogte",
-          "Ongeveer 12 uur, op circa 20.000 km hoogte"
-        ],
-        "correct": 2,
-        "explain": "Een satelliet moet de rotatietijd van de aarde om haar as (een sterrendag van ongeveer 23 uur en 56 minuten) evenaren, en dat kan alleen op ongeveer 35.786 km boven de evenaar. De baan van 90 minuten op 400 km hoort bij het ISS, die van 12 uur op 20.000 km bij GPS-satellieten."
-      },
-      "pro": {
-        "q": "Welke combinatie bepaalt de straal van de geostationaire baan, met omlooptijd gelijk aan de siderische rotatieperiode van de aarde?",
-        "options": [
-          "Derde wet van Kepler: r³ = GM·T²/(4π²), met T ≈ 86164 s, geeft r ≈ 42.164 km vanaf het middelpunt",
-          "Het punt waar de zwaartekracht van aarde en maan elkaar opheffen (Lagrangepunt L1)",
-          "De formule voor de ontsnappingssnelheid, v = √(2GM/r), met v gelijk aan de rotatiesnelheid van de aarde",
-          "De Roche-limiet van de aarde, waarbinnen een satelliet door getijdenkrachten uit elkaar zou vallen"
-        ],
-        "correct": 0,
-        "explain": "Door de zwaartekracht gelijk te stellen aan de middelpuntzoekende kracht volgt r³ = GM·T²/(4π²). Met T ≈ 86164 s komt dat uit op ongeveer 42.164 km vanaf het middelpunt van de aarde, dus circa 35.786 km boven de evenaar na aftrek van de aardstraal."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-14T14:16:48.173Z"
+  "bijgewerkt": "2026-11-15T15:37:17.762Z"
 }
