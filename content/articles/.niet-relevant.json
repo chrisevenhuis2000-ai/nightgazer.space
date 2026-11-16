@@ -34,6 +34,11 @@
     "reden": "Dit is een personeelsportret over een NASA-medewerker die van contractant naar ambtenaar overstapt; het gaat om interne personeelszaken, niet om een ontdekking, missie of hemelverschijnsel.",
     "datum": "2026-10-29"
   },
+  "contractor-to-civil-servant-nasa-welcomes-jim-mirandy": {
+    "titel": "Contractor to Civil Servant: NASA Welcomes Jim Mirandy",
+    "reden": "Dit is personeelsnieuws over een contractant die ambtenaar wordt bij NASA Stennis en bevat geen ontdekking, missie of ruimtevaartgebeurtenis.",
+    "datum": "2026-11-16"
+  },
   "el-nio-then-and-now": {
     "titel": "El Niño Then and Now",
     "reden": "Dit is aardobservatie over El Niño en de gevolgen voor weer en klimaat, niet over de ruimtevaart zelf of een nieuwe satelliet of missie.",
@@ -133,6 +138,11 @@
     "titel": "The Land of the Standing-Up Rocks",
     "reden": "Dit is een aardobservatiebeeld van Landsat 9 over de geologie en natuur van een nieuw Amerikaans nationaal park, zonder nieuws over astronomie of over de ruimtevaart zelf.",
     "datum": "2026-10-28"
+  },
+  "the-last-ice-on-puncak-jaya": {
+    "titel": "The Last Ice on Puncak Jaya",
+    "reden": "Dit is aardobservatie over het verdwijnen van tropische gletsjers op Puncak Jaya; het gaat niet over sterrenkunde of over de ruimtevaart zelf, zoals een nieuwe satelliet, een instrument of een missie.",
+    "datum": "2026-11-16"
   },
   "the-pacifics-busy-storm-season": {
     "titel": "The Pacific’s Busy Storm Season",
