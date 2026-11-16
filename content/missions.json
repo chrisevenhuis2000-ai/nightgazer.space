@@ -1,10 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-15T14:57:40.619Z",
-    "autoUpdated": [
-      "flight-15",
-      "sda-tranche-2-transport-layer-f"
-    ]
+    "lastUpdated": "2026-11-16T17:25:49.210Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -5681,11 +5678,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "18 nov 2026",
+      "launched": "19 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 18 nov 2026",
+      "highlight": "Lancering gepland: 19 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5697,7 +5694,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "18 nov 2026",
+          "date": "19 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-6\")"
         }
       ],
