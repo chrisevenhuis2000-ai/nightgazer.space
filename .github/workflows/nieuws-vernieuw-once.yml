@@ -99,6 +99,8 @@ jobs:
       - name: Vrije beelden zoeken voor artikelen zonder beeld
         if: ${{ inputs.slug == '' }}
         continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           node scripts/backfill-images.js
           git add content/articles/

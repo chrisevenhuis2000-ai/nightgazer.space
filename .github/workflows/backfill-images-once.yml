@@ -31,6 +31,8 @@ jobs:
         run: npm ci
 
       - name: Run image backfill
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ "${{ github.event.inputs.force }}" = "true" ]; then
             node scripts/backfill-images.js --force

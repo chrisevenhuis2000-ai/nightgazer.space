@@ -111,8 +111,16 @@ async function getQueryFromClaude(title, body) {
     system:     'You generate English image search queries for NASA or Pexels. Reply with ONLY 3-5 keywords on a single line — no explanation, no quotes, no newlines.',
     messages:   [{ role: 'user', content: `Dutch article title: ${title}\n\nContent:\n${plainText}` }],
   }
+  // Rechtstreeks naar Anthropic met de sleutel uit de workflow: de worker
+  // stuurt sinds 17-11-2026 alleen nog de taken van de site door.
+  const key = process.env.ANTHROPIC_API_KEY
+  if (!key) return null
   try {
-    const res   = await fetch(PROXY, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    const res   = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify(payload),
+    })
     const data  = await res.json()
     const raw   = data?.content?.[0]?.text
     if (raw) {
