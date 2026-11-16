@@ -264,12 +264,8 @@ export default function ArtikelPlaat({ slug, initial = null }: {
         const res = await fetch(PROXY, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001',
-            max_tokens: 800,
-            system: LEVELS[next].prompt,
-            messages: [{ role: 'user', content: para }],
-          }),
+          // Model, prompt en maximum kiest de worker (cf-worker/claude.mjs).
+          body: JSON.stringify({ taak: 'niveau', niveau: next, tekst: para.slice(0, 3000) }),
         })
         if (!res.ok) throw new Error(String(res.status))
         const data = await res.json()
@@ -318,14 +314,8 @@ export default function ArtikelPlaat({ slug, initial = null }: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 700,
-        messages: [{ role: 'user', content: `Analyseer dit astronomie-artikel en antwoord ALLEEN met geldig JSON:
-{"kerncijfers":[{"value":"compacte waarde","label":"kort label","unit":"eenheid"}],"kernfeiten":["feit 1","feit 2","feit 3"],"quote":{"text":"opvallende uitspraak in het Nederlands","author":"naam of rol"},"headings":["Sectietitel 1","Sectietitel 2"]}
-Regels: kerncijfers exact 3, kernfeiten 3-5, headings exact 2, alles in het Nederlands.
-
-Artikel:
-${article.rawBody.slice(0, 2500)}` }],
+        taak: 'kantlijn',
+        tekst: article.rawBody.slice(0, 2500),
       }),
     })
       .then(r => r.ok ? r.json() : Promise.reject(r.status))

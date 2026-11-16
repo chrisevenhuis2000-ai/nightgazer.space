@@ -3,6 +3,7 @@ import { magBeeld } from './beeldhosts.mjs'
 import { WORKFLOW_CRONS, startWorkflow } from './workflows.mjs'
 import { maakDatapunt, statsSql, TEL_DATASET } from './teller.mjs'
 import { GEM_PREFIX, keurTelling, telSleutel, uitslag } from './geminiden.mjs'
+import { bouwVerzoek, snoeiAntwoord, MAX_TEKST } from './claude.mjs'
 
 const ALLOWED_ORIGINS = [
   'https://nightgazer.space',
@@ -175,7 +176,7 @@ export default {
         headers: {
           'Access-Control-Allow-Origin':  getAllowedOrigin(request),
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, x-api-key, anthropic-version',
+          'Access-Control-Allow-Headers': 'Content-Type',
           'Access-Control-Max-Age':       '86400',
         },
       })
@@ -742,9 +743,24 @@ export default {
       return cors(request, JSON.stringify(bericht))
     }
 
-    // ── POST / → Anthropic proxy (existing) ──────────────────────────────
+    // ── POST / → Claude, alleen voor de leesniveaus en de kantlijn ──────────
+    // De browser stuurt een taak en een tekst (cf-worker/claude.mjs); model,
+    // prompt en maximum kiest de worker. Alleen vanaf de site zelf, en per
+    // IP-adres begrensd als de binding CLAUDE_LIMIT er is (wrangler.toml).
     if (request.method === 'POST' && url.pathname === '/') {
-      const body     = await request.json()
+      const origin = request.headers.get('Origin') || ''
+      if (!ALLOWED_ORIGINS.includes(origin)) {
+        return cors(request, JSON.stringify({ error: 'Niet toegestaan' }), 403)
+      }
+      if (env.CLAUDE_LIMIT) {
+        const ip = request.headers.get('CF-Connecting-IP') || 'onbekend'
+        const { success } = await env.CLAUDE_LIMIT.limit({ key: ip })
+        if (!success) return cors(request, JSON.stringify({ error: 'Even te veel verzoeken' }), 429)
+      }
+      let body = null
+      try { body = JSON.parse((await request.text()).slice(0, MAX_TEKST + 500)) } catch { /* geen JSON */ }
+      const { verzoek, fout } = bouwVerzoek(body)
+      if (fout) return cors(request, JSON.stringify({ error: fout }), 400)
       const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
@@ -752,10 +768,10 @@ export default {
           'x-api-key':         env.ANTHROPIC_API_KEY,
           'anthropic-version': '2023-06-01',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(verzoek),
       })
-      const data = await response.json()
-      return cors(request, JSON.stringify(data))
+      if (!response.ok) return cors(request, JSON.stringify({ error: `claude ${response.status}` }), 502)
+      return cors(request, JSON.stringify(snoeiAntwoord(await response.json())))
     }
 
     return cors(request, JSON.stringify({ error: 'Not found' }), 404)
