@@ -3,36 +3,25 @@
 /* ══════════════════════════════════════════════════════════════════════════
    NightGazer sterrenkijken — /sterrenkijken
 
-   Compositie: de belichtingstabel. Zeven nachten als rijen, de factoren als
-   kolommen; de beste nacht krijgt de chinagraph-ring. Je leest wánneer je
-   gaat van de tabel af, niet uit zeven kaarten.
-   Wereld en kleurwetten staan in DESIGN.md; chrome komt uit shared.tsx.
+   Bovenaan het hemelweer: vannacht in één zin, met de uurstrook ernaast
+   (wolken per laag, doorzicht, seeing, dauw, maan). Daaronder de zeven
+   nachten als rijen; de beste nacht krijgt de chinagraph-ring.
+   Rekenregels in lib/hemelweer.ts, wereld en kleurwetten in DESIGN.md,
+   chrome uit shared.tsx.
    ══════════════════════════════════════════════════════════════════════════ */
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { SiteFooter } from '../components/SiteFooter'
-import { PROXY } from '@/lib/home-content'
 import {
-  type Location, type WeatherData,
+  type Location,
   PRESET_LOCATIONS, DARK_SPOTS, METEORS, SKY_OBJECTS,
-  calcDistance, calcScore, getMoonPhase,
+  calcDistance,
 } from '@/lib/sky-data'
-
-/* Eigen rijtype: DayForecast draagt geen wind of vocht, en de tabel toont
-   die kolommen wél. Een kolom met een kop die iets anders belooft dan de
-   waarde eronder is erger dan geen kolom. */
-interface Night {
-  date: Date
-  cloud: number
-  wind: number
-  humidity: number
-  moonPhase: number
-  score: number
-  label: string
-}
-import { Ico, Tip } from '@/app/_plate/Instruments'
+import { type Uur, hemelUrl, leesUren, nacht, huidigeAvond, oordeel, hhmm } from '@/lib/hemelweer'
+import { Oordeel, Uurstrook, toon } from './Hemelweer'
+import { Ico } from '@/app/_plate/Instruments'
 import {
   archivo, FOOTER_COLS, PlateHead, AdPlate, editionLabel, UitrustingVerwijzing, KalenderVerwijzing,
 } from '@/app/_plate/shared'
@@ -54,29 +43,10 @@ const DarkSkyMap = dynamic(() => import('./DarkSkyMap'), {
 const LOC_KEY = 'nightgazer_stargazing_loc'
 const DAYS = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za']
 
-/* Maanfase 0–1 naar verlicht percentage: 0 en 1 zijn nieuwe maan, 0,5 vol. */
-function moonLit(phase: number): number {
-  return Math.round((1 - Math.abs(phase - 0.5) * 2) * 100)
-}
-function moonName(phase: number): string {
-  if (phase < 0.03 || phase > 0.97) return 'Nieuwe maan'
-  if (phase < 0.22) return 'Wassende sikkel'
-  if (phase < 0.28) return 'Eerste kwartier'
-  if (phase < 0.47) return 'Wassende maan'
-  if (phase < 0.53) return 'Volle maan'
-  if (phase < 0.72) return 'Afnemende maan'
-  if (phase < 0.78) return 'Laatste kwartier'
-  return 'Afnemende sikkel'
-}
-
-function scoreTone(score: number): string {
-  return score >= 60 ? 'var(--pl-good)' : score >= 40 ? 'var(--pl-stamp)' : 'var(--pl-warn)'
-}
-
 /* Een oordeel in een tabelcel: een gevulde staaf plus het woord. */
 function CellBar({ score, label }: { score: number; label: string }) {
   return (
-    <span className="pl-cellbar" style={{ color: scoreTone(score) }}>
+    <span className="pl-cellbar" style={{ color: toon(score) }}>
       <span className="pl-cellbar__t" aria-hidden="true">
         <i style={{ transform: `scaleX(${score / 100})` }} />
       </span>
@@ -111,6 +81,32 @@ function LocationBar({ location, onPick }: { location: Location; onPick: (l: Loc
   const [lat, setLat] = useState('')
   const [lon, setLon] = useState('')
   const [name, setName] = useState('')
+  const [q, setQ] = useState('')
+  const [hits, setHits] = useState<(Location & { waar: string })[] | null>(null)
+
+  /* Plaats zoeken bij Open-Meteo's eigen geocoder: gratis, zonder sleutel,
+     en Nederland en België eerst zodat 'Bergen' niet in Noorwegen uitkomt. */
+  async function zoek(e: React.FormEvent) {
+    e.preventDefault()
+    const term = q.trim()
+    if (term.length < 2) return
+    setErr(''); setHits(null)
+    try {
+      const r = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(term)}&count=8&language=nl`)
+      const d = await r.json()
+      const lijst = (Array.isArray(d.results) ? d.results : [])
+        .filter((x: { latitude?: unknown; longitude?: unknown }) => typeof x.latitude === 'number' && typeof x.longitude === 'number')
+        .sort((a: { country_code?: string }, b: { country_code?: string }) =>
+          Number(!['NL', 'BE'].includes(a.country_code ?? '')) - Number(!['NL', 'BE'].includes(b.country_code ?? '')))
+        .slice(0, 6)
+        .map((x: { name: string; latitude: number; longitude: number; admin1?: string; country?: string }) => ({
+          name: x.name, lat: x.latitude, lon: x.longitude,
+          waar: [x.admin1, x.country].filter(Boolean).join(', '),
+        }))
+      setHits(lijst)
+      if (!lijst.length) setErr(`Geen plaats gevonden voor "${term}".`)
+    } catch { setErr('Zoeken lukt nu niet. Kies hieronder een plaats.') }
+  }
 
   const detect = useCallback(() => {
     if (!navigator.geolocation) { setErr('Deze browser geeft geen locatie door.'); return }
@@ -161,7 +157,23 @@ function LocationBar({ location, onPick }: { location: Location; onPick: (l: Loc
         <div className="pl-locpick">
           <div className="pl-locpick__in">
             <div>
-              <p className="pl-label" style={{ marginBottom: 12 }}>Kies een plaats</p>
+              <form onSubmit={zoek} role="search" className="pl-zoekplaats">
+                <label className="pl-label" htmlFor="pl-zoekplaats">Zoek je woonplaats</label>
+                <div>
+                  <input id="pl-zoekplaats" className="pl-field-in" value={q} onChange={e => setQ(e.target.value)} placeholder="Bijvoorbeeld Dwingeloo" autoComplete="address-level2" />
+                  <button className="pl-btn" type="submit">Zoek</button>
+                </div>
+              </form>
+              {hits && hits.length > 0 && (
+                <div className="pl-locgrid" style={{ marginBottom: 18 }}>
+                  {hits.map(h => (
+                    <button key={`${h.lat},${h.lon}`} type="button" onClick={() => { onPick({ lat: h.lat, lon: h.lon, name: h.name }); setOpen(false); setHits(null); setQ('') }}>
+                      {h.name}{h.waar && <span style={{ color: 'var(--pl-ink-3)' }}> · {h.waar}</span>}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <p className="pl-label" style={{ marginBottom: 12 }}>Of kies een plaats</p>
               <div className="pl-locgrid">
                 {PRESET_LOCATIONS.map(l => (
                   <button
@@ -195,10 +207,13 @@ function LocationBar({ location, onPick }: { location: Location; onPick: (l: Loc
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
 export default function Belichtingstabel() {
   const [location, setLocation] = useState<Location>({ lat: 52.3676, lon: 4.9041, name: 'Amsterdam' })
-  const [week, setWeek] = useState<Night[]>([])
-  const [tonight, setTonight] = useState<WeatherData | null>(null)
+  const [uren, setUren] = useState<Uur[]>([])
   const [kp, setKp] = useState<number | null>(null)
   const [status, setStatus] = useState<'loading' | 'ok' | 'failed'>('loading')
+  const [bijgewerkt, setBijgewerkt] = useState<Date | null>(null)
+  const [laden, setLaden] = useState(false)
+  const [nu, setNu] = useState(() => new Date())
+  const [ronde, setRonde] = useState(0)
   const [spot, setSpot] = useState(0)
   const [month, setMonth] = useState(() => new Date().getMonth() + 1)
 
@@ -235,52 +250,47 @@ export default function Belichtingstabel() {
     try { localStorage.setItem(LOC_KEY, JSON.stringify(l)) } catch { /* niet erg */ }
   }, [])
 
-  /* Zeven nachten ophalen, telkens het beeld om 20:00 */
+  /* Hemelweer ophalen: één verzoek, acht dagen per uur. Rechtstreeks bij
+     Open-Meteo (CORS staat open), zodat de eigen proxy dicht kan blijven en
+     ook de PR-voorbeeldsites live data krijgen. */
+  /* Andere plaats: oude uren weg, zodat een mislukte haal nooit het weer van
+     de vorige plaats onder de nieuwe naam laat staan. */
+  useEffect(() => { setUren([]); setStatus('loading') }, [location])
+
   useEffect(() => {
     let alive = true
-    setStatus('loading')
-    const url = `${PROXY}/weather?lat=${location.lat}&lon=${location.lon}&days=7`
-      + `&fields=cloud_cover,temperature_2m,relative_humidity_2m,wind_speed_10m,visibility`
-
+    setLaden(true)
+    const url = hemelUrl(location.lat, location.lon)
     fetch(url)
+      /* Een onbekend veld geeft bij Open-Meteo een 400 voor alles; dan nog één
+         keer zonder de straalstroom, en wordt seeing 'redelijk' in plaats van leeg. */
+      .then(r => r.status === 400 ? fetch(url.replace(',wind_speed_250hPa', '')) : r)
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then(data => {
         if (!alive) return
-        const h = data.hourly
-        if (!h?.cloud_cover) throw new Error('geen uurdata')
-
-        const at = (i: number): WeatherData => ({
-          cloud_cover: h.cloud_cover[i] ?? 100,
-          temperature_2m: h.temperature_2m[i] ?? 5,
-          relative_humidity_2m: h.relative_humidity_2m[i] ?? 80,
-          wind_speed_10m: h.wind_speed_10m[i] ?? 10,
-          visibility: h.visibility?.[i] ?? 10000,
-        })
-
-        setTonight(at(20))
-        const now = new Date()
-        setWeek(Array.from({ length: 7 }, (_, d) => {
-          const w = at(d * 24 + 20)
-          const s = calcScore(w)
-          /* 20:00 op die dag, zodat de maanfase in de tabel dezelfde is als
-             die in het paneel voor vannacht. */
-          const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + d, 20, 0, 0)
-          return {
-            date,
-            cloud: w.cloud_cover,
-            wind: Math.round(w.wind_speed_10m),
-            humidity: w.relative_humidity_2m,
-            moonPhase: getMoonPhase(date),
-            score: s.score,
-            label: s.label,
-          }
-        }))
+        setUren(leesUren(data, location.lat, location.lon))
+        setBijgewerkt(new Date()); setNu(new Date())
         setStatus('ok')
       })
-      .catch(() => { if (alive) setStatus('failed') })
-
+      /* Bij een mislukte verversing blijft de vorige stand staan. */
+      .catch(() => { if (alive) setStatus(st => st === 'loading' ? 'failed' : st) })
+      .finally(() => { if (alive) setLaden(false) })
     return () => { alive = false }
-  }, [location])
+  }, [location, ronde])
+
+  /* Live blijven: elke minuut de klok, elk half uur (of bij terugkomen in het
+     tabblad na een half uur) nieuwe data. Open-Meteo rekent elk uur opnieuw. */
+  useEffect(() => {
+    const vers = () => {
+      setNu(new Date())
+      if (document.visibilityState === 'visible' && bijgewerkt && Date.now() - bijgewerkt.getTime() > 30 * 60000) {
+        setRonde(r => r + 1)
+      }
+    }
+    const t = setInterval(vers, 60000)
+    document.addEventListener('visibilitychange', vers)
+    return () => { clearInterval(t); document.removeEventListener('visibilitychange', vers) }
+  }, [bijgewerkt])
 
   /* Ruimteweer: Kp bepaalt of poollicht überhaupt kan.
      Rechtstreeks bij NOAA in plaats van via de eigen proxy — die geeft sinds
@@ -295,7 +305,19 @@ export default function Belichtingstabel() {
     return () => { alive = false; ac.abort() }
   }, [])
 
-  const tonightScore = useMemo(() => tonight ? calcScore(tonight) : null, [tonight])
+  /* Vannacht en de zes nachten erna, allemaal uit hetzelfde model, zodat
+     het oordeel bovenaan en de rij 'vannacht' in de tabel nooit verschillen. */
+  const avond = huidigeAvond(nu).getTime()
+  const vannacht = useMemo(
+    () => uren.length ? nacht(uren, location.lat, location.lon, new Date(avond), nu) : null,
+    [uren, nu, avond, location],
+  )
+  const week = useMemo(() => {
+    if (!uren.length) return []
+    const a = new Date(avond)
+    return Array.from({ length: 7 }, (_, d) => d === 0 ? vannacht! : nacht(uren, location.lat, location.lon, new Date(a.getFullYear(), a.getMonth(), a.getDate() + d)))
+      .filter(n => n.donker.length > 0)
+  }, [uren, avond, vannacht, location])
 
   /* De beste nacht: hoogste score, bij gelijkspel de vroegste. */
   const bestIdx = useMemo(() => {
@@ -304,6 +326,9 @@ export default function Belichtingstabel() {
     week.forEach((d, i) => { if (d.score > week[best].score) best = i })
     return week[best].score >= 40 ? best : -1
   }, [week])
+
+  const uurNu = vannacht?.uren.find(u => nu >= u.t && nu.getTime() < u.t.getTime() + 3600e3)
+    ?? uren.find(u => nu >= u.t && nu.getTime() < u.t.getTime() + 3600e3)
 
   const spots = useMemo(
     () => DARK_SPOTS
@@ -318,13 +343,8 @@ export default function Belichtingstabel() {
     return METEORS.find(s => s.month >= m) ?? METEORS[0]
   }, [])
 
-  const today = new Date()
-  /* Eén tijdsbasis voor de maan: 20:00 vanavond, gelijk aan de tabelrijen. */
-  const tonightPhase = useMemo(
-    () => week[0]?.moonPhase
-      ?? getMoonPhase(new Date(today.getFullYear(), today.getMonth(), today.getDate(), 20, 0, 0)),
-    [week] // eslint-disable-line react-hooks/exhaustive-deps
-  )
+  const today = nu
+  const maanVerlicht = Math.round((vannacht?.verlicht ?? 0.5) * 100)
   const monthName = new Date(2026, month - 1, 1).toLocaleDateString('nl-NL', { month: 'long' })
 
   return (
@@ -349,7 +369,7 @@ export default function Belichtingstabel() {
         <section className="pl-wrap" aria-labelledby="pl-when">
           <div className="pl-band">
             <div className="pl-band__t">
-              <h1 id="pl-when" className="pl-h2">Kan ik vannacht kijken?</h1>
+              <h1 id="pl-when" className="pl-h2">Wordt het helder vannacht?</h1>
               <span className="pl-label">{location.name}</span>
             </div>
             <p className="pl-label pl-num">
@@ -364,74 +384,43 @@ export default function Belichtingstabel() {
               of kies een andere plaats.
             </p>
           ) : (
-            <div className="pl-tonight">
-
-              {/* Vannacht */}
-              <div className="pl-verdict">
-                <Tip label={
+            <>
+              <div className="pl-tonight">
+                {!vannacht ? (
                   <>
-                    <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>Hoe het oordeel ontstaat</span>
-                    Berekend voor 20:00 uit bewolking, luchtvochtigheid, windsnelheid en
-                    temperatuur. Bewolking weegt het zwaarst — boven 80% blijft er niets over.
-                  </>
-                }>
-                  <span className="pl-label">Vannacht</span>
-                </Tip>
-
-                {status === 'loading' || !tonightScore ? (
-                  <>
-                    <div className="pl-skel" style={{ height: 62, width: '70%' }} />
-                    <div className="pl-skel" style={{ height: 140 }} />
+                    <div className="pl-verdict">
+                      <div className="pl-skel" style={{ height: 30, width: '80%' }} />
+                      <div className="pl-skel" style={{ height: 62, width: '50%' }} />
+                      <div className="pl-skel" style={{ height: 220 }} />
+                    </div>
+                    <div className="pl-eph"><div className="pl-skel" style={{ height: '100%', minHeight: 420 }} /></div>
                   </>
                 ) : (
                   <>
-                    <div className="pl-verdict__score">
-                      <span className="pl-verdict__n pl-num pl-live">{Math.round(tonightScore.score / 10)}</span>
-                      <span className="pl-label pl-num">/ 10</span>
-                      <strong style={{ marginLeft: 'auto', fontSize: '1.1rem', letterSpacing: '-0.02em', color: scoreTone(tonightScore.score) }}>
-                        {tonightScore.label}
-                      </strong>
-                    </div>
-
-                    <div className="pl-meter" style={{ color: scoreTone(tonightScore.score) }} aria-hidden="true">
-                      <i style={{ transform: `scaleX(${tonightScore.score / 100})` }} />
-                    </div>
-
-                    <dl className="pl-verdict__rows">
-                      {[
-                        ['Bewolking', `${tonight!.cloud_cover}%`, true],
-                        ['Maanlicht', `${moonLit(tonightPhase)}% · ${moonName(tonightPhase)}`, false],
-                        ['Wind', `${Math.round(tonight!.wind_speed_10m)} km/u`, true],
-                        ['Luchtvochtigheid', `${tonight!.relative_humidity_2m}%`, true],
-                        ['Temperatuur', `${Math.round(tonight!.temperature_2m)} °C`, true],
-                        ['Kp-index', kp === null ? '—' : `${kp.toFixed(1)}${kp >= 5 ? ' · poollicht mogelijk' : ''}`, kp !== null],
-                      ].map(([t, v, live]) => (
-                        <div key={t as string}>
-                          <dt className="pl-label">{t}</dt>
-                          <dd className={`pl-num${live ? ' pl-live' : ''}`} style={{ margin: 0, fontSize: '0.8125rem', color: live ? undefined : 'var(--pl-ink-2)' }}>{v}</dd>
-                        </div>
-                      ))}
-                    </dl>
-
-                    <Link href="/sterrenkijken/uitrusting/" className="pl-read pl-verdict__uitr">
-                      <span>Heldere nacht? Dit heb je nodig</span>
-                      <span className="pl-read__rule" aria-hidden="true" />
-                      <Ico.arrow />
-                    </Link>
+                    <Oordeel
+                      n={vannacht}
+                      plaats={location.name}
+                      kp={kp}
+                      bijgewerkt={bijgewerkt}
+                      laden={laden}
+                      verversen={() => setRonde(r => r + 1)}
+                    />
+                    <Uurstrook n={vannacht} nu={nu} />
                   </>
                 )}
               </div>
 
               {/* De zeven nachten */}
-              <div className="pl-eph">
+              <div className="pl-eph pl-zevennacht">
                 <table>
                   <caption>
-                    <span className="pl-label">Zeven nachten · telkens om 20:00</span>
+                    <span className="pl-label">Zeven nachten · over de donkere uren</span>
                   </caption>
                   <thead>
                     <tr>
                       <th scope="col">Nacht</th>
                       <th scope="col">Bewolking</th>
+                      <th scope="col">Beste venster</th>
                       <th scope="col">Maan</th>
                       <th scope="col">Wind</th>
                       <th scope="col">Oordeel</th>
@@ -439,20 +428,21 @@ export default function Belichtingstabel() {
                   </thead>
                   <tbody>
                     {status === 'loading' && Array.from({ length: 7 }, (_, i) => (
-                      <tr key={i}><td colSpan={5} style={{ padding: '0 18px' }}>
+                      <tr key={i}><td colSpan={6} style={{ padding: '0 18px' }}>
                         <span className="pl-skel" style={{ display: 'block', height: 13 }} />
                       </td></tr>
                     ))}
                     {week.map((d, i) => (
-                      <tr key={i} data-best={i === bestIdx ? '1' : '0'}>
+                      <tr key={+d.avond} data-best={i === bestIdx ? '1' : '0'}>
                         <td>
-                          {DAYS[d.date.getDay()]} {d.date.getDate()} {d.date.toLocaleDateString('nl-NL', { month: 'short' })}
+                          {DAYS[d.avond.getDay()]} {d.avond.getDate()} {d.avond.toLocaleDateString('nl-NL', { month: 'short' })}
                           {i === 0 && <span className="pl-label" style={{ marginLeft: 8 }}>vannacht</span>}
                         </td>
-                        <td>{d.cloud}%</td>
-                        <td>{moonLit(d.moonPhase)}%</td>
+                        <td className="pl-live">{d.wolk}%</td>
+                        <td>{d.venster ? `${hhmm(d.venster.van)}–${hhmm(d.venster.tot)}` : '·'}</td>
+                        <td>{Math.round(d.verlicht * 100)}%</td>
                         <td>{d.wind} km/u</td>
-                        <td><CellBar score={d.score} label={d.label} /></td>
+                        <td><CellBar score={d.score} label={oordeel(d.score)} /></td>
                       </tr>
                     ))}
                   </tbody>
@@ -461,11 +451,15 @@ export default function Belichtingstabel() {
                 {bestIdx >= 0 && (
                   <p className="pl-eph__flag">
                     <span className="pl-dot pl-live" aria-hidden="true" />
-                    Beste venster: <strong style={{ color: 'var(--pl-ink)' }}>
-                      {DAYS[week[bestIdx].date.getDay()]}nacht {week[bestIdx].date.getDate()}{' '}
-                      {week[bestIdx].date.toLocaleDateString('nl-NL', { month: 'long' })}
-                    </strong>
-                    {' — '}{week[bestIdx].cloud}% bewolking, {moonLit(week[bestIdx].moonPhase)}% maanlicht.
+                    <span>
+                      Beste nacht: <strong style={{ color: 'var(--pl-ink)' }}>
+                        {week[bestIdx].avond.toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' })}
+                      </strong>
+                      {week[bestIdx].venster
+                        ? `, helder van ${hhmm(week[bestIdx].venster!.van)} tot ${hhmm(week[bestIdx].venster!.tot)}`
+                        : `, ${week[bestIdx].wolk}% bewolking`}
+                      {' '}bij {Math.round(week[bestIdx].verlicht * 100)}% maanlicht.
+                    </span>
                   </p>
                 )}
                 {bestIdx < 0 && status === 'ok' && (
@@ -475,7 +469,7 @@ export default function Belichtingstabel() {
                   </p>
                 )}
               </div>
-            </div>
+            </>
           )}
         </section>
 
@@ -510,7 +504,7 @@ export default function Belichtingstabel() {
           <Noorderlicht
             lat={location.lat}
             lon={location.lon}
-            bewolking={tonight ? Math.round(tonight.cloud_cover) : null}
+            bewolking={uurNu ? Math.round(uurNu.wolk) : null}
           />
         </section>
 
@@ -586,7 +580,7 @@ export default function Belichtingstabel() {
             lat={location.lat}
             lon={location.lon}
             plaats={location.name}
-            maanVerlicht={moonLit(tonightPhase)}
+            maanVerlicht={maanVerlicht}
             nacht={today}
           />
         </section>
