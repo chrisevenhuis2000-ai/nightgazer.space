@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-17",
+      "slug": "apod-2026-november-16-ngc-7129-star-formation-with-jets-from",
+      "titel": "Webb toont jonge sterren en straalstromen in stervormingsgebied NGC 7129",
+      "beg": {
+        "q": "Waarom gebruikt de James Webb-telescoop infrarood licht om jonge sterren in stofwolken te bekijken?",
+        "options": [
+          "Sterren zenden alleen infrarood licht uit",
+          "Infrarood licht maakt de sterren groter",
+          "Infrarood licht is veel feller dan zichtbaar licht",
+          "Infrarood licht dringt beter door stofwolken heen dan zichtbaar licht"
+        ],
+        "correct": 3,
+        "explain": "Stof houdt zichtbaar licht grotendeels tegen, maar infrarood licht komt er veel beter doorheen. Daardoor worden sterren zichtbaar die voor een gewone camera verborgen blijven. Sterren zenden overigens wel ook zichtbaar licht uit."
+      },
+      "ama": {
+        "q": "Waarom kan Webb in infrarood sterren zien die achter stofwolken in een stervormingsgebied verborgen zitten?",
+        "options": [
+          "Stofdeeltjes verstrooien en absorberen licht met een korte golflengte sterker dan infrarood licht",
+          "De spiegel van Webb filtert het stof weg voordat het licht binnenkomt",
+          "Infrarood licht reist sneller door stof dan zichtbaar licht",
+          "Stof zendt zelf bijna geen infrarood licht uit en is daardoor onzichtbaar"
+        ],
+        "correct": 0,
+        "explain": "Stofkorrels zijn ongeveer zo groot als de golflengte van zichtbaar licht, dus dat licht wordt sterk geblokkeerd. Infrarood heeft een grotere golflengte en komt er veel beter doorheen. Dit heet ook wel extinctie, en die neemt af naarmate de golflengte groter wordt."
+      },
+      "pro": {
+        "q": "Hoe verandert de extinctie door interstellair stof globaal met de golflengte in het optisch-infrarode bereik, en waarom helpt dat Webb?",
+        "options": [
+          "Ze neemt af met toenemende golflengte, dus infrarood wordt veel minder gedoofd dan zichtbaar licht",
+          "Ze is alleen sterk bij exact de golflengte van waterstoflijnen",
+          "Ze neemt toe met toenemende golflengte, dus Webb ziet vooral het stof zelf",
+          "Ze is onafhankelijk van de golflengte, dus Webb profiteert alleen van zijn grote spiegel"
+        ],
+        "correct": 0,
+        "explain": "De extinctie door stof volgt in dit bereik grofweg een afnemende machtswet in golflengte, met een index van ongeveer −1 tot −2. Daardoor is de extinctie in het nabije en middeninfrarood een fractie van die in het zichtbare. Zo zijn ingebedde protosterren en jets in gebieden als NGC 7129 te onderzoeken."
+      }
+    },
+    {
       "datum": "2026-11-16",
       "slug": "apod-2026-november-16-ngc-7129-star-formation-with-jets-from",
       "titel": "Webb toont jonge sterren en straalstromen in stervormingsgebied NGC 7129",
@@ -1965,45 +2003,7 @@
         "correct": 2,
         "explain": "Zonlicht wordt in de aardatmosfeer gebroken en bereikt zo de umbra. Rayleigh-verstrooiing, die sterk van de golflengte afhangt (ongeveer 1/λ⁴), haalt vooral het blauwe licht eruit, waardoor rood overblijft. Dezelfde fysica kleurt zonsondergangen rood."
       }
-    },
-    {
-      "datum": "2026-10-30",
-      "slug": "novembers-night-sky-notes-light-day-away",
-      "titel": "Hemelnotities november: Voyager 1 bijna één lichtdag ver",
-      "beg": {
-        "q": "Wat is een lichtdag, de afstand die Voyager 1 bijna heeft bereikt?",
-        "options": [
-          "De afstand die licht in één dag aflegt",
-          "De afstand die Voyager 1 in één dag aflegt",
-          "De afstand van de aarde tot de zon",
-          "De afstand waarover de zon één dag lang zichtbaar is"
-        ],
-        "correct": 0,
-        "explain": "Een lichtdag is de afstand die licht in één dag aflegt, net zoals een lichtjaar de afstand is die licht in een jaar aflegt. Het is dus een maat voor afstand en geen tijdsduur."
-      },
-      "ama": {
-        "q": "Ongeveer hoeveel kilometer legt licht in één dag af, de afstand die Voyager 1 in november 2026 passeert?",
-        "options": [
-          "Ongeveer 150 miljoen kilometer",
-          "Ongeveer 26 miljard kilometer",
-          "Ongeveer 300.000 kilometer",
-          "Ongeveer 9,5 biljoen kilometer"
-        ],
-        "correct": 1,
-        "explain": "Licht legt zo'n 300.000 km per seconde af. Maal 86.400 seconden per dag geeft ongeveer 26 miljard kilometer, wat overeenkomt met de 16,1 miljard mijl uit het artikel. Dat is bijna 175 keer de afstand aarde-zon."
-      },
-      "pro": {
-        "q": "Welke berekening geeft de afstand van één lichtdag?",
-        "options": [
-          "c × 86.400 s, ongeveer 2,6·10^13 m",
-          "c × 31,6·10^6 s, ongeveer 9,5·10^15 m",
-          "c × 86.400 s, ongeveer 2,6·10^10 m",
-          "c × 3600 s, ongeveer 1,1·10^12 m"
-        ],
-        "correct": 0,
-        "explain": "Met c ≈ 3,0·10^8 m/s en 86.400 s per dag is de afstand ongeveer 2,6·10^13 m, oftewel 26 miljard km. Dat komt overeen met circa 173 AU. De andere opties zijn een uur, een verkeerde macht van tien, of een lichtjaar."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-16T17:07:06.220Z"
+  "bijgewerkt": "2026-11-17T17:04:35.192Z"
 }
