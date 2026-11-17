@@ -3,7 +3,7 @@ import Belichtingstabel from './Belichtingstabel'
 
 export const metadata: Metadata = {
   title:       'Sterrenkijken',
-  description: 'Kan ik vannacht kijken? Zeven nachten bewolking, maan en wind in één tabel, donkere plekken in Nederland, ISS-overkomsten, noorderlicht en de maankalender.',
+  description: 'Wordt het helder vannacht? Live hemelweer per uur: wolken per laag, doorzicht, seeing, dauw en de maan, het beste kijkvenster en zeven nachten vooruit. Plus donkere plekken, ISS-overkomsten en noorderlicht.',
   alternates:  { canonical: '/sterrenkijken/' },
   openGraph: {
     title:       'Sterrenkijken — NightGazer',
