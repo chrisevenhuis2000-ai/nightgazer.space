@@ -1,4 +1,14 @@
 # Cloudflare Pages — headers per pad.
+# Voor elke pagina: niet in een frame van een andere site, geen raden naar
+# het bestandstype, de verwijzer alleen als domein naar buiten, en camera en
+# microfoon uit. Locatie mag (Belichtingstabel vraagt het voor de hemel van
+# jouw plek). HSTS staat in Cloudflare zelf (zone-instelling), niet hier.
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), payment=(), usb=(), geolocation=(self)
+
 # /koppel/ ontvangt de OAuth-code van TikTok en Instagram in de URL. Die mag
 # via geen enkele Referer-header weglekken, niet in een zoekmachine belanden
 # en niet in een cache blijven hangen.

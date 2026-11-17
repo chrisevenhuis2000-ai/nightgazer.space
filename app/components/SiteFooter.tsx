@@ -16,7 +16,7 @@ interface SiteFooterProps {
   note?:    string
 }
 
-const DEFAULT_TAGLINE = 'Nederlandstalig astronomie-platform met AI-aangedreven uitleg op jouw niveau. Van beginners tot professionals.'
+const DEFAULT_TAGLINE = 'Sterrenkijken vanuit Nederland: wat je vannacht ziet, rustige uitleg over het heelal en eerlijke gidsen voor je eerste telescoop.'
 const DEFAULT_NOTE     = 'Afbeeldingen: NASA · ESA · Pexels'
 const DEFAULT_COLS: FooterCol[] = [
   { title: 'Pagina\'s', links: [['Home', '/'], ['Nieuws', '/nieuws'], ['Missies', '/missies'], ['Sterrenkijken', '/sterrenkijken'], ['Educatie', '/educatie']] },

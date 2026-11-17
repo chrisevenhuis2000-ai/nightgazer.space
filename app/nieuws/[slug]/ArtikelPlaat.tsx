@@ -35,7 +35,7 @@ const LADDER: Record<Exclude<ReadingLevel, 'original'>, 'beg' | 'ama' | 'pro'> =
 }
 const LEVEL_STORE = 'nightgazer_leesniveau_artikel'
 /** Het niveau voor wie nog nooit zelf koos. */
-const STANDAARD_NIVEAU: ReadingLevel = 'beginner'
+const STANDAARD_NIVEAU: ReadingLevel = 'original'
 
 /* Categorie → missiepagina. Naam, agentschap en status komen uit de
    missiedata zelf, zodat de kaart nooit iets beweert dat daar niet staat. */
@@ -289,10 +289,10 @@ export default function ArtikelPlaat({ slug, initial = null }: {
 
   /* Startniveau. Wie zelf een niveau koos, krijgt dat terug (en de tekst
      wordt nu ook echt op dat niveau gezet, niet alleen de knop). Wie nog
-     nooit koos, begint op Beginner: de site trekt ook mensen zonder
-     sterrenkundekennis, en de originele tekst staat er voor zoekmachines
-     en zonder JavaScript gewoon onder. Die automatische keuze wordt niet
-     bewaard; alleen een klik op een knop wordt onthouden. */
+     nooit koos, leest de originele redactietekst: sinds 17-11-2026 maakt
+     Claude een niveau alleen nog op klik. Zo ziet elke lezer, zoekmachine
+     en AdSense-beoordelaar eerst onze eigen tekst, en kost een bezoek geen
+     API-aanroepen. Alleen een klik op een knop wordt onthouden. */
   const gestart = useRef(false)
   useEffect(() => {
     if (!article || gestart.current) return
