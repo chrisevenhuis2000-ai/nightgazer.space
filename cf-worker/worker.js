@@ -639,6 +639,14 @@ export default {
     // dagbudget blijft, ook als de pagina die nacht vaak ververst.
     if (request.method === 'POST' && url.pathname === '/geminiden') {
       if (!env.SUBS) return cors(request, JSON.stringify({ fout: 'Telling nog niet ingericht.' }), 503)
+      // Hooguit een paar tellingen per IP-adres per minuut (binding GEM_LIMIT):
+      // zo kan niemand de uitslag volspammen of het KV-schrijfbudget opmaken,
+      // waar de pushmeldingen ook van leven.
+      if (env.GEM_LIMIT) {
+        const ip = request.headers.get('CF-Connecting-IP') || 'onbekend'
+        const { success } = await env.GEM_LIMIT.limit({ key: ip })
+        if (!success) return cors(request, JSON.stringify({ fout: 'Je telling is al binnen. Probeer het over een minuut opnieuw.' }), 429)
+      }
       let body = null
       try { body = JSON.parse((await request.text()).slice(0, 1000)) } catch { /* lege telling */ }
       const { meta, fout } = keurTelling(body)
