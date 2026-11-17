@@ -36,7 +36,7 @@ const jetbrains = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://nightgazer.space'),
   title:       { default: 'NightGazer — Astronomie voor Iedereen', template: '%s | NightGazer' },
-  description: 'Nederlandstalig astronomie-platform met AI-aangedreven uitleg op jouw niveau. Van beginners tot professionals.',
+  description: 'Sterrenkijken vanuit Nederland: wat je vannacht ziet, rustige uitleg over het heelal en eerlijke gidsen voor je eerste telescoop.',
   keywords:    ['astronomie', 'ruimtevaart', 'NASA', 'sterrenkijken', 'JWST', 'ruimtenieuws', 'nightgazer'],
   openGraph: {
     siteName: 'NightGazer',
