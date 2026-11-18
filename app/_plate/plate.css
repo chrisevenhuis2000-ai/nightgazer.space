@@ -5614,6 +5614,8 @@ a:hover .pl-emulsion > img,
           mask-image: linear-gradient(95deg, transparent 8%, #000 58%);
   opacity: .92;
 }
+.nb-hero__fase { position: absolute; inset: 0; width: 100%; height: 100%; filter: blur(6px); }
+.nb-hero__fase path { fill: var(--pl-plate); opacity: .9; }
 .nb-hero__in { position: relative; z-index: 1; padding: clamp(28px, 4vw, 56px) clamp(20px, 4vw, 56px) clamp(24px, 3vw, 40px); }
 .nb-hero__plaats { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; color: var(--pl-ink-2); font-size: 1rem; }
 .nb-hero__plaats strong { color: var(--pl-ink); font-weight: 600; }

@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   type Nacht, hemelUrl, leesUren, nacht, huidigeAvond, oordeel, kopzin, hhmm,
-  moonName, moonWaxing,
+  moonName, moonWaxing, moonIllumination,
 } from '@/lib/hemelweer'
 import { useUpcoming } from './Instruments'
 
@@ -22,6 +22,29 @@ type Plaats = { lat: number; lon: number; name: string }
 const STANDAARD: Plaats = { lat: 52.3676, lon: 4.9041, name: 'Amsterdam' }
 
 type Stand = { status: 'loading' } | { status: 'failed' } | { status: 'ok'; n: Nacht; op: Date }
+
+/* De schaduw over de maanfoto: de echte fase van dit moment. Pas na mount
+   berekend, want de statische HTML weet niet wanneer hij gelezen wordt.
+   Wassend = rechts verlicht (zoals je hem vanuit Nederland ziet). */
+function MaanSchaduw() {
+  const [fase, setFase] = useState<{ k: number; wassend: boolean } | null>(null)
+  useEffect(() => {
+    const zet = () => { const nu = new Date(); setFase({ k: moonIllumination(nu), wassend: moonWaxing(nu) }) }
+    zet()
+    const t = setInterval(zet, 30 * 60000)
+    return () => clearInterval(t)
+  }, [])
+  if (!fase) return null
+  const r = 0.97
+  const a = Math.abs(2 * fase.k - 1) * r          // halve breedte van de terminator-ellips
+  const sweep = fase.k < 0.5 ? 0 : 1               // sikkel: schaduw buigt naar de lichte kant
+  const d = `M0,${-r} A${r},${r} 0 0 0 0,${r} A${a.toFixed(4)},${r} 0 0 ${sweep} 0,${-r} Z`
+  return (
+    <svg className="nb-hero__fase" viewBox="-1 -1 2 2" aria-hidden="true">
+      <path d={d} transform={fase.wassend ? undefined : 'scale(-1,1)'} />
+    </svg>
+  )
+}
 
 /* Eén zin; de tijden van het venster in amber, de rest gewoon. */
 function Zin({ n }: { n: Nacht }) {
@@ -74,7 +97,7 @@ export function NachtHero({ total }: { total: number }) {
 
   return (
     <section className="nb-hero" aria-labelledby="nb-hero-title">
-      <div className="nb-hero__maan" aria-hidden="true" />
+      <div className="nb-hero__maan" aria-hidden="true"><MaanSchaduw /></div>
 
       <div className="nb-hero__in">
         <p className="nb-hero__plaats">
