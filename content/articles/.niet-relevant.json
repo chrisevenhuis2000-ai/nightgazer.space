@@ -64,6 +64,11 @@
     "reden": "Dit is een personeels- en stageverhaal over mentorschap bij NASA rond National Mentoring Day, zonder nieuws over missies, ontdekkingen of ruimtevaartontwikkelingen.",
     "datum": "2026-10-27"
   },
+  "how-ai-is-pushing-satellites-to-evolve": {
+    "titel": "How AI is pushing satellites to evolve",
+    "reden": "Dit is een commerciële productpagina van Space Inventor die satellietplatforms voor defensie- en aardobservatieklanten aanprijst, zonder concrete missie, lancering of nieuwsfeit.",
+    "datum": "2026-11-18"
+  },
   "hunting-red-leaves-with-satellites": {
     "titel": "Hunting Red Leaves with Satellites",
     "reden": "Dit is aardobservatie over herfstkleuren en vegetatie met bestaande satellieten (PACE, Landsat 9), zonder nieuws over de ruimtevaart of een nieuwe missie zelf.",
@@ -83,6 +88,11 @@
     "titel": "NASA Invites Media to 2026 von Braun Space Exploration Symposium",
     "reden": "Dit is een media-uitnodiging voor een symposium, een evenementaankondiging zonder nieuwe ontdekking of missienieuws.",
     "datum": "2026-10-23"
+  },
+  "nasa-launches-nuclear-power-systems-student-contest": {
+    "titel": "NASA Launches Nuclear Power Systems Student Contest",
+    "reden": "Dit is de aankondiging van een tekenwedstrijd en essaywedstrijd voor Amerikaanse scholieren, een evenement zonder nieuws over missies of ontdekkingen en zonder belang voor Nederlandse lezers.",
+    "datum": "2026-11-18"
   },
   "nasa-releases-max-power-key-events-for-media-participants": {
     "titel": "NASA Releases MAX POWER Key Events for Media, Participants",
@@ -113,6 +123,11 @@
     "titel": "Pennsylvania’s Grand Canyon",
     "reden": "Aardobservatiebeeld van herfstkleuren en geologie van een kloof in Pennsylvania; gaat niet over astronomie of ruimtevaart zelf.",
     "datum": "2026-11-02"
+  },
+  "sierra-snow-season-spins-up": {
+    "titel": "Sierra Snow Season Spins Up",
+    "reden": "Dit is aardobservatie over sneeuwval en winterweer in de Sierra Nevada, zonder nieuws over een satelliet, instrument of ruimtemissie zelf.",
+    "datum": "2026-11-18"
   },
   "summer-of-quantum-building-momentum-for-space-based-qkd": {
     "titel": "Summer of Quantum: Building momentum for space-based QKD",
