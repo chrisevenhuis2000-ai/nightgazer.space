@@ -80,7 +80,7 @@ export function Vandaag({ level, done, topics, onJump }: {
   const [, mm, dd] = vraag.datum.split('-').map(Number)
 
   return (
-    <div className="pl-today">
+    <div className="pl-today" id="vraag-van-de-dag">
       <div className="pl-today__q">
         <p className="pl-label">
           Vraag van de dag

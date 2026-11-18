@@ -11,7 +11,7 @@ import { img } from './shared'
 import { telGebeurtenis } from '@/lib/tel'
 import { fotoVan, puzzelNr, nlDag, zoomVoor, POGINGEN, type Stand } from '@/lib/hemelfoto'
 
-export function HemelfotoTeaser() {
+export function HemelfotoTeaser({ groot = false }: { groot?: boolean } = {}) {
   const [nr, setNr] = useState<number | null>(null)
   const [stand, setStand] = useState<Stand | null>(null)
 
@@ -27,15 +27,16 @@ export function HemelfotoTeaser() {
 
   /* Pas na het laden de foto kiezen: dan klopt de Nederlandse dag ook als
      de pagina gisteren statisch gebouwd is. */
-  if (nr === null) return <div className="pl-hft" aria-hidden="true" style={{ minHeight: 140 }} />
+  const cls = `pl-hft${groot ? ' pl-hft--groot' : ''}`
+  if (nr === null) return <div className={cls} aria-hidden="true" style={{ minHeight: 140 }} />
 
   const foto = fotoVan(nr)
   const klaar = !!stand?.klaar
   const zoom = klaar ? 1 : zoomVoor(0)
-  const src = img(`https://images-assets.nasa.gov/image/${foto.nasaId}/${foto.nasaId}~${foto.variant}.jpg`, klaar ? 300 : 1200)
+  const src = img(`https://images-assets.nasa.gov/image/${foto.nasaId}/${foto.nasaId}~${foto.variant}.jpg`, klaar ? (groot ? 900 : 300) : 1200)
 
   return (
-    <Link href="/spellen/hemelfoto/" className="pl-hft" onClick={() => telGebeurtenis('hemelfoto-teaser', location.pathname)}>
+    <Link href="/spellen/hemelfoto/" className={cls} onClick={() => telGebeurtenis('hemelfoto-teaser', location.pathname)}>
       <span className="pl-hft__img" aria-hidden="true">
         <img src={src} alt="" loading="lazy" decoding="async"
           style={{ transform: `scale(${zoom})`, transformOrigin: `${foto.focus[0]}% ${foto.focus[1]}%` }}
