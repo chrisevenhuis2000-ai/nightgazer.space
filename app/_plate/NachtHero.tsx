@@ -35,7 +35,7 @@ function MaanSchaduw() {
     return () => clearInterval(t)
   }, [])
   if (!fase) return null
-  const r = 0.97
+  const r = 1.08 // ruim over de rand van de foto, zodat er geen lichte rand overblijft
   const a = Math.abs(2 * fase.k - 1) * r          // halve breedte van de terminator-ellips
   const sweep = fase.k < 0.5 ? 0 : 1               // sikkel: schaduw buigt naar de lichte kant
   const d = `M0,${-r} A${r},${r} 0 0 0 0,${r} A${a.toFixed(4)},${r} 0 0 ${sweep} 0,${-r} Z`
