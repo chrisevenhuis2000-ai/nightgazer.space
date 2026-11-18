@@ -283,7 +283,7 @@
 .pl-emulsion::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(200deg, rgba(60,52,36,0.30), rgba(8,9,12,0.62));
+  background: linear-gradient(200deg, rgba(24,95,165,0.30), rgba(14,16,34,0.62));
   mix-blend-mode: color;
   pointer-events: none;
 }
@@ -297,7 +297,7 @@ a:hover .pl-emulsion > img,
 
 .pl-head {
   position: sticky; top: 0; z-index: 30;
-  background: rgba(8,9,12,0.92);
+  background: rgba(14,16,34,0.92);
   backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid var(--pl-rule);
 }
@@ -498,7 +498,7 @@ a:hover .pl-emulsion > img,
 .pl-firstview__ground::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(8,9,12,0.52) 0%, rgba(8,9,12,0.88) 100%);
+  background: linear-gradient(180deg, rgba(14,16,34,0.52) 0%, rgba(14,16,34,0.88) 100%);
 }
 
 /* Depth behind the title: one deep-blue field so the display type lifts off
@@ -634,7 +634,7 @@ a:hover .pl-emulsion > img,
 .pl-stampno {
   position: absolute; left: 14px; bottom: 14px;
   border: 1px solid rgba(181,212,244,0.4);
-  background: rgba(8,9,12,0.72);
+  background: rgba(14,16,34,0.72);
   backdrop-filter: blur(6px);
   color: var(--pl-stamp);
   padding: 4px 8px;
@@ -808,7 +808,7 @@ a:hover .pl-emulsion > img,
   width: 460px; height: 460px;
   margin: -230px 0 0 -230px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(60,52,36,0.16) 0%, rgba(60,52,36,0.06) 42%, transparent 70%);
+  background: radial-gradient(circle, rgba(24,95,165,0.16) 0%, rgba(24,95,165,0.06) 42%, transparent 70%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 420ms var(--pl-ease);
@@ -1005,7 +1005,7 @@ a:hover .pl-emulsion > img,
   position: sticky;
   top: 68px;
   z-index: 25;
-  background: rgba(8,9,12,0.94);
+  background: rgba(14,16,34,0.94);
   backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid var(--pl-rule);
 }
@@ -1467,7 +1467,7 @@ a:hover .pl-emulsion > img,
 .pl-entry__fig::after {
   content: '';
   position: absolute; inset: 0;
-  background: rgba(8,9,12,0.22);
+  background: rgba(14,16,34,0.22);
   pointer-events: none;
 }
 .pl-entry__t {
@@ -1497,7 +1497,7 @@ a:hover .pl-emulsion > img,
   width: 420px; height: 420px;
   margin: -210px 0 0 -210px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(60,52,36,0.15) 0%, rgba(60,52,36,0.055) 42%, transparent 70%);
+  background: radial-gradient(circle, rgba(24,95,165,0.15) 0%, rgba(24,95,165,0.055) 42%, transparent 70%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 420ms var(--pl-ease);
@@ -2093,7 +2093,7 @@ a:hover .pl-emulsion > img,
   position: sticky;
   top: 68px;
   z-index: 25;
-  background: rgba(8,9,12, 0.94);
+  background: rgba(14, 16, 34, 0.94);
   backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid var(--pl-rule);
 }
@@ -2372,7 +2372,7 @@ a:hover .pl-emulsion > img,
   position: sticky;
   top: 68px;
   z-index: 25;
-  background: rgba(8,9,12, 0.94);
+  background: rgba(14, 16, 34, 0.94);
   backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid var(--pl-rule);
 }
@@ -2825,8 +2825,8 @@ a:hover .pl-emulsion > img,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(8,9,12,0.10) 0%, rgba(8,9,12,0.55) 100%),
-    linear-gradient(0deg, rgba(8,9,12,0.45) 0%, rgba(8,9,12,0.08) 46%);
+    linear-gradient(90deg, rgba(14,16,34,0.10) 0%, rgba(14,16,34,0.55) 100%),
+    linear-gradient(0deg, rgba(14,16,34,0.45) 0%, rgba(14,16,34,0.08) 46%);
   pointer-events: none;
   z-index: 1;
 }
@@ -2888,7 +2888,7 @@ a:hover .pl-emulsion > img,
 .pl-second__fig::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(8,9,12,0.34) 0%, rgba(8,9,12,0.04) 55%);
+  background: linear-gradient(0deg, rgba(14,16,34,0.34) 0%, rgba(14,16,34,0.04) 55%);
   pointer-events: none;
 }
 .pl-second__t {
@@ -2904,7 +2904,7 @@ a:hover .pl-emulsion > img,
 /* Kleine emulsie mag minder hard geknepen worden: de grade die op 860px
    als art direction leest, maakt van een logo op 150px grijze pap. */
 .pl-emulsion--sm > img { filter: grayscale(0.26) contrast(1.02) brightness(0.95) saturate(1); }
-.pl-emulsion--sm::after { background: linear-gradient(200deg, rgba(60,52,36,0.16), rgba(8,9,12,0.34)); }
+.pl-emulsion--sm::after { background: linear-gradient(200deg, rgba(24,95,165,0.16), rgba(14,16,34,0.34)); }
 
 /* ── Ritme: de ledger begint pas na de koppen ── */
 .pl-sheet__rule {
@@ -2986,8 +2986,8 @@ a:hover .pl-emulsion > img,
   content: '';
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(8,9,12,0.12) 0%, rgba(8,9,12,0.58) 100%),
-    linear-gradient(0deg, rgba(8,9,12,0.52) 0%, rgba(8,9,12,0.06) 50%);
+    linear-gradient(90deg, rgba(14,16,34,0.12) 0%, rgba(14,16,34,0.58) 100%),
+    linear-gradient(0deg, rgba(14,16,34,0.52) 0%, rgba(14,16,34,0.06) 50%);
   pointer-events: none;
   z-index: 1;
 }
@@ -3060,7 +3060,7 @@ a:hover .pl-emulsion > img,
 .pl-upcell__fig::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(8,9,12,0.4) 0%, rgba(8,9,12,0.04) 55%);
+  background: linear-gradient(0deg, rgba(14,16,34,0.4) 0%, rgba(14,16,34,0.04) 55%);
   pointer-events: none;
 }
 .pl-upcell__in { padding: 0 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
@@ -3094,7 +3094,7 @@ a:hover .pl-emulsion > img,
 .pl-fleetcell__fig::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(8,9,12,0.46) 0%, rgba(8,9,12,0.04) 60%);
+  background: linear-gradient(0deg, rgba(14,16,34,0.46) 0%, rgba(14,16,34,0.04) 60%);
   pointer-events: none;
 }
 
@@ -4167,7 +4167,7 @@ a:hover .pl-emulsion > img,
 .pl-mhead__ground::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(8,9,12,0.5) 0%, rgba(8,9,12,0.9) 100%);
+  background: linear-gradient(180deg, rgba(14,16,34,0.5) 0%, rgba(14,16,34,0.9) 100%);
 }
 .pl-mhead > *:not(.pl-mhead__ground) { position: relative; z-index: 1; }
 .pl-mhead__in {
@@ -4205,7 +4205,7 @@ a:hover .pl-emulsion > img,
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
   margin: 0;
   border-top: 1px solid var(--pl-rule);
-  background: rgba(8,9,12,0.55);
+  background: rgba(14,16,34,0.55);
 }
 .pl-mspec > div {
   padding: 16px clamp(16px, 2vw, 22px);
@@ -4408,7 +4408,7 @@ a:hover .pl-emulsion > img,
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(8,9,12,0.38) 0%, rgba(8,9,12,0.04) 55%);
+  background: linear-gradient(0deg, rgba(14,16,34,0.38) 0%, rgba(14,16,34,0.04) 55%);
   pointer-events: none;
   z-index: 1;
 }
@@ -4464,8 +4464,8 @@ a:hover .pl-emulsion > img,
   content: '';
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(8,9,12,0.94) 0%, rgba(8,9,12,0.72) 46%, rgba(8,9,12,0.18) 100%),
-    linear-gradient(0deg, rgba(8,9,12,0.96) 0%, rgba(8,9,12,0) 46%);
+    linear-gradient(90deg, rgba(14,16,34,0.94) 0%, rgba(14,16,34,0.72) 46%, rgba(14,16,34,0.18) 100%),
+    linear-gradient(0deg, rgba(14,16,34,0.96) 0%, rgba(14,16,34,0) 46%);
 }
 .pl-uhero__in {
   display: grid;
@@ -4499,7 +4499,7 @@ a:hover .pl-emulsion > img,
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   border: 1px solid var(--pl-rule);
-  background: rgba(8,9,12,0.62);
+  background: rgba(14,16,34,0.62);
   margin-top: clamp(6px, 1.4vw, 14px);
 }
 .pl-ustappen__a {
@@ -5216,7 +5216,7 @@ a:hover .pl-emulsion > img,
   filter: grayscale(0.3) contrast(1.05) brightness(0.9) saturate(0.95);
   transition: transform 1400ms var(--pl-ease-o), filter 1400ms var(--pl-ease-o); }
 .pl-gx__beeld::after { content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(200deg, rgba(60,52,36,0.22), rgba(8,9,12,0.5)); mix-blend-mode: color; }
+  background: linear-gradient(200deg, rgba(24,95,165,0.22), rgba(14,16,34,0.5)); mix-blend-mode: color; }
 .pl-gx__a:hover .pl-gx__beeld > img:not(.pl-gx__blad) { transform: scale(1.035); filter: grayscale(0.1) contrast(1.06) brightness(1) saturate(1); }
 
 /* De kalender: het voorblad op het februariblad, zoals op zijn eigen pagina. */
@@ -5321,7 +5321,7 @@ a:hover .pl-emulsion > img,
 .pl-zg__vlak { position: relative; height: clamp(200px, 26vw, 280px); margin-left: 64px; }
 .pl-zg__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .pl-zg__band { position: absolute; top: 0; height: calc(200 / 220 * 100%); }
-.pl-zg__band--donker { background: rgba(60,52,36,0.14); border-left: 1px dashed var(--pl-rule); border-right: 1px dashed var(--pl-rule); }
+.pl-zg__band--donker { background: rgba(24,95,165,0.14); border-left: 1px dashed var(--pl-rule); border-right: 1px dashed var(--pl-rule); }
 .pl-zg__band--maan {
   background: repeating-linear-gradient(135deg, rgba(181,212,244,0.07) 0 6px, transparent 6px 12px);
   border-right: 1px solid rgba(181,212,244,0.35);
@@ -5358,7 +5358,7 @@ a:hover .pl-emulsion > img,
 .pl-zg__legenda > span { display: inline-flex; align-items: center; gap: 8px; }
 .pl-zg__l { display: inline-block; width: 18px; height: 10px; }
 .pl-zg__l--lijn { height: 0; border-top: 2.5px solid var(--pl-mark); }
-.pl-zg__l--donker { background: rgba(60,52,36,0.3); border: 1px dashed var(--pl-rule); }
+.pl-zg__l--donker { background: rgba(24,95,165,0.3); border: 1px dashed var(--pl-rule); }
 .pl-zg__l--maan { background: repeating-linear-gradient(135deg, rgba(181,212,244,0.25) 0 3px, transparent 3px 6px); }
 .pl-zg__l-tekst { color: var(--pl-stamp); }
 .pl-zg__l--best { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--pl-ink); }
@@ -5596,36 +5596,15 @@ a:hover .pl-emulsion > img,
 .pl-zevennacht { border: 1px solid var(--pl-rule); border-top: 0; }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   Versie B — Nachtinstrument (designonderzoek 18 nov 2026, preview)
-   Bijna zwart, warm wit, amber als enige accent. Amber verstoort je
-   nachtzicht minder dan cyaan. De twee wetten blijven: --pl-mark voor live
-   waarden, --pl-act voor wat reageert.
+   Nachtkop — homepage-indeling 'antwoord eerst' (designonderzoek nov 2026).
+   Zelfde huisstijl: --pl-mark voor live waarden, --pl-act voor wat reageert
+   en voor het beste venster in de uurstrook.
    ══════════════════════════════════════════════════════════════════════════ */
-.pl {
-  --pl-ground:     #08090C;
-  --pl-plate:      #101217;
-  --pl-plate-2:    #171A21;
-  --pl-plate-lift: #1D2028;
-  --pl-rule:       #262930;
-  --pl-rule-soft:  #1B1E24;
-  --pl-ink:   #EEEAE2;
-  --pl-ink-2: #ADA9A1;   /* 8.1:1 op plate */
-  --pl-ink-3: #8E8A83;   /* 5.3:1 op plate-2 */
-  --pl-mark:  #F5D9A0;   /* live waarden: warm licht */
-  --pl-act:   #F2B544;   /* interactief: amber */
-  --pl-orbit: #6B5524;
-  --pl-stamp: #E6D8BE;
-  --pl-good:  #7FCB8F;
-  --pl-warn:  #E57C6C;
-}
-.pl-label { letter-spacing: 0.07em; font-weight: 500; }
-.pl-cta__primary { color: #1A1405; }
 /* ── De nachtkop ── */
 .nb-hero {
   position: relative; overflow: hidden;
-  background: var(--pl-ground);
   border: 1px solid var(--pl-rule);
-  border-radius: 18px;
+  background: var(--pl-plate);
 }
 .nb-hero__maan {
   position: absolute; right: -150px; top: -40px;
@@ -5638,35 +5617,35 @@ a:hover .pl-emulsion > img,
 .nb-hero__in { position: relative; z-index: 1; padding: clamp(28px, 4vw, 56px) clamp(20px, 4vw, 56px) clamp(24px, 3vw, 40px); }
 .nb-hero__plaats { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; color: var(--pl-ink-2); font-size: 1rem; }
 .nb-hero__plaats strong { color: var(--pl-ink); font-weight: 600; }
-.nb-hero__stip { width: 8px; height: 8px; border-radius: 50%; background: var(--pl-act); }
+.nb-hero__stip { width: 7px; height: 7px; background: var(--pl-mark); }
 .nb-hero__wissel { color: var(--pl-act); margin-left: 6px; text-decoration: underline !important; text-underline-offset: 3px; }
 .nb-hero__cijfer { display: flex; align-items: flex-end; gap: clamp(14px, 2vw, 24px); margin: clamp(14px, 2vw, 24px) 0 6px; min-height: 120px; }
-.nb-hero__n { font-weight: 300; font-size: clamp(7.5rem, 15vw, 12.5rem); line-height: .8; letter-spacing: -0.06em; color: var(--pl-ink); }
+.nb-hero__n { font-weight: 800; font-size: clamp(7rem, 14vw, 11.5rem); line-height: .8; letter-spacing: -0.05em; color: var(--pl-mark); }
 .nb-hero__n sup { font-size: .22em; color: var(--pl-ink-3); letter-spacing: 0; vertical-align: top; position: relative; top: .5em; margin-left: .15em; font-weight: 400; }
 .nb-hero__w { padding-bottom: .6em; display: grid; gap: 2px; }
-.nb-hero__w strong { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+.nb-hero__w strong { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
 .nb-hero__w span { color: var(--pl-ink-2); }
 .nb-hero__fout { color: var(--pl-ink-2); max-width: 40ch; }
 .nb-hero__fout a { color: var(--pl-act); text-decoration: underline !important; }
 .nb-hero__zin { font-size: clamp(1.25rem, 2vw, 1.55rem); line-height: 1.4; max-width: 32ch; margin-top: 18px !important; color: var(--pl-ink); }
-.nb-hero__zin em { font-style: normal; color: var(--pl-act); }
+.nb-hero__zin em { font-style: normal; color: var(--pl-mark); }
 
 .nb-strook { display: grid; gap: 6px; max-width: 780px; margin-top: clamp(26px, 3.4vw, 44px); }
-.nb-uur { position: relative; height: 112px; background: var(--pl-plate-2); border: 1px solid var(--pl-rule); border-radius: 6px; margin-bottom: 22px; }
-.nb-uur i { position: absolute; left: 0; right: 0; bottom: 0; background: #3A3D46; border-radius: 0 0 5px 5px; }
-.nb-uur.is-best { border-color: var(--pl-act); }
-.nb-uur.is-best i { background: var(--pl-act); opacity: .9; }
+.nb-uur { position: relative; height: 112px; background: var(--pl-plate-2); border: 1px solid var(--pl-rule); margin-bottom: 22px; }
+.nb-uur i { position: absolute; left: 0; right: 0; bottom: 0; background: var(--pl-rule); }
+.nb-uur.is-best { border-color: var(--pl-good); }
+.nb-uur.is-best i { background: var(--pl-good); opacity: .9; }
 .nb-uur b { position: absolute; left: 0; right: 0; bottom: -22px; text-align: center; font-family: var(--font-jetbrains), ui-monospace, monospace; font-size: .75rem; font-weight: 400; color: var(--pl-ink-3); }
 .nb-uur.is-best b { color: var(--pl-ink); }
 .nb-strook__leg { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; max-width: 780px; margin-top: 8px; font-size: .875rem; color: var(--pl-ink-3); }
-.nb-strook__k { color: var(--pl-act); }
+.nb-strook__k { color: var(--pl-good); }
 .nb-strook__link { color: var(--pl-ink-2); }
 .nb-strook__link:hover { color: var(--pl-act); }
 
 .nb-feiten { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--pl-rule); margin: 0; background: color-mix(in srgb, var(--pl-ground) 82%, transparent); }
 .nb-feiten > div { padding: 22px clamp(16px, 2.4vw, 28px); border-right: 1px solid var(--pl-rule); }
 .nb-feiten > div:last-child { border-right: 0; }
-.nb-feiten dt { font-size: .8125rem; letter-spacing: .07em; text-transform: uppercase; color: var(--pl-ink-3); font-weight: 500; }
+.nb-feiten dt { font-size: .8125rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pl-ink-3); font-weight: 600; }
 .nb-feiten dd { margin: 0; }
 .nb-feiten__v { font-family: var(--font-jetbrains), ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--pl-mark); margin: 6px 0 4px !important; }
 .nb-feiten__v small { font-size: .5em; color: var(--pl-ink-3); }
@@ -5675,10 +5654,9 @@ a:hover .pl-emulsion > img,
 .nb-hero__onder a { color: var(--pl-act); }
 
 @media (max-width: 700px) {
-  .nb-hero { border-radius: 14px; }
   .nb-hero__maan { width: 420px; height: 420px; right: -200px; top: 20px; }
   .nb-strook { gap: 3px; }
-  .nb-uur { height: 84px; border-radius: 4px; margin-bottom: 18px; }
+  .nb-uur { height: 84px; margin-bottom: 18px; }
   .nb-uur b { font-size: .625rem; bottom: -18px; }
   .nb-strook__link { display: none; }
   .nb-feiten { grid-template-columns: 1fr 1fr; }
