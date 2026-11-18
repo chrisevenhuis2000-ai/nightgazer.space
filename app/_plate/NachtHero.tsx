@@ -63,7 +63,8 @@ export function NachtHero({ total }: { total: number }) {
   }, [])
 
   const n = stand.status === 'ok' ? stand.n : null
-  const cijfer = n ? Math.round(n.score / 10) : null
+  /* Afronden naar beneden, zodat cijfer en oordeel (grenzen 20/40/60/80) altijd kloppen. */
+  const cijfer = n ? Math.floor(n.score / 10) : null
   const v = n?.venster ?? null
   const inVenster = (t: Date) => !!v && t >= v.van && t < v.tot
   const maanOnder = n?.grenzen.maanOnder
