@@ -5724,3 +5724,28 @@ a:hover .pl-emulsion > img,
   .sp-stand > div { padding: 14px; }
   .sp-regels { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ══ /missies: spring-naar, uitklappen, vloot in twee groepen ═════════════ */
+.mi-spring { display: flex; flex-wrap: wrap; gap: 8px; }
+.mi-spring a {
+  display: inline-flex; align-items: center; gap: 10px; min-height: var(--pl-tap);
+  padding: 0 14px; border: 1px solid var(--pl-rule); color: var(--pl-ink-2);
+  font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+}
+.mi-spring a:hover { border-color: var(--pl-act); color: var(--pl-act); }
+.mi-spring .pl-num { color: var(--pl-ink-3); letter-spacing: 0; }
+#pl-flights, #pl-fleet, #pl-register { scroll-margin-top: 90px; }
+.mi-meer { margin-top: 14px; }
+.mi-groep + .mi-groep { margin-top: 22px; }
+.mi-groep__kop { margin-bottom: 10px; display: flex; gap: 10px; }
+.mi-groep__kop .pl-num { color: var(--pl-ink-2); }
+
+/* Telefoon: lopende missies als compacte rij, foto links. */
+@media (max-width: 640px) {
+  .pl-fleet .pl-fleetcell {
+    display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 14px; row-gap: 4px;
+    padding: 12px; align-items: start;
+  }
+  .pl-fleet .pl-fleetcell__fig { grid-row: 1 / span 4; margin: 0; aspect-ratio: 1 / 1; }
+  .pl-fleet .pl-fleetcell > .pl-body-s { display: none !important; }
+}

@@ -274,6 +274,27 @@ function NextUp({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; 
   )
 }
 
+/* ── Eén lopende missie ── */
+const DIEP = new Set(['Maan', 'Mars', 'Jupiter', 'L2-punt', 'Interstellair'])
+
+function FleetCell({ m, url }: { m: MissionDetail; url?: string }) {
+  return (
+    <Link href={`/missies/${m.id}`} className="pl-fleetcell pl-lift">
+      <Fig url={url} cls="pl-fleetcell__fig" />
+      <span className="pl-label">{shortAgency(m.agency)}</span>
+      <span className="pl-fleetcell__t">{m.name}</span>
+      <p className="pl-body-s" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', flex: 1 }}>
+        {m.objective}
+      </p>
+      <span className="pl-meta">
+        <span>{destinationGroup(m.body)}</span>
+        <span className="pl-meta__tick" aria-hidden="true" />
+        <span className="pl-mstat" data-on="1"><i aria-hidden="true" />actief</span>
+      </span>
+    </Link>
+  )
+}
+
 /* ── De twee vluchten daarna ── */
 function UpNext({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; onHot: (id: string | null) => void; hot: string | null }) {
   return (
@@ -316,6 +337,9 @@ export default function Lanceermanifest() {
      zodat de strook iets dóét met de lijst eronder in plaats van alleen te
      tonen. */
   const [hot, setHot] = useState<string | null>(null)
+  /* Ingeklapt beginnen: de pagina was op een telefoon 15.000 px lang. */
+  const [lijstOpen, setLijstOpen] = useState(false)
+  const [archiefOpen, setArchiefOpen] = useState(false)
 
   /* De datum pas na mount, zodat server en client niet uiteenlopen. */
   useEffect(() => { setToday(new Date()) }, [])
@@ -397,7 +421,9 @@ export default function Lanceermanifest() {
 
   const pickTick = useCallback((id: string) => {
     setSelected(id)
-    document.getElementById(`vlucht-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setLijstOpen(true)
+    /* Na het uitklappen pas scrollen, anders bestaat de rij nog niet. */
+    setTimeout(() => document.getElementById(`vlucht-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 30)
   }, [])
 
   const lastUpdated = schedule ? today! : null
@@ -482,6 +508,13 @@ export default function Lanceermanifest() {
           )}
         </section>
 
+        {/* Spring-naar: de pagina heeft vier lagen, zo zie je ze meteen. */}
+        <nav className="pl-wrap mi-spring" aria-label="Op deze pagina">
+          <a href="#pl-flights">Eerstvolgende vluchten{schedule && <span className="pl-num">{upcoming.length}</span>}</a>
+          <a href="#pl-fleet">Wat er nu vliegt<span className="pl-num">{activeShown.length}</span></a>
+          {archiveCount > 0 && <a href="#pl-register">Uit het manifest<span className="pl-num">{archiveCount}</span></a>}
+        </nav>
+
         {/* ══ De vluchten ══
             Altijd gemonteerd, ook vóór de datum bekend is: conditioneel
             monteren liet alles eronder 700px verspringen zodra de lijst
@@ -535,7 +568,7 @@ export default function Lanceermanifest() {
                   <span className="pl-skel" style={{ height: 12, width: 90, justifySelf: 'end' }} />
                 </div>
               ))}
-              {schedule && (windowKey ? shown : shown.slice(3, 15)).map(l => (
+              {schedule && (windowKey ? shown : shown.slice(3, lijstOpen ? 15 : 9)).map(l => (
                 <Link
                   key={l.mission.id}
                   id={`vlucht-${l.mission.id}`}
@@ -588,7 +621,12 @@ export default function Lanceermanifest() {
               ))}
             </div>
 
-            {schedule && !windowKey && shown.length > 15 && (
+            {schedule && !windowKey && !lijstOpen && shown.length > 9 && (
+              <button type="button" className="pl-btn mi-meer" onClick={() => setLijstOpen(true)}>
+                Toon nog {Math.min(shown.length, 15) - 9} vluchten
+              </button>
+            )}
+            {schedule && !windowKey && lijstOpen && shown.length > 15 && (
               <p className="pl-label" style={{ marginTop: 14 }}>
                 Nog {shown.length - 15} vluchten verderop in het jaar — kies een maand op de strook.
               </p>
@@ -611,23 +649,19 @@ export default function Lanceermanifest() {
               <p className="pl-body-s">Geen lopende missies van {agency && shortAgency(agency)}.</p>
             </div>
           ) : (
-            <div className="pl-fleet">
-              {activeShown.map((m: MissionDetail) => (
-                <Link key={m.id} href={`/missies/${m.id}`} className="pl-fleetcell pl-lift">
-                  <Fig url={images[m.id]} cls="pl-fleetcell__fig" />
-                  <span className="pl-label">{shortAgency(m.agency)}</span>
-                  <span className="pl-fleetcell__t">{m.name}</span>
-                  <p className="pl-body-s" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', flex: 1 }}>
-                    {m.objective}
-                  </p>
-                  <span className="pl-meta">
-                    <span>{destinationGroup(m.body)}</span>
-                    <span className="pl-meta__tick" aria-hidden="true" />
-                    <span className="pl-mstat" data-on="1"><i aria-hidden="true" />actief</span>
-                  </span>
-                </Link>
+            <>
+              {[
+                { kop: 'In de diepe ruimte', lijst: activeShown.filter(m => DIEP.has(destinationGroup(m.body))) },
+                { kop: 'Rond de aarde', lijst: activeShown.filter(m => !DIEP.has(destinationGroup(m.body))) },
+              ].filter(g => g.lijst.length > 0).map(g => (
+                <div key={g.kop} className="mi-groep">
+                  <p className="pl-label mi-groep__kop">{g.kop} <span className="pl-num">{g.lijst.length}</span></p>
+                  <div className="pl-fleet">
+                    {g.lijst.map((m: MissionDetail) => <FleetCell key={m.id} m={m} url={images[m.id]} />)}
+                  </div>
+                </div>
               ))}
-            </div>
+            </>
           )}
         </section>
 
@@ -643,7 +677,7 @@ export default function Lanceermanifest() {
             </div>
 
             <div className="pl-flights">
-              {archive.flownList.map(l => (
+              {archive.flownList.slice(0, archiefOpen ? undefined : 8).map(l => (
                 <Link key={l.mission.id} href={`/missies/${l.mission.id}`} className="pl-flight">
                   <span>
                     <span className="pl-flight__d" style={{ color: 'var(--pl-ink-2)' }}>
@@ -665,7 +699,7 @@ export default function Lanceermanifest() {
                   <span className="pl-flight__dest">{destinationGroup(l.mission.body)}</span>
                 </Link>
               ))}
-              {archive.undated.map(m => (
+              {(archiefOpen ? archive.undated : []).map(m => (
                 <Link key={m.id} href={`/missies/${m.id}`} className="pl-flight">
                   <span>
                     <span className="pl-flight__d" style={{ color: 'var(--pl-ink-3)' }}>—</span>
@@ -682,6 +716,11 @@ export default function Lanceermanifest() {
                 </Link>
               ))}
             </div>
+            {!archiefOpen && archiveCount > 8 && (
+              <button type="button" className="pl-btn mi-meer" onClick={() => setArchiefOpen(true)}>
+                Toon alle {archiveCount}
+              </button>
+            )}
           </section>
         )}
       </main>
