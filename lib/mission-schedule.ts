@@ -202,3 +202,27 @@ export function destinationGroup(body: string): string {
   if (b.includes('low earth') || b.includes('aardebaan') || b.includes('aardeomloop')) return 'Lage aardbaan'
   return 'Overig'
 }
+
+/** Korte uitleg per baan, voor wie de termen niet kent. */
+export const BAAN_UITLEG: Record<string, string> = {
+  'Lage aardbaan': 'Een paar honderd kilometer hoog, zoals het ISS. Eén rondje om de aarde duurt ongeveer anderhalf uur.',
+  'Poolbaan': 'Een baan over de noord- en zuidpool. De aarde draait eronder door, zo komt de satelliet overal langs.',
+  'Geostationair': 'Zo’n 36.000 km hoog boven de evenaar. De satelliet draait even snel als de aarde en lijkt stil te hangen.',
+  'Middelhoge baan': 'Rond 20.000 km hoog, de hoogte van navigatiesatellieten zoals GPS en Galileo.',
+  'L2-punt': 'Een rustig punt 1,5 miljoen km achter de aarde, gezien vanaf de zon. Daar staan ruimtetelescopen.',
+  'Suborbitaal': 'De raket gaat de ruimte in, maar komt niet in een baan en valt terug.',
+  'Maan': 'Naar de maan, zo’n 384.000 km ver.',
+  'Mars': 'Naar Mars. De reis duurt ongeveer zeven maanden.',
+  'Jupiter': 'Naar Jupiter en zijn manen. De reis duurt jaren.',
+  'Interstellair': 'Voorbij de planeten, de ruimte tussen de sterren in.',
+}
+
+/* Wat een beginner interessant vindt: alles verder dan de aarde, mensen in
+   de ruimte, Starship-testvluchten, wetenschap en Europese missies. De rest
+   (internetsatellieten, geheime militaire vluchten, commerciële pakketten)
+   heet routine en staat standaard ingeklapt. */
+const DIEP = new Set(['Maan', 'Mars', 'Jupiter', 'L2-punt', 'Interstellair'])
+const OPVALLEND = /artemis|crew|axiom|starship|^flight \d|smile|aspera|roman|webb|juice|clipper|voyager|curiosity|perseverance|metop|galileo|mtg-|ariane 6/i
+export function isOpvallend(m: { name: string; body: string }): boolean {
+  return DIEP.has(destinationGroup(m.body)) || OPVALLEND.test(m.name)
+}
