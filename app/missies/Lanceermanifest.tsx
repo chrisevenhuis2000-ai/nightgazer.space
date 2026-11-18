@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { MISSIONS, type MissionDetail } from '@/lib/missions-data'
 import {
-  buildSchedule, monthWindows, assignLanes, agencyCounts, destinationGroup,
+  buildSchedule, monthWindows, assignLanes, agencyCounts, destinationGroup, isOpvallend, BAAN_UITLEG,
   type ScheduledLaunch, type MonthWindow,
 } from '@/lib/mission-schedule'
 import { Ico, Tip } from '@/app/_plate/Instruments'
@@ -36,6 +36,18 @@ const DAYFMT: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }
 
 function shortAgency(a: string): string {
   return a.replace(' / ', '/').replace('Arianespace', 'Ariane')
+}
+
+/* Bestemming met uitleg als je eroverheen gaat. */
+function Baan({ body, cls }: { body: string; cls?: string }) {
+  const g = destinationGroup(body)
+  return <span className={cls} title={BAAN_UITLEG[g]}>{g}</span>
+}
+
+/* Een lanceerplaats tonen, behalve als de bron hem niet kent. */
+function plaats(s?: string): string | null {
+  if (!s || /unknown/i.test(s)) return null
+  return s.split(',').slice(-2).join(',').trim()
 }
 
 /* ── De strook ─────────────────────────────────────────────────────────── */
@@ -157,7 +169,7 @@ function Strip({ launches, flown, windows, active, onWindow, selected, onSelect,
 
       <div className="pl-strip__foot">
         <span className="pl-label">
-          {flown.length} gevlogen · {dated.length} gepland met vaste datum
+          {flown.length} al gelanceerd dit jaar · {dated.length} gepland op een vaste dag
           {windows.length > 0 && ` · ${windows[0].label} t/m ${windows[windows.length - 1].label} ${windows[windows.length - 1].year}`}
         </span>
         {(monthOnly > 0 || yearOnly > 0) && (
@@ -171,7 +183,7 @@ function Strip({ launches, flown, windows, active, onWindow, selected, onSelect,
             </>
           }>
             <span className="pl-label" style={{ color: 'var(--pl-ink-2)' }}>
-              {monthOnly} alleen met maand · {yearOnly} alleen met jaar
+              + {monthOnly + yearOnly} waarvan de dag nog niet vaststaat
             </span>
           </Tip>
         )}
@@ -257,16 +269,16 @@ function NextUp({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; 
 
         <dl className="pl-nextup__spec">
           <div>
-            <dt className="pl-label">Agentschap</dt>
+            <dt className="pl-label">Organisatie</dt>
             <dd>{shortAgency(l.mission.agency)}</dd>
           </div>
           <div>
-            <dt className="pl-label">Voertuig</dt>
+            <dt className="pl-label">Raket</dt>
             <dd>{l.mission.vehicle || '—'}</dd>
           </div>
           <div>
             <dt className="pl-label">Bestemming</dt>
-            <dd>{destinationGroup(l.mission.body)}</dd>
+            <dd><Baan body={l.mission.body} /></dd>
           </div>
         </dl>
       </span>
@@ -276,6 +288,8 @@ function NextUp({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; 
 
 /* ── Eén lopende missie ── */
 const DIEP = new Set(['Maan', 'Mars', 'Jupiter', 'L2-punt', 'Interstellair'])
+/* Drie missies die een beginner kent of snel snapt. */
+const START = ['artemis', 'jwst', 'perseverance']
 
 function FleetCell({ m, url }: { m: MissionDetail; url?: string }) {
   return (
@@ -340,6 +354,8 @@ export default function Lanceermanifest() {
   /* Ingeklapt beginnen: de pagina was op een telefoon 15.000 px lang. */
   const [lijstOpen, setLijstOpen] = useState(false)
   const [archiefOpen, setArchiefOpen] = useState(false)
+  /* Standaard alleen de vluchten die een leek iets zeggen. */
+  const [alles, setAlles] = useState(false)
 
   /* De datum pas na mount, zodat server en client niet uiteenlopen. */
   useEffect(() => { setToday(new Date()) }, [])
@@ -371,10 +387,11 @@ export default function Lanceermanifest() {
 
   const shown = useMemo(() => {
     const base = (() => {
-      if (!windowKey) return upcoming
+      const pool = alles || windowKey ? upcoming : upcoming.filter(l => isOpvallend(l.mission))
+      if (!windowKey) return pool
       const w = windows.find(x => x.key === windowKey)
-      if (!w) return upcoming
-      return upcoming.filter(l => l.date >= w.start && l.date < w.end)
+      if (!w) return pool
+      return pool.filter(l => l.date >= w.start && l.date < w.end)
     })()
     /* Vluchten met een echte dag eerst: die kun je in je agenda zetten. */
     const rank = { dag: 0, maand: 1, jaar: 2 } as const
@@ -382,7 +399,7 @@ export default function Lanceermanifest() {
       if (rank[a.precision] !== rank[b.precision]) return rank[a.precision] - rank[b.precision]
       return a.date.getTime() - b.date.getTime()
     })
-  }, [upcoming, windows, windowKey])
+  }, [upcoming, windows, windowKey, alles])
 
   const active = useMemo(() => MISSIONS.filter(m => m.status === 'actief'), [])
 
@@ -413,11 +430,11 @@ export default function Lanceermanifest() {
      geen enkele afbeelding; dit gebruikt dezelfde NASA-beeldbank die de
      artikelen al aanvullen. */
   const needImages = useMemo(
-    () => [...shown.slice(0, 3).map(l => l.mission), ...activeShown.slice(0, 9)]
+    () => [...shown.slice(0, 3).map(l => l.mission), ...active.filter(m => START.includes(m.id)), ...activeShown.slice(0, 9)]
       .map(m => ({ id: m.id, vehicle: m.vehicle, agency: m.agency, body: m.body })),
     [shown, activeShown]
   )
-  const images = useMissionImages(needImages, 12)
+  const images = useMissionImages(needImages, 15)
 
   const pickTick = useCallback((id: string) => {
     setSelected(id)
@@ -433,35 +450,38 @@ export default function Lanceermanifest() {
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
       <PlateHead total={MISSIONS.length} edition={editionLabel()} current="missies" totalLabel="missies" />
 
-      {/* Agentschapsfilter in de sleuf waar de andere surfaces hun snelbalk hebben */}
-      <div className="pl-quick">
-        <div className="pl-locbar__in">
-          <div className="pl-tags" role="group" aria-label="Filter op agentschap">
-            <button type="button" className="pl-tag" aria-pressed={agency === null} onClick={() => setAgency(null)}>
-              Alle<span className="pl-tag__n pl-num">{MISSIONS.length}</span>
-            </button>
-            {agencies.map(a => (
-              <button
-                key={a.agency}
-                type="button"
-                className="pl-tag"
-                aria-pressed={agency === a.agency}
-                onClick={() => setAgency(agency === a.agency ? null : a.agency)}
-              >
-                {shortAgency(a.agency)}<span className="pl-tag__n pl-num">{a.count}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
       <main id="pl-main" tabIndex={-1} className="pl-stack">
+
+        {/* ══ Begin hier: wat de pagina is, en drie missies die iedereen kent ══ */}
+        <section className="pl-wrap" aria-labelledby="pl-missies">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h1 id="pl-missies" className="pl-h1">Missies</h1>
+            </div>
+          </div>
+          <p className="pl-body" style={{ maxWidth: '62ch' }}>
+            Welke raketten gaan binnenkort de ruimte in, en welke ruimtesondes en telescopen zijn nu aan het werk?
+            Hier volg je ze allemaal. Nieuw hierin? Begin met een van deze drie.
+          </p>
+          <p className="pl-label mi-groep__kop" style={{ marginTop: 18 }}>Begin hier</p>
+          <div className="pl-fleet mi-start">
+            {START.map(id => active.find(m => m.id === id)).filter((m): m is MissionDetail => !!m)
+              .map(m => <FleetCell key={m.id} m={m} url={images[m.id]} />)}
+          </div>
+        </section>
+
+        {/* Spring-naar: de pagina heeft vier lagen, zo zie je ze meteen. */}
+        <nav className="pl-wrap mi-spring" aria-label="Op deze pagina">
+          <a href="#pl-flights">Binnenkort gelanceerd{schedule && <span className="pl-num">{upcoming.length}</span>}</a>
+          <a href="#pl-fleet">Wat er nu vliegt<span className="pl-num">{activeShown.length}</span></a>
+          {archiveCount > 0 && <a href="#pl-register">Eerder gelanceerd<span className="pl-num">{archiveCount}</span></a>}
+        </nav>
 
         {/* ══ De strook ══ */}
         <section className="pl-wrap" aria-labelledby="pl-manifest">
           <div className="pl-band">
             <div className="pl-band__t">
-              <h1 id="pl-manifest" className="pl-h2">Het lanceermanifest</h1>
+              <h2 id="pl-manifest" className="pl-h2" style={{ fontSize: 'clamp(1.2rem,1.8vw,1.5rem)' }}>Raketlanceringen per maand</h2>
               <Tip label={
                 <>
                   <span className="pl-label" style={{ display: 'block', marginBottom: 6 }}>De strook lezen</span>
@@ -470,7 +490,7 @@ export default function Lanceermanifest() {
                   om het venster te kiezen, of op een teken om naar die vlucht te springen.
                 </>
               }>
-                <span className="pl-label">Cadans 2026</span>
+                <span className="pl-label">Hoe lees je dit?</span>
               </Tip>
             </div>
             <p className="pl-label pl-num" aria-live="polite">
@@ -508,13 +528,6 @@ export default function Lanceermanifest() {
           )}
         </section>
 
-        {/* Spring-naar: de pagina heeft vier lagen, zo zie je ze meteen. */}
-        <nav className="pl-wrap mi-spring" aria-label="Op deze pagina">
-          <a href="#pl-flights">Eerstvolgende vluchten{schedule && <span className="pl-num">{upcoming.length}</span>}</a>
-          <a href="#pl-fleet">Wat er nu vliegt<span className="pl-num">{activeShown.length}</span></a>
-          {archiveCount > 0 && <a href="#pl-register">Uit het manifest<span className="pl-num">{archiveCount}</span></a>}
-        </nav>
-
         {/* ══ De vluchten ══
             Altijd gemonteerd, ook vóór de datum bekend is: conditioneel
             monteren liet alles eronder 700px verspringen zodra de lijst
@@ -526,10 +539,47 @@ export default function Lanceermanifest() {
               <h2 id="pl-flights" className="pl-h2" style={{ fontSize: 'clamp(1.2rem,1.8vw,1.5rem)' }}>
                 {windowKey
                   ? `Vluchten in ${windows.find(w => w.key === windowKey)?.label} ${windows.find(w => w.key === windowKey)?.year}`
-                  : 'Eerstvolgende vluchten'}
+                  : 'Binnenkort gelanceerd'}
               </h2>
               <p className="pl-label pl-num">{schedule ? shown.length : ''}</p>
             </div>
+
+            <div className="mi-filters">
+              {!windowKey && (
+                <div className="pl-tags" role="group" aria-label="Welke vluchten">
+                  <button type="button" className="pl-tag" aria-pressed={!alles} onClick={() => setAlles(false)}>
+                    Opvallende vluchten
+                  </button>
+                  <button type="button" className="pl-tag" aria-pressed={alles} onClick={() => setAlles(true)}>
+                    Alle vluchten<span className="pl-tag__n pl-num">{upcoming.length}</span>
+                  </button>
+                </div>
+              )}
+              <div className="mi-filters__org">
+                <span className="pl-label">Filter op organisatie</span>
+          <div className="pl-tags" role="group" aria-label="Filter op agentschap">
+                  <button type="button" className="pl-tag" aria-pressed={agency === null} onClick={() => setAgency(null)}>
+                    Alle<span className="pl-tag__n pl-num">{MISSIONS.length}</span>
+                  </button>
+                  {agencies.map(a => (
+                    <button
+                      key={a.agency}
+                      type="button"
+                      className="pl-tag"
+                      aria-pressed={agency === a.agency}
+                      onClick={() => setAgency(agency === a.agency ? null : a.agency)}
+                    >
+                      {shortAgency(a.agency)}<span className="pl-tag__n pl-num">{a.count}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {!alles && !windowKey && (
+              <p className="pl-body-s" style={{ margin: '-6px 0 16px' }}>
+                Missies naar de maan en verder, mensen in de ruimte en wetenschap. Internetsatellieten en geheime militaire vluchten zie je onder Alle vluchten.
+              </p>
+            )}
 
             {/* Gelaagd: de eerstvolgende vlucht groot, twee daarna half, dan
                 pas het register. Vlucht 1 las eerder als vlucht 12. */}
@@ -583,14 +633,14 @@ export default function Lanceermanifest() {
                     {l.precision === 'jaar' ? (
                       <>
                         <span className="pl-flight__d" style={{ color: 'var(--pl-ink-3)' }}>2026</span>
-                        <span className="pl-flight__in">alleen jaar</span>
+                        <span className="pl-flight__in">datum volgt</span>
                       </>
                     ) : l.precision === 'maand' ? (
                       <>
                         <span className="pl-flight__d" style={{ color: 'var(--pl-ink-2)' }}>
                           {l.date.toLocaleDateString('nl-NL', { month: 'short' })}
                         </span>
-                        <span className="pl-flight__in">maand bekend</span>
+                        <span className="pl-flight__in">dag volgt</span>
                       </>
                     ) : (
                       <>
@@ -606,17 +656,17 @@ export default function Lanceermanifest() {
                     <span className="pl-flight__t" style={{ display: 'block' }}>{l.mission.name}</span>
                     <span className="pl-meta" style={{ marginTop: 6 }}>
                       <span>{shortAgency(l.mission.agency)}</span>
-                      {l.mission.launchSite && (
+                      {plaats(l.mission.launchSite) && (
                         <>
                           <span className="pl-meta__tick" aria-hidden="true" />
-                          <span>{l.mission.launchSite.split(',').slice(-2).join(',').trim()}</span>
+                          <span>{plaats(l.mission.launchSite)}</span>
                         </>
                       )}
                     </span>
                   </span>
 
                   <span className="pl-flight__meta">{l.mission.vehicle || '—'}</span>
-                  <span className="pl-flight__dest">{destinationGroup(l.mission.body)}</span>
+                  <Baan cls="pl-flight__dest" body={l.mission.body} />
                 </Link>
               ))}
             </div>
@@ -639,7 +689,7 @@ export default function Lanceermanifest() {
           <div className="pl-band">
             <div className="pl-band__t">
               <h2 id="pl-fleet" className="pl-h2">Wat er nu vliegt</h2>
-              <span className="pl-label">Missies in bedrijf</span>
+              <span className="pl-label">Missies die nu werken</span>
             </div>
             <p className="pl-label pl-num">{activeShown.length}</p>
           </div>
@@ -670,7 +720,7 @@ export default function Lanceermanifest() {
           <section className="pl-wrap pl-gap-lg" aria-labelledby="pl-register">
             <div className="pl-band">
               <div className="pl-band__t">
-                <h2 id="pl-register" className="pl-h2">Uit het manifest</h2>
+                <h2 id="pl-register" className="pl-h2">Eerder gelanceerd</h2>
                 <span className="pl-label">Gelanceerd, afgerond, mislukt of datum voorbij</span>
               </div>
               <p className="pl-label pl-num">{archiveCount}</p>
@@ -696,7 +746,7 @@ export default function Lanceermanifest() {
                     </span>
                   </span>
                   <span className="pl-flight__meta">{l.mission.vehicle || '—'}</span>
-                  <span className="pl-flight__dest">{destinationGroup(l.mission.body)}</span>
+                  <Baan cls="pl-flight__dest" body={l.mission.body} />
                 </Link>
               ))}
               {(archiefOpen ? archive.undated : []).map(m => (
@@ -712,7 +762,7 @@ export default function Lanceermanifest() {
                     </span>
                   </span>
                   <span className="pl-flight__meta">{m.vehicle || '—'}</span>
-                  <span className="pl-flight__dest">{destinationGroup(m.body)}</span>
+                  <Baan cls="pl-flight__dest" body={m.body} />
                 </Link>
               ))}
             </div>
