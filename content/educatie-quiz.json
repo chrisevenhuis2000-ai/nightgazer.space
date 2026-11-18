@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-18",
+      "slug": "apod-2026-november-18-an-m-class-solar-flare",
+      "titel": "Zonnevlam van middelzware klasse vastgelegd in het licht van waterstof",
+      "beg": {
+        "q": "Waarom gebruikte de fotograaf een H-alfa-filter om de zonnevlam zichtbaar te maken?",
+        "options": [
+          "Het filter maakt de zon kouder, zodat je er veilig met het blote oog naar kunt kijken",
+          "Het filter laat alleen het rode licht door dat waterstof uitzendt, waardoor de structuren in de zonneatmosfeer opvallen",
+          "Het filter verandert röntgenstraling van de zon in zichtbaar licht",
+          "Het filter vergroot de zon zodat de vlam groter lijkt"
+        ],
+        "correct": 1,
+        "explain": "Een H-alfa-filter laat alleen een heel smal stukje rood licht door, precies de kleur die waterstofatomen uitzenden. Daardoor zie je de gloeiende gaswolken en uitbarstingen goed. Kijk nooit zonder speciaal zonnefilter naar de zon: dat veroorzaakt oogschade."
+      },
+      "ama": {
+        "q": "Waarop is de klasse van een zonnevlam, zoals M1, gebaseerd?",
+        "options": [
+          "De afstand tussen de vlam en het zonsoppervlak",
+          "De hoeveelheid zichtbaar licht die de vlam uitzendt",
+          "De helderheid in röntgenstraling, gemeten door GOES-satellieten",
+          "De tijd die de vlam nodig heeft om de aarde te bereiken"
+        ],
+        "correct": 2,
+        "explain": "Zonnevlammen worden ingedeeld op hun röntgenhelderheid, gemeten door GOES-weersatellieten van NOAA. De klassen lopen op van A, B, C en M naar X, en elke letter staat voor een factor 10 meer röntgenflux."
+      },
+      "pro": {
+        "q": "Welke klasse-indeling geldt voor zonnevlammen en wat meet die indeling?",
+        "options": [
+          "De GOES-klassen A, B, C, M en X op basis van piek-röntgenflux in het 1–8 Å-kanaal, waarbij elke klasse een factor 10 vertegenwoordigt",
+          "De Carrington-schaal op basis van de snelheid van de bijbehorende coronale massa-uitstoot",
+          "De Hale-klassen op basis van de magnetische complexiteit van zonnevlekkengroepen",
+          "De Kp-index op basis van de verstoring van het aardmagnetische veld, per klasse een factor 10"
+        ],
+        "correct": 0,
+        "explain": "De GOES-klasse is gebaseerd op de piekflux van zachte röntgenstraling (1–8 Å): C is 10^-6, M is 10^-5 en X is 10^-4 W/m². Het getal erachter is de vermenigvuldigingsfactor, dus M1 is tien keer zo sterk als C1. De Hale-klassen beschrijven zonnevlekkengroepen en niet de vlammen zelf."
+      }
+    },
+    {
       "datum": "2026-11-17",
       "slug": "apod-2026-november-16-ngc-7129-star-formation-with-jets-from",
       "titel": "Webb toont jonge sterren en straalstromen in stervormingsgebied NGC 7129",
@@ -1965,45 +2003,7 @@
         "correct": 3,
         "explain": "Rayleigh-verstrooiing aan luchtmoleculen schaalt ongeveer met λ^-4, dus blauw verdwijnt het eerst uit de directe bundel. Bij een lage stand is de luchtmassa veel groter, waardoor de roodkleuring toeneemt, vooral als er ook stof in de lucht zit."
       }
-    },
-    {
-      "datum": "2026-11-01",
-      "slug": "apod-2026-november-1-colors-of-the-moon",
-      "titel": "De kleuren van de Maan",
-      "beg": {
-        "q": "Waarom lijkt de Maan soms rood of geel als hij vlak boven de horizon staat?",
-        "options": [
-          "De Maan verandert van kleur omdat hij zelf licht uitstraalt dat per nacht verschilt",
-          "De schaduw van de aarde valt dan over de Maan heen",
-          "De Maan wordt dicht bij de horizon echt heter en gaat daardoor rood gloeien",
-          "Het maanlicht legt een lange weg door de lucht af en een deel van het blauwe licht wordt onderweg weggestrooid"
-        ],
-        "correct": 3,
-        "explain": "Bij de horizon gaat het licht door veel meer lucht dan hoger aan de hemel. Blauw licht wordt het sterkst weggestrooid, dus de warme kleuren blijven over. Hetzelfde effect maakt zonsondergangen rood."
-      },
-      "ama": {
-        "q": "Welke combinatie verklaart het best waarom de volle maan dicht bij de horizon geel of rood oogt?",
-        "options": [
-          "De Maan weerkaatst bij lage standen meer infrarood licht uit de aardatmosfeer",
-          "Zonlicht wordt bij de horizon door de ozonlaag omgezet in rood licht",
-          "Het licht passeert een dikkere laag atmosfeer, waarbij blauw licht sterker wordt weggestrooid dan rood",
-          "Het maanoppervlak is roder aan de kant die naar de horizon wijst"
-        ],
-        "correct": 2,
-        "explain": "Het maanlicht legt bij de horizon een veel langere weg door de atmosfeer af, waarbij blauw sterker wordt verstrooid dan rood. Buiten de atmosfeer is de Maan eigenlijk grijs met een bruinige zweem."
-      },
-      "pro": {
-        "q": "Welk verschijnsel verklaart de roodachtige kleur van de Maan tijdens een totale maansverduistering?",
-        "options": [
-          "Fluorescentie van maangesteente onder invloed van zonnewind",
-          "Diffractie van zonlicht aan de rand van de aardschijf die alleen rood licht doorlaat",
-          "Refractie van zonlicht door de aardatmosfeer, waarbij Rayleigh-verstrooiing blauw licht grotendeels verwijdert en rood naar de umbra buigt",
-          "Thermische straling van het maanoppervlak dat door de schaduw van de aarde is opgewarmd"
-        ],
-        "correct": 2,
-        "explain": "Zonlicht wordt in de aardatmosfeer gebroken en bereikt zo de umbra. Rayleigh-verstrooiing, die sterk van de golflengte afhangt (ongeveer 1/λ⁴), haalt vooral het blauwe licht eruit, waardoor rood overblijft. Dezelfde fysica kleurt zonsondergangen rood."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-17T17:04:35.192Z"
+  "bijgewerkt": "2026-11-18T16:37:53.796Z"
 }
