@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-16T17:25:49.210Z",
+    "lastUpdated": "2026-11-18T16:43:00.874Z",
     "autoUpdated": []
   },
   "missions": [
@@ -4603,7 +4603,7 @@
       "status": "gepland",
       "soort": "lancering",
       "launched": "23 nov 2026",
-      "launchPrecision": "Day",
+      "launchPrecision": "Minute",
       "objective": "Lancering van Amazon Kuiper-satellieten naar een lage aardbaan voor wereldwijd breedbandinternet.",
       "body": "Low Earth Orbit",
       "highlight": "Lancering gepland: 23 nov 2026",
@@ -5678,11 +5678,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "19 nov 2026",
+      "launched": "20 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 19 nov 2026",
+      "highlight": "Lancering gepland: 20 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5694,7 +5694,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "19 nov 2026",
+          "date": "20 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-6\")"
         }
       ],
