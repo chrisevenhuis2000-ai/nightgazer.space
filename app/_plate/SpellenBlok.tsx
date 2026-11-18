@@ -10,7 +10,7 @@ import { telGebeurtenis } from '@/lib/tel'
 import { nlDag } from '@/lib/hemelfoto'
 import { beeldVanDag, speelveld, straal, kijkuur, nlTijdstip, standVan, type Punt } from '@/lib/sterrenbeeld'
 
-export function SterrenbeeldTeaser() {
+export function SterrenbeeldTeaser({ groot = false }: { groot?: boolean } = {}) {
   const [st, setSt] = useState<{ naam: string; punten: Punt[]; uur: string; richting: string; klaar: boolean } | null>(null)
 
   useEffect(() => {
@@ -25,10 +25,11 @@ export function SterrenbeeldTeaser() {
     setSt({ naam: b.naam, punten: speelveld(b, t, 200).filter(p => p.hoort), uur: `${kijkuur(iso)}:00`, richting: standVan(b, t).richting, klaar })
   }, [])
 
-  if (!st) return <div className="pl-hft" aria-hidden="true" style={{ minHeight: 140 }} />
+  const cls = `pl-hft${groot ? ' pl-hft--groot' : ''}`
+  if (!st) return <div className={cls} aria-hidden="true" style={{ minHeight: 140 }} />
 
   return (
-    <Link href="/spellen/sterrenbeeld/" className="pl-hft" onClick={() => telGebeurtenis('sterrenbeeld-teaser', location.pathname)}>
+    <Link href="/spellen/sterrenbeeld/" className={cls} onClick={() => telGebeurtenis('sterrenbeeld-teaser', location.pathname)}>
       <span className="pl-hft__img pl-hft__img--lucht" aria-hidden="true">
         <svg viewBox="0 0 200 200">
           {st.punten.map(p => <circle key={p.naam} cx={p.x} cy={p.y} r={straal(p.mag, 200) * 1.3} fill="#EEF2FB" />)}
