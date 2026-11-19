@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-24-rosettas-selfie/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/ESA_Rosetta_Philae_CIVA_141007.png/jcr:content/renditions/cq5dam.web.1280.1280.png"
 imageAlt: "Rosetta's beroemde selfie bij komeet 67P opnieuw in de schijnwerpers"
-imageCredit: "NASA"
+imageCredit: "ESA/Rosetta/Philae/CIVA"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 24 oktober 2026 toont de selfie van Rosetta bij komeet 67P uit 2014.","De foto werd gemaakt door de CIVA-camera van lander Philae door een korte en een lange belichting te combineren.","Het was het laatste beeld van Philae's camera voordat de lander op 12 november loskwam van Rosetta."]
 kerncijfers: [{"waarde":"472 miljoen","eenheid":"km","label":"afstand Rosetta tot aarde"},{"waarde":"16","eenheid":"km","label":"afstand tot komeetoppervlak"},{"waarde":"14","eenheid":"meter","label":"lengte per zonnepaneel"}]

@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-4-the-not-so-hidden-galaxy-ic-342/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/ic342.png/jcr:content/renditions/cq5dam.web.1280.1280.png"
 imageAlt: "Het 'Verborgen Sterrenstelsel' IC 342 laat zich zien achter de Melkweg"
-imageCredit: "NASA"
+imageCredit: "Artem Mironov"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 4 november 2026 toont het spiraalstelsel IC 342, gefotografeerd door Artem Mironov.","IC 342 ligt relatief dichtbij, maar gaat schuil achter het stof en de sterren van de Melkwegschijf.","Kaarten van het magnetische veld van IC 342 wijzen erop dat magnetisme mogelijk helpt verklaren hoe spiraalarmen ontstaan."]
 kerncijfers: [{"waarde":"10 miljoen","eenheid":"lichtjaar","label":"afstand IC 342/Maffei-groep"},{"waarde":"5","eenheid":"","label":"Caldwell-catalogusnummer"},{"waarde":"4 november 2026","eenheid":"","label":"datum APOD-publicatie"}]

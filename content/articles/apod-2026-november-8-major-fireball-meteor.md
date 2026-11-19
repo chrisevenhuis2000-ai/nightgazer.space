@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/meteor2017_Taylor_1200.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 8 – Major Fireball Meteor"
-imageCredit: "NASA"
+imageCredit: "Ollie Taylor"
 kernpunten: ["NASA koos een toevallig vastgelegde vuurbol boven de Italiaanse Dolomieten als Astronomy Picture of the Day.","De meteoor van 14 november 2017 werd in heel Europa gezien en behoort tot de meest gemelde vuurbollen ooit.","De baan wijst op de Noordelijke Tauriden, een novemberzwerm die voortkomt uit stof van komeet Encke."]
 kerncijfers: [{"waarde":"14 november 2017","eenheid":"","label":"datum van de vuurbol"},{"waarde":"8 november 2026","eenheid":"","label":"publicatiedatum APOD"}]
 ---

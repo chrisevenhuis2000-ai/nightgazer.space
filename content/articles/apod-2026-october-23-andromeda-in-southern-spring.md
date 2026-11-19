@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-23-andromeda-in-southern-spring/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/APOD_Lucy.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Andromedanevel kruipt laag boven Australische heuvels in nieuwe NASA-astrofoto"
-imageCredit: "NASA"
+imageCredit: "Lucy Yunxi Hu"
 vernieuwd: "2026-11-06"
 kernpunten: ["Een foto van de Andromedanevel laag boven Australische heuvels is gekozen als NASA's Astronomy Picture of the Day van 23 oktober 2026.","Astrofotograaf Lucy Yunxi Hu combineerde gevolgde en gestapelde hemelopnamen met een aparte voorgrondopname tot één composietbeeld.","Op lang belichte foto's blijkt M31 aan de hemel bijna zes volle manen breed, terwijl het blote oog alleen een zwak vlekje ziet."]
 kerncijfers: [{"waarde":"23 oktober 2026","eenheid":"","label":"datum Astronomy Picture of the Day"},{"waarde":"10 op 11 oktober","eenheid":"","label":"nacht van de opname"}]

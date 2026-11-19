@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-29-october-2026-the-horns-of-venus/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/venus_20261024a.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "De hoorns van Venus: een sikkel die meer dan een halve cirkel beslaat"
-imageCredit: "NASA"
+imageCredit: "Thierry Legault"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's APOD van 29 oktober 2026 toont Venus als dunne sikkel, gefotografeerd door Thierry Legault.","Door de dikke atmosfeer van Venus reikt de lichtende boog verder dan 180 graden.","Met een kleine telescoop of verrekijker is de sikkel in de schemering zelf te zien, maar kijk nooit richting de zon."]
 kerncijfers: [{"waarde":"180","eenheid":"graden","label":"reikwijdte van de sikkel"},{"waarde":"29 oktober 2026","eenheid":"","label":"datum van de APOD"}]

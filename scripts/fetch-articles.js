@@ -206,6 +206,22 @@ async function beeldVanBron(url, title, naam) {
     : { imageUrl: '', imageAlt: '', imageCredit: '' }
 }
 
+/**
+ * Bij een APOD hoort de foto bij de fotograaf, niet bij NASA. Lees de credit
+ * uit de feedtekst of de APOD-pagina (zelfde parser als de /apod-route van de
+ * worker). Geen credit gevonden → null, dan blijft de bron staan.
+ */
+const isApod = url => /science\.nasa\.gov\/image-(article|detail)\/apod-\d{4}-/i.test(url || '')
+async function apodCredit(item, url, fetchPagina = N.haalPagina) {
+  try {
+    const A = await import(path.join(__dirname, '..', 'cf-worker', 'apod.mjs'))
+    const feedTekst = item['content:encoded'] || item.content || item.description || ''
+    let html = ''
+    try { html = await fetchPagina(url) } catch { /* alleen de feedtekst */ }
+    return A.vindCredit(feedTekst, html).credit || null
+  } catch { return null }
+}
+
 const yaml = s => String(s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r?\n/g, ' ')
 const melding = s => String(s).replace(/\r?\n/g, ' ').replace(/::/g, ': :')
 
@@ -325,6 +341,10 @@ async function main(opts = {}) {
         continue
       }
 
+      const fotoCredit = imageUrl && isApod(bronUrl)
+        ? (await apodCredit(item, bronUrl, opts.fetchPagina)) || imageCredit
+        : imageCredit
+
       const category = guessCategory(title, feed.category)
       const frontmatter = `---
 title: "${yaml(r.data.title)}"
@@ -338,7 +358,7 @@ source: "${yaml(bronNaam)}"
 sourceUrl: "${yaml(bronUrl)}"
 ${isTip ? `tipSource: "${yaml(feed.source)}"\ntipUrl: "${yaml(item.link || '')}"\n` : ''}imageUrl: "${yaml(imageUrl)}"
 imageAlt: "${yaml(imageAlt)}"
-imageCredit: "${yaml(imageCredit)}"
+imageCredit: "${yaml(fotoCredit)}"
 ${N.structuurFrontmatter(r.data)}---
 
 ${r.data.body}
@@ -365,7 +385,7 @@ ${r.data.body}
   return stats
 }
 
-module.exports = { main, FEEDS }
+module.exports = { main, FEEDS, isApod, apodCredit }
 
 if (require.main === module) {
   main().catch(err => { console.error(err); process.exit(1) })

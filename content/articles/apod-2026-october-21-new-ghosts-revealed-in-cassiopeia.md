@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-21-new-ghosts-revealed-in-cassiopeia/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/IC63.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Drie nieuwe 'spoken' ontdekt bij de bekende W van Cassiopeia"
-imageCredit: "NASA"
+imageCredit: "Louis Leroux-Géré, Thibault Rouillée, Vincent Martin, Cédric de Decker"
 vernieuwd: "2026-11-06"
 kernpunten: ["Op een opname van Cassiopeia zijn drie onbekende, blauw gloeiende nevels ontdekt naast de bekende Spoken IC 59 en IC 63.","Daarvoor waren 100 uur waarnemingstijd en een filter nodig dat alleen zuurstoflicht doorlaat.","Mogelijke verklaringen zijn een boegschok van gamma Cassiopeiae en een planetaire nevel, maar de herkomst is nog onzeker."]
 kerncijfers: [{"waarde":"100","eenheid":"uur","label":"totale waarnemingstijd"},{"waarde":"3","eenheid":"","label":"nieuw ontdekte nevels"},{"waarde":"21 oktober 2026","eenheid":"","label":"verkozen tot APOD"}]

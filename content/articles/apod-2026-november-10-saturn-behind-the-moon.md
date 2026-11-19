@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-10-saturn-behind-the-moon/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/Moonsaturn6_Ortu_2124.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 10 – Saturn Behind the Moon"
-imageCredit: "NASA"
+imageCredit: "Roberto Ortu"
 kernpunten: ["In het begin van 2025 schoof de Maan voor Saturnus, zichtbaar in een strook van Groenland via Centraal-Europa tot Noord-Afrika.","Astrofotograaf Roberto Ortu legde het vast vanaf Sardinië in een samenvoeging van drie opnamen.","Het heldere puntje naast Saturnus is de verre ster 85 Aquarii; de volgende Saturnusbedekking volgt pas in 2031."]
 kerncijfers: [{"waarde":"2031","eenheid":"","label":"volgende Saturnusbedekking door Maan"},{"waarde":"2025","eenheid":"","label":"jaar van de bedekking"}]
 ---

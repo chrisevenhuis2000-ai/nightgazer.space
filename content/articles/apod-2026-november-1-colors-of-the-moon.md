@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-1-colors-of-the-moon/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/MoonColors_Pace_960.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Van rood tot blauw: tien jaar maanfoto's tonen de vele kleuren van de Maan"
-imageCredit: "NASA"
+imageCredit: "Marcella Giulia Pace"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 1 november 2026 toont volle manen in kleuren van rood en geel tot blauw en paars.","Astrofotografe Marcella Giulia Pace legde de beelden tien jaar lang vast vanuit Italië.","De kleurverschillen komen door de aardatmosfeer; buiten de dampkring is de Maan grijs met een bruine zweem."]
 kerncijfers: [{"waarde":"juli 2018","eenheid":"","label":"vastgelegde totale maansverduistering"},{"waarde":"1 november 2026","eenheid":"","label":"datum van de APOD"}]

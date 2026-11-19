@@ -40,9 +40,16 @@ const STANDAARD_NIVEAU: ReadingLevel = 'original'
 /* Categorie → missiepagina. Naam, agentschap en status komen uit de
    missiedata zelf, zodat de kaart nooit iets beweert dat daar niet staat. */
 const CATEGORY_TO_MISSION: Record<string, string> = {
-  'james-webb': 'jwst', jwst: 'jwst', kosmologie: 'jwst',
-  missies: 'starship', mars: 'perseverance', artemis: 'artemis', maan: 'artemis',
+  'james-webb': 'jwst', jwst: 'jwst', artemis: 'artemis',
 }
+
+/* Eerst de titel: noemt die een missie, dan is dat de gerelateerde missie.
+   De rubriek alleen als vangnet; 'missies' of 'maan' zegt niet welke missie. */
+const TREFWOORD_MISSIE: [RegExp, string][] = [
+  [/starship/i, 'starship'], [/artemis/i, 'artemis'], [/\bwebb\b|jwst/i, 'jwst'],
+  [/perseverance/i, 'perseverance'], [/curiosity/i, 'curiosity'], [/voyager/i, 'voyager1'],
+  [/europa clipper/i, 'europa-clipper'], [/\bjuice\b/i, 'juice'], [/\bsmile\b/i, 'smile'],
+]
 
 /* ── NASA-beeld voor platen zonder eigen beeld ─────────────────────────────
    Overgenomen van de vorige artikelpagina: zoekwoorden uit titel en tags,
@@ -330,7 +337,9 @@ export default function ArtikelPlaat({ slug, initial = null }: {
   const imageUrl = article?.imageUrl || nasaImage?.url || ''
   const imageCredit = article?.imageCredit || nasaImage?.credit || ''
   const mission = useMemo(() => {
-    const id = CATEGORY_TO_MISSION[article?.category?.toLowerCase() ?? '']
+    const titel = article?.title ?? ''
+    const id = TREFWOORD_MISSIE.find(([re]) => re.test(titel))?.[1]
+      ?? CATEGORY_TO_MISSION[article?.category?.toLowerCase() ?? '']
     return id ? MISSIONS.find(m => m.id === id) ?? null : null
   }, [article])
 
@@ -447,7 +456,7 @@ export default function ArtikelPlaat({ slug, initial = null }: {
                     <div className="pl-emulsion">
                       <img src={IMG(imageUrl, 1200)} alt={article.imageAlt && article.imageAlt !== article.title ? article.imageAlt : ''} />
                     </div>
-                    {imageCredit && <figcaption>Beeld · {imageCredit}</figcaption>}
+                    {imageCredit && <figcaption>{slug.startsWith('apod-') ? <>Foto · {imageCredit} · via NASA APOD</> : <>Beeld · {imageCredit}</>}</figcaption>}
                   </figure>
                 )}
 

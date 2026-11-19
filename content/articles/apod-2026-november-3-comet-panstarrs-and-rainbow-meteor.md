@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-3-comet-panstarrs-and-rainbow-meteor/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/CometMeteor_Metais_1934.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Meteoor lijkt uit komeet PanSTARRS te schieten, maar schijn bedriegt"
-imageCredit: "NASA"
+imageCredit: "Eddy Metais"
 vernieuwd: "2026-11-06"
 kernpunten: ["Op NASA's foto van de dag lijkt een meteoor uit komeet C/2025 R3 (PanSTARRS) te komen, maar dat is toeval van perspectief.","Veel meteoren stammen van kometen, maar één losse meteoor aan een specifieke komeet koppelen is lastig.","In november pieken drie meteorenzwermen: de Zuidelijke en Noordelijke Tauriden en de Leoniden."]
 kerncijfers: [{"waarde":"3 november 2026","eenheid":"","label":"Astronomy Picture of the Day"}]

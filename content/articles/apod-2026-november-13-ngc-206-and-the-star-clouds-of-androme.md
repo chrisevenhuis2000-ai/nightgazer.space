@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/Andromeda_closeupCruz4096.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 13 – NGC 206 and the Star Clouds of Andromeda"
-imageCredit: "NASA"
+imageCredit: "David Cruz"
 kernpunten: ["NGC 206 is een enorme groep jonge, blauwe sterren in de spiraalarmen van de Andromedanevel.","Met een omvang van ongeveer 4.000 lichtjaar is de sterrenwolk veel groter dan jonge sterrenhopen in de Melkweg.","De Andromedanevel is in de herfst vanuit Nederland met het blote oog te zien; NGC 206 vraagt een grotere telescoop."]
 kerncijfers: [{"waarde":"2,5 miljoen","eenheid":"lichtjaar","label":"afstand tot Andromedanevel"},{"waarde":"4.000","eenheid":"lichtjaar","label":"omvang van NGC 206"},{"waarde":"10 miljoen","eenheid":"jaar","label":"maximale leeftijd jongste sterren"}]
 ---

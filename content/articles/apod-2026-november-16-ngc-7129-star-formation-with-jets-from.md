@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-16-ngc-7129-star-formation-with-jets-from-webb/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/missions/webb/science/2026/10/weic2620a.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 16 – NGC 7129: Star Formation with Jets from Webb"
-imageCredit: "NASA"
+imageCredit: "NASA, ESA, CSA, STScI, JWST; bewerking A. Pagan (STScI)"
 kernpunten: ["De James Webb-ruimtetelescoop maakte een gedetailleerde infraroodopname van het stervormingsgebied NGC 7129.","Links in het goudkleurige gas staan doorgaans wat oudere jonge sterren, rechts in het rode gebied jongere.","Het draderige rode gas is waarschijnlijk gevormd door straalstromen en winden van jonge sterren."]
 kerncijfers: [{"waarde":"16 november 2026","eenheid":"","label":"Astronomy Picture of the Day"},{"waarde":"NGC 7129","eenheid":"","label":"gefotografeerd stervormingsgebied"}]
 ---

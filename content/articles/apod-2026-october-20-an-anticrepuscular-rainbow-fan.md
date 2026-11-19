@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-20-an-anticrepuscular-rainbow-fan/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/AntiRainbow_Esposti_5120.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Regenboog in een waaier van licht lijkt de natuurwetten te tarten"
-imageCredit: "NASA"
+imageCredit: "Aurelia Degli Esposti"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 20 oktober 2026 toont een regenboog die vanuit het verkeerde punt aan de hemel lijkt te komen.","De illusie ontstaat door anticrepusculaire stralen: evenwijdige zonnestralen die door perspectief tegenover de zon samen lijken te komen.","Het verschijnsel is ook vanuit Nederland met het blote oog te zien bij een laagstaande zon en opbrekende buien."]
 kerncijfers: [{"waarde":"20 oktober 2026","eenheid":"","label":"Datum Astronomy Picture of the Day"}]
