@@ -9,4 +9,4 @@ export const STEUN_NAAM = 'Ko-fi'
 /* Ko-fi laat betalingen via PayPal lopen op naam van Crixium, het bedrijf
    van de maker. Supporters zien die naam op hun afschrift; deze zin staat
    klein onder elke doneerknop zodat niemand schrikt. */
-export const STEUN_AFSCHRIFT = "Betalingen worden verwerkt via Crixium, het bedrijf achter Nightgazer. Op je afschrift zie je 'CRIXIUM'."
+export const STEUN_AFSCHRIFT = "Betalingen worden verwerkt via Crixium, het bedrijf achter NightGazer. Op je afschrift zie je 'CRIXIUM'."

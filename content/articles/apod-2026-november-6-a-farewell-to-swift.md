@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/Swift_Millionth_Image_Mosaic.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 6 – A Farewell to Swift"
-imageCredit: "NASA"
+imageCredit: "NASA/Swift en AndreaMosaic"
 kernpunten: ["NASA's Swift-telescoop is op 4 november na bijna 22 jaar dienst verbrand in de dampkring boven Noord-Sumatra.","Het recente zonnemaximum versnelde het baanverval en een poging om de satelliet hoger te tillen mislukte.","Swift bestudeerde met röntgen-, gamma- en optische instrumenten de heftigste explosies in het heelal; zijn data blijven bruikbaar."]
 kerncijfers: [{"waarde":"22","eenheid":"jaar","label":"duur van de missie"},{"waarde":"4 november","eenheid":"","label":"terugkeer in dampkring"}]
 ---

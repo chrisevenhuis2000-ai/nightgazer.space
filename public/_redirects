@@ -241,3 +241,8 @@
 /nieuws/voyager-very-optimistic-about-starlab-amid-potential-nasa-ch/ /nieuws/ 301
 /nieuws/wave-of-dust-rolls-through-texas/ /nieuws/ 301
 /nieuws/winters-end-is-written-in-the-clouds/ /nieuws/ 301
+
+# Dubbel artikel over dezelfde Vulcan-lancering (14 en 15 nov 2026): de oudste
+# is weg, de link wijst naar de nieuwste.
+/nieuws/ula-delays-to-saturday-vulcan-rocket-launch-of-40-leo-satell /nieuws/ula-delays-to-sunday-vulcan-rocket-launch-of-40-leo-satellit/ 301
+/nieuws/ula-delays-to-saturday-vulcan-rocket-launch-of-40-leo-satell/ /nieuws/ula-delays-to-sunday-vulcan-rocket-launch-of-40-leo-satellit/ 301

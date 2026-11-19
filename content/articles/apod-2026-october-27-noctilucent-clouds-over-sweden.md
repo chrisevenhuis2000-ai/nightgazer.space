@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-27-noctilucent-clouds-over-sweden/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/NocClouds_Hofer_6048.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Blauwe lichtende nachtwolken boven Zweden: de hoogste wolken op aarde"
-imageCredit: "NASA"
+imageCredit: "V. Höfer, D. Večerník & B. Večerníková"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 27 oktober 2026 toont lichtende nachtwolken boven Linköping in Zweden.","Deze wolken in de mesosfeer zijn de hoogste op aarde en worden na zonsondergang nog door de zon beschenen.","Veel kennis over het verschijnsel is pas in de afgelopen twee decennia opgedaan en het ontstaan wordt nog onderzocht."]
 kerncijfers: [{"waarde":"27 oktober 2026","eenheid":"","label":"datum Astronomy Picture of the Day"}]

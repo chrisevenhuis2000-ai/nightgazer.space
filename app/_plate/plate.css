@@ -4148,6 +4148,12 @@ a:hover .pl-emulsion > img,
   text-decoration-thickness: 1px;
 }
 .pl .pl-voorw__a:hover { text-decoration-thickness: 2px; }
+.pl-voorw__tekst > * + * { margin-top: 0.75em; }
+.pl-voorw__tekst ul { margin: 0.5em 0 0; padding-left: 1.2em; }
+.pl-voorw__tekst li + li { margin-top: 0.4em; }
+.pl-voorw__intro > * + * { margin-top: 0.75em; }
+.pl-voorw__knop { margin-top: 14px; }
+.pl-voorw__klein { font-size: 0.86em; color: var(--pl-ink-2, var(--pl-ink)); }
 
 /* ══════════════════════════════════════════════════════════════════════════
    De missieplaat — /missies/[slug]
@@ -5755,3 +5761,7 @@ a:hover .pl-emulsion > img,
 .mi-start { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 860px) { .mi-start { grid-template-columns: minmax(0, 1fr); } }
 .pl-flight__dest[title], .pl-nextup__spec span[title] { text-decoration: underline dotted var(--pl-ink-3); text-underline-offset: 3px; cursor: help; }
+
+/* Hemelbrief: een stukje uit de eerste brief onder elk onderdeel */
+.pl-hb__voorbeeld { margin: 10px 0 0; padding: 10px 0 2px 14px; border-left: 2px solid var(--pl-act); display: grid; gap: 4px; }
+.pl-hb__voorbeeld .pl-body-s { color: var(--pl-ink-2); font-style: italic; }

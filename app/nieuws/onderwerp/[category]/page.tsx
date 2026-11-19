@@ -4,6 +4,7 @@ import { TOPICS, getTopic } from '@/lib/topics'
 import { breadcrumbList, jsonLd } from '@/lib/structured-data'
 import NieuwsArchief from '../../NieuwsArchief'
 import { startset } from '@/lib/article-index'
+import { ogBeeld } from '@/lib/og'
 
 export function generateStaticParams() {
   return TOPICS.map(t => ({ category: t.slug }))
@@ -18,7 +19,7 @@ export function generateMetadata({ params }: { params: { category: string } }): 
     title,
     description: topic.description,
     alternates:  { canonical: `/nieuws/onderwerp/${topic.slug}/` },
-    openGraph:   { title: `${title} | NightGazer`, description: topic.description, type: 'website' },
+    openGraph:   { title: `${title} | NightGazer`, description: topic.description, type: 'website', images: ogBeeld() },
   }
 }
 

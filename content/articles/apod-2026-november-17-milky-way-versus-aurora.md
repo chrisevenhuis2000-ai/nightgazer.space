@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-17-milky-way-versus-aurora/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/GalaxyVsAurora_Scheib_960.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 17 – Milky Way versus Aurora"
-imageCredit: "NASA"
+imageCredit: "Guillaume Scheib"
 kernpunten: ["NASA's Astronomy Picture of the Day van 17 november 2026 toont de Melkweg en een boog noorderlicht naast elkaar boven Noord-Noorwegen.","De Melkweg is ouder dan de aarde en staat ver weg, terwijl het noorderlicht slechts uren oud was en in de bovenste atmosfeer ontstond.","Op de foto zijn ook de Steelpan en de Andromedanevel te zien; beide zijn vanuit Nederland met het blote oog of een verrekijker te vinden."]
 kerncijfers: [{"waarde":"17 november 2026","eenheid":"","label":"Publicatiedatum Astronomy Picture"}]
 ---

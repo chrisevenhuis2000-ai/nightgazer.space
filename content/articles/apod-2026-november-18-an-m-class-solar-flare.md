@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-18-an-m-class-solar-flare/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/solar_M_flare.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "APOD: 2026 November 18 – An M-class Solar Flare"
-imageCredit: "NASA"
+imageCredit: "Mario Cogo"
 kernpunten: ["NASA's foto van de dag toont een zonnevlam van 14 mei 2025, gefotografeerd door Mario Cogo met een H-alfa-filter.","De vlam kreeg op basis van GOES-metingen de classificatie M1: matig helder in röntgenstraling.","M-klassevlammen kunnen radio-uitval rond de polen en lichte stralingsstormen veroorzaken die astronauten kunnen schaden."]
 kerncijfers: [{"waarde":"M1","eenheid":"","label":"classificatie van de zonnevlam"},{"waarde":"14 mei 2025","eenheid":"","label":"datum van de uitbarsting"}]
 ---

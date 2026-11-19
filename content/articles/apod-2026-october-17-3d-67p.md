@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-17-3d-67p/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/anaglyph-NAC_2015-07-25T06.28.48.742Z_lamy.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Zweef in 3D langs komeet 67P met beelden van Rosetta"
-imageCredit: "NASA"
+imageCredit: "ESA, Rosetta, MPS, OSIRIS; anaglief Philippe Lamy"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 17 oktober 2026 toont komeet 67P in 3D, te bekijken met een rood-blauwe bril.","Het stereobeeld is gemaakt uit twee opnamen van Rosetta's OSIRIS-camera van 25 juli 2015, toen de komeet vlak bij de zon volop jets uitstootte.","Philippe Lamy en zijn team maakten een online catalogus met bijna 1400 3D-beelden uit het Rosetta-archief."]
 kerncijfers: [{"waarde":"184","eenheid":"km","label":"afstand bij de opname"},{"waarde":"4","eenheid":"km","label":"diameter grootste lob"},{"waarde":"bijna 1400","eenheid":"","label":"stereobeelden in catalogus"}]

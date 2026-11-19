@@ -16,7 +16,7 @@ interface SiteFooterProps {
   note?:    string
 }
 
-const DEFAULT_TAGLINE = 'Sterrenkijken vanuit Nederland: wat je vannacht ziet, rustige uitleg over het heelal en eerlijke gidsen voor je eerste telescoop.'
+const DEFAULT_TAGLINE = 'Wat zie je vannacht? Sterrenkijken vanuit Nederland, rustig uitgelegd.'
 const DEFAULT_NOTE     = 'Afbeeldingen: NASA · ESA · Pexels'
 const DEFAULT_COLS: FooterCol[] = [
   { title: 'Pagina\'s', links: [['Home', '/'], ['Nieuws', '/nieuws'], ['Missies', '/missies'], ['Sterrenkijken', '/sterrenkijken'], ['Educatie', '/educatie']] },
@@ -27,9 +27,9 @@ const DEFAULT_COLS: FooterCol[] = [
 const SOCIALS = [
   { href: 'https://x.com/nightgazerspace', label: 'NightGazer op X', icon: <svg viewBox="0 0 16 16" fill="currentColor" width="13" height="13"><path d="M12.6 1h2.4l-5.2 6 6.2 8H12l-3.7-4.9L3.8 15H1.4l5.5-6.3L.8 1H5l3.4 4.5L12.6 1z" /></svg> },
   { href: 'https://www.instagram.com/nightgazer.space/', label: 'NightGazer op Instagram',  icon: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2" width="13" height="13"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" /><circle cx="8" cy="8" r="3" /><circle cx="11.5" cy="4.5" r="0.7" fill="currentColor" stroke="none" /></svg> },
+  { href: 'https://www.facebook.com/profile.php?id=61589722948899', label: 'NightGazer op Facebook', icon: <svg viewBox="0 0 16 16" fill="currentColor" width="13" height="13"><path d="M9.3 15V8.6h2.1l.3-2.5H9.3V4.6c0-.7.2-1.2 1.2-1.2h1.3V1.1C11.6 1.1 10.8 1 9.9 1 8 1 6.7 2.2 6.7 4.3v1.8H4.6v2.5h2.1V15h2.6z" /></svg> },
 ]
 
-const BADGES: [string, string][] = [['Claude AI', '⬡'], ['NASA Open APIs', '★']]
 
 // ── Confined starfield — sized to the footer itself, not the viewport ──────
 function FooterStarfield() {
@@ -174,11 +174,6 @@ export function SiteFooter({ cols = DEFAULT_COLS, tagline = DEFAULT_TAGLINE, not
             <CookieInstellingen style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            {BADGES.map(([label, icon]) => (
-              <span key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', border: '1px solid #252858', borderRadius: 2, fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }}>
-                <span aria-hidden="true">{icon}</span>{label}
-              </span>
-            ))}
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="footer-to-top" aria-label="Terug naar boven"
               style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#7A86A8' }}
               onMouseEnter={e => (e.currentTarget.style.color = '#FFFFFF')}

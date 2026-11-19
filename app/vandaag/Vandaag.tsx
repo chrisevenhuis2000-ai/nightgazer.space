@@ -12,6 +12,11 @@
    Welke carrousel "vandaag" is, hangt af van het tijdstip: de pagina wordt
    bij de build gemaakt, maar de browser kiest opnieuw zodra hij laadt, zodat
    een post die om 12:00 live gaat ook om 12:00 bovenaan staat.
+
+   Tijdens 30 nachten omhoog gaan de dagelijkse reels over de nacht van
+   vandaag. Is er vandaag geen carrousel, dan staat die nacht bovenaan, met
+   één knop naar de uitdaging (persona-rapport 19-11-2026: wie van een reel
+   kwam, zag een carrousel van dagen eerder en geen link naar /omhoog).
    ══════════════════════════════════════════════════════════════════════════ */
 
 import { useEffect, useState } from 'react'
@@ -26,6 +31,7 @@ import { OmhoogBlok } from '@/app/_plate/OmhoogBlok'
 import { archivo, FOOTER_COLS, PlateHead, editionLabel, img } from '@/app/_plate/shared'
 import { Ico } from '@/app/_plate/Instruments'
 import { artikelLink, nuInNederland, uitArchief, zichtbaar, type DagmapItem } from '@/lib/dagmap'
+import { HULPMIDDEL, NACHTEN } from '@/lib/omhoog'
 
 const INSTAGRAM = 'https://www.instagram.com/nightgazer.space/'
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
@@ -53,7 +59,14 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
   const live = zichtbaar(items, nu)
   const opPost = live.length > 0
   const lijst: Kaart[] = opPost ? live : nieuwste
-  const [top, ...rest] = lijst
+  const vandaag = nu.slice(0, 10)
+  const nachtNr = NACHTEN.findIndex(n => n.datum === vandaag)
+  const nacht = nachtNr >= 0 ? NACHTEN[nachtNr] : null
+  // De carrousel van vandaag gaat voor; zonder die carrousel leidt de nacht van vandaag.
+  const carrouselVandaag = opPost && lijst[0]?.datum === vandaag
+  const nachtEerst = !!nacht && !carrouselVandaag
+  const top: Kaart | undefined = nachtEerst ? undefined : lijst[0]
+  const rest: Kaart[] = nachtEerst ? lijst : lijst.slice(1)
 
   return (
     <div className={`pl ${archivo.variable}`}>
@@ -61,6 +74,28 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
       <PlateHead total={lijst.length} edition={editionLabel()} current="nieuws" totalLabel={opPost ? 'posts' : 'artikelen'} />
 
       <main id="pl-main" tabIndex={-1} className="pl-stack">
+        {nachtEerst && nacht && (
+          <section className="pl-wrap" aria-labelledby="pl-vdg-nacht">
+            <div className="pl-uhero pl-vdg">
+              <div className="pl-uhero__in">
+                <span className="pl-label pl-label--stamp">
+                  30 nachten omhoog · nacht {nachtNr + 1} · {nacht.ochtend ? 'vroeg in de ochtend' : 'vanavond'}
+                </span>
+                <h1 id="pl-vdg-nacht" className="pl-h1 pl-vdg__hook">{nacht.titel}</h1>
+                <p className="pl-vdg__vraag">{nacht.wanneer} · {HULPMIDDEL[nacht.met]}</p>
+                <p className="pl-uhero__lede">{nacht.tekst}</p>
+                <div className="pl-vdg__actie">
+                  <Link href="/omhoog/?utm_source=instagram&utm_medium=bio&utm_campaign=omhoog" className="pl-btn pl-btn--act">
+                    Doe mee met nacht {nachtNr + 1}
+                    <Ico.arrow />
+                  </Link>
+                  <span className="pl-vdg__titel">Elke avond één ding om te zien, tot de Geminiden.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {top && (
           <section className="pl-wrap" aria-labelledby="pl-vdg-kop">
             <div className="pl-uhero pl-vdg">
@@ -71,7 +106,7 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
               )}
               <div className="pl-uhero__in">
                 <span className="pl-label pl-label--stamp">
-                  {opPost ? `Vandaag op Instagram · ${datumTekst(top.datum)}` : 'Het nieuwste artikel'}
+                  {!opPost ? 'Het nieuwste artikel' : carrouselVandaag ? `Vandaag op Instagram · ${datumTekst(top.datum)}` : `Laatste carrousel · ${datumTekst(top.datum)}`}
                 </span>
                 <h1 id="pl-vdg-kop" className="pl-h1 pl-vdg__hook">{top.hook || top.title}</h1>
                 {opPost && uitArchief(top) && <span className="pl-label">{archiefTekst(top)}</span>}
@@ -89,9 +124,11 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
           </section>
         )}
 
-        <div className="pl-wrap">
-          <OmhoogBlok />
-        </div>
+        {!nachtEerst && (
+          <div className="pl-wrap">
+            <OmhoogBlok />
+          </div>
+        )}
 
         <div className="pl-wrap">
           <Cadeautijd />
@@ -138,7 +175,7 @@ export default function Vandaag({ items, nieuwste, gebouwd }: {
 
         <section className="pl-wrap" aria-label="Instagram">
           <div className="pl-vdg__volg">
-            <p className="pl-body">Elke dag om 12:00 het ruimtenieuws in tien beelden.</p>
+            <p className="pl-body">Elke ochtend een ruimteweetje, en tot 15 december elke avond iets om te zien.</p>
             <a href={INSTAGRAM} className="pl-btn" target="_blank" rel="noopener">
               Volg @nightgazer.space
               <Ico.arrow />

@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-november-2-a-long-cloud-on-mars/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/MonsCloud_MarsExpress_1920.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Raadselachtige ijswolk van ruim 1500 kilometer trekt over Mars"
-imageCredit: "NASA"
+imageCredit: "ESA, DLR, FU Berlin; bewerking J. Cowart"
 vernieuwd: "2026-11-06"
 kernpunten: ["Boven de Marsvulkaan Arsia Mons ontstaat in voorjaar en zomer 's ochtends een langgerekte ijswolk, de AMEC.","De wind rekt de wolk uit tot een staart die langer kan worden dan 1500 kilometer; NASA koos een Mars Express-opname als foto van de dag.","Hoe de ijskristallen zonder stofdeeltjes ontstaan is een raadsel, en het antwoord kan ook wolkenvorming op aarde verhelderen."]
 kerncijfers: [{"waarde":"1500","eenheid":"km","label":"maximale lengte van wolk"},{"waarde":"1977","eenheid":"","label":"eerste waarneming door Viking"},{"waarde":"2018","eenheid":"","label":"jaar van de opname"}]

@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-28-the-mutual-occultation-of-ganymede-and-io/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/occultation.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Ganymedes schuift voor Io langs: zeldzame manenbedekking bij Jupiter vastgelegd"
-imageCredit: "NASA"
+imageCredit: "Michael Wong"
 vernieuwd: "2026-11-06"
 kernpunten: ["Ganymedes schoof op 20 oktober 2026 voor Io langs, vastgelegd op video door Michael Wong en gekozen als NASA's Astronomy Picture of the Day.","Onderlinge bedekkingen van de Galileïsche manen zijn alleen eens in de zes jaar te zien, rond Jupiters equinox.","Ganymedes wierp tegelijk zijn schaduw op Jupiter, wat daar in feite een zonsverduistering betekent."]
 kerncijfers: [{"waarde":"115","eenheid":"manen","label":"Bekende manen van Jupiter"},{"waarde":"293","eenheid":"manen","label":"Bekende manen van Saturnus"}]

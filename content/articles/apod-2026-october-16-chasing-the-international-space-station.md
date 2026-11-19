@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-16-chasing-the-international-space-station/"
 imageUrl: "https://science.nasa.gov/wp-content/uploads/2023/10/NASA_logo-1.png"
 imageAlt: "Timelapse legt Dragon vast terwijl die het ISS achternajaagt"
-imageCredit: "NASA"
+imageCredit: "Eric Holland"
 vernieuwd: "2026-11-06"
 kernpunten: ["Een timelapse van de vrachtlancering naar het ISS op 13 oktober werd de Astronomy Picture of the Day van 16 oktober 2026.","In dezelfde opname zijn de Falcon 9, het overvliegende ISS en een door de zon verlichte, kwalvormige uitlaatpluim te zien.","De eerste trap keerde terug en landde veilig op Landing Zone 40, zodat hij opnieuw kan worden gebruikt."]
 kerncijfers: [{"waarde":"35e","eenheid":"","label":"Commercial Resupply Services-missie"},{"waarde":"13 oktober","eenheid":"","label":"datum van de lancering"}]

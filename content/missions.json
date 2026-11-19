@@ -260,19 +260,19 @@
       "name": "NASA Artemis II",
       "agency": "NASA",
       "agencyColor": "#378ADD",
-      "status": "actief",
+      "status": "voltooid",
       "soort": "missie",
       "launched": "1 apr 2026",
       "objective": "Eerste bemande vlucht rond de Maan sinds Apollo 17 (1972).",
       "body": "Maan",
-      "highlight": "Vier astronauten vliegen de Orion-capsule",
+      "highlight": "Geland op 10 april 2026 na een recordreis rond de Maan",
       "icon": "🌕",
       "bgFrom": "#080812",
       "bgTo": "#141430",
-      "description": "Artemis II is de eerste bemande vlucht van het Artemis-programma en de eerste bemande reis naar de Maan in meer dan vijftig jaar. Vier astronauten — drie van NASA en één van het Canadese ruimtevaartagentschap CSA — zullen in de Orion-capsule op het SLS Block 1-raketsysteem een vrije-retour-baan om de Maan beschrijven zonder te landen. De missie duurt ongeveer tien dagen en valideert alle systemen voor de latere Artemis III-maanlanding. De vier bemanningsleden zijn Reid Wiseman (commandant), Victor Glover, Christina Koch en de Canadees Jeremy Hansen.",
+      "description": "Artemis II was de eerste bemande vlucht van het Artemis-programma en de eerste bemande reis naar de Maan in meer dan vijftig jaar. Vier astronauten, drie van NASA en één van het Canadese ruimtevaartagentschap CSA, vlogen in de Orion-capsule op een SLS Block 1-raket een vrije-retourbaan om de Maan, zonder te landen. De missie startte op 1 april 2026 en duurde bijna tien dagen. De bemanning reisde verder van de aarde dan ooit een mens vóór hen en landde in de Grote Oceaan voor de kust van San Diego. De vlucht testte alle systemen voor de volgende Artemis-missies. De vier bemanningsleden waren Reid Wiseman (commandant), Victor Glover, Christina Koch en de Canadees Jeremy Hansen.",
       "vehicle": "SLS Block 1 + Orion MPCV",
       "launchSite": "LC-39B, Kennedy Space Center, Florida, VS",
-      "duration": "~10 dagen",
+      "duration": "Bijna 10 dagen",
       "distanceKm": "~400.000 km (Maan)",
       "missionUrl": "https://www.nasa.gov/mission/artemis-ii/",
       "timeline": [
@@ -293,8 +293,12 @@
           "event": "Lancering Artemis II (vrije-retour Maanbaan)"
         },
         {
-          "date": "TBD 2027+",
-          "event": "Artemis III: eerste maanlanding met Starship HLS"
+          "date": "10 apr 2026",
+          "event": "Landing in de Grote Oceaan voor de kust van San Diego"
+        },
+        {
+          "date": "2027",
+          "event": "Artemis III: test van de maanlanders in een baan om de aarde"
         }
       ],
       "facts": [
@@ -315,8 +319,8 @@
           "value": "Vrije-retour Maanbaan (geen landing)"
         },
         {
-          "label": "Max. afstand tot Aarde",
-          "value": "~8.900 km achter Maan (dichts bij totale terugweg)"
+          "label": "Verste punt",
+          "value": "Verder van de aarde dan ooit een mens, record van Apollo 13 gebroken"
         },
         {
           "label": "Eerste keer CSA bemand",
@@ -2702,15 +2706,15 @@
       "id": "nancy-grace-roman-space-telescope",
       "_ll2Id": "521f3a1c-f977-4306-9b7f-495858719adf",
       "name": "Nancy Grace Roman Space Telescope",
-      "agency": "SpaceX",
-      "agencyColor": "#3dcfdf",
+      "agency": "NASA",
+      "agencyColor": "#378ADD",
       "status": "actief",
       "soort": "missie",
       "launched": "30 aug 2026",
       "objective": "Infraroodtelescoop onderzoekt donkere energie, ruimtestructuur en exoplaneten vanuit het L2-punt.",
       "body": "L2-punt",
       "highlight": "Gelanceerd op 30 aug 2026 — missie in bedrijf",
-      "icon": "🚀",
+      "icon": "🔭",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "De Nancy Grace Roman Space Telescope is een NASA-infraroodtelescoop met een primaire spiegel van 2,4 meter en twee wetenschappelijke instrumenten. Het Wide-Field Instrument (WFI) is een 300,8-megapixelcamera voor zichtbaar en nabij-infrarood licht met een gezichtsveld van 0,28 vierkante graden, honderd keer groter dan de beeldcamera's van de Hubble Space Telescope. Het Coronagrafisch Instrument (CGI) is een hogecontrastcamera en spectrometer met een klein gezichtsveld, uitgerust met nieuwe technologie om sterrenlicht te onderdrukken. De telescoop zoekt naar exoplaneten via zwaartekrachtmicrolensing en onderzoekt de expansiegeschiedenis van het heelal en de groei van kosmische structuur, met als doel de effecten van donkere energie, de consistentie van de algemene relativiteitstheorie en de kromming van de ruimtetijd te meten.",

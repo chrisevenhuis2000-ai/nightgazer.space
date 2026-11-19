@@ -26,14 +26,14 @@ import { Welkom } from './_plate/Welkom'
 import { NachtHero } from './_plate/NachtHero'
 import {
   PROXY, APOD_CACHE_KEY,
-  type APODData, type ISSData, type Article,
+  type APODData, type Article,
   getLevel, topicMatches,
 } from '@/lib/home-content'
 import { leesApodCache, schrijfApodCache, isGeldigeApod } from '@/lib/apod-cache'
 import type { Startset } from '@/lib/article-index'
 import {
-  Ico, Tip, useSky, skyTone, useUpcoming, type SkyState,
-  SterrenkijkenPlate, DezeWeekPlate, ApodPlate, IssPlate, QuizPlate,
+  Ico, Tip, skyTone, useUpcoming, type SkyState,
+  DezeWeekPlate, ApodPlate, QuizPlate,
 } from '@/app/_plate/Instruments'
 import {
   archivo, ROWS_PER_PAGE, TOPICS, QUICK_TAGS, quickMatches,
@@ -374,6 +374,17 @@ function Archive({ articles, total, quickTag, onClearQuick, perCategorie }: {
 }
 
 /* ══ Page ═════════════════════════════════════════════════════════════════ */
+const MAANDEN_EN = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+
+/** Het Nederlandse artikel bij de APOD van die dag, als de nieuwsbot het al schreef. */
+function apodArtikel(articles: Article[], datum?: string): Article | undefined {
+  if (!datum) return undefined
+  const [y, m, d] = datum.split('-').map(Number)
+  if (!y || !m || !d) return undefined
+  const prefix = `apod-${y}-${MAANDEN_EN[m - 1]}-${d}-`
+  return articles.find(a => a.slug.startsWith(prefix))
+}
+
 export default function HomePage({ start }: {
   /** Nieuwste platen en tellingen uit de index, tijdens de build gelezen
    *  (app/page.tsx, lib/article-index.ts). */
@@ -381,8 +392,6 @@ export default function HomePage({ start }: {
 } = {}) {
   const initialTotal = start?.totaal ?? 0
   const [apod, setApod] = useState<APODData | null>(null)
-  const [iss, setIss] = useState<ISSData | null>(null)
-  const [issFailed, setIssFailed] = useState(false)
   const articles = useArticles(24, start?.initial)
 
   /* APOD, cached per day */
@@ -406,20 +415,6 @@ export default function HomePage({ start }: {
       .catch(() => { /* the plate ground stays empty rather than wrong */ })
   }, [])
 
-  /* ISS, every 5s */
-  useEffect(() => {
-    let alive = true
-    const tick = () => fetch('https://api.wheretheiss.at/v1/satellites/25544')
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(d => { if (alive) { setIss(d); setIssFailed(false) } })
-      .catch(() => { if (alive && !iss) setIssFailed(true) })
-    tick()
-    const id = setInterval(tick, 5000)
-    return () => { alive = false; clearInterval(id) }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const sky = useSky()
   const [quickTag, setQuickTag] = useState<string | null>(null)
 
   const pickQuick = useCallback((tag: string | null) => {
@@ -479,10 +474,14 @@ export default function HomePage({ start }: {
               <Ico.arrow />
             </Link>
           </div>
+          {/* De kijkscore staat al in de NachtHero bovenaan; een tweede score
+             met een ander bewolkingsgetal maakte bezoekers onzeker
+             (persona-rapport 19-11-2026). De ISS-coördinaten zijn weg om
+             dezelfde reden: graden lengte zeggen niemand iets. */}
           <div className="pl-bank pl-bank--instr pl-bank--3">
-            <SterrenkijkenPlate sky={sky} />
             <DezeWeekPlate />
-            <ApodPlate apod={apod} />
+            <ApodPlate apod={apod} artikel={apodArtikel(articles, apod?.date)} />
+            <QuizPlate />
           </div>
         </section>
 
@@ -501,13 +500,6 @@ export default function HomePage({ start }: {
 
         <div className="pl-wrap pl-gap-lg">
           <MissionRail />
-        </div>
-
-        <div className="pl-wrap">
-          <div className="pl-bank pl-bank--instr pl-bank--2">
-            <IssPlate iss={iss} failed={issFailed} />
-            <QuizPlate />
-          </div>
         </div>
 
         <div className="pl-wrap">

@@ -19,7 +19,7 @@ import { Ico } from '@/app/_plate/Instruments'
 import { WINKEL_NAAM, nasaBeeld, nasaPagina, type Winkel } from '@/lib/uitrusting'
 import { KALENDER_PRIJS, KALENDER_JAAR } from '@/lib/hemelkalender'
 import { BestelRegel } from '@/app/_plate/Cadeautijd'
-import { KLASSEN, NIET_DOEN, CADEAU_KOP, GRATIS_BEELD, type Beeld } from '@/lib/cadeaugids'
+import { KLASSEN, NIET_DOEN, VOOR_KIND, CADEAU_KOP, GRATIS_BEELD, type Beeld, type Cadeau } from '@/lib/cadeaugids'
 
 const TOTAAL = KLASSEN.reduce((n, k) => n + k.cadeaus.length, 0)
 
@@ -40,6 +40,38 @@ function Plaat({ b, label = 'Wat je ziet' }: { b: Beeld; label?: string }) {
         <span className="pl-ustap__c">{b.credit}</span>
       </figcaption>
     </figure>
+  )
+}
+
+/* Eén cadeau: naam, voor wie, waarom en de winkelknoppen (rel="sponsored"). */
+function CadeauKaart({ product: p, voorWie }: Cadeau) {
+  const winkels = (Object.keys(p.links) as Winkel[]).filter(w => p.links[w])
+  return (
+    <li className="pl-ukaart pl-lift">
+      <div className="pl-ukaart__kop">
+        <h3 className="pl-h3">{p.naam}</h3>
+        {p.zelf && <span className="pl-ukaart__zelf pl-label pl-label--stamp">Gebruik ik zelf</span>}
+      </div>
+      <p className="pl-body-s"><span className="pl-label">Voor wie</span> {voorWie}</p>
+      <p className="pl-body-s">{p.waarom}</p>
+      {winkels.length > 0 && (
+        <div className="pl-ukaart__winkels">
+          {winkels.map(w => (
+            <a
+              key={w}
+              href={p.links[w]}
+              className="pl-btn"
+              target="_blank"
+              rel="sponsored noopener"
+              aria-label={`${p.naam} bekijken bij ${WINKEL_NAAM[w]} (opent in nieuw tabblad)`}
+            >
+              {WINKEL_NAAM[w]}
+              <Ico.arrow />
+            </a>
+          ))}
+        </div>
+      )}
+    </li>
   )
 }
 
@@ -75,6 +107,11 @@ export default function Cadeaugids() {
                     <span className="pl-label pl-num">{k.cadeaus.length} {k.cadeaus.length === 1 ? 'tip' : 'tips'}</span>
                   </a>
                 ))}
+                <a href="#pl-cadeau-kind" className="pl-ustappen__a">
+                  <span className="pl-label pl-label--stamp pl-num">Kind</span>
+                  <span className="pl-ustappen__t">Voor een kind</span>
+                  <span className="pl-label pl-num">{VOOR_KIND.cadeaus.length} tips</span>
+                </a>
               </nav>
 
               <AffiliateMelding />
@@ -86,6 +123,38 @@ export default function Cadeaugids() {
         {/* ══ Voor iedereen: de kalender ══ */}
         <section className="pl-wrap" aria-label="Hemelkalender 2027">
           <KalenderVerwijzing tekst={`Het kleinste cadeau, ${KALENDER_PRIJS}: de Hemelkalender ${KALENDER_JAAR}. Elke nacht de maan en per maand wat er boven Nederland te zien is, met een NASA-beeld per maand. Een pdf om zelf te printen, dus ook op het laatste moment nog op tijd.`} />
+        </section>
+
+        {/* ══ Niet doen ══ */}
+        <section className="pl-wrap" aria-labelledby="pl-cadeau-niet">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-cadeau-niet" className="pl-h2">Wat je beter niet geeft</h2>
+              <span className="pl-label">Drie miskopen</span>
+            </div>
+          </div>
+          <ul className="pl-ukaarten pl-cadeaus">
+            {NIET_DOEN.map(f => (
+              <li key={f.titel} className="pl-ukaart">
+                <h3 className="pl-h3">{f.titel}</h3>
+                <p className="pl-body-s">{f.tekst}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ══ Voor een kind ══ */}
+        <section id="pl-cadeau-kind" className="pl-wrap" aria-labelledby="pl-cadeau-kind-t">
+          <div className="pl-band">
+            <div className="pl-band__t">
+              <h2 id="pl-cadeau-kind-t" className="pl-h2">Voor een kind</h2>
+              <span className="pl-body-s">{VOOR_KIND.intro}</span>
+            </div>
+            <p className="pl-label pl-label--stamp pl-num">{VOOR_KIND.cadeaus.length} tips</p>
+          </div>
+          <ul className="pl-ukaarten pl-cadeaus">
+            {VOOR_KIND.cadeaus.map(c => <CadeauKaart key={c.product.naam} {...c} />)}
+          </ul>
         </section>
 
         {/* ══ De prijsklassen ══ */}
@@ -104,36 +173,7 @@ export default function Cadeaugids() {
               <div className="pl-ustap__kolom">
                 <p className="pl-ustap__intro">{k.intro}</p>
                 <ul className="pl-ukaarten">
-                  {k.cadeaus.map(({ product: p, voorWie }) => {
-                    const winkels = (Object.keys(p.links) as Winkel[]).filter(w => p.links[w])
-                    return (
-                      <li key={p.naam} className="pl-ukaart pl-lift">
-                        <div className="pl-ukaart__kop">
-                          <h3 className="pl-h3">{p.naam}</h3>
-                          {p.zelf && <span className="pl-ukaart__zelf pl-label pl-label--stamp">Gebruik ik zelf</span>}
-                        </div>
-                        <p className="pl-body-s"><span className="pl-label">Voor wie</span> {voorWie}</p>
-                        <p className="pl-body-s">{p.waarom}</p>
-                        {winkels.length > 0 && (
-                          <div className="pl-ukaart__winkels">
-                            {winkels.map(w => (
-                              <a
-                                key={w}
-                                href={p.links[w]}
-                                className="pl-btn"
-                                target="_blank"
-                                rel="sponsored noopener"
-                                aria-label={`${p.naam} bekijken bij ${WINKEL_NAAM[w]} (opent in nieuw tabblad)`}
-                              >
-                                {WINKEL_NAAM[w]}
-                                <Ico.arrow />
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </li>
-                    )
-                  })}
+                  {k.cadeaus.map(c => <CadeauKaart key={c.product.naam} {...c} />)}
                 </ul>
               </div>
             </div>
@@ -168,24 +208,6 @@ export default function Cadeaugids() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* ══ Niet doen ══ */}
-        <section className="pl-wrap" aria-labelledby="pl-cadeau-niet">
-          <div className="pl-band">
-            <div className="pl-band__t">
-              <h2 id="pl-cadeau-niet" className="pl-h2">Wat je beter niet geeft</h2>
-              <span className="pl-label">Drie miskopen</span>
-            </div>
-          </div>
-          <ul className="pl-ukaarten pl-cadeaus">
-            {NIET_DOEN.map(f => (
-              <li key={f.titel} className="pl-ukaart">
-                <h3 className="pl-h3">{f.titel}</h3>
-                <p className="pl-body-s">{f.tekst}</p>
-              </li>
-            ))}
-          </ul>
         </section>
 
         <section className="pl-wrap" aria-label="Steun NightGazer">

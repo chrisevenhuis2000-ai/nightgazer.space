@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-19-treble-clef-unusual-x-ray-hot-radio-source/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/trebleclef.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Kosmische vioolsleutel ontrafeld: LOFAR en röntgentelescopen verklaren raadselachtige radiobron"
-imageCredit: "NASA"
+imageCredit: "NASA/CXC/INAF-IRA/A. Botteon e.a., UKIDSS-GPS, ASTRON/LOFAR"
 vernieuwd: "2026-11-06"
 kernpunten: ["De radiobron Treble Clef, ruim 2 miljoen lichtjaar groot, lijkt op een vioolsleutel en is in zichtbaar licht verborgen achter de Melkweg.","Röntgenwaarnemingen met Chandra en eROSITA wijzen erop dat oude deeltjes van een superzwaar zwart gat door een botsing tussen clusters opnieuw zijn opgeladen.","De radiobeelden zijn gemaakt met LOFAR, de Nederlandse radiotelescoop van ASTRON."]
 kerncijfers: [{"waarde":"2 miljoen","eenheid":"lichtjaar","label":"omvang van Treble Clef"},{"waarde":"2004","eenheid":"","label":"eerste onderzoek naar object"},{"waarde":"19 oktober 2026","eenheid":"","label":"datum APOD-publicatie"}]

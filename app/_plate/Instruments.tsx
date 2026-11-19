@@ -321,7 +321,10 @@ export function DezeWeekPlate() {
 
 /* ══ 3. APOD ═══════════════════════════════════════════════════════════ */
 
-export function ApodPlate({ apod }: { apod: APODData | null }) {
+/* De NASA-tekst is Engels en kwam soms als ruwe paginatekst binnen
+   ("Discover the cosmos! Each day..."). Daarom alleen de titel, en een
+   Nederlandse regel: met een link naar ons eigen artikel als dat er is. */
+export function ApodPlate({ apod, artikel }: { apod: APODData | null; artikel?: { slug: string; title: string } }) {
   return (
     <Cell
       id="pl-apod"
@@ -349,9 +352,13 @@ export function ApodPlate({ apod }: { apod: APODData | null }) {
         <figcaption style={{ marginTop: 13 }}>
           {apod ? (
             <>
-              <strong className="pl-h3" style={{ display: 'block' }}>{apod.title}</strong>
-              <p className="pl-body-s" style={{ marginTop: 7, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                {apod.explanation}
+              <strong className="pl-h3" style={{ display: 'block' }}>
+                {artikel ? <Link href={`/nieuws/${artikel.slug}/`}>{artikel.title}</Link> : apod.title}
+              </strong>
+              <p className="pl-body-s" style={{ marginTop: 7 }}>
+                {artikel
+                  ? 'De astronomiefoto van vandaag, gekozen door NASA. Lees wat je ziet in het Nederlands.'
+                  : 'De astronomiefoto van vandaag, gekozen door NASA. De uitleg staat in het Engels op de site van NASA.'}
               </p>
             </>
           ) : (

@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-18-sonified-eagle-nebula-pillars/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/svs/a030000/a031000/a031007/STScI-H-M16_1x-1920x1080-00001_print.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Luister naar de Zuilen der Schepping: NASA zet de Arendnevel om in geluid"
-imageCredit: "NASA"
+imageCredit: "NASA, ESA en The Hubble Heritage Project (STScI/AURA)"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's Astronomy Picture of the Day van 18 oktober 2026 is een sonificatie van de Arendnevel M16.","Het geluid is gebaseerd op een gecombineerd beeld van Hubble (zichtbaar licht) en Chandra (röntgenstraling), waarbij de hoogte in het beeld de toonhoogte bepaalt.","De stofzuilen worden langzaam afgebroken door straling en sterrenwind en lijken op de omgeving waarin onze zon ontstond."]
 kerncijfers: [{"waarde":"6500","eenheid":"lichtjaar","label":"afstand tot Arendnevel"},{"waarde":"M16","eenheid":"","label":"catalogusnummer Arendnevel"},{"waarde":"18 oktober 2026","eenheid":"","label":"datum van de APOD"}]

@@ -344,9 +344,6 @@ const VEHICLE_Q: Record<string, string> = {
   'falcon 9': 'falcon 9 launch',
   'falcon heavy': 'falcon heavy launch',
   starship: 'starship super heavy',
-  electron: 'rocket lab electron launch',
-  'ariane 6': 'ariane 6 rocket', 'ariane 62': 'ariane 6 rocket', 'ariane 64': 'ariane 6 rocket',
-  'vega-c': 'vega rocket launch',
   'new glenn': 'new glenn rocket',
   sls: 'space launch system rocket',
   atlas: 'atlas v launch', vulcan: 'vulcan centaur rocket',
@@ -369,16 +366,43 @@ function missionQuery(vehicle: string, agency: string, body: string): string {
   return 'rocket launch spacecraft'
 }
 
+/** Vaste lanceerfoto per voertuig uit de NASA-beeldbank (gecontroleerd
+ *  19-11-2026). Voor raketten zonder goede NASA-foto (Ariane, Vega, Electron)
+ *  valt de kaart terug op de bestemming, nooit op een willekeurige treffer. */
+const NASA = (id: string) => `https://images-assets.nasa.gov/image/${id}/${id}~medium.jpg`
+const VOERTUIG_BEELD: [string, string[]][] = [
+  ['falcon heavy', ['KSC-20180206-PH_KLS02_0040', 'KSC-20180206-PH_KLS02_0046', 'KSC-20180206-PH_KLS02_0036']],
+  ['falcon 9', ['KSC-20190302-PH_KLS01_0022', 'KSC-20190302-PH_AWG06_0008', 'KSC-20190302-PH_RAR01_0004']],
+  ['sls', ['KSC-20221116-PH-ILW01_0008']],
+  ['atlas', ['KSC-20160322-PH-AWG02_0025']],
+]
+/** `sleutel` (de missie-id) kiest een vaste foto uit de reeks, zodat drie
+ *  Falcon 9-vluchten naast elkaar niet drie keer hetzelfde beeld tonen. */
+export function voertuigBeeld(vehicle?: string, sleutel = ''): string | undefined {
+  const v = (vehicle || '').toLowerCase()
+  const reeks = VOERTUIG_BEELD.find(([k]) => v.includes(k))?.[1]
+  if (!reeks) return undefined
+  const h = sleutel.split('').reduce((a, c) => (a * 31 + c.charCodeAt(0)) & 0xffff, 0)
+  return NASA(reeks[h % reeks.length])
+}
+
 /** Haalt beeld op voor de meegegeven missies. Faalt stil: geen beeld is
  *  beter dan een verkeerd beeld bij een missie. */
 export function useMissionImages(
-  items: { id: string; vehicle?: string; agency: string; body: string }[],
+  items: { id: string; vehicle?: string; agency: string; body: string; beeld?: string }[],
   limit = 8,
 ): Record<string, string> {
   const [images, setImages] = useState<Record<string, string>>({})
   const asked = useRef<Set<string>>(new Set())
 
   useEffect(() => {
+    // Een gecureerde foto of een vaste voertuigfoto gaat voor: de zoekvraag
+    // op voertuig gaf soms een spreker of een directeur in plaats van een raket.
+    const vast = items.filter(m => !asked.current.has(m.id) && (m.beeld || voertuigBeeld(m.vehicle, m.id)))
+    if (vast.length) {
+      vast.forEach(m => asked.current.add(m.id))
+      setImages(prev => ({ ...prev, ...Object.fromEntries(vast.map(m => [m.id, (m.beeld || voertuigBeeld(m.vehicle, m.id)) as string])) }))
+    }
     const todo = items.filter(m => !asked.current.has(m.id)).slice(0, limit)
     if (!todo.length) return
     todo.forEach(m => asked.current.add(m.id))

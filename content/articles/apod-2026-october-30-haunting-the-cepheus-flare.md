@@ -10,7 +10,7 @@ source: "NASA"
 sourceUrl: "https://science.nasa.gov/image-article/apod-2026-october-30-haunting-the-cepheus-flare/"
 imageUrl: "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/october/CepheusFlare_Tondinelli.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
 imageAlt: "Spookachtige stofwolken in Cepheus op Halloween-foto van NASA"
-imageCredit: "NASA"
+imageCredit: "Mirko Tondinelli"
 vernieuwd: "2026-11-06"
 kernpunten: ["NASA's APOD toont voor Halloween spookachtige stofwolken in het sterrenbeeld Cepheus, aan de rand van de Cepheus Flare.","In de Spooknevel (vdB 141) storten dichte kernen van gas en stof in: de vroegste fase van stervorming.","De blauwe Irisnevel weerkaatst het licht van jonge, hete sterren van NGC 7023."]
 kerncijfers: [{"waarde":"1200","eenheid":"lichtjaar","label":"afstand Cepheus Flare"},{"waarde":"2","eenheid":"lichtjaar","label":"minimale grootte Spooknevel"}]

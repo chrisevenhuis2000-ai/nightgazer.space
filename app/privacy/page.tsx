@@ -1,87 +1,128 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { SiteNav } from '@/app/components/SiteNav'
+import TekstPlaat, { type TekstArtikel } from '@/app/_plate/TekstPlaat'
+import { ogBeeld } from '@/lib/og'
+
+const BIJGEWERKT = '19 november 2026'
+
+export const metadata: Metadata = {
+  title:       'Privacyverklaring',
+  description: 'Welke gegevens NightGazer bewaart en welke niet: geen account, geen eigen cookies, en analytische cookies alleen na je toestemming.',
+  alternates:  { canonical: '/privacy/' },
+  openGraph: {
+    images:      ogBeeld(),
+    title:       'Privacyverklaring — NightGazer',
+    description: 'Welke gegevens NightGazer bewaart en welke niet.',
+    url:         '/privacy/',
+  },
+}
+
+const A = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="pl-voorw__a">{children}</a>
+)
+
+const ARTIKELEN: TekstArtikel[] = [
+  {
+    kop: 'Wat we zelf bewaren',
+    tekst: <>
+      <p>
+        Je hebt geen account nodig en we vragen geen naam of adres. In je eigen browser bewaren we
+        een paar dingen in <code>localStorage</code>, zoals je quizantwoorden van vandaag en je keuze
+        in de cookiemelding. Dat blijft op je apparaat.
+      </p>
+      <p>
+        Onze eigen bezoekersteller telt paginaweergaven en een paar klikken via een eigen
+        Cloudflare-server. Daarbij bewaren we alleen de pagina, de site waar je vandaan kwam, het land
+        en het soort apparaat. Geen IP-adres, geen cookie en niets waarmee je te herkennen bent.
+      </p>
+    </>,
+  },
+  {
+    kop: 'De Hemelbrief',
+    tekst: <p>
+      Meld je je aan voor de wekelijkse mail, dan bewaart MailerLite je e-mailadres en het moment van
+      aanmelden. Je staat pas op de lijst nadat je de bevestigingsmail hebt aangeklikt. Elke mail heeft
+      een afmeldlink, en afmelden haalt je van de lijst. We gebruiken je adres alleen voor de
+      Hemelbrief. Zie het <A href="https://www.mailerlite.com/legal/privacy-policy">privacybeleid van MailerLite</A>.
+    </p>,
+  },
+  {
+    kop: 'Meldingen',
+    tekst: <p>
+      Zet je op <Link href="/sterrenkijken/" className="pl-voorw__a">Sterrenkijken</Link> meldingen aan,
+      dan bewaren we het adres dat je browser daarvoor aanmaakt, de meldingen die je koos en je plaats,
+      afgerond, voor het weer en de ISS. Zet je de meldingen uit, dan wissen we dat meteen. Meldingen
+      lopen via de meldingsdienst van je browser (Google, Apple of Mozilla).
+    </p>,
+  },
+  {
+    kop: 'Statistieken',
+    tekst: <ul>
+      <li>
+        <strong>Google Analytics (GA4)</strong> plaatst pas cookies als je in de melding onderaan op
+        Accepteren klikt. Zonder toestemming stuurt het alleen cookieloze, geanonimiseerde signalen
+        (Consent Mode).
+      </li>
+      <li>
+        <strong>Cloudflare Web Analytics</strong> telt bezoeken zonder cookies en zonder
+        persoonsgegevens. Zie het <A href="https://www.cloudflare.com/privacypolicy/">privacybeleid van Cloudflare</A>.
+      </li>
+    </ul>,
+  },
+  {
+    kop: 'Advertenties',
+    tekst: <p>
+      Er staan nu geen advertenties op de site. We hebben Google AdSense aangevraagd, en daarvoor laadt
+      de code van Google al wel mee, met advertentiecookies uit. Gaan de advertenties aan, dan vragen
+      we eerst je toestemming via het toestemmingsvenster van Google en passen we deze verklaring aan.
+      Zie <A href="https://policies.google.com/technologies/partner-sites">hoe Google gegevens gebruikt</A>.
+    </p>,
+  },
+  {
+    kop: 'Winkellinks',
+    tekst: <p>
+      De links naar Astroshop en Amazon.nl op Uitrusting, Eerste telescoop en de cadeaugids zijn
+      affiliate-links. Wij plaatsen daarvoor geen cookies. Klik je erop, dan kan de winkel op zijn
+      eigen site cookies plaatsen om je aankoop aan NightGazer toe te schrijven.
+    </p>,
+  },
+  {
+    kop: 'Andere diensten',
+    tekst: <ul>
+      <li><strong>NASA</strong>, <strong>ESA</strong> en <strong>Pexels</strong> leveren beelden, via onze eigen server.</li>
+      <li><strong>Open-Meteo</strong> levert het hemelweer per uur; je browser vraagt dat rechtstreeks op, met je plaats afgerond.</li>
+      <li><strong>CelesTrak</strong> levert de baangegevens van de ISS; je browser rekent daarmee zelf de overkomsten uit.</li>
+      <li><strong>Cloudflare</strong> host de site. Zoals elke host houdt het korte tijd serverlogboeken bij.</li>
+    </ul>,
+  },
+  {
+    kop: 'Cookies',
+    tekst: <p>
+      De site zelf plaatst geen cookies. Alleen Google Analytics doet dat, en alleen na je ja. Je kunt
+      je keuze altijd wijzigen via &lsquo;Cookie-instellingen&rsquo; onderaan elke pagina.
+    </p>,
+  },
+  {
+    kop: 'Vragen',
+    tekst: <p>
+      Vragen over je gegevens, of wil je dat we iets wissen? Mail naar{' '}
+      <a href="mailto:contact@nightgazer.space" className="pl-voorw__a">contact@nightgazer.space</a>.
+    </p>,
+  },
+]
 
 export default function PrivacyPage() {
   return (
-    <>
-      <SiteNav />
-      <main className="main-pad" style={{ maxWidth: 'var(--max-w)', margin: '0 auto', paddingTop: 48, paddingBottom: 80 }}>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#7A86A8', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Link href="/" style={{ color: '#378ADD', textDecoration: 'none' }}>Home</Link>
-          <span style={{ opacity: 0.4 }}>›</span>
-          <span>Privacy</span>
-        </div>
-
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.15, marginBottom: 8 }}>
-          Privacyverklaring
-        </h1>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#378ADD', marginBottom: 40 }}>
-          Bijgewerkt: mei 2026
-        </p>
-
-        <div style={{ display: 'grid', gap: 24, maxWidth: 720 }}>
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Welke gegevens verzamelen we?</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              NightGazer verzamelt geen persoonlijke gegevens. Er is geen account- of registratiesysteem. De enige lokale opslag die we gebruiken is <code style={{ background: '#1a1b3a', padding: '1px 6px', borderRadius: 2, fontSize: '0.82rem', color: '#3dcfdf' }}>localStorage</code> in je browser — uitsluitend om je quizantwoorden van de dag te onthouden. Deze gegevens verlaten nooit je apparaat.
-            </p>
-          </section>
-
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Serverlogboeken</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              Onze hostingprovider slaat standaard serverlogboeken op, zoals IP-adressen en bezochte pagina&apos;s. Deze gegevens zijn anoniem en worden niet door ons gebruikt voor profilering.
-            </p>
-          </section>
-
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Derde partijen</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75, marginBottom: 16 }}>
-              NightGazer maakt gebruik van de volgende externe diensten:
-            </p>
-            <ul style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 2, paddingLeft: 20 }}>
-              <li><strong style={{ color: '#c8d0e0' }}>Google AdSense</strong> — voor het tonen van advertenties. Zonder uw toestemming toont Google alleen niet-gepersonaliseerde of beperkte advertenties; cookies voor gepersonaliseerde advertenties worden pas geplaatst na uw toestemming. Zie het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>privacybeleid van Google</a>.</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Astroshop en Amazon.nl</strong> — de winkellinks op de pagina's Uitrusting, Eerste telescoop en Cadeaugids zijn affiliate-links. NightGazer plaatst zelf geen cookies voor deze links; klik je erop, dan kan de winkel op zijn eigen site cookies plaatsen om je aankoop aan NightGazer toe te schrijven. Daarop is het privacybeleid van die winkel van toepassing.</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Google Analytics (GA4)</strong> — voor anonieme bezoekersstatistieken. Analytische cookies worden pas geplaatst na uw toestemming; zonder toestemming stuurt Google Analytics alleen cookieloze, geanonimiseerde signalen (Consent Mode).</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Cloudflare Web Analytics</strong> — voor het tellen van bezoeken. Dit werkt zonder cookies en zonder persoonsgegevens op te slaan; er wordt geen informatie op uw apparaat bewaard. Zie het <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>privacybeleid van Cloudflare</a>.</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Eigen bezoekersteller</strong> — NightGazer telt zelf paginaweergaven en een paar klikken (zoals het aanzetten van meldingen) via een eigen Cloudflare-server. Daarbij worden alleen de pagina, de site waar u vandaan kwam, het land en het soort apparaat bewaard. Geen IP-adres, geen cookie en geen kenmerk waarmee u te herkennen bent; er wordt niets op uw apparaat opgeslagen.</li>
-              <li><strong style={{ color: '#c8d0e0' }}>De Hemelbrief (MailerLite)</strong> — meld je je aan voor de wekelijkse mail, dan bewaart MailerLite je e-mailadres en het moment van aanmelden. Je staat pas op de lijst nadat je de bevestigingsmail hebt aangeklikt. Elke mail heeft een afmeldlink; afmelden wist je van de lijst. We gebruiken je adres alleen voor de Hemelbrief. Zie het <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>privacybeleid van MailerLite</a>.</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Meldingen</strong> — zet u op Sterrenkijken meldingen aan, dan bewaren we het adres dat uw browser voor meldingen aanmaakt, de gekozen meldingen en de plaats waarvoor u ze wilt (afgerond, voor het weer en de ISS). Zet u de meldingen uit, dan wissen we dat meteen. Meldingen lopen via de meldingsdienst van uw browser (Google, Apple of Mozilla).</li>
-              <li><strong style={{ color: '#c8d0e0' }}>NASA Open APIs</strong> — voor dagelijkse astronomie-foto&apos;s en afbeeldingen (geen tracking)</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Cloudflare</strong> — voor beeldproxy en CDN-diensten; eigen privacybeleid van toepassing</li>
-              <li><strong style={{ color: '#c8d0e0' }}>wheretheiss.at</strong> — voor live ISS-positiedata (geen tracking)</li>
-              <li><strong style={{ color: '#c8d0e0' }}>Pexels</strong> — voor aanvullende ruimtebeelden (via onze server, niet direct vanuit je browser)</li>
-            </ul>
-            <p style={{ fontSize: '0.82rem', color: '#6A7B9C', lineHeight: 1.75, marginTop: 16 }}>
-              Meer informatie over hoe Google gegevens gebruikt:{' '}
-              <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style={{ color: '#378ADD', textDecoration: 'none' }}>policies.google.com/technologies/partner-sites</a>
-            </p>
-          </section>
-
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Cookies</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              NightGazer gebruikt functionele opslag (zoals uw quizantwoorden). Toestemming voor analytische cookies (Google Analytics) vragen we via een eigen melding onderaan het scherm, met de keuze Accepteren of Weigeren. Uw keuze bewaren we op uw eigen apparaat. Advertentiecookies (Google AdSense) worden niet geplaatst; zodra we die gaan gebruiken, vragen we daar apart toestemming voor via het toestemmingsvenster van Google, een door Google gecertificeerd toestemmingsplatform volgens het IAB-TCF. U kunt uw keuze op elk moment wijzigen via ‘Cookie-instellingen’ onderaan elke pagina.
-            </p>
-          </section>
-
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Vragen?</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              Vragen over deze privacyverklaring? Neem contact op via{' '}
-              <a href="mailto:contact@nightgazer.space" style={{ color: '#378ADD', textDecoration: 'none' }}>contact@nightgazer.space</a>.
-            </p>
-          </section>
-        </div>
-
-        <div style={{ marginTop: 48 }}>
-          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-mono)', fontSize: '0.76rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#378ADD', textDecoration: 'none' }}>
-            ← Terug naar home
-          </Link>
-        </div>
-      </main>
-    </>
+    <TekstPlaat
+      id="privacy"
+      current="privacy"
+      titel="Privacyverklaring"
+      sub={<>Laatst bijgewerkt <span className="pl-num">{BIJGEWERKT}</span></>}
+      intro={<p>
+        Kort gezegd: je hebt geen account nodig, de site plaatst zelf geen cookies, en Google Analytics
+        alleen als je daar ja op zegt. Hieronder staat precies wat er wordt bewaard en door wie.
+      </p>}
+      artikelen={ARTIKELEN}
+    />
   )
 }

@@ -35,14 +35,14 @@ const jetbrains = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nightgazer.space'),
-  title:       { default: 'NightGazer — Astronomie voor Iedereen', template: '%s | NightGazer' },
-  description: 'Sterrenkijken vanuit Nederland: wat je vannacht ziet, rustige uitleg over het heelal en eerlijke gidsen voor je eerste telescoop.',
+  title:       { default: 'NightGazer · Wat zie je vannacht? Sterrenkijken vanuit Nederland', template: '%s | NightGazer' },
+  description: 'Wat zie je vannacht? Sterrenkijken vanuit Nederland, rustig uitgelegd: elke avond iets om te zien, het ruimtenieuws in gewoon Nederlands en eerlijke gidsen voor je eerste telescoop.',
   keywords:    ['astronomie', 'ruimtevaart', 'NASA', 'sterrenkijken', 'JWST', 'ruimtenieuws', 'nightgazer'],
   openGraph: {
     siteName: 'NightGazer',
     locale:   'nl_NL',
     type:     'website',
-    images:   [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer — Astronomie voor Iedereen' }],
+    images:   [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer: sterrenkijken vanuit Nederland' }],
   },
   twitter: { card: 'summary_large_image', site: '@nightgazerspace' },
   other:   { 'google-adsense-account': ADSENSE_CLIENT },
