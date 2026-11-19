@@ -3,12 +3,14 @@ import Link from 'next/link'
 import { SiteNav } from '@/app/components/SiteNav'
 import { SiteFooter } from '@/app/components/SiteFooter'
 import { STEUN_URL, STEUN_NAAM, STEUN_AFSCHRIFT } from '@/lib/steun'
+import { ogBeeld } from '@/lib/og'
 
 export const metadata: Metadata = {
   title:       'Over de maker',
   description: 'NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen.',
   alternates:  { canonical: '/over/' },
   openGraph: {
+    images:      ogBeeld(),
     title:       'Over de maker — NightGazer',
     description: 'NightGazer wordt gemaakt door Crix, amateur-astronoom en astrofotograaf uit Groningen.',
     url:         '/over/',
