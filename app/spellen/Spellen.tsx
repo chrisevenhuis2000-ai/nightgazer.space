@@ -133,6 +133,42 @@ function VraagTeaser({ klaar }: { klaar: boolean }) {
   )
 }
 
+/* Pixelplaatje voor de zandbak: een zon, een gestippelde baan en een planeet. */
+function zandbakPixels() {
+  const px: { x: number; y: number; c: string }[] = []
+  const N = 24, cx = 11, cy = 12
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    const d = Math.hypot(x - cx, y - cy)
+    if (d <= 1.2) px.push({ x, y, c: '#FFF3B8' })
+    else if (d <= 2.3) px.push({ x, y, c: '#FFCF4D' })
+    else if (d <= 3.1) px.push({ x, y, c: '#F2992E' })
+    else if (Math.abs(d - 8.5) < 0.5 && (x + y) % 2 === 0) px.push({ x, y, c: '#2E3A6E' })
+  }
+  const planeet = [[18, 7, '#7FB8F0'], [19, 7, '#3B74C9'], [18, 8, '#4E9A5B'], [19, 8, '#142449'], [17, 7, '#3B74C9'], [17, 8, '#7FB8F0'], [18, 6, '#3B74C9'], [18, 9, '#142449']] as const
+  for (const [x, y, c] of planeet) px.push({ x, y, c })
+  px.push({ x: 21, y: 5, c: '#A8A8B6' })
+  for (const [x, y] of [[2, 3], [21, 20], [5, 21], [14, 2], [22, 13]]) px.push({ x, y, c: '#4A5480' })
+  return px
+}
+
+function ZandbakTeaser() {
+  return (
+    <Link href="/spellen/zandbak/" className="pl-hft" onClick={() => telGebeurtenis('zandbak-teaser', location.pathname)}>
+      <span className="pl-hft__img pl-hft__img--pixel" aria-hidden="true">
+        <svg viewBox="0 0 24 24" shapeRendering="crispEdges">
+          {zandbakPixels().map(p => <rect key={`${p.x}-${p.y}`} x={p.x} y={p.y} width="1" height="1" fill={p.c} />)}
+        </svg>
+      </span>
+      <span className="pl-hft__t">
+        <span className="pl-label">Wanneer je wilt</span>
+        <span className="pl-hft__kop">Ruimtezandbak</span>
+        <span className="pl-body-s">Bouw je eigen zonnestelsel en kijk wat de zwaartekracht doet. Wat als de aarde twee manen had?</span>
+        <span className="pl-hft__cta">Speel <Ico.arrow /></span>
+      </span>
+    </Link>
+  )
+}
+
 export default function Spellen() {
   const [st, setSt] = useState<Stand | null>(null)
 
@@ -175,6 +211,11 @@ export default function Spellen() {
               <VraagTeaser klaar={!!st?.vraag} />
             </div>
           </div>
+        </section>
+
+        <section className="pl-wrap" aria-labelledby="sp-vrij">
+          <h2 id="sp-vrij" className="pl-label">Vrij spelen</h2>
+          <div className="sp-vrij"><ZandbakTeaser /></div>
         </section>
 
         <section className="pl-wrap" aria-labelledby="sp-zo">

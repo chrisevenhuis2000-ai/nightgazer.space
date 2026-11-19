@@ -30,6 +30,7 @@ const pages = [
   { loc: '/spellen',                       changefreq: 'daily',   priority: '0.5' },
   { loc: '/spellen/hemelfoto',             changefreq: 'daily',   priority: '0.6' },
   { loc: '/spellen/sterrenbeeld',          changefreq: 'daily',   priority: '0.6' },
+  { loc: '/spellen/zandbak',               changefreq: 'monthly', priority: '0.5' },
   { loc: '/educatie',      changefreq: 'monthly', priority: '0.6' },
   { loc: '/over',          changefreq: 'yearly',  priority: '0.3' },
   { loc: '/contact',       changefreq: 'yearly',  priority: '0.3' },
