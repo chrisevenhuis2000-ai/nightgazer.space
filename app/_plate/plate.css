@@ -4148,6 +4148,12 @@ a:hover .pl-emulsion > img,
   text-decoration-thickness: 1px;
 }
 .pl .pl-voorw__a:hover { text-decoration-thickness: 2px; }
+.pl-voorw__tekst > * + * { margin-top: 0.75em; }
+.pl-voorw__tekst ul { margin: 0.5em 0 0; padding-left: 1.2em; }
+.pl-voorw__tekst li + li { margin-top: 0.4em; }
+.pl-voorw__intro > * + * { margin-top: 0.75em; }
+.pl-voorw__knop { margin-top: 14px; }
+.pl-voorw__klein { font-size: 0.86em; color: var(--pl-ink-2, var(--pl-ink)); }
 
 /* ══════════════════════════════════════════════════════════════════════════
    De missieplaat — /missies/[slug]

@@ -1,63 +1,77 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { SiteNav } from '@/app/components/SiteNav'
+import TekstPlaat, { type TekstArtikel } from '@/app/_plate/TekstPlaat'
+import { ogBeeld } from '@/lib/og'
+
+export const metadata: Metadata = {
+  title:       'Contact',
+  description: 'Een vraag, een tip of een fout gezien op NightGazer? Mail Crix; je krijgt binnen een week antwoord.',
+  alternates:  { canonical: '/contact/' },
+  openGraph: {
+    images:      ogBeeld(),
+    title:       'Contact — NightGazer',
+    description: 'Een vraag, een tip of een fout gezien op NightGazer? Mail Crix.',
+    url:         '/contact/',
+  },
+}
+
+const MAIL = 'contact@nightgazer.space'
+
+const ARTIKELEN: TekstArtikel[] = [
+  {
+    kop: 'Vragen, tips of een fout gezien?',
+    tekst: <>
+      <p>
+        Zag je een fout in een artikel, klopt een tijd niet, of heb je een idee voor de site? Mail het
+        gerust. Een foto van wat je zag, of je plaats en het tijdstip, helpt bij het uitzoeken.
+      </p>
+      <p className="pl-voorw__knop">
+        <a href={`mailto:${MAIL}`} className="pl-btn pl-btn--act">{MAIL}</a>
+      </p>
+    </>,
+  },
+  {
+    kop: 'Je eigen hemelfoto',
+    tekst: <p>
+      Heb je het noorderlicht, een meteoor of de Maan op de foto gezet? Stuur hem gerust mee, met je
+      voornaam en plaats. Willen we hem laten zien, dan vragen we eerst of dat mag, en staat je naam
+      erbij.
+    </p>,
+  },
+  {
+    kop: 'Samenwerken',
+    tekst: <p>
+      Organiseer je met een sterrenwacht of vereniging een kijkavond of lezing? Laat het weten, dan
+      kijken we of we hem kunnen noemen.
+    </p>,
+  },
+  {
+    kop: 'Sociale media',
+    tekst: <p>
+      Je vindt NightGazer ook op{' '}
+      <a href="https://www.instagram.com/nightgazer.space/" className="pl-voorw__a" target="_blank" rel="noopener">Instagram</a>,{' '}
+      <a href="https://www.facebook.com/profile.php?id=61589722948899" className="pl-voorw__a" target="_blank" rel="noopener">Facebook</a> en{' '}
+      <a href="https://x.com/nightgazerspace" className="pl-voorw__a" target="_blank" rel="noopener">X</a>. Een
+      berichtje daar mag ook, maar mail lezen we het snelst.
+    </p>,
+  },
+  {
+    kop: 'Reactietijd',
+    tekst: <p>
+      NightGazer is een hobbyproject van één persoon. Je krijgt binnen een week antwoord. Meer over de
+      maker lees je op <Link href="/over/" className="pl-voorw__a">Over NightGazer</Link>.
+    </p>,
+  },
+]
 
 export default function ContactPage() {
   return (
-    <>
-      <SiteNav />
-      <main className="main-pad" style={{ maxWidth: 'var(--max-w)', margin: '0 auto', paddingTop: 48, paddingBottom: 80 }}>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#7A86A8', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Link href="/" style={{ color: '#378ADD', textDecoration: 'none' }}>Home</Link>
-          <span style={{ opacity: 0.4 }}>›</span>
-          <span>Contact</span>
-        </div>
-
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.15, marginBottom: 8 }}>
-          Contact
-        </h1>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#378ADD', marginBottom: 40 }}>
-          We horen graag van je
-        </p>
-
-        <div style={{ display: 'grid', gap: 24, maxWidth: 720 }}>
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Vragen of feedback?</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75, marginBottom: 20 }}>
-              Heb je een vraag over de site, ontdekte je een fout in een artikel, of wil je iets melden? We staan open voor suggesties, verbeterpunten en samenwerking.
-            </p>
-            <a
-              href="mailto:contact@nightgazer.space"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 18px', background: 'rgba(55,138,221,0.1)', border: '1px solid rgba(55,138,221,0.35)', borderRadius: 4, color: '#378ADD', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600, transition: 'border-color 0.15s, background 0.15s' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#378ADD'; e.currentTarget.style.background = 'rgba(55,138,221,0.18)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(55,138,221,0.35)'; e.currentTarget.style.background = 'rgba(55,138,221,0.1)' }}
-            >
-              contact@nightgazer.space
-            </a>
-          </section>
-
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Bugs &amp; verbeteringen</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              Technische problemen of ideeën voor nieuwe functies kun je melden via GitHub. We reviewen alle meldingen zo snel mogelijk.
-            </p>
-          </section>
-
-          <section style={{ background: '#12132A', border: '1px solid #252858', borderRadius: 4, padding: '28px 32px' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 12 }}>Reactietijd</h2>
-            <p style={{ fontSize: '0.88rem', color: '#8A9BC4', lineHeight: 1.75 }}>
-              NightGazer is een hobbyproject. We doen ons best om binnen een week te reageren.
-            </p>
-          </section>
-        </div>
-
-        <div style={{ marginTop: 48 }}>
-          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-mono)', fontSize: '0.76rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#378ADD', textDecoration: 'none' }}>
-            ← Terug naar home
-          </Link>
-        </div>
-      </main>
-    </>
+    <TekstPlaat
+      id="contact"
+      current="contact"
+      titel="Contact"
+      sub="We horen graag van je"
+      artikelen={ARTIKELEN}
+    />
   )
 }

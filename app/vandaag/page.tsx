@@ -11,7 +11,7 @@ import { nuInNederland, type DagmapItem, type DagmapRegel } from '@/lib/dagmap'
 
 export const metadata: Metadata = {
   title:       'Vandaag op Instagram',
-  description: 'Het artikel bij de Nightgazer-post van vandaag, en de posts van de afgelopen dagen.',
+  description: 'Het artikel bij de NightGazer-post van vandaag, en de posts van de afgelopen dagen.',
   alternates:  { canonical: '/vandaag/' },
   robots:      { index: false, follow: true },
 }

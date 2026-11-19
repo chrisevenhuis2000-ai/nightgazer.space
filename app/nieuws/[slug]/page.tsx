@@ -67,7 +67,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       // het algemene NightGazer-beeld, anders heeft de kaart er geen.
       images: article.imageUrl
         ? [{ url: IMG(article.imageUrl, 1200), alt: article.title }]
-        : [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer — Astronomie voor Iedereen' }],
+        : [{ url: '/og-image.png', width: 1200, height: 630, alt: 'NightGazer: sterrenkijken vanuit Nederland' }],
     },
   }
 }

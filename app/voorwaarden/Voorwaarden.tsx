@@ -9,12 +9,11 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 import Link from 'next/link'
-import { SiteFooter } from '../components/SiteFooter'
-import { archivo, FOOTER_COLS, PlateHead, editionLabel } from '@/app/_plate/shared'
+import TekstPlaat, { type TekstArtikel } from '@/app/_plate/TekstPlaat'
 
-const BIJGEWERKT = '22 oktober 2026'
+const BIJGEWERKT = '19 november 2026'
 
-const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
+const ARTIKELEN: TekstArtikel[] = [
   {
     kop: 'Inhoud',
     tekst: <>
@@ -35,7 +34,7 @@ const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
   {
     kop: 'Sociale media',
     tekst: <>
-      NightGazer plaatst eigen video&apos;s en berichten op TikTok en Instagram. Daarvoor gebruiken we
+      NightGazer plaatst eigen video&apos;s en berichten op Instagram, Facebook, X, YouTube en TikTok. Daarvoor gebruiken we
       de officiële koppelingen van die platforms. Elke post wordt door een mens gecontroleerd voordat
       hij geplaatst wordt. Op het gebruik van die platforms zijn ook hun eigen voorwaarden van
       toepassing.
@@ -44,9 +43,10 @@ const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
   {
     kop: 'Advertenties',
     tekst: <>
-      De site toont advertenties van Google AdSense. Zie het{' '}
-      <Link href="/privacy/" className="pl-voorw__a">privacybeleid</Link> voor wat dat betekent voor
-      je gegevens.
+      Er staan nu geen advertenties op de site. We hebben Google AdSense aangevraagd; zodra die
+      advertenties aangaan, vragen we eerst je toestemming en passen we deze tekst aan. Zie de{' '}
+      <Link href="/privacy/" className="pl-voorw__a">privacyverklaring</Link> voor wat dat betekent
+      voor je gegevens.
     </>,
   },
   {
@@ -87,42 +87,17 @@ const ARTIKELEN: { kop: string; tekst: React.ReactNode }[] = [
 
 export default function Voorwaarden() {
   return (
-    <div className={`pl ${archivo.variable}`}>
-      <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
-      <PlateHead total={ARTIKELEN.length} edition={editionLabel()} current="voorwaarden" totalLabel="artikelen" />
-
-      <main id="pl-main" tabIndex={-1} className="pl-stack">
-        <section className="pl-wrap" aria-labelledby="pl-voorwaarden">
-          <div className="pl-band">
-            <div className="pl-band__t">
-              <h1 id="pl-voorwaarden" className="pl-h2">Gebruiksvoorwaarden</h1>
-              <span className="pl-label">Laatst bijgewerkt <span className="pl-num">{BIJGEWERKT}</span></span>
-            </div>
-          </div>
-
-          <div className="pl-plate pl-voorw">
-            <div className="pl-edge" aria-hidden="true" />
-            <p className="pl-voorw__intro">
-              NightGazer (nightgazer.space) is een Nederlandstalige website over astronomie en
-              ruimtevaart, gemaakt door Crix, amateur-astronoom uit Groningen. Door de site of de
-              NightGazer-accounts op sociale media te gebruiken, ga je akkoord met deze voorwaarden.
-            </p>
-            <ol className="pl-voorw__list">
-              {ARTIKELEN.map((a, i) => (
-                <li key={a.kop} className="pl-voorw__item">
-                  <span className="pl-label pl-label--stamp pl-num">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h2 className="pl-h3">{a.kop}</h2>
-                    <p className="pl-body">{a.tekst}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-      </main>
-
-      <SiteFooter cols={FOOTER_COLS} />
-    </div>
+    <TekstPlaat
+      id="voorwaarden"
+      current="voorwaarden"
+      titel="Gebruiksvoorwaarden"
+      sub={<>Laatst bijgewerkt <span className="pl-num">{BIJGEWERKT}</span></>}
+      intro={<p>
+        NightGazer (nightgazer.space) is een Nederlandstalige website over sterrenkijken en
+        ruimtevaart, gemaakt door Crix, amateur-astronoom uit Groningen. Door de site of de
+        NightGazer-accounts op sociale media te gebruiken, ga je akkoord met deze voorwaarden.
+      </p>}
+      artikelen={ARTIKELEN}
+    />
   )
 }
