@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-19",
+      "slug": "nasas-voyager-1-is-one-light-day-from-earth",
+      "titel": "Voyager 1 staat nu één lichtdag van de aarde",
+      "beg": {
+        "q": "Voyager 1 staat één lichtdag van de aarde; wat betekent dat voor een commando dat vluchtleiders vandaag versturen?",
+        "options": [
+          "Het komt binnen een uur aan, omdat radiosignalen sneller dan licht gaan",
+          "Het komt pas na een week aan, omdat de sonde zo langzaam is",
+          "Het komt direct aan, maar het antwoord duurt een dag",
+          "Het komt pas na ongeveer een dag aan bij de sonde"
+        ],
+        "correct": 3,
+        "explain": "Radiosignalen reizen met de snelheid van het licht. Bij een afstand van één lichtdag duurt de reis dus een dag. Het antwoord van de sonde heeft daarna nog een dag nodig, dus een heen-en-weer gesprek kost ongeveer twee dagen."
+      },
+      "ama": {
+        "q": "Hoe lang duurt het ongeveer voordat vluchtleiders een reactie van Voyager 1 op een commando ontvangen, nu de sonde één lichtdag ver weg is?",
+        "options": [
+          "Ongeveer 24 uur",
+          "Ongeveer 7 dagen",
+          "Ongeveer 48 uur",
+          "Ongeveer 12 uur"
+        ],
+        "correct": 2,
+        "explain": "Het commando doet een dag over de heenweg en het antwoord een dag over de terugweg, samen ongeveer 48 uur. Dit is de zogeheten round-trip light time, die bij elke verre sonde twee keer de enkele signaalvertraging is."
+      },
+      "pro": {
+        "q": "Welke afstand legt een radiosignaal in vacuüm in één lichtdag af, bij benadering?",
+        "options": [
+          "Ongeveer 2,6 × 10^10 km",
+          "Ongeveer 2,6 × 10^8 km",
+          "Ongeveer 1,6 × 10^9 km",
+          "Ongeveer 1,6 × 10^11 km"
+        ],
+        "correct": 0,
+        "explain": "c ≈ 3,0 × 10^5 km/s en een dag heeft 86.400 s, dus d ≈ 2,6 × 10^10 km, ruim 170 astronomische eenheden. Radiogolven zijn elektromagnetische straling en reizen dus met dezelfde snelheid c als zichtbaar licht."
+      }
+    },
+    {
       "datum": "2026-11-18",
       "slug": "apod-2026-november-18-an-m-class-solar-flare",
       "titel": "Zonnevlam van middelzware klasse vastgelegd in het licht van waterstof",
@@ -1965,45 +2003,7 @@
         "correct": 0,
         "explain": "Bij natuurlijke wervelstromen is het koppel evenredig met B², en omdat het aardmagnetisch veld zwak is (in de orde van tientallen microtesla) is dat effect miniem. Met permanente magneten is het koppel evenredig met B zelf, wat bij een kleine B veel meer oplevert. Daardoor is het apparaat volgens Airbus vele ordes van grootte effectiever."
       }
-    },
-    {
-      "datum": "2026-11-02",
-      "slug": "apod-2026-november-1-colors-of-the-moon",
-      "titel": "De kleuren van de Maan",
-      "beg": {
-        "q": "Waarom ziet de Maan er vlak boven de horizon vaak rood of geel uit?",
-        "options": [
-          "De Maan wordt bij de horizon warmer en gaat daardoor van zichzelf rood gloeien",
-          "Het maanlicht legt dan een langere weg door de lucht af, waarbij een deel van het blauwe licht wordt weggestrooid",
-          "De Maan staat dan dichter bij de aarde en is daardoor roder",
-          "Het maanoppervlak verandert van kleur als de Maan laag staat"
-        ],
-        "correct": 1,
-        "explain": "Bij de horizon gaat het licht door veel meer lucht, en blauw licht wordt het sterkst weggestrooid. Daardoor blijven vooral warme kleuren over. Dezelfde reden maakt zonsondergangen rood."
-      },
-      "ama": {
-        "q": "Welk verschijnsel verklaart zowel de rode kleur van een laagstaande maan als die van een zonsondergang?",
-        "options": [
-          "Het uitzenden van rood licht door de Maan zelf wanneer ze afkoelt",
-          "Het sterker wegstrooien van blauw licht langs een lange weg door de aardatmosfeer",
-          "De absorptie van rood licht door ozon, waardoor alleen rood overblijft",
-          "De roodverschuiving door de beweging van de Maan van ons af"
-        ],
-        "correct": 1,
-        "explain": "Over een lange weg door de atmosfeer wordt kortgolvig blauw licht sterker weggestrooid dan rood, dus het directe licht wordt roder. De Maan weerkaatst slechts zonlicht en straalt zelf geen zichtbaar licht uit; haar echte kleur is grijs met een bruine zweem."
-      },
-      "pro": {
-        "q": "Welk proces verklaart dat het direct doorgelaten licht van een laagstaande maan roder wordt?",
-        "options": [
-          "Dopplerverschuiving door de baanbeweging van de Maan",
-          "Fluorescentie van het maanstof onder invloed van ultraviolette zonnestraling",
-          "Thomson-verstrooiing aan vrije elektronen, die onafhankelijk van de golflengte is",
-          "Rayleigh-verstrooiing, waarvan de efficiëntie sterk toeneemt bij kortere golflengte (ruwweg evenredig met λ^-4), over een groter luchtpad"
-        ],
-        "correct": 3,
-        "explain": "Rayleigh-verstrooiing aan luchtmoleculen schaalt ongeveer met λ^-4, dus blauw verdwijnt het eerst uit de directe bundel. Bij een lage stand is de luchtmassa veel groter, waardoor de roodkleuring toeneemt, vooral als er ook stof in de lucht zit."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-18T16:37:53.796Z"
+  "bijgewerkt": "2026-11-19T16:44:51.046Z"
 }
