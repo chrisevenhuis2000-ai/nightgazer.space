@@ -37,8 +37,8 @@ for (const f of ['nieuws/index.html', 'index.html']) {
     ok(t.includes(a.title), `${f}: titel "${a.title.slice(0, 50)}"`)
     ok(h.includes(`href="/nieuws/${a.slug}/"`) || h.includes(`href="/nieuws/${a.slug}"`), `${f}: link naar ${a.slug}`)
   }
-  ok(t.includes(`${index.length} platen`), `${f}: totaal ${index.length} platen`)
-  ok(!t.includes(`40 van ${index.length} platen`), `${f}: geen "40 van ${index.length}" uit de startset`)
+  ok(t.includes(`${index.length} artikelen`), `${f}: totaal ${index.length} artikelen`)
+  ok(!t.includes(`40 van ${index.length} artikelen`), `${f}: geen "40 van ${index.length}" uit de startset`)
 }
 
 const nieuws = tekst(zichtbaar('nieuws/index.html'))
@@ -52,7 +52,7 @@ for (const dir of fs.readdirSync(path.join(OUT, 'nieuws', 'onderwerp'))) {
   const eigen = index.filter(a => slugVan(a.category) === dir)
   const t = tekst(zichtbaar(path.join('nieuws', 'onderwerp', dir, 'index.html')))
   for (const a of eigen.slice(0, 3)) ok(t.includes(a.title), `onderwerp ${dir}: titel "${a.title.slice(0, 40)}"`)
-  ok(t.includes(`${eigen.length} van ${index.length} platen`), `onderwerp ${dir}: ${eigen.length} van ${index.length} platen`)
+  ok(t.includes(`${eigen.length} van ${index.length} artikelen`), `onderwerp ${dir}: ${eigen.length} van ${index.length} artikelen`)
 }
 
 ok(!fs.readFileSync(path.join(ROOT, 'lib', 'home-content.ts'), 'utf-8').includes('FALLBACK_ARTICLES'), 'geen FALLBACK_ARTICLES meer in de code')
