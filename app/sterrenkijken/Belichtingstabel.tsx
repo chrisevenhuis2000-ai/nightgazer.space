@@ -16,7 +16,7 @@ import dynamic from 'next/dynamic'
 import { SiteFooter } from '../components/SiteFooter'
 import {
   type Location,
-  PRESET_LOCATIONS, DARK_SPOTS, METEORS, SKY_OBJECTS,
+  PRESET_LOCATIONS, DARK_SPOTS, METEORS, hemelVoorMaand,
   calcDistance,
 } from '@/lib/sky-data'
 import { type Uur, hemelUrl, leesUren, nacht, huidigeAvond, oordeel, hhmm } from '@/lib/hemelweer'
@@ -205,6 +205,12 @@ function LocationBar({ location, onPick }: { location: Location; onPick: (l: Loc
 }
 
 /* ══ Pagina ═══════════════════════════════════════════════════════════════ */
+/** YYYY-MM van de maand `plus` maanden na `d`. */
+function maandSleutel(d: Date, plus: number): string {
+  const x = new Date(d.getFullYear(), d.getMonth() + plus, 1)
+  return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}`
+}
+
 export default function Belichtingstabel() {
   const [location, setLocation] = useState<Location>({ lat: 52.3676, lon: 4.9041, name: 'Amsterdam' })
   const [uren, setUren] = useState<Uur[]>([])
@@ -215,7 +221,9 @@ export default function Belichtingstabel() {
   const [nu, setNu] = useState(() => new Date())
   const [ronde, setRonde] = useState(0)
   const [spot, setSpot] = useState(0)
-  const [month, setMonth] = useState(() => new Date().getMonth() + 1)
+  // Maand als YYYY-MM: de planeten verschillen per jaar.
+  const [maandKey, setMaandKey] = useState(() => maandSleutel(new Date(), 0))
+  const month = Number(maandKey.slice(5, 7))
 
   /* Komt de bezoeker binnen op een anker (#pl-meld vanuit de meldingenlink,
      #pl-showers vanuit de zoekfunctie), dan verschuift de pagina nog terwijl
@@ -337,7 +345,7 @@ export default function Belichtingstabel() {
     [location]
   )
 
-  const visible = useMemo(() => SKY_OBJECTS.filter(o => o.months.includes(month)), [month])
+  const visible = useMemo(() => hemelVoorMaand(maandKey), [maandKey])
   const nextShower = useMemo(() => {
     const m = new Date().getMonth() + 1
     return METEORS.find(s => s.month >= m) ?? METEORS[0]
@@ -590,21 +598,21 @@ export default function Belichtingstabel() {
             <div className="pl-band__t">
               <h2 id="pl-what" className="pl-h2">Waar kijk ik naar?</h2>
               <div className="pl-seg" role="group" aria-label="Kies een maand">
-                {[-1, 0, 1].map(d => {
-                  const m = ((month - 1 + d + 12) % 12) + 1
+                {[0, 1, 2].map(d => {
+                  const k = maandSleutel(new Date(), d)
                   return (
                     <button
-                      key={d}
-                      aria-pressed={d === 0}
-                      onClick={() => setMonth(m)}
+                      key={k}
+                      aria-pressed={k === maandKey}
+                      onClick={() => setMaandKey(k)}
                     >
-                      {new Date(2026, m - 1, 1).toLocaleDateString('nl-NL', { month: 'short' })}
+                      {new Date(Number(k.slice(0, 4)), Number(k.slice(5, 7)) - 1, 1).toLocaleDateString('nl-NL', { month: 'short' })}
                     </button>
                   )
                 })}
               </div>
             </div>
-            <p className="pl-label">{visible.length} objecten in {monthName}</p>
+            <p className="pl-label">{visible.length} dingen om te zien in {monthName}</p>
           </div>
 
           <div className="pl-targets">
