@@ -30,7 +30,8 @@
     "test:zoeken": "node scripts/test-zoeken.mjs",
     "test:geminiden": "node scripts/test-geminiden.mjs",
     "test:claude": "node scripts/test-claude-proxy.mjs",
-    "test:hemelweer": "node scripts/test-hemelweer.mjs"
+    "test:hemelweer": "node scripts/test-hemelweer.mjs",
+    "test:zandbak": "node scripts/test-zandbak.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",

@@ -73,7 +73,7 @@ export function quickMatches(a: Article, spec: { cat?: string; words?: string[] 
 
 export const FOOTER_COLS: FooterCol[] = [
   { title: 'Onderwerpen', links: [['James Webb', '/nieuws/onderwerp/james-webb'], ['Mars', '/nieuws/onderwerp/mars'], ['Maan', '/nieuws/onderwerp/maan'], ['Kosmologie', '/nieuws/onderwerp/kosmologie'], ['Sterrenkijken', '/sterrenkijken'], ['Educatie', '/educatie']] },
-  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies'], ['Uitrusting', '/sterrenkijken/uitrusting'], ['Eerste telescoop', '/sterrenkijken/eerste-telescoop'], ['Cadeaugids', '/sterrenkijken/cadeaugids'], ['Hemelkalender 2027', '/sterrenkijken/hemelkalender'], ['Raad de hemelfoto', '/spellen/hemelfoto'], ['Teken het sterrenbeeld', '/spellen/sterrenbeeld']] },
+  { title: 'Instrumenten', links: [['ISS-tracker', '/'], ['Sterrenkaart', '/sterrenkijken'], ['Lanceringskalender', '/missies'], ['Uitrusting', '/sterrenkijken/uitrusting'], ['Eerste telescoop', '/sterrenkijken/eerste-telescoop'], ['Cadeaugids', '/sterrenkijken/cadeaugids'], ['Hemelkalender 2027', '/sterrenkijken/hemelkalender'], ['Raad de hemelfoto', '/spellen/hemelfoto'], ['Teken het sterrenbeeld', '/spellen/sterrenbeeld'], ['Ruimtezandbak', '/spellen/zandbak']] },
   { title: 'Over ons', links: [['Redactie', '/over'], ['Contact', '/contact'], ['Privacy', '/privacy'], ['Voorwaarden', '/voorwaarden']] },
 ]
 
