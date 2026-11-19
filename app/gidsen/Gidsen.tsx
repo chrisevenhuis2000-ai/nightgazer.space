@@ -13,7 +13,7 @@
    niet bij voorkeur voor minder beweging.
    ══════════════════════════════════════════════════════════════════════════ */
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { SiteFooter } from '../components/SiteFooter'
 import { Hemelbrief } from '../components/Hemelbrief'
@@ -24,6 +24,7 @@ import { SOORTEN } from '@/lib/telescoopgids'
 import { KLASSEN } from '@/lib/cadeaugids'
 import { KALENDER_PRIJS, KALENDER_JAAR, VOORBEELDEN } from '@/lib/hemelkalender'
 import { ZWERMGIDSEN } from '@/lib/zwermgids'
+import { nlDag } from '@/lib/hemelfoto'
 
 type Plaat = { nasaId: string; maat?: NasaMaat; titel: string; credit: string; pos?: string }
 type Gids = {
@@ -65,12 +66,19 @@ const GIDSEN: Gids[] = [
 ]
 
 /* De zwermgidsen staan apart, bovenaan: ze horen bij een datum. */
-const ZWERMEN: Gids[] = Object.values(ZWERMGIDSEN).map(z => ({
-  href: `/gidsen/${z.slug}/`, soort: 'Meteorenzwerm', kop: z.kop,
-  tekst: z.kaart,
-  meta: `${z.specs.find(s => s.label === 'Per uur')?.waarde} per uur`, actie: 'Hoe laat kijken?',
+/* Na de beste nacht schuift een gids naar achteren en wordt hij een terugblik:
+   een kop met "kijk woensdagochtend 18 november" hoort niet bovenaan als die
+   ochtend voorbij is (persona-rapport 19-11-2026). */
+const zwermen = (vandaag: string): Gids[] => Object.values(ZWERMGIDSEN)
+  .map(z => ({ z, voorbij: vandaag > z.tot }))
+  .sort((a, b) => Number(a.voorbij) - Number(b.voorbij))
+  .map(({ z, voorbij }) => ({
+  href: `/gidsen/${z.slug}/`, soort: voorbij ? `Terugblik · ${z.naam} ${z.jaar}` : 'Meteorenzwerm', kop: voorbij ? `${z.naam} ${z.jaar}: hoe laat en waar je keek` : z.kop,
+  tekst: voorbij ? z.terugblik : z.kaart,
+  meta: voorbij ? 'Voorbij' : `${z.specs.find(s => s.label === 'Per uur')?.waarde} per uur`, actie: voorbij ? 'Lees de gids' : 'Hoe laat kijken?',
   beeld: { nasaId: z.beeld.nasaId, titel: z.beeld.titel.replace(/^Een meteoor.*?,\s*/, 'Een meteoor, '), credit: z.beeld.credit, pos: '50% 40%' },
 }))
+const ZWERMEN = zwermen(nlDag())
 
 const SPRONGEN = [
   { vraag: 'Ik wil een telescoop kopen', href: '/sterrenkijken/eerste-telescoop/' },
@@ -141,6 +149,9 @@ function Plaat({ g, i, groot }: { g: Gids; i: number; groot?: boolean }) {
 export default function Gidsen() {
   const lijst = useOntwikkel()
   const zwermLijst = useOntwikkel()
+  // De build kent de datum van vandaag niet; de browser sorteert opnieuw.
+  const [zw, setZw] = useState(ZWERMEN)
+  useEffect(() => { setZw(zwermen(nlDag())) }, [])
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
@@ -181,7 +192,7 @@ export default function Gidsen() {
             </div>
           </div>
           <ul className="pl-gx pl-gx--twee" ref={zwermLijst}>
-            {ZWERMEN.map((g, i) => <Plaat key={g.href} g={g} i={i} />)}
+            {zw.map((g, i) => <Plaat key={g.href} g={g} i={i} />)}
           </ul>
         </section>
 
@@ -198,7 +209,7 @@ export default function Gidsen() {
           </ul>
           <p className="pl-gx__bron">
             Beelden:{' '}
-            {[...ZWERMEN, ...GIDSEN].filter(g => g.beeld).map((g, i, a) => (
+            {[...zw, ...GIDSEN].filter(g => g.beeld).map((g, i, a) => (
               <span key={g.href}>
                 <a href={nasaPagina(g.beeld!.nasaId)} target="_blank" rel="noopener" className="pl-voorw__a">{g.beeld!.titel}</a>
                 {' '}({g.beeld!.credit}){i < a.length - 1 ? ', ' : '.'}

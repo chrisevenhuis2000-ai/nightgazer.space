@@ -38,6 +38,11 @@ export type Zwermgids = {
   stappen: { titel: string; tekst: string }[]
   bewolkt: string
   andere: 'leoniden' | 'geminiden'
+  /** Laatste dag (YYYY-MM-DD) waarop de gids nog vooruitkijkt. Daarna staat
+   *  hij op /gidsen als terugblik, onder de zwerm die nog komt. */
+  tot: string
+  /** Korte tekst voor de plaat na `tot`. */
+  terugblik: string
 }
 
 export const ZWERMGIDSEN: Record<Zwermgids['slug'], Zwermgids> = {
@@ -45,6 +50,8 @@ export const ZWERMGIDSEN: Record<Zwermgids['slug'], Zwermgids> = {
     slug: 'leoniden',
     naam: 'Leoniden',
     jaar: 2026,
+    tot: '2026-11-18',
+    terugblik: 'De piek is voorbij. Tot 30 november vallen er nog een paar per uur; de volgende grote zwerm zijn de Geminiden.',
     kop: 'Leoniden 2026: kijk woensdagochtend 18 november rond 6 uur',
     lede:
       'De Leoniden pieken dinsdagavond 17 november rond 21 uur, maar dan staat hun radiant nog onder de horizon. ' +
@@ -92,6 +99,8 @@ export const ZWERMGIDSEN: Record<Zwermgids['slug'], Zwermgids> = {
     slug: 'geminiden',
     naam: 'Geminiden',
     jaar: 2026,
+    tot: '2026-12-14',
+    terugblik: 'De piek is voorbij. Tot 17 december vallen er nog enkele; de Hemelkalender 2027 zet de zwermen van volgend jaar op een rij.',
     kop: 'Geminiden 2026: de beste vallende sterren van het jaar, nacht van 13 op 14 december',
     lede:
       'De Geminiden zijn de rijkste meteorenzwerm van het jaar. In de nacht van zondag 13 op maandag 14 december zie je onder een donkere hemel ' +
