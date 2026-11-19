@@ -182,7 +182,7 @@ export const SPACE_EVENTS = [
   { id: 7,  date: '2026-08-13', title: 'Piek Perseïden',                icon: '☄️', cat: 'Meteor',  color: '#ffa040', desc: 'ZHR ~100/u. Nieuwe maan = ideale omstandigheden. BESTE KANS 2026.' },
   { id: 8,  date: '2026-08-30', title: 'Nancy Grace Roman-lancering',   icon: '🚀', cat: 'Missie',  color: '#378ADD', desc: 'Infraroodtelescoop naar L2 voor onderzoek naar donkere energie en exoplaneten — Falcon Heavy.' },
   { id: 9,  date: '2026-11-17', title: 'Leoniden',                      icon: '☄️', cat: 'Meteor',  color: '#ffa040', desc: 'ZHR ~15/u. Halve maan, redelijke condities.' },
-  { id: 10, date: '2026-12-14', title: 'Piek Geminiden',                icon: '☄️', cat: 'Meteor',  color: '#ffa040', desc: 'ZHR ~150/u. Grootste meteorenstroom van het jaar. Geen maanlicht.' },
+  { id: 10, date: '2026-12-14', title: 'Piek Geminiden',                icon: '☄️', cat: 'Meteor',  color: '#ffa040', desc: 'Grootste meteorenzwerm van het jaar: vanuit Nederland zo’n 50 tot 65 per uur bij een donkere hemel. De maan stoort niet.' },
 ]
 
 export const CAT_COLORS: Record<string, string> = {

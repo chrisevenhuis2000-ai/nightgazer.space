@@ -47,11 +47,13 @@ for (const slug of topicSlugs) {
   pages.push({ loc: `/nieuws/onderwerp/${slug}`, changefreq: 'daily', priority: '0.7' })
 }
 
-// Mission detail pages — alle missies, net als generateStaticParams in
+// Mission detail pages — de echte missies uit generateStaticParams in
 // app/missies/[slug]/page.tsx.
 const missionData = JSON.parse(fs.readFileSync(MISSIONS, 'utf8'))
 const missions = Array.isArray(missionData) ? missionData : missionData.missions
+// Losse lanceringen (soort 'lancering') staan op noindex; die horen er niet in.
 for (const m of missions) {
+  if (m.soort === 'lancering') continue
   pages.push({ loc: `/missies/${m.id}`, changefreq: 'monthly', priority: '0.6' })
 }
 

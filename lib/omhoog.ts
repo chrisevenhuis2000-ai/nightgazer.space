@@ -199,7 +199,7 @@ export const NACHTEN: Nacht[] = [
   {
     datum: '2026-12-13', met: 'oog',
     titel: 'Geminidennacht: tel mee',
-    tekst: 'De mooiste meteorenzwerm van het jaar, en de maan gaat al om 20:38 onder. Bij een heel donkere hemel kan het tegen de 120 per uur lopen, in een tuin eerder 20 tot 40. Tel ze en geef je telling hieronder door.',
+    tekst: 'De mooiste meteorenzwerm van het jaar, en de maan gaat al om 20:38 onder. Bij een donkere hemel zie je er zo’n 50 tot 65 per uur, in een tuin met straatlicht eerder 20 tot 40. Tel ze en geef je telling hieronder door.',
     wanneer: 'Vanaf 21:00, best rond 04:30',
     link: { href: '#tel-mee', tekst: 'Naar het telformulier' },
   },
