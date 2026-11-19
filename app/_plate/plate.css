@@ -5755,3 +5755,7 @@ a:hover .pl-emulsion > img,
 .mi-start { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 860px) { .mi-start { grid-template-columns: minmax(0, 1fr); } }
 .pl-flight__dest[title], .pl-nextup__spec span[title] { text-decoration: underline dotted var(--pl-ink-3); text-underline-offset: 3px; cursor: help; }
+
+/* Hemelbrief: een stukje uit de eerste brief onder elk onderdeel */
+.pl-hb__voorbeeld { margin: 10px 0 0; padding: 10px 0 2px 14px; border-left: 2px solid var(--pl-act); display: grid; gap: 4px; }
+.pl-hb__voorbeeld .pl-body-s { color: var(--pl-ink-2); font-style: italic; }

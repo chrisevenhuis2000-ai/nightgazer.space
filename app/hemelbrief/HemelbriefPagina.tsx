@@ -112,6 +112,12 @@ export default function HemelbriefPagina({ soort }: { soort: Soort }) {
                   <li key={d.titel}>
                     <h3 className="pl-h3">{d.titel}</h3>
                     <p className="pl-body">{d.tekst}</p>
+                    {soort === 'aanmelden' && (
+                      <blockquote className="pl-hb__voorbeeld">
+                        <span className="pl-label">Uit de eerste brief</span>
+                        <p className="pl-body-s">{d.voorbeeld}</p>
+                      </blockquote>
+                    )}
                   </li>
                 ))}
               </ol>
