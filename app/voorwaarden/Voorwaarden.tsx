@@ -72,7 +72,7 @@ const ARTIKELEN: TekstArtikel[] = [
     kop: 'Contact',
     tekst: <>
       Vragen of een fout gezien? Mail naar{' '}
-      <a href="mailto:social@nightgazer.space" className="pl-voorw__a">social@nightgazer.space</a> of
+      <a href="mailto:contact@nightgazer.space" className="pl-voorw__a">contact@nightgazer.space</a> of
       gebruik de <Link href="/contact/" className="pl-voorw__a">contactpagina</Link>.
     </>,
   },
