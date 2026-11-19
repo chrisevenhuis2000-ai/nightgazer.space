@@ -94,6 +94,17 @@ export const KLASSEN: Klasse[] = [
   },
 ]
 
+/** Voor een kind: dezelfde producten, met wat je bij een kind moet weten. */
+export const VOOR_KIND: { intro: string; cadeaus: Cadeau[] } = {
+  intro: 'Kinderen willen meteen iets zien. Begin met de Maan en de planeten, en kijk samen: dat onthouden ze langer dan het cadeau zelf.',
+  cadeaus: [
+    { product: product('Hoofdlamp met rood licht'),   voorWie: 'Vanaf een jaar of zes. Een eigen lamp maakt van een avond buiten een expeditie.' },
+    { product: product('Draaibare sterrenkaart'),     voorWie: 'Vanaf een jaar of acht. Draai de datum en het uur in en zoek samen de Grote Beer.' },
+    { product: product('Celestron UpClose G2 10x50'), voorWie: 'Vanaf een jaar of tien. Laat jongere kinderen leunen op een hek of stoelleuning, dan staat het beeld stil.' },
+    { product: product('Sky-Watcher Heritage 130P FlexTube'), voorWie: 'Vanaf een jaar of tien, samen met een volwassene. Klein genoeg voor de tuintafel, en Saturnus met ringen vergeet je niet.' },
+  ],
+}
+
 /** Wat je beter niet geeft, met de reden. Geen winkellinks. */
 export const NIET_DOEN = [
   { titel: 'Een telescoop met "525×" op de doos', tekst: 'Vergroting zegt niets; opening bepaalt wat je ziet. Deze kijkers staan op een wiebelig statief en verdwijnen na twee avonden in de kast.' },
