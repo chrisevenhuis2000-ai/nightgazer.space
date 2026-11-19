@@ -289,7 +289,7 @@ function NextUp({ l, image, onHot, hot }: { l: ScheduledLaunch; image?: string; 
 /* ── Eén lopende missie ── */
 const DIEP = new Set(['Maan', 'Mars', 'Jupiter', 'L2-punt', 'Interstellair'])
 /* Drie missies die een beginner kent of snel snapt. */
-const START = ['artemis', 'jwst', 'perseverance']
+const START = ['jwst', 'perseverance', 'voyager1']
 
 function FleetCell({ m, url }: { m: MissionDetail; url?: string }) {
   return (
@@ -431,7 +431,7 @@ export default function Lanceermanifest() {
      artikelen al aanvullen. */
   const needImages = useMemo(
     () => [...shown.slice(0, 3).map(l => l.mission), ...active.filter(m => START.includes(m.id)), ...activeShown.slice(0, 9)]
-      .map(m => ({ id: m.id, vehicle: m.vehicle, agency: m.agency, body: m.body })),
+      .map(m => ({ id: m.id, vehicle: m.vehicle, agency: m.agency, body: m.body, beeld: m.beeld?.[0]?.src })),
     [shown, activeShown]
   )
   const images = useMissionImages(needImages, 15)
