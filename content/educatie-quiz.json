@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-20",
+      "slug": "apod-2026-november-20-v-g-r",
+      "titel": "Voyager 1 passeert historische grens: één lichtdag van huis",
+      "beg": {
+        "q": "Waarom doet een radiosignaal van de aarde er een hele dag over om Voyager 1 te bereiken?",
+        "options": [
+          "Radiosignalen reizen veel langzamer dan licht",
+          "De sonde is meestal uitgeschakeld en moet eerst wakker worden",
+          "Radiosignalen worden onderweg door de zon tegengehouden",
+          "Radiosignalen reizen razendsnel, maar de sonde staat zo ver weg dat zelfs dat een dag kost"
+        ],
+        "correct": 3,
+        "explain": "Radiogolven reizen met de lichtsnelheid, bijna 300.000 kilometer per seconde. Voyager 1 staat zo'n 26 miljard kilometer weg, en dat is precies één lichtdag. Een vraag en het antwoord erop kosten dus samen twee dagen."
+      },
+      "ama": {
+        "q": "Hoe groot is bij benadering de afstand van één lichtdag, als licht ongeveer 300.000 km/s haalt?",
+        "options": [
+          "Ongeveer 260 miljoen kilometer",
+          "Ongeveer 1 miljard kilometer",
+          "Ongeveer 26 miljard kilometer",
+          "Ongeveer 9.500 miljard kilometer"
+        ],
+        "correct": 2,
+        "explain": "Een etmaal heeft 86.400 seconden, en 300.000 km/s × 86.400 s is ongeveer 26 miljard kilometer. Een lichtjaar is 365 keer zo lang, zo'n 9.500 miljard kilometer. Dat is het getal van het laatste afgevallen antwoord."
+      },
+      "pro": {
+        "q": "Een commando naar Voyager 1 op één lichtdag afstand wordt verzonden; hoeveel tijd zit er minimaal tussen verzenden en ontvangen van het antwoord op aarde?",
+        "options": [
+          "Ongeveer 24 uur, omdat het antwoord door het commando wordt meegetrokken",
+          "Ongeveer 72 uur, doordat verwerking aan boord een extra dag kost",
+          "Ongeveer 48 uur, de heen- en terugreis van het signaal bij elkaar opgeteld",
+          "Ongeveer 12 uur, omdat de gemiddelde afstand de helft is"
+        ],
+        "correct": 2,
+        "explain": "De signaalvertraging in één richting is d/c = 1 lichtdag, dus de rondreis duurt 2d/c, ongeveer 48 uur. De reactietijd van de sonde komt daar nog bij, maar de natuurkundige ondergrens is twee dagen. Niets kan sneller dan de lichtsnelheid communiceren."
+      }
+    },
+    {
       "datum": "2026-11-19",
       "slug": "nasas-voyager-1-is-one-light-day-from-earth",
       "titel": "Voyager 1 staat nu één lichtdag van de aarde",
@@ -1966,44 +2004,7 @@
         "correct": 3,
         "explain": "De extra EUV-straling verwarmt de thermosfeer, die uitzet, zodat de dichtheid op een vaste hoogte toeneemt. De weerstandskracht is evenredig met die dichtheid, dus de baanenergie neemt sneller af en de baan krimpt. Omdat de dichtheid exponentieel met de hoogte daalt, versnelt het verval naarmate de satelliet lager komt."
       }
-    },
-    {
-      "datum": "2026-11-05",
-      "titel": "Detumbler van Airbus moet tollende dode satellieten afremmen",
-      "beg": {
-        "q": "Hoe remt de Detumbler van Airbus een tollende dode satelliet af, zonder dat er stroom of een boordcomputer nodig is?",
-        "options": [
-          "Met een zeil dat de druk van zonlicht gebruikt om de draaiing te stoppen",
-          "Met een zwaar tolwiel dat draait en de satelliet zo stilzet",
-          "Met kleine raketmotoren die de satelliet tegendraaiend duwen",
-          "Met een magneet die op het aardmagnetisch veld gericht blijft, waardoor stromen in het metaal de draaiing afremmen"
-        ],
-        "correct": 3,
-        "explain": "In de Detumbler zit een magneet die zich op het aardmagnetisch veld blijft richten. Draait de satelliet, dan ontstaan er elektrische stromen in het metaal die de beweging tegenwerken en omzetten in warmte. Dit principe heet een inductierem en werkt zonder energiebron."
-      },
-      "ama": {
-        "q": "In welke vorm gaat de bewegingsenergie van een tollende satelliet over wanneer de Detumbler hem afremt?",
-        "options": [
-          "Warmte, door wervelstromen in de geleidende behuizing",
-          "Een hogere baanenergie, waardoor de satelliet hoger komt te staan",
-          "Licht, doordat de rotor gaat gloeien en fotonen uitzendt",
-          "Elektrische energie die in een accu wordt opgeslagen"
-        ],
-        "correct": 0,
-        "explain": "De draaiende behuizing beweegt door het magnetisch veld van de rotor, waardoor wervelstromen ontstaan. Die stromen verwarmen door weerstand het metaal, waardoor de rotatie-energie als warmte verdwijnt. Het apparaat heeft daarom geen elektriciteit nodig, en de rotatie neemt exponentieel af."
-      },
-      "pro": {
-        "q": "Waarom is de Detumbler met permanente magneten veel effectiever dan de natuurlijke wervelstromen in de metalen structuur van een dode satelliet?",
-        "options": [
-          "Het remkoppel is evenredig met het veld B in plaats van met B², en B is in een lage baan klein",
-          "Het remkoppel is onafhankelijk van het aardmagnetisch veld, omdat de magneten zelf het veld leveren",
-          "Het remkoppel werkt in tegengestelde richting aan de zonnedruk, waardoor alle verstoringen wegvallen",
-          "Het remkoppel is evenredig met B³ en groeit dus sterk naarmate de satelliet langzamer draait"
-        ],
-        "correct": 0,
-        "explain": "Bij natuurlijke wervelstromen is het koppel evenredig met B², en omdat het aardmagnetisch veld zwak is (in de orde van tientallen microtesla) is dat effect miniem. Met permanente magneten is het koppel evenredig met B zelf, wat bij een kleine B veel meer oplevert. Daardoor is het apparaat volgens Airbus vele ordes van grootte effectiever."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-19T16:44:51.046Z"
+  "bijgewerkt": "2026-11-20T16:19:26.686Z"
 }
