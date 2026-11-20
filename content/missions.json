@@ -1,9 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-19T16:46:41.566Z",
-    "autoUpdated": [
-      "ussf-380"
-    ]
+    "lastUpdated": "2026-11-20T16:21:49.532Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -5684,11 +5682,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "20 nov 2026",
-      "launchPrecision": "Second",
+      "launched": "21 nov 2026",
+      "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 20 nov 2026",
+      "highlight": "Lancering gepland: 21 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5700,7 +5698,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "20 nov 2026",
+          "date": "21 nov 2026",
           "event": "Geplande lancering van USSF-xxx (\"R-6\")"
         }
       ],
@@ -5836,11 +5834,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "21 nov 2026",
+      "launched": "22 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van de vijftiende batch satellieten voor een verkenningsconstellatie van NRO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 21 nov 2026",
+      "highlight": "Lancering gepland: 22 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5852,7 +5850,7 @@
       "missionUrl": "https://www.nro.gov/",
       "timeline": [
         {
-          "date": "21 nov 2026",
+          "date": "22 nov 2026",
           "event": "Geplande lancering van NROL-136"
         }
       ],
@@ -5874,11 +5872,11 @@
       "agencyColor": "#c080ff",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 nov 2026",
-      "launchPrecision": "Month",
+      "launched": "27 nov 2026",
+      "launchPrecision": "Minute",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf Synspective.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Lancering gepland: november 2026",
+      "highlight": "Lancering gepland: 27 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -5890,7 +5888,7 @@
       "missionUrl": "https://synspective.com/",
       "timeline": [
         {
-          "date": "november 2026",
+          "date": "27 nov 2026",
           "event": "Geplande lancering van StriX Launch 14"
         }
       ],
