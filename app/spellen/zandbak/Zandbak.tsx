@@ -35,24 +35,39 @@ const SPOORPUNTEN = 420
 
 const GEREEDSCHAP: Soort[] = ['planeet', 'maan', 'reus', 'ster']
 
-/* Mini-sprites voor de knoppen, als SVG met harde pixelranden. */
-function Pixel({ soort }: { soort: Soort }) {
-  const kaart: Record<Soort, { p: string; c: string[] }> = {
-    planeet: { p: '.aab.|abbbc|aabcc|abbcc|.bcc.', c: ['#4E9A5B', '#3B74C9', '#142449'] },
-    maan:    { p: '.....|.aab.|.abc.|.bcc.|.....', c: ['#E6E6EE', '#A8A8B6', '#2F2F3A'] },
-    reus:    { p: '.aaa.|bbbbc|aaacc|bbbcc|.acc.', c: ['#F6E2BE', '#A66E46', '#45301D'] },
-    ster:    { p: '..a..|.bab.|aacaa|.bab.|..a..', c: ['#FFCF4D', '#F2992E', '#FFFFFF'] },
-  }
-  const { p, c } = kaart[soort]
+/* Mini-sprites als SVG met harde pixelranden: letters zijn kleuren uit `c`. */
+type Sprite = { p: string; c: string[] }
+const SPRITE: Record<string, Sprite> = {
+  planeet: { p: '.aab.|abbbc|aabcc|abbcc|.bcc.', c: ['#4E9A5B', '#3B74C9', '#142449'] },
+  maan:    { p: '.....|.aab.|.abc.|.bcc.|.....', c: ['#E6E6EE', '#A8A8B6', '#2F2F3A'] },
+  reus:    { p: '.aaa.|bbbbc|aaacc|bbbcc|.acc.', c: ['#F6E2BE', '#A66E46', '#45301D'] },
+  ster:    { p: '..a..|.bab.|aacaa|.bab.|..a..', c: ['#FFCF4D', '#F2992E', '#FFFFFF'] },
+  speel:   { p: '.a...|.aa..|.aaa.|.aa..|.a...', c: ['currentColor'] },
+  pauze:   { p: '.....|.a.a.|.a.a.|.a.a.|.....', c: ['currentColor'] },
+  plus:    { p: '.....|..a..|.aaa.|..a..|.....', c: ['currentColor'] },
+  min:     { p: '.....|.....|.aaa.|.....|.....', c: ['currentColor'] },
+  /* Beginstanden, 7 bij 7. */
+  zonnestelsel:  { p: '.b...b.|.......|...a...|..aca..|...a...|.......|b...d..', c: ['#FFCF4D', '#3B74C9', '#FFF3B8', '#C1572F'] },
+  'twee-manen':  { p: '.c.....|.......|..ab...|..bb...|.......|.....c.|...c...', c: ['#4E9A5B', '#3B74C9', '#A8A8B6'] },
+  'twee-zonnen': { p: '.......|.a.....|aba..c.|.a..cdc|.....c.|.......|..e....', c: ['#FFCF4D', '#FFF3B8', '#E35E3C', '#FFA270', '#D4AA7A'] },
+  langsvlieger:  { p: 'aa.....|.aab...|...bcb.|....b..|.......|..d....|.......', c: ['#4E1A18', '#E35E3C', '#FFA270', '#3B74C9'] },
+  'jupiter-ster':{ p: '.......|.a.....|aba....|.a...c.|.....cd|.....c.|.......', c: ['#FFCF4D', '#FFF3B8', '#E35E3C', '#FFA270'] },
+  leeg:          { p: '.......|...a...|..aba..|...a...|.......|.....c.|.c.....', c: ['#FFCF4D', '#FFF3B8', '#4A5480'] },
+}
+
+function Pixel({ naam, className = 'zb-pix' }: { naam: string; className?: string }) {
+  const { p, c } = SPRITE[naam]
   const rijen = p.split('|')
   return (
-    <svg className="zb-pix" viewBox="0 0 5 5" aria-hidden="true" shapeRendering="crispEdges">
+    <svg className={className} viewBox={`0 0 ${rijen[0].length} ${rijen.length}`} aria-hidden="true" shapeRendering="crispEdges">
       {rijen.flatMap((rij, y) => rij.split('').map((k, x) => k === '.' ? null : (
         <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={c[k.charCodeAt(0) - 97]} />
       )))}
     </svg>
   )
 }
+
+const TEMPO_LABEL = ['¼×', '½×', '1×', '2×', '4×', '8×']
 
 type Melding = { tekst: string; t: number }
 type Slinger = NonNullable<Tekenopties['slinger']> & { soort: Soort; id: number }
@@ -77,6 +92,8 @@ export default function Zandbak() {
   const [namen, setNamen] = useState(true)
   const [selectie, setSelectie] = useState<number | null>(null)
   const [melding, setMelding] = useState<Melding | null>(null)
+  /* De aanwijzing op het scherm verdwijnt zodra je iets hebt neergezet of aangetikt. */
+  const [geleerd, setGeleerd] = useState(false)
   /* Wordt vier keer per seconde opgehoogd, zodat tijd en info meelopen. */
   const [, setTik] = useState(0)
 
@@ -122,7 +139,7 @@ export default function Zandbak() {
     if (!el) return
     const meet = () => {
       const vak = el.parentElement!
-      const css = Math.floor(Math.min(vak.clientWidth, window.innerHeight * 0.72))
+      const css = Math.floor(Math.min(vak.clientWidth, window.innerHeight * 0.64))
       const P = css >= 520 ? 3 : 2
       const n = Math.max(120, Math.floor(css / P))
       el.width = n; el.height = n
@@ -263,7 +280,7 @@ export default function Zandbak() {
     const p = punt(e)
     if (!p) return
     const raak = geraakt(p.x, p.y)
-    if (raak) { setSelectie(raak.id === selectie ? null : raak.id); return }
+    if (raak) { setSelectie(raak.id === selectie ? null : raak.id); setGeleerd(true); return }
     if (wereld.current.lichamen.length >= MAX_LICHAMEN) { meld(`Er staan er al ${MAX_LICHAMEN}. Haal er eerst een weg.`); return }
     e.currentTarget.setPointerCapture(e.pointerId)
     const r = schermStraal({ soort: gereedschap, m: STANDAARD[gereedschap].m } as Lichaam, scene.vergroot ?? 1)
@@ -291,6 +308,7 @@ export default function Zandbak() {
       : soort === 'reus' ? (nr % 2 ? 'reus' : 'ijsreus') : soort === 'ster' ? kleurBij('ster', m) : 'maan'
     const l = w.voegToe({ naam: `${STANDAARD[soort].label} ${nr}`, soort, kleur, m, ...st })
     setSelectie(null)
+    setGeleerd(true)
     if (!geplaatst.current) { geplaatst.current = true; telGebeurtenis('zandbak-plaats', `${scene.id}:${soort}`) }
     meld(s.sleept ? `${l.naam} is weggeschoten. Volg de stippellijn.` : `${l.naam} draait nu rond ${baasOp(w, l.x, l.y, l)?.naam ?? 'het midden'}.`)
   }
@@ -329,6 +347,8 @@ export default function Zandbak() {
   const w = wereld.current
   const breedte = beeld.current ? camera(beeld.current.b).aePerPx * beeld.current.b.w : scene.schaal * 2
 
+  const toonMelding = melding && Date.now() - melding.t < 6000
+
   return (
     <div className={`pl ${archivo.variable}`}>
       <a href="#pl-main" className="skip-link">Ga naar hoofdinhoud</a>
@@ -341,22 +361,27 @@ export default function Zandbak() {
               <h1 id="zb-t" className="pl-h2">Ruimtezandbak</h1>
               <span className="pl-label">Bouw je eigen zonnestelsel</span>
             </div>
-            <Link href="/spellen/" className="pl-btn">Alle spellen</Link>
+            <Link href="/spellen/" className="pl-btn zb-terug">Alle spellen</Link>
           </div>
 
-          <p className="pl-hf__lede">
-            Zet sterren, planeten en manen neer en kijk hoe de zwaartekracht hun banen bepaalt. Begin met een
-            van de vragen hieronder, of bouw zelf iets. Alles wordt echt doorgerekend, met dezelfde natuurwetten
-            als in het echte zonnestelsel.
+          <p className="pl-hf__lede zb-lede">
+            Zet sterren, planeten en manen neer en kijk wat de zwaartekracht met ze doet. Alles wordt echt
+            doorgerekend. Kies een vraag om mee te beginnen.
           </p>
 
-          <div className="zb-scenes" role="group" aria-label="Kies een beginstand">
-            {SCENES.map(s => (
-              <button key={s.id} type="button" aria-pressed={s.id === sceneId} onClick={() => { laad(s); telGebeurtenis('zandbak-scene', s.id) }}>
-                {s.knop}
-              </button>
+          <ol className="zb-scenes" aria-label="Kies een beginstand">
+            {SCENES.map((s, i) => (
+              <li key={s.id}>
+                <button type="button" aria-pressed={s.id === sceneId} onClick={() => { laad(s); telGebeurtenis('zandbak-scene', s.id) }}>
+                  <span className="zb-scenes__img"><Pixel naam={s.id} className="zb-scenes__pix" /></span>
+                  <span className="zb-scenes__t">
+                    <span className="pl-num zb-scenes__n">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{s.knop}</span>
+                  </span>
+                </button>
+              </li>
             ))}
-          </div>
+          </ol>
 
           <div className="zb">
             <figure className="zb__fig">
@@ -371,92 +396,96 @@ export default function Zandbak() {
                   onPointerUp={los}
                   onPointerCancel={annuleer}
                 />
+
+                {/* Uitlezing linksboven, zoals een instrument over het beeld. */}
+                <div className="zb-hud zb-hud--lb" aria-hidden="true">
+                  <span className="zb-hud__r"><span className="zb-hud__k">Tijd</span><span className="pl-live">{tijdTekst(w.t)}</span></span>
+                  <span className="zb-hud__r"><span className="zb-hud__k">Breed</span>{afstandTekst(breedte)}</span>
+                </div>
+
+                <div className="zb-hud zb-hud--rb zb-zoom" role="group" aria-label="Zoomen">
+                  <button type="button" aria-label="Inzoomen" disabled={zoom === ZOOM.length - 1} onClick={() => setZoom(z => Math.min(ZOOM.length - 1, z + 1))}><Pixel naam="plus" /></button>
+                  <button type="button" aria-label="Uitzoomen" disabled={zoom === 0} onClick={() => setZoom(z => Math.max(0, z - 1))}><Pixel naam="min" /></button>
+                </div>
+
+                <p className="zb-toast" role="status" aria-live="polite" data-aan={toonMelding ? '1' : '0'}>
+                  {toonMelding ? melding!.tekst : ''}
+                </p>
+
+                {!geleerd && !gekozen && (
+                  <p className="zb-hint" aria-hidden="true">
+                    <b>Tik</b> om een {STANDAARD[gereedschap].label.toLowerCase()} neer te zetten · <b>sleep</b> om hem weg te schieten
+                  </p>
+                )}
+
+                {gekozen && (
+                  <div className="zb-info" key={gekozen.id}>
+                    <div className="zb-info__kop">
+                      <h2 className="zb-info__naam">{gekozen.naam}<span className="pl-label">{SOORTNAAM[gekozen.soort]}</span></h2>
+                      <button type="button" className="zb-info__sluit" onClick={() => setSelectie(null)}>Sluiten</button>
+                    </div>
+                    <dl className="zb-info__lijst">
+                      <div><dt className="pl-label">Massa</dt><dd className="pl-num">{massaTekst(gekozen.m)}</dd></div>
+                      {baas && <div><dt className="pl-label">Tot {baas.naam}</dt><dd className="pl-num pl-live">{afstandTekst(Math.hypot(gekozen.x - baas.x, gekozen.y - baas.y))}</dd></div>}
+                      {baas && <div><dt className="pl-label">Vaart</dt><dd className="pl-num pl-live">{(Math.round(Math.hypot(gekozen.vx - baas.vx, gekozen.vy - baas.vy) * KMS * 10) / 10).toLocaleString('nl-NL')} km/s</dd></div>}
+                    </dl>
+                    <div className="zb-info__knoppen">
+                      <button type="button" onClick={() => zwaarte(10)} disabled={gekozen.m >= 20}>10× zwaarder</button>
+                      <button type="button" onClick={() => zwaarte(0.1)}>10× lichter</button>
+                      <button type="button" onClick={weg}>Weghalen</button>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <div className="zb__balk">
-                <span className="pl-label">Verstreken <span className="pl-num pl-live">{tijdTekst(w.t)}</span></span>
-                <span className="pl-label">1 seconde = <span className="pl-num">{snelheidTekst(scene.dagenPerSec * TEMPO[tempo])}</span>{vertraagd.current && loopt ? ' (even trager, het is druk)' : ''}</span>
-                <span className="pl-label">Beeld <span className="pl-num">{afstandTekst(breedte)}</span> breed</span>
+              {/* De gereedschapsbalk hangt vast onder het scherm. */}
+              <div className="zb-dock">
+                <div className="zb-tools" role="group" aria-label="Wat zet je neer?">
+                  {GEREEDSCHAP.map(s => (
+                    <button key={s} type="button" aria-pressed={gereedschap === s} onClick={() => setGereedschap(s)}>
+                      <Pixel naam={s} className="zb-tools__pix" />
+                      <span>{STANDAARD[s].label}</span>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="zb-transport">
+                  <button type="button" className="zb-speel" aria-pressed={!loopt} onClick={() => setLoopt(v => !v)}>
+                    <Pixel naam={loopt ? 'pauze' : 'speel'} /> {loopt ? 'Pauze' : 'Verder'}
+                  </button>
+                  <div className="zb-tempo" role="group" aria-label="Tempo">
+                    <button type="button" aria-label="Trager" disabled={tempo === 0} onClick={() => setTempo(t => Math.max(0, t - 1))}><Pixel naam="min" /></button>
+                    <span className="zb-tempo__w">
+                      <span className="pl-num">{TEMPO_LABEL[tempo]}</span>
+                      <span className="zb-tempo__s">1 s = {snelheidTekst(scene.dagenPerSec * TEMPO[tempo])}</span>
+                    </span>
+                    <button type="button" aria-label="Sneller" disabled={tempo === TEMPO.length - 1} onClick={() => setTempo(t => Math.min(TEMPO.length - 1, t + 1))}><Pixel naam="plus" /></button>
+                  </div>
+                  <button type="button" className="zb-klein" onClick={() => laad(scene)}>Opnieuw</button>
+                </div>
               </div>
 
-              <p className="zb__melding pl-body-s" role="status" aria-live="polite">
-                {melding && Date.now() - melding.t < 7000 ? melding.tekst : ' '}
-              </p>
-
-              <div className="zb__bediening">
-                <div className="zb__groep">
-                  <p className="pl-label">Neerzetten</p>
-                  <div className="pl-seg pl-seg--tap zb-gereedschap" data-smal="2" style={{ ['--kol' as string]: 4 }} role="group" aria-label="Wat zet je neer?">
-                    {GEREEDSCHAP.map(s => (
-                      <button key={s} type="button" aria-pressed={gereedschap === s} onClick={() => setGereedschap(s)}>
-                        <Pixel soort={s} /> {STANDAARD[s].label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="zb__groep">
-                  <p className="pl-label">Tijd</p>
-                  <div className="pl-seg pl-seg--tap" style={{ ['--kol' as string]: 3 }} role="group" aria-label="Tijd">
-                    <button type="button" aria-pressed={!loopt} onClick={() => setLoopt(v => !v)}>{loopt ? 'Pauze' : 'Verder'}</button>
-                    <button type="button" disabled={tempo === 0} onClick={() => setTempo(t => Math.max(0, t - 1))}>Trager</button>
-                    <button type="button" disabled={tempo === TEMPO.length - 1} onClick={() => setTempo(t => Math.min(TEMPO.length - 1, t + 1))}>Sneller</button>
-                  </div>
-                </div>
-
-                <div className="zb__groep">
-                  <p className="pl-label">Beeld</p>
-                  <div className="pl-seg pl-seg--tap" data-smal="2" style={{ ['--kol' as string]: 4 }} role="group" aria-label="Beeld">
-                    <button type="button" aria-label="Uitzoomen" disabled={zoom === 0} onClick={() => setZoom(z => Math.max(0, z - 1))}>Verder weg</button>
-                    <button type="button" aria-label="Inzoomen" disabled={zoom === ZOOM.length - 1} onClick={() => setZoom(z => Math.min(ZOOM.length - 1, z + 1))}>Dichterbij</button>
-                    <button type="button" aria-pressed={sporen} onClick={() => { setSporen(v => !v); w.lichamen.forEach(l => { l.spoor = [] }) }}>Sporen</button>
-                    <button type="button" aria-pressed={namen} onClick={() => setNamen(v => !v)}>Namen</button>
-                  </div>
-                </div>
-
-                <div className="zb__groep">
-                  <p className="pl-label">Opnieuw</p>
-                  <div className="pl-seg pl-seg--tap" role="group" aria-label="Opnieuw">
-                    <button type="button" onClick={() => laad(scene)}>Beginstand</button>
-                    <button type="button" onClick={() => { w.lichamen = []; setSelectie(null); meld('Alles is weg. Begin maar met een ster.'); setGereedschap('ster') }}>Alles wissen</button>
-                  </div>
-                </div>
+              <div className="zb-extra">
+                <button type="button" aria-pressed={sporen} onClick={() => { setSporen(v => !v); w.lichamen.forEach(l => { l.spoor = [] }) }}>Sporen</button>
+                <button type="button" aria-pressed={namen} onClick={() => setNamen(v => !v)}>Namen</button>
+                <button type="button" onClick={() => { w.lichamen = []; setSelectie(null); meld('Alles is weg. Begin maar met een ster.'); setGereedschap('ster') }}>Alles wissen</button>
+                {vertraagd.current && loopt && <span className="pl-body-s zb-extra__noot">Druk: de klok loopt even trager.</span>}
               </div>
             </figure>
 
             <div className="zb__kolom">
-              {gekozen ? (
-                <div className="zb-info">
-                  <div className="zb-info__kop">
-                    <p className="pl-label">Gekozen</p>
-                    <button type="button" className="zb-info__sluit" onClick={() => setSelectie(null)} aria-label="Sluiten">Sluiten</button>
-                  </div>
-                  <h2 className="zb-info__naam">{gekozen.naam}</h2>
-                  <dl className="zb-info__lijst">
-                    <div><dt className="pl-label">Soort</dt><dd>{SOORTNAAM[gekozen.soort]}</dd></div>
-                    <div><dt className="pl-label">Massa</dt><dd className="pl-num">{massaTekst(gekozen.m)}</dd></div>
-                    {baas && <div><dt className="pl-label">Afstand tot {baas.naam}</dt><dd className="pl-num pl-live">{afstandTekst(Math.hypot(gekozen.x - baas.x, gekozen.y - baas.y))}</dd></div>}
-                    {baas && <div><dt className="pl-label">Vaart</dt><dd className="pl-num pl-live">{Math.round(Math.hypot(gekozen.vx - baas.vx, gekozen.vy - baas.vy) * KMS * 10) / 10} km per seconde</dd></div>}
-                  </dl>
-                  <div className="zb-info__knoppen">
-                    <button type="button" className="pl-btn" onClick={() => zwaarte(10)} disabled={gekozen.m >= 20}>10× zwaarder</button>
-                    <button type="button" className="pl-btn" onClick={() => zwaarte(0.1)}>10× lichter</button>
-                    <button type="button" className="pl-btn" onClick={weg}>Weghalen</button>
-                  </div>
-                </div>
-              ) : null}
-
-              <div className="zb-uitleg">
+              <article className="zb-uitleg">
+                <p className="pl-label">Vraag <span className="pl-num">{String(SCENES.indexOf(scene) + 1).padStart(2, '0')}</span></p>
                 <h2 className="zb-uitleg__t">{scene.titel}</h2>
                 <p className="pl-body">{scene.uitleg}</p>
-                <div className="pl-field">
+                <div className="zb-probeer">
                   <p className="pl-label">Probeer dit</p>
                   <p className="pl-body-s">{scene.probeer}</p>
                 </div>
-              </div>
+              </article>
 
-              <div className="zb-uitleg">
-                <p className="pl-label">Zo werkt het</p>
+              <details className="zb-hoe">
+                <summary className="pl-label">Zo werkt het</summary>
                 <ol className="zb-stappen pl-body-s">
                   <li>Kies onder het scherm wat je wilt neerzetten.</li>
                   <li><b>Tik</b> op een lege plek: hij krijgt vanzelf een nette, ronde baan om wat daar het hardst trekt.</li>
@@ -464,7 +493,7 @@ export default function Zandbak() {
                   <li><b>Tik op iets dat er al staat</b> om te zien hoe zwaar en hoe snel het is, het zwaarder te maken of weg te halen.</li>
                 </ol>
                 <p className="pl-body-s zb-noot">De groottes zijn niet op schaal, anders zou je de planeten niet zien. Afstanden, massa&apos;s en snelheden kloppen wel.</p>
-              </div>
+              </details>
             </div>
           </div>
         </section>
