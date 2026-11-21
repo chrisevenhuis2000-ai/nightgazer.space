@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-21",
+      "slug": "nasas-voyager-1-is-one-light-day-from-earth",
+      "titel": "Voyager 1 staat nu één lichtdag van de aarde",
+      "beg": {
+        "q": "Stel dat vluchtleiders vandaag een commando naar Voyager 1 sturen: wanneer komt het antwoord van de sonde dan vroegst op aarde aan?",
+        "options": [
+          "Na ongeveer twee dagen",
+          "Na ongeveer een dag",
+          "Vrijwel meteen, want radiosignalen zijn oneindig snel",
+          "Na ongeveer een uur"
+        ],
+        "correct": 0,
+        "explain": "Het commando doet er een dag over om de sonde te bereiken, en het antwoord doet er daarna weer een dag over om terug te komen. Radiogolven zijn net als licht snel, maar niet oneindig snel: ze reizen met de lichtsnelheid."
+      },
+      "ama": {
+        "q": "Voyager 1 staat één lichtdag van de aarde; hoe groot is die afstand ongeveer?",
+        "options": [
+          "Zo'n 26 miljoen kilometer",
+          "Zo'n 2,6 miljard kilometer",
+          "Zo'n 26 miljard kilometer",
+          "Zo'n 260 miljard kilometer"
+        ],
+        "correct": 2,
+        "explain": "Licht legt ongeveer 300.000 km per seconde af, en een etmaal heeft 86.400 seconden. Dat geeft zo'n 26 miljard kilometer. Ter vergelijking: Neptunus staat gemiddeld op ongeveer 4,5 miljard kilometer van de zon."
+      },
+      "pro": {
+        "q": "Welke tijdsvertraging ontstaat bij het sturen van een commando naar Voyager 1 en het ontvangen van de bevestiging, bij een afstand van één lichtdag?",
+        "options": [
+          "Een enkele reis van 12 uur, omdat de radiogolf wordt versterkt door het Deep Space Network",
+          "Een totale looptijd van ongeveer 48 uur, omdat t = d/c per richting 24 uur bedraagt",
+          "Een enkele reis van 24 uur, omdat het antwoord via de eerdere signaalweg terugkomt",
+          "Een omloop van 48 uur, omdat de signaalsnelheid in het interstellaire medium ongeveer gehalveerd is"
+        ],
+        "correct": 1,
+        "explain": "De signaaltijd per richting is t = d/c, en bij d = 1 lichtdag is dat 24 uur. Heen en terug is dat dus ongeveer 48 uur. Het interstellaire medium is zo ijl dat de radiogolven er vrijwel met c doorheen reizen, en versterking op aarde verandert de looptijd niet."
+      }
+    },
+    {
       "datum": "2026-11-20",
       "slug": "apod-2026-november-20-v-g-r",
       "titel": "Voyager 1 passeert historische grens: één lichtdag van huis",
@@ -1966,45 +2004,7 @@
         "correct": 0,
         "explain": "Bij zonnemaximum verwarmen extreem-ultraviolette straling en zonnestormen de thermosfeer, die daardoor uitzet. De dichtheid op satellietbaanhoogte stijgt, en de weerstand schaalt met die dichtheid. Zo verliest de satelliet sneller energie en zakt zijn baan."
       }
-    },
-    {
-      "datum": "2026-11-06",
-      "slug": "apod-2026-november-6-a-farewell-to-swift",
-      "titel": "Afscheid van Swift: NASA-telescoop voor explosies in het heelal verbrandt boven Indonesië",
-      "beg": {
-        "q": "Waarom zakte de Swift-satelliet na een periode van veel zonneactiviteit sneller naar de aarde?",
-        "options": [
-          "De zwaartekracht van de aarde wordt sterker als de zon actiever is",
-          "Zonnestraling duwt de satelliet naar beneden, zoals wind een zeil duwt",
-          "De bovenste laag van de dampkring zet uit, waardoor de satelliet meer luchtweerstand krijgt",
-          "De zon trekt met haar zwaartekracht de satelliet naar zich toe"
-        ],
-        "correct": 2,
-        "explain": "Extra zonne-energie verwarmt de bovenste atmosfeer, die daardoor uitzet. Een satelliet in een lage baan vliegt dan door dunne lucht die hem afremt, waardoor hij langzaam daalt. Zo krijgt ook het ISS regelmatig een duwtje omhoog."
-      },
-      "ama": {
-        "q": "Welk effect van het zonnemaximum versnelde het baanverval van Swift in een lage baan om de aarde?",
-        "options": [
-          "Een verzwakking van het aardmagnetisch veld waardoor de baan instabiel wordt",
-          "Uitzetting van de bovenste atmosfeer, waardoor de luchtweerstand op hoogte toeneemt",
-          "Een sterkere zonnewind die de satelliet direct afremt via het aardmagnetisch veld",
-          "Een toename van de massa van de aarde door instromend zonnemateriaal"
-        ],
-        "correct": 1,
-        "explain": "Bij een zonnemaximum neemt de extreem-ultraviolette straling toe, wat de thermosfeer verwarmt en laat uitzetten. De luchtdichtheid op satellietbaanhoogte stijgt, waardoor de weerstand groter wordt en de satelliet energie verliest. Hij zakt dan naar dichtere lagen, waar de weerstand nog verder toeneemt."
-      },
-      "pro": {
-        "q": "Via welk mechanisme leidt een zonnemaximum tot sneller baanverval van een satelliet in een lage aardbaan?",
-        "options": [
-          "Het quadrupoolmoment van de aarde neemt toe tijdens zonneactiviteit, waardoor de baan sneller precesseert",
-          "Geïnduceerde wervelstromen in de romp veroorzaken een remkracht die kwadratisch met de zonnewindsnelheid toeneemt",
-          "Toegenomen stralingsdruk van fotonen op het zonnepaneel remt de baanbeweging af, evenredig met het paneeloppervlak",
-          "Verhoogde EUV-instraling verwarmt de thermosfeer, waardoor de dichtheid ρ op baanhoogte stijgt en de weerstandskracht F = ½ρv²C_dA toeneemt"
-        ],
-        "correct": 3,
-        "explain": "De extra EUV-straling verwarmt de thermosfeer, die uitzet, zodat de dichtheid op een vaste hoogte toeneemt. De weerstandskracht is evenredig met die dichtheid, dus de baanenergie neemt sneller af en de baan krimpt. Omdat de dichtheid exponentieel met de hoogte daalt, versnelt het verval naarmate de satelliet lager komt."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-20T16:19:26.686Z"
+  "bijgewerkt": "2026-11-21T15:32:51.049Z"
 }
