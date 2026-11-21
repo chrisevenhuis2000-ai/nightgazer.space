@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-20T16:21:49.532Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-11-21T15:36:21.775Z",
+    "autoUpdated": [
+      "ussf-xxx-r-6"
+    ]
   },
   "missions": [
     {
@@ -5454,11 +5456,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 nov 2026",
+      "launched": "31 dec 2026",
       "launchPrecision": "Month",
       "objective": "Lancering van de vijftiende groep satellieten voor een verkenningsconstellatie van de NRO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: november 2026",
+      "highlight": "Lancering gepland: december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5470,7 +5472,7 @@
       "missionUrl": "https://www.nro.gov/",
       "timeline": [
         {
-          "date": "november 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van NROL-195"
         }
       ],
@@ -5492,11 +5494,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 nov 2026",
+      "launched": "31 dec 2026",
       "launchPrecision": "Month",
       "objective": "Lancering van 27 Starlink-satellieten naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: november 2026",
+      "highlight": "Lancering gepland: december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5508,7 +5510,7 @@
       "missionUrl": "https://www.spacex.com/",
       "timeline": [
         {
-          "date": "november 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van Starlink Group 15-21"
         }
       ],
@@ -5644,11 +5646,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 nov 2026",
+      "launched": "31 dec 2026",
       "launchPrecision": "Month",
       "objective": "32 OneWeb-satellieten in een polaire baan brengen voor wereldwijde breedbandinternettoegang.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: november 2026",
+      "highlight": "Lancering gepland: december 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5660,7 +5662,7 @@
       "missionUrl": "https://www.oneweb.net/",
       "timeline": [
         {
-          "date": "november 2026",
+          "date": "december 2026",
           "event": "Geplande lancering van OneWeb 21"
         }
       ],
@@ -5680,13 +5682,13 @@
       "name": "USSF-xxx (\"R-6\")",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "21 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 21 nov 2026",
+      "highlight": "Gelanceerd op 21 nov 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5699,7 +5701,7 @@
       "timeline": [
         {
           "date": "21 nov 2026",
-          "event": "Geplande lancering van USSF-xxx (\"R-6\")"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -5720,11 +5722,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "23 nov 2026",
+      "launched": "24 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 23 nov 2026",
+      "highlight": "Lancering gepland: 24 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5736,7 +5738,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "23 nov 2026",
+          "date": "24 nov 2026",
           "event": "Geplande lancering van USSF-266"
         }
       ],
@@ -5948,11 +5950,11 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "28 nov 2026",
+      "launched": "29 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een lage aardbaan.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 28 nov 2026",
+      "highlight": "Lancering gepland: 29 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5964,7 +5966,7 @@
       "missionUrl": "https://www.spaceforce.mil/",
       "timeline": [
         {
-          "date": "28 nov 2026",
+          "date": "29 nov 2026",
           "event": "Geplande lancering van USSF-380"
         }
       ],
