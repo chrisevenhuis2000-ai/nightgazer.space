@@ -3,7 +3,7 @@ import Spellen from './Spellen'
 
 export const metadata: Metadata = {
   title:       'Spellen',
-  description: 'Twee dagspellen: raad de ingezoomde ruimtefoto en teken het sterrenbeeld dat vanavond boven Nederland staat.',
+  description: 'Dagspellen over de sterrenhemel: raad de ingezoomde ruimtefoto, teken het sterrenbeeld van vanavond, en bouw je eigen zonnestelsel in de ruimtezandbak.',
   alternates:  { canonical: '/spellen/' },
 }
 
