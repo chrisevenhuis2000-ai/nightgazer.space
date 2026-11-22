@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-21T15:36:21.775Z",
+    "lastUpdated": "2026-11-22T15:39:55.682Z",
     "autoUpdated": [
-      "ussf-xxx-r-6"
+      "nrol-136"
     ]
   },
   "missions": [
@@ -5834,13 +5834,13 @@
       "name": "NROL-136",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "22 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Lancering van de vijftiende batch satellieten voor een verkenningsconstellatie van NRO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 22 nov 2026",
+      "highlight": "Gelanceerd op 22 nov 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5853,7 +5853,7 @@
       "timeline": [
         {
           "date": "22 nov 2026",
-          "event": "Geplande lancering van NROL-136"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
