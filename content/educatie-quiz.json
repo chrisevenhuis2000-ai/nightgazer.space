@@ -2,1477 +2,1515 @@
   "versie": 1,
   "onderwerpen": {
     "zonnestelsel": {
-      "week": "2026-W47",
+      "week": "2026-W48",
       "vragen": [
         {
-          "id": "2026-W47-zonnestelsel-1",
+          "id": "2026-W48-zonnestelsel-1",
           "beg": {
-            "q": "Wat gebeurt er met een planeet als hij verder van de zon af staat?",
+            "q": "Wat houdt de planeten in hun baan om de zon?",
             "options": [
-              "Hij draait precies even lang rond als de Aarde",
-              "Hij doet korter over één ronde om de zon",
-              "Hij doet langer over één ronde om de zon",
-              "Hij stopt met bewegen"
+              "De zwaartekracht van de zon",
+              "De wind van de zon",
+              "Het magnetische veld van de Aarde",
+              "De draaiing van de Maan"
             ],
-            "correct": 2,
-            "explain": "Ver van de zon is de baan groter en beweegt de planeet langzamer. Neptunus doet er ongeveer 165 jaar over."
+            "correct": 0,
+            "explain": "De zwaartekracht van de zon trekt alle planeten naar zich toe. Zonder die aantrekking zouden ze in een rechte lijn het heelal in vliegen."
           },
           "ama": {
-            "q": "Een planeet heeft een halve grootas van 4 AU. Wat is zijn omlooptijd volgens de derde wet van Kepler?",
+            "q": "Welke natuurwet verklaarde volgens Newton de wetten van Kepler?",
             "options": [
-              "8 jaar",
-              "16 jaar",
-              "64 jaar",
-              "4 jaar"
-            ],
-            "correct": 0,
-            "explain": "T² = a³ geeft T² = 64, dus T = 8 jaar. Deze eenvoudige vorm geldt als T in jaren en a in AU wordt uitgedrukt."
-          },
-          "pro": {
-            "q": "Wat is de omlooptijd van een object om de zon met a = 4 AU, e = 0,5 en een massa die verwaarloosbaar is?",
-            "options": [
-              "8 jaar",
-              "16 jaar",
-              "4 jaar",
-              "6 jaar"
-            ],
-            "correct": 0,
-            "explain": "De derde wet hangt alleen af van de halve grootas, niet van de excentriciteit: T = a^(3/2) = 8 jaar. De excentriciteit bepaalt wel de vorm van de baan."
-          }
-        },
-        {
-          "id": "2026-W47-zonnestelsel-2",
-          "beg": {
-            "q": "Waarom is het op Venus veel heter dan op Mercurius, hoewel Mercurius dichter bij de zon staat?",
-            "options": [
-              "Venus heeft geen atmosfeer",
-              "Venus heeft een dikke atmosfeer die warmte vasthoudt",
-              "Venus is groter dan Jupiter",
-              "Venus draait niet om de zon"
+              "De wet van Hubble",
+              "De universele gravitatiewet F = GMm/r²",
+              "De wet van Boyle over gasdruk",
+              "De wet van Ohm"
             ],
             "correct": 1,
-            "explain": "De dikke CO₂-atmosfeer van Venus zorgt voor een sterk broeikaseffect. Het is er ruim 460 °C, overal op de planeet."
-          },
-          "ama": {
-            "q": "Waaruit bestaat de atmosfeer van Venus vooral?",
-            "options": [
-              "Waterstof en helium",
-              "Methaan",
-              "Stikstof en zuurstof",
-              "Koolstofdioxide"
-            ],
-            "correct": 3,
-            "explain": "De atmosfeer van Venus bestaat voor ongeveer 96% uit CO₂. De druk aan het oppervlak is ongeveer 90 keer die op Aarde."
+            "explain": "Newtons gravitatiewet met een kracht evenredig met 1/r² leidt tot de ellipsbanen van Kepler. Zo kreeg Keplers empirische werk een natuurkundige basis."
           },
           "pro": {
-            "q": "Welk proces zorgt ervoor dat het oppervlak van Venus warmer is dan dat van Mercurius?",
+            "q": "Welke grootheid blijft behouden en verklaart Keplers tweede wet (gelijke oppervlakken in gelijke tijden)?",
             "options": [
-              "Sterk broeikaseffect door een dikke CO₂-atmosfeer die infrarode straling absorbeert",
-              "Interne radioactieve verwarming die het zonlicht ver overtreft",
-              "Getijdenverwarming door de zon",
-              "Directe absorptie van zonnewind in de ionosfeer"
+              "De excentriciteit van de baan",
+              "Het impulsmoment",
+              "De totale massa van de planeet",
+              "De baansnelheid"
             ],
-            "correct": 0,
-            "explain": "Venus reflecteert veel zonlicht, maar de CO₂-atmosfeer houdt thermische infraroodstraling vast. Daardoor is het oppervlak ruim 460 °C, warmer dan het dichter bij de zon staande Mercurius."
+            "correct": 1,
+            "explain": "Bij een centrale kracht blijft het impulsmoment constant, waardoor de oppervlaktesnelheid constant is. De baansnelheid zelf varieert wel: die is groter in het perihelium."
           }
         },
         {
-          "id": "2026-W47-zonnestelsel-3",
+          "id": "2026-W48-zonnestelsel-2",
           "beg": {
-            "q": "Welke planeet heeft de meeste bekende manen?",
+            "q": "Welke planeet doet er langer over om één keer om de zon te draaien: de Aarde of Mars?",
+            "options": [
+              "De Aarde, want zij beweegt sneller",
+              "Beide even lang",
+              "De Aarde, want zij is groter",
+              "Mars, want hij staat verder weg"
+            ],
+            "correct": 3,
+            "explain": "Mars heeft een grotere baan en beweegt langzamer, dus een jaar duurt er 687 dagen. Op de Aarde duurt het 365 dagen."
+          },
+          "ama": {
+            "q": "Jupiter staat ongeveer 5,2 AU van de zon. Wat is dan ongeveer zijn omlooptijd volgens Keplers derde wet?",
+            "options": [
+              "Ongeveer 5 jaar",
+              "Ongeveer 27 jaar",
+              "Ongeveer 60 jaar",
+              "Ongeveer 12 jaar"
+            ],
+            "correct": 3,
+            "explain": "Volgens T² = a³ is T = 5,2^1,5 ≈ 11,9 jaar. Jupiter doet er dus ongeveer 12 jaar over."
+          },
+          "pro": {
+            "q": "Een planetoïde heeft een halve grootas van 4 AU. Wat is zijn omlooptijd volgens Keplers derde wet?",
+            "options": [
+              "64 jaar",
+              "8 jaar",
+              "4 jaar",
+              "16 jaar"
+            ],
+            "correct": 1,
+            "explain": "T² = a³ geeft T = 4^1,5 = 8 jaar, met T in jaren en a in AU. Deze eenheden gelden voor lichamen die om de zon draaien."
+          }
+        },
+        {
+          "id": "2026-W48-zonnestelsel-3",
+          "beg": {
+            "q": "Hoe is de baan van een planeet om de zon het best te beschrijven?",
+            "options": [
+              "Een vierkant",
+              "Een spiraal naar de zon toe",
+              "Een uitgerekte cirkel (ellips)",
+              "Een rechte lijn"
+            ],
+            "correct": 2,
+            "explain": "Planeetbanen zijn ellipsen, bij de meeste planeten bijna cirkelvormig. Dat ontdekte Kepler in het begin van de 17e eeuw."
+          },
+          "ama": {
+            "q": "Waar staat de zon volgens Keplers eerste wet ten opzichte van de ellipsbaan van een planeet?",
+            "options": [
+              "In een van de twee brandpunten",
+              "Buiten de ellips",
+              "Op de kortste as",
+              "In het midden van de ellips"
+            ],
+            "correct": 0,
+            "explain": "De zon staat in een brandpunt, niet in het midden. Daardoor verandert de afstand tot de planeet gedurende zijn baan."
+          },
+          "pro": {
+            "q": "Welk effect veroorzaakt voor Mercurius een extra periheliumverschuiving van 43 boogseconden per eeuw bovenop de storingen van de andere planeten?",
+            "options": [
+              "Het zonnewindeffect",
+              "Poynting-Robertson-straling",
+              "Algemene Relativiteitstheorie",
+              "De afplatting van de zon door zijn rotatie"
+            ],
+            "correct": 2,
+            "explain": "De ruimtetijdkromming van de zon veroorzaakt deze extra precessie. De verklaring door Einstein in 1915 gold als een belangrijke bevestiging van zijn theorie."
+          }
+        },
+        {
+          "id": "2026-W48-zonnestelsel-4",
+          "beg": {
+            "q": "Welke planeet heeft prachtige, felle ringen die je met een kleine telescoop kunt zien?",
             "options": [
               "Saturnus",
-              "Aarde",
               "Venus",
-              "Mercurius"
+              "Mercurius",
+              "Mars"
             ],
             "correct": 0,
-            "explain": "Saturnus heeft meer dan 140 bevestigde manen, het hoogste aantal van alle planeten. Venus en Mercurius hebben er geen."
+            "explain": "Saturnus heeft de grootste en helderste ringen. Ze bestaan vooral uit stukjes waterijs, van stofkorrel tot huisgrootte."
           },
           "ama": {
-            "q": "Hoeveel manen hebben Mercurius en Venus samen?",
+            "q": "Waaruit bestaan de ringen van Saturnus vooral?",
             "options": [
-              "Geen",
-              "Twee",
-              "Vier",
-              "Tien"
-            ],
-            "correct": 0,
-            "explain": "Mercurius en Venus hebben geen manen. Dat komt vooral doordat ze dicht bij de zon staan, waar de zwaartekracht van de zon een stabiele baan voor manen bemoeilijkt."
-          },
-          "pro": {
-            "q": "Waarom hebben Mercurius en Venus geen manen?",
-            "options": [
-              "Ze hebben een te sterk magnetisch veld",
-              "Ze hebben geen zwaartekracht",
-              "De Hill-sfeer is klein en de getijdeninvloed van de zon maakt een stabiele baan moeilijk",
-              "Manen kunnen alleen bij gasreuzen bestaan"
-            ],
-            "correct": 2,
-            "explain": "De Hill-sfeer van een planeet is klein dichtbij de zon, en getijdeninvloeden maken lang bestaande manen onwaarschijnlijk. Een satelliet raakt zo gemakkelijk uit zijn baan."
-          }
-        },
-        {
-          "id": "2026-W47-zonnestelsel-4",
-          "beg": {
-            "q": "Waaruit bestaat een komeet grotendeels?",
-            "options": [
-              "Ijs en stof",
-              "Alleen gesteente",
+              "Gesteente en metaal",
               "Vloeibaar water",
-              "Gloeiend gas"
-            ],
-            "correct": 0,
-            "explain": "Een komeet is een grote 'vuile sneeuwbal' van ijs en stof. Bij nadering van de zon verdampt het ijs en ontstaat een staart."
-          },
-          "ama": {
-            "q": "Waarom wijst de staart van een komeet altijd van de zon af?",
-            "options": [
-              "Door zonnewind en stralingsdruk",
-              "Door de zwaartekracht van Jupiter",
-              "Doordat de komeet draait",
-              "Doordat de komeet tegen de richting van zijn baan in beweegt"
-            ],
-            "correct": 0,
-            "explain": "Zonnewind en stralingsdruk blazen gas en stof van de komeet weg, van de zon af. De staart kan dus voor de komeet uit wijzen als die zich van de zon verwijdert."
-          },
-          "pro": {
-            "q": "Welke waarde van de Tisserand-parameter ten opzichte van Jupiter (T_J) kenmerkt typisch kometen uit de Jupiterfamilie?",
-            "options": [
-              "T_J > 3",
-              "T_J = 0",
-              "2 < T_J < 3",
-              "T_J < 0"
+              "Waterijs",
+              "Gaswolken van waterstof"
             ],
             "correct": 2,
-            "explain": "Jupiterfamilie-kometen hebben typisch 2 < T_J < 3, terwijl asteroïden meestal T_J > 3 hebben. De parameter is bij ontmoetingen met Jupiter bij benadering behouden."
-          }
-        },
-        {
-          "id": "2026-W47-zonnestelsel-5",
-          "beg": {
-            "q": "Waar liggen de meeste asteroïden in ons zonnestelsel?",
-            "options": [
-              "Tussen Mars en Jupiter",
-              "Rond de zon dicht bij het oppervlak",
-              "Voorbij Neptunus",
-              "Tussen Aarde en Venus"
-            ],
-            "correct": 0,
-            "explain": "De asteroïdengordel ligt tussen de banen van Mars en Jupiter. Het zijn overblijfselen uit de vorming van het zonnestelsel."
-          },
-          "ama": {
-            "q": "Waarom is er in de asteroïdengordel geen planeet ontstaan?",
-            "options": [
-              "Er was geen materiaal beschikbaar",
-              "De zwaartekracht van Jupiter verstoorde het samenklonteren van materiaal",
-              "Mars heeft alles weggeslingerd",
-              "De zon was te heet"
-            ],
-            "correct": 1,
-            "explain": "Jupiters zwaartekracht stuurde de bouwstenen in de gordel in te wilde banen, zodat ze elkaar eerder braken dan samenvoegden. Ook de totale massa van de gordel is klein, minder dan die van de Maan."
+            "explain": "De ringen bestaan voor het grootste deel uit waterijsdeeltjes. Daarom weerkaatsen ze zonlicht zo goed."
           },
           "pro": {
-            "q": "Wat veroorzaakt de Kirkwood-gaten in de asteroïdengordel?",
+            "q": "Wat is de Roche-limiet?",
             "options": [
-              "Banenresonanties met Jupiter",
-              "Botsingen met kometen",
-              "Stralingsdruk van de zon",
-              "Getijdenwerking van Mars"
-            ],
-            "correct": 0,
-            "explain": "Asteroïden in resonanties met Jupiter, zoals 3:1, krijgen herhaalde zwaartekrachtstoten en worden uit die banen verwijderd. Zo ontstaan gaten in de verdeling van halve grootassen."
-          }
-        },
-        {
-          "id": "2026-W47-zonnestelsel-6",
-          "beg": {
-            "q": "Hoe oud is het zonnestelsel ongeveer?",
-            "options": [
-              "46 miljard jaar",
-              "460 duizend jaar",
-              "4,6 miljard jaar",
-              "4,6 miljoen jaar"
-            ],
-            "correct": 2,
-            "explain": "Het zonnestelsel is ongeveer 4,6 miljard jaar geleden gevormd uit een wolk van gas en stof. De oudste meteorieten bevestigen die leeftijd."
-          },
-          "ama": {
-            "q": "Hoe is de leeftijd van het zonnestelsel bepaald?",
-            "options": [
-              "Door het tellen van kraters op de Aarde",
-              "Door de lengte van een dag op Mars",
-              "Door de afstand tot Neptunus te meten",
-              "Door radiometrische datering van meteorieten"
+              "De maximale afstand waarop een maan stabiel om een planeet kan draaien",
+              "De grens tussen de binnenste en buitenste planeten",
+              "De afstand waarop een planeet synchroon roteert met zijn maan",
+              "De afstand tot een planeet waarbinnen getijdenkrachten een door eigen zwaartekracht samengehouden maan uiteen kunnen scheuren"
             ],
             "correct": 3,
-            "explain": "Meteorieten behoren tot het oudste vaste materiaal. Radiometrische datering geeft ongeveer 4,57 miljard jaar."
-          },
-          "pro": {
-            "q": "Welke methode levert de meest nauwkeurige leeftijd van het zonnestelsel?",
+            "explain": "Binnen de Roche-limiet overheerst het getijdenverschil in aantrekking over de eigen zwaartekracht van een maan. Daardoor kunnen ringen ontstaan en blijven bestaan."
+          }
+        },
+        {
+          "id": "2026-W48-zonnestelsel-5",
+          "beg": {
+            "q": "Welke planeet heeft een dikke atmosfeer van vooral koolstofdioxide?",
             "options": [
-              "Koolstof-14-datering van meteorieten",
-              "U-Pb-datering van calcium-aluminiumrijke insluitsels in chondrieten",
-              "Hubble-expansie van de zon",
-              "Het tellen van maankraters"
+              "Aarde",
+              "Jupiter",
+              "Venus",
+              "Neptunus"
+            ],
+            "correct": 2,
+            "explain": "De atmosfeer van Venus bestaat voor ongeveer 96% uit koolstofdioxide. De druk aan het oppervlak is ruim 90 keer zo hoog als op Aarde."
+          },
+          "ama": {
+            "q": "Welke twee gassen vormen samen het grootste deel van de atmosfeer van Jupiter?",
+            "options": [
+              "Methaan en ammoniak",
+              "Waterstof en helium",
+              "Stikstof en zuurstof",
+              "Koolstofdioxide en stikstof"
             ],
             "correct": 1,
-            "explain": "De CAI's in chondrieten zijn de oudste vaste stof uit het zonnestelsel. Met U-Pb-datering komt dat uit op 4,567 miljard jaar."
+            "explain": "Jupiter bestaat vooral uit waterstof en helium, net als de zon. Methaan en ammoniak komen er slechts in kleine hoeveelheden voor."
+          },
+          "pro": {
+            "q": "Welk gas geeft Uranus en Neptunus hun blauwgroene kleur doordat het rood licht absorbeert?",
+            "options": [
+              "Zwaveldioxide",
+              "Ammoniak",
+              "Methaan",
+              "Neon"
+            ],
+            "correct": 2,
+            "explain": "Methaan in de bovenste atmosfeer absorbeert rood licht en verstrooit blauw. Dat verklaart de blauwgroene tinten van beide ijsreuzen."
+          }
+        },
+        {
+          "id": "2026-W48-zonnestelsel-6",
+          "beg": {
+            "q": "Welke planeet heeft geen maan?",
+            "options": [
+              "Aarde",
+              "Venus",
+              "Saturnus",
+              "Mars"
+            ],
+            "correct": 1,
+            "explain": "Mercurius en Venus zijn de enige planeten zonder maan. De Aarde heeft er één, Mars twee."
+          },
+          "ama": {
+            "q": "Welke maan van Saturnus heeft een dikke atmosfeer en meren van vloeibare koolwaterstoffen?",
+            "options": [
+              "Io",
+              "Triton",
+              "Titan",
+              "Europa"
+            ],
+            "correct": 2,
+            "explain": "Titan is de enige maan in ons zonnestelsel met een dikke atmosfeer, vooral stikstof. Op het oppervlak liggen meren van methaan en ethaan."
+          },
+          "pro": {
+            "q": "Wat veroorzaakt de intense vulkanische activiteit op Jupiters maan Io?",
+            "options": [
+              "Getijdenverwarming door de baanresonantie met Europa en Ganymedes",
+              "Inslagen van kometen",
+              "Straling van de zon",
+              "Radioactief verval in een kleine kern"
+            ],
+            "correct": 0,
+            "explain": "De baanresonantie houdt Io's baan licht excentrisch. Jupiters wisselende getijdenkrachten wrijven het binnenste warm, waardoor Io het meest vulkanische lichaam van het zonnestelsel is."
+          }
+        },
+        {
+          "id": "2026-W48-zonnestelsel-7",
+          "beg": {
+            "q": "Welk hemellichaam werd in 2006 van planeet tot dwergplaneet bestempeld?",
+            "options": [
+              "Pluto",
+              "Neptunus",
+              "De Maan",
+              "Mars"
+            ],
+            "correct": 0,
+            "explain": "De Internationale Astronomische Unie stelde in 2006 een definitie op voor planeten. Pluto voldoet daar niet aan, omdat hij zijn omgeving niet heeft leeggeveegd."
+          },
+          "ama": {
+            "q": "Welke van deze hemellichamen is een erkende dwergplaneet?",
+            "options": [
+              "Vesta",
+              "Callisto",
+              "Ceres",
+              "Titan"
+            ],
+            "correct": 2,
+            "explain": "Ceres is de enige dwergplaneet in de planetoïdengordel en heeft een doorsnede van ongeveer 940 km. Vesta is een grote planetoïde; Titan en Callisto zijn manen."
+          },
+          "pro": {
+            "q": "Welk criterium van de IAU-definitie van een planeet voldoet Pluto niet?",
+            "options": [
+              "In een baan om de zon draaien",
+              "Een eigen maan hebben",
+              "Genoeg massa hebben voor een bijna ronde vorm",
+              "Zijn baanomgeving leeggeveegd hebben"
+            ],
+            "correct": 3,
+            "explain": "Pluto deelt zijn baanzone met veel andere objecten in de Kuipergordel. Hij draait wel om de zon en is bijna rond, dus alleen het derde criterium van de IAU faalt."
           }
         }
       ]
     },
     "sterren": {
-      "week": "2026-W47",
+      "week": "2026-W48",
       "vragen": [
         {
-          "id": "2026-W47-sterren-1",
+          "id": "2026-W48-sterren-1",
           "beg": {
-            "q": "Waarom kan de zon al miljarden jaren blijven schijnen?",
+            "q": "Waarom moet het in de kern van de zon zo extreem heet zijn om waterstof te laten samensmelten?",
             "options": [
-              "Ze verbrandt gewone brandstof zoals kolen",
-              "Ze straalt het licht uit dat ze ooit heeft opgeslagen",
-              "Ze wordt verwarmd door andere sterren in de buurt",
-              "Ze haalt energie uit het samensmelten van kleine atomen in haar kern"
+              "Waterstofkernen stoten elkaar af en moeten dus razendsnel botsen om samen te smelten",
+              "Waterstof is bij lage temperatuur vloeibaar en kan dan niet fuseren",
+              "De hitte maakt van waterstof eerst helium, waarna het pas kan fuseren",
+              "Zonder hitte is er geen zwaartekracht in de zon"
             ],
-            "correct": 3,
-            "explain": "De zon haalt haar energie uit kernfusie: waterstof smelt in de kern samen tot helium. Gewoon verbranden zou de zon in slechts enkele duizenden jaren uitgeput hebben."
+            "correct": 0,
+            "explain": "Waterstofkernen zijn positief geladen en stoten elkaar af. Alleen bij zeer hoge snelheden, dus hoge temperatuur, komen ze dicht genoeg bij elkaar om te fuseren."
           },
           "ama": {
-            "q": "Welk proces levert in de kern van de zon het grootste deel van de energie?",
+            "q": "Welk quantumeffect maakt fusie in de zonnekern mogelijk bij ongeveer 15 miljoen K, terwijl de Coulombbarrière klassiek veel te hoog is?",
             "options": [
-              "De CNO-cyclus",
-              "Splijting van uranium",
+              "Het foto-elektrisch effect",
+              "Het Zeeman-effect",
+              "Comptonverstrooiing",
+              "Tunneling door de Coulombbarrière"
+            ],
+            "correct": 3,
+            "explain": "Bij 15 miljoen K hebben protonen een energie van ruwweg 1 keV, terwijl de Coulombbarrière in de orde van MeV ligt. Dankzij quantumtunneling kunnen protonen de barrière toch passeren, zij het met kleine kans, en dat is genoeg voor de fusie in de zon."
+          },
+          "pro": {
+            "q": "Waarom verloopt de pp-keten in de zonnekern vooral via protonen uit de hoogenergetische staart van de Maxwell-Boltzmann-verdeling die door de Coulombbarrière tunnelen (Gamow-piek)?",
+            "options": [
+              "Alleen protonen met meer dan 1 MeV kunnen fuseren",
+              "Neutrino's zorgen voor extra energie voor de tunneling",
+              "De Coulombbarrière verdwijnt bij energieën boven kT volledig",
+              "Het product van de afnemende Maxwell-Boltzmann-factor en de toenemende tunnelkans heeft een maximum bij een energie ver boven kT"
+            ],
+            "correct": 3,
+            "explain": "De tunnelkans stijgt sterk met de energie, terwijl de Maxwell-Boltzmann-factor exp(−E/kT) daalt. Het product heeft een piek, de Gamow-piek, bij enkele keV, ruim boven kT ≈ 1,3 keV maar ver onder de barrièrehoogte van ongeveer een MeV."
+          }
+        },
+        {
+          "id": "2026-W48-sterren-2",
+          "beg": {
+            "q": "Welke sterren leven het kortst: zware of lichte sterren?",
+            "options": [
+              "Alle sterren leven even lang",
+              "Lichte sterren leven korter, want ze zijn kleiner",
+              "Zware sterren leven langer, want ze hebben meer brandstof",
+              "Zware sterren leven veel korter dan lichte sterren"
+            ],
+            "correct": 3,
+            "explain": "Een zware ster heeft meer brandstof, maar verbruikt die veel sneller omdat haar kern heter is en ze veel feller straalt. Daardoor is ze al na enkele miljoenen jaren op, terwijl kleine sterren veel langer leven dan de zon."
+          },
+          "ama": {
+            "q": "Waarom leeft een hoofdreeksster van 10 zonsmassa's veel korter dan de zon?",
+            "options": [
+              "Haar lichtkracht neemt veel sneller toe dan haar massa (ruwweg L ∝ M^3,5), dus de brandstof is veel eerder op",
+              "Ze bevat minder waterstof dan de zon",
+              "Ze is koeler, waardoor fusie langzamer verloopt",
+              "Ze fuseert direct ijzer in plaats van waterstof"
+            ],
+            "correct": 0,
+            "explain": "Voorraad (massa) groeit evenredig met M, maar het verbruik (lichtkracht) groeit ruwweg met M^3,5. Een ster van 10 M☉ leeft daardoor maar enkele tientallen miljoenen jaren, tegen ±10 miljard jaar voor de zon."
+          },
+          "pro": {
+            "q": "Welke schaling volgt voor de hoofdreeksduur t als je aanneemt dat t ∝ M/L en L ∝ M^3,5?",
+            "options": [
+              "t ∝ M^+4,5",
+              "t ∝ M^−2,5",
+              "t ∝ M^−3,5",
+              "t ∝ M^+2,5"
+            ],
+            "correct": 1,
+            "explain": "Uit t ∝ M/L = M/M^3,5 volgt t ∝ M^−2,5. Een ster van 10 M☉ leeft dus een factor 10^2,5 ≈ 300 keer korter dan de zon, in de orde van 30 miljoen jaar."
+          }
+        },
+        {
+          "id": "2026-W48-sterren-3",
+          "beg": {
+            "q": "Waarom is een rode reus veel helderder dan de zon, ook al is zijn oppervlak koeler?",
+            "options": [
+              "Hij staat dichter bij de aarde",
+              "Hij weerkaatst het licht van andere sterren",
+              "Hij is veel heter in zijn kern dan het oppervlak laat zien",
+              "Hij is gigantisch groot en straalt daardoor met een enorm oppervlak licht uit"
+            ],
+            "correct": 3,
+            "explain": "Een rode reus heeft een koel oppervlak, maar dat oppervlak is tientallen tot honderden keer zo breed als dat van de zon. Een groot oppervlak geeft in totaal veel licht, ook als elk stukje minder fel is."
+          },
+          "ama": {
+            "q": "Rode reuzen liggen in het HR-diagram rechtsboven. Wat betekent dat?",
+            "options": [
+              "Ze zijn zowel heet als zwak",
+              "Ze zijn zowel koel als zwak",
+              "Ze hebben een hoge oppervlaktetemperatuur en een lage lichtkracht",
+              "Ze hebben een lage oppervlaktetemperatuur maar een hoge lichtkracht"
+            ],
+            "correct": 3,
+            "explain": "In een HR-diagram loopt de temperatuur naar links toe op en staat lichtkracht verticaal. Rechtsboven betekent dus koel (rood) en zeer lichtkrachtig, wat alleen kan met een enorm groot oppervlak."
+          },
+          "pro": {
+            "q": "Hoe verklaart de wet van Stefan-Boltzmann (L = 4πR²σT⁴) de positie van rode reuzen in het HR-diagram?",
+            "options": [
+              "Bij lage T moet R zeer groot zijn om toch een hoge L te geven",
+              "L hangt alleen af van T, niet van R",
+              "Bij lage T moet R zeer klein zijn om een hoge L te geven",
+              "De T⁴-afhankelijkheid maakt koele sterren altijd zwak"
+            ],
+            "correct": 0,
+            "explain": "Omdat L ∝ R²T⁴ en T bij een rode reus laag is (ongeveer 3000-4500 K), kan een hoge L alleen met een heel grote straal, vaak tientallen tot honderden zonsstralen."
+          }
+        },
+        {
+          "id": "2026-W48-sterren-4",
+          "beg": {
+            "q": "Wat gebeurt er met helium in een oude, opgezwollen ster wanneer het daar extreem heet wordt?",
+            "options": [
+              "Heliumkernen smelten samen tot zwaardere elementen zoals koolstof",
+              "Helium wordt vloeibaar",
+              "Helium verdwijnt als gas de ruimte in",
+              "Helium verandert weer terug in waterstof"
+            ],
+            "correct": 0,
+            "explain": "Als de waterstof in de kern op is en de kern heet genoeg wordt, gaat de ster helium fuseren. Daarbij ontstaan onder andere koolstof en zuurstof, de bouwstenen van ons lichaam."
+          },
+          "ama": {
+            "q": "Welke reactie zet helium om in koolstof in de kern van een rode reus bij ongeveer 10⁸ K?",
+            "options": [
+              "De triple-alpha-reactie: 3 ⁴He → ¹²C",
               "De proton-protonketen",
-              "De triple-alpha-reactie"
+              "De CNO-cyclus",
+              "Neutronenvangst door ijzer"
             ],
-            "correct": 2,
-            "explain": "In sterren als de zon domineert de pp-keten, waarbij vier protonen samensmelten tot een heliumkern. De CNO-cyclus wordt pas belangrijk in zwaardere, hetere sterren."
+            "correct": 0,
+            "explain": "Bij ongeveer 100 miljoen K versmelten drie heliumkernen (alfadeeltjes) tot een koolstofkern ¹²C. De reactie heet daarom triple-alpha."
           },
           "pro": {
-            "q": "Welke reactie domineert de energieproductie in de kern van de zon en hoe sterk hangt het vermogen ervan van de temperatuur af?",
+            "q": "Waarom verloopt de triple-alpha-reactie alleen efficiënt dankzij een resonantie in ¹²C (de Hoyle-toestand)?",
             "options": [
-              "De CNO-cyclus, met ongeveer T²⁰",
-              "De pp-keten, met ongeveer T²⁰",
-              "De triple-alpha-reactie, met ongeveer T⁴⁰",
-              "De pp-keten, met een zwakke temperatuurafhankelijkheid van ongeveer T⁴"
+              "⁸Be is zeer onstabiel (levensduur ~10⁻¹⁶ s), dus de derde ⁴He moet snel invangen, wat door de resonantie sterk wordt versterkt",
+              "De resonantie verlaagt de Coulombbarrière tot nul",
+              "Zonder resonantie zou ¹²C direct in ijzer overgaan",
+              "⁸Be is stabiel, maar de resonantie remt neutrino's af"
             ],
-            "correct": 3,
-            "explain": "In de zon domineert de pp-keten, met een gevoeligheid van ongeveer T⁴ bij zonnetemperaturen. De CNO-cyclus is veel temperatuurgevoeliger (ongeveer T²⁰) en wint pas bij hogere kerntemperaturen, in zwaardere sterren."
+            "correct": 0,
+            "explain": "Twee ⁴He vormen kortstondig ⁸Be, dat vrijwel direct uiteenvalt. Pas doordat ¹²C een aangeslagen toestand heeft die goed aansluit bij de energie van ⁸Be + ⁴He, is de kans op vorming van ¹²C groot genoeg. Fred Hoyle voorspelde deze toestand."
           }
         },
         {
-          "id": "2026-W47-sterren-2",
+          "id": "2026-W48-sterren-5",
           "beg": {
-            "q": "Hoe oud is de zon ongeveer?",
+            "q": "Waarom explodeert een heel zware ster uiteindelijk als supernova?",
             "options": [
-              "4,6 miljard jaar",
-              "46 miljard jaar",
-              "460 miljoen jaar",
-              "46 miljoen jaar"
+              "Ze raakt zonder waterstof en dooft rustig uit",
+              "De buitenlagen worden te koud en barsten open",
+              "Haar kern kan geen energie meer opwekken en stort onder het eigen gewicht in",
+              "Ze botst met een andere ster"
             ],
-            "correct": 0,
-            "explain": "De zon is ongeveer 4,6 miljard jaar oud, bepaald onder meer uit de ouderdom van meteorieten. Dat is ongeveer halverwege haar leven op de hoofdreeks."
+            "correct": 2,
+            "explain": "Zodra de kern uit ijzer bestaat, levert fusie geen energie meer op. De kern stort dan in een fractie van een seconde in elkaar, waarna de buitenlagen met een enorme klap worden weggeblazen."
           },
           "ama": {
-            "q": "Hoe lang blijft een ster met de massa van de zon ongeveer op de hoofdreeks?",
+            "q": "Waarom stopt de fusieketen in massieve sterren bij ijzer?",
             "options": [
-              "Ongeveer 100 miljoen jaar",
-              "Ongeveer 100 miljard jaar",
-              "Ongeveer 10 miljoen jaar",
-              "Ongeveer 10 miljard jaar"
+              "IJzer is te zwaar om in de kern te blijven zitten",
+              "Bij ijzer is alle waterstof opgebruikt",
+              "IJzer is radioactief en valt direct uiteen",
+              "Fusie van ijzer kost energie in plaats van dat het energie oplevert"
             ],
             "correct": 3,
-            "explain": "Een ster met zonsmassa fuseert ongeveer 10 miljard jaar waterstof in haar kern. Zwaardere sterren branden veel sneller op en leven soms maar enkele miljoenen jaren."
+            "explain": "De kernen rond ijzer (⁵⁶Fe) zijn het sterkst gebonden per nucleon. Fusie of splijting van ijzer vraagt energie, dus de kern kan zichzelf niet meer tegen de zwaartekracht ondersteunen."
           },
           "pro": {
-            "q": "Waarom leven massieve hoofdreeksterren korter dan sterren met weinig massa?",
+            "q": "Welke eigenschap van atoomkernen verklaart dat de Si-fusie eindigt bij een ijzerkern en daarna een type II-supernova volgt?",
             "options": [
-              "Ze verliezen hun brandstof door neutrino's die de ster verlaten",
-              "Hun lichtkracht groeit veel sneller dan hun massa (ruwweg L ∝ M³ tot M⁴), dus hun brandstof raakt sneller op",
-              "Ze bevatten minder waterstof dan lichte sterren",
-              "Ze fuseren alleen helium en geen waterstof"
+              "De bindingsenergie per nucleon neemt voor alle kernen toe met massagetal",
+              "IJzer heeft geen neutronen",
+              "De bindingsenergie per nucleon heeft een maximum in de buurt van ⁵⁶Fe/⁶²Ni (~8,8 MeV)",
+              "De Coulombbarrière voor ijzer is oneindig hoog"
+            ],
+            "correct": 2,
+            "explain": "Fusie is exotherm tot het maximum van de bindingsenergie per nucleon rond de ijzergroep. Daarboven kost fusie energie, de kern verliest haar drukbron en collabeert tot een neutronenster of zwart gat."
+          }
+        },
+        {
+          "id": "2026-W48-sterren-6",
+          "beg": {
+            "q": "Waarom zijn sommige supernova's handig om afstanden tot verre sterrenstelsels te meten?",
+            "options": [
+              "Ze bereiken telkens ongeveer dezelfde werkelijke helderheid, dus hoe zwak ze lijken zegt hoe ver ze staan",
+              "Ze hebben altijd een rode kleur",
+              "Ze flitsen precies elke seconde",
+              "Ze staan allemaal even ver van ons af"
+            ],
+            "correct": 0,
+            "explain": "Als je weet hoe fel een lamp werkelijk is, kun je uit zijn schijnbare helderheid zijn afstand afleiden. Dat doen astronomen met supernova's van type Ia, die als 'standaardkaars' dienen."
+          },
+          "ama": {
+            "q": "Welk type supernova wordt als standaardkaars gebruikt?",
+            "options": [
+              "Type II, de instorting van een rode superreus",
+              "Type Ib, een ster zonder waterstof",
+              "Een nova op een neutronenster",
+              "Type Ia, een exploderende witte dwerg"
+            ],
+            "correct": 3,
+            "explain": "Type Ia-supernova's ontstaan als een witte dwerg in een dubbelster de Chandrasekhar-grens van ongeveer 1,4 zonsmassa nadert. De helderheid bij de piek is vrijwel gelijk, waardoor ze afstanden tot miljarden lichtjaren verraden."
+          },
+          "pro": {
+            "q": "Waarom is de piekhelderheid van type Ia-supernova's relatief uniform?",
+            "options": [
+              "De explosie vindt plaats bij de TOV-limiet van een neutronenster",
+              "Er wordt altijd precies 10 M☉ aan materie uitgestoten",
+              "De explosie vindt plaats bij een massa dicht bij de Chandrasekhar-massa, en de lichtkromme wordt aangedreven door het verval van ⁵⁶Ni",
+              "De ster is een rode superreus met vaste straal en temperatuur"
+            ],
+            "correct": 2,
+            "explain": "Door de elektronendegeneratiedruk kan een witte dwerg maar tot ongeveer 1,4 M☉ groeien, waardoor de explosies sterk op elkaar lijken. De hoeveelheid gevormd ⁵⁶Ni bepaalt de piekhelderheid, en de lichtkromme-breedtecorrectie (Phillips-relatie) verfijnt de ijking."
+          }
+        },
+        {
+          "id": "2026-W48-sterren-7",
+          "beg": {
+            "q": "Waarom draait een nieuw gevormde neutronenster extreem snel rond?",
+            "options": [
+              "De kern krimpt van duizenden kilometers tot ongeveer 20 km, zoals een schaatser die sneller draait als ze haar armen intrekt",
+              "Een supernova-explosie geeft de ster een enorme draaiduw",
+              "De ster wordt meegesleurd door het magnetisch veld van de zon",
+              "Neutronensterren draaien niet, maar trillen"
+            ],
+            "correct": 0,
+            "explain": "Een draaiend voorwerp dat kleiner wordt, gaat sneller draaien. Daarom draaien neutronensterren soms tientallen of honderden keren per seconde rond."
+          },
+          "ama": {
+            "q": "Welk natuurkundig behoud verklaart de snelle rotatie van een neutronenster na instorting van de kern?",
+            "options": [
+              "Behoud van impulsmoment",
+              "Behoud van baryongetal",
+              "Behoud van lading",
+              "Behoud van kinetische energie van de explosie"
+            ],
+            "correct": 0,
+            "explain": "Bij instorting daalt het traagheidsmoment sterk, dus moet de hoeksnelheid omhoog om het impulsmoment constant te houden. Pulsars zijn de bekende uitkomst: neutronensterren die soms vele malen per seconde ronddraaien."
+          },
+          "pro": {
+            "q": "Hoe schaalt de rotatiehoeksnelheid ω bij instorting met de straal R, bij behoud van impulsmoment voor een bol met massa M (I ∝ MR²)?",
+            "options": [
+              "ω ∝ R⁰ (onafhankelijk van R)",
+              "ω ∝ R⁻²",
+              "ω ∝ R⁻¹",
+              "ω ∝ R²"
             ],
             "correct": 1,
-            "explain": "De levensduur is ruwweg t ∝ M/L ∝ M⁻²·⁵ tot M⁻³. Een zware ster heeft meer brandstof, maar verbruikt die veel sneller."
-          }
-        },
-        {
-          "id": "2026-W47-sterren-3",
-          "beg": {
-            "q": "Waar staat de zon in het HR-diagram?",
-            "options": [
-              "Op de hoofdreeks",
-              "Buiten het diagram, omdat ze te heet is",
-              "Bij de witte dwergen",
-              "Bij de rode reuzen"
-            ],
-            "correct": 0,
-            "explain": "De zon fuseert waterstof tot helium in haar kern en hoort daarom bij de hoofdreeks. De meeste sterren staan daar, het grootste deel van hun leven."
-          },
-          "ama": {
-            "q": "Welke twee grootheden staan op de assen van een HR-diagram?",
-            "options": [
-              "Leeftijd en straal",
-              "Rotatiesnelheid en massa",
-              "Massa en afstand",
-              "Lichtkracht (of absolute magnitude) en temperatuur (of spectraalklasse)"
-            ],
-            "correct": 3,
-            "explain": "Het HR-diagram zet de lichtkracht uit tegen de oppervlaktetemperatuur of spectraalklasse. Opvallend is dat de temperatuur gewoonlijk van hoog naar laag langs de x-as loopt."
-          },
-          "pro": {
-            "q": "Welke relatie ligt ten grondslag aan de lijnen van gelijke straal in een HR-diagram?",
-            "options": [
-              "L ∝ M⁻¹",
-              "L = mc²",
-              "L = 4πR²σT²",
-              "L = 4πR²σT⁴"
-            ],
-            "correct": 3,
-            "explain": "De wet van Stefan-Boltzmann, L = 4πR²σT⁴, verbindt lichtkracht, straal en effectieve temperatuur. Bij gelijke R liggen sterren dus op een lijn in het diagram."
-          }
-        },
-        {
-          "id": "2026-W47-sterren-4",
-          "beg": {
-            "q": "Wat blijft er vaak over als een zware ster is ontploft als supernova?",
-            "options": [
-              "Een nieuwe gewone ster",
-              "Een gaswolk zonder kern",
-              "Niets",
-              "Een neutronenster of een zwart gat"
-            ],
-            "correct": 3,
-            "explain": "De kern stort samen tot een extreem compact object. Afhankelijk van de massa is dat een neutronenster of een zwart gat."
-          },
-          "ama": {
-            "q": "Waaruit bestaat een neutronenster grotendeels?",
-            "options": [
-              "Vloeibare waterstof",
-              "Heet plasma van helium",
-              "Neutronen, dicht opeengepakt",
-              "IJzeren atomen"
-            ],
-            "correct": 2,
-            "explain": "Bij de instorting worden protonen en elektronen samengeperst tot neutronen. Een theelepel neutronensterrenmateriaal zou miljarden tonnen wegen."
-          },
-          "pro": {
-            "q": "Welk mechanisme voorkomt dat een neutronenster verder instort?",
-            "options": [
-              "Neutronendegeneratiedruk (samen met de sterke kernkracht)",
-              "Magnetische druk",
-              "Thermische gasdruk door kernfusie",
-              "Elektrondegeneratiedruk"
-            ],
-            "correct": 0,
-            "explain": "Neutronen zijn fermionen en volgen het uitsluitingsprincipe van Pauli, wat degeneratiedruk geeft. Boven ongeveer 2 à 3 zonsmassa's (de Tolman-Oppenheimer-Volkoff-grens) volstaat dat niet meer."
-          }
-        },
-        {
-          "id": "2026-W47-sterren-5",
-          "beg": {
-            "q": "Wat gebeurt er met de zon als haar waterstof in de kern op is?",
-            "options": [
-              "Ze explodeert als supernova",
-              "Ze zwelt op tot een rode reus",
-              "Ze wordt meteen onzichtbaar",
-              "Ze verandert in een zwart gat"
-            ],
-            "correct": 1,
-            "explain": "Over ongeveer 5 miljard jaar zwelt de zon op tot een rode reus. Daarna stoot ze haar buitenlagen af en blijft een witte dwerg over."
-          },
-          "ama": {
-            "q": "Wat wordt het eindstadium van de zon?",
-            "options": [
-              "Een neutronenster",
-              "Een witte dwerg",
-              "Een supernova-overblijfsel van type II",
-              "Een zwart gat"
-            ],
-            "correct": 1,
-            "explain": "De zon is te licht voor een supernova. Ze eindigt als witte dwerg, ongeveer zo groot als de aarde, omringd door een planetaire nevel."
-          },
-          "pro": {
-            "q": "Wat is de bovengrens voor de massa van een witte dwerg die door elektrondegeneratiedruk wordt ondersteund?",
-            "options": [
-              "Ongeveer 8 zonsmassa",
-              "Ongeveer 25 zonsmassa",
-              "Ongeveer 0,1 zonsmassa",
-              "Ongeveer 1,4 zonsmassa (Chandrasekhar-limiet)"
-            ],
-            "correct": 3,
-            "explain": "De Chandrasekhar-massa ligt bij ongeveer 1,4 M☉. Daarboven kan elektrondegeneratiedruk de zwaartekracht niet houden, wat tot een type Ia-supernova of kerninstorting leidt."
-          }
-        },
-        {
-          "id": "2026-W47-sterren-6",
-          "beg": {
-            "q": "Waarom kan zelfs licht niet uit een zwart gat ontsnappen?",
-            "options": [
-              "Het is er te koud voor licht",
-              "Licht is er te langzaam geworden door lucht",
-              "De zwaartekracht is er zo sterk dat niets snel genoeg kan ontsnappen",
-              "Zwarte gaten absorberen licht met magneten"
-            ],
-            "correct": 2,
-            "explain": "Binnen de waarnemingshorizon is de ontsnappingssnelheid groter dan de lichtsnelheid. Daarom kan er geen licht van binnenuit ons bereiken."
-          },
-          "ama": {
-            "q": "Hoe sporen astronomen zwarte gaten op?",
-            "options": [
-              "Door hun eigen zichtbare licht",
-              "Door hun geluid",
-              "Via de beweging van sterren en gas eromheen, en via röntgenstraling van opvallend gas",
-              "Door ze direct met een gewone telescoop te zien"
-            ],
-            "correct": 2,
-            "explain": "Sterren rond het centrum van de Melkweg draaien om een onzichtbare massa (Sagittarius A*). Gas dat naar een zwart gat valt, wordt zo heet dat het röntgenstraling uitzendt."
-          },
-          "pro": {
-            "q": "Wat is de Schwarzschildstraal van een object met massa M?",
-            "options": [
-              "R_s = GM/c²",
-              "R_s = 2GM/c",
-              "R_s = GM²/c²",
-              "R_s = 2GM/c²"
-            ],
-            "correct": 3,
-            "explain": "R_s = 2GM/c² is de straal waarop de ontsnappingssnelheid gelijk wordt aan c. Voor de zon is dat ongeveer 3 km."
-          }
-        },
-        {
-          "id": "2026-W47-sterren-7",
-          "beg": {
-            "q": "Welk element is de brandstof voor kernfusie in de zon?",
-            "options": [
-              "Waterstof",
-              "Zuurstof",
-              "Goud",
-              "IJzer"
-            ],
-            "correct": 0,
-            "explain": "De zon bestaat voor het grootste deel uit waterstof. Dat smelt samen tot helium en levert daarbij energie."
-          },
-          "ama": {
-            "q": "Welk element ontstaat uit de fusie van drie heliumkernen in rode reuzen?",
-            "options": [
-              "Koolstof",
-              "Neon",
-              "Uranium",
-              "Waterstof"
-            ],
-            "correct": 0,
-            "explain": "De triple-alpha-reactie smelt drie heliumkernen samen tot koolstof-12. Dat gebeurt bij ongeveer 100 miljoen K in de kern van rode reuzen."
-          },
-          "pro": {
-            "q": "Waarom verloopt de triple-alpha-reactie via een resonantie in koolstof-12?",
-            "options": [
-              "Beryllium-8 is zeer onstabiel, dus een derde heliumkern moet het snel invangen, waarbij de Hoyle-resonantie de opbrengst sterk verhoogt",
-              "Omdat koolstof geen gebonden toestanden heeft",
-              "Omdat de Coulombbarrière voor helium nul is",
-              "Omdat helium-4 radioactief is"
-            ],
-            "correct": 0,
-            "explain": "Twee heliumkernen vormen kortlevend ⁸Be. De Hoyle-toestand in ¹²C maakt invangen van een derde α-deeltje waarschijnlijk genoeg, anders zou er nauwelijks koolstof zijn."
+            "explain": "Uit L = Iω = constant en I ∝ MR² volgt ω ∝ 1/R². Een krimp met een factor 10⁵ in straal geeft in principe een factor 10¹⁰ in ω, hoewel in de praktijk massaverlies en magnetisch remmen dat bijstellen."
           }
         }
       ]
     },
     "sterrenstelsels": {
-      "week": "2026-W47",
+      "week": "2026-W48",
       "vragen": [
         {
-          "id": "2026-W47-sterrenstelsels-1",
+          "id": "2026-W48-sterrenstelsels-1",
           "beg": {
-            "q": "Wat gebeurt er over ongeveer 4,5 miljard jaar met onze Melkweg?",
+            "q": "Welke vorm heeft het middelste deel van de Melkweg volgens astronomen?",
             "options": [
-              "Ze botst met het Andromedastelsel",
-              "Ze botst met de Zon",
-              "Ze stopt met draaien",
-              "Ze verdwijnt in een zwart gat"
-            ],
-            "correct": 0,
-            "explain": "Het Andromedastelsel komt op ons af en gaat over ongeveer 4,5 miljard jaar met de Melkweg botsen. Door de enorme afstanden tussen sterren botsen sterren zelf vrijwel nooit."
-          },
-          "ama": {
-            "q": "Wat is de verwachte uitkomst van de botsing tussen de Melkweg en Andromeda over ±4,5 miljard jaar?",
-            "options": [
-              "Een stelsel dat volledig uit elkaar valt tot losse sterren",
-              "Een nieuw stelsel dat veel kleiner is dan beide",
-              "Twee stelsels die tot één groter, elliptisch aandoend stelsel samensmelten",
-              "Twee spiraalstelsels die ongeschonden langs elkaar passeren"
-            ],
-            "correct": 2,
-            "explain": "Simulaties laten zien dat beide stelsels uiteindelijk samensmelten tot één groter, elliptisch aandoend stelsel, soms 'Milkomeda' genoemd. Individuele sterren botsen nauwelijks, omdat de ruimte ertussen zo groot is."
-          },
-          "pro": {
-            "q": "Welk proces zorgt ervoor dat de Melkweg en Andromeda na een eerste nadering uiteindelijk samensmelten?",
-            "options": [
-              "Dynamische wrijving die baanenergie afvoert naar de halo's",
-              "Stralingsdruk van de kernen",
-              "Magnetische aantrekking tussen de schijven",
-              "Afstoting door donkere energie"
-            ],
-            "correct": 0,
-            "explain": "Bij dynamische wrijving geven de stelsels baanenergie en impulsmoment af aan de donkere-materiehalo's en aan sterren. Daardoor vallen ze na het eerste passeren terug en smelten ze samen."
-          }
-        },
-        {
-          "id": "2026-W47-sterrenstelsels-2",
-          "beg": {
-            "q": "Ongeveer hoeveel sterren heeft de Melkweg?",
-            "options": [
-              "Enkele duizenden",
-              "Enkele miljoenen",
-              "Ongeveer duizend miljard biljoen",
-              "Honderden miljarden"
-            ],
-            "correct": 3,
-            "explain": "De Melkweg bevat naar schatting 200 tot 400 miljard sterren. Met het blote oog zie je er slechts enkele duizenden."
-          },
-          "ama": {
-            "q": "Wat is de beste schatting van het aantal sterren in de Melkweg?",
-            "options": [
-              "2–4 miljoen",
-              "200–400 miljard",
-              "200–400 biljoen",
-              "20–40 duizend miljard"
-            ],
-            "correct": 1,
-            "explain": "Schattingen komen uit op ongeveer 200 tot 400 miljard sterren, afgeleid uit de totale massa van het stelsel. De onzekerheid zit vooral in het aantal zwakke rode dwergen."
-          },
-          "pro": {
-            "q": "Waarom is het totale aantal sterren in de Melkweg maar met een factor 2 nauwkeurig bekend?",
-            "options": [
-              "Het volgt uit massaschattingen en de onzekere massaverdeling van zwakke sterren",
-              "Het aantal verandert sterk per jaar",
-              "De telling hangt af van de rotatiesnelheid van de Zon",
-              "We hebben alle sterren geteld maar de telling is onvolledig"
-            ],
-            "correct": 0,
-            "explain": "Je kunt niet alle sterren tellen, dus schat je het aantal uit de lichtkracht en dynamische massa van het stelsel. Daarbij hangt veel af van de aanname over het aantal lichte rode dwergen, die moeilijk waarneembaar zijn."
-          }
-        },
-        {
-          "id": "2026-W47-sterrenstelsels-3",
-          "beg": {
-            "q": "Wat is de rol van donkere materie volgens de uitleg over de draaiing van stelsels?",
-            "options": [
-              "Het geeft extra licht aan de buitenste sterren",
-              "Het levert extra zwaartekracht die sterren bij elkaar houdt",
-              "Het maakt sterren heter",
-              "Het remt de sterren af"
-            ],
-            "correct": 1,
-            "explain": "Donkere materie oefent extra zwaartekracht uit, waardoor buitenste sterren sneller bewegen dan je zonder die massa zou verwachten. Je ziet het niet, maar je merkt de zwaartekracht."
-          },
-          "ama": {
-            "q": "Wat verwacht je voor de rotatiesnelheid v(r) buiten de schijf als er alleen zichtbare materie zou zijn?",
-            "options": [
-              "Een afname volgens ongeveer 1/√r",
-              "Een snelheid nul",
-              "Een constante snelheid",
-              "Een toename evenredig met r"
-            ],
-            "correct": 0,
-            "explain": "Bij een centrale massa M geldt v = √(GM/r), dus de snelheid daalt met 1/√r. Waargenomen is de snelheid echter vlak, wat op een halo van donkere materie wijst."
-          },
-          "pro": {
-            "q": "Welke massaverdeling M(r) hoort bij een vlakke rotatiecurve v(r) = constant?",
-            "options": [
-              "M(r) ∝ r², dus ρ constant",
-              "M(r) ∝ 1/r",
-              "M(r) ∝ r, dus ρ ∝ 1/r²",
-              "M(r) constant, dus ρ ∝ 1/r³"
-            ],
-            "correct": 2,
-            "explain": "Uit v² = GM(r)/r volgt bij constante v dat M(r) ∝ r. Dat geeft een dichtheid ρ ∝ 1/r², het kenmerk van een isotherme halo."
-          }
-        },
-        {
-          "id": "2026-W47-sterrenstelsels-4",
-          "beg": {
-            "q": "Hoeveel procent van het heelal bestaat volgens de huidige modellen uit donkere materie?",
-            "options": [
-              "Bijna 100%",
-              "Ongeveer 27%",
-              "Ongeveer 5%",
-              "Ongeveer 68%"
-            ],
-            "correct": 1,
-            "explain": "Donkere materie maakt zo'n 27% van de energie-inhoud van het heelal uit. Gewone materie is maar ongeveer 5%, de rest is donkere energie."
-          },
-          "ama": {
-            "q": "Welk onderdeel van de energie-inhoud van het heelal bestaat uit donkere energie?",
-            "options": [
-              "Ongeveer 68%",
-              "Ongeveer 1%",
-              "Ongeveer 5%",
-              "Ongeveer 27%"
-            ],
-            "correct": 0,
-            "explain": "Donkere energie vormt ongeveer 68% van de energie-inhoud, donkere materie ongeveer 27% en gewone materie ongeveer 5%. Deze verdeling komt uit onder meer metingen aan de kosmische achtergrondstraling."
-          },
-          "pro": {
-            "q": "Welke waarneming levert de beste beperking op de totale hoeveelheid baryonen en donkere materie in ΛCDM?",
-            "options": [
-              "De kleur van de Zon",
-              "De helderheid van Cepheïden in M31",
-              "De omlooptijd van Jupiter",
-              "De pieken in het hoekvermogensspectrum van de kosmische achtergrondstraling"
-            ],
-            "correct": 3,
-            "explain": "De relatieve hoogte van de akoestische pieken in het CMB-spectrum legt de dichtheden van baryonen en koude donkere materie vast. Zo komt Planck uit op ongeveer 27% voor donkere materie."
-          }
-        },
-        {
-          "id": "2026-W47-sterrenstelsels-5",
-          "beg": {
-            "q": "Welke vorm hebben veel bekende stelsels zoals onze Melkweg?",
-            "options": [
-              "Een lange rechte lijn",
               "Een perfecte bol zonder structuur",
-              "Een platte schijf met spiraalarmen",
-              "Een ring zonder sterren in het midden"
-            ],
-            "correct": 2,
-            "explain": "De Melkweg is een schijfvormig stelsel met armen en een verdikt centrum. Door de Melkweg van binnenuit te zien, zien we de schijf als een band aan de hemel."
-          },
-          "ama": {
-            "q": "Wat voor type stelsel is de Melkweg volgens de meeste waarnemingen?",
-            "options": [
-              "Een elliptisch stelsel",
-              "Een onregelmatig stelsel",
-              "Een lenticulair stelsel",
-              "Een balkspiraalstelsel"
+              "Een losse wolk zonder duidelijke vorm",
+              "Een dunne ring van gas",
+              "Een langgerekte balk van sterren"
             ],
             "correct": 3,
-            "explain": "Infraroodwaarnemingen laten een centrale balk zien, waaruit de spiraalarmen ontspringen. De Melkweg is dus een balkspiraal."
+            "explain": "In het midden van de Melkweg ligt een langgerekte balk van sterren. De spiraalarmen beginnen aan de uiteinden van die balk."
+          },
+          "ama": {
+            "q": "Tot welk type behoort de Melkweg volgens de Hubble-indeling?",
+            "options": [
+              "Lenticulair stelsel zonder spiraalarmen",
+              "Balkspiraalstelsel",
+              "Elliptisch stelsel",
+              "Onregelmatig stelsel"
+            ],
+            "correct": 1,
+            "explain": "De Melkweg is een balkspiraalstelsel, aangeduid met SB. Metingen in het infrarood toonden aan dat er een centrale balk is, die door stof in zichtbaar licht grotendeels verborgen blijft."
           },
           "pro": {
-            "q": "Welke indeling gebruikt Hubble voor stelsels en waar staat de Melkweg ongeveer?",
+            "q": "Welke Hubble-classificatie wordt doorgaans aan de Melkweg toegekend?",
             "options": [
-              "Stemvork-diagram; type E0",
-              "Stemvork-diagram; type Irr",
-              "Stemvork-diagram; ongeveer SBbc",
-              "Stemvork-diagram; type S0"
+              "E3",
+              "S0",
+              "SBbc",
+              "Irr I"
             ],
             "correct": 2,
-            "explain": "In het Hubble-stemvorkdiagram splitsen de spiralen in gewone (S) en gebalkte (SB) takken. De Melkweg staat ongeveer bij SBbc."
+            "explain": "De Melkweg wordt meestal geclassificeerd als SBbc, een balkspiraal met matig strak gewonden armen. Elliptische E-types en lenticulaire S0-types hebben geen duidelijke spiraalarmen."
           }
         },
         {
-          "id": "2026-W47-sterrenstelsels-6",
+          "id": "2026-W48-sterrenstelsels-2",
           "beg": {
-            "q": "Wat denken astronomen dat er in het centrum van de meeste grote stelsels zit?",
+            "q": "Wat maakt een quasar zo ongelooflijk helder?",
             "options": [
-              "Een lege ruimte",
-              "Een tweede Zon",
-              "Een enorme ster van gas",
-              "Een superzwaar zwart gat"
+              "Materie die in een superzwaar zwart gat valt en daarbij gloeit",
+              "Weerkaatst licht van een nabijgelegen stelsel",
+              "Een enorme explosie van één ster",
+              "Heel veel sterren die precies op één plek staan"
             ],
-            "correct": 3,
-            "explain": "In de kernen van de meeste grote stelsels zit een superzwaar zwart gat. Dat in de Melkweg heet Sagittarius A*."
+            "correct": 0,
+            "explain": "Gas dat naar een superzwaar zwart gat spiraalt, wordt extreem heet en straalt enorm veel licht uit. Een quasar kan daardoor een heel stelsel overstralen, ook al is hij miljarden lichtjaren ver weg."
           },
           "ama": {
-            "q": "Hoe zwaar is het zwarte gat Sagittarius A* in het centrum van de Melkweg ongeveer?",
+            "q": "Wat is een actieve galactische kern (AGN)?",
             "options": [
-              "Ongeveer 4 zonsmassa's",
+              "Een centrum zonder sterren of gas",
+              "Een centrum waar net duizenden sterren tegelijk ontploffen",
+              "Een centrum waar een superzwaar zwart gat veel materie opslokt en fel straalt",
+              "Een centrum dat uit donkere materie bestaat"
+            ],
+            "correct": 2,
+            "explain": "Bij een AGN valt veel gas op het superzwarte gat in het centrum, waardoor de kern extreem helder is. Quasars zijn de helderste voorbeelden hiervan."
+          },
+          "pro": {
+            "q": "Welk evenwicht bepaalt de Eddington-limiet voor de lichtkracht van een accreterend zwart gat?",
+            "options": [
+              "Tussen zwaartekracht en stralingsdruk op het invallende gas",
+              "Tussen thermische druk en donkere energie",
+              "Tussen magnetische druk en rotatie van de schijf",
+              "Tussen getijdenkrachten en de gravitatiegolven"
+            ],
+            "correct": 0,
+            "explain": "De Eddington-limiet is de lichtkracht waarbij de stralingsdruk op het gas gelijk is aan de zwaartekracht. De limiet is evenredig met de massa van het zwarte gat, ongeveer 1,3×10³⁸ erg/s per zonsmassa."
+          }
+        },
+        {
+          "id": "2026-W48-sterrenstelsels-3",
+          "beg": {
+            "q": "Hoe weten astronomen dat er in het centrum van de Melkweg iets zeer zwaars en onzichtbaars zit?",
+            "options": [
+              "Ze zien er een gigantische heldere ster zitten",
+              "Sterren in de buurt draaien razendsnel om een onzichtbaar punt",
+              "Ze hebben er een ruimtesonde naartoe gestuurd",
+              "Het centrum zendt duidelijke radiosignalen van buitenaardsen uit"
+            ],
+            "correct": 1,
+            "explain": "Door jarenlang sterren in het centrum te volgen, zagen astronomen dat ze razendsnel om één onzichtbaar punt cirkelen. Alleen een extreem zware, compacte massa kan dat verklaren."
+          },
+          "ama": {
+            "q": "Ongeveer hoe zwaar is het superzware zwarte gat Sagittarius A* in het centrum van de Melkweg?",
+            "options": [
+              "Ongeveer 4 duizend zonsmassa's",
               "Ongeveer 4 miljard zonsmassa's",
-              "Ongeveer 400 zonsmassa's",
+              "Ongeveer 400 miljard zonsmassa's",
               "Ongeveer 4 miljoen zonsmassa's"
             ],
             "correct": 3,
-            "explain": "Uit de banen van sterren rond Sgr A* volgt een massa van ongeveer 4 miljoen zonsmassa's. Voor dit werk werd in 2020 de Nobelprijs voor natuurkunde toegekend aan Genzel en Ghez, samen met Penrose."
+            "explain": "Sagittarius A* heeft ongeveer 4 miljoen zonsmassa's, bepaald uit de banen van sterren zoals S2. Daarvoor kregen Reinhard Genzel en Andrea Ghez in 2020 een deel van de Nobelprijs voor Natuurkunde."
           },
           "pro": {
-            "q": "Hoe is de massa van Sgr A* bepaald?",
+            "q": "Welke waarneming leverde de meest directe massabepaling van Sagittarius A*?",
             "options": [
-              "Uit de roodverschuiving van Andromeda",
-              "Uit Kepler-banen van S-sterren zoals S2",
-              "Uit de lichtkracht van de Zon",
-              "Uit de rotatiecurve van de buitenste schijf"
+              "De gravitationele lensing van achtergrondstelsels",
+              "De röntgenhelderheid van de galactische halo",
+              "De rotatiecurve van gas op 10 kpc afstand",
+              "De Keplerbanen van sterren zoals S2 binnen enkele lichtdagen van de radiobron"
             ],
-            "correct": 1,
-            "explain": "De banen van S-sterren, vooral S2 met een omlooptijd van circa 16 jaar, volgen Kepler's wetten rond een centrale massa. Daaruit volgt een massa van ongeveer 4 × 10⁶ zonsmassa's."
+            "correct": 3,
+            "explain": "De Keplerbanen van sterren zoals S2 geven via de derde wet van Kepler de massa binnen de baan, ongeveer 4,3×10⁶ M☉. De omlooptijd van S2 is ongeveer 16 jaar."
           }
         },
         {
-          "id": "2026-W47-sterrenstelsels-7",
+          "id": "2026-W48-sterrenstelsels-4",
           "beg": {
-            "q": "Wat gebeurt er bij de Bullet Cluster?",
+            "q": "Welk type sterrenstelsel bestaat vooral uit oude sterren en maakt bijna geen nieuwe sterren meer?",
             "options": [
-              "Een planeet is verdwenen",
-              "Een zwart gat is uitgedoofd",
-              "Een ster is ontploft",
-              "Twee clusters van stelsels zijn door elkaar heen gebotst"
+              "Onregelmatig stelsel",
+              "Jong dwergstelsel vol gaswolken",
+              "Elliptisch stelsel",
+              "Spiraalstelsel met veel gas"
             ],
-            "correct": 3,
-            "explain": "De Bullet Cluster bestaat uit twee clusters die door elkaar heen zijn gegaan. Het is een belangrijk bewijs voor donkere materie."
+            "correct": 2,
+            "explain": "Elliptische stelsels hebben weinig gas over en vormen daardoor nauwelijks nieuwe sterren. Hun licht komt van oude, roodachtige sterren."
           },
           "ama": {
-            "q": "Wat laat de Bullet Cluster zien over de plaats van gas en massa?",
+            "q": "Waarom zien elliptische stelsels er doorgaans roder uit dan spiraalstelsels?",
             "options": [
-              "Er is geen gas aanwezig",
-              "Alle massa zit in één stelsel",
-              "Het gas bevat bijna alle massa",
-              "De meeste massa ligt niet waar het hete gas zit"
+              "Ze hebben geen zwart gat in het centrum",
+              "Ze bewegen sneller van ons af",
+              "Ze bevatten vooral oude sterren en weinig jonge, blauwe sterren",
+              "Ze bestaan voornamelijk uit stof"
             ],
-            "correct": 3,
-            "explain": "Het hete gas remde bij de botsing af en bleef in het midden, terwijl de massa (via lensing gemeten) doorschoot. Dat wijst op onzichtbare, nauwelijks botsende donkere materie."
+            "correct": 2,
+            "explain": "Jonge, hete sterren zijn blauw, maar die ontstaan alleen waar nog gas is. Elliptische stelsels hebben dat nauwelijks, dus domineren oude, koelere, rode sterren."
           },
           "pro": {
-            "q": "Waarom is de Bullet Cluster lastig te verklaren met alleen aangepaste zwaartekracht zoals MOND?",
+            "q": "Wat is de voornaamste dynamische steun tegen zwaartekracht in een grote elliptische sterrenstelsel?",
             "options": [
-              "Het röntgengas heeft geen massa",
-              "De lensmassa valt niet samen met de baryonische massa van het röntgengas",
-              "De clusters zijn te dichtbij",
-              "De clusters bewegen te langzaam"
+              "Willekeurige sterbewegingen, de snelheidsdispersie",
+              "Ordelijke rotatie van een dunne schijf",
+              "Druk van intergalactisch gas",
+              "Stralingsdruk van jonge O-sterren"
+            ],
+            "correct": 0,
+            "explain": "Grote elliptische stelsels worden vooral gesteund door de willekeurige sterbewegingen (snelheidsdispersie), niet door ordelijke rotatie zoals een spiraalschijf. Dat blijkt uit spectroscopie van hun sterren."
+          }
+        },
+        {
+          "id": "2026-W48-sterrenstelsels-5",
+          "beg": {
+            "q": "Wat gebeurt er met de sterren als twee sterrenstelsels botsen?",
+            "options": [
+              "Ze stoppen allemaal met bewegen",
+              "Ze botsen bijna nooit, want tussen sterren is enorm veel ruimte",
+              "Ze botsen allemaal tegen elkaar en vallen kapot",
+              "Ze verdampen meteen door de hitte"
             ],
             "correct": 1,
-            "explain": "Het zwaartekrachtspotentieel volgens lensing ligt bij de stelsels, niet bij het dominante baryonische gas. Een puur aangepaste zwaartekracht zou het potentieel bij de baryonen verwachten."
+            "explain": "De afstanden tussen sterren zijn gigantisch vergeleken met hun grootte. Bij een botsing van stelsels passeren de meeste sterren elkaar dus zonder te raken, al verandert de vorm van de stelsels wel."
+          },
+          "ama": {
+            "q": "Welk onderdeel van botsende stelsels wordt het sterkst verstoord en kan veel nieuwe sterrenvorming veroorzaken?",
+            "options": [
+              "Het interstellaire gas, dat samengedrukt wordt",
+              "De losse sterren, die frontaal botsen",
+              "Het licht van de achtergrondsterren",
+              "De planeten van de sterren"
+            ],
+            "correct": 0,
+            "explain": "Gaswolken in beide stelsels botsen wel en worden samengedrukt, waardoor veel nieuwe sterren kunnen ontstaan. Zo'n uitbarsting van sterrenvorming heet een starburst."
+          },
+          "pro": {
+            "q": "Waarom gedraagt de sterrencomponent zich tijdens een merger als vrijwel botsingsloos systeem?",
+            "options": [
+              "Sterren hebben geen massa die zwaartekracht uitoefent",
+              "Sterren worden door donkere energie uit elkaar gehouden",
+              "Gas en sterren hebben dezelfde dichtheid",
+              "De relaxatietijd door sterontmoetingen is veel langer dan de leeftijd van het heelal"
+            ],
+            "correct": 3,
+            "explain": "De sterdichtheid is zo laag dat directe sterontmoetingen zelden voorkomen, en de relaxatietijd veel langer is dan het heelal oud is. De sterren volgen daardoor het gemiddelde zwaartekrachtveld, terwijl het gas wel schokgolven vormt."
+          }
+        },
+        {
+          "id": "2026-W48-sterrenstelsels-6",
+          "beg": {
+            "q": "Welk ander sterrenstelsel kun je vanuit Nederland met het blote oog zien op een heldere, donkere nacht?",
+            "options": [
+              "Het Zonnestelsel",
+              "Het Draaikolkstelsel",
+              "Het Sombrerostelsel",
+              "Het Andromedastelsel"
+            ],
+            "correct": 3,
+            "explain": "Het Andromedastelsel is zichtbaar als een vage lichtvlek. Het is ongeveer 2,5 miljoen lichtjaar ver, dus het licht dat je ziet is ruim 2 miljoen jaar onderweg geweest."
+          },
+          "ama": {
+            "q": "Op ongeveer welke afstand staat het Andromedastelsel van ons?",
+            "options": [
+              "250.000 lichtjaar",
+              "2,5 miljoen lichtjaar",
+              "2,5 miljard lichtjaar",
+              "25.000 lichtjaar"
+            ],
+            "correct": 1,
+            "explain": "Andromeda staat op ongeveer 2,5 miljoen lichtjaar. Het is het grootste stelsel in de Lokale Groep en over ongeveer 4,5 miljard jaar botst het met de Melkweg."
+          },
+          "pro": {
+            "q": "Wat laat het spectrum van het Andromedastelsel zien over zijn beweging ten opzichte van ons?",
+            "options": [
+              "Geen verschuiving, want het staat stil ten opzichte van ons",
+              "Een roodverschuiving door de uitdijing van het heelal",
+              "Een blauwverschuiving, want het nadert ons met ongeveer 300 km/s",
+              "Een roodverschuiving, want het verwijdert zich met ongeveer 300 km/s"
+            ],
+            "correct": 2,
+            "explain": "Andromeda vertoont een blauwverschuiving, met een radiële snelheid van ongeveer −300 km/s ten opzichte van de zon. De onderlinge zwaartekracht binnen de Lokale Groep overheerst de kosmische uitdijing."
+          }
+        },
+        {
+          "id": "2026-W48-sterrenstelsels-7",
+          "beg": {
+            "q": "Waar zit de donkere materie volgens astronomen ten opzichte van een sterrenstelsel?",
+            "options": [
+              "Alleen in het midden, rond het zwarte gat",
+              "Alleen buiten het stelsel, tussen de stelsels",
+              "In een grote wolk die het hele stelsel omgeeft en veel verder reikt dan de sterren",
+              "Alleen in de spiraalarmen"
+            ],
+            "correct": 2,
+            "explain": "Donkere materie vormt een enorme, grofweg bolvormige wolk, de halo, rondom het stelsel. Die reikt veel verder dan de zichtbare sterren en geeft extra zwaartekracht."
+          },
+          "ama": {
+            "q": "Wat is een galactische halo van donkere materie?",
+            "options": [
+              "Een ring van jonge sterren rond de schijf",
+              "Een dunne schijf van stof in het vlak van het stelsel",
+              "Een bolvormige verdeling van onzichtbare massa die zich ver voorbij de zichtbare schijf uitstrekt",
+              "Een gloeiende gaswolk rond het centrum"
+            ],
+            "correct": 2,
+            "explain": "De halo is een grote, grofweg bolvormige wolk van donkere materie rond het stelsel. Zonder zo'n halo zouden de rotatiesnelheden buiten de schijf dalen in plaats van constant te blijven."
+          },
+          "pro": {
+            "q": "Hoe verloopt de dichtheid in het NFW-profiel ρ(r) = ρs / [(r/rs)(1+r/rs)²] voor r ≪ rs en r ≫ rs?",
+            "options": [
+              "ρ ∝ r⁻³ voor r ≪ rs en ρ ∝ r⁻¹ voor r ≫ rs",
+              "ρ ∝ r⁻¹ voor r ≪ rs en ρ ∝ r⁻³ voor r ≫ rs",
+              "ρ ∝ r⁻² voor beide gebieden",
+              "ρ constant voor r ≪ rs en ρ ∝ r⁻² voor r ≫ rs"
+            ],
+            "correct": 1,
+            "explain": "Voor r ≪ rs geldt (1+r/rs)² ≈ 1, dus ρ ∝ r⁻¹. Voor r ≫ rs domineert (r/rs)³ in de noemer, dus ρ ∝ r⁻³."
           }
         }
       ]
     },
     "kosmologie": {
-      "week": "2026-W47",
+      "week": "2026-W48",
       "vragen": [
         {
-          "id": "2026-W47-kosmologie-1",
+          "id": "2026-W48-kosmologie-1",
           "beg": {
-            "q": "Hoe oud is het heelal ongeveer volgens de huidige metingen?",
+            "q": "Wat gebeurde er volgens de oerknaltheorie met het heelal sinds het begin?",
             "options": [
-              "Ongeveer 138 miljoen jaar",
-              "Ongeveer 13,8 miljard jaar",
-              "Ongeveer 138 miljard jaar",
-              "Ongeveer 1,4 miljard jaar"
+              "Het blijft altijd even groot",
+              "Het draait rond een vast middelpunt",
+              "Het dijt uit sinds een zeer hete, dichte toestand",
+              "Het krimpt langzaam sinds het ontstond"
             ],
-            "correct": 1,
-            "explain": "Metingen van onder meer de Planck-satelliet geven een leeftijd van ongeveer 13,8 miljard jaar. Dat is ouder dan de oudste sterren die we kennen, wat logisch is: die zijn pas later ontstaan."
+            "correct": 2,
+            "explain": "Volgens de oerknaltheorie was het heelal ooit extreem heet en dicht en dijt het sindsdien uit. De oerknal was dus geen explosie op één plek in een bestaande ruimte, maar een uitdijing van de ruimte zelf."
           },
           "ama": {
-            "q": "Welke leeftijd van het heelal volgt uit de Planck-metingen van 2018?",
+            "q": "Welke wet beschrijft dat verre sterrenstelsels sneller van ons weg bewegen naarmate ze verder weg staan?",
             "options": [
-              "13,787 miljard jaar",
-              "7,5 miljard jaar",
-              "4,57 miljard jaar",
-              "21,3 miljard jaar"
+              "De wet van Stefan-Boltzmann",
+              "De wet van Ohm",
+              "De derde wet van Kepler",
+              "De wet van Hubble, v = H₀·d"
             ],
-            "correct": 0,
-            "explain": "Planck 2018 geeft 13,787 ± 0,020 miljard jaar. De zon en aarde zijn met zo'n 4,57 miljard jaar veel jonger."
+            "correct": 3,
+            "explain": "Hubble toonde in 1929 aan dat de snelheid evenredig is met de afstand: v = H₀·d. Dit verband is het belangrijkste waarnemingsbewijs voor de uitdijing van het heelal."
           },
           "pro": {
-            "q": "Welke onzekerheid hoort bij de door Planck 2018 afgeleide leeftijd van het heelal binnen het ΛCDM-model?",
+            "q": "Welke grootheid wordt in de wet van Hubble, v = H₀·d, uitgedrukt in km/s/Mpc?",
             "options": [
-              "± 0,020 miljard jaar",
-              "± 200 miljoen jaar",
-              "± 0,5 miljard jaar",
-              "± 2 miljard jaar"
+              "De spectrale index n_s",
+              "De optische diepte τ",
+              "De Hubble-constante H₀",
+              "De dichtheidsparameter Ω_tot"
             ],
-            "correct": 0,
-            "explain": "Planck 2018 geeft 13,787 ± 0,020 miljard jaar, een precisie van ongeveer 0,15%. Die precisie komt doordat de CMB-anisotropieën de parameters van ΛCDM sterk vastleggen."
+            "correct": 2,
+            "explain": "H₀ geeft de huidige uitdijingssnelheid per afstandseenheid, met een waarde rond 67–73 km/s/Mpc. De andere genoemde parameters zijn dimensieloos."
           }
         },
         {
-          "id": "2026-W47-kosmologie-2",
+          "id": "2026-W48-kosmologie-2",
           "beg": {
-            "q": "Waaruit bestaat het grootste deel van het heelal?",
+            "q": "Waaraan zien astronomen dat verre sterrenstelsels van ons wegbewegen?",
             "options": [
-              "Gewone materie zoals sterren en planeten",
-              "Gas en stof",
-              "Zwarte gaten",
+              "Ze lijken steeds helderder te worden",
+              "Ze zenden geluid naar ons uit",
+              "Ze veranderen van vorm",
+              "Hun licht is naar rood verschoven"
+            ],
+            "correct": 3,
+            "explain": "Door de uitdijing wordt de golflengte van het licht uitgerekt, waardoor het naar rood verschuift. Dat heet roodverschuiving, en hoe groter die is, hoe verder het stelsel weg staat."
+          },
+          "ama": {
+            "q": "Wat gebeurt er met de golflengte van licht van een verre sterrenstelsel door de uitdijing van het heelal?",
+            "options": [
+              "Die wordt korter",
+              "Die wordt langer",
+              "Die wordt willekeurig",
+              "Die blijft gelijk"
+            ],
+            "correct": 1,
+            "explain": "De ruimte rekt uit terwijl het licht onderweg is, dus de golflengte neemt toe. Dat noemen we kosmologische roodverschuiving, wat iets anders is dan een gewoon dopplereffect."
+          },
+          "pro": {
+            "q": "Hoe hangt de kosmologische roodverschuiving z samen met de schaalfactor a?",
+            "options": [
+              "1 + z = a_waarneming / a_uitzending",
+              "z = a_waarneming · a_uitzending",
+              "1 + z = a_uitzending − a_waarneming",
+              "1 + z = a_uitzending / a_waarneming"
+            ],
+            "correct": 0,
+            "explain": "Golflengten schalen mee met de schaalfactor, dus λ_waargenomen/λ_uitgezonden = a_nu/a_toen = 1 + z. Bij z ≈ 1100 was het heelal bij de CMB-uitzending dus ongeveer 1100 keer kleiner."
+          }
+        },
+        {
+          "id": "2026-W48-kosmologie-3",
+          "beg": {
+            "q": "Wanneer ontstond de kosmische achtergrondstraling ongeveer?",
+            "options": [
+              "Een miljard jaar na de oerknal",
+              "Direct bij het begin van de oerknal",
+              "Zo'n 380.000 jaar na de oerknal",
+              "Ongeveer toen de aarde ontstond"
+            ],
+            "correct": 2,
+            "explain": "Rond 380.000 jaar na de oerknal werd het heelal doorzichtig en kon het licht vrij reizen. Dat oudste licht bereikt ons nog steeds als zwakke straling uit alle richtingen."
+          },
+          "ama": {
+            "q": "Wat gebeurde er rond 380.000 jaar na de oerknal waardoor de CMB kon ontsnappen?",
+            "options": [
+              "Elektronen en protonen combineerden tot atomen, waardoor het heelal doorzichtig werd",
+              "Alle materie viel samen in zwarte gaten",
+              "De eerste sterren ontstonden en verlichtten het heelal",
+              "De uitdijing stopte tijdelijk"
+            ],
+            "correct": 0,
+            "explain": "Bij recombinatie vormden zich neutrale waterstofatomen, waardoor fotonen nauwelijks meer verstrooid werden. Daarvoor was het heelal een ondoorzichtig plasma."
+          },
+          "pro": {
+            "q": "Welk soort spectrum heeft de CMB met grote nauwkeurigheid?",
+            "options": [
+              "Een machtswetspectrum van synchrotronstraling",
+              "Een bremsstrahlungspectrum van heet gas",
+              "Een lijnenspectrum van waterstof",
+              "Een zwartlichaamspectrum van ongeveer 2,7255 K"
+            ],
+            "correct": 3,
+            "explain": "FIRAS op COBE mat een bijna perfect zwartlichaamspectrum, wat wijst op een vroeg heelal in thermisch evenwicht. De temperatuur is door de uitdijing gedaald van ongeveer 3000 K naar 2,7255 K."
+          }
+        },
+        {
+          "id": "2026-W48-kosmologie-4",
+          "beg": {
+            "q": "Wat voor straling is de kosmische achtergrondstraling vooral nu we haar meten?",
+            "options": [
+              "Röntgenstraling",
+              "Radiogolven van sterren",
+              "Zichtbaar rood licht",
+              "Microgolven, onzichtbaar voor ons oog"
+            ],
+            "correct": 3,
+            "explain": "Het oorspronkelijke hete licht is door de uitdijing uitgerekt tot microgolven. Daarom meten we de straling met speciale antennes en satellieten en niet met ons oog."
+          },
+          "ama": {
+            "q": "Welke temperatuur heeft de CMB nu ongeveer?",
+            "options": [
+              "273 K",
+              "0 K",
+              "2,7 K",
+              "2700 K"
+            ],
+            "correct": 2,
+            "explain": "De CMB heeft nu een temperatuur van ongeveer 2,7 kelvin, dus iets boven het absolute nulpunt. Bij het ontstaan was ze ongeveer 3000 K, en door de uitdijing is ze afgekoeld."
+          },
+          "pro": {
+            "q": "Hoe verhoudt de CMB-temperatuur zich tot de roodverschuiving z?",
+            "options": [
+              "T(z) = T₀·z²",
+              "T(z) = T₀/(1 + z)",
+              "T(z) = T₀(1 + z)",
+              "T(z) = T₀ − z"
+            ],
+            "correct": 2,
+            "explain": "Fotonentemperatuur schaalt omgekeerd met de schaalfactor, dus T ∝ (1 + z). Met T₀ = 2,7255 K en z ≈ 1100 komt dat uit op ongeveer 3000 K bij recombinatie."
+          }
+        },
+        {
+          "id": "2026-W48-kosmologie-5",
+          "beg": {
+            "q": "Welk deel van het heelal bestaat uit gewone materie, zoals sterren en planeten?",
+            "options": [
+              "Ongeveer 95 procent",
+              "Ongeveer 50 procent",
+              "Ongeveer 5 procent",
+              "Ongeveer 27 procent"
+            ],
+            "correct": 2,
+            "explain": "Gewone materie is slechts zo'n 5 procent van alles. De rest is donkere materie (ongeveer 27 procent) en donkere energie (ongeveer 68 procent)."
+          },
+          "ama": {
+            "q": "Welke term hoort bij de component die ongeveer 68 procent van de energie-inhoud van het heelal uitmaakt?",
+            "options": [
+              "Donkere materie",
+              "Straling",
+              "Neutrino's",
               "Donkere energie"
             ],
             "correct": 3,
-            "explain": "Ongeveer 68% van het heelal bestaat uit donkere energie. Gewone materie, waar wij en de sterren uit bestaan, is maar ongeveer 5%."
+            "explain": "Donkere energie is de grootste component en wordt gelinkt aan de versnelde uitdijing. Donkere materie is met ongeveer 27 procent de tweede component."
+          },
+          "pro": {
+            "q": "Welke toestandsvergelijking w = p/(ρc²) hoort bij een kosmologische constante Λ?",
+            "options": [
+              "w = −1",
+              "w = +1/3",
+              "w = 0",
+              "w = +1"
+            ],
+            "correct": 0,
+            "explain": "Een kosmologische constante heeft een constante energiedichtheid en negatieve druk met w = −1. Stof heeft w = 0 en straling w = 1/3."
+          }
+        },
+        {
+          "id": "2026-W48-kosmologie-6",
+          "beg": {
+            "q": "Wat doet donkere energie volgens astronomen met de uitdijing van het heelal?",
+            "options": [
+              "Ze lijkt de uitdijing te versnellen",
+              "Ze remt de uitdijing af tot stilstand",
+              "Ze trekt alle sterrenstelsels bij elkaar",
+              "Ze maakt het heelal warmer"
+            ],
+            "correct": 0,
+            "explain": "Donkere energie wordt gezien als de oorzaak van de versnellende uitdijing. Wat het precies is, weten we nog niet, daarom heet het donker."
           },
           "ama": {
-            "q": "Wat is bij benadering de verdeling van het heelal in donkere energie, donkere materie en gewone materie?",
+            "q": "Voor welke ontdekking werd in 2011 de Nobelprijs voor Natuurkunde uitgereikt?",
             "options": [
-              "5% – 27% – 68%",
-              "27% – 68% – 5%",
-              "50% – 30% – 20%",
-              "68% – 27% – 5%"
+              "De ontdekking van zwaartekrachtsgolven",
+              "De ontdekking van de eerste exoplaneet",
+              "De ontdekking van de kosmische achtergrondstraling",
+              "De versnellende uitdijing van het heelal, via Type Ia-supernova's"
             ],
             "correct": 3,
-            "explain": "Donkere energie is ongeveer 68%, donkere materie ongeveer 27% en gewone (baryonische) materie ongeveer 5%. Alles wat we met telescopen direct zien, valt in dat kleine laatste deel."
+            "explain": "Perlmutter, Schmidt en Riess toonden aan dat verre Type Ia-supernova's zwakker zijn dan verwacht. Daaruit volgde dat de uitdijing versnelt."
           },
           "pro": {
-            "q": "Welk onderdeel van het ΛCDM-model komt overeen met de kosmologische constante Λ?",
+            "q": "Waarom worden Type Ia-supernova's gebruikt als standaardkaarsen?",
             "options": [
-              "Baryonische materie",
-              "Straling met w = 1/3",
-              "Donkere materie die niet met licht wisselwerkt",
-              "Donkere energie met toestandsvergelijking w = −1"
+              "Hun piekhelderheid is na kalibratie nagenoeg uniform",
+              "Ze zenden alleen röntgenstraling uit",
+              "Ze hebben geen roodverschuiving",
+              "Ze zijn altijd even ver weg"
             ],
-            "correct": 3,
-            "explain": "Λ staat voor een vacuümenergie met druk p = −ρc², dus w = −1, en een constante dichtheid. CDM staat daarentegen voor koude donkere materie met w ≈ 0."
+            "correct": 0,
+            "explain": "Na correctie via de lichtkromme-vorm is de absolute piekhelderheid goed bekend, zodat de lichtkrachtafstand volgt uit de schijnbare helderheid. Dat levert de afstand-roodverschuivingsrelatie."
           }
         },
         {
-          "id": "2026-W47-kosmologie-3",
+          "id": "2026-W48-kosmologie-7",
           "beg": {
-            "q": "Wat is de kosmische achtergrondstraling?",
+            "q": "Wat betekent de term 'multiversum' kort gezegd?",
             "options": [
-              "Straling van zwarte gaten",
-              "Licht van de verste ster",
-              "Het oudste licht dat we kunnen waarnemen, afkomstig uit het vroege heelal",
-              "Het licht van onze zon dat terugkaatst"
-            ],
-            "correct": 2,
-            "explain": "De kosmische achtergrondstraling is een nagloed van het vroege heelal en komt van alle kanten. Ze werd in 1965 per toeval ontdekt door Penzias en Wilson."
-          },
-          "ama": {
-            "q": "Welke temperatuur heeft de kosmische achtergrondstraling nu ongeveer?",
-            "options": [
-              "2,7 K",
-              "273 K",
-              "2700 K",
-              "0 K"
+              "Het idee dat er mogelijk meer heelallen zijn dan het onze",
+              "Een telescoop met meerdere spiegels",
+              "Een ander woord voor de Melkweg",
+              "Een groep sterren dicht bij elkaar"
             ],
             "correct": 0,
-            "explain": "De CMB heeft een temperatuur van 2,7255 K en een bijna perfect zwartlichaamspectrum. Dat is net boven het absolute nulpunt, wat past bij microgolfstraling."
-          },
-          "pro": {
-            "q": "Wat verklaart dat de CMB-temperatuur nu 2,7255 K is, terwijl het plasma bij ontkoppeling ongeveer 3000 K was?",
-            "options": [
-              "De fotonen zijn in de uitdijende ruimte met een factor 1+z ≈ 1100 gerekteld in golflengte",
-              "De straling is geabsorbeerd door stof",
-              "De fotonen hebben energie verloren aan donkere materie",
-              "Er is veel kernfusie geweest in sterren"
-            ],
-            "correct": 0,
-            "explain": "Voor zwartlichaamstraling geldt T ∝ 1+z, dus T_0 ≈ 3000 K / 1100 ≈ 2,7 K. De spectrale vorm blijft dan behouden."
-          }
-        },
-        {
-          "id": "2026-W47-kosmologie-4",
-          "beg": {
-            "q": "Hoe groot is het deel van het heelal dat wij kunnen zien ongeveer?",
-            "options": [
-              "Ongeveer 93 miljard lichtjaar breed",
-              "Ongeveer 1 miljoen lichtjaar breed",
-              "Ongeveer 13,8 lichtjaar breed",
-              "Precies 13,8 miljard lichtjaar breed"
-            ],
-            "correct": 0,
-            "explain": "Het zichtbare heelal heeft een diameter van ongeveer 93 miljard lichtjaar. Dat is groter dan tweemaal 13,8 miljard lichtjaar doordat de ruimte tijdens de reis van het licht is uitgedijd."
-          },
-          "ama": {
-            "q": "Waarom is het zichtbare heelal ongeveer 93 miljard lichtjaar breed en niet ongeveer 27,6 miljard lichtjaar?",
-            "options": [
-              "De ruimte is tijdens de reis van het licht blijven uitdijen",
-              "Het heelal is eigenlijk 46 miljard jaar oud",
-              "De Planck-meting is niet nauwkeurig",
-              "Licht reist sneller dan c in de uitdijende ruimte"
-            ],
-            "correct": 0,
-            "explain": "Door de uitdijing zijn de bronnen van het oudste licht nu veel verder weg dan de afgelegde lichtreistijd doet vermoeden. De huidige afstand is ongeveer 46,5 miljard lichtjaar, dus de diameter is ongeveer 93 miljard."
-          },
-          "pro": {
-            "q": "Welke grootheid wordt ongeveer 46 miljard lichtjaar groot en bepaalt de straal van het waarneembare heelal?",
-            "options": [
-              "De meebewegende deeltjeshorizon, ∫c dt/a(t)",
-              "De Jeans-lengte",
-              "De Hubble-straal c/H₀",
-              "De Schwarzschild-straal van het heelal"
-            ],
-            "correct": 0,
-            "explain": "De deeltjeshorizon in meebewegende coördinaten is χ = ∫c dt/a. Voor ΛCDM is die ongeveer 46 miljard lichtjaar; de Hubble-straal c/H₀ is slechts ongeveer 14 miljard lichtjaar."
-          }
-        },
-        {
-          "id": "2026-W47-kosmologie-5",
-          "beg": {
-            "q": "Welke vraag wil inflatie in het vroege heelal helpen beantwoorden?",
-            "options": [
-              "Waarom sterren schitteren",
-              "Waarom planeten rond zijn",
-              "Waarom het heelal overal ongeveer even warm is",
-              "Waarom de maan om de aarde draait"
-            ],
-            "correct": 2,
-            "explain": "Inflatie was een extreem snelle uitdijing in het allereerste moment, waardoor gebieden die nu ver uit elkaar liggen eerst dicht bij elkaar lagen. Daardoor kon een gelijke temperatuur ontstaan."
-          },
-          "ama": {
-            "q": "Welk probleem wordt door inflatie opgelost?",
-            "options": [
-              "Het horizonprobleem: waarom de CMB overal bijna dezelfde temperatuur heeft",
-              "Het zonnenevelprobleem",
-              "Het probleem van de planeetbanen",
-              "Het ontbreken van helium"
-            ],
-            "correct": 0,
-            "explain": "Zonder inflatie hadden verre CMB-gebieden nooit contact kunnen hebben en niet dezelfde temperatuur kunnen krijgen. Inflatie verklaart ook waarom het heelal zo vlak is."
-          },
-          "pro": {
-            "q": "Wat is de rol van kwantumfluctuaties in de inflatietheorie?",
-            "options": [
-              "Ze worden uitgerekt tot primordiale dichtheidsverstoringen die de CMB-anisotropieën zaaien",
-              "Ze veroorzaken de roodverschuiving van sterrenstelsels",
-              "Ze maken de curvatuur sterk positief",
-              "Ze zorgen voor de scheiding van materie en antimaterie"
-            ],
-            "correct": 0,
-            "explain": "Kwantumfluctuaties van het inflatonveld worden uitgerekt tot buiten de horizon en bevriezen als bijna schaalinvariante verstoringen (n_s ≈ 0,965). Daaruit groeiden later sterrenstelsels."
-          }
-        },
-        {
-          "id": "2026-W47-kosmologie-6",
-          "beg": {
-            "q": "Wat betekent het idee van een multiversum?",
-            "options": [
-              "Dat er mogelijk meer universa naast het onze bestaan",
-              "Dat sterren in groepen leven",
-              "Dat het heelal zich eindeloos herhaalt in dezelfde vorm",
-              "Dat het heelal uit meerdere planeten bestaat"
-            ],
-            "correct": 0,
-            "explain": "Het multiversum is een hypothese dat ons heelal slechts één van vele is. Het is niet bewezen en kan met huidige middelen niet worden waargenomen."
+            "explain": "Het multiversum is een hypothese over meerdere heelallen. Het is nog niet bewezen en moeilijk te toetsen, dus het blijft speculatief."
           },
           "ama": {
             "q": "Wat is de wetenschappelijke status van het multiversum?",
             "options": [
-              "Het is een hypothese die niet direct getest kan worden",
-              "Het is aangetoond door de CMB",
-              "Het is weerlegd door Planck",
-              "Het is bewezen met telescopen"
+              "Het is een speculatieve hypothese zonder directe waarneming",
+              "Het is door de Planck-satelliet bewezen",
+              "Het is door Hubble gemeten",
+              "Het is direct waargenomen met telescopen"
             ],
             "correct": 0,
-            "explain": "Het multiversum volgt uit sommige theorieën, zoals eeuwige inflatie, maar er is geen directe waarneming. Daardoor is het omstreden en speculatief."
+            "explain": "Er is geen directe waarneming van andere heelallen. Het idee volgt uit sommige theorieën, zoals eeuwige inflatie of de snaartheorie, maar is moeilijk toetsbaar."
           },
           "pro": {
-            "q": "Uit welk idee in de inflatietheorie komt het multiversum voort?",
+            "q": "Uit welk inflatiescenario volgt een multiversum in sommige modellen?",
             "options": [
-              "De Hubble-spanning",
-              "De kosmologische constante Λ = 0",
-              "Baryogenese",
-              "Eeuwige inflatie, waarbij in sommige gebieden de inflatie doorgaat terwijl in andere zakuniversa ontstaan"
-            ],
-            "correct": 3,
-            "explain": "In eeuwige inflatie overheersen kwantumfluctuaties in delen van de ruimte de klassieke afname van het inflatonveld. Er ontstaan steeds nieuwe zakuniversa, maar dat is nog niet experimenteel bevestigd."
-          }
-        },
-        {
-          "id": "2026-W47-kosmologie-7",
-          "beg": {
-            "q": "Wat gebeurt er met de uitdijing van het heelal volgens metingen aan verre supernova's?",
-            "options": [
-              "Ze gaat steeds sneller",
-              "Ze keert om in krimp",
-              "Ze gaat steeds langzamer",
-              "Ze stopt volledig"
+              "Eeuwige inflatie",
+              "Big Bang-nucleosynthese",
+              "Recombinatie",
+              "Reionisatie"
             ],
             "correct": 0,
-            "explain": "Eind jaren negentig bleek dat de uitdijing versnelt. Donkere energie is de naam voor wat dit veroorzaakt; de ontdekking leverde in 2011 de Nobelprijs op."
-          },
-          "ama": {
-            "q": "Welke waarnemingen leidden eind jaren negentig tot de ontdekking dat de uitdijing versnelt?",
-            "options": [
-              "Type Ia-supernova's die zwakker waren dan verwacht",
-              "Radiosignalen van pulsars",
-              "Zonnevlammen",
-              "Planeten rond andere sterren"
-            ],
-            "correct": 0,
-            "explain": "Type Ia-supernova's zijn standaardkaarsen. Verre exemplaren waren zwakker, dus verder weg dan verwacht, omdat de uitdijing is versneld."
-          },
-          "pro": {
-            "q": "Welke waarde van de dimensieloze versnellingsparameter q₀ hoort bij het huidige ΛCDM-heelal?",
-            "options": [
-              "q₀ = 0, dus constante snelheid",
-              "q₀ ≈ +2",
-              "q₀ ≈ −0,55, dus versnellend",
-              "q₀ = +0,5, dus vertragend"
-            ],
-            "correct": 2,
-            "explain": "Met Ω_m ≈ 0,31 en Ω_Λ ≈ 0,69 is q₀ = Ω_m/2 − Ω_Λ ≈ −0,53 tot −0,55. Negatief betekent versnelling van de uitdijing."
+            "explain": "Bij eeuwige inflatie stopt de inflatie niet overal tegelijk, waardoor er steeds nieuwe 'zakuniversa' kunnen ontstaan. Het is een theoretische consequentie van sommige modellen en geen bevestigde waarneming."
           }
         }
       ]
     },
     "exoplaneten": {
-      "week": "2026-W47",
+      "week": "2026-W48",
       "vragen": [
         {
-          "id": "2026-W47-exoplaneten-1",
+          "id": "2026-W48-exoplaneten-1",
           "beg": {
-            "q": "Wat gebeurt er met het licht van een ster als een planeet er precies voor langs trekt?",
+            "q": "Wat is de dichtstbijzijnde bekende exoplaneet bij ons zonnestelsel?",
             "options": [
-              "De ster wordt even veel helderder",
-              "De ster wordt even blauw",
-              "De ster wordt even iets zwakker",
-              "De ster verandert van plek aan de hemel"
-            ],
-            "correct": 2,
-            "explain": "De planeet blokkeert een klein deel van het sterlicht, dus de ster lijkt even iets zwakker. Zo'n verduistering is vaak maar een procent of minder, maar moderne telescopen meten dat nauwkeurig."
-          },
-          "ama": {
-            "q": "Hoeveel neemt de helderheid van een zonachtige ster ongeveer af tijdens een centrale transit van een planeet ter grootte van Jupiter?",
-            "options": [
-              "Ongeveer 1%",
-              "Ongeveer 10%",
-              "Ongeveer 0,01%",
-              "Ongeveer 50%"
-            ],
-            "correct": 0,
-            "explain": "Jupiter heeft ongeveer een tiende van de straal van de Zon, dus ΔF/F = (R_p/R_*)² ≈ 0,01, ofwel 1%. Een Aarde-achtige planeet geeft slechts ongeveer 0,008%."
-          },
-          "pro": {
-            "q": "Wat is de diepte ΔF/F van een centrale transit van een planeet met straal 0,1 R_* bij verwaarlozing van randverduistering?",
-            "options": [
-              "0,2",
-              "0,01",
-              "0,1",
-              "0,001"
-            ],
-            "correct": 1,
-            "explain": "De transitdiepte is (R_p/R_*)² = 0,1² = 0,01. In werkelijkheid maakt randverduistering de diepte iets afhankelijk van de baanparameter b, wat bij modelleren van lichtkrommen wordt meegenomen."
-          }
-        },
-        {
-          "id": "2026-W47-exoplaneten-2",
-          "beg": {
-            "q": "Welke ruimtetelescoop van NASA zet het zoeken naar planeten met de transitmethode voort na Kepler?",
-            "options": [
-              "Apollo",
-              "TESS",
-              "Hubble alleen",
-              "Voyager"
-            ],
-            "correct": 1,
-            "explain": "TESS (Transiting Exoplanet Survey Satellite) scant bijna de hele hemel op zoek naar transits bij heldere nabije sterren. Zo zijn planeten te vinden die goed te vervolgen zijn met andere telescopen."
-          },
-          "ama": {
-            "q": "Waarin verschilt TESS van Kepler in zijn manier van zoeken?",
-            "options": [
-              "TESS bekijkt bijna de hele hemel, vooral heldere nabije sterren",
-              "TESS kijkt alleen naar één klein gebied in Zwaan en Lier",
-              "TESS meet alleen radiale snelheden",
-              "TESS kijkt alleen naar sterrenstelsels"
-            ],
-            "correct": 0,
-            "explain": "Kepler staarde jarenlang naar één klein veld, terwijl TESS de hemel in sectoren scant van ongeveer 27 dagen. Daardoor vindt TESS planeten rond nabije, heldere sterren die makkelijker nader te onderzoeken zijn."
-          },
-          "pro": {
-            "q": "Waarom is een korte waarnemingsduur per sector bij TESS vooral geschikt voor planeten met korte banen?",
-            "options": [
-              "De radiale snelheid is dan nul",
-              "Transits zijn alleen zichtbaar bij perioden korter dan een dag",
-              "Er moeten meerdere transits binnen het venster vallen om een periode vast te stellen",
-              "De planeet is dan altijd een gasreus"
-            ],
-            "correct": 2,
-            "explain": "Voor een betrouwbare detectie zijn bij voorkeur twee of meer transits nodig om de periode te bepalen. Met sectoren van ongeveer 27 dagen zijn planeten met korte perioden daarom veel gemakkelijker te vinden dan die met jaarlange banen."
-          }
-        },
-        {
-          "id": "2026-W47-exoplaneten-3",
-          "beg": {
-            "q": "Wat is de bewoonbare zone rond een ster?",
-            "options": [
-              "Het gebied waar water op het oppervlak van een planeet vloeibaar kan zijn",
-              "Het gebied waar planeten geen zwaartekracht voelen",
-              "Het gebied vlak bij het zwarte gat in een stelsel",
-              "Het gebied waar de ster het heetst is"
-            ],
-            "correct": 0,
-            "explain": "Als een planeet niet te dichtbij en niet te ver van de ster staat, kan water vloeibaar zijn. Dat is belangrijk omdat al het bekende leven water nodig heeft."
-          },
-          "ama": {
-            "q": "Welke twee processen bepalen grofweg de binnenrand en buitenrand van de bewoonbare zone?",
-            "options": [
-              "Verdampende oceanen (broeikas) aan de binnenrand en bevriezing aan de buitenrand",
-              "Magnetisme aan de binnenrand en zwaartekracht aan de buitenrand",
-              "Getijdenkrachten aan de binnenrand en lichtdruk aan de buitenrand",
-              "Zonnevlammen aan de binnenrand en meteorieten aan de buitenrand"
-            ],
-            "correct": 0,
-            "explain": "Te dichtbij de ster verdampen oceans en ontstaat een op hol geslagen broeikaseffect. Te ver weg bevriest water, tenzij een dikke atmosfeer met broeikasgassen de planeet warm houdt."
-          },
-          "pro": {
-            "q": "Welke grootheid bepaalt in eerste orde of een planeet zich in de bewoonbare zone bevindt?",
-            "options": [
-              "Het aantal manen van de planeet",
-              "De instraling (flux) die de planeet van de ster ontvangt",
-              "De dichtheid van de planeet",
-              "De rotatieperiode van de ster"
-            ],
-            "correct": 1,
-            "explain": "De bewoonbare zone wordt gedefinieerd via de stellaire flux S, in eenheden van wat de Aarde ontvangt, samen met albedo en atmosfeer. Daarom schuift de zone mee met de lichtkracht van de ster."
-          }
-        },
-        {
-          "id": "2026-W47-exoplaneten-4",
-          "beg": {
-            "q": "Hoeveel bevestigde exoplaneten zijn er volgens NASA in 2025 ongeveer bekend?",
-            "options": [
-              "Meer dan 5.800",
-              "Ongeveer 50",
-              "Ongeveer 300",
-              "Precies 8"
-            ],
-            "correct": 0,
-            "explain": "Volgens het NASA Exoplanet Archive zijn er in 2025 meer dan 5.800 bevestigde exoplaneten. Het aantal groeit nog steeds."
-          },
-          "ama": {
-            "q": "Welke bevestigde exoplaneet draait om de dichtstbijzijnde ster na de Zon?",
-            "options": [
-              "Proxima Centauri b",
-              "Kepler-452b",
+              "Kepler-22b",
+              "Mars b",
               "TRAPPIST-1e",
-              "HR 8799 b"
+              "Proxima Centauri b"
             ],
-            "correct": 0,
-            "explain": "Proxima Centauri b staat op ongeveer 4,2 lichtjaar afstand. Het is daarmee de dichtstbijzijnde bekende exoplaneet."
+            "correct": 3,
+            "explain": "Proxima Centauri b draait om Proxima Centauri, de dichtstbijzijnde ster na de zon, op ongeveer 4,2 lichtjaar afstand. Alle andere bekende exoplaneten staan verder weg."
           },
-          "pro": {
-            "q": "Met welke methode werd Proxima Centauri b in 2016 ontdekt?",
+          "ama": {
+            "q": "Op welke afstand staat Proxima Centauri b ongeveer van ons?",
             "options": [
-              "Microlensing",
-              "Transitmethode",
-              "Radiale snelheidsmethode",
-              "Directe imaging"
+              "Ongeveer 420 lichtjaar",
+              "Ongeveer 0,42 lichtjaar",
+              "Ongeveer 4,2 lichtjaar",
+              "Ongeveer 42 lichtjaar"
             ],
             "correct": 2,
-            "explain": "De planeet werd gevonden door de periodieke Doppler-verschuiving van de ster, gemeten met onder andere HARPS. Er is geen transit bekend, dus alleen de minimale massa M sin i is bepaald."
+            "explain": "Proxima Centauri staat op circa 4,2 lichtjaar, en haar planeet Proxima b dus ook. Met huidige ruimtevaarttechniek zou een reis daarheen vele duizenden jaren duren."
+          },
+          "pro": {
+            "q": "Welk type ster is Proxima Centauri, de moederster van de dichtstbijzijnde bekende exoplaneet?",
+            "options": [
+              "Een rode dwerg van spectraalklasse M",
+              "Een blauwe reus van spectraalklasse B",
+              "Een witte dwerg",
+              "Een gele dwerg van spectraalklasse G"
+            ],
+            "correct": 0,
+            "explain": "Proxima Centauri is een lichte, koele rode dwerg (klasse M) met een zwakke lichtkracht. Daardoor ligt haar bewoonbare zone zeer dicht bij de ster, waar Proxima b met een baanperiode van ongeveer 11,2 dagen in zit."
           }
         },
         {
-          "id": "2026-W47-exoplaneten-5",
+          "id": "2026-W48-exoplaneten-2",
           "beg": {
-            "q": "Wat kan de atmosfeer van een exoplaneet ons vertellen?",
+            "q": "Hoe vinden astronomen de meeste exoplaneten?",
             "options": [
-              "De naam van de planeet",
-              "Hoeveel inwoners er zijn",
-              "Welke gassen erin zitten",
-              "Hoe oud de Zon is"
+              "Door ze met een gewone verrekijker te fotograferen",
+              "Door te zien dat een ster even iets zwakker wordt",
+              "Door ze te zien botsen met andere planeten",
+              "Door radiosignalen van bewoners op te vangen"
             ],
-            "correct": 2,
-            "explain": "Door sterlicht te bekijken dat door de atmosfeer valt, zie je welke gassen licht van bepaalde kleuren opnemen. Zo kun je bijvoorbeeld waterdamp of koolstofdioxide herkennen."
+            "correct": 1,
+            "explain": "De transitmethode meet het kleine dipje in sterlicht als een planeet voor de ster langstrekt. Exoplaneten zijn meestal te zwak en te dicht bij hun ster om rechtstreeks te zien."
           },
           "ama": {
-            "q": "Welke ruimtetelescoop detecteerde in 2022 CO₂ in de atmosfeer van de exoplaneet WASP-39b?",
+            "q": "Welke methode meet de heen-en-weer beweging van een ster door de zwaartekracht van een planeet?",
             "options": [
+              "De parallaxmethode",
+              "De radiale snelheidsmethode",
+              "De transitmethode",
+              "Microlensing"
+            ],
+            "correct": 1,
+            "explain": "Bij de radiale snelheidsmethode meet men via de dopplerverschuiving van spectraallijnen hoe de ster naar ons toe en van ons af wiebelt. Zo vond men in 1995 51 Pegasi b, de eerste exoplaneet bij een zonachtige ster."
+          },
+          "pro": {
+            "q": "Welke grootheid van een planeet volgt rechtstreeks uit de radiale snelheidsmethode, zonder de baanhelling i te kennen?",
+            "options": [
+              "De straal R_p",
+              "De atmosferische schaallengte H",
+              "De minimummassa M_p sin i",
+              "De albedo"
+            ],
+            "correct": 2,
+            "explain": "De amplitude K hangt af van M_p sin i, dus alleen een ondergrens van de massa is bekend. Pas als een transit de inclinatie vastlegt (i ≈ 90°), kan de ware massa worden bepaald."
+          }
+        },
+        {
+          "id": "2026-W48-exoplaneten-3",
+          "beg": {
+            "q": "Wat laat zien dat een planeet uit gesteente of vooral uit gas bestaat?",
+            "options": [
+              "Alleen haar kleur op een foto",
+              "Het aantal manen dat ze heeft",
+              "De naam van haar ster",
+              "Haar grootte en gewicht samen"
+            ],
+            "correct": 3,
+            "explain": "Met grootte en massa kun je uitrekenen hoe compact de planeet is. Een planeet met hoge dichtheid is rotsachtig, een met lage dichtheid bestaat vooral uit gas."
+          },
+          "ama": {
+            "q": "Welke twee methoden combineer je om de gemiddelde dichtheid van een exoplaneet te bepalen?",
+            "options": [
+              "Microlensing en astrometrie",
+              "Directe imaging en parallax",
+              "Transitmethode en pulsartiming",
+              "Transitmethode en radiale snelheidsmethode"
+            ],
+            "correct": 3,
+            "explain": "De transit geeft de straal, de radiale snelheid geeft de massa. Samen volgt de dichtheid ρ = M/(4/3 πR³), waarmee je rotsachtige van gasrijke planeten kunt onderscheiden."
+          },
+          "pro": {
+            "q": "Hoe hangt de transitdiepte ΔF/F af van de straalverhouding bij een centrale transit?",
+            "options": [
+              "ΔF/F = R_p/R_*",
+              "ΔF/F = (R_p/R_*)³",
+              "ΔF/F = (R_*/R_p)²",
+              "ΔF/F = (R_p/R_*)²"
+            ],
+            "correct": 3,
+            "explain": "De diepte is gelijk aan de verhouding van het planeetschijfje en het sterschijfje, dus het kwadraat van de straalverhouding. Voor Jupiter voor de zon is dat ongeveer 1%, voor de Aarde ongeveer 0,008%."
+          }
+        },
+        {
+          "id": "2026-W48-exoplaneten-4",
+          "beg": {
+            "q": "Wat is een Super-Aarde?",
+            "options": [
+              "Een planeet die helemaal uit goud bestaat",
+              "Een planeet die groter is dan de Aarde maar kleiner dan Neptunus",
+              "Een planeet met meer dan honderd manen",
+              "Een planeet die dichter bij de zon staat dan Mercurius"
+            ],
+            "correct": 1,
+            "explain": "Een Super-Aarde is een planeet met een massa tussen ongeveer die van de Aarde en Neptunus. De term zegt niets over bewoonbaarheid. Ons zonnestelsel heeft zo'n planeet niet."
+          },
+          "ama": {
+            "q": "Welke massa heeft een Super-Aarde doorgaans?",
+            "options": [
+              "Ongeveer 1 tot 10 aardmassa's",
+              "Ongeveer 0,01 tot 0,1 aardmassa",
+              "Ongeveer 100 tot 300 aardmassa's",
+              "Ongeveer 1000 aardmassa's"
+            ],
+            "correct": 0,
+            "explain": "Een Super-Aarde heeft ruwweg 1 tot 10 aardmassa's. Zwaardere planeten zoals Jupiter (ongeveer 318 aardmassa's) zijn gasreuzen."
+          },
+          "pro": {
+            "q": "Wat laat de gemeten dichtheid van veel planeten met een straal van ongeveer 1,6 aardstralen of kleiner zien?",
+            "options": [
+              "Ze zijn vaak overwegend rotsachtig",
+              "Ze hebben altijd een dichtheid lager dan water",
+              "Ze zijn bijna allemaal pure waterstofballen",
+              "Ze zijn altijd even dicht als de Aarde"
+            ],
+            "correct": 0,
+            "explain": "Analyses van planeten met precieze massa's laten zien dat veel planeten tot ongeveer 1,6 R_Aarde een rotsachtige samenstelling hebben. Daarboven nemen vluchtige stoffen en gasomhulsels snel toe, wat de zogeheten radiuskloof (Fulton gap) rond 1,5–2 aardstralen markeert."
+          }
+        },
+        {
+          "id": "2026-W48-exoplaneten-5",
+          "beg": {
+            "q": "Wat is nodig voor leven zoals wij dat kennen, en waar zoekt men dus naar in de bewoonbare zone?",
+            "options": [
+              "Een planeet zonder atmosfeer",
+              "Ijs dat nooit smelt",
+              "Vloeibaar water op het oppervlak",
+              "Een ster die veel koeler is dan de zon"
+            ],
+            "correct": 2,
+            "explain": "De bewoonbare zone is het gebied rond een ster waar de temperatuur vloeibaar water op het oppervlak mogelijk maakt, mits de planeet een geschikte atmosfeer heeft. Water is voor alle bekend leven essentieel."
+          },
+          "ama": {
+            "q": "Hoe ligt de bewoonbare zone rond een rode dwerg ten opzichte van die rond de zon?",
+            "options": [
+              "Veel dichter bij de ster",
+              "Er is geen bewoonbare zone mogelijk",
+              "Op precies dezelfde afstand",
+              "Veel verder van de ster"
+            ],
+            "correct": 0,
+            "explain": "Rode dwergen stralen veel minder licht uit, dus moet een planeet er dichtbij staan om warm genoeg te zijn. Zulke planeten hebben vaak een gebonden rotatie, waarbij één zijde steeds naar de ster wijst."
+          },
+          "pro": {
+            "q": "Welk verband bepaalt de evenwichtstemperatuur T_eq van een planeet bij albedo A en afstand a tot een ster met luminositeit L?",
+            "options": [
+              "T_eq ∝ L(1−A) / a",
+              "T_eq ∝ [L(1−A)]^2 / a^4",
+              "T_eq ∝ a^(1/2) / L^(1/4)",
+              "T_eq ∝ [L(1−A)]^(1/4) / a^(1/2)"
+            ],
+            "correct": 3,
+            "explain": "Door de opgenomen straling gelijk te stellen aan de uitgezonden (Stefan-Boltzmann) volgt T_eq = [L(1−A)/(16πσ a²)]^(1/4). Dat geeft een afhankelijkheid van a^(−1/2) en een vierdemachtswortel van L(1−A)."
+          }
+        },
+        {
+          "id": "2026-W48-exoplaneten-6",
+          "beg": {
+            "q": "Hoe kan een telescoop iets te weten komen over de lucht rond een verre planeet?",
+            "options": [
+              "Door te kijken hoe sterlicht door die lucht heen valt",
+              "Door de planeet te wegen",
+              "Door te luisteren naar het geluid van de wind",
+              "Door een ruimtesonde erin te laten duiken"
+            ],
+            "correct": 0,
+            "explain": "Als een planeet voor haar ster langstrekt, schijnt een deel van het sterlicht door de atmosfeer. Verschillende gassen slokken verschillende kleuren op, waardoor je kunt zien welke gassen er zijn."
+          },
+          "ama": {
+            "q": "Welke ruimtetelescoop detecteerde in 2022 koolstofdioxide in de atmosfeer van de exoplaneet WASP-39b?",
+            "options": [
+              "Hubble",
               "Gaia",
-              "Spitzer alleen",
-              "JWST",
+              "James Webb (JWST)",
               "Kepler"
             ],
             "correct": 2,
-            "explain": "De James Webb-telescoop zag in 2022 voor het eerst duidelijk CO₂ in een exoplaneetatmosfeer. Later vond hij onder meer ook SO₂, een teken van chemie door sterlicht in de atmosfeer."
+            "explain": "JWST zag CO₂ in WASP-39b, de eerste duidelijke detectie van die stof in een exoplaneetatmosfeer. De telescoop werkt vooral in het infrarood, waar veel moleculen kenmerkende absorptie vertonen."
           },
           "pro": {
-            "q": "Welke combinatie bepaalt de atmosferische schaallengte H in transmissiespectroscopie?",
+            "q": "Welke grootheid bepaalt hoe sterk spectrale kenmerken in transmissiespectroscopie opvallen?",
             "options": [
-              "Alleen de straal van de ster",
-              "Alleen de leeftijd van de planeet",
-              "Alleen de omlooptijd",
-              "Temperatuur, gemiddeld molecuulgewicht en zwaartekracht"
+              "De baanexcentriciteit alleen",
+              "De atmosferische schaallengte H = kT/μg",
+              "De spectraalklasse van de telescoop",
+              "De afstand van de ster tot de Aarde"
             ],
-            "correct": 3,
-            "explain": "H = kT/(μg): een warme atmosfeer met laag molecuulgewicht en lage zwaartekracht is opgeblazen. Daardoor is het transmissiesignaal groter, en zijn hete gasreuzen het makkelijkst te meten."
-          }
-        },
-        {
-          "id": "2026-W47-exoplaneten-6",
-          "beg": {
-            "q": "Wat is een biosignatuur?",
-            "options": [
-              "Een teken in een atmosfeer dat mogelijk door leven is gemaakt",
-              "De handtekening van een astronoom",
-              "Een foto van een buitenaards wezen",
-              "Een kleur van een ster"
-            ],
-            "correct": 0,
-            "explain": "Een biosignatuur is een stof of patroon dat op leven kan wijzen, zoals zuurstof samen met methaan. Het is een aanwijzing en geen bewijs, want sommige stoffen kunnen ook zonder leven ontstaan."
-          },
-          "ama": {
-            "q": "Waarom is zuurstof in een planeetatmosfeer een mogelijke biosignatuur?",
-            "options": [
-              "Zuurstof geeft de planeet een rode kleur",
-              "Zuurstof komt nooit in de natuur voor zonder leven en is dus bewijs",
-              "Op Aarde wordt het in grote hoeveelheden door fotosynthese gemaakt",
-              "Zuurstof is het meest voorkomende gas in het heelal"
-            ],
-            "correct": 2,
-            "explain": "Zuurstof reageert snel met andere stoffen en verdwijnt dus tenzij het steeds wordt aangevuld, op Aarde door fotosynthese. Toch kan zuurstof ook zonder leven ontstaan, dus een claim vraagt extra controle."
-          },
-          "pro": {
-            "q": "Waarom wordt de K2-18b-claim over dimethylsulfide (DMS) als voorlopig beschouwd?",
-            "options": [
-              "De detectie is statistisch zwak en DMS-achtige signalen kunnen ook andere verklaringen hebben",
-              "K2-18b heeft geen atmosfeer",
-              "DMS komt alleen voor in de Zon",
-              "JWST kan geen moleculen waarnemen"
-            ],
-            "correct": 0,
-            "explain": "De gemeten signalen zijn gevoelig voor modelkeuzes en onafhankelijke analyses bevestigden de detectie niet. Een biosignatuur vereist een robuuste detectie en uitsluiting van abiotische bronnen."
+            "correct": 1,
+            "explain": "Het signaal schaalt met 2R_pH/R_*². Een hete, lichte atmosfeer (hoge T, lage μ) op een planeet met lage zwaartekracht heeft een grote H en geeft dus een sterker signaal."
           }
         }
       ]
     },
     "ruimtevaart": {
-      "week": "2026-W47",
+      "week": "2026-W48",
       "vragen": [
         {
-          "id": "2026-W47-ruimtevaart-1",
+          "id": "2026-W48-ruimtevaart-1",
           "beg": {
-            "q": "Waarom zweven astronauten in het ISS rond?",
+            "q": "Hoe lang duurt het ongeveer voordat het ISS één keer rond de Aarde is gevlogen?",
             "options": [
-              "Op 400 km hoogte is er helemaal geen zwaartekracht meer.",
-              "De Aarde draait te snel om hen aan te trekken.",
-              "Zij vallen samen met het station voortdurend om de Aarde heen.",
-              "Het station heeft een magneetveld dat hen optilt."
+              "Ongeveer 92 minuten",
+              "Ongeveer 10 minuten",
+              "Ongeveer 1 week",
+              "Ongeveer 24 uur"
             ],
-            "correct": 2,
-            "explain": "Het ISS en de astronauten vallen op dezelfde manier rond de Aarde, dus er is geen kracht die hen tegen de vloer drukt. De zwaartekracht is daar nog groot, maar je voelt haar niet in vrije val."
+            "correct": 0,
+            "explain": "Het ISS vliegt zo snel dat het in ongeveer anderhalf uur een hele rondje om de Aarde maakt. Astronauten zien daardoor zo'n 16 zonsopgangen per dag."
           },
           "ama": {
-            "q": "Hoe groot is de zwaartekracht op 400 km hoogte ongeveer vergeleken met die aan het aardoppervlak?",
+            "q": "Wat is de omlooptijd van het ISS op ongeveer 400 km hoogte?",
             "options": [
-              "Ongeveer 0%",
-              "Ongeveer 89%",
-              "Ongeveer 10%",
-              "Ongeveer 50%"
+              "Ongeveer 24 uur",
+              "Ongeveer 92 minuten",
+              "Ongeveer 45 minuten",
+              "Ongeveer 3 uur"
             ],
             "correct": 1,
-            "explain": "De zwaartekracht neemt af met 1/r². Met r ≈ 6771 km tegenover 6371 km aan het oppervlak is dat (6371/6771)² ≈ 0,89. Zweven komt dus door vrije val, niet door een gebrek aan zwaartekracht."
+            "explain": "Op ongeveer 400 km hoogte is de omlooptijd circa 92 minuten. Het ISS maakt dus ongeveer 15 à 16 omlopen per dag."
           },
           "pro": {
-            "q": "Welke effecten veroorzaken vooral de resterende versnellingen (microzwaartekracht) in het ISS?",
+            "q": "Welke omlooptijd volgt uit de derde wet van Kepler voor een cirkelbaan op ~400 km hoogte (a ≈ 6.780 km)?",
             "options": [
-              "De zwaartekracht van de Maan, die sterker is dan die van de Aarde.",
-              "De Lorentzkracht van het aardmagneetveld op de metalen romp.",
-              "De zwaartekrachtgradiënt (getijdenkracht) voor punten buiten het massamiddelpunt en de restweerstand van de atmosfeer.",
-              "Frame-dragging door de rotatie van de Aarde."
+              "Ongeveer 92 minuten",
+              "Ongeveer 120 minuten",
+              "Ongeveer 24 uur",
+              "Ongeveer 84 minuten"
             ],
-            "correct": 2,
-            "explain": "Alleen het massamiddelpunt volgt precies een vrije-valbaan. Andere punten voelen een licht verschillende zwaartekracht (getijdenterm), en de ijle atmosfeer op 400 km remt het station nog net af."
+            "correct": 0,
+            "explain": "T = 2π√(a³/GM) geeft met a ≈ 6.780 km ongeveer 5.550 s, dus circa 92 minuten. Een baan op het aardoppervlak zou ongeveer 84 minuten duren, dus ISS is iets langzamer."
           }
         },
         {
-          "id": "2026-W47-ruimtevaart-2",
+          "id": "2026-W48-ruimtevaart-2",
           "beg": {
-            "q": "Wat moet een ruimteschip doen om in een lagere baan om de Aarde te komen?",
+            "q": "Waarom valt een satelliet in een baan om de Aarde niet op de grond?",
             "options": [
-              "Even afremmen",
-              "Zijwaarts de motor aanzetten",
-              "Even versnellen",
-              "Helemaal stoppen met bewegen"
+              "Hij valt wel steeds, maar vliegt zo snel zijwaarts dat hij de Aarde steeds mist",
+              "De lucht om de Aarde draagt hem",
+              "Zijn motoren duwen hem constant omhoog",
+              "Er is in de ruimte helemaal geen zwaartekracht"
             ],
             "correct": 0,
-            "explain": "Door af te remmen valt het schip naar een lagere baan, en daar gaat het uiteindelijk sneller. Dat voelt tegenintuïtief, maar de baanhoogte wordt bepaald door de energie van het schip."
+            "explain": "Op baanhoogte is de zwaartekracht nog sterk. De satelliet valt continu, maar door zijn zijwaartse snelheid buigt de Aarde onder hem weg."
           },
           "ama": {
-            "q": "Hoeveel motorbranden gebruikt een Hohmann-transfer tussen twee cirkelbanen?",
+            "q": "Welke snelheid heeft een voorwerp ongeveer nodig voor een cirkelbaan vlak boven de Aarde (eerste kosmische snelheid)?",
             "options": [
-              "Drie",
-              "Twee",
-              "Eén",
-              "Vier"
-            ],
-            "correct": 1,
-            "explain": "De eerste brand brengt het ruimtevaartuig op een elliptische overgangsbaan, de tweede maakt de baan weer cirkelvormig. Deze overgang kost de minste totale Δv van alle tweebrandmanoeuvres."
-          },
-          "pro": {
-            "q": "Waarom is bij een Hohmann-overgang naar een hogere cirkelbaan een tweede brand in het apoapsis nodig?",
-            "options": [
-              "De snelheid in het apoapsis is hoger dan de cirkelsnelheid, dus moet je afremmen.",
-              "De snelheid in het apoapsis van de overgangsbaan is lager dan de cirkelsnelheid daar, dus moet je versnellen om te circulariseren.",
-              "De tweede brand compenseert de J2-verstoring van de Aarde.",
-              "Met de tweede brand wordt de inclinatie aangepast."
-            ],
-            "correct": 1,
-            "explain": "Uit de vis-viva-vergelijking v² = GM(2/r − 1/a) volgt dat het voertuig in het apoapsis van de ellips langzamer gaat dan de cirkelsnelheid √(GM/r). Zonder tweede brand zou het terugvallen naar het periapsis."
-          }
-        },
-        {
-          "id": "2026-W47-ruimtevaart-3",
-          "beg": {
-            "q": "Vliegt een satelliet op 36.000 km hoogte sneller of langzamer door de ruimte dan het ISS?",
-            "options": [
-              "Langzamer, want hoger in de baan hoort een lagere snelheid.",
-              "Sneller, want hij is verder weg.",
-              "Hij staat stil ten opzichte van de ruimte.",
-              "Even snel, want alle satellieten vliegen even snel."
-            ],
-            "correct": 0,
-            "explain": "Hoe hoger de baan, hoe zwakker de zwaartekracht en hoe lager de baansnelheid. Op 36.000 km is die ongeveer 3 km/s, tegen circa 7,7 km/s voor het ISS."
-          },
-          "ama": {
-            "q": "Wat gebeurt er met de snelheid van een cirkelbaan als de baanstraal 4 keer zo groot wordt?",
-            "options": [
-              "Ze halveert.",
-              "Ze wordt 2 keer zo groot.",
-              "Ze wordt 4 keer zo groot.",
-              "Ze wordt een kwart."
-            ],
-            "correct": 0,
-            "explain": "Uit v_c = √(GM/r) volgt dat v omgekeerd evenredig is met √r. Bij 4 keer zo grote r is de snelheid dus de helft."
-          },
-          "pro": {
-            "q": "Met welke factor verandert de omlooptijd als de halve lange as a van een baan om dezelfde massa 4 keer zo groot wordt?",
-            "options": [
-              "Factor 4",
-              "Factor 16",
-              "Factor 8",
-              "Factor 2"
-            ],
-            "correct": 2,
-            "explain": "Volgens de derde wet van Kepler geldt T ∝ a^(3/2). Dus 4^(3/2) = 8."
-          }
-        },
-        {
-          "id": "2026-W47-ruimtevaart-4",
-          "beg": {
-            "q": "Waarom kan een ionenmotor met heel weinig stuwkracht toch een sonde ver brengen?",
-            "options": [
-              "Hij werkt maandenlang en gebruikt weinig brandstof, doordat hij deeltjes met zeer hoge snelheid uitstoot.",
-              "Hij gebruikt de lucht in de ruimte om zich af te zetten.",
-              "Hij is veel krachtiger dan een gewone raketmotor.",
-              "Hij gebruikt de zwaartekracht van de Zon als brandstof."
-            ],
-            "correct": 0,
-            "explain": "Een ionenmotor geeft een heel zacht duwtje, maar blijft dat lange tijd doen. Doordat de deeltjes zo snel wegschieten, haal je veel snelheidswinst uit weinig brandstof."
-          },
-          "ama": {
-            "q": "Welke uitstootsnelheid hoort bij een ionenmotor met een specifieke impuls Isp van 3.000 s (v_e = g₀·Isp)?",
-            "options": [
-              "Ongeveer 3 km/s",
-              "Ongeveer 29 km/s",
-              "Ongeveer 300 km/s",
-              "Ongeveer 0,3 km/s"
-            ],
-            "correct": 1,
-            "explain": "v_e = 9,81 m/s² × 3.000 s ≈ 29.400 m/s. Een chemische raketmotor haalt met Isp ≈ 450 s slechts zo'n 4,4 km/s."
-          },
-          "pro": {
-            "q": "Welk deel van de beginmassa moet als drijfgas worden meegenomen voor Δv = 6 km/s met v_e = 30 km/s?",
-            "options": [
-              "Ongeveer 63%",
-              "Ongeveer 86%",
-              "Ongeveer 2%",
-              "Ongeveer 18%"
-            ],
-            "correct": 3,
-            "explain": "Volgens Tsiolkovsky is m₀/m_f = exp(Δv/v_e) = e^0,2 ≈ 1,22. Het drijfgasaandeel is 1 − 1/1,22 ≈ 0,18. Bij een chemische motor met v_e ≈ 3 km/s zou dit 86% zijn."
-          }
-        },
-        {
-          "id": "2026-W47-ruimtevaart-5",
-          "beg": {
-            "q": "Hoe kreeg de ruimtesonde Voyager extra snelheid zonder extra brandstof?",
-            "options": [
-              "Door langs planeten te vliegen en hun zwaartekracht te gebruiken.",
-              "Door brandstof uit asteroïden te halen.",
-              "Door steeds harder tegen de ruimte te duwen.",
-              "Door zonnestralen op te vangen als in een zeil."
-            ],
-            "correct": 0,
-            "explain": "Bij een zwaartekrachtslinger wordt de sonde door de planeet afgebogen en krijgt hij snelheid ten opzichte van de Zon. Zo konden de Voyagers meerdere planeten bezoeken en het zonnestelsel verlaten."
-          },
-          "ama": {
-            "q": "Waar komt de extra energie van een sonde bij een zwaartekrachtslinger vandaan?",
-            "options": [
-              "Uit de atmosfeer van de planeet die de sonde meeneemt.",
-              "Uit het magnetisch veld van de planeet.",
-              "Uit de baanbeweging van de planeet om de Zon, die daardoor een onmeetbaar klein beetje energie verliest.",
-              "Uit de brandstof die tijdens de passage vrijkomt."
-            ],
-            "correct": 2,
-            "explain": "De sonde ruilt impuls en energie met de planeet. Door de enorme massa van de planeet is het effect op de planeet onmeetbaar klein."
-          },
-          "pro": {
-            "q": "Waarom wint een sonde bij een swing-by snelheid in het heliocentrische stelsel, terwijl |v_∞| in het planetaire stelsel behouden blijft?",
-            "options": [
-              "Doordat de massa van de sonde tijdens de passage afneemt.",
-              "Doordat de planeet de sonde met zijn atmosfeer versnelt.",
-              "Doordat de v_∞-vector in het planetaire stelsel draait en daarna wordt opgeteld bij de baansnelheid van de planeet.",
-              "Doordat de Zon de sonde extra aantrekt tijdens de passage."
-            ],
-            "correct": 2,
-            "explain": "In het planetaire stelsel verandert alleen de richting van v_∞. Teruggerekend naar het heliocentrische stelsel (vectoroptelling met de planeetsnelheid) verandert de grootte van de snelheid wel."
-          }
-        },
-        {
-          "id": "2026-W47-ruimtevaart-6",
-          "beg": {
-            "q": "Waarom had de Apollo-maanlander een raketmotor nodig om zacht te landen in plaats van een parachute?",
-            "options": [
-              "De Maan heeft geen atmosfeer, dus een parachute werkt niet.",
-              "De Maan heeft een dikke atmosfeer die parachutes verscheurt.",
-              "Parachutes zijn te zwaar voor de ruimtevaart.",
-              "De zwaartekracht van de Maan is te groot."
-            ],
-            "correct": 0,
-            "explain": "Een parachute heeft lucht nodig om af te remmen. De Maan heeft vrijwel geen atmosfeer, dus moet een lander afremmen met zijn motor."
-          },
-          "ama": {
-            "q": "Wat is ongeveer de ontsnappingssnelheid van de Maan?",
-            "options": [
+              "Ongeveer 3,1 km/s",
+              "Ongeveer 30 km/s",
               "Ongeveer 11,2 km/s",
-              "Ongeveer 0,5 km/s",
-              "Ongeveer 7,9 km/s",
-              "Ongeveer 2,4 km/s"
+              "Ongeveer 7,9 km/s"
             ],
             "correct": 3,
-            "explain": "De Maan is veel lichter dan de Aarde, dus de ontsnappingssnelheid is ongeveer 2,4 km/s. Dat is ruwweg een vijfde van die van de Aarde (11,2 km/s)."
+            "explain": "De eerste kosmische snelheid is ongeveer 7,9 km/s. De 11,2 km/s is de ontsnappingssnelheid, √2 keer zoveel."
           },
           "pro": {
-            "q": "Wat is de cirkelsnelheid vlak boven het maanoppervlak, met GM = 4,9·10¹² m³/s² en R = 1737 km?",
+            "q": "Welke uitdrukking geeft de cirkelsnelheid op afstand r van het middelpunt van een lichaam met massa M?",
             "options": [
-              "Ongeveer 2,4 km/s",
-              "Ongeveer 7,9 km/s",
-              "Ongeveer 0,17 km/s",
-              "Ongeveer 1,7 km/s"
+              "v = √(GM/r²)",
+              "v = √(GM/r)",
+              "v = √(2GM/r)",
+              "v = GM/r²"
             ],
-            "correct": 3,
-            "explain": "v_c = √(GM/R) = √(4,9·10¹² / 1,737·10⁶) ≈ 1,68 km/s. Dat is ongeveer de snelheid die een lander moet afremmen of opbouwen voor landing of terugkeer naar een lage maanbaan."
+            "correct": 1,
+            "explain": "Gelijkstellen van zwaartekracht en middelpuntzoekende kracht geeft v² = GM/r. De ontsnappingssnelheid √(2GM/r) is een factor √2 groter."
           }
         },
         {
-          "id": "2026-W47-ruimtevaart-7",
+          "id": "2026-W48-ruimtevaart-3",
           "beg": {
-            "q": "Waarom kunnen ruimtevaartuigen naar Mars niet op elk moment vertrekken?",
+            "q": "Welke reistijd heeft een ruimteschip ongeveer nodig om van de Aarde naar Mars te vliegen?",
             "options": [
-              "Mars is alleen 's nachts bereikbaar.",
-              "De Aarde en Mars moeten goed ten opzichte van elkaar staan, en dat gebeurt maar eens in de zoveel tijd.",
-              "Raketten kunnen alleen op bepaalde dagen van de week starten.",
-              "De Zon blokkeert de weg naar Mars bijna altijd."
-            ],
-            "correct": 1,
-            "explain": "Beide planeten bewegen rond de Zon met verschillende snelheden. Een zuinige reis lukt alleen als Mars op het moment van aankomst op de juiste plek staat."
-          },
-          "ama": {
-            "q": "Hoe vaak opent zich ongeveer een gunstig lanceervenster naar Mars?",
-            "options": [
-              "Elk jaar",
-              "Elke 10 jaar",
-              "Ongeveer elke 26 maanden",
-              "Elke maand"
+              "Ongeveer een week",
+              "Ongeveer drie dagen",
+              "Zes tot negen maanden",
+              "Ongeveer vijf jaar"
             ],
             "correct": 2,
-            "explain": "De Aarde haalt Mars ongeveer elke 780 dagen (26 maanden) in. Een reis duurt dan ruwweg 6 tot 9 maanden."
+            "explain": "Mars is op zijn dichtst ongeveer 55 miljoen km weg. Met de huidige raketten duurt de reis zo'n zes tot negen maanden."
+          },
+          "ama": {
+            "q": "Welke reistijd hoort bij een gebruikelijke Aarde–Mars-transferbaan met chemische raketten?",
+            "options": [
+              "Ongeveer 2 jaar",
+              "Ongeveer 3 dagen",
+              "Ongeveer 6 tot 9 maanden",
+              "Ongeveer 3 weken"
+            ],
+            "correct": 2,
+            "explain": "Een Hohmann-achtige baan naar Mars duurt zo'n 6 tot 9 maanden. Snellere trajecten vergen veel meer brandstof."
           },
           "pro": {
-            "q": "Wat is de synodische periode van Mars, gegeven T_aarde = 365,25 d en T_Mars ≈ 687 d?",
+            "q": "Waarom wordt voor Mars-missies meestal een Hohmann-achtige transferbaan gekozen?",
             "options": [
-              "Ongeveer 687 d",
-              "Ongeveer 1.052 d",
-              "Ongeveer 238 d",
-              "Ongeveer 780 d"
+              "Hij minimaliseert de totale Δv tussen twee cirkelbanen",
+              "Hij vereist geen enkele motorbrand",
+              "Hij gebruikt de zwaartekracht van Jupiter",
+              "Hij geeft de kortst mogelijke reistijd"
+            ],
+            "correct": 0,
+            "explain": "De Hohmann-transfer gebruikt twee brandstofbranden en heeft de laagste totale Δv voor een transfer tussen twee coplanaire cirkelbanen. De prijs is een relatief lange reistijd."
+          }
+        },
+        {
+          "id": "2026-W48-ruimtevaart-4",
+          "beg": {
+            "q": "Hoe lang duurde de reis van Apollo 11 naar de Maan ongeveer?",
+            "options": [
+              "Ongeveer drie weken",
+              "Ongeveer drie maanden",
+              "Iets meer dan drie dagen",
+              "Ongeveer drie uur"
+            ],
+            "correct": 2,
+            "explain": "Apollo 11 deed er 3 dagen, 3 uur en 49 minuten over om in een baan om de Maan te komen. De Maan ligt zo'n 384.000 km weg."
+          },
+          "ama": {
+            "q": "Hoe lang duurde de vlucht van Apollo 11 van de lancering tot aankomst in de maanbaan?",
+            "options": [
+              "8 dagen",
+              "Bijna 2 weken",
+              "12 uur en 30 minuten",
+              "3 dagen, 3 uur en 49 minuten"
             ],
             "correct": 3,
-            "explain": "1/S = 1/T_aarde − 1/T_Mars = 1/365,25 − 1/687 ≈ 1/780. De synodische periode bepaalt dus de herhaling van de lanceervensters."
+            "explain": "Het traject duurde iets meer dan drie dagen. Dat is gebonden aan de vrije-terugkeerbaan die de bemanning veiligheid bood."
+          },
+          "pro": {
+            "q": "Waarom volgden de Apollo-missies naar de Maan een trans-lunaire injectie vanuit een lage parkeerbaan?",
+            "options": [
+              "Een brand vanuit een lage baan is efficiënt door het Oberth-effect",
+              "Een lage baan maakt de reistijd bijna nul",
+              "Zo hoefde er geen zwaartekracht overwonnen te worden",
+              "Zo kon de Maan de raket afremmen zonder brandstof"
+            ],
+            "correct": 0,
+            "explain": "Een brand dicht bij het zwaartekrachtcentrum, waar de snelheid hoog is, levert meer energiewinst per Δv (Oberth-effect). Daarom startte de TLI vanuit een parkeerbaan van circa 190 km."
+          }
+        },
+        {
+          "id": "2026-W48-ruimtevaart-5",
+          "beg": {
+            "q": "Wat gebeurt er met astronauten in de ruimte op de lange termijn met hun botten?",
+            "options": [
+              "Ze verliezen botmassa door de gewichtloosheid",
+              "Ze groeien enkele centimeters per week",
+              "Er verandert niets",
+              "Ze worden sterker door het zweven"
+            ],
+            "correct": 0,
+            "explain": "Zonder zwaartekracht hoeven botten en spieren minder te dragen. Daarom sporten astronauten ongeveer twee uur per dag."
+          },
+          "ama": {
+            "q": "Hoeveel sport astronauten op het ISS ongeveer per dag om botverlies en spierverlies tegen te gaan?",
+            "options": [
+              "Ongeveer 10 minuten",
+              "Helemaal niet",
+              "Ongeveer 2 uur",
+              "Ongeveer 6 uur"
+            ],
+            "correct": 2,
+            "explain": "Astronauten trainen circa twee uur per dag met loopband, fiets en weerstandsapparaat. Toch treedt nog enig botverlies op."
+          },
+          "pro": {
+            "q": "Welke stralingsvorm is een belangrijk risico buiten de magnetosfeer van de Aarde, bij bijvoorbeeld een Marsreis?",
+            "options": [
+              "Galactische kosmische straling met hoogenergetische zware ionen",
+              "Alleen radiogolven",
+              "Alleen infraroodstraling",
+              "Alleen ultraviolette straling van de Zon"
+            ],
+            "correct": 0,
+            "explain": "Buiten het aardmagnetisch veld is de dosis door galactische kosmische straling en zonnedeeltjes veel hoger dan in LEO. Afscherming is lastig omdat zware ionen veel secundaire straling kunnen veroorzaken."
+          }
+        },
+        {
+          "id": "2026-W48-ruimtevaart-6",
+          "beg": {
+            "q": "Waarom is Mars een kandidaat voor menselijke kolonisatie?",
+            "options": [
+              "Het heeft een dag van ongeveer 24,5 uur en water in de vorm van ijs",
+              "Het is er warmer dan op Aarde",
+              "Het heeft een ademhaalbare atmosfeer",
+              "Het ligt op slechts enkele dagen reizen"
+            ],
+            "correct": 0,
+            "explain": "Een marsdag (sol) duurt ongeveer 24 uur en 40 minuten, en er is waterijs aanwezig. De atmosfeer is wel dun en bestaat vooral uit CO₂."
+          },
+          "ama": {
+            "q": "Waaruit bestaat de atmosfeer van Mars voornamelijk?",
+            "options": [
+              "Waterstof",
+              "Koolstofdioxide",
+              "Stikstof en zuurstof",
+              "Methaan"
+            ],
+            "correct": 1,
+            "explain": "De Marsatmosfeer bestaat voor ongeveer 95% uit CO₂ en is zeer ijl, met minder dan 1% van de luchtdruk op Aarde."
+          },
+          "pro": {
+            "q": "Welk proces wordt voorgesteld om op Mars zuurstof te produceren, getest door het MOXIE-experiment?",
+            "options": [
+              "Elektrolyse van CO₂ uit de atmosfeer",
+              "Fotosynthese in de ruimte",
+              "Kernfusie van waterstof",
+              "Het verdampen van het poolijs naar zuurstofgas"
+            ],
+            "correct": 0,
+            "explain": "MOXIE op de rover Perseverance haalde zuurstof uit CO₂ via vaste-oxide-elektrolyse. Dit is in-situ resource utilization, wat lanceermassa scheelt."
           }
         }
       ]
     }
   },
   "dagvragen": [
+    {
+      "datum": "2026-11-23",
+      "slug": "nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-",
+      "titel": "NASA zoekt bedrijven voor eerste kernreactor op de maan",
+      "beg": {
+        "q": "Waarom is een kernreactor op de maan handiger dan zonnepanelen om een maanbasis van stroom te voorzien?",
+        "options": [
+          "Een reactor werkt op maanstof, dat overal ligt",
+          "Een reactor hoeft nooit te worden gebouwd of getest",
+          "Op de maan schijnt de zon te zwak voor zonnepanelen",
+          "Een reactor blijft stroom leveren tijdens de lange maannacht, zonnepanelen niet"
+        ],
+        "correct": 3,
+        "explain": "Een maannacht duurt ongeveer veertien aardse dagen, en dan leveren zonnepanelen niets. Een reactor heeft geen zonlicht nodig en draait dag en nacht door, ook in kraters waar de zon nooit komt."
+      },
+      "ama": {
+        "q": "Welk voordeel heeft een splijtingsreactor boven zonnepanelen voor een maanbasis dicht bij de zuidpool?",
+        "options": [
+          "Hij levert ook stroom in permanent beschaduwde kraters en tijdens de maannacht van ongeveer 14 aardse dagen",
+          "Hij werkt door fusie van waterstof uit het maanoppervlak",
+          "Hij heeft geen koeling nodig omdat de maan zo koud is",
+          "Hij haalt zijn energie uit de natuurlijke warmte van het maangesteente"
+        ],
+        "correct": 0,
+        "explain": "Een reactor is niet afhankelijk van zonlicht, dus hij werkt ook in kraters die nooit zon zien en tijdens de lange maannacht. Een splijtingsreactor gebruikt het splijten van zware atoomkernen, geen fusie of aardwarmte."
+      },
+      "pro": {
+        "q": "Waarom is een splijtingsreactor met 20 kWe geschikter dan een radio-isotopengenerator voor een maanbasis?",
+        "options": [
+          "Hij levert veel meer elektrisch vermogen, onafhankelijk van zonlicht, dan een RTG kan bieden",
+          "Hij gebruikt geen radioactief materiaal en is daardoor veiliger",
+          "Hij zet warmte om in stroom met een rendement van bijna 100 procent",
+          "Hij haalt zijn warmte uit natuurlijk verval van radioactief materiaal, net als Voyager"
+        ],
+        "correct": 0,
+        "explain": "Een RTG zet warmte van natuurlijk radioactief verval om in slechts enkele honderden watt, zoals bij Voyager en Curiosity. Een splijtingsreactor met kettingreactie levert tientallen keren meer vermogen, ook zonder zonlicht. Omzetting van warmte naar stroom blijft altijd ver onder 100 procent rendement."
+      }
+    },
     {
       "datum": "2026-11-22",
       "slug": "nasas-voyager-1-is-one-light-day-from-earth",
@@ -1966,45 +2004,7 @@
         "correct": 2,
         "explain": "Bij het Oberth-effect levert een motorstoot in het periapsis, waar het voertuig het snelst beweegt, de grootste toename in kinetische energie per eenheid brandstof. Daarom combineer je de zwaartekrachtsslinger met een gemotoriseerde passage vlak langs de aarde."
       }
-    },
-    {
-      "datum": "2026-11-08",
-      "slug": "apod-2026-november-6-a-farewell-to-swift",
-      "titel": "Afscheid van Swift: NASA-telescoop voor explosies in het heelal verbrandt boven Indonesië",
-      "beg": {
-        "q": "Waarom zakte de satelliet Swift sneller naar de aarde toen de zon extra actief was?",
-        "options": [
-          "De zon trok de satelliet met zijn zwaartekracht naar zich toe",
-          "De actieve zon zet de bovenste luchtlaag van de aarde uit, waardoor de satelliet meer luchtweerstand krijgt",
-          "De zon maakte de batterijen van de satelliet leeg, waardoor die naar beneden viel",
-          "Het zonlicht duwde de satelliet naar beneden"
-        ],
-        "correct": 1,
-        "explain": "Bij een actieve zon wordt de bovenste laag van de dampkring warmer en zet uit. Een satelliet in een lage baan botst dan tegen meer luchtdeeltjes, remt af en zakt. Zo'n satelliet verbrandt aan het eind van zijn val als een vallende ster."
-      },
-      "ama": {
-        "q": "Wat gebeurt er met satellieten in een lage baan om de aarde tijdens een zonnemaximum?",
-        "options": [
-          "Ze behouden hun hoogte, maar hun instrumenten raken oververhit",
-          "Ze krijgen minder luchtweerstand doordat de atmosfeer dunner wordt",
-          "Ze krijgen meer luchtweerstand doordat de bovenste atmosfeer uitzet, en verliezen daardoor sneller hoogte",
-          "Ze schuiven naar een hogere baan doordat de zonnewind hen wegduwt"
-        ],
-        "correct": 2,
-        "explain": "Extra ultraviolette straling en zonne-activiteit verhitten de thermosfeer, die daardoor uitzet tot grotere hoogtes. Satellieten ondervinden dan meer weerstand, verliezen baanenergie en zakken sneller. Dit versnelde het einde van Swift."
-      },
-      "pro": {
-        "q": "Waarom neemt het baanverval van een satelliet in een lage aardbaan toe rond zonnemaximum?",
-        "options": [
-          "De magnetosfeer van de aarde trekt de satelliet in een lagere baan door inductiestromen",
-          "De stralingsdruk van de zon neemt toe en remt de satelliet af",
-          "De dichtheid van de thermosfeer op baanhoogte neemt toe door verhitting, waardoor de weerstandskracht (evenredig met ρv²) groter wordt",
-          "De zwaartekracht van de aarde neemt toe door de extra zonne-energie"
-        ],
-        "correct": 2,
-        "explain": "Zonne-EUV en geomagnetische activiteit verwarmen de thermosfeer, die uitzet, waardoor de dichtheid op een gegeven hoogte stijgt. De weerstandskracht schaalt met de dichtheid ρ en het kwadraat van de snelheid. Zo verliest de satelliet sneller baanenergie en daalt de baan."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-22T15:27:58.772Z"
+  "bijgewerkt": "2026-11-23T19:21:51.680Z"
 }
