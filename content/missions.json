@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-22T15:39:55.682Z",
+    "lastUpdated": "2026-11-23T19:28:46.441Z",
     "autoUpdated": [
-      "nrol-136"
+      "nrol-132"
     ]
   },
   "missions": [
@@ -4608,11 +4608,11 @@
       "agencyColor": "#ffa040",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "23 nov 2026",
+      "launched": "24 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van Amazon Kuiper-satellieten naar een lage aardbaan voor wereldwijd breedbandinternet.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 23 nov 2026",
+      "highlight": "Lancering gepland: 24 nov 2026",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4624,7 +4624,7 @@
       "missionUrl": "https://leo.amazon.com/",
       "timeline": [
         {
-          "date": "23 nov 2026",
+          "date": "24 nov 2026",
           "event": "Geplande lancering van Amazon Leo (LE-04)"
         }
       ],
@@ -5979,6 +5979,44 @@
         "starshield"
       ],
       "_lastClaudeUpdate": "2026-11-19T16:46:35.779Z"
+    },
+    {
+      "id": "nrol-132",
+      "_ll2Id": "5591cfa3-6336-41ab-a37a-7c57aa28ab5f",
+      "name": "NROL-132",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "2 dec 2026",
+      "launchPrecision": "Minute",
+      "objective": "Lancering van de zestiende reeks satellieten voor een verkenningsconstellatie van NRO.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: 2 dec 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "NROL-132 is een SpaceX Falcon 9-missie naar een lage aardbaan. Het betreft de zestiende batch satellieten voor een verkenningsconstellatie die SpaceX en Northrop Grumman bouwen voor het National Reconnaissance Office, bedoeld voor beeldvorming en andere verkenningscapaciteiten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.nro.gov/",
+      "timeline": [
+        {
+          "date": "2 dec 2026",
+          "event": "Geplande lancering van NROL-132"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "nro",
+        "low earth orbit",
+        "northrop grumman"
+      ],
+      "_lastClaudeUpdate": "2026-11-23T19:28:41.780Z"
     }
   ]
 }
