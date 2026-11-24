@@ -1,8 +1,17 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-23T19:28:46.441Z",
+    "lastUpdated": "2026-11-24T19:06:02.725Z",
     "autoUpdated": [
-      "nrol-132"
+      "amazon-leo-le-04",
+      "ussf-266",
+      "sda-tranche-2-transport-layer-g",
+      "sicral-3a",
+      "transporter-19-dedicated-sso-rideshare",
+      "plato",
+      "crew-14",
+      "sda-tranche-2-transport-layer-h",
+      "galileo-l16-foc-fm29-fm30",
+      "tsis-2"
     ]
   },
   "missions": [
@@ -3493,10 +3502,10 @@
       "agencyColor": "#ffa040",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "31 dec 2026",
+      "launched": "28 feb 2027",
       "objective": "Twee Galileo-satellieten (FOC FM28 & FM31) in een middelhoge aardbaan brengen voor Europese navigatie.",
       "body": "Medium Earth Orbit",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: februari 2027",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -3505,10 +3514,10 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.esa.int/",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "februari 2027",
           "event": "Geplande lancering van Galileo L15 (FOC FM28 & FM31)"
         }
       ],
@@ -3528,7 +3537,8 @@
         "navigatiesatelliet",
         "meo"
       ],
-      "_lastClaudeUpdate": "2026-10-03T12:50:25.408Z"
+      "_lastClaudeUpdate": "2026-10-03T12:50:25.408Z",
+      "launchPrecision": "Month"
     },
     {
       "id": "chorus",
@@ -4606,13 +4616,13 @@
       "name": "Amazon Leo (LE-04)",
       "agency": "Arianespace",
       "agencyColor": "#ffa040",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "24 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Lancering van Amazon Kuiper-satellieten naar een lage aardbaan voor wereldwijd breedbandinternet.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: 24 nov 2026",
+      "highlight": "Gelanceerd op 24 nov 2026 met Ariane 64",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -4625,7 +4635,7 @@
       "timeline": [
         {
           "date": "24 nov 2026",
-          "event": "Geplande lancering van Amazon Leo (LE-04)"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -5720,13 +5730,13 @@
       "name": "USSF-266",
       "agency": "SpaceX",
       "agencyColor": "#3dcfdf",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "24 nov 2026",
-      "launchPrecision": "Minute",
+      "launchPrecision": "Second",
       "objective": "Geclassificeerde missie voor de United States Space Force naar een polaire baan.",
       "body": "Polar Orbit",
-      "highlight": "Lancering gepland: 24 nov 2026",
+      "highlight": "Gelanceerd op 24 nov 2026 met Falcon 9",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -5739,7 +5749,7 @@
       "timeline": [
         {
           "date": "24 nov 2026",
-          "event": "Geplande lancering van USSF-266"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
@@ -6017,6 +6027,310 @@
         "northrop grumman"
       ],
       "_lastClaudeUpdate": "2026-11-23T19:28:41.780Z"
+    },
+    {
+      "id": "sda-tranche-2-transport-layer-g",
+      "_ll2Id": "3624047e-9891-420b-820f-7db4a7570383",
+      "name": "SDA Tranche 2 Transport Layer G",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "28 feb 2027",
+      "launchPrecision": "Month",
+      "objective": "SpaceX lanceert een geclassificeerde lading voor de SDA Tranche 2 Transport Layer naar een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: februari 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Een Falcon 9-raket van SpaceX staat gepland om een geclassificeerde missie uit te voeren voor de Space Development Agency (SDA) als onderdeel van de Tranche 2 Transport Layer. De lancering is voorzien op 28 februari 2027 naar een polaire baan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.sda.mil/",
+      "timeline": [
+        {
+          "date": "februari 2027",
+          "event": "Geplande lancering van SDA Tranche 2 Transport Layer G"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "sda",
+        "tranche 2 transport layer",
+        "polar orbit"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:24.748Z"
+    },
+    {
+      "id": "sicral-3a",
+      "_ll2Id": "8d066e3a-ed12-4997-a5f4-3bc13cf5c8a2",
+      "name": "SICRAL 3A",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "28 feb 2027",
+      "launchPrecision": "Month",
+      "objective": "Lancering van communicatiesatelliet SICRAL 3A naar een geostationaire baan.",
+      "body": "Geostationaire baan",
+      "highlight": "Lancering gepland: februari 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SICRAL 3A is een volgende generatie communicatiesatelliet voor het Italiaanse ministerie van Defensie. De satelliet maakt deel uit van het SICRAL 3-systeem, dat UHF-, SHF- en Ka-bandcommunicatie biedt ter vervanging van SICRAL 2. Het systeem ondersteunt strategische en tactische defensiecommunicatie, zowel in Italië als daarbuiten, evenals beveiligings-, reddingsoperaties en civiele bescherming.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "",
+      "timeline": [
+        {
+          "date": "februari 2027",
+          "event": "Geplande lancering van SICRAL 3A"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "sicral 3",
+        "communicatiesatelliet",
+        "italiaans ministerie van defensie",
+        "geostationaire baan",
+        "falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:29.591Z"
+    },
+    {
+      "id": "transporter-19-dedicated-sso-rideshare",
+      "_ll2Id": "22023c17-c196-4b56-bfd4-7fc5e9db84c0",
+      "name": "Transporter 19 (Dedicated SSO Rideshare)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "28 feb 2027",
+      "launchPrecision": "Month",
+      "objective": "SpaceX brengt tientallen microsatellieten en nanosatellieten naar een zonsynchrone baan.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Lancering gepland: februari 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Transporter 19 is een dedicated rideshare-vlucht van SpaceX met een Falcon 9-raket naar een zonsynchrone baan. Aan boord bevinden zich tientallen kleine microsatellieten en nanosatellieten voor commerciële en overheidsklanten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spacex.com/",
+      "timeline": [
+        {
+          "date": "februari 2027",
+          "event": "Geplande lancering van Transporter 19 (Dedicated SSO Rideshare)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "rideshare",
+        "sun-synchronous orbit",
+        "nanosatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:35.164Z"
+    },
+    {
+      "id": "plato",
+      "_ll2Id": "526b4a0f-f0c9-4a20-9066-e9fc8c79307b",
+      "name": "PLATO",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Month",
+      "objective": "PLATO bestudeert aardachtige exoplaneten tot in de leefbare zone van zonachtige sterren.",
+      "body": "L2-punt",
+      "highlight": "Lancering gepland voor 31 maart 2027 met Ariane 62",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "PLATO (PLAnetary Transits and Oscillations of stars) is een ESA-missie met 26 camera's aan boord. De missie meet de grootte van exoplaneten en zoekt naar exomanen en ringen eromheen. Daarnaast karakteriseert PLATO de moedersterren van planeten door kleine variaties in sterrenlicht te analyseren.",
+      "vehicle": "Ariane 62",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.esa.int/Science_Exploration/Space_Science/Plato",
+      "timeline": [
+        {
+          "date": "maart 2027",
+          "event": "Geplande lancering van PLATO"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "plato",
+        "esa",
+        "exoplaneten",
+        "ariane 62",
+        "l2-punt"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:39.235Z"
+    },
+    {
+      "id": "crew-14",
+      "_ll2Id": "a5556e79-a01f-48c6-b822-69bbadb4460d",
+      "name": "Crew-14",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Month",
+      "objective": "Veertiende bemande operationele vlucht van een Crew Dragon naar het ISS.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor 31 maart 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Crew-14 is de veertiende operationele bemande vlucht van een SpaceX Crew Dragon naar het Internationaal Ruimtestation, uitgevoerd in het kader van NASA's Commercial Crew Program. De lancering staat gepland voor 31 maart 2027 met een Falcon 9-raket.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.jaxa.jp/",
+      "timeline": [
+        {
+          "date": "maart 2027",
+          "event": "Geplande lancering van Crew-14"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "crew dragon",
+        "nasa",
+        "commercial crew program",
+        "iss"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:44.007Z"
+    },
+    {
+      "id": "sda-tranche-2-transport-layer-h",
+      "_ll2Id": "cedcc397-f2c2-439f-9bed-b983669fc205",
+      "name": "SDA Tranche 2 Transport Layer H",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Month",
+      "objective": "Lancering van geclassificeerde SDA Tranche 2 Transport Layer-satellieten in een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: maart 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "SpaceX staat gepland om met een Falcon 9 een geclassificeerde lading te lanceren voor de Space Development Agency (SDA) als onderdeel van de Tranche 2 Transport Layer. De vlucht is voorzien voor 31 maart 2027 en richt zich op een polaire baan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.sda.mil/",
+      "timeline": [
+        {
+          "date": "maart 2027",
+          "event": "Geplande lancering van SDA Tranche 2 Transport Layer H"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "sda",
+        "tranche 2",
+        "polar orbit"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:48.475Z"
+    },
+    {
+      "id": "galileo-l16-foc-fm29-fm30",
+      "_ll2Id": "c73425e7-d668-4b80-b123-39cff09b31d7",
+      "name": "Galileo L16 (FOC FM29 & FM30)",
+      "agency": "Arianespace",
+      "agencyColor": "#ffa040",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Quarter 1",
+      "objective": "Lancering van twee satellieten voor het Europese Galileo-navigatiesysteem naar Medium Earth Orbit.",
+      "body": "Medium Earth Orbit",
+      "highlight": "Lancering gepland: Q1 2027",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "Arianespace plant de lancering van twee satellieten voor het Europese Galileo-navigatiesysteem. De missie, aangeduid als L16, draagt de voertuignummers FOC FM29 en FM30. De vlucht wordt uitgevoerd met een Ariane 62 naar Medium Earth Orbit.",
+      "vehicle": "Ariane 62",
+      "launchSite": "Ariane Launch Area 4",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.esa.int/",
+      "timeline": [
+        {
+          "date": "Q1 2027",
+          "event": "Geplande lancering van Galileo L16 (FOC FM29 & FM30)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "galileo",
+        "arianespace",
+        "ariane 62",
+        "medium earth orbit",
+        "navigatiesatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:52.754Z"
+    },
+    {
+      "id": "tsis-2",
+      "_ll2Id": "eda0f3bb-3a5e-438f-bdba-9dab2a86c281",
+      "name": "TSIS-2",
+      "agency": "Rocket Lab",
+      "agencyColor": "#c080ff",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Quarter 1",
+      "objective": "Meten van de energieinput van de zon op aarde met twee speciale instrumenten.",
+      "body": "Sun-Synchronous Orbit",
+      "highlight": "Gepland voor lancering op 31 maart 2027.",
+      "icon": "🚀",
+      "bgFrom": "#040408",
+      "bgTo": "#080810",
+      "description": "TSIS-2 is een satelliet van NASA die de energieinput van de zon op aarde meet. De satelliet bestaat uit twee instrumenten: de Total Irradiance Monitor (TIM), die de totale helderheid meet, en de Spectral Irradiance Monitor (SIM), die de spectrale bestraling meet over een golflengtebereik dat 96 procent van de energie in het zonnespectrum omvat. Beide instrumenten zijn vergelijkbaar met die van de TSIS-1-missie aan boord van het Internationaal Ruimtestation.",
+      "vehicle": "Electron",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "",
+      "timeline": [
+        {
+          "date": "Q1 2027",
+          "event": "Geplande lancering van TSIS-2"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "nasa",
+        "rocket lab",
+        "electron",
+        "sun-synchronous orbit",
+        "zonnemeting"
+      ],
+      "_lastClaudeUpdate": "2026-11-24T19:05:57.086Z"
     }
   ]
 }
