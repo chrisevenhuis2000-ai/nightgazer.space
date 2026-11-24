@@ -19,6 +19,7 @@ const PAGINAS: (Omit<Treffer, 'soort'> & { woorden: string })[] = [
   { titel: 'Hemelkalender 2027', sub: 'Pdf-wandkalender, € 4', href: '/sterrenkijken/hemelkalender/', woorden: 'hemelkalender kalender agenda 2027 pdf maanstand maan planeten jaar' },
   { titel: 'Raad de hemelfoto', sub: 'Dagspel: herken de ingezoomde ruimtefoto', href: '/spellen/hemelfoto/', woorden: 'spel spellen spelletje hemelfoto foto raden puzzel quiz' },
   { titel: 'Teken het sterrenbeeld', sub: 'Dagspel: verbind de sterren van vanavond', href: '/spellen/sterrenbeeld/', woorden: 'spel spellen spelletje sterrenbeeld sterrenbeelden tekenen puzzel' },
+  { titel: 'Noorderlicht zien in Nederland', sub: 'Gids: Kp-index, plekken, tijden en foto’s', href: '/gidsen/noorderlicht/', woorden: 'noorderlicht poollicht aurora kp zonnestorm geomagnetisch storm foto' },
   { titel: 'Kan ik vannacht kijken?', sub: 'Weer, ISS-overkomsten, noorderlicht en donkere plekken', href: '/sterrenkijken/', woorden: 'vannacht vanavond weer bewolking zicht iss overkomst noorderlicht poollicht donker lichtvervuiling bortle maan' },
   { titel: 'Missies en lanceringen', sub: 'Het lanceermanifest', href: '/missies/', woorden: 'missie missies lancering lanceringen raket spacex starship artemis esa nasa' },
   { titel: 'Meldingen en agenda', sub: 'Een seintje als er iets te zien is', href: '/sterrenkijken/#pl-meld', woorden: 'melding meldingen seintje notificatie push agenda ics' },

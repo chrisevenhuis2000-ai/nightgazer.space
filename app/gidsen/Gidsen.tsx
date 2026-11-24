@@ -59,6 +59,12 @@ const GIDSEN: Gids[] = [
     beeld: { nasaId: 'GSFC_20171208_Archive_e001864', titel: 'Een wassende maansikkel, uit LRO-data', credit: 'NASA/Goddard Scientific Visualization Studio', pos: '50% 50%' },
   },
   {
+    href: '/gidsen/noorderlicht/', soort: 'Noorderlicht', kop: 'Noorderlicht zien in Nederland',
+    tekst: 'Vanaf welke Kp-index het kan, waar en hoe laat je kijkt, en hoe je het met je telefoon vastlegt.',
+    meta: '7 vragen beantwoord', actie: 'Lees de gids',
+    beeld: { nasaId: 'iss072e159172', titel: 'Noorderlicht gezien vanaf het ISS, oktober 2024', credit: 'NASA', pos: '45% 58%' },
+  },
+  {
     href: '/sterrenkijken/hemelkalender/', soort: `Hemelkalender ${KALENDER_JAAR}`, kop: 'Het hele hemeljaar aan de muur',
     tekst: 'Elke nacht de maan, per maand de planeten, meteorenzwermen en verduisteringen. Pdf om zelf te printen.',
     meta: `12 platen, ${KALENDER_PRIJS}`, actie: 'Bekijk de kalender',
