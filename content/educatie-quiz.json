@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-24",
+      "slug": "nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-",
+      "titel": "NASA zoekt bedrijven voor eerste kernreactor op de maan",
+      "beg": {
+        "q": "Waarom is een kernreactor op de maan handiger dan alleen zonnepanelen?",
+        "options": [
+          "Een reactor is lichter dan zonnepanelen en hoeft nooit onderhouden te worden",
+          "Een reactor levert ook stroom tijdens de lange maannacht, als zonnepanelen niets opleveren",
+          "Een reactor maakt de maan warmer, zodat zonnepanelen beter werken",
+          "Op de maan schijnt de zon te zwak voor zonnepanelen, ook overdag"
+        ],
+        "correct": 1,
+        "explain": "Een maannacht duurt ongeveer veertien aardse dagen, en in die tijd leveren zonnepanelen niets. Een reactor draait dag en nacht door, en werkt ook in diepe kraters waar nooit zonlicht komt."
+      },
+      "ama": {
+        "q": "Hoe lang duurt een maannacht ongeveer, en waarom maakt dat een splijtingsreactor aantrekkelijk?",
+        "options": [
+          "Ongeveer 14 aardse dagen; zonnepanelen leveren dan niets, een reactor wel",
+          "Ongeveer 14 uur; zonnepanelen leveren dan te weinig voor opladen van accu's",
+          "Ongeveer 29 aardse dagen; zonnepanelen werken dan alleen op halve kracht",
+          "Ongeveer 24 uur; de reactor is dan nodig voor verwarming van de landers"
+        ],
+        "correct": 0,
+        "explain": "De maan draait in ongeveer 29,5 dag om haar as ten opzichte van de zon, dus dag en nacht duren elk ongeveer 14 aardse dagen. Een reactor is onafhankelijk van zonlicht en kan ook in permanent schaduwrijke kraters stroom leveren."
+      },
+      "pro": {
+        "q": "Welk principe onderscheidt de geplande Lunar Reactor-1 fundamenteel van de radio-isotopengeneratoren van Voyager en Curiosity?",
+        "options": [
+          "LR-1 gebruikt kernfusie van waterstof, terwijl RTG's op kernsplijting werken",
+          "Bij LR-1 wordt door gecontroleerde kernsplijting warmte opgewekt, terwijl RTG's warmte halen uit natuurlijk radioactief verval",
+          "LR-1 haalt energie uit zonlicht dat is opgeslagen in splijtstof, RTG's uit chemische reacties",
+          "LR-1 zet straling direct om in stroom zonder warmtestap, terwijl RTG's stoom gebruiken"
+        ],
+        "correct": 1,
+        "explain": "Een splijtingsreactor splijt atoomkernen in een kettingreactie, wat veel meer vermogen geeft (hier 20 kW elektrisch). RTG's leveren slechts enkele honderden watt uit de warmte van vervallend materiaal zoals plutonium-238, en zetten die warmte om via thermo-elektrische elementen."
+      }
+    },
+    {
       "datum": "2026-11-23",
       "slug": "nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-",
       "titel": "NASA zoekt bedrijven voor eerste kernreactor op de maan",
@@ -1966,45 +2004,7 @@
         "correct": 3,
         "explain": "De Maan staat op ongeveer 384.000 km, Saturnus op ruim een miljard kilometer. De parallax van de Maan is daardoor groot (ongeveer een graad over de aarde), de parallax van Saturnus verwaarloosbaar, dus alleen een smalle strook ziet de exacte bedekking."
       }
-    },
-    {
-      "datum": "2026-11-09",
-      "slug": "nasas-escapade-completes-powered-earth-flybys-now-en-route-t",
-      "titel": "Tweelingsondes ESCAPADE schieten via de aarde naar Mars",
-      "beg": {
-        "q": "Waarom konden de ESCAPADE-sondes niet gewoon meteen na de lancering naar Mars vliegen?",
-        "options": [
-          "De sondes hadden eerst een jaar nodig om hun batterijen op te laden",
-          "Mars was op dat moment te dicht bij de aarde om er veilig naartoe te vliegen",
-          "De zwaartekracht van de maan hield de sondes tegen",
-          "Aarde en Mars stonden aan weerszijden van de zon, wat een slecht moment was om te vertrekken"
-        ],
-        "correct": 3,
-        "explain": "Als aarde en Mars aan weerszijden van de zon staan, is de route naar Mars ongunstig. Daarom wachtten de sondes in een baan tot Mars gunstig stond. Zo'n goed vertrekmoment komt maar eens in de twee jaar."
-      },
-      "ama": {
-        "q": "Wat is het voordeel van de gemotoriseerde scheervlucht langs de aarde, in combinatie met een wachtbaan, voor kleine Marsmissies?",
-        "options": [
-          "Missies zijn niet meer gebonden aan het lanceervenster naar Mars dat maar eens in de twee jaar opent",
-          "De sonde kan hierdoor zonder remmanoeuvre in een baan rond Mars komen",
-          "De reis naar Mars duurt hierdoor slechts enkele weken",
-          "De sonde hoeft geen brandstof mee te nemen voor de reis"
-        ],
-        "correct": 0,
-        "explain": "Volgens het artikel kan een missie met een wachtbaan en een scheervlucht vrijwel altijd vertrekken en daarna de zwaartekracht van de aarde gebruiken voor een zetje. De reis zelf duurt nog steeds ongeveer 10 maanden en bij aankomst is nog steeds een remburn van ongeveer 11 minuten nodig."
-      },
-      "pro": {
-        "q": "Waarom is het natuurkundig gunstig om de trans-Marsinjectie uit te voeren tijdens een scheervlucht op ongeveer 1000 tot 1600 km hoogte, in plaats van ver van de aarde?",
-        "options": [
-          "De aardatmosfeer geeft op die hoogte extra stuwkracht aan de motor",
-          "Op lage hoogte heffen de zwaartekracht van zon en aarde elkaar op, zoals bij L2",
-          "Dicht bij de aarde is de snelheid het hoogst, waardoor dezelfde motorstoot door het Oberth-effect meer energie oplevert",
-          "Op lage hoogte is de zwaartekracht te zwak om de motor te hinderen"
-        ],
-        "correct": 2,
-        "explain": "Bij het Oberth-effect levert een motorstoot in het periapsis, waar het voertuig het snelst beweegt, de grootste toename in kinetische energie per eenheid brandstof. Daarom combineer je de zwaartekrachtsslinger met een gemotoriseerde passage vlak langs de aarde."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-23T19:21:51.680Z"
+  "bijgewerkt": "2026-11-24T18:58:11.619Z"
 }
