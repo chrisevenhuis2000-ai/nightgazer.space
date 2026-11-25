@@ -1,17 +1,12 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-24T19:06:02.725Z",
+    "lastUpdated": "2026-11-25T18:11:13.916Z",
     "autoUpdated": [
-      "amazon-leo-le-04",
-      "ussf-266",
-      "sda-tranche-2-transport-layer-g",
-      "sicral-3a",
-      "transporter-19-dedicated-sso-rideshare",
-      "plato",
-      "crew-14",
-      "sda-tranche-2-transport-layer-h",
-      "galileo-l16-foc-fm29-fm30",
-      "tsis-2"
+      "amazon-leo-lf-04",
+      "haven-1",
+      "wsf-m2-blaze-2-ussf-178",
+      "bandwagon-6-dedicated-mid-inclination-rideshare",
+      "turkish-lunar-mission-1-tlm-1"
     ]
   },
   "missions": [
@@ -2826,10 +2821,10 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "31 dec 2026",
+      "launched": "31 mrt 2027",
       "objective": "Vijf Astranis MicroGEO-satellieten naar een geostationaire baan brengen voor klanten in vier landen.",
       "body": "Geostationaire baan",
-      "highlight": "Lancering gepland: 31 dec 2026",
+      "highlight": "Lancering gepland: Q1 2027",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -2841,7 +2836,7 @@
       "missionUrl": "",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "Q1 2027",
           "event": "Geplande lancering van 5x Astranis MicroGEO"
         }
       ],
@@ -2859,7 +2854,8 @@
         "geostationaire baan",
         "geo"
       ],
-      "_lastClaudeUpdate": "2026-09-11T12:26:09.550Z"
+      "_lastClaudeUpdate": "2026-09-11T12:26:09.550Z",
+      "launchPrecision": "Quarter 1"
     },
     {
       "id": "sda-tranche-2-tracking-layer-a",
@@ -2960,7 +2956,7 @@
       "agencyColor": "#ffa040",
       "status": "gepland",
       "soort": "missie",
-      "launched": "17 dec 2026",
+      "launched": "18 dec 2026",
       "objective": "Lancering van de tweede Metop-SG B-weersatelliet van EUMETSAT in een zonsynchrone baan.",
       "body": "Sun-Synchronous Orbit",
       "highlight": "Gepland voor 31 december 2026 met Ariane 62",
@@ -2972,10 +2968,10 @@
       "launchSite": "Ariane Launch Area 4",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.eumetsat.int/",
       "timeline": [
         {
-          "date": "17 dec 2026",
+          "date": "18 dec 2026",
           "event": "Geplande lancering van Metop-SG B1"
         }
       ],
@@ -2999,7 +2995,7 @@
         "arianespace"
       ],
       "_lastClaudeUpdate": "2026-10-29T14:38:41.831Z",
-      "launchPrecision": "Day"
+      "launchPrecision": "Minute"
     },
     {
       "id": "cas500-2-others",
@@ -3261,10 +3257,10 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "30 nov 2026",
+      "launched": "30 jun 2027",
       "objective": "Lancering van de Zuid-Koreaanse aardobservatiemissie KOMPSAT-7A voor beeldvorming met hoge resolutie.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Lancering gepland: 30 nov 2026",
+      "highlight": "Lancering gepland: juni 2027",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
@@ -3273,10 +3269,10 @@
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://www.kari.kr/",
       "timeline": [
         {
-          "date": "30 nov 2026",
+          "date": "juni 2027",
           "event": "Geplande lancering van KOMPSAT-7A"
         }
       ],
@@ -3290,7 +3286,8 @@
         "falcon 9",
         "zonnesynchrone baan"
       ],
-      "_lastClaudeUpdate": "2026-06-29T12:27:25.366Z"
+      "_lastClaudeUpdate": "2026-06-29T12:27:25.366Z",
+      "launchPrecision": "Month"
     },
     {
       "id": "griffin-mission-one",
@@ -3548,22 +3545,22 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "lancering",
-      "launched": "31 dec 2026",
+      "launched": "4 dec 2026",
       "objective": "Lancering van MDA's CHORUS-constellatie met twee radarsatellieten voor aardobservatie vanuit LEO.",
       "body": "Low Earth Orbit",
-      "highlight": "Lancering gepland: december 2026",
+      "highlight": "Lancering gepland: 4 dec 2026",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
       "description": "CHORUS is de aardobservatiemissie van de volgende generatie van het Canadese bedrijf MDA, bestaande uit twee radarsatellieten — één met C-band SAR en één met X-band SAR — in een baan op 600 kilometer hoogte met een inclinatie van 53,5 graden. De X-bandsatelliet volgt de C-bandsatelliet op 60 minuten afstand, waardoor een unieke multi-sensor synergiewerking ontstaat. De constellatie biedt dagelijkse dekking van tot 95% van het oppervlak, ongeacht weersomstandigheden of dag-nachtcyclus, met een beeldstrook van maar liefst 700 kilometer breed én een resolutie van minder dan een meter. CHORUS wil de meest uitgebreide commerciële radarobservatiecapaciteit op de markt bieden in één enkele missie.",
       "vehicle": "Falcon 9",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Space Launch Complex 40",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "",
       "timeline": [
         {
-          "date": "december 2026",
+          "date": "4 dec 2026",
           "event": "Geplande lancering van CHORUS"
         }
       ],
@@ -3586,7 +3583,7 @@
         "radarconstellatie"
       ],
       "_lastClaudeUpdate": "2026-10-03T12:50:33.311Z",
-      "launchPrecision": "Month"
+      "launchPrecision": "Minute"
     },
     {
       "id": "inmarsat-7-f1-gx-7",
@@ -3643,22 +3640,22 @@
       "agencyColor": "#3dcfdf",
       "status": "gepland",
       "soort": "missie",
-      "launched": "31 dec 2026",
-      "objective": "Intuitive Machines landt voor de derde keer op de maan met 130 kg aan wetenschappelijke lading.",
+      "launched": "31 mrt 2027",
+      "objective": "Intuitive Machines landt voor de derde keer op de maan met 130 kg wetenschappelijke lading.",
       "body": "Maan",
-      "highlight": "Gepland voor lancering op 31 december 2026",
+      "highlight": "Gepland voor 31 maart 2027",
       "icon": "🚀",
       "bgFrom": "#040e14",
       "bgTo": "#0a2030",
-      "description": "De Nova-C IM-3-missie is de derde maanlanding van het Amerikaanse bedrijf Intuitive Machines en wordt gelanceerd met een Falcon 9-raket van SpaceX. Het ruimtevaartuig draagt 130 kilogram aan payloads naar het maanoppervlak. Opvallend is dat de missie ook rideshare-mogelijkheden biedt: dankzij overtollige capaciteit op de draagraket kunnen extra ladingen meeliften. De lancering staat gepland voor eind december 2026.",
+      "description": "Nova-C IM-3 is de derde maanmissie van Intuitive Machines met de Nova-C maanlander. De missie brengt 130 kg aan lading naar het maanoppervlak. Dankzij beschikbare restcapaciteit op het lanceervoertuig is er ook ruimte voor een rideshare.",
       "vehicle": "Falcon 9",
       "launchSite": "Unknown Pad",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
-      "missionUrl": "",
+      "missionUrl": "https://intuitivemachines.com",
       "timeline": [
         {
-          "date": "31 dec 2026",
+          "date": "Q1 2027",
           "event": "Geplande lancering van Nova-C IM-3"
         }
       ],
@@ -3676,9 +3673,11 @@
         "falcon 9",
         "maanlanding",
         "spacex falcon 9",
-        "commerciële maanmissie"
+        "commerciële maanmissie",
+        "maan"
       ],
-      "_lastClaudeUpdate": "2026-08-04T10:27:10.973Z"
+      "_lastClaudeUpdate": "2026-11-25T18:10:42.676Z",
+      "launchPrecision": "Quarter 1"
     },
     {
       "id": "ariane-64-go-1",
@@ -6331,6 +6330,196 @@
         "zonnemeting"
       ],
       "_lastClaudeUpdate": "2026-11-24T19:05:57.086Z"
+    },
+    {
+      "id": "amazon-leo-lf-04",
+      "_ll2Id": "9b9db235-8ffb-4569-b09b-0e852ad231a0",
+      "name": "Amazon Leo (LF-04)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 dec 2026",
+      "launchPrecision": "Month",
+      "objective": "Lancering van satellieten voor het Amazon Leo-megaconstellation in een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: december 2026",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Amazon Leo, voorheen bekend als Project Kuiper, is een megaconstellation van satellieten in een lage aardbaan dat breedband-internettoegang moet bieden. Het constellation wordt beheerd door Kuiper Systems LLC, een dochteronderneming van Amazon. Het is gepland uit 3.276 satellieten te bestaan, verdeeld over 98 orbitale vlakken op hoogtes van 590, 610 en 630 kilometer.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://leo.amazon.com/",
+      "timeline": [
+        {
+          "date": "december 2026",
+          "event": "Geplande lancering van Amazon Leo (LF-04)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "amazon leo",
+        "project kuiper",
+        "megaconstellation",
+        "spacex",
+        "falcon 9"
+      ],
+      "_lastClaudeUpdate": "2026-11-25T18:10:47.164Z"
+    },
+    {
+      "id": "haven-1",
+      "_ll2Id": "4cc61288-6f94-41de-8fd5-7fe4d72aedfb",
+      "name": "Haven-1",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Quarter 1",
+      "objective": "Haven-1 is een commercieel ruimtestation ontwikkeld door Vast in een lage aardbaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Gepland voor 31 maart 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Haven-1 is een commercieel ruimtestation ontwikkeld door Vast. De missie staat gepland voor 31 maart 2027 en wordt uitgevoerd met een Falcon 9-raket van SpaceX naar een lage aardbaan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Unknown Pad",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "",
+      "timeline": [
+        {
+          "date": "Q1 2027",
+          "event": "Geplande lancering van Haven-1"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "haven-1",
+        "vast",
+        "spacex",
+        "falcon 9",
+        "low earth orbit"
+      ],
+      "_lastClaudeUpdate": "2026-11-25T18:10:52.056Z"
+    },
+    {
+      "id": "wsf-m2-blaze-2-ussf-178",
+      "_ll2Id": "bb34dbf6-9b46-400a-94d6-a0b6dbd6cb03",
+      "name": "WSF-M2 & BLAZE-2 (USSF-178)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "31 mrt 2027",
+      "launchPrecision": "Quarter 1",
+      "objective": "Lancering van de tweede WSF-M weersatelliet en BLAZE-2 smallsats naar een polaire baan.",
+      "body": "Polar Orbit",
+      "highlight": "Lancering gepland: Q1 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "WSF-M2 is de tweede Weather System Follow-on Microwave-satelliet van het Amerikaanse ministerie van Defensie, bedoeld om de microgolfweervoorspellingscapaciteiten van de DMSP-satellieten te vervangen. Ball Aerospace bouwt twee LEO-weersatellieten uitgerust met een passieve microgolf-beeldvormende radiometer en een door het Air Force Research Laboratory ontwikkelde sensor voor energetische geladen deeltjes. De missie omvat ook BLAZE-2, een meevliegmogelijkheid voor operationele, onderzoeks- en prototypekleine satellieten van het DoD. De lancering staat gepland voor 31 maart 2027 met een Falcon 9 van SpaceX.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 4E",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spaceforce.mil/",
+      "timeline": [
+        {
+          "date": "Q1 2027",
+          "event": "Geplande lancering van WSF-M2 & BLAZE-2 (USSF-178)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "wsf-m",
+        "blaze-2",
+        "polaire baan"
+      ],
+      "_lastClaudeUpdate": "2026-11-25T18:10:56.030Z"
+    },
+    {
+      "id": "bandwagon-6-dedicated-mid-inclination-rideshare",
+      "_ll2Id": "d89815f1-7cc8-4dad-b3c4-5db80a9f4c01",
+      "name": "Bandwagon 6 (Dedicated Mid-Inclination Rideshare)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "lancering",
+      "launched": "30 apr 2027",
+      "launchPrecision": "Month",
+      "objective": "Falcon 9 brengt tientallen microsatellieten en nanosatellieten naar een mid-inclinatiebaan.",
+      "body": "Low Earth Orbit",
+      "highlight": "Lancering gepland: april 2027",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Bandwagon 6 is een toegewijde rideshare-vlucht van SpaceX met een Falcon 9-raket naar een Low Earth Orbit met mid-inclinatie. Aan boord bevinden zich tientallen kleine microsatellieten en nanosatellieten voor commerciële en overheidsklanten.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "https://www.spacex.com/",
+      "timeline": [
+        {
+          "date": "april 2027",
+          "event": "Geplande lancering van Bandwagon 6 (Dedicated Mid-Inclination Rideshare)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "spacex",
+        "falcon 9",
+        "rideshare",
+        "low earth orbit",
+        "microsatellieten"
+      ],
+      "_lastClaudeUpdate": "2026-11-25T18:11:03.133Z"
+    },
+    {
+      "id": "turkish-lunar-mission-1-tlm-1",
+      "_ll2Id": "0d7dd3ae-0750-49be-a6ef-db40fd6ec5a5",
+      "name": "Turkish Lunar Mission-1 (TLM-1)",
+      "agency": "SpaceX",
+      "agencyColor": "#3dcfdf",
+      "status": "gepland",
+      "soort": "missie",
+      "launched": "30 apr 2027",
+      "launchPrecision": "Month",
+      "objective": "Eerste Turkse maanverkenner, operationeel in een cirkelbaan op 100 km hoogte boven het maanoppervlak.",
+      "body": "Maan",
+      "highlight": "Gepland voor lancering op 30 april 2027 met een Falcon 9.",
+      "icon": "🚀",
+      "bgFrom": "#040e14",
+      "bgTo": "#0a2030",
+      "description": "Turkish Lunar Mission-1 (TLM-1) is het eerste Turkse ruimtevaartuig voor maanverkenning. Het ruimtevaartuig zal ten minste drie maanden, mogelijk zes, in een cirkelbaan van 100 km om de Maan opereren en de missie afsluiten met een gecontroleerde neerstorting. Aan boord bevindt zich een hybride voortstuwingssysteem en wetenschappelijke instrumenten voor het meten van water, magnetische activiteit en straling op de Maan.",
+      "vehicle": "Falcon 9",
+      "launchSite": "Space Launch Complex 40",
+      "duration": "Onbekend",
+      "distanceKm": "Onbekend",
+      "missionUrl": "",
+      "timeline": [
+        {
+          "date": "april 2027",
+          "event": "Geplande lancering van Turkish Lunar Mission-1 (TLM-1)"
+        }
+      ],
+      "facts": [],
+      "relatedTags": [
+        "maan",
+        "tlm-1",
+        "turkije",
+        "falcon 9",
+        "maanverkenning"
+      ],
+      "_lastClaudeUpdate": "2026-11-25T18:11:07.568Z"
     }
   ]
 }
