@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-25",
+      "slug": "nasa-hubbles-new-view-of-ngc-4394-raises-the-bar",
+      "titel": "Hubble legt balkspiraal NGC 4394 vast: een blik op een 'tweelingbroer' van de Melkweg",
+      "beg": {
+        "q": "Hoe ontstaat volgens sterrenkundigen de rechte balk van sterren in het centrum van een spiraalstelsel als NGC 4394?",
+        "options": [
+          "Veel sterren botsen midden in het stelsel en blijven als een stijf staafje aan elkaar plakken.",
+          "Het zwarte gat in het centrum schiet sterren in een rechte lijn naar buiten.",
+          "Een gaswolk van buiten het stelsel valt erin en vormt een lange streep.",
+          "Een schijf van sterren wordt instabiel, waardoor de ronde sterbanen uitgerekt worden tot langgerekte banen."
+        ],
+        "correct": 3,
+        "explain": "Als de schijf van sterren instabiel wordt, worden de cirkelvormige banen uitgerekt en ontstaat de langgerekte balkvorm. De oorzaak kan bijvoorbeeld de zwaartekracht van een passerend stelsel zijn. Sterren botsen bijna nooit echt, want de afstanden tussen sterren zijn enorm."
+      },
+      "ama": {
+        "q": "Wat volgt uit de waarnemingen dat balken nu vaker voorkomen dan miljarden jaren geleden en dat zware balken zelf weer instabiel kunnen worden?",
+        "options": [
+          "Dat balken alleen ontstaan in stelsels met een zwart gat in het centrum.",
+          "Dat een balk een tijdelijke fase in het leven van een spiraalstelsel is.",
+          "Dat de Melkweg geen balk kan hebben omdat we er middenin zitten.",
+          "Dat elk spiraalstelsel uiteindelijk een permanente balk krijgt."
+        ],
+        "correct": 1,
+        "explain": "Balken ontstaan en kunnen later door hun eigen groei weer instabiel worden, dus ze zijn niet blijvend. Naar schatting heeft ongeveer 65 procent van de nabije spiraalstelsels er een. Dat we de Melkweg niet van buitenaf zien, betekent niet dat we de balk niet kunnen aantonen: dat gebeurt via sterposities en bewegingen."
+      },
+      "pro": {
+        "q": "Hoe moet je een stellaire balk dynamisch het best beschrijven?",
+        "options": [
+          "Als een star lichaam van vaste sterren dat als geheel rond het centrum draait.",
+          "Als een door magnetische velden bijeengehouden structuur van sterren.",
+          "Als een roterend patroon van langgerekte, op elkaar uitgelijnde sterbanen, waarbij de individuele sterren langs die banen bewegen.",
+          "Als een stroom sterren die radiaal vanuit de kern naar buiten stroomt."
+        ],
+        "correct": 2,
+        "explain": "Een balk is een dichtheidspatroon, gevormd door langgerekte (x1-)banen die ten opzichte van elkaar uitgelijnd zijn, en dat patroon draait met een eigen patroonsnelheid. De sterren zelf stromen langs hun banen en zitten er niet aan vast. Zo past het ook bij het uitrekken van ronde banen in een instabiele schijf."
+      }
+    },
+    {
       "datum": "2026-11-24",
       "slug": "nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-",
       "titel": "NASA zoekt bedrijven voor eerste kernreactor op de maan",
@@ -1966,45 +2004,7 @@
         "correct": 3,
         "explain": "De aarde haalt Mars in met een hoeksnelheid die het verschil is van beide hoeksnelheden, dus 1/S = 1/365,25 − 1/687, wat ongeveer 780 dagen geeft. Optelling van de snelheden geeft de verkeerde uitkomst, want dan zou de aarde Mars tegemoet lopen in plaats van inhalen."
       }
-    },
-    {
-      "datum": "2026-11-10",
-      "slug": "apod-2026-november-10-saturn-behind-the-moon",
-      "titel": "Saturnus verdwijnt achter de Maan: astrofoto van een zeldzame bedekking",
-      "beg": {
-        "q": "Waarom verdwijnt Saturnus tijdens een bedekking even uit het zicht?",
-        "options": [
-          "De schaduw van de aarde valt over Saturnus heen",
-          "Saturnus dooft even uit, zoals een lamp",
-          "Saturnus beweegt tijdelijk naar de andere kant van de zon",
-          "De Maan schuift precies tussen ons en Saturnus in"
-        ],
-        "correct": 3,
-        "explain": "Bij een bedekking staat de Maan op één lijn tussen de aarde en Saturnus en blokkeert zo het zicht op de planeet. Saturnus zelf gaat nergens heen; het is alleen een kwestie van kijkrichting."
-      },
-      "ama": {
-        "q": "Waarom is een bedekking van Saturnus door de Maan maar vanuit een smalle strook op aarde te zien?",
-        "options": [
-          "De atmosfeer van de aarde laat het alleen op bepaalde breedtegraden toe",
-          "Saturnus bevindt zich alleen boven bepaalde landen boven de horizon",
-          "Saturnus is te lichtzwak om vanuit andere plekken te zien",
-          "De Maan staat dichtbij, waardoor haar positie voor de achtergrond sterk verschilt per waarnemingsplaats"
-        ],
-        "correct": 3,
-        "explain": "De Maan staat veel dichterbij dan Saturnus, dus haar schijnbare plek aan de hemel verschuift sterk met de positie van de waarnemer (parallax). Daardoor valt Saturnus alleen binnen een smalle baan over de aarde precies achter de Maan; elders schuift de Maan er langs."
-      },
-      "pro": {
-        "q": "Welk effect veroorzaakt dat de bedekkingsstrook op aarde smal is en dat de Maan elders voor Saturnus langs schuift?",
-        "options": [
-          "Atmosferische refractie die Saturnus verplaatst",
-          "Aberratie van het licht door de baansnelheid van de aarde",
-          "Gravitationele lichtbuiging door de massa van de Maan",
-          "Dagelijkse parallax van de Maan door haar geringe afstand ten opzichte van Saturnus"
-        ],
-        "correct": 3,
-        "explain": "De Maan staat op ongeveer 384.000 km, Saturnus op ruim een miljard kilometer. De parallax van de Maan is daardoor groot (ongeveer een graad over de aarde), de parallax van Saturnus verwaarloosbaar, dus alleen een smalle strook ziet de exacte bedekking."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-24T18:58:11.619Z"
+  "bijgewerkt": "2026-11-25T18:04:40.760Z"
 }
