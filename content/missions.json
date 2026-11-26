@@ -1,13 +1,7 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-25T18:11:13.916Z",
-    "autoUpdated": [
-      "amazon-leo-lf-04",
-      "haven-1",
-      "wsf-m2-blaze-2-ussf-178",
-      "bandwagon-6-dedicated-mid-inclination-rideshare",
-      "turkish-lunar-mission-1-tlm-1"
-    ]
+    "lastUpdated": "2026-11-26T17:53:17.361Z",
+    "autoUpdated": []
   },
   "missions": [
     {
@@ -5893,7 +5887,7 @@
       "bgTo": "#080810",
       "description": "Rocket Lab plant de lancering van StriX Launch 14 met een Electron-raket naar een zonsynchrone baan. Aan boord bevindt zich een synthetische-apertuurradarsatelliet van het Japanse aardobservatiebedrijf Synspective.",
       "vehicle": "Electron",
-      "launchSite": "Unknown Pad",
+      "launchSite": "Rocket Lab Launch Complex 1B",
       "duration": "Onbekend",
       "distanceKm": "Onbekend",
       "missionUrl": "https://synspective.com/",
