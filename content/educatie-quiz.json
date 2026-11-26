@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-26",
+      "slug": "nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-",
+      "titel": "NASA zoekt bedrijven voor eerste kernreactor op de maan",
+      "beg": {
+        "q": "Waarom is een kernreactor op de maan handiger dan alleen zonnepanelen?",
+        "options": [
+          "Zonnepanelen worden op de maan te warm en smelten daardoor altijd.",
+          "Een maannacht duurt ongeveer twee aardse weken, en dan leveren zonnepanelen niets op.",
+          "Zonnepanelen werken niet in de lege ruimte omdat daar geen lucht is.",
+          "De maan staat zo ver van de zon dat er nooit zonlicht aankomt."
+        ],
+        "correct": 1,
+        "explain": "Een reactor draait dag en nacht door, terwijl zonnepanelen in de lange maannacht niets opleveren. Zonnepanelen werken in de ruimte juist prima: de Internationale Ruimtestation-panelen laten dat zien."
+      },
+      "ama": {
+        "q": "Waarom duurt een maannacht op een bepaalde plek ongeveer 14 aardse dagen?",
+        "options": [
+          "De maan draait ongeveer één keer per maand om haar as, dus elke plek heeft ruim twee weken dag en twee weken nacht.",
+          "De aarde schuift twee weken lang voor de zon en werpt een schaduw op de maan.",
+          "De maan draait niet om haar as, waardoor één kant altijd in het donker ligt.",
+          "De maan draait elke dag om haar as, maar het zonlicht doet er twee weken over om aan te komen."
+        ],
+        "correct": 0,
+        "explain": "De maan draait gebonden: ze draait in ongeveer een maand één keer om haar as, in dezelfde tijd als één baan om de aarde. Daardoor wisselen dag en nacht elkaar op één plek elke twee weken af. Alleen op de polen kunnen sommige kraters permanent in de schaduw liggen."
+      },
+      "pro": {
+        "q": "Welke periode bepaalt hoe lang het van zonsopgang tot zonsopgang duurt op een vaste plek op de maan, en dus de lengte van de maannacht?",
+        "options": [
+          "De synodische maand van 29,5 dagen",
+          "De draconische maand van 27,2 dagen",
+          "De draaiperiode van de aarde van 24 uur",
+          "De siderische omloopperiode van 27,3 dagen"
+        ],
+        "correct": 0,
+        "explain": "De maan roteert gebonden met de siderische periode van 27,3 dagen, maar de aarde-maanbaan schuift ondertussen rond de zon. Daardoor is de zonnedag op de maan gelijk aan de synodische maand van 29,5 dagen, zodat de nacht op de evenaar ongeveer 14,8 dagen duurt."
+      }
+    },
+    {
       "datum": "2026-11-25",
       "slug": "nasa-hubbles-new-view-of-ngc-4394-raises-the-bar",
       "titel": "Hubble legt balkspiraal NGC 4394 vast: een blik op een 'tweelingbroer' van de Melkweg",
@@ -1966,45 +2004,7 @@
         "correct": 1,
         "explain": "De Maan is zo dichtbij dat haar schijnbare positie ten opzichte van verre objecten sterk afhangt van de waarnemingsplaats (maanparallax, ongeveer 1°). Saturnus ligt vrijwel op oneindig, dus de bedekking is alleen te zien binnen een smalle baan; daarbuiten schuift de Maan er net langs."
       }
-    },
-    {
-      "datum": "2026-11-11",
-      "slug": "nasas-escapade-completes-powered-earth-flybys-now-en-route-t",
-      "titel": "Tweelingsondes ESCAPADE schieten via de aarde naar Mars",
-      "beg": {
-        "q": "Waarom opent het lanceervenster voor een zuinige reis naar Mars maar ongeveer eens in de twee jaar?",
-        "options": [
-          "Het duurt twee jaar om een nieuwe raket te bouwen.",
-          "Aarde en Mars staan maar eens in de twee jaar gunstig ten opzichte van elkaar, omdat ze met verschillende snelheden om de zon lopen.",
-          "Mars is alleen in de winter dicht genoeg bij de zon om te bereiken.",
-          "De zonnewind is maar eens in de twee jaar zwak genoeg om te vertrekken."
-        ],
-        "correct": 1,
-        "explain": "De aarde loopt sneller om de zon dan Mars, dus de onderlinge stand verandert steeds. Pas na ongeveer twee jaar staan de planeten weer zo dat een zuinige reis kan. ESCAPADE kon bij de lancering niet rechtstreeks vertrekken, omdat de planeten toen aan weerszijden van de zon stonden."
-      },
-      "ama": {
-        "q": "Na hoeveel tijd keert de gunstige onderlinge stand van aarde en Mars voor een zuinige overgangsbaan ongeveer terug?",
-        "options": [
-          "Ongeveer 23 maanden, één marsjaar",
-          "Ongeveer 48 maanden",
-          "Ongeveer 12 maanden",
-          "Ongeveer 26 maanden"
-        ],
-        "correct": 3,
-        "explain": "Dit is de synodische periode van aarde en Mars: ongeveer 780 dagen, dus zo'n 26 maanden. Een marsjaar is 687 dagen, maar de aarde loopt in die tijd door en moet Mars opnieuw inhalen. Daarom is het venster ruim twee jaar."
-      },
-      "pro": {
-        "q": "Welke synodische periode van aarde en Mars volgt uit hun siderische perioden van 365,25 en 687 dagen, en bepaalt het tweejaarlijkse lanceervenster?",
-        "options": [
-          "Ongeveer 238 dagen, uit 1/S = 1/P⊕ + 1/P♂",
-          "Ongeveer 687 dagen, want S = P♂",
-          "Ongeveer 1052 dagen, uit S = P⊕ + P♂",
-          "Ongeveer 780 dagen, uit 1/S = 1/P⊕ − 1/P♂"
-        ],
-        "correct": 3,
-        "explain": "De aarde haalt Mars in met een hoeksnelheid die het verschil is van beide hoeksnelheden, dus 1/S = 1/365,25 − 1/687, wat ongeveer 780 dagen geeft. Optelling van de snelheden geeft de verkeerde uitkomst, want dan zou de aarde Mars tegemoet lopen in plaats van inhalen."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-25T18:04:40.760Z"
+  "bijgewerkt": "2026-11-26T17:50:34.849Z"
 }
