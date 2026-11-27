@@ -1474,6 +1474,44 @@
   },
   "dagvragen": [
     {
+      "datum": "2026-11-27",
+      "slug": "nasas-ng-25-mission-to-launch-pioneering-space-crops-researc",
+      "titel": "Bevoorradingsvlucht NG-25 brengt nieuwe ruimtemoestuin en minibreinen naar het ISS",
+      "beg": {
+        "q": "Waarom is water geven aan planten op het ruimtestation lastiger dan op aarde?",
+        "options": [
+          "Planten in de ruimte nemen geen water op",
+          "Water bevriest in de ruimte meteen tot ijs",
+          "Zonder merkbare zwaartekracht zakt water niet naar de wortels, maar zweeft als druppels of blijft aan oppervlakken kleven",
+          "Water verdampt in de ruimte altijd direct tot damp"
+        ],
+        "correct": 2,
+        "explain": "Op aarde trekt de zwaartekracht water naar beneden, de grond in. In de bijna gewichtloze toestand aan boord van het ISS ontbreekt die trek, dus moet een speciaal systeem het water naar de wortels brengen. Het ISS is bovendien verwarmd en bewoond, dus water bevriest of verdampt er niet vanzelf."
+      },
+      "ama": {
+        "q": "Welke kracht bepaalt in microzwaartekracht vooral hoe water zich gedraagt, waardoor het als bol of laagje om wortels blijft hangen?",
+        "options": [
+          "De middelpuntvliedende kracht van het ruimtestation, die water naar het midden drukt",
+          "De luchtdruk aan boord, die water naar boven duwt",
+          "Het magnetisch veld van de aarde, dat water vasthoudt",
+          "De oppervlaktespanning samen met de hechting aan oppervlakken, omdat het gewicht van het water nauwelijks meetelt"
+        ],
+        "correct": 3,
+        "explain": "Waterdeeltjes trekken elkaar aan (oppervlaktespanning) en kleven aan vaste oppervlakken (adhesie). Op aarde wint het gewicht van het water het vaak van die krachten, maar in microzwaartekracht bepalen ze de vorm. Daarom vormt water daar bijna perfecte bollen."
+      },
+      "pro": {
+        "q": "Wat zegt het Bondgetal Bo = ρgL²/σ over een waterlichaam van enkele centimeters op het ISS, waar de effectieve g ongeveer 10⁻⁶ van de aardse waarde is?",
+        "options": [
+          "Bo ≪ 1, dus capillaire krachten (oppervlaktespanning) domineren over de lichaamskracht door zwaartekracht",
+          "Bo ≫ 1, dus zwaartekracht domineert over de oppervlaktespanning",
+          "Bo ≈ 1 voor elke lengteschaal, dus beide krachten zijn altijd even groot",
+          "Bo is niet gedefinieerd zonder zwaartekracht, dus de verhouding zegt niets"
+        ],
+        "correct": 0,
+        "explain": "Voor L ≈ 1 cm, ρ ≈ 1000 kg/m³ en σ ≈ 0,072 N/m komt Bo uit op ongeveer 10⁻⁵, dus veel kleiner dan 1. Capillaire effecten bepalen dan het gedrag van de vloeistof. Dat is waarom watertoevoer in ruimtekassen vaak met capillaire structuren of poreuze materialen wordt opgelost."
+      }
+    },
+    {
       "datum": "2026-11-26",
       "slug": "nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-",
       "titel": "NASA zoekt bedrijven voor eerste kernreactor op de maan",
@@ -1966,45 +2004,7 @@
         "correct": 3,
         "explain": "Een satelliet in een lage baan overvliegt steeds nieuwe stroken van de aarde en komt periodiek terug, waardoor je grote gebieden consistent en herhaald kunt vergelijken. Daarom is Landsat zo geschikt voor het volgen van veranderingen. Een lage baan staat niet stil boven één punt, en wolken verstoren optische beelden wel degelijk."
       }
-    },
-    {
-      "datum": "2026-11-12",
-      "slug": "apod-2026-november-10-saturn-behind-the-moon",
-      "titel": "Saturnus verdwijnt achter de Maan: astrofoto van een zeldzame bedekking",
-      "beg": {
-        "q": "Waarom verdwijnt Saturnus tijdelijk uit het zicht tijdens een bedekking door de Maan?",
-        "options": [
-          "Saturnus dooft tijdelijk door een zonnevlam",
-          "De Maan schuift vanuit ons gezien precies voor Saturnus langs",
-          "Saturnus beweegt tijdelijk uit het zonnestelsel weg",
-          "De schaduw van de aarde valt op Saturnus"
-        ],
-        "correct": 1,
-        "explain": "De Maan staat dichtbij en schuift precies tussen ons en Saturnus door, zodat de planeet verborgen is. Saturnus zelf verandert niet; de Maan hangt er als een schijf voor, zoals een hand voor een lamp die ver weg staat."
-      },
-      "ama": {
-        "q": "Waarom liggen de Maan, Saturnus en de ster 85 Aquarii op een foto dicht bij elkaar terwijl ze dat in werkelijkheid niet zijn?",
-        "options": [
-          "De zwaartekracht van de Maan trekt Saturnus en de ster naar zich toe",
-          "We zien alleen hun richting aan de hemel, niet hun afstand, en die verschilt enorm",
-          "Ze staan alle drie op ongeveer dezelfde afstand van de aarde",
-          "Telescopen vervormen de afstanden tussen heldere objecten"
-        ],
-        "correct": 1,
-        "explain": "Aan de hemel zien we alleen de positie in twee dimensies, de projectie, niet de diepte. De Maan ligt op ongeveer 384.000 km, Saturnus op ruim een miljard kilometer en de ster nog veel verder. Daardoor kunnen ze toch in dezelfde lijn lijken te staan."
-      },
-      "pro": {
-        "q": "Waarom is een bedekking maar vanuit een smalle strook op aarde te zien, terwijl Saturnus en de Maan wel voor een groot deel van de planeet boven de horizon staan?",
-        "options": [
-          "Saturnus is te lichtzwak om buiten de strook waar te nemen",
-          "De Maan staat dichtbij, waardoor de parallax groot is en de schaduwbaan op aarde smal is",
-          "De atmosfeer van de aarde breekt het licht van Saturnus buiten de strook volledig weg",
-          "De baan van de Maan verandert tijdens de bedekking sterk van helling"
-        ],
-        "correct": 1,
-        "explain": "De Maan is zo dichtbij dat haar schijnbare positie ten opzichte van verre objecten sterk afhangt van de waarnemingsplaats (maanparallax, ongeveer 1°). Saturnus ligt vrijwel op oneindig, dus de bedekking is alleen te zien binnen een smalle baan; daarbuiten schuift de Maan er net langs."
-      }
     }
   ],
-  "bijgewerkt": "2026-11-26T17:50:34.849Z"
+  "bijgewerkt": "2026-11-27T17:35:17.197Z"
 }
