@@ -1,7 +1,9 @@
 {
   "_meta": {
-    "lastUpdated": "2026-11-26T17:53:17.361Z",
-    "autoUpdated": []
+    "lastUpdated": "2026-11-27T17:39:19.676Z",
+    "autoUpdated": [
+      "strix-launch-14"
+    ]
   },
   "missions": [
     {
@@ -5875,13 +5877,13 @@
       "name": "StriX Launch 14",
       "agency": "Rocket Lab",
       "agencyColor": "#c080ff",
-      "status": "gepland",
+      "status": "voltooid",
       "soort": "lancering",
       "launched": "27 nov 2026",
       "launchPrecision": "Minute",
       "objective": "Lancering van een SAR-aardobservatiesatelliet voor het Japanse bedrijf Synspective.",
       "body": "Sun-Synchronous Orbit",
-      "highlight": "Lancering gepland: 27 nov 2026",
+      "highlight": "Gelanceerd op 27 nov 2026 met Electron",
       "icon": "🚀",
       "bgFrom": "#040408",
       "bgTo": "#080810",
@@ -5894,7 +5896,7 @@
       "timeline": [
         {
           "date": "27 nov 2026",
-          "event": "Geplande lancering van StriX Launch 14"
+          "event": "Gelanceerd"
         }
       ],
       "facts": [],
